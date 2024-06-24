@@ -1,0 +1,128 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+%Packages Used------------------------------------------
+% the following is to get qoppa and Qoppa
+\DeclareFontFamily{T1}{cbgreek}{}
+\DeclareFontShape{T1}{cbgreek}{m}{n}{<-6>  grmn0500 <6-7> grmn0600 <7-8> grmn0700 <8-9> grmn0800 <9-10> grmn0900 <10-12> grmn1000 <12-17> grmn1200 <17-> grmn1728}{}
+\DeclareSymbolFont{quadratics}{T1}{cbgreek}{m}{n}
+\DeclareMathSymbol{\qoppa}{\mathord}{quadratics}{19}
+\DeclareMathSymbol{\Qoppa}{\mathord}{quadratics}{21}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathtools}
+\usepackage{wasysym}
+\usepackage{MnSymbol}
+\usepackage{thmtools}
+\usepackage{stmaryrd}
+\usepackage[letterpaper,margin=1in]{geometry}   
+\usepackage{slashed}
+\usepackage[english]{babel}				
+\usepackage[pdfencoding=auto, psdextra, draft=false]{hyperref}
+\usepackage{bookmark}
+\usepackage{url}					
+\usepackage[T1]{fontenc}
+\usepackage{xspace}		
+\usepackage{fancyhdr}
+\usepackage{enumerate}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{soul,color}
+\usepackage{mathtools}
+\usepackage{tikz-cd}
+\usepackage[maxbibnames=99]{biblatex}
+\usepackage{csquotes}
+\usepackage{chngcntr}
+\usepackage[bbgreekl]{mathbbol}
+\counterwithin{equation}{section}
+\addbibresource{biblio.bib}
+\usepackage{todonotes}
+%Greek and Latin black board bold-----------------------
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
+%shortcut commands-------------------------------------------
+\newcommand{\pf}{{\bf Proof. \ }}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\rho}{\varrho}
+\renewcommand{\phi}{\varphi}
+\newcommand{\NN}{\ensuremath{\mathbb{N}}\xspace}
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}\xspace}
+\newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
+\newcommand{\FF}{\ensuremath{\mathbb{F}}\xspace}
+\newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
+\newcommand{\RP}{\ensuremath{\mathbb{RP}}\xspace}
+\newcommand{\DD}{\ensuremath{\mathbbl{\Delta}}\xspace}
+\newcommand{\Sp}{\mathcal{S}p}
+\newcommand{\tc}{\ensuremath{\mathrm{TC}}}
+\newcommand{\thh}{\ensuremath{\mathrm{THH}}}
+\newcommand{\tp}{\ensuremath{\mathrm{TP}}}
+\newcommand{\tr}{\ensuremath{\mathrm{TR}}}
+\newcommand{\pnpic}{\ensuremath{\mathrm{PnPic}}}
+\newcommand{\pnbr}{\ensuremath{\mathrm{PnBr}}}
+\newcommand{\pic}{\ensuremath{\mathrm{Pic}}}
+\newcommand{\br}{\ensuremath{\mathrm{Br}}}
+\DeclareMathOperator*{\colim}{\ensuremath{\operatorname{colim}}}
+\newcommand{\aps}{\mathrm{APS}}
+\newcommand{\psch}{\mathrm{PSch}}
+\newcommand{\calg}{\operatorname{CAlg}}
+\newcommand{\perf}{\mathrm{Perf}}
+\newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
+
+
+%Theorem Environments---------------------------------------------------------------
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{defn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{note}[thm]{Notation}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{con}[thm]{Construction}
+
+\newcommand{\Viktor}[1]{\todo{#1}}
+\newcommand{\Noah}[1]{\todo[color=red]{#1}}
+
+\title{The Picard Stack of Poincar{\'e} Stacks}
+\author{Viktor Burghardt}
+\author{Viktor Burghardt, Noah Riggenbach}
+\date{}
+
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+    We do stuff \Noah{Change this}
+\end{abstract}
+\tableofcontents
+
+\section{Introduction}
+
+\begin{thm}
+Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}_\infty$-ring spectrum with involution $A$. Then the natural maps \[\pi_i(\pnpic(\underline{A}))\to \pi_i(\pic(A))\] \Noah{I think there is some interaction with the homotopy fixed points, or maybe even the genuine fixed points}are surjective on $2$-torsion.
+\end{thm}
+
+\begin{thm}
+    Let $A$ be an $\mathbb{E}_\infty$ ring with involution, and let $\underline{NA}$ be the associated Tate affine Poincar{\'e} scheme. Let $\br_\nu(A)$ be the Brauer group of Azumaya algebras over $A$ with involution. \Noah{I think we need to define this for ring spectra. For $A$ discrete this is done in \cite{azumaya_involution}.} Then the natural map \[\pnbr(\underline{NA})\to \br_\nu(A)\] is an equivalence\Noah{probably of $\mathbb{E}_\infty$ dodads}
+\end{thm}
+
+\begin{thm}
+    The functors $\pnpic,\pnbr:\mathrm{APS}\to \Sp$ are fppf sheaves.
+\end{thm}
+
+\begin{thm}
+    There is a Poincar{\'e} group scheme $\mathbb{G}_m^\Qoppa$ such that \[B\mathbb{G}_m^\Qoppa\simeq \pnpic\] as fppf stacks.
+\end{thm}
+
+\section{Poincar{\'e} schemes}
+\input{definitions}
+
+
+\printbibliography
+\end{document}

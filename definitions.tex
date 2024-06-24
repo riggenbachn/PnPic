@@ -1,0 +1,68 @@
+\begin{defn}
+Let $\aps$ be the $(\infty,1)$-category defined by the pullback \[
+\begin{tikzcd}
+\aps \arrow[rr]\arrow[d] & & \operatorname{Fun}(\Delta^2, \calg(\Sp))\arrow[d,"d_1^*"]\\
+\calg(\Sp^{BC_2})\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}(\Delta^1, \calg(\Sp))
+\end{tikzcd}
+\] where $U:\Sp^{BC_2}\to \Sp$ is the functor which forgets the $C_2$-action.
+\end{defn}
+
+We record here a few structural results about this category.
+
+\begin{thm}
+The following statements about $\aps$ hold:
+\begin{enumerate}
+\item The category $\aps$ is a cocomplete and symmetric monoidal infinite category;
+\item the pullback diagram above is homotopy Cartesian;
+\item the functor $\aps\to \calg(\Sp^{BC_2})$ is symmetric monoidal and (co)continuous;
+\item the functor $\aps\to \calg(\Sp)^{\Delta^2}$ is lax symmetric monoidal;
+\item and the functor $\aps\to \calg(\Sp)^{\Delta^2}\xrightarrow{ev_{[1]}} \calg(\Sp)$ is symmetric monoidal.
+\end{enumerate}
+\end{thm}
+\begin{proof}
+    For (2) it is enough to show that $d_1^*$ is a cartesian fibration which follows from \cite[Corollary 2.4.6.5]{HTT}. 
+
+    For (3), let $p:K\to \aps$ be a map of simplicial sets, $K$ a small simplicial set. Suppose the $K^\vartriangleright\to \aps$ be an extension such that $K^\vartriangleright\to \aps\to \calg(\Sp^{BC_2})$ is a colimit diagram. By \cite[Proposition 2.4.3.2]{HTT} the diagram \[\begin{tikzcd}
+        \aps_{p/}\arrow[r]\arrow[d] &\calg(\Sp)^{\Delta^2}_{p/-}\arrow[d]\\
+        \calg(\Sp^{BC_2})_{p/}\arrow[r] & \calg(\Sp)^{\Delta^1}_{p/-}
+    \end{tikzcd}\] is again homotopy cartesian. Then 
+    \begin{align*}
+        \hom_{\aps}(p(\infty), -)&\simeq \hom_{\calg(\Sp^{BC_2})}(p(\infty), -)\times_{\hom_{\calg(\Sp)^{\Delta^1}}(p(\infty),-)}\hom_{\calg(\Sp)^{\Delta^2}}(p(\infty))\\
+        &\simeq 
+    \end{align*}
+\end{proof}
+
+We will denote elements of $\aps$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. Here $s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. The use of the notation $A^{\Phi C_2}$ is justified by the following.
+
+\begin{lem}
+Let $\aps\to \calg(\Sp)$ be the composition of the functors \[\aps\to \operatorname{Fun}(\Delta^2,\calg(\Sp))\xrightarrow{ev_{[1]}}\calg(\Sp).\] Then this functor factors as a composition $\aps\to \calg(\Sp^{C_2})\xrightarrow{(-)^{\Phi C_2}}\calg(\Sp)$. 
+\end{lem}
+\begin{proof}
+The commutativity of the diagram
+\[
+\begin{tikzcd}
+ & & \operatorname{Fun}(\Delta^2, \calg(\Sp)) \arrow[rd, "d_0^*"] \arrow[dd, "d_1^*"] & \\
+ & & & \operatorname{Fun}(\Delta^1,\calg(\Sp)) \arrow[dd,"ev_{[1]}"]\\
+\calg(\Sp^{BC_2}) \arrow[rr, "U(-)\to (-)^{tC_2}"] \arrow[rrd, "id"] & & \operatorname{Fun}(\Delta^1, \calg(\Sp)) \arrow[rd, "ev_{[1]}"] & \\
+  & & \calg(\Sp^{BC_2}) \arrow[r, "(-)^{tc_2}"] & \calg(\Sp)
+\end{tikzcd}
+\] induces a functor on the pullback infinity categories $\aps\to \calg(\Sp^{C_2})$ which makes the corresponding cube commute. The functor $ev_{[1]}:\operatorname{Fun}(\Delta^2, \calg(\Sp))\to \calg(\Sp)$ factors through $d_0^*$ and so $\aps\to \operatorname{Fun}(\Delta^2, \calg(\Sp))\to \calg(\Sp)$ is equivalent to the composition \[\aps\to \calg(\Sp^{C_2})\to \operatorname{Fun}(\Delta^1,\calg(\Sp))\to \calg(\Sp)\] and the composition of the last two maps is the geometric fixed point functor as desired.
+\end{proof}
+
+The following Lemma gives the justification of the name Poincar{\'e} scheme.
+
+\begin{lem}
+    There is a symmetric monoidal functor \[\perfpn:\aps\to \mathrm{Cat}_{\infty}^{\mathrm{Pn}}\] to the category of Poincar{\'e} infinity categories which has essential image the subcategory spanned by objects $(\perf(R),\Qoppa)$ which are $\mathbb{E}_\infty$-algebras.
+\end{lem}
+
+\begin{defn}
+     A map $f:\underline{A}\to \underline{B}\in \aps$ is faithfully flat if the underlying map $f:A\to B$ is faithfully flat and the map $f^{\Phi C_2}:A^{\Phi C_2}\to B^{\Phi C_2}$ is also faithfully flat.
+\end{defn}
+
+\begin{lem}
+    The fpqc covers on $\aps$ form a Grothendieck site. 
+\end{lem}
+
+%\begin{defn}
+%    The infinity category of Poincar{\'e} schemes, denoted $\psch$, is the infinity category \[\psch:= \operatorname{Ind}(\aps^{op})\]
+%\end{defn}
