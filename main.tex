@@ -8,28 +8,28 @@
 \DeclareMathSymbol{\qoppa}{\mathord}{quadratics}{19}
 \DeclareMathSymbol{\Qoppa}{\mathord}{quadratics}{21}
 
-\usepackage{amsmath}
+\usepackage{amsmath, amssymb}
 \usepackage{amsthm}
-\usepackage{amsfonts}
-\usepackage{mathtools}
-\usepackage{wasysym}
-\usepackage{MnSymbol}
-\usepackage{thmtools}
-\usepackage{stmaryrd}
+%\usepackage{amsfonts}
+%\usepackage{mathtools}
+%\usepackage{wasysym}
+%\usepackage{MnSymbol}
+%\usepackage{thmtools}
+%\usepackage{stmaryrd}
 \usepackage[letterpaper,margin=1in]{geometry}   
-\usepackage{slashed}
-\usepackage[english]{babel}				
-\usepackage[pdfencoding=auto, psdextra, draft=false]{hyperref}
+%\usepackage{slashed}
+%\usepackage[english]{babel}				
+%\usepackage[pdfencoding=auto, psdextra, draft=false]{hyperref}
 \usepackage{bookmark}
-\usepackage{url}					
+\usepackage{url}		
+\usepackage{lmodern}			
 \usepackage[T1]{fontenc}
-\usepackage{xspace}		
-\usepackage{fancyhdr}
+%\usepackage{xspace}		
+%\usepackage{fancyhdr}
 \usepackage{enumerate}
-\usepackage{mathrsfs}
+%\usepackage{mathrsfs}
 \usepackage{graphicx}
 \usepackage{soul,color}
-\usepackage{mathtools}
 \usepackage{tikz-cd}
 \usepackage[maxbibnames=99]{biblatex}
 \usepackage{csquotes}
@@ -80,23 +80,20 @@
 \newtheorem{prop}[thm]{Proposition}
 \newtheorem{lem}[thm]{Lemma}
 \newtheorem{cor}[thm]{Corollary}
-\newtheorem{defn}[thm]{Definition}
 
-\theoremstyle{remark}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem{con}[thm]{Construction}
 \newtheorem{rem}[thm]{Remark}
 \newtheorem{note}[thm]{Notation}
 \newtheorem{ex}[thm]{Example}
-
-\theoremstyle{definition}
-\newtheorem{con}[thm]{Construction}
 
 \newcommand{\Viktor}[1]{\todo{V: #1}}
 \newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
 \newcommand{\Lucy}[1]{\todo[color=cyan]{L: #1}}
 
-\title{The Picard Stack of Poincar{\'e} Stacks}
-\author{Viktor Burghardt}
-\author{Viktor Burghardt, Noah Riggenbach}
+\title{Poincar{\'e} Schemes}
+\author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
 \date{}
 
 
@@ -125,6 +122,88 @@ Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}
 \begin{thm}
     There is a Poincar{\'e} group scheme $\mathbb{G}_m^\Qoppa$ such that \[B\mathbb{G}_m^\Qoppa\simeq \pnpic\] as fppf stacks.
 \end{thm}
+
+\section{Poincaré ring spectra}
+\label{section:poincare_ring_spectra}
+We begin by defining the ring theoretic building blocks of Poincaré schemes and the corresponding category they live in. Affine Poincaré Schemes will then be the dual objects, similar to how affine schemes are dual to commutative rings.
+
+\begin{note}
+    \label{notation:omission_of_e_infty}
+    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}.
+\end{note}
+
+\begin{defn}
+    \label{definition:poincare_ring_spectrum}
+    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is the following data:
+    \begin{itemize}
+        \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \operatorname{CAlg}$.
+        \item An $R$-algebra $R\rightarrow C$.
+        \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
+    \end{itemize}
+        Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}.
+\end{defn}
+
+\begin{rem}
+    \label{remark:notational_difference_to_nine-authored_papers}
+    Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. In \Viktor{cite 9 authored paper} Poincaré ring spectra are being referred to as $\mathbf{E}_\infty$ \emph{ring spectra with genuine involution}.
+\end{rem}
+
+\begin{rem}
+    \label{remark:poincare_structures_are_factorizations}
+    A Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\operatorname{CAlg}$ of the natural map $R\rightarrow R^{tC_2}$.
+\end{rem}
+
+\begin{rem}
+    \label{remark:poincare_rings_and_duality_on_compact-modules}
+    There is a correspondence between Poincaré structures on a ring spectrum $R$, as defined in Definition \ref{definition:poincare_ring_spectrum}, and symmetric monoidal Poincaré $\infty$-categories $\qoppa :\operatorname{Mod_R^\omega}\rightarrow \operatorname{Sp}$ \Viktor{reference}    
+\end{rem}
+
+\begin{note}
+    \label{notation:spectrum_with_trivial_action}
+    Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \operatorname{Sp}$ is the constant functor.
+\end{note}
+
+\begin{ex}
+    \label{example:no_tate_poincare}
+    Let $R$ be a ring spectrum. If $2\in \pi_0(R)$ is invertible, we have $\underline{R}^{tC_2}\simeq 0$\Viktor{explain/reference}. A Poincaré structure on $R$ with the trivial action is then given by the choice of an $R$-algebra $R\rightarrow C$.
+\end{ex}
+
+\begin{ex}
+    \label{example:tate_poincare_structure}
+    Let $R$ be a ring spectrum equipped with a $C_2$-action via maps of ring spectra. The natural $R$-algebra structure on $R^{tC_2}$ induces a Poincaré structure on $R$ given by the factorization $R\xrightarrow{\operatorname{id}} R\rightarrow R^{tC_2}$. We will call this Poincaré structure the \emph{Tate Poincaré structure on $R$}.
+\end{ex}
+
+\begin{ex}
+    \label{example:universal_poincare_ring_spectrum}
+    The sphere spectrum $\mathbb{S}$ together with the Tate Poincaré structure will be called the \emph{universal Poincaré ring spectrum}. \Viktor{expain why/translate universality statement to poincare ring spectra}
+\end{ex}
+
+\begin{ex}
+    \label{example:symmetric_poincare_structure}
+    Let $R$ be a ring spectrum equipped with a $C_2$-action via maps of ring spectra. The identity map $\operatorname{id}: R^{tC_2}\rightarrow R^{tC_2}$ induces a Poincaré structure on $R$
+    given by the factorization $R\rightarrow R^{tC_2}\xrightarrow{\operatorname{id}} R^{tC_2}$. We will call this Poincaré structure the \emph{symmetric Poincaré structure on $R$}.
+\end{ex}
+
+\begin{ex}
+    \label{example:genuine_symmetric_poincare_structure}
+    Let $R$ be a connective ring spectrum equipped with a $C_2$-action via maps of ring spectra. The connective cover $\tau_{\geq 0}(R^{tC_2})\rightarrow R^{tC_2}$ of $R^{tC_2}$ induces a Poincaré structure on $R$ given by the factorization $R\rightarrow \tau_{\geq 0}(R^{tC_2})\rightarrow R^{tC_2}$. We will call this Poincaré structure the \emph{genuine symmetric Poincaré structure on $R$}.
+\end{ex}
+
+\Viktor{copy more examples from notes}
+
+\begin{defn}
+    \label{definition:category_of_poincare_ring_spectra}
+    Let $A$ and $R$ be Poincaré ring spectra. A \emph{map of Poincaré ring spectra} between $A$ and $R$ is a map of ring spectra $f:A\rightarrow R$ compatible with the corresponding Poincaré structures via the following additional data: 
+    \begin{itemize}
+        \item \Viktor{unwind definitions and then define the $\infty$-category of poincare ring spectra $\operatorname{CAlg^p}$}
+    \end{itemize}
+\end{defn}
+
+
+
+\section{Modules over Poincaré ring spectra}
+\label{subsection:modules_over_poincare_ring_spectra}
+Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\infty$-category of Poincaré $\infty$-categories $\operatorname{Cat_\infty^p}$\Viktor{ref}. We may thus consider the $\infty$-category of modules over it $\operatorname{Mod}_A(\operatorname{Cat_\infty^p})$.\Viktor{this is the beginning of an attempt to define brauer groups for poincare ring spectra}
 
 \section{Poincar{\'e} schemes}
 \input{definitions}
