@@ -133,13 +133,7 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 
 \begin{defn}
     \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is the following data:
-    \begin{itemize}
-        \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \operatorname{CAlg}$.
-        \item An $R$-algebra $R\rightarrow C$.
-        \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
-    \end{itemize}
-        Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}.
+    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: \operatorname{Mod}_R^\omega\rightarrow \operatorname{Sp}$. We will denote the full subcategory of $\operatorname{CAlg(Cat^p_\infty)}$ spanned by Poincaré ring spectra by $\operatorname{CAlg^p}$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
 \end{defn}
 
 \begin{rem}
@@ -147,7 +141,16 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
     Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. In \Viktor{cite 9 authored paper} Poincaré ring spectra are being referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
 \end{rem}
 
-We can view Poincaré rings as commutative algebra objects in the $\infty$-category of Poincaré $\infty$-categories $\operatorname{Cat^p}_\infty$. We will denote the full subcategory of $\operatorname{CAlg(Cat^p_\infty)}$ spanned by Poincaré ring spectra by $\operatorname{CAlg^p}$ and call it the \emph{$\infty$-category of Poincaré rings}.
+\begin{rem}
+    \label{remark:poincare_ring_spectra_as_nr-algebras}
+    Let $R$ be a ring spectrum. By \Viktor{cite 9-authors} there is a natural equivalence between symmetric monoidal Poincaré structures on $\operatorname{Mod}_R^\omega$ and algebra objects over the genuine $C_2$-spectrum $NR$ \Viktor{reference}. In particular, a Poincaré structure on $R$ can be identified with the following data:
+    \begin{itemize}
+        \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \operatorname{CAlg}$.
+        \item An $R$-algebra $R\rightarrow C$.
+        \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
+    \end{itemize}
+        Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}.
+\end{rem}
 
 \begin{rem}
     \label{remark:poincare_ring_spectra_as_algebra_objects}
@@ -159,18 +162,13 @@ We can view Poincaré rings as commutative algebra objects in the $\infty$-categ
     A Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\operatorname{CAlg}$ of the natural map $R\rightarrow R^{tC_2}$.
 \end{rem}
 
-\begin{rem}
-    \label{remark:poincare_rings_and_duality_on_compact-modules}
-    There is a correspondence between Poincaré structures on a ring spectrum $R$, as defined in Definition \ref{definition:poincare_ring_spectrum}, and symmetric monoidal Poincaré $\infty$-categories $\qoppa :\operatorname{Mod_R^\omega}\rightarrow \operatorname{Sp}$ \Viktor{reference}    
-\end{rem}
-
 \begin{note}
     \label{notation:spectrum_with_trivial_action}
     Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \operatorname{Sp}$ is the constant functor.
 \end{note}
 
 \begin{ex}
-    \label{example:no_tate_poincare}
+    \label{example:classification_of_poincare_structures_when_tate_vanishes}
     Let $R$ be a ring spectrum. If $2\in \pi_0(R)$ is invertible, we have $\underline{R}^{tC_2}\simeq 0$\Viktor{explain/reference}. A Poincaré structure on $R$ with the trivial action is then given by an $R$-algebra $R\rightarrow C$.
 \end{ex}
 
