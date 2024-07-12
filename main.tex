@@ -48,9 +48,10 @@
 \DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
 \DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
 \DeclareMathOperator{\Cat}{Cat} % Categories
-\DeclareMathOperator{\Catex}{Cat^{ex}} % stable categories with exact functors
-\DeclareMathOperator{\Cath}{Cat^h} % Hermitian Categories
-\DeclareMathOperator{\Catp}{Cat^p} % Poincare Categories
+\DeclareMathOperator{\Catex}{\Cat^{ex}} % stable categories with exact functors
+\DeclareMathOperator{\Cath}{Cat^h_\infty} % Hermitian Categories
+\DeclareMathOperator{\Catp}{Cat^p_\infty} % Poincare Categories
+\DeclareMathOperator{\Catpidem}{Cat^p_{\infty, idem}} % idempotent complete Poincare Categories
 \DeclareMathOperator{\ex}{ex} % exact 
 \DeclareMathOperator{\Fun}{Fun} % Functors
 \DeclareMathOperator{\id}{id} % identity
@@ -174,7 +175,7 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_as_algebra_objects}
-    Let $\mathcal{M}$ be the full subcategory of $\Catp_\infty$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Cat^p_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(Cat^p_\infty)$ restricts to a symmetric monoidal structure on $\CAlgp$.
+    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Cat^p_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(Cat^p_\infty)$ restricts to a symmetric monoidal structure on $\CAlgp$.
 \end{remark}
 
 \begin{notation}
@@ -221,7 +222,7 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 \section{Modules over Poincaré ring spectra}
 \label{subsection:modules_over_poincare_ring_spectra}
 
-Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp_\infty$\Viktor{ref}. We may thus consider the $\infty$-category of modules over it $\Mod_A(\Cat_\infty)$, which we will simply denote by $\Mod_A$. \Viktor{this is the beginning of an attempt to define brauer groups for poincare ring spectra} In this section we will use modules over Poincaré ring spectra to define analogues of the Brauer and Picard groups for Poincaré ring spectra.
+Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$\Viktor{ref}. We may thus consider the $\infty$-category of modules over it $\Mod_A(\Cat_\infty)$, which we will simply denote by $\Mod_A$. \Viktor{this is the beginning of an attempt to define brauer groups for poincare ring spectra} In this section we will use modules over Poincaré ring spectra to define analogues of the Brauer and Picard groups for Poincaré ring spectra.
 
 \begin{notation}
     \label{notation:modules_over_poincare_rings}
@@ -234,10 +235,10 @@ Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\inf
 
 \begin{definition}
     \label{definition:poincare_brauer_space}
-    Let $A$ be a Poincaré ring spectrum. We define the \emph{Brauer space of A} as $$\Brp(A):=\Pic(\Mod_A(\Catp_{\infty,\idem})).$$
+    Let $A$ be a Poincaré ring spectrum. We define the \emph{Brauer space of A} as $$\Brp(A):=\Pic(\Mod_A(\Catpidem)).$$
 \end{definition}
 
-Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp_{\infty}$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catp_{\infty,\idem}$.
+Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$.
 
 \begin{proposition}
     Let $A$ be a Poincaré ring spectrum. Then we have a canonical equivalence $$\Omega \Brp(A) \simeq \Picp(A).$$
