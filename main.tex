@@ -133,7 +133,7 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 
 \begin{defn}
     \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: \operatorname{Mod}_R^\omega\rightarrow \operatorname{Sp}$. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\operatorname{CAlg(Cat^p_\infty)}$ spanned by Poincaré ring spectra by $\operatorname{CAlg^p}$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
+    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\operatorname{Mod}_R^\omega)^{\operatorname{op}}\rightarrow \operatorname{Sp}$. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\operatorname{CAlg(Cat^p_\infty)}$ spanned by Poincaré ring spectra by $\operatorname{CAlg^p}$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
 \end{defn}
 
 \begin{rem}
@@ -206,14 +206,30 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 \section{Modules over Poincaré ring spectra}
 \label{subsection:modules_over_poincare_ring_spectra}
 
-Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\infty$-category of Poincaré $\infty$-categories $\operatorname{Cat_\infty^p}$\Viktor{ref}. We may thus consider the $\infty$-category of modules over it $\operatorname{Mod}_A(\operatorname{Cat_\infty^p})$, which we will simply denote by $\operatorname{Mod}_A$. \Viktor{this is the beginning of an attempt to define brauer groups for poincare ring spectra}
+Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\infty$-category of Poincaré $\infty$-categories $\operatorname{Cat_\infty^p}$\Viktor{ref}. We may thus consider the $\infty$-category of modules over it $\operatorname{Mod}_A(\operatorname{Cat_\infty^p})$, which we will simply denote by $\operatorname{Mod}_A$. \Viktor{this is the beginning of an attempt to define brauer groups for poincare ring spectra} In this section we will use modules over Poincaré ring spectra to define analogues of the Brauer and Picard groups for Poincaré ring spectra.
 
 \begin{note}
     \label{notation:modules_over_poincare_rings}
     We will abbreviate the $\infty$-category of modules over a Poincaré ring $A$ by $\operatorname{Mod}_A$. 
 \end{note}
 
+\begin{defn}
+    Let $A$ be a Poincaré ring spectrum. We define the \emph{Picard space of $A$} to be $$\operatorname{Pic^p}(A):=\operatorname{Pic(Pn}(A)).$$
+\end{defn}
 
+\begin{defn}
+    \label{definition:poincare_brauer_space}
+    Let $A$ be a Poincaré ring spectrum. We define the \emph{Brauer space of A} as $$\operatorname{Br^p}(A):=\operatorname{Pic}(\operatorname{Mod}_A(\operatorname{Cat_{\infty,idem}^p})).$$
+\end{defn}
+
+Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\operatorname{Cat_{\infty}^p}$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\operatorname{Cat_{\infty,idem}^p}$.
+
+\begin{prop}
+    Let $A$ be a Poincaré ring spectrum. Then we have a canonical equivalence $$\Omega \operatorname{Br^p}(A) \simeq \operatorname{Pic^p}(A).$$
+\end{prop}
+\begin{proof}
+    \Viktor{todo}
+\end{proof}
 
 \section{Poincar{\'e} schemes}
 \input{definitions}
