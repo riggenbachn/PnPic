@@ -61,7 +61,9 @@
 \DeclareMathOperator{\Pic}{Pic} % Picard functor
 \DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
 \DeclareMathOperator{\Pn}{Pn} % Poincare space functor
-\DeclareMathOperator{\Sp}{Sp} % Spectra
+\DeclareMathOperator{\Spectra}{Sp} % Spectra
+\DeclareMathOperator{\Spaces}{Spc} % Spaces
+\DeclareMathOperator{\Mon}{Mon} % monoids
 
 \newcommand{\pf}{{\bf Proof. \ }}
 \renewcommand{\epsilon}{\varepsilon}
@@ -73,6 +75,7 @@
 \newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
 \newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
 \newcommand{\FF}{\ensuremath{\mathbb{F}}\xspace}
+\newcommand{\EE}{\mathbb{E}}
 \newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}\xspace}
 \newcommand{\DD}{\ensuremath{\mathbbl{\Delta}}\xspace}
@@ -100,6 +103,7 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{construction}[theorem]{Construction}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{example}[theorem]{Example}
 
@@ -131,7 +135,7 @@ Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}
 \end{theorem}
 
 \begin{theorem}
-    The functors $\pnpic,\pnbr:\mathrm{APS}\to \Sp$ are fppf sheaves.
+    The functors $\pnpic,\pnbr:\mathrm{APS}\to \Spectra$ are fppf sheaves.
 \end{theorem}
 
 \begin{theorem}
@@ -149,7 +153,7 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 
 \begin{definition}
     \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Sp$. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(Cat^p_\infty)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
+    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(Cat^p_\infty)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
 \end{definition}
 
 \begin{remark}
@@ -180,7 +184,7 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 
 \begin{notation}
     \label{notation:spectrum_with_trivial_action}
-    Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \Sp$ is the constant functor.
+    Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \Spectra $ is the constant functor.
 \end{notation}
 
 \begin{example}
@@ -226,25 +230,72 @@ Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\inf
 
 \begin{notation}
     \label{notation:modules_over_poincare_rings}
-    We will abbreviate the $\infty$-category of modules over a Poincaré ring $A$ by $\Mod_A$. 
+    We will abbreviate the $\infty$-category of modules over a Poincaré ring $A$ by $\Mod_A$. \Lucy{I find this a little confusing/ambiguous.}
 \end{notation}
-
-\begin{definition}
+Recall that the functor $ \mathrm{Pn} \colon \Catp \to \EE_\infty\Mon(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \EE_\infty $-monoids \cite[Corollary 5.2.8]{CDHHLMNNSI}. 
+\begin{definition}\label{defn:poincare_picard_space}
     Let $A$ be a Poincaré ring spectrum. We define the \emph{Picard space of $A$} to be $$\Picp(A):=\Pic(\Pn(A)).$$
 \end{definition}
+\begin{remark}\label{rmk:poincare_picard_points_desc}
+    Let $ \left(\Mod_R^\omega, \Qoppa_R \right)$ be a Poincaré ring spectrum, where $(M_R=R, N_R= R^{\varphi C_2}, R^{\varphi C_2}\to R^{tC_2})$ is the module with genuine involution associated to $ \Qoppa_R $. 
+    Then a point in the Poincaré Picard space is the data of a pair $ (\mathcal{L}, q ) $, where $ \mathcal{L} $ is an invertible module in $ \Mod_R^\omega $ and $ q $ is a point in $ \Qoppa_R(\mathcal{L}) $. 
+    By \cite[Proposition 1.3.11]{CDHHLMNNSI}, the data of $ q $ is equivalent to the data of points in the lower left and upper right corner of the square
+    \begin{equation}
+    \begin{tikzcd}
+        \Qoppa(\mathcal{L}) \ar[r] \ar[d] & \hom_R(\mathcal{L}, R^{\varphi C_2}) \ni \ell(q) \ar[d] \\
+        b(q) \in \hom_{R \otimes R}\left(\mathcal{L} \otimes \mathcal{L}, R\right)^{hC_2} \ar[r] & \hom_R(\mathcal{L}, R^{tC_2})
+    \end{tikzcd}
+    \end{equation} 
+    and a path between their images in the lower right corner. 
+    In particular, the adjoint of $ b(q) $ must define a nondegenerate hermitian form on $ \mathcal{L} $, that is, an equivalence $ \mathcal{L} \simeq \hom_{R}(\mathcal{L}, R^*) $ where $ R^* $ is considered as an $ R $-module via the action of the generator of $ C_2 $. \Lucy{add equivariance/symmetry data}
+
+    Write $ (\mathcal{L}^\vee,q^\vee) $ is for the inverse of $ (\mathcal{L},q) $. 
+    By definition of invertibility, there exists an $ R $-linear map $ \ell(q^\vee) \colon \mathcal{L}^\vee \to R^{\varphi C_2} $ so that the following diagram commutes
+    \begin{equation}\label{diagram:pnpic_linear_part_condition}
+    \begin{tikzcd}[column sep=huge]
+        \mathcal{L} \otimes_R \mathcal{L}^\vee \ar[d,"\mathrm{ev}", "\sim"']  \ar[r,"{\ell(q) \otimes \ell(q^\vee)}"] & R^{\varphi C_2} \otimes_R R^{\varphi C_2} \ar[d,"\mathrm{multiplication}"] \\
+        R \ar[r,"\mathrm{given}"] & N_R   
+    \end{tikzcd}
+    \end{equation} 
+\end{remark}
 
 \begin{definition}
     \label{definition:poincare_brauer_space}
-    Let $A$ be a Poincaré ring spectrum. We define the \emph{Brauer space of A} as $$\Brp(A):=\Pic(\Mod_A(\Catpidem)).$$
+    Let $A$ be a Poincaré ring spectrum. We define the \emph{Poincaré Brauer space of $A$} as $$\Brp(A):=\Pic(\Mod_A(\Catpidem)) $$. 
+    The assignment $ A \mapsto \Brp(A) $ defines a functor
+    \begin{equation*}
+        \Brp \colon \CAlgp \to \EE_\infty\Mon^{\mathrm{gp}}(\Spaces)
+    \end{equation*}
+    valued in group-like $ \EE_\infty $-monoids in spaces (or equivalently, connective spectra). 
 \end{definition}
 
-Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$.
-
+Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
+\begin{remark}
+    The symmetric monoidal forgetful functor $ \Mod_A(\Catpidem) \to \Mod_A(\Cat^{\mathrm{ex}}_\infty) $ induces a map $ \Brp(A) \to \Br(A) $ of grouplike $ \EE_\infty $-monoids, where $ \Br(A) $ is the Brauer space $ \mathrm{br}_{\mathrm{alg}}(A) $ of \cite[1154-1155]{MR3190610}. 
+\end{remark}
 \begin{proposition}
-    Let $A$ be a Poincaré ring spectrum. Then we have a canonical equivalence $$\Omega \Brp(A) \simeq \Picp(A).$$
+    Let $A$ be a Poincaré ring spectrum. Then we have a canonical equivalence $$\Omega \Brp(A) \simeq \Picp(A).$$ \Lucy{What else do we need to do to show that we have an equivalence of \emph{functors}?}
 \end{proposition}
-\begin{proof}
-    \Viktor{todo}
+\begin{proof} 
+    \Viktor{todo} 
+    Since $ \Omega\Brp(R) $ is given by the space of automorphisms of any object in $ \Brp(R) $, it suffices to determine the space of autoequivalences of $ \left(\Mod_R^\omega, \Qoppa_R \right) $. 
+    An autoequivalence is the data of a pair $ (f, \eta) $ where $ f \colon \Mod_R^\omega \to \Mod_R^\omega $ is an exact $ R $-linear autoequivalence and $ \eta \colon \Qoppa_R \xrightarrow{\sim} \Qoppa_R \circ f^{\mathrm{op}} $ is a natural equivalence. 
+    Since $ \Catp_R\to \Catex_R $ is symmetric monoidal, $ f $ is of the form $ - \otimes_R \mathcal{L} $ where $ \mathcal{L} $ is an invertible $ R $-module. 
+    Since taking bilinear and linear parts is functorial/by \cite[Proposition 1.3.11]{CDHHLMNNSI}, $ \eta $ is equivalently the data of a pair of equivalences
+    \begin{align*}
+        b(\eta) &\colon \hom_{R \otimes R}((-\otimes \mathcal{L}) \otimes (-\otimes \mathcal{L}), R)^{hC_2} \simeq \hom_{R \otimes R}(-\otimes -, R)^{hC_2} \\
+        \ell(\eta) &\colon \hom_R( -\otimes \mathcal{L}, R^{\varphi C_2}) \simeq \hom_R( -, R^{\varphi C_2})
+    \end{align*} 
+    plus a path between their images in $ \hom_R(\mathcal{L}, R^{tC_2}) $. 
+    The transformation $ b(\eta) $ is equivalent to the data of an $ R $-bilinear equivalence $ R \simeq \mathcal{L}^\vee \otimes \mathcal{L}^\vee $ \Lucy{maybe one of these should be conjugate dual here?}, and the transformation $ \ell(\eta) $ is equivalent to the data of an $ R^{\varphi C_2} $-linear\Lucy{is the $R^{\varphi C_2}$-linearity of this $\simeq$ correct?} equivalence $ \ell (\eta)\colon R^{\varphi C_2}\otimes_R \mathcal{L}^\vee \xrightarrow{\sim} R^{\varphi C_2} $. 
+
+    Now consider the composites 
+    \begin{align*}
+        R \otimes_R \mathcal{L}^\vee \xrightarrow{\mathrm{unit}\,\otimes \mathrm{id}} R^{\varphi C_2} \otimes \mathcal{L}^\vee \xrightarrow{ \ell(\eta)} R^{\varphi C_2} \\
+        R \otimes_R \mathcal{L} \xrightarrow{\mathrm{unit}\,\otimes \mathrm{id}} R^{\varphi C_2} \otimes \mathcal{L} \xrightarrow{ \ell(\eta)^{-1} \otimes \mathrm{id}_{\mathcal{L}}} R^{\varphi C_2} \,.
+    \end{align*}
+    These correspond to the $ \ell(q^\vee), \ell(q) $ of Remark \ref{rmk:poincare_picard_points_desc}, respectively. 
+    In particular, the condition that $ \ell(q^\vee), \ell(q) $ make the diagram (\ref{diagram:pnpic_linear_part_condition}) commute is equivalent to the condition that $ \ell(\eta) $ is an equivalence by an adjunction argument. \Lucy{under construction--not sure what to say about the $(-)^{tC_2} $ part yet. }
 \end{proof}
 
 \section{Poincar{\'e} schemes}
