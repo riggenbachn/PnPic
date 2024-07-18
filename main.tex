@@ -9,6 +9,7 @@
 \DeclareMathSymbol{\Qoppa}{\mathord}{quadratics}{21}
 
 \usepackage{amsmath, amssymb, amsthm}
+\usepackage{longtable}
 %\usepackage{amsfonts}
 %\usepackage{mathtools}
 %\usepackage{wasysym}
@@ -30,13 +31,26 @@
 \usepackage{graphicx}
 \usepackage{soul,color}
 \usepackage{tikz-cd}
-\usepackage[maxbibnames=99]{biblatex}
+\usepackage[maxbibnames=99,style=alphabetic]{biblatex}
 \usepackage{csquotes}
 \usepackage{chngcntr}
 \usepackage[bbgreekl]{mathbbol}
 \counterwithin{equation}{section}
 \addbibresource{biblio.bib}
 \usepackage{todonotes}
+
+%hyperlink setup
+\definecolor{darkred}{RGB}{128,0,0}
+\definecolor{darkgreen}{RGB}{0,128,0}
+\definecolor{darkblue}{RGB}{0,0,128}
+
+\hypersetup{linktocpage,
+	pdfborder = {0 0 0},
+	colorlinks,
+	citecolor=darkgreen,
+	filecolor=darkred,
+	linkcolor=darkblue,
+	urlcolor=cyan!50!black!90}
 
 %Greek and Latin black board bold-----------------------
 \DeclareSymbolFontAlphabet{\mathbb}{AMSb}
@@ -48,12 +62,14 @@
 \DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
 \DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
 \DeclareMathOperator{\Cat}{Cat} % Categories
-\DeclareMathOperator{\Catex}{\Cat^{ex}} % stable categories with exact functors
+\DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % stable categories with exact functors
 \DeclareMathOperator{\Cath}{Cat^h_\infty} % Hermitian Categories
 \DeclareMathOperator{\Catp}{Cat^p_\infty} % Poincare Categories
 \DeclareMathOperator{\Catpidem}{Cat^p_{\infty, idem}} % idempotent complete Poincare Categories
+\DeclareMathOperator{\Einfty}{\mathbf{E}_\infty} % E-infinity 
 \DeclareMathOperator{\ex}{ex} % exact 
 \DeclareMathOperator{\Fun}{Fun} % Functors
+\DeclareMathOperator{\gp}{gp} % grouplike
 \DeclareMathOperator{\id}{id} % identity
 \DeclareMathOperator{\idem}{idem} % idempotent
 \DeclareMathOperator{\Mod}{Mod} % Modules
@@ -62,7 +78,7 @@
 \DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
 \DeclareMathOperator{\Pn}{Pn} % Poincare space functor
 \DeclareMathOperator{\Spectra}{Sp} % Spectra
-\DeclareMathOperator{\Spaces}{Spc} % Spaces
+\DeclareMathOperator{\Spaces}{\mathcal{S}} % Spaces
 \DeclareMathOperator{\Mon}{Mon} % monoids
 
 \newcommand{\pf}{{\bf Proof. \ }}
@@ -142,18 +158,42 @@ Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}
     There is a Poincar{\'e} group scheme $\mathbb{G}_m^\Qoppa$ such that \[B\mathbb{G}_m^\Qoppa\simeq \pnpic\] as fppf stacks.
 \end{theorem}
 
-\section{Poincaré ring spectra}
-\label{section:poincare_ring_spectra}
-We begin by defining the ring theoretic building blocks of Poincaré schemes and the corresponding category they live in. Affine Poincaré Schemes will then be the dual objects, similar to how affine schemes are dual to commutative rings.
+\subsection{Conventions}
+\label{subsection:conventions}
+    \begin{longtable}{lll}
+        $\Brp$ & Poincaré Brauer space\\
+        $\CAlg$ & $\infty$-categoriy of $\Einfty$-ring spectra\\
+        $\CAlg(\Spaces)$ & $\infty$-categoriy of $\Einfty$-spaces\\
+        $\CAlg^{\gp}(\Spaces)$ & $\infty$-categoriy of grouplike $\Einfty$-spaces\\
+        $\CAlgp$ & $\infty$-categoriy of Poincaré ring spectra\\
+        $\Catex$ & $\infty$-category of small stable $\infty$-categories and exact functors\\
+        $\Catp$ & $\infty$-category of Poincaré $\infty$-categories\\
+        $\Catpidem$ & $\infty$-category of idempotent complete Poincaré $\infty$-categories\\
+        $\Picp$ & Poincaré Picard space\\
+        $\Spaces$ & $\infty$-category of spaces\\
+        $\Spectra$ & $\infty$-category of spectra
+    \end{longtable}
+
+\section{Poincaré Structures on Compact Modules}
+\label{section:poincare_structures_on_compact_modules}
+We will use this section to recall notions and results about Poincaré $\infty$-categories which we require in the sections to follow. This section can safely be skipped by anyone who posses extensive knowledge of Poincaré $\infty$-categories, as found in \cite{CDHHLMNNSI}.
 
 \begin{notation}
     \label{notation:omission_of_e_infty}
-    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}.
+    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}. Moreover, we will denote the $\infty$-category $\CAlg(\Spectra)$ of commutative algebra objects in the $\infty$-category of spectra $\Spectra$ by $\CAlg$.
 \end{notation}
+
+Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules over $R$. We will study Poincaré structures on the $\infty$-category $\Mod_R^\omega$ of compact modules over $R$. 
+
+\Viktor{-characterization in terms of modules with genuine involution, -characterization of symmetric monoidal structures, -Pn}
+
+\section{Poincaré Ring Spectra}
+\label{section:poincare_ring_spectra}
+In this section we will define the ring theoretic building blocks of Poincaré schemes and the corresponding category they live in. Affine Poincaré Schemes will then be the dual objects, similar to how affine schemes are dual to commutative rings.
 
 \begin{definition}
     \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(Cat^p_\infty)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
+    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
 \end{definition}
 
 \begin{remark}
@@ -179,7 +219,7 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_as_algebra_objects}
-    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Cat^p_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(Cat^p_\infty)$ restricts to a symmetric monoidal structure on $\CAlgp$.
+    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
 \end{remark}
 
 \begin{notation}
@@ -223,22 +263,27 @@ We begin by defining the ring theoretic building blocks of Poincaré schemes and
     \end{itemize}
 \end{definition}
 
-\section{Modules over Poincaré ring spectra}
+\section{Modules over Poincaré Ring Spectra}
 \label{subsection:modules_over_poincare_ring_spectra}
 
-Let $A$ be a Poincaré ring spectrum. Then $A$ is an algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$\Viktor{ref}. We may thus consider the $\infty$-category of modules over it $\Mod_A(\Cat_\infty)$, which we will simply denote by $\Mod_A$. \Viktor{this is the beginning of an attempt to define brauer groups for poincare ring spectra} In this section we will use modules over Poincaré ring spectra to define analogues of the Brauer and Picard groups for Poincaré ring spectra.
+Let $A$ be a Poincaré ring spectrum. Then $A$ is a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$\Viktor{ref}. We may thus consider modules over it. In this section we will use modules over Poincaré ring spectra to define analogues of the Brauer and Picard groups for Poincaré ring spectra.\\
 
-\begin{notation}
-    \label{notation:modules_over_poincare_rings}
-    We will abbreviate the $\infty$-category of modules over a Poincaré ring $A$ by $\Mod_A$. \Lucy{I find this a little confusing/ambiguous.}
-\end{notation}
-Recall that the functor $ \mathrm{Pn} \colon \Catp \to \EE_\infty\Mon(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \EE_\infty $-monoids \cite[Corollary 5.2.8]{CDHHLMNNSI}. 
-\begin{definition}\label{defn:poincare_picard_space}
+
+
+\subsection{The Poincaré Picard group}
+\label{subsection:the_poincare_picard_group}
+
+Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \EE_\infty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
+
+\begin{definition}
+    \label{definition:poincare_picard_space}
     Let $A$ be a Poincaré ring spectrum. We define the \emph{Picard space of $A$} to be $$\Picp(A):=\Pic(\Pn(A)).$$
 \end{definition}
-\begin{remark}\label{rmk:poincare_picard_points_desc}
+
+\begin{remark}
+    \label{remark:poincare_picard_points_desc}
     Let $ \left(\Mod_R^\omega, \Qoppa_R \right)$ be a Poincaré ring spectrum, where $(M_R=R, N_R= R^{\varphi C_2}, R^{\varphi C_2}\to R^{tC_2})$ is the module with genuine involution associated to $ \Qoppa_R $. 
-    Then a point in the Poincaré Picard space is the data of a pair $ (\mathcal{L}, q ) $, where $ \mathcal{L} $ is an invertible module in $ \Mod_R^\omega $ and $ q $ is a point in $ \Qoppa_R(\mathcal{L}) $. 
+    Then a point in the Poincaré Picard space is the data of a pair $ (\mathcal{L}, q ) $, where $ \mathcal{L} $ is an invertible module in $ \Mod_R^\omega $ and $ q $ is a point in $ \Omega^\infty\Qoppa_R(\mathcal{L}) $. 
     By \cite[Proposition 1.3.11]{CDHHLMNNSI}, the data of $ q $ is equivalent to the data of points in the lower left and upper right corner of the square
     \begin{equation}
     \begin{tikzcd}
@@ -259,17 +304,21 @@ Recall that the functor $ \mathrm{Pn} \colon \Catp \to \EE_\infty\Mon(\Spaces) $
     \end{equation} 
 \end{remark}
 
-\begin{definition}
-    \label{definition:poincare_brauer_space}
-    Let $A$ be a Poincaré ring spectrum. We define the \emph{Poincaré Brauer space of $A$} as $$\Brp(A):=\Pic(\Mod_A(\Catpidem)) $$. 
-    The assignment $ A \mapsto \Brp(A) $ defines a functor
-    \begin{equation*}
-        \Brp \colon \CAlgp \to \EE_\infty\Mon^{\mathrm{gp}}(\Spaces)
-    \end{equation*}
-    valued in group-like $ \EE_\infty $-monoids in spaces (or equivalently, connective spectra). 
-\end{definition}
+\subsection{The Poincaré Brauer group}
+\label{subsection:the_poincare_brauer_group}
 
 Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
+
+\begin{definition}
+    \label{definition:poincare_brauer_space}
+    Let $A$ be a Poincaré ring spectrum. We define the \emph{Poincaré Brauer space of $A$} as $$\Brp(A):=\Pic(\Mod_A(\Catpidem)).$$
+    The assignment $ A \mapsto \Brp(A) $ defines a functor
+    \begin{equation*}
+        \Brp \colon \CAlgp \to \CAlg^{\gp}(\Spaces)
+    \end{equation*}
+    valued in grouplike $ \Einfty $-spaces (or equivalently, connective spectra). 
+\end{definition}
+
 \begin{remark}
     The symmetric monoidal forgetful functor $ \Mod_A(\Catpidem) \to \Mod_A(\Cat^{\mathrm{ex}}_\infty) $ induces a map $ \Brp(A) \to \Br(A) $ of grouplike $ \EE_\infty $-monoids, where $ \Br(A) $ is the Brauer space $ \mathrm{br}_{\mathrm{alg}}(A) $ of \cite[1154-1155]{MR3190610}. 
 \end{remark}
@@ -300,7 +349,6 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 
 \section{Poincar{\'e} schemes}
 \input{definitions}
-
 
 \printbibliography
 \end{document}
