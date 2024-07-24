@@ -1,354 +1,115 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-%Packages Used------------------------------------------
-% the following is to get qoppa and Qoppa
-\DeclareFontFamily{T1}{cbgreek}{}
-\DeclareFontShape{T1}{cbgreek}{m}{n}{<-6>  grmn0500 <6-7> grmn0600 <7-8> grmn0700 <8-9> grmn0800 <9-10> grmn0900 <10-12> grmn1000 <12-17> grmn1200 <17-> grmn1728}{}
-\DeclareSymbolFont{quadratics}{T1}{cbgreek}{m}{n}
-\DeclareMathSymbol{\qoppa}{\mathord}{quadratics}{19}
-\DeclareMathSymbol{\Qoppa}{\mathord}{quadratics}{21}
-
-\usepackage{amsmath, amssymb, amsthm}
-\usepackage{longtable}
-%\usepackage{amsfonts}
-%\usepackage{mathtools}
-%\usepackage{wasysym}
-%\usepackage{MnSymbol}
-%\usepackage{thmtools}
-%\usepackage{stmaryrd}
-\usepackage[letterpaper,margin=1in]{geometry}   
-%\usepackage{slashed}
-%\usepackage[english]{babel}				
-%\usepackage[pdfencoding=auto, psdextra, draft=false]{hyperref}
-\usepackage{bookmark}
-\usepackage{url}		
-\usepackage{lmodern}			
-\usepackage[T1]{fontenc}
-%\usepackage{xspace}		
-%\usepackage{fancyhdr}
-\usepackage{enumerate}
-%\usepackage{mathrsfs}
-\usepackage{graphicx}
-\usepackage{soul,color}
-\usepackage{tikz-cd}
-\usepackage[maxbibnames=99,style=alphabetic]{biblatex}
-\usepackage{csquotes}
-\usepackage{chngcntr}
-\usepackage[bbgreekl]{mathbbol}
-\counterwithin{equation}{section}
-\addbibresource{biblio.bib}
-\usepackage{todonotes}
-
-%hyperlink setup
-\definecolor{darkred}{RGB}{128,0,0}
-\definecolor{darkgreen}{RGB}{0,128,0}
-\definecolor{darkblue}{RGB}{0,0,128}
-
-\hypersetup{linktocpage,
-	pdfborder = {0 0 0},
-	colorlinks,
-	citecolor=darkgreen,
-	filecolor=darkred,
-	linkcolor=darkblue,
-	urlcolor=cyan!50!black!90}
-
-%Greek and Latin black board bold-----------------------
-\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
-\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
-
-%shortcut commands-------------------------------------------
-\DeclareMathOperator{\Br}{Br} % Brauer functor
-\DeclareMathOperator{\Brp}{Br^p} % Poincare Brauer functor
-\DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
-\DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
-\DeclareMathOperator{\Cat}{Cat} % Categories
-\DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % stable categories with exact functors
-\DeclareMathOperator{\Cath}{Cat^h_\infty} % Hermitian Categories
-\DeclareMathOperator{\Catp}{Cat^p_\infty} % Poincare Categories
-\DeclareMathOperator{\Catpidem}{Cat^p_{\infty, idem}} % idempotent complete Poincare Categories
-\DeclareMathOperator{\Einfty}{\mathbf{E}_\infty} % E-infinity 
-\DeclareMathOperator{\ex}{ex} % exact 
-\DeclareMathOperator{\Fun}{Fun} % Functors
-\DeclareMathOperator{\gp}{gp} % grouplike
-\DeclareMathOperator{\id}{id} % identity
-\DeclareMathOperator{\idem}{idem} % idempotent
-\DeclareMathOperator{\Mod}{Mod} % Modules
-\DeclareMathOperator{\op}{op} % opposite functor
-\DeclareMathOperator{\Pic}{Pic} % Picard functor
-\DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
-\DeclareMathOperator{\Pn}{Pn} % Poincare space functor
-\DeclareMathOperator{\Spectra}{Sp} % Spectra
-\DeclareMathOperator{\Spaces}{\mathcal{S}} % Spaces
-\DeclareMathOperator{\Mon}{Mon} % monoids
-
-\newcommand{\pf}{{\bf Proof. \ }}
-\renewcommand{\epsilon}{\varepsilon}
-\renewcommand{\rho}{\varrho}
-\renewcommand{\phi}{\varphi}
-\newcommand{\NN}{\ensuremath{\mathbb{N}}\xspace}
-\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}\xspace}
-\newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
-\newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
-\newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
-\newcommand{\FF}{\ensuremath{\mathbb{F}}\xspace}
-\newcommand{\EE}{\mathbb{E}}
-\newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
-\newcommand{\RP}{\ensuremath{\mathbb{RP}}\xspace}
-\newcommand{\DD}{\ensuremath{\mathbbl{\Delta}}\xspace}
-\newcommand{\tc}{\ensuremath{\mathrm{TC}}}
-\newcommand{\thh}{\ensuremath{\mathrm{THH}}}
-\newcommand{\tp}{\ensuremath{\mathrm{TP}}}
-\newcommand{\tr}{\ensuremath{\mathrm{TR}}}
-\newcommand{\pnpic}{\ensuremath{\mathrm{PnPic}}}
-\newcommand{\pnbr}{\ensuremath{\mathrm{PnBr}}}
-\newcommand{\pic}{\ensuremath{\mathrm{Pic}}}
-\newcommand{\br}{\ensuremath{\mathrm{Br}}}
-\DeclareMathOperator*{\colim}{\ensuremath{\operatorname{colim}}}
-\newcommand{\aps}{\mathrm{APS}}
-\newcommand{\psch}{\mathrm{PSch}}
-\newcommand{\perf}{\mathrm{Perf}}
-\newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
-
-%Theorem Environments ----------------------------------------------------------------
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{construction}[theorem]{Construction}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{observation}[theorem]{Observation}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem{example}[theorem]{Example}
-
-\newcommand{\Viktor}[1]{\todo{V: #1}}
-\newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
-\newcommand{\Lucy}[1]{\todo[color=cyan]{L: #1}}
-
-\title{Poincar{\'e} Schemes}
-\author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
-\date{}
-
-
-\begin{document}
-
-\maketitle
-\begin{abstract}
-    We do stuff \Noah{Change this}
-\end{abstract}
-\tableofcontents
-
-\section{Introduction}
-
-\begin{theorem}
-Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}_\infty$-ring spectrum with involution $A$. Then the natural maps \[\pi_i(\pnpic(\underline{A}))\to \pi_i(\pic(A))\] \Noah{I think there is some interaction with the homotopy fixed points, or maybe even the genuine fixed points}are surjective on $2$-torsion.
-\end{theorem}
-
-\begin{theorem}
-    Let $A$ be an $\mathbb{E}_\infty$ ring with involution, and let $\underline{NA}$ be the associated Tate affine Poincar{\'e} scheme. Let $\br_\nu(A)$ be the Brauer group of Azumaya algebras over $A$ with involution. \Noah{I think we need to define this for ring spectra. For $A$ discrete this is done in \cite{azumaya_involution}.} Then the natural map \[\pnbr(\underline{NA})\to \br_\nu(A)\] is an equivalence\Noah{probably of $\mathbb{E}_\infty$ dodads}
-\end{theorem}
-
-\begin{theorem}
-    The functors $\pnpic,\pnbr:\mathrm{APS}\to \Spectra$ are fppf sheaves.
-\end{theorem}
-
-\begin{theorem}
-    There is a Poincar{\'e} group scheme $\mathbb{G}_m^\Qoppa$ such that \[B\mathbb{G}_m^\Qoppa\simeq \pnpic\] as fppf stacks.
-\end{theorem}
-
-\subsection{Conventions}
-\label{subsection:conventions}
-    \begin{longtable}{lll}
-        $\Brp$ & Poincaré Brauer space\\
-        $\CAlg$ & $\infty$-categoriy of $\Einfty$-ring spectra\\
-        $\CAlg(\Spaces)$ & $\infty$-categoriy of $\Einfty$-spaces\\
-        $\CAlg^{\gp}(\Spaces)$ & $\infty$-categoriy of grouplike $\Einfty$-spaces\\
-        $\CAlgp$ & $\infty$-categoriy of Poincaré ring spectra\\
-        $\Catex$ & $\infty$-category of small stable $\infty$-categories and exact functors\\
-        $\Catp$ & $\infty$-category of Poincaré $\infty$-categories\\
-        $\Catpidem$ & $\infty$-category of idempotent complete Poincaré $\infty$-categories\\
-        $\Picp$ & Poincaré Picard space\\
-        $\Spaces$ & $\infty$-category of spaces\\
-        $\Spectra$ & $\infty$-category of spectra
-    \end{longtable}
-
-\section{Poincaré Structures on Compact Modules}
-\label{section:poincare_structures_on_compact_modules}
-We will use this section to recall notions and results about Poincaré $\infty$-categories which we require in the sections to follow. This section can safely be skipped by anyone who posses extensive knowledge of Poincaré $\infty$-categories, as found in \cite{CDHHLMNNSI}.
-
-\begin{notation}
-    \label{notation:omission_of_e_infty}
-    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}. Moreover, we will denote the $\infty$-category $\CAlg(\Spectra)$ of commutative algebra objects in the $\infty$-category of spectra $\Spectra$ by $\CAlg$.
-\end{notation}
-
-Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules over $R$. We will study Poincaré structures on the $\infty$-category $\Mod_R^\omega$ of compact modules over $R$. 
-
-\Viktor{-characterization in terms of modules with genuine involution, -characterization of symmetric monoidal structures, -Pn}
-
-\section{Poincaré Ring Spectra}
-\label{section:poincare_ring_spectra}
-In this section we will define the ring theoretic building blocks of Poincaré schemes and the corresponding category they live in. Affine Poincaré Schemes will then be the dual objects, similar to how affine schemes are dual to commutative rings.
+\begin{definition}
+Let $\aps$ be the $(\infty,1)$-category defined by the pullback \[
+\begin{tikzcd}
+\aps \arrow[rr]\arrow[d] & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\arrow[d,"d_1^*"]\\
+\CAlg(\Spectra^{BC_2})\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra))
+\end{tikzcd}
+\] where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action.
+\end{definition}
+\Noah{I keep trying to make this work but the technical details are actively killing me. Better, I think, to use the following definition instead.}
 
 \begin{definition}
-    \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
+Define the catgeory of affine Hermetian schemes, denoted $\mathrm{AHS}$, to be the infinity category given by the Grothendieck construction applied to the functor \[\CAlg(\Spectra)^{op}\to \mathrm{Cat}_\infty\] given by sending a ring $R$ to the category $\CAlg(\mathrm{Mod}_{NR})$ of $\mathbb{E}_\infty$ algebras in modules with genuine involutions over $R$. Then define the category of affine Poincare schemes, denoted by $\aps$, to be the full subcategory of $\mathrm{AHS}$ spanned by the pairs $(R, M)$ where $M\in \CAlg(\mathrm{Mod}_{NR})$ is invertible. 
 \end{definition}
 
-\begin{remark}
-    \label{remark:notational_difference_to_nine-authored_papers}
-    Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. In \Viktor{cite 9 authored paper} Poincaré ring spectra are being referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
-\end{remark}
+We record here a few structural results about this category.
 
-\begin{remark}
-    \label{remark:poincare_ring_spectra_as_nr-algebras}
-    Let $R$ be a ring spectrum. By \Viktor{cite 9-authors} there is a natural equivalence between symmetric monoidal Poincaré structures on $\Mod_R^\omega$ and algebra objects over the genuine $C_2$-spectrum $NR$ \Viktor{reference}. In particular, a Poincaré structure on $R$ can be identified with the following data:
-    \begin{itemize}
-        \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \CAlg$.
-        \item An $R$-algebra $R\rightarrow C$.
-        \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
-    \end{itemize}
-        Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}.
-\end{remark}
-
-\begin{remark}
-    \label{remark:poincare_structures_are_factorizations}
-    By Remark \ref{remark:poincare_ring_spectra_as_nr-algebras}, a Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the natural map $R\rightarrow R^{tC_2}$.
-\end{remark}
-
-\begin{remark}
-    \label{remark:poincare_ring_spectra_as_algebra_objects}
-    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
-\end{remark}
-
-\begin{notation}
-    \label{notation:spectrum_with_trivial_action}
-    Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \Spectra $ is the constant functor.
-\end{notation}
-
-\begin{example}
-    \label{example:classification_of_poincare_structures_when_tate_vanishes}
-    Let $R$ be a ring spectrum. If $2\in \pi_0(R)$ is invertible, we have $\underline{R}^{tC_2}\simeq 0$\Viktor{explain/reference}. A Poincaré structure on $R$ with the trivial action is then given by an $R$-algebra $R\rightarrow C$.
-\end{example}
-
-\begin{example}
-    \label{example:tate_poincare_structure}
-    Let $R$ be a ring spectrum equipped with a $C_2$-action via maps of ring spectra. The natural $R$-algebra structure on $R^{tC_2}$ induces a Poincaré structure on $R$ given by the factorization $R\xrightarrow{\id} R\rightarrow R^{tC_2}$. We will call this Poincaré structure the \emph{Tate Poincaré structure on $R$}.
-\end{example}
-
-\begin{example}
-    \label{example:universal_poincare_ring_spectrum}
-    The sphere spectrum $\mathbb{S}$ together with the Tate Poincaré structure will be called the \emph{universal Poincaré ring spectrum}. \Viktor{expain why/translate universality statement to poincare ring spectra}
-\end{example}
-
-\begin{example}
-    \label{example:symmetric_poincare_structure}
-    Let $R$ be a ring spectrum equipped with a $C_2$-action via maps of ring spectra. The identity map $\id: R^{tC_2}\rightarrow R^{tC_2}$ induces a Poincaré structure on $R$
-    given by the factorization $R\rightarrow R^{tC_2}\xrightarrow{id} R^{tC_2}$. We will call this Poincaré structure the \emph{symmetric Poincaré structure on $R$}.
-\end{example}
-
-\begin{example}
-    \label{example:genuine_symmetric_poincare_structure}
-    Let $R$ be a connective ring spectrum equipped with a $C_2$-action via maps of ring spectra. The connective cover $\tau_{\geq 0}(R^{tC_2})\rightarrow R^{tC_2}$ of $R^{tC_2}$ induces a Poincaré structure on $R$ given by the factorization $R\rightarrow \tau_{\geq 0}(R^{tC_2})\rightarrow R^{tC_2}$. We will call this Poincaré structure the \emph{genuine symmetric Poincaré structure on $R$}.
-\end{example}
-
-\Viktor{copy more examples from notes}
-
-\begin{definition}
-    \label{definition:category_of_poincare_ring_spectra}
-    Let $A$ and $R$ be Poincaré ring spectra. A \emph{map of Poincaré ring spectra} between $A$ and $R$ is a map of ring spectra $f:A\rightarrow R$ compatible with the corresponding Poincaré structures via the following additional data: 
-    \begin{itemize}
-        \item \Viktor{this should become a remark and go below the definition of calgp}
-    \end{itemize}
-\end{definition}
-
-\section{Modules over Poincaré Ring Spectra}
-\label{subsection:modules_over_poincare_ring_spectra}
-
-Let $A$ be a Poincaré ring spectrum. Then $A$ is a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$\Viktor{ref}. We may thus consider modules over it. In this section we will use modules over Poincaré ring spectra to define analogues of the Brauer and Picard groups for Poincaré ring spectra.\\
-
-
-
-\subsection{The Poincaré Picard Group}
-\label{subsection:the_poincare_picard_group}
-
-Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \EE_\infty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
-
-\begin{definition}
-    \label{definition:poincare_picard_space}
-    Let $A$ be a Poincaré ring spectrum. We define the \emph{Picard space of $A$} to be $$\Picp(A):=\Pic(\Pn(A)).$$
-\end{definition}
-
-\begin{remark}
-    \label{remark:poincare_picard_points_desc}
-    Let $ \left(\Mod_R^\omega, \Qoppa_R \right)$ be a Poincaré ring spectrum, where $(M_R=R, N_R= R^{\varphi C_2}, R^{\varphi C_2}\to R^{tC_2})$ is the module with genuine involution associated to $ \Qoppa_R $. 
-    Then a point in the Poincaré Picard space is the data of a pair $ (\mathcal{L}, q ) $, where $ \mathcal{L} $ is an invertible module in $ \Mod_R^\omega $ and $ q $ is a point in $ \Omega^\infty\Qoppa_R(\mathcal{L}) $. 
-    By \cite[Proposition 1.3.11]{CDHHLMNNSI}, the data of $ q $ is equivalent to the data of points in the lower left and upper right corner of the square
-    \begin{equation}
-    \begin{tikzcd}
-        \Qoppa(\mathcal{L}) \ar[r] \ar[d] & \hom_R(\mathcal{L}, R^{\varphi C_2}) \ni \ell(q) \ar[d] \\
-        b(q) \in \hom_{R \otimes R}\left(\mathcal{L} \otimes \mathcal{L}, R\right)^{hC_2} \ar[r] & \hom_R(\mathcal{L}, R^{tC_2})
-    \end{tikzcd}
-    \end{equation} 
-    and a path between their images in the lower right corner. 
-    In particular, the adjoint of $ b(q) $ must define a nondegenerate hermitian form on $ \mathcal{L} $, that is, an equivalence $ \mathcal{L} \simeq \hom_{R}(\mathcal{L}, R^*) $ where $ R^* $ is considered as an $ R $-module via the action of the generator of $ C_2 $. \Lucy{add equivariance/symmetry data}
-
-    Write $ (\mathcal{L}^\vee,q^\vee) $ is for the inverse of $ (\mathcal{L},q) $. 
-    By definition of invertibility, there exists an $ R $-linear map $ \ell(q^\vee) \colon \mathcal{L}^\vee \to R^{\varphi C_2} $ so that the following diagram commutes
-    \begin{equation}\label{diagram:pnpic_linear_part_condition}
-    \begin{tikzcd}[column sep=huge]
-        \mathcal{L} \otimes_R \mathcal{L}^\vee \ar[d,"\mathrm{ev}", "\sim"']  \ar[r,"{\ell(q) \otimes \ell(q^\vee)}"] & R^{\varphi C_2} \otimes_R R^{\varphi C_2} \ar[d,"\mathrm{multiplication}"] \\
-        R \ar[r,"\mathrm{given}"] & N_R   
-    \end{tikzcd}
-    \end{equation} 
-\end{remark}
-
-\subsection{The Poincaré Brauer Group}
-\label{subsection:the_poincare_brauer_group}
-
-Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
-
-\begin{definition}
-    \label{definition:poincare_brauer_space}
-    Let $A$ be a Poincaré ring spectrum. We define the \emph{Poincaré Brauer space of $A$} as $$\Brp(A):=\Pic(\Mod_A(\Catpidem)).$$
-    The assignment $ A \mapsto \Brp(A) $ defines a functor
-    \begin{equation*}
-        \Brp \colon \CAlgp \to \CAlg^{\gp}(\Spaces)
-    \end{equation*}
-    valued in grouplike $ \Einfty $-spaces. 
-\end{definition}
-
-\begin{remark}
-    The symmetric monoidal forgetful functor $ \Mod_A(\Catpidem) \to \Mod_A(\Cat^{\mathrm{ex}}_\infty) $ induces a map $ \Brp(A) \to \Br(A) $ of grouplike $ \Einfty $-spaces, where $ \Br(A) $ is the Brauer space $ \mathrm{br}_{\mathrm{alg}}(A) $ of \cite[1154-1155]{MR3190610}. 
-\end{remark}
-\begin{proposition}
-    Let $A$ be a Poincaré ring spectrum. Then we have a canonical equivalence $$\Omega \Brp(A) \simeq \Picp(A).$$ \Lucy{What else do we need to do to show that we have an equivalence of \emph{functors}?}
-\end{proposition}
-\begin{proof} 
-    \Viktor{todo} 
-    Since $ \Omega\Brp(R) $ is given by the space of automorphisms of any object in $ \Brp(R) $, it suffices to determine the space of autoequivalences of $ \left(\Mod_R^\omega, \Qoppa_R \right) $. 
-    An autoequivalence is the data of a pair $ (f, \eta) $ where $ f \colon \Mod_R^\omega \xrightarrow{\simeq} \Mod_R^\omega $ is an exact $ R $-linear autoequivalence and $ \eta \colon \Qoppa_R \xrightarrow{\sim} \Qoppa_R \circ f^{\mathrm{op}} $ is a natural equivalence. 
-    Since $ \Catp_R\to \Catex_R $ is symmetric monoidal, $ f $ is of the form $ - \otimes_R \mathcal{L} $ where $ \mathcal{L} $ is an invertible $ R $-module. 
-    Since taking bilinear and linear parts is functorial/by \cite[Proposition 1.3.11]{CDHHLMNNSI}, $ \eta $ is equivalently the data of a pair of equivalences
+\begin{theorem}
+The following statements about $\aps$ hold:
+\begin{enumerate}
+\item The category $\aps$ is a cocomplete and symmetric monoidal infinite category;
+\item the pullback diagram above is homotopy Cartesian;
+\item the functor $\aps\to \CAlg(\Spectra^{BC_2})$ is symmetric monoidal and (co)continuous;
+\item the functor $\aps\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
+\item and the functor $\aps\to \CAlg(\Spectra)^{\Delta^2}\xrightarrow{ev_{[1]}} \CAlg(\Spectra)$ is symmetric monoidal.
+\end{enumerate}
+\end{theorem}
+\begin{proof}
+    For (2) it is enough to show that $d_1^*$ is an categorical fibration which follows from \cite[Corollary 2.3.2.5]{HTT} and \cite[Corollary 2.4.6.5]{HTT}. In fact $d_!^*$ is a left fibration by \cite[Corollary 2.1.2.9] (taking $p=id$, $i=d_1:\Delta^1\to \Delta^2$)\Lucy{Is this reference correct? The conclusion asserts that some map of simplicial sets is a \emph{categorical} fibration. The following argument is `sketchy'--depending on how precise we want to be about quasicategories, we may want to argue with left/right anodyne maps instead.} \Noah{To prove 2 we only need that $d_1^*$ is a categorical fibration, although I think it is a cartesian fibration. I think we should be careful about infinity categories, and I believe the sketch you wrote down. I also think that this must be known already thoug, and will hunt down a correct reference.}
+    There is a (pseudo-)functor
     \begin{align*}
-        b(\eta) &\colon \hom_{R \otimes R}((-\otimes \mathcal{L}) \otimes (-\otimes \mathcal{L}), R)^{hC_2} \simeq \hom_{R \otimes R}(-\otimes -, R)^{hC_2} \\
-        \ell(\eta) &\colon \hom_R( -\otimes \mathcal{L}, R^{\varphi C_2}) \simeq \hom_R( -, R^{\varphi C_2})
-    \end{align*} 
-    plus a path between their images in $ \hom_R(\mathcal{L}, R^{tC_2}) $. 
-    The transformation $ b(\eta) $ is equivalent to the data of an $ R $-bilinear equivalence $ R \simeq \mathcal{L}^\vee \otimes \mathcal{L}^\vee $ \Lucy{maybe one of these should be conjugate dual here?}, and the transformation $ \ell(\eta) $ is equivalent to the data of an $ R^{\varphi C_2} $-linear\Lucy{is the $R^{\varphi C_2}$-linearity of this $\simeq$ correct?} equivalence $ \ell (\eta)\colon R^{\varphi C_2}\otimes_R \mathcal{L}^\vee \xrightarrow{\sim} R^{\varphi C_2} $. 
-
-    Now consider the composites 
-    \begin{align*}
-        R \otimes_R \mathcal{L}^\vee \xrightarrow{\mathrm{unit}\,\otimes \mathrm{id}} R^{\varphi C_2} \otimes \mathcal{L}^\vee \xrightarrow{ \ell(\eta)} R^{\varphi C_2} \\
-        R \otimes_R \mathcal{L} \xrightarrow{\mathrm{unit}\,\otimes \mathrm{id}} R^{\varphi C_2} \otimes \mathcal{L} \xrightarrow{ \ell(\eta)^{-1} \otimes \mathrm{id}_{\mathcal{L}}} R^{\varphi C_2} \,.
+        F \colon \Fun(\Delta^1, \CAlg(\Spectra)) &\to \Cat_\infty \\
+        (\varphi \colon A \to B) &\mapsto (\left(\CAlg(\Spectra)_{A/-/B}\right)_{/\varphi}) 
     \end{align*}
-    These correspond to the $ \ell(q^\vee), \ell(q) $ of Remark \ref{rmk:poincare_picard_points_desc}, respectively. 
-    In particular, the condition that $ \ell(q^\vee), \ell(q) $ make the diagram (\ref{diagram:pnpic_linear_part_condition}) commute is equivalent to the condition that $ \ell(\eta) $ is an equivalence by an adjunction argument. \Lucy{under construction--not sure what to say about the $(-)^{tC_2} $ part yet. }
+    which sends a square
+    \begin{equation}\label{diagram:morphism_of_arrows}
+    \begin{tikzcd}
+        A \ar[r,"\varphi"] \ar[d] & B \ar[d] \\
+        C \ar[r,"\psi"] & D 
+    \end{tikzcd}
+    \end{equation}
+    regarded as a morphism from $ \varphi $ to $ \psi $, to the functor
+    \begin{equation}
+    \begin{split}
+        \left(\CAlg(\Spectra)_{A/-/B}\right)_{/\varphi} &\to \left(\CAlg(\Spectra)_{C/-/D}\right)_{/\psi} \\
+        (A \to R \to B) & \mapsto C \simeq A \otimes_A C \xrightarrow{\varphi \otimes \mathrm{id}_C} B \otimes_A C \to D
+    \end{split}
+    \end{equation}
+    where $ B \otimes_A C \to D $ is the canonical map induced by the commuting square (\ref{diagram:morphism_of_arrows}). 
+    The functor $ F $ classifies the cocartesian fibration $ d_1^* $. 
+
+    For (3), let $p:K\to \aps$ be a map of simplicial sets, $K$ a small simplicial set. Suppose the $K^\vartriangleright\to \aps$ be an extension such that $K^\vartriangleright\to \aps\to \CAlg(\Spectra^{BC_2})$ is a colimit diagram. By \cite[Proposition 2.4.3.2]{HTT} the diagram \[\begin{tikzcd}
+        \aps_{p/}\arrow[r]\arrow[d] &\CAlg(\Spectra)^{\Delta^2}_{p/-}\arrow[d]\\
+        \CAlg(\Spectra^{BC_2})_{p/}\arrow[r] & \CAlg(\Spectra)^{\Delta^1}_{p/-}
+    \end{tikzcd}\] is again homotopy cartesian. Then 
+    \begin{align*}
+        \hom_{\aps}(p(\infty), -)&\simeq \hom_{\CAlg(\Spectra^{BC_2})}(p(\infty), -)\times_{\hom_{\CAlg(\Spectra)^{\Delta^1}}(p(\infty),-)}\hom_{\CAlg(\Spectra)^{\Delta^2}}(p(\infty))\\
+        &\simeq 
+    \end{align*}
 \end{proof}
 
-\section{Poincar{\'e} schemes}
-\input{definitions}
+We will denote elements of $\aps$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. Here $s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. The use of the notation $A^{\Phi C_2}$ is justified by the following.
 
-\printbibliography
-\end{document}
+\begin{lemma}
+Let $\aps\to \CAlg(\Spectra)$ be the composition of the functors \[\aps\to \operatorname{Fun}(\Delta^2,\CAlg(\Spectra))\xrightarrow{ev_{[1]}}\CAlg(\Spectra).\] Then this functor factors as a composition $\aps\to \CAlg(\Spectra^{C_2})\xrightarrow{(-)^{\Phi C_2}}\CAlg(\Spectra)$. 
+\end{lemma}
+\begin{proof}
+The commutativity of the diagram
+\[
+\begin{tikzcd}
+ & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra)) \arrow[rd, "d_0^*"] \arrow[dd, "d_1^*"] & \\
+ & & & \operatorname{Fun}(\Delta^1,\CAlg(\Spectra)) \arrow[dd,"ev_{[1]}"]\\
+\CAlg(\Spectra^{BC_2}) \arrow[rr, "U(-)\to (-)^{tC_2}"] \arrow[rrd, "id"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra)) \arrow[rd, "ev_{[1]}"] & \\
+  & & \CAlg(\Spectra^{BC_2}) \arrow[r, "(-)^{tc_2}"] & \CAlg(\Spectra)
+\end{tikzcd}
+\] induces a functor on the pullback infinity categories $\aps\to \CAlg(\Spectra^{C_2})$ which makes the corresponding cube commute. The functor $ev_{[1]}:\operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\to \CAlg(\Spectra)$ factors through $d_0^*$ and so $\aps\to \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\to \CAlg(\Spectra)$ is equivalent to the composition \[\aps\to \CAlg(\Spectra^{C_2})\to \operatorname{Fun}(\Delta^1,\CAlg(\Spectra))\to \CAlg(\Spectra)\] and the composition of the last two maps is the geometric fixed point functor as desired.
+\end{proof}
+
+The following Lemma gives the justification of the name Poincar{\'e} scheme.
+\begin{construction}\label{con:functor_APS_to_Pn_cat}
+    We shall construct a functor \[\perfpn:\aps\to \mathrm{Cat}_{\infty}^{\mathrm{Pn}}\] to the category of Poincar{\'e} infinity categories. 
+
+    \Lucy{For symmetric monoidal structure--maybe want to swap out $ \Mod_{NA}$ for $ \CAlg_{NA} $? }
+    Recall that $ \Cath_\infty \to \left( \Catex_\infty \right)^{op} $ is a cocartesian fibration \cite[\S1.4.]{CDHHLMNNSI} 
+    We will first construct a map of cocartesian fibrations
+    \begin{equation}
+    \begin{tikzcd}
+        \aps \ar[r,dotted] \ar[d] & \Cath_\infty \ar[d] \\
+        \CAlg\left(\Spectra^{BC_2}\right)\ar[r] & \left( \Catex_\infty \right)^{op}
+    \end{tikzcd}\,,
+    \end{equation}
+    then show that the dotted arrow factors through the subcategory $ \Cat^p_\infty \subseteq \Cat^h_\infty $. 
+    To construct a map of cartesian fibrations, it suffices to exhibit a natural transformation of classifying functors. 
+    Unraveling the definitions, by Theorem 3.2.13 of \cite{CDHHLMNNSI} we must exhibit for each $ A \in \CAlg(\Spectra)^{BC_2} $, a functor
+    \begin{equation}
+        \left(\CAlg(\Spectra)_{A/-/A^{tC_2}}\right)_{/\varphi} \to \Mod_{N^{C_2}(A^e)}\left(\Spectra^{C_2}\right)
+    \end{equation}
+    (where $ \varphi \colon A \to A^{tC_2} $ is the Tate-valued Frobenius and $ N^{C_2} $ is the Hill--Hopkins--Ravenel norm) which is natural in $ A $. 
+
+    That the resulting functor factors through the subcategory $ \Cat^p_\infty $ follows from Proposition 3.1.3 and Lemma 3.3.3 of \emph{loc. cit.}
+\end{construction}
+\begin{lemma}
+    The functor of Construction \ref{con:functor_APS_to_Pn_cat} is symmetric monoidal and has essential image the subcategory spanned by objects $(\perf(R),\Qoppa)$ which are $\mathbb{E}_\infty$-algebras.
+\end{lemma}
+
+\begin{definition}
+     A map $f:\underline{A}\to \underline{B}\in \aps$ is faithfully flat if the underlying map $f:A\to B$ is faithfully flat and the map $f^{\Phi C_2}:A^{\Phi C_2}\to B^{\Phi C_2}$ is also faithfully flat.
+\end{definition}
+
+\begin{lemma}
+    The fpqc covers on $\aps$ form a Grothendieck site. 
+\end{lemma}
+
+%\begin{definition}
+%    The infinity category of Poincar{\'e} schemes, denoted $\psch$, is the infinity category \[\psch:= \operatorname{Ind}(\aps^{op})\]
+%\end{definition}
