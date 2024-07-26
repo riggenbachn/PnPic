@@ -6,6 +6,11 @@ Let $\aps$ be the $(\infty,1)$-category defined by the pullback \[
 \end{tikzcd}
 \] where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action.
 \end{definition}
+\Noah{I keep trying to make this work but the technical details are actively killing me. Better, I think, to use the following definition instead.}
+
+\begin{definition}
+Define the catgeory of affine Hermetian schemes, denoted $\mathrm{AHS}$, to be the infinity category given by the Grothendieck construction applied to the functor \[\CAlg(\Spectra)^{op}\to \mathrm{Cat}_\infty\] given by sending a ring $R$ to the category $\CAlg(\mathrm{Mod}_{NR})$ of $\mathbb{E}_\infty$ algebras in modules with genuine involutions over $R$. Then define the category of affine Poincare schemes, denoted by $\aps$, to be the full subcategory of $\mathrm{AHS}$ spanned by the pairs $(R, M)$ where $M\in \CAlg(\mathrm{Mod}_{NR})$ is invertible. 
+\end{definition}
 
 We record here a few structural results about this category.
 
@@ -20,7 +25,7 @@ The following statements about $\aps$ hold:
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-    For (2) it is enough to show that $d_1^*$ is a cartesian fibration which follows from \cite[Corollary 2.4.6.5]{HTT}. \Lucy{Is this reference correct? The conclusion asserts that some map of simplicial sets is a \emph{categorical} fibration. The following argument is `sketchy'--depending on how precise we want to be about quasicategories, we may want to argue with left/right anodyne maps instead.} 
+    For (2) it is enough to show that $d_1^*$ is an categorical fibration which follows from \cite[Corollary 2.3.2.5]{HTT} and \cite[Corollary 2.4.6.5]{HTT}. In fact $d_!^*$ is a left fibration by \cite[Corollary 2.1.2.9] (taking $p=id$, $i=d_1:\Delta^1\to \Delta^2$)\Lucy{Is this reference correct? The conclusion asserts that some map of simplicial sets is a \emph{categorical} fibration. The following argument is `sketchy'--depending on how precise we want to be about quasicategories, we may want to argue with left/right anodyne maps instead.} \Noah{To prove 2 we only need that $d_1^*$ is a categorical fibration, although I think it is a cartesian fibration. I think we should be careful about infinity categories, and I believe the sketch you wrote down. I also think that this must be known already thoug, and will hunt down a correct reference.}
     There is a (pseudo-)functor
     \begin{align*}
         F \colon \Fun(\Delta^1, \CAlg(\Spectra)) &\to \Cat_\infty \\

@@ -271,7 +271,7 @@ Let $A$ be a Poincaré ring spectrum. Then $A$ is a commutative algebra object i
 
 
 
-\subsection{The Poincaré Picard group}
+\subsection{The Poincaré Picard Group}
 \label{subsection:the_poincare_picard_group}
 
 Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \EE_\infty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
@@ -305,7 +305,7 @@ Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ 
     \end{equation} 
 \end{remark}
 
-\subsection{The Poincaré Brauer group}
+\subsection{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
 
 Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
@@ -317,11 +317,11 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     \begin{equation*}
         \Brp \colon \CAlgp \to \CAlg^{\gp}(\Spaces)
     \end{equation*}
-    valued in grouplike $ \Einfty $-spaces (or equivalently, connective spectra). 
+    valued in grouplike $ \Einfty $-spaces. 
 \end{definition}
 
 \begin{remark}
-    The symmetric monoidal forgetful functor $ \Mod_A(\Catpidem) \to \Mod_A(\Cat^{\mathrm{ex}}_\infty) $ induces a map $ \Brp(A) \to \Br(A) $ of grouplike $ \EE_\infty $-monoids, where $ \Br(A) $ is the Brauer space $ \mathrm{br}_{\mathrm{alg}}(A) $ of \cite[1154-1155]{MR3190610}. 
+    The symmetric monoidal forgetful functor $ \Mod_A(\Catpidem) \to \Mod_A(\Cat^{\mathrm{ex}}_\infty) $ induces a map $ \Brp(A) \to \Br(A) $ of grouplike $ \Einfty $-spaces, where $ \Br(A) $ is the Brauer space $ \mathrm{br}_{\mathrm{alg}}(A) $ of \cite[1154-1155]{MR3190610}. 
 \end{remark}
 \begin{proposition}
     Let $A$ be a Poincaré ring spectrum. Then we have a canonical equivalence $$\Omega \Brp(A) \simeq \Picp(A).$$ \Lucy{What else do we need to do to show that we have an equivalence of \emph{functors}?}
@@ -329,7 +329,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 \begin{proof} 
     \Viktor{todo} 
     Since $ \Omega\Brp(R) $ is given by the space of automorphisms of any object in $ \Brp(R) $, it suffices to determine the space of autoequivalences of $ \left(\Mod_R^\omega, \Qoppa_R \right) $. 
-    An autoequivalence is the data of a pair $ (f, \eta) $ where $ f \colon \Mod_R^\omega \to \Mod_R^\omega $ is an exact $ R $-linear autoequivalence and $ \eta \colon \Qoppa_R \xrightarrow{\sim} \Qoppa_R \circ f^{\mathrm{op}} $ is a natural equivalence. 
+    An autoequivalence is the data of a pair $ (f, \eta) $ where $ f \colon \Mod_R^\omega \xrightarrow{\simeq} \Mod_R^\omega $ is an exact $ R $-linear autoequivalence and $ \eta \colon \Qoppa_R \xrightarrow{\sim} \Qoppa_R \circ f^{\mathrm{op}} $ is a natural equivalence. 
     Since $ \Catp_R\to \Catex_R $ is symmetric monoidal, $ f $ is of the form $ - \otimes_R \mathcal{L} $ where $ \mathcal{L} $ is an invertible $ R $-module. 
     Since taking bilinear and linear parts is functorial/by \cite[Proposition 1.3.11]{CDHHLMNNSI}, $ \eta $ is equivalently the data of a pair of equivalences
     \begin{align*}
