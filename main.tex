@@ -130,7 +130,7 @@
 \title{Poincar{\'e} Schemes}
 \author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
 \date{}
-
+\addbibresource{biblio.bib}
 
 \begin{document}
 
@@ -209,7 +209,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
         \item An $R$-algebra $R\rightarrow C$.
         \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
     \end{itemize}
-        Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}.
+        Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}.
 \end{remark}
 
 \begin{remark}
@@ -224,7 +224,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{notation}
     \label{notation:spectrum_with_trivial_action}
-    Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \Spectra $ is the constant functor.
+    Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \Spectra $ is the constant functor. \Lucy{This is commonly used for constant Mackey functors--could be ambiguous}
 \end{notation}
 
 \begin{example}
@@ -234,7 +234,8 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{example}
     \label{example:tate_poincare_structure}
-    Let $R$ be a ring spectrum equipped with a $C_2$-action via maps of ring spectra. The natural $R$-algebra structure on $R^{tC_2}$ induces a Poincaré structure on $R$ given by the factorization $R\xrightarrow{\id} R\rightarrow R^{tC_2}$. We will call this Poincaré structure the \emph{Tate Poincaré structure on $R$}.
+    Let $R$ be a ring spectrum equipped with a $C_2$-action via maps of ring spectra. The Tate-valued norm endows $ R^{tC_2} $ with a natural $R$-algebra structure, which induces a Poincaré structure on $R$ given by the factorization $R\xrightarrow{\id} R\rightarrow R^{tC_2}$. 
+    We will call this Poincaré structure the \emph{Tate Poincaré structure on $R$}.
 \end{example}
 
 \begin{example}
@@ -345,6 +346,24 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     \end{align*}
     These correspond to the $ \ell(q^\vee), \ell(q) $ of Remark \ref{rmk:poincare_picard_points_desc}, respectively. 
     In particular, the condition that $ \ell(q^\vee), \ell(q) $ make the diagram (\ref{diagram:pnpic_linear_part_condition}) commute is equivalent to the condition that $ \ell(\eta) $ is an equivalence by an adjunction argument. \Lucy{under construction--not sure what to say about the $(-)^{tC_2} $ part yet. }
+\end{proof}
+
+\begin{proposition}
+    Let $ (\Mod_R^\omega, \Qoppa_R) $ be a Poincaré ring spectrum. 
+    Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra. 
+    Then the pullback
+    \begin{equation}
+    \begin{tikzcd}
+        & \Mod_{(\Mod_R^\omega, \Qoppa_R)}\left(\Cath\right) \ar[d] \\
+        \{\Mod_A^\omega\} \ar[r] & \Cat_R
+    \end{tikzcd}
+    \end{equation}
+    is canonically equivalent to $ \Mod_{N_R A \otimes_{N_R R} R^L }\left(\Spectra^{C_2}\right) $ where $ R^L $ is the $ \EE_\infty $-$ N_R R $-algebra with $ (R^L)^e \simeq R $ and $ (R^L)^{\varphi C_2}  \simeq C $. 
+
+    A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ R $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
+\end{proposition}
+\begin{proof}
+    \Lucy{Todo--this should be similar to \cite[Example 5.4.13]{CDHHLMNNSI}.}   
 \end{proof}
 
 \section{Poincar{\'e} schemes}
