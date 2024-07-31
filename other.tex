@@ -1,0 +1,177 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+%Packages Used------------------------------------------
+% the following is to get qoppa and Qoppa
+\DeclareFontFamily{T1}{cbgreek}{}
+\DeclareFontShape{T1}{cbgreek}{m}{n}{<-6>  grmn0500 <6-7> grmn0600 <7-8> grmn0700 <8-9> grmn0800 <9-10> grmn0900 <10-12> grmn1000 <12-17> grmn1200 <17-> grmn1728}{}
+\DeclareSymbolFont{quadratics}{T1}{cbgreek}{m}{n}
+\DeclareMathSymbol{\qoppa}{\mathord}{quadratics}{19}
+\DeclareMathSymbol{\Qoppa}{\mathord}{quadratics}{21}
+
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{longtable}
+%\usepackage{amsfonts}
+%\usepackage{mathtools}
+%\usepackage{wasysym}
+%\usepackage{MnSymbol}
+%\usepackage{thmtools}
+%\usepackage{stmaryrd}
+\usepackage[letterpaper,margin=1in]{geometry}   
+%\usepackage{slashed}
+%\usepackage[english]{babel}				
+%\usepackage[pdfencoding=auto, psdextra, draft=false]{hyperref}
+\usepackage{bookmark}
+\usepackage{url}		
+\usepackage{lmodern}			
+\usepackage[T1]{fontenc}
+%\usepackage{xspace}		
+%\usepackage{fancyhdr}
+\usepackage{enumerate}
+%\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{soul,color}
+\usepackage{tikz-cd}
+\usepackage[maxbibnames=99,style=alphabetic]{biblatex}
+\usepackage{csquotes}
+\usepackage{chngcntr}
+\usepackage[bbgreekl]{mathbbol}
+\counterwithin{equation}{section}
+\addbibresource{biblio.bib}
+\usepackage{todonotes}
+
+%hyperlink setup
+\definecolor{darkred}{RGB}{128,0,0}
+\definecolor{darkgreen}{RGB}{0,128,0}
+\definecolor{darkblue}{RGB}{0,0,128}
+
+\hypersetup{linktocpage,
+	pdfborder = {0 0 0},
+	colorlinks,
+	citecolor=darkgreen,
+	filecolor=darkred,
+	linkcolor=darkblue,
+	urlcolor=cyan!50!black!90}
+
+%Greek and Latin black board bold-----------------------
+\DeclareSymbolFontAlphabet{\mathbb}{AMSb}
+\DeclareSymbolFontAlphabet{\mathbbl}{bbold}
+
+%shortcut commands-------------------------------------------
+\DeclareMathOperator{\Br}{Br} % Brauer functor
+\DeclareMathOperator{\Brp}{Br^p} % Poincare Brauer functor
+\DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
+\DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
+\DeclareMathOperator{\Cat}{Cat} % Categories
+\DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % stable categories with exact functors
+\DeclareMathOperator{\Cath}{Cat^h_\infty} % Hermitian Categories
+\DeclareMathOperator{\Catp}{Cat^p_\infty} % Poincare Categories
+\DeclareMathOperator{\Catpidem}{Cat^p_{\infty, idem}} % idempotent complete Poincare Categories
+\DeclareMathOperator{\Einfty}{\mathbf{E}_\infty} % E-infinity 
+\DeclareMathOperator{\ex}{ex} % exact 
+\DeclareMathOperator{\Fun}{Fun} % Functors
+\DeclareMathOperator{\gp}{gp} % grouplike
+\DeclareMathOperator{\id}{id} % identity
+\DeclareMathOperator{\idem}{idem} % idempotent
+\DeclareMathOperator{\Mod}{Mod} % Modules
+%\DeclareMathOperator{\op}{op} % opposite functor
+\DeclareMathOperator{\Pic}{Pic} % Picard functor
+\DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
+\DeclareMathOperator{\Pn}{Pn} % Poincare space functor
+\DeclareMathOperator{\Spectra}{Sp} % Spectra
+\DeclareMathOperator{\Spaces}{\mathcal{S}} % Spaces
+\DeclareMathOperator{\Mon}{Mon} % monoids
+
+\newcommand{\pf}{{\bf Proof. \ }}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\rho}{\varrho}
+\renewcommand{\phi}{\varphi}
+\newcommand{\NN}{\ensuremath{\mathbb{N}}\xspace}
+\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}\xspace}
+\newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
+\newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
+\newcommand{\FF}{\ensuremath{\mathbb{F}}\xspace}
+\newcommand{\EE}{\mathbb{E}}
+\newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
+\newcommand{\RP}{\ensuremath{\mathbb{RP}}\xspace}
+\newcommand{\DD}{\ensuremath{\mathbbl{\Delta}}\xspace}
+\newcommand{\tc}{\ensuremath{\mathrm{TC}}}
+\newcommand{\thh}{\ensuremath{\mathrm{THH}}}
+\newcommand{\tp}{\ensuremath{\mathrm{TP}}}
+\newcommand{\tr}{\ensuremath{\mathrm{TR}}}
+\newcommand{\pnpic}{\ensuremath{\mathrm{PnPic}}}
+\newcommand{\pnbr}{\ensuremath{\mathrm{PnBr}}}
+\newcommand{\pic}{\ensuremath{\mathrm{Pic}}}
+\newcommand{\br}{\ensuremath{\mathrm{Br}}}
+\DeclareMathOperator*{\colim}{\ensuremath{\operatorname{colim}}}
+\newcommand{\aps}{\mathrm{APS}}
+\newcommand{\psch}{\mathrm{PSch}}
+\newcommand{\perf}{\mathrm{Perf}}
+\newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
+\newcommand{\op}{\mathrm{op}}
+
+%Theorem Environments ----------------------------------------------------------------
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{construction}[theorem]{Construction}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{observation}[theorem]{Observation}
+\newtheorem{notation}[theorem]{Notation}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{question}[theorem]{Question}
+
+\newcommand{\Viktor}[1]{\todo{V: #1}}
+\newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
+\newcommand{\Lucy}[1]{\todo[color=cyan]{L: #1}}
+
+\title{Et cetera}
+\author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
+\date{}
+\addbibresource{biblio.bib}
+
+\begin{document}
+
+\maketitle
+\begin{abstract}
+   Dumping ground for other stuff: Notes, one-off observations, stuff that we can collectively use when preparing talks, etc. \Lucy{I make no promises re: organization but I will do my best to keep it reasonably readable} 
+\end{abstract}
+\tableofcontents
+
+\section{Talk prep}
+
+\section{References}
+\begin{itemize}
+    \item \href{https://ems.press/journals/dm/articles/8965687}{Involutions of Azumaya algebras} by First and Williams (2020 \emph{Documenta})
+    \item \href{https://arxiv.org/abs/2405.15260}{Counterexamples in involutions of Azumaya algebras} by First and Williams; much more readable than the 2020 Documenta paper
+\end{itemize}
+\section{Questions and directions}
+
+\section{Thoughts \& observations}
+\begin{question}
+   When $ R $ has the Tate Poincaré structure and $ (\Mod_A^\omega, M_A, N_A, N_A \to M_A^{tC_2}) $ is invertible, then by invertibility have an equivalence $ \hom_R(A, R)\simeq N_A\otimes_R N_{A^\op} $ of $ A \otimes_R A^\op $-modules. 
+   Restricting the left-hand side along the unit map $ R \to A $ gives a map $ N_A \otimes_R N_{A^\op} \to \hom_R(R,R) \simeq R $. 
+   Is this a perfect ($R$-linear) pairing? 
+
+   I \emph{think} using that $ R^{\varphi C_2} \simeq R $ and combining the linear and bilinear part conditions, we get something like
+   \begin{equation*}
+       M_A \otimes_R M_{A^\op} \simeq (N_A \otimes_R N_{A^\op})^{\otimes_R 2} \qquad \text{ as $A \otimes_R A^\op$-bimodules. }
+   \end{equation*}
+   Is this useful?
+\end{question}
+
+\paragraph{Brauer-Severi schemes} 
+We know there is a correspondence between Azumaya algebras $ A $ over $ X $ and Brauer-Severi schemes. 
+What does a Poincaré structure on $ \Mod_A^\omega $ mean `geometrically' for $ D^b_{\mathrm{coh}} $ of the corresponding Brauer-Severi scheme? 
+(Lucy: I didn't get very far here, but just typing up what I had)
+\begin{itemize}
+    \item $ \Mod_A^\omega $ corresponds to $ \alpha $-twisted sheaves on $ X $ (see Proposition 3.2.2.1 of Max Lieblich's thesis)
+    \item The bounded derived category of $ \alpha $-twisted sheaves on $ X $ includes as one `piece' of a semiorthogonal decomposition on $ D^b_{\mathrm{coh}} $ of the corresponding Brauer-Severi scheme (see Theorem 5.1 \href{https://arxiv.org/abs/math/0511497}{here})
+\end{itemize}
+
+\printbibliography
+\end{document}
