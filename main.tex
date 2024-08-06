@@ -73,7 +73,6 @@
 \DeclareMathOperator{\id}{id} % identity
 \DeclareMathOperator{\idem}{idem} % idempotent
 \DeclareMathOperator{\Mod}{Mod} % Modules
-\DeclareMathOperator{\op}{op} % opposite functor
 \DeclareMathOperator{\Pic}{Pic} % Picard functor
 \DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
 \DeclareMathOperator{\Pn}{Pn} % Poincare space functor
@@ -95,6 +94,7 @@
 \newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}\xspace}
 \newcommand{\DD}{\ensuremath{\mathbbl{\Delta}}\xspace}
+\newcommand{\op}{\mathrm{op}} % opposite functor
 \newcommand{\tc}{\ensuremath{\mathrm{TC}}}
 \newcommand{\thh}{\ensuremath{\mathrm{THH}}}
 \newcommand{\tp}{\ensuremath{\mathrm{TP}}}
@@ -110,22 +110,23 @@
 \newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
 
 %Theorem Environments ----------------------------------------------------------------
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{corollary}[equation]{Corollary}
 
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{construction}[theorem]{Construction}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{observation}[theorem]{Observation}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem{example}[theorem]{Example}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{construction}[equation]{Construction}
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{observation}[equation]{Observation}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{example}[equation]{Example}
+\newtheorem{recollection}[equation]{Recollection}
 
 \newcommand{\Viktor}[1]{\todo{V: #1}}
 \newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
-\newcommand{\Lucy}[1]{\todo[color=cyan]{L: #1}}
+\newcommand{\Lucy}[1]{\todo[color=cyan]{\linespread{1}\footnotesize L: #1}}
 
 \title{Poincar{\'e} Schemes}
 \author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
@@ -180,7 +181,7 @@ We will use this section to recall notions and results about Poincaré $\infty$-
 
 \begin{notation}
     \label{notation:omission_of_e_infty}
-    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}. Moreover, we will denote the $\infty$-category $\CAlg(\Spectra)$ of commutative algebra objects in the $\infty$-category of spectra $\Spectra$ by $\CAlg$.
+    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}. Moreover, we will denote the $\infty$-category $\CAlg(\Spectra)$ of commutative algebra objects in the $\infty$-category of spectra $\Spectra$ by $\CAlg$. 
 \end{notation}
 
 Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules over $R$. We will study Poincaré structures on the $\infty$-category $\Mod_R^\omega$ of compact modules over $R$. 
@@ -350,20 +351,98 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 
 \begin{proposition}
     Let $ (\Mod_R^\omega, \Qoppa_R) $ be a Poincaré ring spectrum. 
-    Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra. 
-    Then the pullback
-    \begin{equation}
-    \begin{tikzcd}
-        & \Mod_{(\Mod_R^\omega, \Qoppa_R)}\left(\Cath\right) \ar[d] \\
-        \{\Mod_A^\omega\} \ar[r] & \Cat_R
-    \end{tikzcd}
-    \end{equation}
-    is canonically equivalent to $ \Mod_{N_R A \otimes_{N_R R} R^L }\left(\Spectra^{C_2}\right) $ where $ R^L $ is the $ \EE_\infty $-$ N_R R $-algebra with $ (R^L)^e \simeq R $ and $ (R^L)^{\varphi C_2}  \simeq C $. 
+    \begin{enumerate}
+        \item \label{propitem:classify_R_lin_hermitian_struct} Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra. 
+        Then the pullback
+        \begin{equation}
+        \begin{tikzcd}
+            & \Mod_{(\Mod_R^\omega, \Qoppa_R)}\left(\Cath\right) \ar[d] \\
+            \{\Mod_A^\omega\} \ar[r] & \Cat_R
+        \end{tikzcd}
+        \end{equation}
+        is canonically equivalent to $ \Mod_{N_R A \otimes_{N_R R} R^L }\left(\Spectra^{C_2}\right) $ where $ R^L $ is the $ \EE_\infty $-$ N_R R $-algebra with $ (R^L)^e \simeq R $ and $ (R^L)^{\varphi C_2}  \simeq C $. 
 
-    A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ R $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
+        A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ R $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
+        \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is symmetric monoidal. 
+        \item Let $ A,B $ be $ R $-algebras with associated ($R$-linear) modules with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $ and $ (M_B, N_B, N_B \to M_B^{tC_2}) $, respectively so that (under item \ref{propitem:classify_R_lin_hermitian_struct}) $ \left(\Mod_A^\omega, \Qoppa_A \right) $ and $ \left(\Mod_B^\omega, \Qoppa_B \right) $ are objects of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $. 
+        Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_R N_B $, and the structure map is $ N_A \otimes_R N_B \to M_A^{tC_2} \otimes_R M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ \Lucy{What if it should be $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ instead?} where the latter map arises canonically from lax monoidality of the Tate construction. 
+    \end{enumerate}
 \end{proposition}
 \begin{proof}
     \Lucy{Todo--this should be similar to \cite[Example 5.4.13]{CDHHLMNNSI}.}   
+\end{proof}
+
+\subsection{Azumaya algebras with genuine involution}
+Let $ R $ be an $ \EE_\infty $-ring spectrum. 
+\begin{recollection}\label{rec:Azumaya_alg_wo_involution} 
+    Recall \cites{MR2927172,MR3190610} that an $ \EE_1 $-$ R $-algebra is said to be \emph{Azumaya} if it is a compact generator of $ \Mod_R $ and if the natural $ R $-algebra map giving the bimodule structure on $ A $
+    \begin{equation*}
+        A \otimes_R A^{\mathrm{op}} \to \mathrm{End}_R(A)
+    \end{equation*}
+    is an equivalence of $ R $-algebras. 
+\end{recollection}
+
+\begin{definition}
+    \Lucy{For context, compare Examples 3.1.9 and 3.2.9 of the first 9-author paper.}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum. 
+    An \emph{Azumaya algebra with genuine involution}\Lucy{terminology: ``involution'' or ``anti-involution''?} over $ R $ is the data of 
+    \begin{itemize}
+        \item An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
+        \item A left $ A $-module $ A^{\varphi C_2} $ 
+        \item An equivalence of $ A \otimes_R A^\op $-modules\Lucy{compatibility with Tate?}
+        \begin{equation*}
+            \hom_R(A, R^{\varphi C_2}) \simeq A^{\varphi C_2} \otimes_R \hom_R(A^{\varphi C_2}, R^{\varphi C_2})
+        \end{equation*}
+        \item An $ A $-linear map $ A^{\varphi C_2} \to A^{tC_2} $ where $ A^{tC_2} $ is regarded as an $ A $-module via the Tate-valued Frobenius.\Lucy{Tate-valued norm?}
+    \end{itemize}
+    \Lucy{define the category!}
+\end{definition}
+\begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
+    If $ A $ is an Azumaya algebra with genuine involution over $ R $, then in particular $ M_A = A $, $ N_A = A^{\varphi C_2} $ is a module with genuine involution over $ A $ in the sense of \cite[Definition 3.2.3]{CDHHLMNNSI}. 
+\end{remark}
+With ordinary Azumaya algebras, the prototypical Azumaya algebra with anti-involution arises from endomorphism rings of perfect modules. 
+Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ endows its endomorphism algebra with additional structure. 
+\begin{example}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. 
+
+    Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an Azumaya algebra with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
+    \Lucy{to-do: explain! Also $ A^{\varphi C_2}$ might need fixing.} 
+
+    By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. \Lucy{todo: Make some noises about an $ R $-linear enhancement of Proposition 3.1.16?}
+\end{example}
+\begin{proposition}
+    Let $ R $ be the Eilenberg--Mac Lane spectrum associated to a discrete ring, and suppose $ R $ has a given $ C_2 $-action. 
+    Let $ A $ be a classical Azumaya algebra over $ R $ with an involution of type 2. 
+    Regard $ R $ as a Poincaré ring spectrum with the genuine symmetric Poincaré structure of Example \ref{example:genuine_symmetric_poincare_structure}. 
+
+    Then there is a canonical Azumaya algebra with genuine involution over $ R^{\mathrm{gs}} $ so that $ A^{\varphi C_2} := \tau_{\geq 0} A^{tC_2} $.
+\end{proposition}
+\begin{proof}
+    \Lucy{todo}
+\end{proof}
+
+\begin{proposition}\label{prop:mod_over_azumaya_geninv_is_invertible}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (A, A^{\varphi C_2} \to A^{tC_2}) $ be an Azumaya algebra with genuine involution over $ R $. 
+    Then $ \left(\Mod_A^\omega, \Qoppa_A \right) $ is an invertible object in $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R\right)}\left(\Catpidem\right) $. 
+\end{proposition}
+\begin{remark}
+    Contrast Proposition \ref{prop:mod_over_azumaya_geninv_is_invertible} with \cite[Theorem 3.15]{MR3190610}, where it is shown that an $ R $-linear stable $ \infty $-category is invertible \emph{if and only if} it is equivalent to modules over an Azumaya $ R $-algebra. 
+    The difference lies in the fact that not every $ R $-linear (Morita anti-)equivalence $ \Mod_A^\omega \simeq \Mod_{A^\op} $ is induced by a map of $ \EE_1 $-rings $ A \to A^\op $. 
+    \Lucy{this is not quite the same (in a literal sense), but I think similar in spirit to the ``counterexamples'' paper by First--Williams}
+\end{remark}
+\begin{proof}
+    First, by \cite[Example 3.2.9]{CDHHLMNNSI}, we see that $ \left(\Mod_A^\omega, \Qoppa_A \right) $ is indeed an $ R$-linear Poincaré $ \infty $-category (and not merely hermitian). 
+    To show that the associated Poincaré $ \infty $-category is invertible, we must identify a dual $ \left(\Mod_A^\omega, \Qoppa_A \right)^\vee $ and exhibit an equivalence $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes \left(\Mod_A^\omega, \Qoppa_A \right)^\vee \simeq \left(\Mod_R^\omega, \Qoppa_R \right) $. 
+    Since $ \Catpidem_R \to \Catex_R $ is symmetric monoidal, we see that the underlying $ R $-linear $ \infty $-category associated to the dual must be $ \Mod_{A^\op}^\omega $. 
+    Moreover, the canonical evaluation map $ \mathrm{ev} \colon \Mod_A^\omega \otimes \Mod_{A^\op}^\omega \xrightarrow{\simeq} \Mod_R^\omega $ sends $ A \otimes A^\op $ to $ A $. 
+    Endow $ \Mod_{A^\op} $ with a Poincaré structure corresponding to the module with genuine involution $ M_{A^\op}:= A^\op $, $ N_{A^\op} := \hom_R(A^{\varphi C_2}, R^{\varphi C_2}) $. 
+    It remains to exhibit a natural equivalence 
+    \begin{equation}\label{eq:invertible_quadratic_compatibility}
+        \eta \colon \left(\Qoppa_A \otimes \Qoppa_{A^\op}\right) \xrightarrow{\simeq} \mathrm{ev}^* \Qoppa_R 
+    \end{equation} 
+    of [quadratic] functors $ \Mod_A^\omega \otimes \Mod_{A^\op}^\omega \to \Spectra $. 
+    By \cite[Theorem 3.3.1]{CDHHLMNNSI}, it suffices to exhibit equivalences on the bilinear and linear parts of (\ref{eq:invertible_quadratic_compatibility}) which glue compatibly. 
+    \Lucy{finish}
 \end{proof}
 
 \section{Poincar{\'e} schemes}
