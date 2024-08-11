@@ -352,24 +352,71 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 \begin{proposition}
     Let $ (\Mod_R^\omega, \Qoppa_R) $ be a Poincaré ring spectrum. 
     \begin{enumerate}
-        \item \label{propitem:classify_R_lin_hermitian_struct} Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra. 
+        \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is symmetric monoidal. 
+        \item \label{propitem:classify_R_lin_hermitian_struct} Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra, and regard the category of compact right $ A $-modules $ \Mod_A^\omega $ as left-tensored over $ \Mod_R^\omega $ in the canonical way. 
         Then the pullback
         \begin{equation}
         \begin{tikzcd}
             & \Mod_{(\Mod_R^\omega, \Qoppa_R)}\left(\Cath\right) \ar[d] \\
-            \{\Mod_A^\omega\} \ar[r] & \Cat_R
+            \{\Mod_A^\omega\} \ar[r] & \Catex_R
         \end{tikzcd}
         \end{equation}
         is canonically equivalent to $ \Mod_{N_R A \otimes_{N_R R} R^L }\left(\Spectra^{C_2}\right) $ where $ R^L $ is the $ \EE_\infty $-$ N_R R $-algebra with $ (R^L)^e \simeq R $ and $ (R^L)^{\varphi C_2}  \simeq C $. 
 
         A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ R $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
-        \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is symmetric monoidal. 
         \item Let $ A,B $ be $ R $-algebras with associated ($R$-linear) modules with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $ and $ (M_B, N_B, N_B \to M_B^{tC_2}) $, respectively so that (under item \ref{propitem:classify_R_lin_hermitian_struct}) $ \left(\Mod_A^\omega, \Qoppa_A \right) $ and $ \left(\Mod_B^\omega, \Qoppa_B \right) $ are objects of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $. 
         Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_R N_B $, and the structure map is $ N_A \otimes_R N_B \to M_A^{tC_2} \otimes_R M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ \Lucy{What if it should be $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ instead?} where the latter map arises canonically from lax monoidality of the Tate construction. 
     \end{enumerate}
 \end{proposition}
+\begin{remark}
+    A special case of part \ref{propitem:classify_R_lin_hermitian_struct} is \cite[Example 5.4.13]{CDHHLMNNSI}.
+\end{remark}
 \begin{proof}
-    \Lucy{Todo--this should be similar to \cite[Example 5.4.13]{CDHHLMNNSI}.}   
+    \begin{enumerate}
+        \item 
+        \item Let $ \mathcal{LM}^\otimes $ denote the $ \infty $-operad of \cite[Definition 4.2.1.7]{LurHA}. 
+        Our strategy of proof will be similar to that of \cite[\S5.3]{CDHHLMNNSI}: First, we show that an $ \mathcal{LM}^\otimes $-algebra object in $ \Cath $ is equivalent to an $ \mathcal{LM}^\otimes $-algebra object in an operad of functor categories. 
+        Then, we use a (suitably coherent version of) the classification of hermitian structures on module categories as categories of modules over the Hill--Hopkins--Ravenel norm \cite[Theorem 3.3.1]{CDHHLMNNSI} to conclude. 
+        Recall that the action of $ \Mod_R^{\omega} $ on $ \Mod_A^\omega $ is given by a functor $ \mathcal{LM}^\otimes \to \Cat_\infty^\times $, and define $ \Fun_{\Mod_R^{\omega,\op}}(\Mod_A^{\omega,\op},\Spectra)^\otimes $ via the following pullback square of $ \infty $-operads: 
+        \begin{equation}
+        \begin{tikzcd}
+            \Fun_{\Mod_R^{\omega,\op}}(\Mod_A^{\omega,\op},\Spectra)^\otimes \ar[r,"{p}"]\ar[d] & \mathcal{LM}^\otimes \ar[d,"{\Mod_R^\omega,\Mod_A^\omega}"] \ar[d] \\
+            \left(\Cat_\infty\right)_{\op/-/\Spectra}^\otimes \ar[r] & \Cat_\infty^\times 
+        \end{tikzcd}\,.
+        \end{equation}
+        Informally, an object $ F \in \Fun_{\Mod_R^{\omega,\op}}(\Mod_A^{\omega,\op},\Spectra)^\otimes_{\mathfrak{a}} $ is a functor $ F \colon \Mod_R^{\omega,\op} \to \Spectra $ and an object $ G $ over the fiber of $ \mathfrak{m} $ is a functor $ G \colon \Mod_A^{\omega,\op} \to \Spectra $. 
+        The $p $-cartesian edge over the canonical map $ (\mathfrak{a},\mathfrak{m}) \to \mathfrak{m} $ in $ \mathcal{LM}^\otimes $ sends $ (F,G) $ to the lower arrow in the diagram
+        \begin{equation*}
+        \begin{tikzcd}[column sep=4.5em]
+            \Mod_R^{\omega,\op}\times \Mod_A^{\omega,\op} \ar[r,"{F\times G}"] \ar[d,"{-\otimes_R -}"'] & \Spectra \times \Spectra \ar[d,"{\otimes_{\Spectra}}"] \\
+            \Mod_A^{\omega,\op} \ar[r,"{F \otimes G := \mathrm{LKE}_{\otimes_R}( \otimes_{\Spectra} \circ (F \times G))}"] & \Spectra
+        \end{tikzcd}\,.
+        \end{equation*}
+        Now define $ \Fun_{\Mod_R^{\omega,\op}}^q(\Mod_A^{\omega,\op},\Spectra)^\otimes $ to consist of the full subcategory of $ \Fun_{\Mod_R^{\omega,\op}}(\Mod_A^{\omega,\op},\Spectra)^\otimes $ consisting of those tuples of functors which are all quadratic. 
+        The inclusion $ \Fun_{\Mod_R^{\omega,\op}}^q(\Mod_A^{\omega,\op},\Spectra)^\otimes \to \Fun_{\Mod_R^{\omega,\op}}(\Mod_A^{\omega,\op},\Spectra)^\otimes $ exhibits the former as an $ \infty $-operad, and moreover the localization is compatible with the $ \mathcal{LM}^\otimes $-monoidal structure in the sense of \cite[Definition 2.2.1.6]{LurHA}. 
+        We can extend the previous diagram to 
+        \begin{equation}\label{diagram:module_structure_on_quadratic_functors}
+        \begin{tikzcd}
+            \Fun_{\Mod_R^{\omega,\op}}^q(\Mod_A^{\omega,\op},\Spectra)^\otimes \ar[r]\ar[d] & \Fun_{\Mod_R^{\omega,\op}}(\Mod_A^{\omega,\op},\Spectra)^\otimes \ar[r,"{p}"]\ar[d] & \mathcal{LM}^\otimes \ar[d,"{\Mod_R^\omega,\Mod_A^\omega}"] \ar[d] \\
+           \Cath^\otimes \ar[r]& \left(\Cat_\infty\right)_{\op/-/\Spectra}^\otimes \ar[r] & \Cat_\infty^\otimes 
+        \end{tikzcd}\,.
+        \end{equation}
+        Modifying \cite[Construction 5.3.15 \& Lemma 5.3.15]{CDHHLMNNSI} slightly (note that Corollary 5.1.4 did not assume the tensor factors to be equivalent), we obtain an analogous commutative diagram of $ \infty $-operads
+        \begin{equation}\label{diagram:module_structure_on_pb_functors}
+        \begin{tikzcd}
+            \Fun_{\Mod_R^{\omega,\op}}^p(\Mod_A^{\omega,\op},\Spectra)^\otimes \ar[d] \ar[r] & \Fun_{\Mod_R^{\omega,\op}}^q(\Mod_A^{\omega,\op},\Spectra)^\otimes \ar[r]\ar[d] & \Fun_{\Mod_R^{\omega,\op}}(\Mod_A^{\omega,\op},\Spectra)^\otimes \ar[r,"{p}"]\ar[d] & \mathcal{LM}^\otimes \ar[d,"{\Mod_R^\omega,\Mod_A^\omega}"] \ar[d] \\
+           \Catp^\otimes \ar[r] &\Cath^\otimes \ar[r]& \left(\Cat_\infty\right)_{\op/-/\Spectra}^\otimes \ar[r] & \Cat_\infty^\otimes 
+        \end{tikzcd}
+        \end{equation}
+        in which all squares are pullbacks. 
+        Now suppose $ A $ is given a module with genuine involution $ (M_A, N_A,N_A \to M_A^{tC_2}) $ and call the associated Poincaré $\infty$-category $ \overline{\Mod}_A $.  
+        Then to lift $ \overline{\Mod}_A $ to a module over $ \left(\Mod_R^\omega,\Qoppa_R\right) $ compatibly with the $ \Mod_R^\omega $-module structure on $ \Mod_A^\omega $ is to give a map of $ \infty $-operads $ \mathcal{LM}^\otimes \to \Cath^\otimes $ so that the restriction along the canonical inclusion $ \mathrm{Assoc}^\otimes \to \mathcal{LM}^\otimes $ gives the algebra object $ \left(\Mod_R^\omega,\Qoppa_R\right) $ and postcomposing with the canonical projection to $ \Catex^\times $ recovers the given $ \Mod_R^\omega $-module structure on $ \Mod_A^\omega $. 
+        By the pullback square (\ref{diagram:module_structure_on_quadratic_functors}), this is equivalent to giving an object of $ \mathrm{Alg}_{\mathcal{LM}/\mathcal{LM}}\left(\Fun_{\Mod_R^{\omega,\op}}^q(\Mod_A^{\omega,\op},\Spectra)^\otimes\right) $. 
+        Now let us identify the bilinear functor $ \Mod_R^\omega \times \Mod_A^\omega \xrightarrow{ - \otimes_R -} \Mod_A^\omega $ with the exact functor $ \Mod_R^\omega \otimes \Mod_A^\omega \simeq \Mod_{R \otimes A}^\omega \to \Mod_A^\omega $ which is induction along the action map $ R \otimes A \to A $. 
+        Using \cite[Corollary 3.4.1]{CDHHLMNNSI} and unravelling definitions gives the claim for $ R$-linear hermitian structures. 
+        The proof for $ R $-linear Poincaré structures considers (\ref{diagram:module_structure_on_pb_functors}) instead but otherwise proceeds in an identical fashion.  
+        \item 
+    \end{enumerate}
 \end{proof}
 
 \subsection{Azumaya algebras with genuine involution}
@@ -388,10 +435,10 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     An \emph{Azumaya algebra with genuine involution}\Lucy{terminology: ``involution'' or ``anti-involution''?} over $ R $ is the data of 
     \begin{itemize}
         \item An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
-        \item A left $ A $-module $ A^{\varphi C_2} $ 
+        \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ A^{\varphi C_2} $ 
         \item An equivalence of $ A \otimes_R A^\op $-modules\Lucy{compatibility with Tate?}
         \begin{equation*}
-            \hom_R(A, R^{\varphi C_2}) \simeq A^{\varphi C_2} \otimes_R \hom_R(A^{\varphi C_2}, R^{\varphi C_2})
+            \hom_R(A, R^{\varphi C_2}) \simeq A^{\varphi C_2} \otimes_{R^{\varphi C_2}} \hom_R(A^{\varphi C_2}, R^{\varphi C_2})
         \end{equation*}
         \item An $ A $-linear map $ A^{\varphi C_2} \to A^{tC_2} $ where $ A^{tC_2} $ is regarded as an $ A $-module via the Tate-valued Frobenius.\Lucy{Tate-valued norm?}
     \end{itemize}
@@ -427,7 +474,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
 \end{proposition}
 \begin{remark}
     Contrast Proposition \ref{prop:mod_over_azumaya_geninv_is_invertible} with \cite[Theorem 3.15]{MR3190610}, where it is shown that an $ R $-linear stable $ \infty $-category is invertible \emph{if and only if} it is equivalent to modules over an Azumaya $ R $-algebra. 
-    The difference lies in the fact that not every $ R $-linear (Morita anti-)equivalence $ \Mod_A^\omega \simeq \Mod_{A^\op} $ is induced by a map of $ \EE_1 $-rings $ A \to A^\op $. 
+    The difference lies in the fact that not every $ R $-linear (Morita anti-)equivalence $ \Mod_A^\omega \simeq \Mod_{A^\op}^\omega $ is induced by a map of $ \EE_1 $-rings $ A \to A^\op $. 
     \Lucy{this is not quite the same (in a literal sense), but I think similar in spirit to the ``counterexamples'' paper by First--Williams}
 \end{remark}
 \begin{proof}
