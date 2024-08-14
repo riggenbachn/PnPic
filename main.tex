@@ -365,7 +365,8 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 
         A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ R $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
         \item Let $ A,B $ be $ R $-algebras with associated ($R$-linear) modules with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $ and $ (M_B, N_B, N_B \to M_B^{tC_2}) $, respectively so that (under item \ref{propitem:classify_R_lin_hermitian_struct}) $ \left(\Mod_A^\omega, \Qoppa_A \right) $ and $ \left(\Mod_B^\omega, \Qoppa_B \right) $ are objects of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $. 
-        Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_R N_B $, and the structure map is $ N_A \otimes_R N_B \to M_A^{tC_2} \otimes_R M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ \Lucy{What if it should be $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ instead?} where the latter map arises canonically from lax monoidality of the Tate construction. 
+        Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_R N_B $, and the structure map is $ N_A \otimes_R N_B \to M_A^{tC_2} \otimes_R M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ where the latter map arises canonically from lax monoidality of the Tate construction. 
+        % Commented out Aug 14th--just leaving this here just in case: \Lucy{What if it should be $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ instead?} 
     \end{enumerate}
 \end{proposition}
 \begin{remark}
@@ -415,7 +416,20 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         Now let us identify the bilinear functor $ \Mod_R^\omega \times \Mod_A^\omega \xrightarrow{ - \otimes_R -} \Mod_A^\omega $ with the exact functor $ \Mod_R^\omega \otimes \Mod_A^\omega \simeq \Mod_{R \otimes A}^\omega \to \Mod_A^\omega $ which is induction along the action map $ R \otimes A \to A $. 
         Using \cite[Corollary 3.4.1]{CDHHLMNNSI} and unravelling definitions gives the claim for $ R$-linear hermitian structures. 
         The proof for $ R $-linear Poincaré structures considers (\ref{diagram:module_structure_on_pb_functors}) instead but otherwise proceeds in an identical fashion.  
-        \item 
+        \item By \cite[Theorem 4.4.2.8]{LurHA}, the relative tensor product $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is computed as the geometric realization of the bar construction 
+        \begin{align*}
+            p \colon \Delta^\op & \to \Cath \\
+            [n] &\mapsto \left(\Mod_A^\omega, \Qoppa_A \right) \otimes \left(\Mod_R^\omega, \Qoppa_R \right)^{\otimes n} \otimes \left(\Mod_B^\omega, \Qoppa_B \right)
+        \end{align*} 
+        Write $ f \colon \Cath \to \Catex $ for the forgetful functor. 
+        Then $ f \circ p $ has a colimit with value $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $. 
+        Writing $ g \colon \Catex \to \{*\} $, by Example 4.3.1.3 of \cite{HTT} we see that $ f \circ p $ is a $ g $-colimit. 
+        By Proposition 4.3.1.5(2) and Example 4.3.1.3 of \cite{HTT}, $ p $ admits a colimit in $ \Cath $ if and only if it admits an $ f $-colimit. 
+        Now recall that $ f $ is a cocartesian fibration with pushforward given by left Kan extension \cite[Corollary 1.4.2]{CDHHLMNNSI}. 
+        %To show that $ p $ admits an $ f $-colimit, it suffices to check the conditions of \cite[Corollary 4.3.1.11]{HTT}. 
+        %Condition (1) follows from Theorem 6.1.1.10 of \cite{LurHA} applied to $ \Spectra^\op $ (see the end of \cite[Construction 1.1.16]{CDHHLMNNSI}). 
+        %Condition (2) follows from \cite[Corollary 1.4.2]{CDHHLMNNSI}, the adjoint functor theorem, and presentability of $ \Fun^q(\mathcal{C}) $, which is discussed in the proof of \cite[Lemma 5.3.3]{CDHHLMNNSI} (also see \cite[Remark 6.1.1.11]{LurHA}). 
+        \Lucy{todo: construct a diagram á là HTT Proposition 4.3.1.9 and compute the colimit in $ \Fun^q \left(\Mod_{A\otimes_R B}^\omega \right) $.} \qedhere
     \end{enumerate}
 \end{proof}
 
@@ -433,15 +447,15 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \Lucy{For context, compare Examples 3.1.9 and 3.2.9 of the first 9-author paper.}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum. 
     An \emph{Azumaya algebra with genuine involution}\Lucy{terminology: ``involution'' or ``anti-involution''?} over $ R $ is the data of 
-    \begin{itemize}
+    \begin{enumerate}[label=(\alph*)]
         \item An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
         \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ A^{\varphi C_2} $ 
-        \item An equivalence of $ A \otimes_R A^\op $-modules\Lucy{compatibility with Tate?}
+        \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ A \otimes_R A^\op $-modules\Lucy{compatibility with Tate?}
         \begin{equation*}
             \hom_R(A, R^{\varphi C_2}) \simeq A^{\varphi C_2} \otimes_{R^{\varphi C_2}} \hom_R(A^{\varphi C_2}, R^{\varphi C_2})
         \end{equation*}
         \item An $ A $-linear map $ A^{\varphi C_2} \to A^{tC_2} $ where $ A^{tC_2} $ is regarded as an $ A $-module via the Tate-valued Frobenius.\Lucy{Tate-valued norm?}
-    \end{itemize}
+    \end{enumerate}
     \Lucy{define the category!}
 \end{definition}
 \begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
@@ -453,10 +467,14 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. 
 
     Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an Azumaya algebra with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
-    \Lucy{to-do: explain! Also $ A^{\varphi C_2}$ might need fixing.} 
+    \Lucy{to-do: explain! Also $ A^{\varphi C_2}$ could also be $ P \otimes_R R^{\varphi C_2}$?} 
 
     By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. \Lucy{todo: Make some noises about an $ R $-linear enhancement of Proposition 3.1.16?}
+    Since $ P $ is compact, it is dualizable with respect to the symmetric monoidal structure on $ \Mod_R^\omega $ \cite[Theorem III.7.9]{elmendorf2007rings}. 
+    Since $ \otimes_R R^{\varphi C_2} $ is symmetric monoidal, in particular it takes $ P $ to a dualizable object--call it $ \overline{P} $. 
+    Now there is a canonical choice of equivalence \ref{defn_item:Azumaya_gen_inv_geom_fixpt} since both sides are canonically equivalent to $ \overline{P} \otimes_{R^{\varphi C_2}} \overline{P}^\vee $. 
 \end{example}
+
 \begin{proposition}
     Let $ R $ be the Eilenberg--Mac Lane spectrum associated to a discrete ring, and suppose $ R $ has a given $ C_2 $-action. 
     Let $ A $ be a classical Azumaya algebra over $ R $ with an involution of type 2. 
