@@ -365,7 +365,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 
         A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ R $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
         \item Let $ A,B $ be $ R $-algebras with associated ($R$-linear) modules with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $ and $ (M_B, N_B, N_B \to M_B^{tC_2}) $, respectively so that (under item \ref{propitem:classify_R_lin_hermitian_struct}) $ \left(\Mod_A^\omega, \Qoppa_A \right) $ and $ \left(\Mod_B^\omega, \Qoppa_B \right) $ are objects of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $. 
-        Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_R N_B $, and the structure map is $ N_A \otimes_R N_B \to M_A^{tC_2} \otimes_R M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ where the latter map arises canonically from lax monoidality of the Tate construction. 
+        Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_{R^{\varphi C_2}} N_B $, and the structure map is $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ where the latter map arises canonically from lax monoidality of the Tate construction. 
         % Commented out Aug 14th--just leaving this here just in case: \Lucy{What if it should be $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ instead?} 
     \end{enumerate}
 \end{proposition}
@@ -426,10 +426,54 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         Writing $ g \colon \Catex \to \{*\} $, by Example 4.3.1.3 of \cite{HTT} we see that $ f \circ p $ is a $ g $-colimit. 
         By Proposition 4.3.1.5(2) and Example 4.3.1.3 of \cite{HTT}, $ p $ admits a colimit in $ \Cath $ if and only if it admits an $ f $-colimit. 
         Now recall that $ f $ is a cocartesian fibration with pushforward given by left Kan extension \cite[Corollary 1.4.2]{CDHHLMNNSI}. 
-        %To show that $ p $ admits an $ f $-colimit, it suffices to check the conditions of \cite[Corollary 4.3.1.11]{HTT}. 
-        %Condition (1) follows from Theorem 6.1.1.10 of \cite{LurHA} applied to $ \Spectra^\op $ (see the end of \cite[Construction 1.1.16]{CDHHLMNNSI}). 
-        %Condition (2) follows from \cite[Corollary 1.4.2]{CDHHLMNNSI}, the adjoint functor theorem, and presentability of $ \Fun^q(\mathcal{C}) $, which is discussed in the proof of \cite[Lemma 5.3.3]{CDHHLMNNSI} (also see \cite[Remark 6.1.1.11]{LurHA}). 
-        \Lucy{todo: construct a diagram á là HTT Proposition 4.3.1.9 and compute the colimit in $ \Fun^q \left(\Mod_{A\otimes_R B}^\omega \right) $.} \qedhere
+        We show that $ f $ satisfies the conditions of \cite[Corollary 4.3.1.11]{HTT}. 
+        \begin{itemize}
+            \item Condition (1) follows from Theorem 6.1.1.10 of \cite{LurHA} applied to $ \Spectra^\op $ (see the end of \cite[Construction 1.1.26]{CDHHLMNNSI}). 
+            \item Condition (2) follows from \cite[Corollary 1.4.2]{CDHHLMNNSI}, the adjoint functor theorem, and presentability of $ \Fun^q(\mathcal{C}) $, which is discussed in the proof of \cite[Lemma 5.3.3]{CDHHLMNNSI} (also see \cite[Remark 6.1.1.11]{LurHA}). 
+        \end{itemize}
+        Thus the preceding discussion shows that there exists a map of simplicial sets $ p' $ making the diagram commute
+        \begin{equation*}
+        \begin{tikzcd}
+            \Delta^\op \ar[d] \ar[r,"p"] & \Cath \ar[d,"f"] \\
+            \left(\Delta^\op\right)^{\triangleright} \ar[r]\ar[ru,"{p'}"] & \Catex 
+        \end{tikzcd}\,.
+        \end{equation*}
+        Since $ \{0\} \to \Delta^1 $ is left anodyne, by \cite[Corollary 2.1.2.7]{HTT} the inclusions
+        \begin{align*}
+            \{0\} \times \Delta^\op & \to \Delta^1 \times \Delta^\op \\
+            \iota \colon \left(\{0\} \times (\Delta^\op)^\triangleright\right) \sqcup_{\{0\} \times \Delta^\op}\left(\Delta^1 \times \Delta^\op \right) & \to \Delta^1 \times \left(\Delta^\op\right)^\triangleright 
+        \end{align*}
+        are left anodyne. 
+        The former implies that there exists a map $ p'' $ making the diagram 
+        \begin{equation*}
+        \begin{tikzcd}
+            \{0\} \times \Delta^\op \ar[r,"p"]\ar[d] &\Cath \ar[d,"f"] \\
+            \Delta^1 \times \Delta^\op \ar[r] \ar[ru,"{p''}"] & \Catex
+        \end{tikzcd}
+        \end{equation*}
+        commute. 
+        The maps $ p' $ and $ p'' $ assemble to give a map $ p''' $ making the diagram 
+        \begin{equation*}
+        \begin{tikzcd}[arrows={crossing over},row sep=large]
+            & \{0\} \times \Delta^\op \ar[r,"p"]\ar[ld, bend right=15] \ar[d] &\Cath \ar[d,"f"] \\
+            \left(\{0\} \times (\Delta^\op)^\triangleright\right) \sqcup_{\{0\} \times \Delta^\op}\left(\Delta^1 \times \Delta^\op \right) \ar[r] \ar[rru,"{p'''}", near start] & \Delta^1 \times \left(\Delta^\op\right)^\triangleright \ar[r] \ar[ru,"{\overline{p}}"', bend right=10] & \Catex
+        \end{tikzcd}
+        \end{equation*}
+        commute, and likewise $ \overline{p} $ exists making the diagram commute since $ \iota $ is left anodyne. 
+        Now we show that $ \overline{p} $ satisfies the conditions of \cite[Proposition 4.3.1.9]{HTT}. 
+        By (the opposite/dual/cocartesian version of) \cite[Remark 3.1.1.10]{HTT} and Proposition 3.1.1.5(2'') \emph{ibid.} and the fact that $ f $ is a cocartesian fibration, we can choose $ \overline{p} $ so that for all $ k \in (\Delta^\op)^\triangleright $, $ \overline{p}|_{\Delta^1 \times \{k\}} $ is $f$-cocartesian. 
+        Furthermore, since we can choose $ \Delta^\op, \,\left(\Delta^\op\right)^\triangleright $ to have the markings $ (-)^\flat $ in \cite[Remark 3.1.1.10]{HTT}, $ f \circ \overline{p}|_{\Delta^1 \times \{\infty\}} $ is a degenerate edge in $ \Catex $. 
+
+        Now \cite[Proposition 4.3.1.9]{HTT} implies that $ \overline{p}_0 $ is an $ f $-colimit diagram if and only if $ \overline{p}_1 $ is an $ f $-colimit diagram. 
+        Now notice that $ \overline{p}|_{\{1\} \times \left(\Delta^\op\right)^{\triangleright}} $ has image contained in the fiber of $ f $ over $ \Mod_{A \otimes_R B}^\omega $. 
+        By \cite[Proposition 4.3.1.10]{HTT}, it suffices to show that $ \overline{p}_1 $ is a colimit diagram in $ \Fun^q\left(\Mod_{A \otimes_R B}^\omega\right) $. 
+        Write $ \overline{M}_A \in \Mod_{N^{C_2}A} $ and $ \overline{M}_B \in \Mod_{N^{C_2}B} $ for the corresponding modules (see introduction to \S3.3 of \cite{CDHHLMNNSI}). 
+        Unraveling definitions and using \cite[Theorem 3.3.1 \& Corollary 3.4.1 \& Lemma 5.4.6]{CDHHLMNNSI}, it follows that the diagram $ \overline{p}_1|_{\{1\} \times \Delta^\op} $ is the bar construction 
+        \begin{align*}
+            [n] & \mapsto \overline{M}_A \otimes_{N^{C_2}R} R^{\otimes_{N^{C_2}R} n} \otimes_{N^{C_2} R} \overline{M}_B \,.
+        \end{align*}
+        This proves the result. \qedhere
+        %\Lucy{Point is: $ \iota $ is \emph{marked anodyne} and . Then compute the colimit in $ \Fun^q \left(\Mod_{A\otimes_R B}^\omega \right) $.}
     \end{enumerate}
 \end{proof}
 
