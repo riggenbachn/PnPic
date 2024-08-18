@@ -368,6 +368,8 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         \item Let $ A,B $ be $ R $-algebras with associated ($R$-linear) modules with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $ and $ (M_B, N_B, N_B \to M_B^{tC_2}) $, respectively so that (under item \ref{propitem:classify_R_lin_hermitian_struct}) $ \left(\Mod_A^\omega, \Qoppa_A \right) $ and $ \left(\Mod_B^\omega, \Qoppa_B \right) $ are objects of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $. 
         Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_{R^{\varphi C_2}} N_B $, and the structure map is $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ where the latter map arises canonically from lax monoidality of the Tate construction. 
         % Commented out Aug 14th--just leaving this here just in case: \Lucy{What if it should be $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ instead?} 
+
+        \item The symmetric monoidal forgetful functor $ \theta \colon \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\Mod_R^\omega}(\Catex) $ is a (co)cartesian fibration. \Lucy{what is it classified by?}
     \end{enumerate}
 \end{proposition}
 \begin{remark}
@@ -473,8 +475,12 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         \begin{align*}
             [n] & \mapsto \overline{M}_A \otimes_{N^{C_2}R} R^{\otimes_{N^{C_2}R} n} \otimes_{N^{C_2} R} \overline{M}_B \,.
         \end{align*}
-        This proves the result. \qedhere
+        This proves the result. 
         %\Lucy{Point is: $ \iota $ is \emph{marked anodyne} and . Then compute the colimit in $ \Fun^q \left(\Mod_{A\otimes_R B}^\omega \right) $.}
+
+        \item By \cite[Proposition 2.4.2.8]{HTT}, it suffices to show that $ \theta $ is a locally (co)cartesian fibration, and that locally (co)cartesian edges are closed under composition. 
+        \Lucy{to-do}
+        \qedhere
     \end{enumerate}
 \end{proof}
 
