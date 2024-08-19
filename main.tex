@@ -62,7 +62,7 @@
 \DeclareMathOperator{\Brp}{Br^p} % Poincare Brauer functor
 \DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
 \DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
-\DeclareMathOperator{\Cat}{Cat} % Categories
+\DeclareMathOperator{\Cat}{\mathcal{C}at} % Categories
 \DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % stable categories with exact functors
 \DeclareMathOperator{\Cath}{Cat^h_\infty} % Hermitian Categories
 \DeclareMathOperator{\Catp}{Cat^p_\infty} % Poincare Categories
@@ -74,6 +74,8 @@
 \DeclareMathOperator{\id}{id} % identity
 \DeclareMathOperator{\idem}{idem} % idempotent
 \DeclareMathOperator{\Mod}{Mod} % Modules
+\DeclareMathOperator{\LMod}{LMod} % Left modules
+\DeclareMathOperator{\BiMod}{BiMod} % Bimodules
 \DeclareMathOperator{\Pic}{Pic} % Picard functor
 \DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
 \DeclareMathOperator{\Pn}{Pn} % Poincare space functor
@@ -120,10 +122,12 @@
 \newtheorem{definition}[equation]{Definition}
 \newtheorem{construction}[equation]{Construction}
 \newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
 \newtheorem{observation}[equation]{Observation}
 \newtheorem{notation}[equation]{Notation}
 \newtheorem{example}[equation]{Example}
 \newtheorem{recollection}[equation]{Recollection}
+\newtheorem{variant}[equation]{Variant}
 
 \newcommand{\Viktor}[1]{\todo{V: #1}}
 \newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
@@ -200,12 +204,13 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{remark}
     \label{remark:notational_difference_to_nine-authored_papers}
-    Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. In \Viktor{cite 9 authored paper} Poincaré ring spectra are being referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
+    Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. 
+    In \cite[discussion immediately preceding Examples 5.4.10]{CDHHLMNNSI}, Poincaré ring spectra are referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
 \end{remark}
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_as_nr-algebras}
-    Let $R$ be a ring spectrum. By \Viktor{cite 9-authors} there is a natural equivalence between symmetric monoidal Poincaré structures on $\Mod_R^\omega$ and algebra objects over the genuine $C_2$-spectrum $NR$ \Viktor{reference}. In particular, a Poincaré structure on $R$ can be identified with the following data:
+    Let $R$ be a ring spectrum. By there is a natural equivalence between symmetric monoidal Poincaré structures on $\Mod_R^\omega$ and certain algebra objects over the genuine $C_2$-spectrum $NR$ \cite[Corollary 5.4.8]{CDHHLMNNSI}. In particular, a Poincaré structure on $R$ can be identified with the following data:
     \begin{itemize}
         \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \CAlg$.
         \item An $R$-algebra $R\rightarrow C$.
@@ -265,6 +270,92 @@ In this section we will define the ring theoretic building blocks of Poincaré s
         \item \Viktor{this should become a remark and go below the definition of calgp}
     \end{itemize}
 \end{definition}
+
+\subsection{Algebras with genuine involution}
+\begin{recollection}\label{rec:left_module_cats}  
+    Assume $ \mathcal{C} $ is a presentable monoidal $ \infty $-category such that the monoidal product $ - \otimes - \colon \mathcal{C} \times \mathcal{C} \to \mathcal{C} $ preserves small colimits separately in each variable. 
+    Then there is an $ \infty $-category $ \LMod(\mathcal{C}) $ \cite[Example 4.2.1.18]{LurHA} whose objects are pairs $ (A, M) $ where $ A $ is an associative algebra object of $ \mathcal{C} $ and $ M $ is a left $ A $-module. 
+    Write $ a, m $ respectively for the canonical forgetful functors $ \LMod(\mathcal{C})\to \mathrm{Alg}(\mathcal{C}) $, $ \LMod(\mathcal{C}) \to \mathcal{C} $ which send $ (A, M) $ to $ A $ and $ M $, resp. 
+    Then $ a $ is a cocartesian fibration \cite[Corollary 4.3.2.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
+
+    The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
+    \begin{equation}
+    \begin{tikzcd}
+        & \mathcal{U} \ar[d] \\
+         \mathrm{Alg}(\mathcal{C}) \ar[r,"\mathrm{mod}"] \ar[ru,"\eta"] & \Cat_\infty   
+    \end{tikzcd}    
+    \end{equation}
+    where $ \mathcal{U} $ is the universal cocartesian fibration. 
+    Now consider the functor $ o \colon \mathcal{U} \to \Cat_\infty $ which sends $ (\mathcal{D}, d \in \mathcal{D}) $ to the undercategory $ \mathcal{D}_{d/-} $. 
+    Define $ \LMod(\mathcal{C})_{*/-} $ to be the cocartesian fibration over $ \mathrm{Alg}(\mathcal{C}) $ classified by $ o \circ \eta \circ \mathrm{mod} $. 
+\end{recollection}
+\begin{variant}
+    Let $ \mathrm{C} $ be as in Recollection \ref{rec:left_module_cats}. 
+    There is a similar construction where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. 
+\end{variant}
+\begin{construction}\label{cons:alg_inv_is_bimod_canonically}
+    Regard $ \mathbb{E}_1\mathrm{Alg}(\Spectra) $ as a category with $ C_2 $-action given by taking the opposite/reverse algebra.  
+    There are functors $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \LMod(\Spectra) $ and $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \BiMod(\Spectra)_{*/-} $ so that $ (a, m) \circ b $ and $ (a, m)\circ b_* $ are (canonically) equivalent to $ (-^e) \otimes(-^ e)^\mathrm{op}, (-)^e $. 
+    Informally, an $ \mathbb{E}_1 $-algebra with involution $ B $ can be regarded as a $ B \otimes B^\op $-module in a canonical way, and there is a canonical $ B \otimes B^\op $-module map $ B \otimes B^\op \to B $. 
+\end{construction}
+\begin{definition}
+    The category of \emph{$\mathbb{E}_1$-algebras with genuine involution} is defined to be the limit of the $\Cat_\infty$-valued diagram 
+    \begin{equation}\label{diagram:E1_alg_gen_involution}
+    \begin{tikzcd}[column sep=small]
+        & \LMod(\Spectra) \ar[dd,"{a,m}"]  & \\
+        & & \LMod\left(\Spectra^{C_2}\right) \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
+        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
+        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
+    \end{tikzcd}
+    \end{equation}
+    where
+    \begin{itemize}
+        \item $ b $ is the functor/section of Construction \ref{cons:alg_inv_is_bimod_canonically} 
+        \item $ U $ is the `underlying' $C_2$-spectrum functor $ \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \to \Spectra^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \simeq \Spectra^{C_2} $ 
+        \item The upper right trapezoid commutes canonically by definition of $ \LMod $ (and the fact that the functors $ a, m $ are given by restriction to subcategories of $ LM^\otimes $). 
+    \end{itemize}
+    Write $ \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_1$-algebras with genuine involution. 
+\end{definition}
+\begin{definition}
+    The category of \emph{$\mathbb{E}_\sigma$-algebras} is defined to be the limit of the $\Cat_\infty$-valued diagram 
+    \begin{equation}\label{diagram:E_sigma_alg}
+    \begin{tikzcd}[column sep=small]
+        & \BiMod(\Spectra)_{*/-} \ar[dd,"{a,m}"]  & \\
+        & & \BiMod\left(\Spectra^{C_2}\right)_{*/-} \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
+        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
+        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b_* \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
+    \end{tikzcd}\,.
+    \end{equation}   
+    Write $ \mathbb{E}_\sigma\mathrm{Alg}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_\sigma$-algebras. 
+\end{definition}
+\begin{variant}
+    Let the base be $ R $ an $ \mathbb{E}_\infty $-algebra or Poincaré ring instead of $ \mathbb{S}^0 $. 
+\end{variant}
+\begin{remarks}
+\begin{enumerate}
+    \item Compare \cite[Corollary 3.10]{AKGH_real_THH}. 
+    \item There are canonical forgetful functors $  \mathbb{E}_\sigma\mathrm{Alg} \to \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} \to \mathbb{E}_1\mathrm{Alg}(\Spectra) $. 
+\end{enumerate}
+\end{remarks}
+\begin{construction}\label{cons:Esigma_alg_to_R_lin_hermitian_cat}
+    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
+    There is a functor $ \left(\Mod_{(-)}^\omega, \Qoppa_{(-)}\right) \colon \mathbb{E}_\sigma\mathrm{Alg}_R \to \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)/-} $. 
+\end{construction}
+\begin{lemma}
+    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
+    The functor of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} is fully faithful. 
+\end{lemma} 
+\begin{proof}
+    
+\end{proof}
+
+Now we observe that given a hermitian object $ (x,q) $ of $ \left(\mathcal{C}, \Qoppa_\mathcal{C}\right) $, its endomorphism algebra admits a canonical lift to a $ \mathbb{E}_\sigma $-algebra. 
+\begin{construction}\label{cons:endomorphism_of_hermitian_obj}
+    There is a functor $ \mathrm{End}(-)\colon \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_\sigma\mathrm{Alg} $ lifting the functor $ \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} $ of \cite[Proposition 3.1.16]{CDHHLMNNSI}. 
+\end{construction}
+\begin{theorem}
+    The functors of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} and \ref{cons:endomorphism_of_hermitian_obj} form an adjoint pair. 
+\end{theorem}
 
 \section{Modules over Poincaré Ring Spectra}
 \label{subsection:modules_over_poincare_ring_spectra}
@@ -350,10 +441,10 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     In particular, the condition that $ \ell(q^\vee), \ell(q) $ make the diagram (\ref{diagram:pnpic_linear_part_condition}) commute is equivalent to the condition that $ \ell(\eta) $ is an equivalence by an adjunction argument. \Lucy{under construction--not sure what to say about the $(-)^{tC_2} $ part yet. }
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop:relative_poincare_cats_basic_properties}
     Let $ (\Mod_R^\omega, \Qoppa_R) $ be a Poincaré ring spectrum. 
     \begin{enumerate}
-        \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is symmetric monoidal. 
+        \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ admits all small limits and colimits, and it inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is a symmetric monoidal left adjoint. 
         \item \label{propitem:classify_R_lin_hermitian_struct} Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra, and regard the category of compact right $ A $-modules $ \Mod_A^\omega $ as left-tensored over $ \Mod_R^\omega $ in the canonical way. 
         Then the pullback
         \begin{equation}
@@ -377,7 +468,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 \end{remark}
 \begin{proof}
     \begin{enumerate}
-        \item 
+        \item The first part of the statement follows from \cite[\S6.1]{CDHHLMNNSI} and \cite[\S4.2.3]{LurHA}. 
         \item Let $ \mathcal{LM}^\otimes $ denote the $ \infty $-operad of \cite[Definition 4.2.1.7]{LurHA}. 
         Our strategy of proof will be similar to that of \cite[\S5.3]{CDHHLMNNSI}: First, we show that an $ \mathcal{LM}^\otimes $-algebra object in $ \Cath $ is equivalent to an $ \mathcal{LM}^\otimes $-algebra object in an operad of functor categories. 
         Then, we use a (suitably coherent version of) the classification of hermitian structures on module categories as categories of modules over the Hill--Hopkins--Ravenel norm \cite[Theorem 3.3.1]{CDHHLMNNSI} to conclude. 
@@ -482,6 +573,19 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         \Lucy{to-do}
         \qedhere
     \end{enumerate}
+\end{proof}
+Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
+\begin{proposition}
+    Let $ (R, R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
+    Then $ \left(\Mod_R^\omega, \Qoppa_R \right) $ corepresents the functor $ \mathrm{Pn}\colon \Catp_R \to \Spaces $.
+\end{proposition}
+\begin{proof}
+    Recall that Proposition \ref{prop:relative_poincare_cats_basic_properties}.\ref{propitem:Rlin_Poincare_cats_is_symm_mon} furnishes an adjoint pair $ \Catp_R \leftrightarrow \Catp $ of functors. 
+    Write $ \overline{\mathcal{C}} = (\mathcal{C},\Qoppa_{\mathcal{C}}) \in \Catpidem_R $. 
+    Then
+    \begin{equation*}
+        \mathrm{Pn}(\mathcal{C}) = \hom_{\Catp}\left((\Spectra^f,\Qoppa^u), U(\overline{\mathcal{C}})\right) \simeq \hom_{\Catp_R}\left(\left(\Mod_R^\omega,\Qoppa_R\right)\otimes(\Spectra^f,\Qoppa^u), \overline{\mathcal{C}}\right) \,. \qedhere
+    \end{equation*}
 \end{proof}
 
 \subsection{Azumaya algebras with genuine involution}
