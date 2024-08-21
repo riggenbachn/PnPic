@@ -76,12 +76,14 @@
 \DeclareMathOperator{\Mod}{Mod} % Modules
 \DeclareMathOperator{\LMod}{LMod} % Left modules
 \DeclareMathOperator{\BiMod}{BiMod} % Bimodules
+\DeclareMathOperator{\Mon}{Mon} % monoids
 \DeclareMathOperator{\Pic}{Pic} % Picard functor
 \DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
 \DeclareMathOperator{\Pn}{Pn} % Poincare space functor
 \DeclareMathOperator{\Spectra}{Sp} % Spectra
 \DeclareMathOperator{\Spaces}{\mathcal{S}} % Spaces
-\DeclareMathOperator{\Mon}{Mon} % monoids
+\DeclareMathOperator{\tee}{t} % tate/transpose
+
 
 \newcommand{\pf}{{\bf Proof. \ }}
 \renewcommand{\epsilon}{\varepsilon}
@@ -221,12 +223,12 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{remark}
     \label{remark:poincare_structures_are_factorizations}
-    By Remark \ref{remark:poincare_ring_spectra_as_nr-algebras}, a Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the natural map $R\rightarrow R^{tC_2}$.
+    By Remark \ref{remark:poincare_ring_spectra_as_nr-algebras}, a Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the Tate Frobenius $R\rightarrow R^{tC_2}$.
 \end{remark}
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_as_algebra_objects}
-    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
+    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(\Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
 \end{remark}
 
 \begin{notation}
@@ -242,12 +244,22 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 \begin{example}
     \label{example:tate_poincare_structure}
     Let $R$ be a ring spectrum equipped with a $C_2$-action via maps of ring spectra. The Tate-valued norm endows $ R^{tC_2} $ with a natural $R$-algebra structure, which induces a Poincaré structure on $R$ given by the factorization $R\xrightarrow{\id} R\rightarrow R^{tC_2}$. 
-    We will call this Poincaré structure the \emph{Tate Poincaré structure on $R$}.
+    We will call this Poincaré structure the \emph{Tate Poincaré structure on $R$} and will denote it by $(R,\Qoppa_R^{\tee})$.
 \end{example}
 
 \begin{example}
     \label{example:universal_poincare_ring_spectrum}
-    The sphere spectrum $\mathbb{S}$ together with the Tate Poincaré structure will be called the \emph{universal Poincaré ring spectrum}. \Viktor{expain why/translate universality statement to poincare ring spectra}
+    The sphere spectrum $\mathbb{S}$ together with the Tate Poincaré structure will be called the \emph{universal Poincaré ring spectrum}. We will denote it by $(\mathbb{S},\Qoppa_u)$. \Viktor{expain why/translate universality statement to poincare ring spectra}
+\end{example}
+
+\begin{remark}
+    \label{remark:factorizations_of_tate_frobenius_through_invariants_induce_splitings_of_forms}
+    Let $(R,\Qoppa)$ be a ring spectrum associated to a factorization $R\rightarrow C\rightarrow R^{tC_2}$. A factorization of the map $C\rightarrow R^{tC_2}$ through $R^{hC_2}$ induces a section of the canonical map $\Qoppa(R)\rightarrow \hom_R(R,C)\simeq C$. In that case, we have a splitting $\Qoppa(R)\simeq R_{hC_2}\oplus C$\Viktor{reference pullback that characterizes all quadratic functors}.
+\end{remark}
+
+\begin{example}
+    \label{example:universal_tate_poincare_splits_at_unit}
+    The Tate Frobenius for the sphere spectrum factors through $\mathbb{S}^{hC_2}$. Therefore, Remark \ref{remark:factorizations_of_tate_frobenius_through_invariants_induce_splittings_of_forms} implies $\Qoppa_u(\mathbb{S})\simeq \mathbb{S}_{hC_2}\oplus \mathbb{S}\simeq \Sigma^\infty(\mathbb{P}_\mathbb{R}^\infty) \oplus \mathbb{S}$.
 \end{example}
 
 \begin{example}
@@ -367,7 +379,7 @@ Let $A$ be a Poincaré ring spectrum. Then $A$ is a commutative algebra object i
 \subsection{The Poincaré Picard Group}
 \label{subsection:the_poincare_picard_group}
 
-Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \EE_\infty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
+Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \Einfty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
 
 \begin{definition}
     \label{definition:poincare_picard_space}
@@ -398,6 +410,25 @@ Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ 
     \end{equation} 
 \end{remark}
 
+\begin{lemma}
+    \label{lemma:connectivity_of_qoppa_at_the_unit}
+    Let $(R,\Qoppa)$ be a connective Poincaré ring spectrum\Viktor{define connectivity and make conditions here precise. As stated this works for R and C connective. More precisely, $conn(\Qoppa(\Sigma^n R))\leq \min(conn(\Sigma^{-2n}R),conn(\Sigma^{-n} C))$}. Then, for any integer $n$, the spectrum $\Qoppa(\Sigma^n R)$ is $(-2n)$-connective.
+\end{lemma}
+
+\begin{proof}
+    This follows from the fiber sequence $$(\Sigma^{-2n} R)_{hC_2}\rightarrow \Qoppa(\Sigma^{n} R)\rightarrow \hom_R(\Sigma^n R,C)\simeq \Sigma^{-n} C.$$\Viktor{write out details}
+\end{proof}
+
+\begin{example}
+    \label{example:picard_of_the_unit}
+    Let $(\mathbb{S},\Qoppa_u)$ be the universal Poincaré ring spectrum from Example \ref{example:universal_poincare_ring_spectrum}. Recall that we have $\pi_0(\Pic(\mathbb{S}))\simeq \mathbf{Z}$. More precisely, invertible spectra are of the form $\mathbb{S}^n$ for some integer $n$. The image of an element of $\pi_0(\Picp(\mathbb{S},\Qoppa_u))$ under the forgetful map $\Picp(\mathbb{S},\Qoppa_u)\rightarrow \Pic(\mathbb{S})$ will thus be given by $\mathbb{S}^n$ for some integer $n$. By Lemma \ref{lemma:connectivity_of_qoppa_at_the_unit}, the spectrum $\Qoppa_u(\mathbb{S}^n)$ is $(-n)$-connective. In particular, the single element in $\pi_0(\Qoppa_u(\mathbb{S}^n))\simeq 0$ corresponds to a unique connected component of $\Omega^\infty\Pn(\mathbb{S},\Qoppa_u)$ that arisis from forms on $\mathbb{S}^n$ when $n$ is a negative integer. The product map on $\Pn(\mathbb{S},\Qoppa_u)$ always pairs this point to the zero element. Therefore, any element in $\Picp(\mathbb{S},\Qoppa_u)$ lies above $\mathbb{S}$. With Remark \ref{example:universal_tate_poincare_splits_at_unit}, we conclude $\pi_0(\Picp(\mathbb{S},\Qoppa_u))\simeq \pi_0(\Qoppa(\mathbb{S}))^\times \simeq(\mathbf{Z}\times\mathbf{Z})^\times\simeq \mathbf{Z}/2\times \mathbf{Z}/2$.
+\end{example}
+
+\begin{remark}
+    \label{remark:poincare_picard_is_2-torsion}
+    The functor $\Picp:\CAlgp\rightarrow \CAlg^{\gp} (\mathcal{S})$ preserves certain structures. Let $A$ be a Poincaré ring spectrum. Since $A$ is a module over $(\mathbb{S},\Qoppa_u)$, the space $\Picp(A)$ is something over $\Picp(\mathbb{S},\Qoppa_u)$.\Viktor{there is no truth in here yet. Work in progress. Noah had an example using Witt vectors which showed that $\pi_0$ does not need to be 2-torsion}
+\end{remark}
+
 Since the forgetful functor $\Pn(A)\to \mathrm{Mod}_A^\omega$ is symmetric monoidal we get an induced map \[ U:\Picp(A)\to \Pic(A)\] of spectra. For a point $(\mathcal{L},q)\in \pi_0(\Picp(A))$ we will refer to $\mathcal{L}:=U(\mathcal{L},q)$ as the \textit{underlying invertible module}.  Note that the $A$-module $A^*$ is (nonequivariantly) isomorphic to $A$ via the involution, and so the fact that $\mathcal{L}\simeq \mathrm{hom}_A(\mathcal{L},A^*)$ forces $\mathcal{L}$ to be $2$-torsion. In particular we get a refined map \[\Picp(A)\to \Pic(A)[2]\] which factors the underlying invertible module map. 
 
 \begin{remark}
@@ -409,6 +440,7 @@ Thus $\pi_0(\Pic(\mathbb{S}_{W(k)}))=0$. On the other hand, we have that the uni
 
 We then have that $\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong W(k)^\times \times W(k)^\times/H$ where $H$ is the subgroup of Poincar{\'e} structures $q$ on $\mathbb{S}_{W(k)}$ which are identified by some automorphism $f:\mathbb{S}_{W(k)}\to \mathbb{S}_{W(k)}$. By the defining property of spherical Witt vectors there is an equivalence $\mathrm{Maps}_{\mathrm{CAlg}}(\mathbb{S}_{W(k)}, \mathbb{S}_{W(k)})\simeq \mathrm{Maps}_{Perf}(k,k)=\mathrm{Gal}(k/\mathbb{F}_2)$ and the action on $W(k)^\times \times W(k)^\times$ is given by $g\in \mathrm{Gal}(k/\mathbb{F}_2)$ acts via $W(g)\times W(g)$. Consequently \[\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong (W(k)^\times \times W(k)^\times) /\mathrm{Gal}(k/\mathbb{F}_2)\] which even for $k=\mathbb{F}_2$ is not zero and in fact not even $2^\infty$-torsion. 
 \end{remark}
+
 
 \subsection{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
