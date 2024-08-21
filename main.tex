@@ -292,7 +292,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
     Assume $ \mathcal{C} $ is a presentable monoidal $ \infty $-category such that the monoidal product $ - \otimes - \colon \mathcal{C} \times \mathcal{C} \to \mathcal{C} $ preserves small colimits separately in each variable. 
     Then there is an $ \infty $-category $ \LMod(\mathcal{C}) $ \cite[Example 4.2.1.18]{LurHA} whose objects are pairs $ (A, M) $ where $ A $ is an associative algebra object of $ \mathcal{C} $ and $ M $ is a left $ A $-module. 
     Write $ a, m $ respectively for the canonical forgetful functors $ \LMod(\mathcal{C})\to \mathrm{Alg}(\mathcal{C}) $, $ \LMod(\mathcal{C}) \to \mathcal{C} $ which send $ (A, M) $ to $ A $ and $ M $, resp. 
-    Then $ a $ is a cocartesian fibration \cite[Corollary 4.3.2.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
+    Then $ a $ is a cocartesian fibration \cite[Corollary 4.2.3.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
 
     The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
     \begin{equation}
@@ -511,7 +511,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         \item \label{prop_item:R_linear_poincare_cats_maps} Let $ \left(\mathcal{C}, \Qoppa_{\mathcal{C}}\right),  \left(\mathcal{D}, \Qoppa_{\mathcal{D}}\right) $ be objects of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Cath) $. 
         Then the forgetful functor induces $ \hom_{\Cath_R} \left(\left(\mathcal{C}, \Qoppa_{\mathcal{C}}\right),  \left(\mathcal{D}, \Qoppa_{\mathcal{D}}\right)\right) \to \hom_{\Catex_R}\left(\mathcal{C}, \mathcal{D}\right) $ on mapping spaces so that the fiber over an $ R $-linear functor $ F \colon \mathcal{C} \to \mathcal{D} $ is the mapping space $ \mathrm{map}_{\Qoppa_R}\left(F_! \Qoppa_\mathcal{C}, \Qoppa_{\mathcal{D}}\right) \simeq \mathrm{map}_{\Qoppa_R}(\Qoppa_{\mathcal{C}}, \Qoppa_{\mathcal{D}} \circ F^\op) $, where the mapping space is taken in $ \Fun_{\Qoppa_R}^q(\mathcal{D}^{\op},\Spectra) $ and $ \Fun_{\Qoppa_R}^q(\mathcal{C}^{\op},\Spectra) $, respectively.\footnote{The proof of \ref{propitem:classify_R_lin_hermitian_struct} in particular shows that $ \Fun^q(\mathcal{C}^{\op},\Spectra) $ is left-tensored over $ \Fun^q(\Mod_R^{\omega,\op},\Spectra) $ in the sense of \cite[Definition 4.2.1.19]{LurHA}, so this makese sense.} 
 
-        \item The symmetric monoidal forgetful functor $ \theta \colon \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\Mod_R^\omega}(\Catex) $ is a (co)cartesian fibration. \Lucy{what is it classified by?}
+        \item The symmetric monoidal forgetful functor $ \theta \colon \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Cath) \to \Mod_{\Mod_R^\omega}(\Catex) $ is a (co)cartesian fibration. \Lucy{what is it classified by?}
     \end{enumerate}
 \end{proposition}
 \begin{remark}
@@ -640,7 +640,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         Now define $ \Qoppa_{\mathcal{D}} \colon \mathcal{D}^\op \to \Spectra $ to be the left Kan extension of $ \Qoppa_{\mathcal{C}} $ along $ F^\op $. 
         By the proof of \ref{prop_item:R_linear_poincare_cats_maps}, we see that the image of $ \Qoppa_{\mathcal{C}} $ under $ F_! $ is a lift of $ \left(\mathcal{D}, \Qoppa_{\mathcal{D}}\right) $ to an object of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Cath) $ and $ (f, \eta) $ to a morphism in $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Cath) $. 
 
-        Now we must show that for all choices $ \Qoppa_{\mathcal{D}}' $ of an $ R $-linear Hermitian structure on $ \mathcal{D} $, precomposition with $ F_! $ induces a pullback square
+        Now by Lemma 2.4.4.1 and the locally cocartesian version of Proposition 2.4.1.10 of \cite{HTT}, we must show that for all choices $ \Qoppa_{\mathcal{D}}' $ of an $ R $-linear Hermitian structure on $ \mathcal{D} $, precomposition with $ F_! $ induces a pullback square
         \begin{equation}
         \begin{tikzcd}
             \hom_{\Cath_R}\left(\left(\mathcal{D}, \Qoppa_{\mathcal{D}}\right), \left(\mathcal{D}, \Qoppa_{\mathcal{D}}'\right)\right) \ar[d] \ar[r] & \hom_{\Cath_R}\left(\left(\mathcal{C}, \Qoppa_{\mathcal{C}}\right), \left(\mathcal{D}, \Qoppa_{\mathcal{D}}'\right)\right) \ar[d] \\
