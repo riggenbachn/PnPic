@@ -193,5 +193,33 @@ What does a Poincaré structure on $ \Mod_A^\omega $ mean `geometrically' for $ 
     \item The bounded derived category of $ \alpha $-twisted sheaves on $ X $ includes as one `piece' of a semiorthogonal decomposition on $ D^b_{\mathrm{coh}} $ of the corresponding Brauer-Severi scheme (see Theorem 5.1 \href{https://arxiv.org/abs/math/0511497}{here})
 \end{itemize}
 
+\section{Desperate Flailing}
+
+This section is a cronical of my thoughts about $\mathbb{G}_m^\Qoppa$.
+\paragraph{Goal} The goal is to build a Poincar{\'e} ring $\mathbb{G}_{m}^\Qoppa:=(\mathrm{Mod}_R, \Qoppa_R)$  such that $B\mathbb{G}_m^\Qoppa(\underline{S}) = \Picp(\underline{S})$ for any Poincar{\'e} ring $\underline{S}$.
+\begin{lemma}
+Let $\underline{S}$ be a Poincar{\'e} ring. Then $\pi_0(\mathrm{Aut}_{\mathrm{Pn}(\mathrm{Mod}_S)}(S,u))=\{s\in \pi_0(S)^\times | s=1 \textrm{ in }\pi_0(S^{C_2})\}$.
+\end{lemma}
+\begin{proof}
+Since the functor $\mathrm{Pn}(\mathrm{Mod}_S)\to \mathrm{Mod}_S$ is conservative it follows that an element of $\pi_0(\mathrm{Aut}_{\mathrm{Pn}(\mathrm{Mod}_S)}(S,u))$ must have underlying map an element of $\pi_0\mathrm{Aut}(S)=\pi_0(S)^\times$. Then in order for $s\in \pi_0(S)^\times$ to induce a map $(S,u)\to (S,u)$, the induced map $s^*:S^{C_2}\to S^{C_2}$ must satisfy $s^*(u)=u$. The pullback is given by multiplication by $s$, so this requirement translates into $s$ being the unit, as desired.
+\end{proof}
+
+The problem I thought existed maybe doesn't. Here is a candidate construction:
+
+\begin{construction}
+Define $R$ to be the $\mathbb{E}_\infty$ ring given by $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z\}}\mathbb{S}$ where the map $\mathbb{S}\{z\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by the map $z\mapsto xy$, and the map $\mathbb{S}\{z\}\to \mathbb{S}$ is induced by $z\mapsto 1$. We can give $R$ an $\mathbb{E}_\infty$ ring structure in $\mathrm{Sp}^{BC_2}$ by taking the trivial action on $\mathbb{S}\{z\}$ and $\mathbb{S}$, and taking the action induced by $x\mapsto y$ and $y\mapsto x$ on $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$. Thus in $\mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ the ring $R$ corepresents the functor $S\mapsto \{s\in \pi_0(S)^\times| s\sigma(s)=1\}$.
+
+Now take $\underline{R}$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described in the previous paragraph and geometric fixed points $R^{\phi C_2}=\mathbb{S}$ and the map $R^{\phi C_2}\to R^{tC_2}$ given by the unit map. Endowing $R^{\phi C_2}$ with the $R$-module structre given by $x,y\mapsto 1$, it remains to show that the unit map $R^{\phi C_2}\to R^{tC_2}$ factors the Tate valued Frobenius $R\to R^{tC_2}$ in order to promote $\underline{R}$ to a Poincar{\'e} ring. By construction of $R$ it is then enough to show that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0(R^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0(R^{tC_2})$. These areequal to $1$ in $\pi_0(R^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $R^{tC_2}$ is a modules over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$. 
+\end{construction}
+
+Now consider another Poincar{\'e} ring $\underline{S}$. We then have that maps $\pi_0(\mathrm{Maps}(\underline{R},\underline{S}))$ is the data of a unit $s\in \pi_0(S)^\times$, a path $s\sigma(s)\to 1$ in $\Omega^\infty S$, and paths $x,y\to 1$ in $\Omega^\infty S^{\phi C_2}$.  This then agrees with $\mathbb{G}_m^\Qoppa$ by the following lemma.
+
+\begin{lemma}
+Let $S\in \mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ and $s\in \pi_0(S)^\times$. Then $s\sigma(s)=1$ in $\pi_0(S)$ if and only if $(s\otimes s)^*$ acts by $1$ on $\pi_0(S^{hC_2})=\pi_0(\mathrm{Hom}_{S\otimes S}(S\otimes S, S)^{hC_2})$.
+\end{lemma}
+\begin{proof}
+The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an $S$-bimodule map. Now suppose that $s\sigma(s)=1$ in  $S$. Then before taking homotopy fixed points the induced map $s^*=id$ because $S$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
+\end{proof}
+
 \printbibliography
 \end{document}
