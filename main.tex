@@ -597,7 +597,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         \end{tikzcd}
         \end{equation*}
         commute. 
-        The maps $ p' $ and $ p'' $ assemble to give a map $ p''' $ making the diagram 
+        The maps $ p' $ and $ p'' $ assemble to give a map $ p''' := p' \sqcup_p p'' $ making the diagram 
         \begin{equation*}
         \begin{tikzcd}[arrows={crossing over},row sep=large]
              \{0\} \times \Delta^\op \ar[rr,"p"]\ar[d] &  &\Cath \ar[d,"f"] \\
@@ -647,7 +647,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
             \hom_{\Catex_R}\left(\mathcal{D}, \mathcal{D}\right) \ar[r] & \hom_{\Catex_R}\left(\mathcal{C}, \mathcal{D} \right)
         \end{tikzcd}\,.
         \end{equation}
-        By \ref{prop_item:R_linear_poincare_cats_maps}, the fibers of the vertical maps are equivalent, hence $ (f, \eta) $ is locally $ \theta $-cocartesian. %\Lucy{to-do}
+        By \ref{prop_item:R_linear_poincare_cats_maps}, $ F_! $ induces equivalences on the fibers of the vertical maps, hence $ (f, \eta) $ is locally $ \theta $-cocartesian. %\Lucy{to-do}
         The locally $ \theta $-cocartesian maps are manifestly closed under composition, hence we are done.        \qedhere
     \end{enumerate}
 \end{proof}
