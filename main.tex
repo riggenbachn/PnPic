@@ -257,7 +257,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 \end{example}
 
 \begin{remark}
-    \label{remark:factorizations_of_tate_frobenius_through_invariants_induce_splitings_of_forms}
+    \label{remark:factorizations_of_tate_frobenius_through_invariants_induce_splittings_of_forms}
     Let $(R,\Qoppa)$ be a ring spectrum associated to a factorization $R\rightarrow C\rightarrow R^{tC_2}$. A factorization of the map $C\rightarrow R^{tC_2}$ through $R^{hC_2}$ induces a section of the canonical map $\Qoppa(R)\rightarrow \hom_R(R,C)\simeq C$. In that case, we have a splitting $\Qoppa(R)\simeq R_{hC_2}\oplus C$\Viktor{reference pullback that characterizes all quadratic functors}.
 \end{remark}
 
@@ -423,17 +423,17 @@ Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ 
     This follows from the fiber sequence $$(\Sigma^{-2n} R)_{hC_2}\rightarrow \Qoppa(\Sigma^{n} R)\rightarrow \hom_R(\Sigma^n R,C)\simeq \Sigma^{-n} C.$$\Viktor{write out details}
 \end{proof}
 
-\begin{example}
-    \label{example:picard_of_the_unit}
-    Let $(\mathbb{S},\Qoppa_u)$ be the universal Poincaré ring spectrum from Example \ref{example:universal_poincare_ring_spectrum}. Recall that we have $\pi_0(\Pic(\mathbb{S}))\simeq \mathbf{Z}$. More precisely, invertible spectra are of the form $\mathbb{S}^n$ for some integer $n$. The image of an element of $\pi_0(\Picp(\mathbb{S},\Qoppa_u))$ under the forgetful map $\Picp(\mathbb{S},\Qoppa_u)\rightarrow \Pic(\mathbb{S})$ will thus be given by $\mathbb{S}^n$ for some integer $n$. By Lemma \ref{lemma:connectivity_of_qoppa_at_the_unit}, the spectrum $\Qoppa_u(\mathbb{S}^n)$ is $(-n)$-connective. In particular, the single element in $\pi_0(\Qoppa_u(\mathbb{S}^n))\simeq 0$ corresponds to a unique connected component of $\Omega^\infty\Pn(\mathbb{S},\Qoppa_u)$ that arisis from forms on $\mathbb{S}^n$ when $n$ is a negative integer. The product map on $\Pn(\mathbb{S},\Qoppa_u)$ always pairs this point to the zero element. Therefore, any element in $\Picp(\mathbb{S},\Qoppa_u)$ lies above $\mathbb{S}$. With Remark \ref{example:universal_tate_poincare_splits_at_unit}, we conclude $\pi_0(\Picp(\mathbb{S},\Qoppa_u))\simeq \pi_0(\Qoppa(\mathbb{S}))^\times \simeq(\mathbf{Z}\times\mathbf{Z})^\times\simeq \mathbf{Z}/2\times \mathbf{Z}/2$.
-\end{example}
-
 \begin{remark}
     \label{remark:poincare_picard_is_2-torsion}
     The functor $\Picp:\CAlgp\rightarrow \CAlg^{\gp} (\mathcal{S})$ preserves certain structures. Let $A$ be a Poincaré ring spectrum. Since $A$ is a module over $(\mathbb{S},\Qoppa_u)$, the space $\Picp(A)$ is something over $\Picp(\mathbb{S},\Qoppa_u)$.\Viktor{there is no truth in here yet. Work in progress. Noah had an example using Witt vectors which showed that $\pi_0$ does not need to be 2-torsion}
 \end{remark}
 
 Since the forgetful functor $\Pn(A)\to \mathrm{Mod}_A^\omega$ is symmetric monoidal we get an induced map \[ U:\Picp(A)\to \Pic(A)\] of spectra. For a point $(\mathcal{L},q)\in \pi_0(\Picp(A))$ we will refer to $\mathcal{L}:=U(\mathcal{L},q)$ as the \textit{underlying invertible module}.  Note that the $A$-module $A^*$ is (nonequivariantly) isomorphic to $A$ via the involution, and so the fact that $\mathcal{L}\simeq \mathrm{hom}_A(\mathcal{L},A^*)$ forces $\mathcal{L}$ to be $2$-torsion. In particular we get a refined map \[\Picp(A)\to \Pic(A)[2]\] which factors the underlying invertible module map. 
+
+\begin{example}
+    \label{example:picard_of_the_unit}
+    Let $(\mathbb{S},\Qoppa_u)$ be the universal Poincaré ring spectrum from Example \ref{example:universal_poincare_ring_spectrum}. The only $2$-torsion element of $\Pic(\mathbb{S})\simeq \mathbf{Z}$ is $\mathbb{S}$. Therefore, any element in $\Picp(\mathbb{S},\Qoppa_u)$ lies above $\mathbb{S}$. With Remark \ref{example:universal_tate_poincare_splits_at_unit}, we conclude $\pi_0(\Picp(\mathbb{S},\Qoppa_u))\simeq \pi_0(\mathbb{S}_{hC_2}\oplus \mathbb{S}^\times)^\times \simeq(\mathbf{Z}\times\mathbf{Z/2})^\times\simeq \mathbf{Z}/2\times \mathbf{Z}/2$. 
+\end{example}
 
 \begin{remark}
 One might hope that the map $\Picp(A)\to \Pic(A)[2]$ is close to an equivalence. This however is quite fare from being true. Let $k$ be a finite field of characteristic $2$, and let $\mathbb{S}_{W(k)}$ be the spherical Witt vectors on $k$ in the sense of \cite[Example 5.2.7]{lurie-elliptic-2}. Then by \cite[Example 3.4]{Nikolaus-Frob} we know that $\mathbb{S}_{W(k)}$ must satisfy that the map $\phi_2:\mathbb{S}_{W(k)}\to \mathbb{S}_{W(k)}^{tC_2}$ is an equivalence where the action is trivial.
