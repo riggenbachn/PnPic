@@ -83,6 +83,7 @@
 \DeclareMathOperator{\Spectra}{Sp} % Spectra
 \DeclareMathOperator{\Spaces}{\mathcal{S}} % Spaces
 \DeclareMathOperator{\tee}{t} % tate/transpose
+\DeclareMathOperator{\gmq}{\mathbb{G}_m^\Qoppa}
 
 
 \newcommand{\pf}{{\bf Proof. \ }}
@@ -444,6 +445,38 @@ Thus $\pi_0(\Pic(\mathbb{S}_{W(k)}))=0$. On the other hand, we have that the uni
 
 We then have that $\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong W(k)^\times \times W(k)^\times/H$ where $H$ is the subgroup of Poincar{\'e} structures $q$ on $\mathbb{S}_{W(k)}$ which are identified by some automorphism $f:\mathbb{S}_{W(k)}\to \mathbb{S}_{W(k)}$. By the defining property of spherical Witt vectors there is an equivalence $\mathrm{Maps}_{\mathrm{CAlg}}(\mathbb{S}_{W(k)}, \mathbb{S}_{W(k)})\simeq \mathrm{Maps}_{Perf}(k,k)=\mathrm{Gal}(k/\mathbb{F}_2)$ and the action on $W(k)^\times \times W(k)^\times$ is given by $g\in \mathrm{Gal}(k/\mathbb{F}_2)$ acts via $W(g)\times W(g)$. Consequently \[\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong (W(k)^\times \times W(k)^\times) /\mathrm{Gal}(k/\mathbb{F}_2)\] which even for $k=\mathbb{F}_2$ is not zero and in fact not even $2^\infty$-torsion. 
 \end{remark}
+
+In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, where $\mathbb{G}_m$ is the spectral algebraic group scheme sending a ring spectrum $E$ to the spectrum of $E$-linear equivalences of $E$ $\mathrm{gl}_1E:=\mathrm{Aut}_E(E)$.\footnote{Normally the automorphism space of an object is only $\mathbb{A}_\infty$, but as the unit in a symmetric monoidal category, the automorphisms of $E$inherit a canonical and in fact functorial $\mathbb{E}_\infty$ structure and this construction makes sense.} Equivalently $\mathbb{G}_m$ is the affine groupscheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homtopy groups of $\pic(A)$ with those of $A$. We will spend the rest of this section on establishing such an equivalence in the Poincare setting.
+
+\begin{construction}
+	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincare ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$, This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structre given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
+	
+	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a modules over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$.
+\end{construction}
+
+\begin{theorem}
+	There is a natural equivalence of \[\Omega \Picp(-)\simeq \gmq\] of functors on Poincar{\'e} rings.
+\end{theorem}
+\begin{proof}
+	This amounts to identifying the space $\mathrm{Aut}_{\mathrm{Pn(\mathrm{Mod}_A)}}(A,u)$ functorially, where $(A,u)$ is the Poincar{\'e} object $A$ with bilinear form given by the unit map $\mathbb{S}\to \Qoppa_A(A)$. Note that any automorphism of Hermetian objects will automatically be Poincar{\'e} and so we may instead describe the automorphisms as a Hermetian object. We then have that $\mathrm{He}(\mathrm{Mod}_A)\to \mathrm{Mod}_A$ is a cocartesian fibration by definition, and classified by the functor which takes a module $M$ to the groupoid $\Omega^\infty \Qoppa_A(M)$. Thus we get that $\mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A)}((A,u))$ is exactly the fiber of the map \[\mathrm{Aut}_{\mathrm{Mod}_A}(A)\to \Qoppa_A(A)\] or in other words an automorphism $(A,u)\to (A,u)$ is the data of an automorphism $a\in \mathrm{Aut}(A)$ together with a path $q:u\mapsto a^*u$ in $\Omega^{\infty +1}\Qoppa_A(A)$.  
+	
+	There is a natural transformation $\gmq(-)\to \Omega\Picp(-)$ given as follows: we get a map $\gmq((\mathrm{Mod}_A, \Qoppa_A))\to \mathrm{Aut}_A(A)$ given by forgetting the Poincar{\'e} structure everywhere, and so it is enough to see that on $\pi_0$ the automorphisms of $A$ coming from $\gmq$ preserve $u$. By using the linear and quadratic decomposition of $\Qoppa_A$, for an element $a\in \pi_0(A)^\times$ send $u$ to $u$ is must be sent to $1\in \pi_0(A^{\phi C_2})$ and must act by $1$ on $A^{hC_2}$. By the following Lemma this second condition is equivalent to $a\sigma(a)\in \pi_0(A)^\times$ being equal to $1$, but then these two conditions are exactly describing a map out of $\gmq$ as desired. 
+	
+	Consequently we have a comparison map $\gmq(\mathrm{Mod}_A, \Qoppa_A)\to \Omega\Picp(\mathrm{Mod}_A,\Qoppa_A)$, and the above argument in fact shows that this map is an equivalence on $\pi_0$. To finish the argument, note that the pushout description of $\gmq$ induces a pullback of mapping spaces 
+	\[
+	\begin{tikzcd}
+		\gmq(\mathrm{Mod}_A, \Qoppa_A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp}^{C_2})}(\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}, A)\simeq \mathrm{gl}_1(A)\ar[d]\\
+		* \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp^{C_2}})}(\mathbb{S}\{z\},A)\simeq \Omega^\infty\Qoppa_A(A) 
+	\end{tikzcd}
+	\] which finishes the proof.
+\end{proof}
+
+\begin{lemma}
+	Let $A\in \mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ and $s\in \pi_0(A)^\times$. Then $a\sigma(a)=1$ in $\pi_0(A)$ if and only if $(a\otimes a)^*$ acts by $1$ on $\pi_0(A^{hC_2})=\pi_0(\mathrm{Hom}_{A\otimes A}(A\otimes A, A)^{hC_2})$.
+\end{lemma}
+\begin{proof}
+	The only if direction follows from the fact that the evaluation map $\mathrm{Hom}_{A\otimes A}(A\otimes A, A)\to A$ is an $A\otimes A$-module map. Now suppose that $a\sigma(a)=1$ in  $A$. Then before taking homotopy fixed points the induced map $a^*=id$ because $A$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
+\end{proof}
 
 
 \subsection{The Poincaré Brauer Group}
