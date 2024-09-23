@@ -27,6 +27,7 @@
 %\usepackage{xspace}		
 %\usepackage{fancyhdr}
 \usepackage{enumerate}
+\usepackage{enumitem}
 %\usepackage{mathrsfs}
 \usepackage{graphicx}
 \usepackage{soul,color}
@@ -60,6 +61,7 @@
 \DeclareMathOperator{\Br}{Br} % Brauer functor
 \DeclareMathOperator{\Brp}{Br^p} % Poincare Brauer functor
 \DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
+\DeclareMathOperator{\Alg}{Alg}
 \DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
 \DeclareMathOperator{\Cat}{Cat} % Categories
 \DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % stable categories with exact functors
@@ -109,6 +111,7 @@
 \newcommand{\perf}{\mathrm{Perf}}
 \newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\Associnv}{\mathrm{Assoc}_\sigma}
 
 %Theorem Environments ----------------------------------------------------------------
 \newtheorem{theorem}{Theorem}[section]
@@ -221,5 +224,72 @@ Let $S\in \mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ and $s\in \pi_0(S)^\times$. Then $s
 The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an $S$-bimodule map. Now suppose that $s\sigma(s)=1$ in  $S$. Then before taking homotopy fixed points the induced map $s^*=id$ because $S$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
 \end{proof}
 
+\section{Modules with genuine involution} 
+\begin{remark}
+    [Lucy] I'm just going to put drafts of stuff pertaining to hermitian modules\Lucy{or whatever we want to keep calling these} here. 
+    Eventually when it gets to be more complete, I will hopefully move this entire section over to the main file. 
+\end{remark}
+\paragraph{Meta-commentary} There are three things we want to do: 
+\begin{enumerate}[label=(\alph*)]
+    \item Define a category of `bimodules with involution over algebras with anti-involution' equipped with a forgetful functor $ \Theta \colon \mathrm{BMod}_{\mathrm{inv}}(-) \to \EE_1\Alg(-)^{hC_2} $. 
+    \item Show that $ \Theta $ is a coCartesian fibration. 
+    For this, it suffices to show that it is a \emph{Cartesian} fibration and that it satisfies the hypotheses of \cite[Corollary 5.2.2.5]{HTT}
+    \begin{itemize}
+        \item I used to think that we could obtain this by `bootstrapping' a result from Higher Algebra, plus some facts about assembly. 
+        This doesn't seem to be working, so I'm just going to try to do this directly (imitating certain aspects of Chapter 4 of higher algebra.) 
+    \end{itemize}
+    \item Show that the formula for the cocartesian pushforward along a map $ A \to B $ is something like $ - \otimes \left(B \otimes B^\op \right) \otimes_{B\otimes B^\op} B $. 
+    \begin{itemize}
+        \item In Higher Algebra, the formula for the cocartesian pushforward is proven in \cite[\S4.6]{LurHA}; in particular, this is in the section on duality. 
+        In particular, see Proposition 4.6.2.17 and the paragraph immediately preceding this.  
+        \item I don't know how to do this yet--while (a) and (b) are not useful if I can't show (c), I can't suss out the feasibility of (c) without (a) and (b) already in place. 
+    \end{itemize}
+\end{enumerate}
+
+\begin{definition}\Lucy{This is just an imitation of \cite[Definition 4.1.1.1]{LurHA}, modified in accordance with ideas from \S5.4.2. }
+    Define a colored operad $ \Associnv $ as follows:
+    \begin{enumerate}[label=(\roman*)]
+        \item The colored operad has a single object, which we denote by $ \mathfrak{a} $. 
+        \item For every finite set $ I $, the set of operations $ \mathrm{Mul}_{\Associnv}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq \mathcal{L}I \times \{\pm 1\}^I $, where $ \mathcal{L}I $ is the set of linear orderings on $ I $ and an element of $ \{\pm 1\}^I $ is a function $ I \to \{\pm 1 \} $. 
+        \item Suppose given a map of finite sets $ \alpha \colon I \to J $, together with operations $ (\preceq_j, f_j \colon I_j \to \{\pm 1\}) \in \mathrm{Mul}_{\Associnv}\left(\left\{\mathfrak{a}_i\right\}_{\alpha(i)=j}, \mathfrak{a}\right) $ and $ (\preceq_J, g \colon J \to \{\pm 1\}) \in \mathrm{Mul}_{\Associnv}\left(\left\{\mathfrak{a}_j\right\}_{j\in J}, \mathfrak{a}\right) $. 
+        Define a linear ordering on the set $ I $ as follows: $ i \leq i' $ if $ \alpha(i) \preceq_J \alpha(i') $ or $ \alpha(i) = \alpha(i')= j $ and $ i \preceq_j i' $ and $ g(j)= +1 $ or $ \alpha(i) = \alpha(i')= j $ and $ i \succeq_j i' $ and $ g(j)= -1 $. 
+        Finally, define a function 
+        \begin{align*}
+            I &\to \{\pm 1\} \\
+            i &\mapsto f_{\alpha(i)} (i) \cdot  g(\alpha(i))\,,
+        \end{align*}  
+        where the multiplication on $ \{\pm 1\} $ is the usual one. 
+    \end{enumerate} 
+\end{definition}
+\begin{definition}
+    Let $ \Associnv^\otimes $ denote the associated $ \infty $-operad (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}). 
+\end{definition} 
+\begin{remark}
+    Unwinding definitions
+    \begin{itemize}
+        \item Objects $ \Associnv^\otimes $ are finite pointed sets $ \langle n \rangle \in \mathrm{Fin}_* $ 
+        \item Morphisms $ \langle m \rangle \to \langle n \rangle $ consist of 
+        \begin{itemize}
+            \item $ \alpha \colon \langle m \rangle \to \langle n \rangle $ a map of finite pointed sets
+            \item for each $ i \in \langle n \rangle^\circ $, a linear ordering $ \preceq_i $ on the inverse image $ \alpha^{-1}(\{i\}) $ 
+            \item a map of sets $ s \colon \langle m \rangle \to \{\pm 1\} $
+        \end{itemize}
+        \item For each pair of morphisms
+        \begin{equation*}
+             \left(\beta \colon \langle \ell \rangle \to \langle m \rangle, \preceq_j, s\right) \qquad \left(\alpha \colon \langle m \rangle \to \langle n \rangle, \preceq_i, s\right) \,,
+        \end{equation*}
+        the composite is the triple $ \alpha \circ \beta, \preceq_j'' $ where $ \preceq_j'' $ is the ordering on $ (\alpha \circ \beta)^{-1}(\{i\}) $ so that if $ a,b \in \langle \ell \rangle $ so that $ \alpha (\beta(a)) = \alpha(\beta(b)) $, then $ a \preceq_j'' b $ if $ \beta(a) \preceq_i \beta(b) $ or $ \beta(a) =_i \beta(b) = i $ and $ a \preceq_i b $ if $ s(i) = 1 $ or $ a \succeq_i b $ if $ s(i) = -1 $. 
+        \Lucy{Note that when $ s, t$ are identically zero, the resulting order $ \preceq_j''$ agrees with the lexicographic order defined in \cite[Remark 4.1.1.4]{LurHA}.}  
+    \end{itemize}
+\end{remark}
+\begin{definition}\Lucy{not sure about this/also a bit confused about $\mathrm{Cut}$...return to this later.}
+    Define a category $ \Delta_\sigma $ 
+    \begin{itemize}
+        \item objects are pairs $ ([n], s \colon \{0, 1, \ldots, n\} \to \{\pm 1\}) $
+        \item a morphism from $ ([n], s \colon \{0, 1, \ldots, n\} \to \{\pm 1\}) $ to $ ([m], t \colon \{0, 1, \ldots, m\} \to \{\pm 1\}) $ is an order-preserving map $ [n] \to [m] $ in $ \Delta $. 
+    \end{itemize}
+\end{definition}
+
 \printbibliography
+
 \end{document}
