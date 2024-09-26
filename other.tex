@@ -112,6 +112,7 @@
 \newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
 \newcommand{\op}{\mathrm{op}}
 \newcommand{\Associnv}{\mathrm{Assoc}_\sigma}
+\newcommand{\BMinv}{\mathrm{BM}_\sigma} % for `hermitian' bimodules; made a macro so we can change this later easily. 
 
 %Theorem Environments ----------------------------------------------------------------
 \newtheorem{theorem}{Theorem}[section]
@@ -238,7 +239,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item I used to think that we could obtain this by `bootstrapping' a result from Higher Algebra, plus some facts about assembly. 
         This doesn't seem to be working, so I'm just going to try to do this directly (imitating certain aspects of Chapter 4 of higher algebra.) 
     \end{itemize}
-    \item Show that the formula for the cocartesian pushforward along a map $ A \to B $ is something like $ - \otimes \left(B \otimes B^\op \right) \otimes_{B\otimes B^\op} B $. 
+    \item Show that the formula for the cocartesian pushforward along a map $ A \to B $ in $ \EE_1\Alg(-)^{hC_2} $ is something like $ - \otimes_{A \otimes A^\op} \left(B \otimes B^\op \right) \otimes_{B\otimes B^\op} B $. 
     \begin{itemize}
         \item In Higher Algebra, the formula for the cocartesian pushforward is proven in \cite[\S4.6]{LurHA}; in particular, this is in the section on duality. 
         In particular, see Proposition 4.6.2.17 and the paragraph immediately preceding this.  
@@ -246,7 +247,8 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     \end{itemize}
 \end{enumerate}
 
-\begin{definition}\Lucy{This is just an imitation of \cite[Definition 4.1.1.1]{LurHA}, modified in accordance with ideas from \S5.4.2. }
+\begin{definition}\label{defn:operad_monoid_with_involution}
+\Lucy{This is just an imitation of \cite[Definition 4.1.1.1]{LurHA}, modified in accordance with ideas from \S5.4.2. }
     Define a colored operad $ \Associnv $ as follows:
     \begin{enumerate}[label=(\roman*)]
         \item The colored operad has a single object, which we denote by $ \mathfrak{a} $. 
@@ -272,22 +274,51 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \begin{itemize}
             \item $ \alpha \colon \langle m \rangle \to \langle n \rangle $ a map of finite pointed sets
             \item for each $ i \in \langle n \rangle^\circ $, a linear ordering $ \preceq_i $ on the inverse image $ \alpha^{-1}(\{i\}) $ 
-            \item a map of sets $ s \colon \langle m \rangle \to \{\pm 1\} $
+            \item a map of sets $ s \colon  \alpha^{-1}\left(\langle m \rangle^\circ\right) \to \{\pm 1\} $
         \end{itemize}
         \item For each pair of morphisms
         \begin{equation*}
-             \left(\beta \colon \langle \ell \rangle \to \langle m \rangle, \preceq_j, s\right) \qquad \left(\alpha \colon \langle m \rangle \to \langle n \rangle, \preceq_i, s\right) \,,
+             \left(\beta \colon \langle \ell \rangle \to \langle m \rangle, \preceq_j, s\right) \qquad \left(\alpha \colon \langle m \rangle \to \langle n \rangle, \preceq_i, t\right) \,,
         \end{equation*}
-        the composite is the triple $ \alpha \circ \beta, \preceq_j'' $ where $ \preceq_j'' $ is the ordering on $ (\alpha \circ \beta)^{-1}(\{i\}) $ so that if $ a,b \in \langle \ell \rangle $ so that $ \alpha (\beta(a)) = \alpha(\beta(b)) $, then $ a \preceq_j'' b $ if $ \beta(a) \preceq_i \beta(b) $ or $ \beta(a) =_i \beta(b) = i $ and $ a \preceq_i b $ if $ s(i) = 1 $ or $ a \succeq_i b $ if $ s(i) = -1 $. 
-        \Lucy{Note that when $ s, t$ are identically zero, the resulting order $ \preceq_j''$ agrees with the lexicographic order defined in \cite[Remark 4.1.1.4]{LurHA}.}  
+        the composite is the triple $ \left(\alpha \circ \beta, \preceq_j'', u \right) $ where $ \preceq_j'' $ is the ordering on $ (\alpha \circ \beta)^{-1}(\{i\}) $ so that if $ a,b \in \langle \ell \rangle $ so that $ \alpha (\beta(a)) = \alpha(\beta(b)) $, then $ a \preceq_j'' b $ if $ \beta(a) \preceq_i \beta(b) $ or $ \beta(a) =_i \beta(b) = i $ and $ a \preceq_i b $ if $ s(i) = 1 $ or $ a \succeq_i b $ if $ s(i) = -1 $. 
+        Finally $ u (l) = s(l) \cdot t(\beta(l))  $. 
+        \Lucy{Note that when $ s, t$ are identically one, the resulting order $ \preceq_j''$ agrees with the lexicographic order defined in \cite[Remark 4.1.1.4]{LurHA}.}  
     \end{itemize}
 \end{remark}
-\begin{definition}\Lucy{not sure about this/also a bit confused about $\mathrm{Cut}$...return to this later.}
+\begin{definition}
     Define a category $ \Delta_\sigma $ 
     \begin{itemize}
-        \item objects are pairs $ ([n], s \colon \{0, 1, \ldots, n\} \to \{\pm 1\}) $
-        \item a morphism from $ ([n], s \colon \{0, 1, \ldots, n\} \to \{\pm 1\}) $ to $ ([m], t \colon \{0, 1, \ldots, m\} \to \{\pm 1\}) $ is an order-preserving map $ [n] \to [m] $ in $ \Delta $. 
+        \item objects are pairs $ ([n], s \colon \{1, \ldots, n\} \to \{\pm 1\}) $ \Lucy{maybe better to write $ s $ as a function defined on the set of \emph{morphisms} $ i < i+1 $ in $[n]$.}
+        \item a morphism from $ ([n], s \colon \{1, \ldots, n\} \to \{\pm 1\}) $ to $ ([m], t \colon \{0, 1, \ldots, m\} \to \{\pm 1\}) $ is an order-preserving map $ [n] \to [m] $ in $ \Delta $. 
     \end{itemize}
+\end{definition}
+\begin{construction}
+    Define a functor $ \mathrm{Cut} \colon \Delta_\sigma^\op \to \Associnv^\otimes $: 
+    \begin{itemize}
+        \item For each $ ([n],s) $, we have $ \mathrm{Cut}([n],s) = \langle n \rangle $. 
+        \item Given a morphism $ \alpha\colon ([n],s) \to ([m], t) $, the associated morphism $ \mathrm{Cut} ([n],s) \to \mathrm{Cut}([m], t) $ consists of
+        \begin{itemize}
+            \item On underlying finite pointed sets $ \langle m\rangle \to \langle n \rangle $, $ \mathrm{Cut} $ agrees with that appearing in \cite[Construction 4.1.2.9]{LurHA}
+            \item Identifying the cut $ \{k \mid k< j\} \sqcup \{k \mid k \geq j \} $ with the morphism $ j-1 < j $, we may regard $ s \colon \langle n\rangle^\circ \to \{\pm 1\} $ and likewise $ t \colon \langle m\rangle^\circ \to \{\pm 1\} $. 
+            Define $ u\colon \mathrm{Cut}(\alpha)^{-1}\left(\langle n\rangle^\circ\right) \to \{\pm 1\} $ to be the unique function so that $ u(j)t(j) = s(\mathrm{Cut}(\alpha)(j)) $. 
+            % This means that $ \alpha^{-1}(\{k \mid k< j\}) $ and $ \alpha^{-1}(\{k \mid k \geq j\}) $ 
+        \end{itemize}
+    \end{itemize}
+\end{construction}
+\begin{lemma}
+    The functor $ \mathrm{Cut} \colon \Delta^\op_\sigma \to \Associnv^\otimes $ exhibits $ \Delta^\op_\sigma $ as an approximation to the $ \infty $-operad $ \Associnv^\otimes $. 
+    \Lucy{I think the proof of this lemma is not too different from the proof of Proposition 4.1.2.11 of \cite{LurHA}; the point here is just to unravel the definitions of locally coCartesian and Cartesian; the morphisms in $ \Delta^\op_\sigma $ are a little more complicated than $ \Delta^\op $, but not by much. } 
+\end{lemma}
+
+\begin{definition}
+    Define a colored operad $ \mathbf{BM}_\mathrm{inv} $
+    \begin{enumerate}[label=(\roman*)]
+        \item The set of objects of $ \mathbf{BM}_\mathrm{inv} $ has two elements, which we denote by $ \mathfrak{a}, \mathfrak{m} $. 
+        \item Let $ \{X_i\}_{i \in I} $ be a finite collection of objects of $ \mathbf{BM}_{\mathrm{inv}} $ and let $ Y $ be another object of $ \mathbf{BM}_{\mathrm{inv}} $. 
+        If $ Y = \mathfrak{a} $, then $ \mathrm{Mul} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a} $ for all $ i $, and empty otherwise. 
+        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1 \} $ IF there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
+        \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:operad_monoid_with_involution} 
+    \end{enumerate}
 \end{definition}
 
 \printbibliography
