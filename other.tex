@@ -131,7 +131,8 @@
 
 \newcommand{\Viktor}[1]{\todo{V: #1}}
 \newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
-\newcommand{\Lucy}[1]{\todo[color=cyan]{L: #1}}
+\newcommand{\Lucy}[1]{\todo[color=cyan!30]{L: #1}}
+\newcommand{\Lucyil}[1]{\todo[inline,color=cyan!30]{L: #1}}
 
 \title{Et cetera}
 \author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
@@ -167,7 +168,7 @@
 \begin{question}
     On page 2 of the \emph{Counterexamples} paper, First and Williams write that `` existence of an extraordinary involution means classificaiton of Azumaya algebras with involution...\emph{cannot} be reduced to questions about projective modules and hermitian forms on them.'' 
 
-    What if we replaced projective modules by perfect complexes thereof? 
+    What if we replaced projective modules by perfect complexes? 
 \end{question}
 \begin{question}
     First--Williams show (see discussion in \S4 of the \emph{Counterexamples} paper) that coarse type classify many (most?) Azumaya algebras up to (étale-local) \emph{isomorphism}. 
@@ -307,7 +308,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \end{construction}
 \begin{lemma}
     The functor $ \mathrm{Cut} \colon \Delta^\op_\sigma \to \Associnv^\otimes $ exhibits $ \Delta^\op_\sigma $ as an approximation to the $ \infty $-operad $ \Associnv^\otimes $. 
-    \Lucy{I think the proof of this lemma is not too different from the proof of Proposition 4.1.2.11 of \cite{LurHA}; the point here is just to unravel the definitions of locally coCartesian and Cartesian; the morphisms in $ \Delta^\op_\sigma $ are a little more complicated than $ \Delta^\op $, but not by much. } 
+    \Lucyil{I think the proof of this lemma is not too different from the proof of Proposition 4.1.2.11 of \cite{LurHA}; the point here is just to unravel the definitions of locally coCartesian and Cartesian; the morphisms in $ \Delta^\op_\sigma $ are a little more complicated than $ \Delta^\op $, but not by much. } 
 \end{lemma}
 
 \begin{definition}
@@ -320,6 +321,34 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:operad_monoid_with_involution} 
     \end{enumerate}
 \end{definition}
+\begin{definition}
+    Let $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the associated $ \infty $-operad (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
+\end{definition}
+\begin{remark}
+    \Lucy{compare Higher Algebra Notation 4.2.1.6} We can describe the category $ \mathcal{BM}_\mathrm{inv}^\otimes $ as follows: 
+    \begin{enumerate}[label=(\arabic*)]
+        \item An object of $ \mathcal{BM}_\mathrm{inv}^\otimes $ is a pair $ (\langle n\rangle,S) $ where $ S $ is a subset of $ \langle n \rangle^\circ $. 
+        \item Morphisms $ (\langle m \rangle, T) \to (\langle n \rangle,S) $ consist of a map $ \alpha \colon \langle m \rangle \to \langle n \rangle $ in $ \Associnv^\otimes $ satisfying: 
+        \begin{itemize}
+            \item The map $ \alpha $ takes $ T \cup \{*\} $ to $ S \cup \{*\} $
+            \item For each $ s \in S $, then $ \alpha^{-1}(\{s\}) $ contains exactly one element of $ t $, and that element is minimal with respect to the linear ordering on $ \alpha^{-1}(\{s\}) $. 
+            \Lucyil{I've changed things a little so that $ S $ (in the notation of Higher Algebra) has been replaced by $ S^c $--this way,we can regard $ [n] $ as representing the ordered set $\{-n <-n+1 < \cdots -1<0<1< \cdots < n-1 < n\} $ where $ C_2 $ acts by $ \cdot (-1) $ (or something along these lines). This is really a generalization of Notation 4.2.1.7 but for $ RM^\otimes $.} 
+        \end{itemize}
+    \end{enumerate}
+\end{remark}
+\begin{construction}
+    Define a functor $ \mathrm{Cut} \colon \Delta_\sigma^\op \to BM^\otimes $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
+    \begin{itemize}
+        \item For each $ ([n],s) $, we have $ \mathrm{Cut}([n],s) = \langle n + 1 \rangle \simeq \mathrm{RCut}_0([n]) $ where $ \mathrm{RCut} $ is from \cite[Construction 4.8.4.4]{LurHA}. 
+        \item Given a morphism $ \alpha\colon ([n],s) \to ([m], t) $, the associated morphism $ \mathrm{Cut} ([n],s) \to \mathrm{Cut}([m], t) $ consists of
+        \begin{itemize}
+            \item On underlying finite pointed sets $ \langle m+1\rangle \to \langle n+1 \rangle $, $ \mathrm{Cut} $ agrees with (the reverse of) that appearing in \cite[Construction 4.2.2.6]{LurHA}
+            \item Identifying the cut $ \{k \mid k< j\} \sqcup \{k \mid k \geq j \} $ with the morphism $ j-1 < j $, we may regard $ s \colon \langle n+1\rangle^\circ \to \{\pm 1\} $ and likewise $ t \colon \langle m+1\rangle^\circ \to \{\pm 1\} $. \Lucy{check later}
+            Define $ u\colon \mathrm{Cut}(\alpha)^{-1}\left(\langle n+1\rangle^\circ\right) \to \{\pm 1\} $ to be the unique function so that $ u(j)t(j) = s(\mathrm{Cut}(\alpha)(j)) $. 
+            % This means that $ \alpha^{-1}(\{k \mid k< j\}) $ and $ \alpha^{-1}(\{k \mid k \geq j\}) $ 
+        \end{itemize}
+    \end{itemize}
+\end{construction}
 
 \printbibliography
 
