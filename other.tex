@@ -75,6 +75,7 @@
 \DeclareMathOperator{\id}{id} % identity
 \DeclareMathOperator{\idem}{idem} % idempotent
 \DeclareMathOperator{\Mod}{Mod} % Modules
+\DeclareMathOperator{\Modh}{{}^{\sigma}Mod} % Hermitian modules
 %\DeclareMathOperator{\op}{op} % opposite functor
 \DeclareMathOperator{\Pic}{Pic} % Picard functor
 \DeclareMathOperator{\Picp}{Pic^p} % Poincare Picard functor
@@ -231,7 +232,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     [Lucy] I'm just going to put drafts of stuff pertaining to hermitian modules\Lucy{or whatever we want to keep calling these} here. 
     Eventually when it gets to be more complete, I will hopefully move this entire section over to the main file. 
 \end{remark}
-\paragraph{Meta-commentary} There are three things we want to do: 
+\paragraph{Meta-commentary} There are (at least) three things we want to do: 
 \begin{enumerate}[label=(\alph*)]
     \item Define a category of `bimodules with involution over algebras with anti-involution' equipped with a forgetful functor $ \Theta \colon \mathrm{BMod}_{\mathrm{inv}}(-) \to \EE_1\Alg(-)^{hC_2} $. 
     \item Show that $ \Theta $ is a coCartesian fibration. 
@@ -240,6 +241,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item I used to think that we could obtain this by `bootstrapping' a result from Higher Algebra, plus some facts about assembly. 
         This doesn't seem to be working, so I'm just going to try to do this directly (imitating certain aspects of Chapter 4 of higher algebra.) 
     \end{itemize}
+    \item Define a relative tensor product for hermitian bimodules 
     \item Show that the formula for the cocartesian pushforward along a map $ A \to B $ in $ \EE_1\Alg(-)^{hC_2} $ is something like $ - \otimes_{A \otimes A^\op} \left(B \otimes B^\op \right) \otimes_{B\otimes B^\op} B $. 
     \begin{itemize}
         \item In Higher Algebra, the formula for the cocartesian pushforward is proven in \cite[\S4.6]{LurHA}; in particular, this is in the section on duality. 
@@ -248,7 +250,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     \end{itemize}
 \end{enumerate}
 
-\begin{definition}\label{defn:operad_monoid_with_involution}
+\begin{definition}\label{defn:colored_operad_monoid_with_involution}
 \Lucy{This is just an imitation of \cite[Definition 4.1.1.1]{LurHA}, modified in accordance with ideas from \S5.4.2. }
     Define a colored operad $ \Associnv $ as follows:
     \begin{enumerate}[label=(\roman*)]
@@ -264,7 +266,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         where the multiplication on $ \{\pm 1\} $ is the usual one. 
     \end{enumerate} 
 \end{definition}
-\begin{definition}
+\begin{definition}\label{defn:infty_operad_monoid_with_involution}
     Let $ \Associnv^\otimes $ denote the associated $ \infty $-operad (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}). 
 \end{definition} 
 \begin{remark}
@@ -293,7 +295,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item a morphism from $ ([n], s \colon \{1, \ldots, n\} \to \{\pm 1\}) $ to $ ([m], t \colon \{0, 1, \ldots, m\} \to \{\pm 1\}) $ is an order-preserving map $ [n] \to [m] $ in $ \Delta $. 
     \end{itemize}
 \end{definition}
-\begin{construction}
+\begin{construction}\label{cons:involutive_cut}
     Define a functor $ \mathrm{Cut} \colon \Delta_\sigma^\op \to \Associnv^\otimes $: 
     \begin{itemize}
         \item For each $ ([n],s) $, we have $ \mathrm{Cut}([n],s) = \langle n \rangle $. 
@@ -316,11 +318,14 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     \begin{enumerate}[label=(\roman*)]
         \item The set of objects of $ \mathbf{BM}_\mathrm{inv} $ has two elements, which we denote by $ \mathfrak{a}, \mathfrak{m} $. 
         \item Let $ \{X_i\}_{i \in I} $ be a finite collection of objects of $ \mathbf{BM}_{\mathrm{inv}} $ and let $ Y $ be another object of $ \mathbf{BM}_{\mathrm{inv}} $. 
-        If $ Y = \mathfrak{a} $, then $ \mathrm{Mul} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a} $ for all $ i $, and empty otherwise. 
-        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1 \} $ IF there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
-        \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:operad_monoid_with_involution} 
+        If $ Y = \mathfrak{a} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a} $ for all $ i $, and empty otherwise. 
+        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering $ \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ I \to \{\pm 1 \} $ IF $ X_{i_1} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_1 $, and $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
+        \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:colored_operad_monoid_with_involution} 
     \end{enumerate}
-\end{definition}
+\end{definition} 
+\begin{remark} % compare Remark 4.2.1.2
+    Restricting to the object $ \mathfrak{a} \in \mathbf{BM}_\mathrm{inv} $, we see that $ \mathbf{BM}_\mathrm{inv} $ has a sub-colored operad which is canonically identified with $ \mathbf{Assoc}_\mathrm{inv} $ of Definition \ref{defn:colored_operad_monoid_with_involution}. 
+\end{remark}
 \begin{definition}
     Let $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the associated $ \infty $-operad (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
 \end{definition}
@@ -336,19 +341,58 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \end{itemize}
     \end{enumerate}
 \end{remark}
+\begin{remark} %compare Remark 4.2.1.5 in Higher algebra
+    Each morphism $ \phi \in \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ determines a linear ordering $\ell $ on the set $ I $ and a function $ s \colon I \to \{\pm 1\} $. 
+    Passing from $ \phi $ to the pair $ (\ell, s) $ determines a map of colored operads $ j \colon \mathbf{BM}_\mathrm{inv} \to \mathbf{Assoc}_\mathrm{inv} $. 
+    For any monoidal\Lucy{more general?} $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \mathbf{Assoc}_\mathrm{inv} \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
+\end{remark}
 \begin{construction}
-    Define a functor $ \mathrm{Cut} \colon \Delta_\sigma^\op \to BM^\otimes $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
+    Define a functor $ \mathrm{MCut} \colon \Delta_\sigma^\op \to BM^\otimes_{\mathrm{inv}} $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
     \begin{itemize}
-        \item For each $ ([n],s) $, we have $ \mathrm{Cut}([n],s) = \langle n + 1 \rangle \simeq \mathrm{RCut}_0([n]) $ where $ \mathrm{RCut} $ is from \cite[Construction 4.8.4.4]{LurHA}. 
-        \item Given a morphism $ \alpha\colon ([n],s) \to ([m], t) $, the associated morphism $ \mathrm{Cut} ([n],s) \to \mathrm{Cut}([m], t) $ consists of
+        \item For each $ ([n],s) $, we have $ \mathrm{MCut}([n],s) = \langle n + 1 \rangle \simeq \mathrm{RCut}_0([n]) $ where $ \mathrm{RCut} $ is from \cite[Construction 4.8.4.4]{LurHA}. 
+        \item Given a morphism $ \alpha\colon ([n],s) \to ([m], t) $, the associated morphism $ \mathrm{MCut}([m], t) \to \mathrm{MCut} ([n],s) $ consists of
         \begin{itemize}
-            \item On underlying finite pointed sets $ \langle m+1\rangle \to \langle n+1 \rangle $, $ \mathrm{Cut} $ agrees with (the reverse of) that appearing in \cite[Construction 4.2.2.6]{LurHA}
+            \item On underlying finite pointed sets $ \langle m+1\rangle \to \langle n+1 \rangle $, $ \mathrm{MCut} $ agrees with (the reverse of) that appearing in \cite[Construction 4.2.2.6]{LurHA}
             \item Identifying the cut $ \{k \mid k< j\} \sqcup \{k \mid k \geq j \} $ with the morphism $ j-1 < j $, we may regard $ s \colon \langle n+1\rangle^\circ \to \{\pm 1\} $ and likewise $ t \colon \langle m+1\rangle^\circ \to \{\pm 1\} $. \Lucy{check later}
-            Define $ u\colon \mathrm{Cut}(\alpha)^{-1}\left(\langle n+1\rangle^\circ\right) \to \{\pm 1\} $ to be the unique function so that $ u(j)t(j) = s(\mathrm{Cut}(\alpha)(j)) $. 
+            Define $ u\colon \mathrm{MCut}(\alpha)^{-1}\left(\langle n+1\rangle^\circ\right) \to \{\pm 1\} $ to be the unique function so that $ u(j)t(j) = s(\mathrm{MCut}(\alpha)(j)) $. 
             % This means that $ \alpha^{-1}(\{k \mid k< j\}) $ and $ \alpha^{-1}(\{k \mid k \geq j\}) $ 
         \end{itemize}
     \end{itemize}
 \end{construction}
+\begin{remark}\label{rmk:nat_transformation_of_cut_functors} % compare remark 4.2.2.8
+    We can identify $ \Associnv^\otimes $ with the full subcategory of $ \mathcal{BM}^\otimes_{\mathrm{inv}} $ spanned by objects of the form $ (\langle n\rangle, \langle n\rangle^\circ) $. 
+    We can regard Construction \ref{cons:involutive_cut} as defining a functor $ \Delta^\op_\sigma \to \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
+    For each $ ([n], s) \in \Delta^\op_\sigma $, there is a map of sets $ \theta \colon \mathrm{MCut} ([n], s) \to \mathrm{Cut}([n], s) $ defined as in \cite[Remark 4.2.2.8]{LurHA}. 
+    Concretely, on underlying pointed sets, $ \theta $ takes the form \Lucy{check that the signs $s$ work out!}
+    \begin{equation*}
+    \begin{split}
+        \theta \colon \langle n+1 \rangle &\to \langle n \rangle \\
+                            k &\mapsto \begin{cases}
+                                k-1 & \text{ if }k>0 \\
+                                * & \text{ if }k = 0, * \,.
+                            \end{cases}
+    \end{split}    
+    \end{equation*} 
+    This construction determines a morphism $ \gamma $ in the $ \infty $-category $ \Fun\left(\Delta^\op_\sigma, \mathcal{BM}^\otimes_{\mathrm{inv}}\right) $, or equivalently a map $ \Delta^\op_\sigma \times \Delta^1 \to \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
+\end{remark}
+\begin{lemma}
+    The morphism $ \gamma \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ defined in Remark \ref{rmk:nat_transformation_of_cut_functors} exhibits $\Delta^\op_\sigma \times \Delta^1 $ as an approximation to the $ \infty $-operad $ \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
+\end{lemma}
+\begin{definition}
+    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ be a fibration of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
+    Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. \Lucy{Lurie gives this a name (Definition 4.2.1.12 \emph{weakly enriched})--not sure what to call this. something \emph{bi-enriched}?}
+    Let $ \Modh\left(\mathcal{M}\right) $ denote the $ \infty $-category $ \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) $. 
+    We will refer to $ \Modh\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian module objects of $ \mathcal{M}$}. 
+    Composition with the inclusion $ \Associnv^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ induces a categorical fibration
+    \begin{equation*}
+        \Modh\left(\mathcal{M}\right) = \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) \to \Alg_{\Associnv}(\mathcal{C}) \,.
+    \end{equation*}
+    If $ A $ is an $ \Associnv $-algebra object of $ \mathcal{C} $, we let $ \Modh_A\left(\mathcal{M}\right) $ denote the fiber $ \Modh\left(\mathcal{M}\right) \times_{\Alg_{\Associnv}(\mathcal{C})} \{A\} $. 
+    We will refer to $ \Modh_A\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian $A$-module objects of $ \mathcal{M} $}. 
+\end{definition}
+\begin{example}
+    \Lucy{see Example 4.2.1.17 of higher algebra}
+\end{example}
 
 \printbibliography
 
