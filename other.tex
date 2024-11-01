@@ -15,7 +15,7 @@
 %\usepackage{wasysym}
 %\usepackage{MnSymbol}
 %\usepackage{thmtools}
-%\usepackage{stmaryrd}
+\usepackage{stmaryrd} % wanted to use this for \varoast
 \usepackage[letterpaper,margin=1in]{geometry}   
 %\usepackage{slashed}
 %\usepackage[english]{babel}				
@@ -82,6 +82,7 @@
 \DeclareMathOperator{\Pn}{Pn} % Poincare space functor
 \DeclareMathOperator{\Spectra}{Sp} % Spectra
 \DeclareMathOperator{\Spaces}{\mathcal{S}} % Spaces
+\DeclareMathOperator{\sSet}{sSet}
 \DeclareMathOperator{\Mon}{Mon} % monoids
 
 \newcommand{\pf}{{\bf Proof. \ }}
@@ -266,6 +267,11 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         where the multiplication on $ \{\pm 1\} $ is the usual one. 
     \end{enumerate} 
 \end{definition}
+\begin{remark}\label{rmk:assoc_opd_to_assoc_inv_opd}
+    There is a map of colored operads $ \iota \colon \mathrm{Assoc} \to \Associnv $ which is the identity on objects and on operations $ \mathrm{Mul}_{\mathrm{Assoc}}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\Associnv}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I $ with value $ 1 $. 
+
+    There is another map of colored operads $ \iota^{\mathrm{rev}} \colon \mathrm{Assoc} \to \Associnv $ which is the identity on objects and on operations $ \mathrm{Mul}_{\mathrm{Assoc}}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\Associnv}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ sends a linear ordering $ \ell $ to $ (\ell^{\mathrm{rev}}, c_{-1})$ where $ c_{-1} $ is the constant function on $ I $ with value $ 1 $. 
+\end{remark}
 \begin{definition}\label{defn:infty_operad_monoid_with_involution}
     Let $ \Associnv^\otimes $ denote the associated $ \infty $-operad (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}). 
 \end{definition} 
@@ -312,6 +318,10 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     The functor $ \mathrm{Cut} \colon \Delta^\op_\sigma \to \Associnv^\otimes $ exhibits $ \Delta^\op_\sigma $ as an approximation to the $ \infty $-operad $ \Associnv^\otimes $. 
     \Lucyil{I think the proof of this lemma is not too different from the proof of Proposition 4.1.2.11 of \cite{LurHA}; the point here is just to unravel the definitions of locally coCartesian and Cartesian; the morphisms in $ \Delta^\op_\sigma $ are a little more complicated than $ \Delta^\op $, but not by much. } 
 \end{lemma}
+\begin{notation}\label{ntn:E_sigma_monoidal_cat_variant}
+    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ exhibit $ \mathcal{C} $ as $ \EE_\sigma $-monoidal.\Lucy{weakly enriched?? maybe need to add a new defn..} 
+    Let $ \mathcal{C}^\varoast $ denote the fiber product $ \mathcal{C}^\otimes \times_{\Associnv^\otimes} \Delta^\op_{\sigma} $. 
+\end{notation}
 
 \begin{definition}
     Define a colored operad $ \mathbf{BM}_\mathrm{inv} $
@@ -341,7 +351,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \end{itemize}
     \end{enumerate}
 \end{remark}
-\begin{remark} %compare Remark 4.2.1.5 in Higher algebra
+\begin{remark}\label{rmk:inv_bimod_opd_to_inv_alg_opd} %compare Remark 4.2.1.5 in Higher algebra
     Each morphism $ \phi \in \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ determines a linear ordering $\ell $ on the set $ I $ and a function $ s \colon I \to \{\pm 1\} $. 
     Passing from $ \phi $ to the pair $ (\ell, s) $ determines a map of colored operads $ j \colon \mathbf{BM}_\mathrm{inv} \to \mathbf{Assoc}_\mathrm{inv} $. 
     For any monoidal\Lucy{more general?} $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \mathbf{Assoc}_\mathrm{inv} \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
@@ -391,8 +401,25 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     We will refer to $ \Modh_A\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian $A$-module objects of $ \mathcal{M} $}. 
 \end{definition}
 \begin{example}
-    \Lucy{see Example 4.2.1.17 of higher algebra}
+    \Lucy{see Example 4.2.1.17 of higher algebra} 
+    Let $ \mathcal{C}^\otimes \to \mathcal{BM}^\otimes $ be a fibration of $ \infty $-operads. 
+    Restriction along the map\Lucy{fibration?} of $ \infty $-operads $ \mathcal{BM}^\otimes \to \Associnv^\otimes $ induced by Remark \ref{rmk:inv_bimod_opd_to_inv_alg_opd} induces a map $ \EE_\sigma\Alg\left(\mathcal{C}\right) \to \Modh\left(\mathcal{C}\right) $ which is a section of the projection map $ \Modh\left(\mathcal{C}\right) \to \EE_\sigma\Alg\left(\mathcal{C}\right) $. 
 \end{example}
+\begin{notation}\label{ntn:E_sigma_tensored_cat_variant} % basically lifted straight from Higher algebra 4.2.2.17
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    Define a new simplicial set $ \overline{\mathcal{M}}^\varoast $ by the following universal property
+    \begin{equation*}
+        \hom_{\sSet_{/\Delta^{\op}_\sigma}} \left(K, \overline{\mathcal{M}}^\varoast \right) \simeq \hom_{\sSet_{/\mathcal{BM}^\otimes_{\mathrm{inv}}}}\left(K \times \Delta^1 , \mathcal{O}^\otimes\right) \,.
+    \end{equation*}
+    Here we regard $ K \times \Delta^1 $ as a simplicial set over $ \mathcal{BM}^\otimes_{\mathrm{inv}} $ via the composite $ K \times \Delta^1 \to \Delta^\op_{\sigma} \times \Delta^1 \xrightarrow{\gamma} \mathcal{BM}^\otimes_{\mathrm{inv}} $ where $ \gamma $ is from Remark \ref{rmk:nat_transformation_of_cut_functors}. 
+
+    Unwinding definitions, we see that a vertex in $ \overline{\mathcal{M}}^\varoast $ lying over an object $ ([n], s \colon \{1, \ldots, n\} \to \{\pm 1\}) \in \Delta^\op_{\sigma} $ corresponds to a morphism $ \alpha $ in $ \mathcal{O}^\otimes $ whose image in $ \mathcal{BM}^\otimes_{\mathrm{inv}} $ is the map $ (\langle n+1\rangle, \{0\}) \to (\langle n\rangle, \varnothing) $\Lucy{this might be off--revisit later!}.   
+    Now let $ \mathcal{M}^\varoast $ denote the full simplicial subset of $ \overline{\mathcal{M}}^\varoast  $ spanned by those vertices for which $ \alpha $ is inert. 
+\end{notation}
+\begin{lemma} % Compare Lemma 4.2.2.20 of Higher algebra
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    Then the associated functor $ \mathcal{M}^\varoast  \to \mathcal{C}^\varoast $ (Notation \ref{ntn:E_sigma_monoidal_cat_variant}) is a locally coCartesian fibration.     
+\end{lemma}
 
 \printbibliography
 
