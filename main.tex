@@ -60,6 +60,7 @@
 %shortcut commands-------------------------------------------
 \DeclareMathOperator{\Br}{Br} % Brauer functor
 \DeclareMathOperator{\Brp}{Br^p} % Poincare Brauer functor
+\DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
 \DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
 \DeclareMathOperator{\Cat}{\mathcal{C}at} % Categories
@@ -91,7 +92,7 @@
 \renewcommand{\rho}{\varrho}
 \renewcommand{\phi}{\varphi}
 \newcommand{\NN}{\ensuremath{\mathbb{N}}\xspace}
-\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}\xspace}
+\newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
 \newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
@@ -374,15 +375,13 @@ Now we observe that given a hermitian object $ (x,q) $ of $ \left(\mathcal{C}, \
     The functors of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} and \ref{cons:endomorphism_of_hermitian_obj} form an adjoint pair. 
 \end{theorem}
 
-\section{Modules over Poincaré Ring Spectra}
-\label{subsection:modules_over_poincare_ring_spectra}
-
-Let $A$ be a Poincaré ring spectrum. Then $A$ is a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$\Viktor{ref}. We may thus consider modules over it. In this section we will use modules over Poincaré ring spectra to define analogues of the Brauer and Picard groups for Poincaré ring spectra.\\
+% \section{Modules over Poincaré Ring Spectra}
+% \label{subsection:modules_over_poincare_ring_spectra}
 
 
-
-\subsection{The Poincaré Picard Group}
+\section{The Poincaré Picard space}
 \label{subsection:the_poincare_picard_group}
+Let $A$ be a Poincaré ring spectrum. Then $A$ is a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$\Viktor{ref}. We may thus consider modules over it. In this section we will use modules over Poincaré ring spectra to define analogues of the Picard group for Poincaré ring spectra.
 
 Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \Einfty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
 
@@ -478,8 +477,55 @@ In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, wh
 	The only if direction follows from the fact that the evaluation map $\mathrm{Hom}_{A\otimes A}(A\otimes A, A)\to A$ is an $A\otimes A$-module map. Now suppose that $a\sigma(a)=1$ in  $A$. Then before taking homotopy fixed points the induced map $a^*=id$ because $A$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
 \end{proof}
 
+\subsection{Hermitian line bundles}
+\begin{definition}
+    Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
+    Write $ \sigma_*R $ for the $ R $-module with underlying abelian group $ R $ and action $ r \cdot m = \sigma(r) \cdot m $. 
+    Let $ M $ be an $ R $-module. 
+    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(M, \sigma_* R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}} 
+    Also recall that there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
+    Note that given two $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
+    A \emph{$ \sigma $-hermitian form on $ I $} is an $ R $-linear isomorphism $ \varphi \colon I \xrightarrow{\sim} I^\dag $. 
+\end{definition}
+\begin{observation}\label{obs:tensoring_hermitian_forms}    
+    Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
+    Given two $ R $-modules $ M, N $ equipped with $ \sigma $-hermitian forms $ \varphi, \psi $, respectively, $ \varphi \otimes \psi $ defines a $ \sigma $-hermitian form on $ M \otimes_R N $. 
+    Using the canonical isomorphism mentioned above, if $ \varphi $ is a $ \sigma $-hermitian form on $ M $, then $ \varphi^\dag $ induces a $ \sigma $-hermitian form on $ M^\dag $.  
+    Finally, observe that $ R $ has a canonical $ \sigma $-hermitian form which is the adjoint of the map $ R \otimes R \to R $, $ r \otimes s \mapsto r \sigma(s) $. 
+\end{observation}  
+\begin{definition}
+    Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
+    Define the \emph{hermitian Picard group of $ R $}\Lucy{workshop the name later} to have underlying set consisting of pairs $ (I, \varphi) $ where $ I $ is an invertible $ R $-module and $ \varphi $ is a $ \sigma $-hermitian form on $ I $. 
+    
+    By Observation \ref{obs:tensoring_hermitian_forms}, this set inherits a group structure. 
+    We write $ \mathrm{hPic}(R) $ for the group of $\sigma$-hermitian line bundles on $ \Spec R $.  
+\end{definition}     
+\begin{theorem}
+    Let $ R $ be a discrete commutative ring with a $ C_2 $-action via ring maps. 
+    Then there is a short exact sequence of abelian groups
+    \begin{equation*}
+        0 \to \mathrm{hPic}(R) \to \pi_0\pnpic(R) \to C_{C_2}(\Spec R, \ZZ^{-}) \to 0
+    \end{equation*}
+    where $ R $ is endowed with the genuine symmetric Poincaré structure and $ \ZZ^{-} $ is endowed with the $ C_2 $-action given by multiplication by $ -1 $ and $ C_{C_2} $ denotes continuous functions which are moreover $ C_2 $-equivariant. 
+\end{theorem}
+\begin{proof}
+    An object of $ \pnpic(R) $ is a pair $ (I, q) $ where $ I $ is an invertible $ R$-module and $ q $ is a point in $ \Omega^\infty \Qoppa_{R^{gs}}(I) $. 
+    By the proof of \cite[Theorem 3.5]{MR1966659}, $ I $ induces a continuous map $ \phi \colon \Spec R \to \ZZ $. 
+    Write $ \sigma $ for the involution on $ R $. 
+    Now $ q $ in particular induces an equivalence $ q \colon I \xrightarrow{\sim} I^\dag \simeq (\sigma_*I)^\vee $. 
+    For each point $ \mathfrak{p} \in \Spec R $, localizing $ q $ gives an equivalence
+    \begin{equation*}
+        q_{\mathfrak{p}} \colon I_{\mathfrak{p}} \xrightarrow{\sim} (\sigma_*I)^\vee_{\mathfrak{p}} \simeq \left(\sigma_*(I_{\sigma(\mathfrak{p})})\right)^\vee \,.
+    \end{equation*}
+    Since $ I_{\mathfrak{p}} $ is an invertible module over a local ring, \cite{MR1966659} implies that $ q_{\mathfrak{p}} $ induces an equivalence
+    \begin{equation*}
+        I_{\mathfrak{p}} \simeq R_{\mathfrak{p}}[\phi(\mathfrak{p})] \xrightarrow{\sim} \left(\sigma_*(R_{\sigma(\mathfrak{p})}[\phi(\sigma(\mathfrak{p}))])\right)^\vee \simeq (\sigma_*(R_{\sigma(\mathfrak{p})}))^\vee [-\phi(\sigma(\mathfrak{p}))] \,.
+    \end{equation*}
+    Since $ R $ is discrete, this implies in particular that $ \phi(\sigma(\mathfrak{p})) = -\phi(\mathfrak{p}) $, i.e. that $ \phi $ is $ C_2 $-equivariant. 
+    \Lucy{todo: show that the sequence is exact.}
+\end{proof}
 
-\subsection{The Poincaré Brauer Group}
+\section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
 
 Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
