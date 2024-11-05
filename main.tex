@@ -525,6 +525,84 @@ In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, wh
     \Lucy{todo: show that the sequence is exact.}
 \end{proof}
 
+\subsection{Poincaré structures on schemes with involution}
+Let $ X $ be a scheme with an involution $ \sigma \colon X \xrightarrow{\sim} X $. 
+We want to introduce a Poincaré structure $ \Qoppa $ on $ \perf(X) $ so that the duality is given by $ E \mapsto E^\vee \otimes \sigma_*(\mathcal{O}_X) $ (contrast with \S3 of \href{https://arxiv.org/abs/2402.15136}{this paper}). 
+
+Let $ \mathcal{C} $ be a symmetric monoidal stable $\infty $-category with an involution, i.e. an exact autoequivalence $ \sigma \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C} $ and a functor $ BC_2 \to \EE_\infty \Alg \Catex $ sending $ * \mapsto \mathcal{C} $ and a generator of $ \mathrm{End}_{BC_2}(*) \simeq C_2 $ to $ \sigma $. 
+Then $ \sigma $ induces a $ C_2 $-action on the $ \infty $-groupoid of $ \otimes $-invertible objects $ \Pic(\mathcal{C}) $. 
+Let $ L \in \Pic(\mathcal{C})^{hC_2} $ be a homotopy fixed point of this action. 
+In other words, $ L $ is endowed with the choice of an equivalence $ \phi \colon L \simeq \sigma(L) $, a homotopy from $ \sigma(\phi) \circ \phi $ to the identity on $ L $, and higher coherences. 
+
+Consider a functor $ f \colon \mathcal{C}^\op \to \Spectra $ which is $ C_2 $-equivariant with respect to the $ \sigma $-action on $ \mathcal{C} $ and the trivial action on $ \Spectra $. 
+In particular the ``$ C_2 $-equivariance'' of $ f $ is additional data: for each $ x \in \mathcal{C} $, an equivalence of spectra $ c_x \colon f(x) \simeq f(\sigma(x)) $ which is natural in $ x $, a homotopy from $ c_{\sigma(x)} \colon c_x $ to $ \mathrm{id}_x $, and higher coherences. 
+\begin{lemma}
+    Given $ L \in \Pic(\mathcal{C})^{hC_2} $ be a homotopy fixed point of this action, the functor $ \hom_{\mathcal{C}}(-, L) $ promotes canonically to a $ C_2 $-equivariant functor in the sense of the previous paragraph. 
+\end{lemma}
+Now fix a presentably symmetric monoidal $ \infty $-category $ \mathcal{D} $, and regard it as having the trivial $ C_2 $-action. 
+Set 
+\begin{equation*}
+    \mathcal{W}_{\mathcal{D}}^\otimes := \EE_\infty \mathrm{Alg} \left(\Cat^{BC_2}\right)^\times \times_{(\Cat^{BC_2})^\times} \left(\Cat^{BC_2}_{\op//\mathcal{D}} \right)^{\otimes}
+\end{equation*}
+\Lucy{need to construct the $\infty$-operad on the right!}
+\begin{construction}\label{cons:Poincare_structure_from_equivariant_functor}
+    Given a $ C_2 $-equivariant functor $ f \colon \mathcal{C}^\op \to \mathcal{D} $, we may regard the data of the $ C_2 $-equivariance of $ f $ as a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        \widetilde{\mathcal{C}^\op} \ar[r, "{\widetilde{f}}"] \ar[d] & \mathcal{D} \times BC_2 \ar[d] \\
+        BC_2\ar[r,equals] & BC_2
+    \end{tikzcd}
+    \end{equation*}
+    where the vertical maps are cocartesian fibrations and the restriction of $ \widetilde{f} $ to the fiber over the point $ * \in BC_2 $ recovers $ f $. 
+    The diagram induces a map on cocartesian sections
+    \begin{equation*}
+        \overline{f} \colon \Fun_{BC_2}^{\mathrm{cocart}}(BC_2, \widetilde{\mathcal{C}^\op}) \to \mathcal{D}^{BC_2} \,.
+    \end{equation*}
+    Now if $ \mathrm{C} $ is a symmetric monoidal $ \infty $-category, we can associate to $ f $ the composite
+    \begin{equation*}
+        T_f \colon \mathcal{C}^\op \xrightarrow{x \mapsto x \otimes \sigma(x)} \Fun_{BC_2}^{\mathrm{cocart}}(BC_2, \widetilde{\mathcal{C}^\op}) \xrightarrow{\overline{f}} \mathcal{D}^{BC_2} \,. 
+    \end{equation*}
+    Finally, if $ \mathcal{D} $ admits $ BC_2 $-indexed limits, we can take homotopy fixed points of $ C_2 $-objects in which case we define the functor $ \Qoppa_f^s \colon \mathcal{C}^\op \to \mathcal{D} $ as the composite
+    \begin{equation*}
+         \Qoppa_f^s \colon \mathcal{C}^\op \xrightarrow{T_f} \mathcal{D}^{BC_2} \xrightarrow{(-)^{hC_2}} \mathcal{D} \,. 
+    \end{equation*}
+\end{construction}
+\begin{proposition}
+    Let $ \mathcal{D} $ be a symmetric monoidal $ \infty $-category which admits $ BC_2 $-indexed limits. 
+    Then the assignment $ (\mathcal{C}, f) \mapsto ( \mathcal{C}, \Qoppa^s_{f}) $ of Construction \ref{cons:Poincare_structure_from_equivariant_functor} assembles to form a lax symmetric monoidal functor 
+    \begin{equation*}
+        \mathcal{W}_{\mathcal{D}}^\otimes \to \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes 
+    \end{equation*}
+    sitting in a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+         \mathcal{W}_{\mathcal{D}}^\otimes \ar[r] \ar[d] & \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes \ar[d] \\
+         \EE_\infty \mathrm{Alg}(\Cat^{BC_2})^\times \ar[r,"{\mathcal{C}^\otimes \mapsto \mathcal{C}}"] & \Cat^\times 
+    \end{tikzcd}
+    \Lucy{todo: describe the arrows}
+    \end{equation*}
+\end{proposition}
+
+\subsection{Poincaré Picard groups of schemes} 
+Let $ X $ be a scheme with an involution. 
+Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
+We write $ p \colon X \to Y $ for the quotient map. 
+\begin{construction}\label{cons:structure_sheaf_of_Green_functors}
+    Let $ j \colon \Spec A  \simeq U \subseteq Y $ be an affine open subscheme of $ Y $. 
+    Because $ p $ is an affine map,\Lucy{by assumption!} the fiber product $ \Spec B := \Spec A \times_{Y} X $ is an affine open of $ X $ which is invariant under the $ C_2 $-action. 
+    In particular $ \Spec B $ inherits a $ C_2 $-action from $ X $ (hence so does its ring of functions $ B$).  
+    Now $ A \to B $ acquires the structure of a $C_2$-Green functor $ \underline{\mathcal{O}}(U) $. 
+    Regarding $ \underline{\mathcal{O}}(U) $ as a $ C_2 $-spectrum, by the isotropy separation sequence, we have an equivalence of $ A $-modules $ \underline{\mathcal{O}}(U)^{\varphi C_2} \mathrm{cofib} (\mathrm{tr} \colon B_{hC_2} \to A) $. 
+\end{construction}
+\begin{lemma} 
+Let $ X $ be a scheme with an involution. 
+Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
+\begin{enumerate}[label=(\roman*)]
+    \item \label{lem_item:structure_sheaf_of_Green_func_is_functor} The assignment of Construction \ref{cons:structure_sheaf_of_Green_functors} lifts to a contravariant functor from (the nerve of) the category of affine opens of $ Y $ to the $\infty $-category of Poincaré rings. 
+    \item The presheaf of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
+\end{enumerate}
+\end{lemma}
+
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
 
