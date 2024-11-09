@@ -529,16 +529,20 @@ In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, wh
 Let $ X $ be a scheme with an involution $ \sigma \colon X \xrightarrow{\sim} X $. 
 We want to introduce a Poincaré structure $ \Qoppa $ on $ \perf(X) $ so that the duality is given by $ E \mapsto E^\vee \otimes \sigma_*(\mathcal{O}_X) $ (contrast with \S3 of \href{https://arxiv.org/abs/2402.15136}{this paper}). 
 
-Let $ \mathcal{C} $ be a symmetric monoidal stable $\infty $-category with an involution, i.e. an exact autoequivalence $ \sigma \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C} $ and a functor $ BC_2 \to \EE_\infty \Alg \Catex $ sending $ * \mapsto \mathcal{C} $ and a generator of $ \mathrm{End}_{BC_2}(*) \simeq C_2 $ to $ \sigma $. 
+Let $ \mathcal{C} $ be a symmetric monoidal stable $\infty $-category with an involution, i.e. an exact autoequivalence $ \sigma \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C} $ and a functor $ BC_2 \to \EE_\infty \mathrm{Alg} \Catex $ sending $ * \mapsto \mathcal{C} $ and a generator of $ \mathrm{End}_{BC_2}(*) \simeq C_2 $ to $ \sigma $. 
 Then $ \sigma $ induces a $ C_2 $-action on the $ \infty $-groupoid of $ \otimes $-invertible objects $ \Pic(\mathcal{C}) $. 
 Let $ L \in \Pic(\mathcal{C})^{hC_2} $ be a homotopy fixed point of this action. 
 In other words, $ L $ is endowed with the choice of an equivalence $ \phi \colon L \simeq \sigma(L) $, a homotopy from $ \sigma(\phi) \circ \phi $ to the identity on $ L $, and higher coherences. 
 
 Consider a functor $ f \colon \mathcal{C}^\op \to \Spectra $ which is $ C_2 $-equivariant with respect to the $ \sigma $-action on $ \mathcal{C} $ and the trivial action on $ \Spectra $. 
-In particular the ``$ C_2 $-equivariance'' of $ f $ is additional data: for each $ x \in \mathcal{C} $, an equivalence of spectra $ c_x \colon f(x) \simeq f(\sigma(x)) $ which is natural in $ x $, a homotopy from $ c_{\sigma(x)} \colon c_x $ to $ \mathrm{id}_x $, and higher coherences. 
+In particular, the ``$ C_2 $-equivariance'' of $ f $ is additional data: for each $ x \in \mathcal{C} $, an equivalence of spectra $ c_x \colon f(x) \simeq f(\sigma(x)) $ which is natural in $ x $, a homotopy from $ c_{\sigma(x)} \colon c_x $ to $ \mathrm{id}_x $, and higher coherences. 
 \begin{lemma}
     Given $ L \in \Pic(\mathcal{C})^{hC_2} $ be a homotopy fixed point of this action, the functor $ \hom_{\mathcal{C}}(-, L) $ promotes canonically to a $ C_2 $-equivariant functor in the sense of the previous paragraph. 
 \end{lemma}
+\begin{proof}
+    Note that the Yoneda embedding $ y \colon \mathcal{C} \to \mathrm{Fun}\left(\mathcal{C}^\op, \Spectra\right) $ is equivariant with respect to the given action on $ \mathcal{C} $ and the action of $ C_2 $ on the functor category via $ F \mapsto \sigma^*F = F \circ \sigma $. \Lucy{This may be `overkill,' but this is true because $ \mathcal{C} $ can be regarded as a $ \mathcal{O}^\op_{C_2} $-parametrized $\infty$-category (with empty fiber over $ C_2/C_2 $). Then there is a parametrized Yoneda embedding. }
+    Now since $ \Pic(\mathcal{C}) \subseteq \mathcal{C} $ induces $ \Pic(\mathcal{C})^{hC_2} \to \mathcal{C}^{hC_2} $, we may take the image of $ L $ under the Yoneda embedding: $ y(L) \in \mathrm{Fun}\left(\mathcal{C}^\op, \Spectra\right)^{hC_2} \simeq \mathrm{Fun}_{C_2}\left(\mathcal{C}^\op, \Spectra\right) $. 
+\end{proof}
 Now fix a presentably symmetric monoidal $ \infty $-category $ \mathcal{D} $, and regard it as having the trivial $ C_2 $-action. 
 Set 
 \begin{equation*}
@@ -562,12 +566,16 @@ Set
     \begin{equation*}
         T_f \colon \mathcal{C}^\op \xrightarrow{x \mapsto x \otimes \sigma(x)} \Fun_{BC_2}^{\mathrm{cocart}}(BC_2, \widetilde{\mathcal{C}^\op}) \xrightarrow{\overline{f}} \mathcal{D}^{BC_2} \,. 
     \end{equation*}
-    Finally, if $ \mathcal{D} $ admits $ BC_2 $-indexed limits, we can take homotopy fixed points of $ C_2 $-objects in which case we define the functor $ \Qoppa_f^s \colon \mathcal{C}^\op \to \mathcal{D} $ as the composite
+    Finally, if $ \mathcal{D} $ admits $ BC_2 $-indexed limits, we can take homotopy fixed points of $ C_2 $-objects in which case we define the functor $ \Qoppa_f^s \colon \mathcal{C}^\op \to \mathcal{D} $ as\Lucy{I'm just using the same notation as Harpaz-Nardin-Shah here, but $(-)^s$ is maybe a little weird because it should be `hermitian,' not `symmetric.'} the composite
     \begin{equation*}
          \Qoppa_f^s \colon \mathcal{C}^\op \xrightarrow{T_f} \mathcal{D}^{BC_2} \xrightarrow{(-)^{hC_2}} \mathcal{D} \,. 
     \end{equation*}
 \end{construction}
-\begin{proposition}
+\begin{observation}
+    Let $ \mathcal{C} $, $ L $, be as before. 
+    Then the cross effect $ B_{L} $ of $ \Qoppa^s_L$ is given by $ B_L(x,y) = \mathrm{hom}_{\mathcal{C}}(x \otimes \sigma (y), L) $. \Lucy{The `untwisted' version of this appears in \cite[proof of Proposition 3.1.6]{CHN2024}, but I wanted to get this down before I forgot.}
+\end{observation}
+\begin{proposition}\label{prop:multiplicativity_of_Poincare_struct_from_eqvt_functor}
     Let $ \mathcal{D} $ be a symmetric monoidal $ \infty $-category which admits $ BC_2 $-indexed limits. 
     Then the assignment $ (\mathcal{C}, f) \mapsto ( \mathcal{C}, \Qoppa^s_{f}) $ of Construction \ref{cons:Poincare_structure_from_equivariant_functor} assembles to form a lax symmetric monoidal functor 
     \begin{equation*}
@@ -579,9 +587,27 @@ Set
          \mathcal{W}_{\mathcal{D}}^\otimes \ar[r] \ar[d] & \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes \ar[d] \\
          \EE_\infty \mathrm{Alg}(\Cat^{BC_2})^\times \ar[r,"{\mathcal{C}^\otimes \mapsto \mathcal{C}}"] & \Cat^\times 
     \end{tikzcd}
-    \Lucy{todo: describe the arrows}
     \end{equation*}
+    \Lucy{todo: describe the arrows}
 \end{proposition}
+
+\begin{construction} \Lucy{This is basically Construction 3.1.4 of \cite{CHN2024} with minor edits; we could possibly include less detail later.}
+    Consider the functors $ r \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2}) \xrightarrow{\mathcal{C}^\otimes \mapsto \mathcal{C}} \Cat^{BC_2} $ and $ p \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2}) \xrightarrow{\mathrm{forget}} \Cat \xrightarrow{q^*} \Cat^{BC_2} $ where $ q \colon BC_2 \to * $. 
+    We construct a symmetric monoidal natural transformation $ \tau \colon r^\times \implies p^\times $ whose component at a given category $ \mathcal{C} $ with $ C_2 $-action $ \sigma \colon \mathcal{C} \simeq \mathcal{C}$ is the $ C_2 $-equivariant functor $ \mathcal{C} \xrightarrow{x \mapsto x \otimes \sigma(x)} p(\mathcal{C}) $. 
+
+    Let $ \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ be the span $ \infty $-category of finite sets with free $ C_2 $-action. 
+    For an $ \infty $-category with finite products $ \mathcal{E} $, there is a natural equivalence $ \Fun^\times\left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \mathcal{E}\right) \simeq \mathrm{CMon}(\mathcal{E})^{BC_2} $ between product-preserving functors $ \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) \to \mathcal{E} $ and commutative monoids in $ \mathcal{E} $ with $ C_2 $-action. 
+    Taking $ \mathcal{E} \simeq \Cat $, we may identify the functor $ r $ as restriction along the inclusion $ i \colon BC_2 \to \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ of the maximal subgroupoid in the full subcategory on a finite $ C_2 $-set with a single orbit. 
+    On the other hand, we can identify the functor $ p $ as restriction along the map $ j \colon BC_2 \to \{*\} \xrightarrow{* \mapsto C_2} \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $. 
+    Now the span $ C_2 \xleftarrow{\pi_1} C_2 \times C_2 \xrightarrow{\pi_2} C_2 $ determines a morphism in $ \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ which is equivariant with respect to the given action on the source $ C_2 $ and the \emph{trivial action} on the target $ C_2 $. 
+    This morphism determines a functor $ \Delta^{1} \times BC_2 \to \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ whose restriction to $ \{0\} \times BC_2 $ agrees with $ i $ and whose restriction to $ \{1\} \times BC_2 $ agrees with $ j $. 
+    This determines a natural transformation $ i^* \implies j^* $ of functors $ \Fun \left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \Cat\right) \to \Fun(BC_2, \Cat) $, and precomposing with the inclusion $ \Fun^\times \left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \Cat\right) \subset \Fun \left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \Cat\right)$ gives the desired natural transformation $ \tau \colon r \implies p $. 
+    Since $ r $ and $ p $ preserve products, we may lift them to symmetric monoidal functors $ r^\times, p^\times \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2})^\times \to (\Cat^{BC_2})^\times $, and $ \tau $ refines to a symmetric monoidal natural transformation $ \tau^\times \colon r^\times \implies p^\times $.
+\end{construction}
+\begin{proof}
+    [Proof of Proposition \ref{prop:multiplicativity_of_Poincare_struct_from_eqvt_functor}] 
+    Pretty similar to proof of \cite[Proposition 3.1.3]{CHN2024}, the main thing is the fact (stated after proof of Lemma 3.1.1 of \emph{op. cit.}) that $ \mathrm{Fin}_* $-cartesian fibrations are classified by lax symmetric monoidal functors.  
+\end{proof}
 
 \subsection{Poincaré Picard groups of schemes} 
 Let $ X $ be a scheme with an involution. 
