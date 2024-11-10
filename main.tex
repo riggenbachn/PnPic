@@ -544,11 +544,19 @@ In particular, the ``$ C_2 $-equivariance'' of $ f $ is additional data: for eac
     Now since $ \Pic(\mathcal{C}) \subseteq \mathcal{C} $ induces $ \Pic(\mathcal{C})^{hC_2} \to \mathcal{C}^{hC_2} $, we may take the image of $ L $ under the Yoneda embedding: $ y(L) \in \mathrm{Fun}\left(\mathcal{C}^\op, \Spectra\right)^{hC_2} \simeq \mathrm{Fun}_{C_2}\left(\mathcal{C}^\op, \Spectra\right) $. 
 \end{proof}
 Now fix a presentably symmetric monoidal $ \infty $-category $ \mathcal{D} $, and regard it as having the trivial $ C_2 $-action. 
+Recall the $ \mathrm{Fin}_* $-cartesian fibration $ \left(\Cat^{BC_2}_{\op//q^*\mathcal{D}} \right)^{\otimes} \simeq \left(\left(\Cat_{\op//\mathcal{D}}\right)^{BC_2} \right)^{\otimes}\to (\Cat^{BC_2})^\times $ from \cite[p. 13]{CHN2024}. 
 Set 
 \begin{equation*}
-    \mathcal{W}_{\mathcal{D}}^\otimes := \EE_\infty \mathrm{Alg} \left(\Cat^{BC_2}\right)^\times \times_{(\Cat^{BC_2})^\times} \left(\Cat^{BC_2}_{\op//\mathcal{D}} \right)^{\otimes}
+    \mathcal{W}_{\mathcal{D}}^\otimes := \EE_\infty \mathrm{Alg} \left(\Cat^{BC_2}\right)^\times \times_{(\Cat^{BC_2})^\times} \left(\Cat^{BC_2}_{\op//q^*\mathcal{D}} \right)^{\otimes}
 \end{equation*}
-\Lucy{need to construct the $\infty$-operad on the right!}
+This is a $ \mathrm{Fin}_* $-cartesian fibration classified by the lax symmetric monoidal functor
+\begin{equation}\label{eq:functor_classifying_eqvt_functors}
+\begin{split}
+     \EE_\infty \mathrm{Alg}(\Cat)^{BC_2} \to \Cat \\
+     \mathcal{C}^\otimes \mapsto \Fun_{C_2}(\mathcal{C}^\op, q^* \mathcal{D}) \,.
+\end{split}
+\end{equation} 
+In particular, an object of the underlying $ \infty $-category of $ \mathcal{W}_{\mathcal{D}}^\otimes $ is a pair $ (\mathcal{C}, f) $ where $ \mathcal{C} $ is a symmetric monoidal $ \infty $-category with a $ C_2 $-action (via a symmetric monoidal functor) and $ f \colon \mathcal{C}^\op \to q^*\mathcal{D} $ is a $ C_2 $-equivariant functor. 
 \begin{construction}\label{cons:Poincare_structure_from_equivariant_functor}
     Given a $ C_2 $-equivariant functor $ f \colon \mathcal{C}^\op \to \mathcal{D} $, we may regard the data of the $ C_2 $-equivariance of $ f $ as a commutative diagram
     \begin{equation*}
@@ -582,16 +590,16 @@ Set
         \mathcal{W}_{\mathcal{D}}^\otimes \to \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes 
     \end{equation*}
     sitting in a commutative diagram
-    \begin{equation*}
+    \begin{equation}\label{diagram:mult_of_Poincare_struct_from_eqvt_functor}
     \begin{tikzcd}
-         \mathcal{W}_{\mathcal{D}}^\otimes \ar[r] \ar[d] & \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes \ar[d] \\
+         \mathcal{W}_{\mathcal{D}}^\otimes \ar[r] \ar[d] & \left(\Cat\right)_{\op//\mathcal{D}^{BC_2}}^\otimes \ar[d] \\
          \EE_\infty \mathrm{Alg}(\Cat^{BC_2})^\times \ar[r,"{\mathcal{C}^\otimes \mapsto \mathcal{C}}"] & \Cat^\times 
     \end{tikzcd}
-    \end{equation*}
+    \end{equation}
     \Lucy{todo: describe the arrows}
 \end{proposition}
 
-\begin{construction} \Lucy{This is basically Construction 3.1.4 of \cite{CHN2024} with minor edits; we could possibly include less detail later.}
+\begin{construction}\label{cons:functor_classifying_twisted_diagonal} \Lucy{This is basically Construction 3.1.4 of \cite{CHN2024} with minor edits; we could possibly include less detail later.}
     Consider the functors $ r \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2}) \xrightarrow{\mathcal{C}^\otimes \mapsto \mathcal{C}} \Cat^{BC_2} $ and $ p \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2}) \xrightarrow{\mathrm{forget}} \Cat \xrightarrow{q^*} \Cat^{BC_2} $ where $ q \colon BC_2 \to * $. 
     We construct a symmetric monoidal natural transformation $ \tau \colon r^\times \implies p^\times $ whose component at a given category $ \mathcal{C} $ with $ C_2 $-action $ \sigma \colon \mathcal{C} \simeq \mathcal{C}$ is the $ C_2 $-equivariant functor $ \mathcal{C} \xrightarrow{x \mapsto x \otimes \sigma(x)} p(\mathcal{C}) $. 
 
@@ -606,8 +614,44 @@ Set
 \end{construction}
 \begin{proof}
     [Proof of Proposition \ref{prop:multiplicativity_of_Poincare_struct_from_eqvt_functor}] 
-    Pretty similar to proof of \cite[Proposition 3.1.3]{CHN2024}, the main thing is the fact (stated after proof of Lemma 3.1.1 of \emph{op. cit.}) that $ \mathrm{Fin}_* $-cartesian fibrations are classified by lax symmetric monoidal functors.  
+    \Lucy{Pretty similar to proof of \cite[Proposition 3.1.3]{CHN2024}, the main thing is the fact (stated after proof of Lemma 3.1.1 of \emph{op. cit.}) that $ \mathrm{Fin}_* $-cartesian fibrations are classified by lax symmetric monoidal functors.}  
+    Horizontally composing the natural transformation of Construction \ref{cons:functor_classifying_twisted_diagonal} with the functor \ref{cons:Poincare_structure_from_equivariant_functor} and unstraightening induces a commutative diagram
+    \begin{equation}
+    \begin{tikzcd}
+         \mathcal{W}_{\mathcal{D}}^\otimes \ar[d] \ar[r] & \left(\Cat_{\op//\mathcal{D}^{BC_2}}\right)^\otimes \ar[d] \\ 
+         \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes \ar[r,"{\mathcal{C}^\otimes \mapsto \mathcal{C}}"] & \Cat^\times      
+    \end{tikzcd}    \,,
+    \end{equation}
+    where we have used that $ (q^* \mathcal{D})^{hC_2} \simeq \mathcal{D}^{BC_2} $. 
 \end{proof}
+\begin{definition}
+    Define 
+    \begin{equation*}
+        \mathcal{W}_{\mathrm{ex}}^\otimes \subseteq \mathcal{W}_{\Spectra}^\otimes \times_{\EE_\infty\mathrm{Alg}(\Cat)} \EE_\infty\mathrm{Alg}(\Catex)
+    \end{equation*}
+    to be the full sub-operad on those colors $ (\mathcal{C}, f) $ so that $ f $ is exact. 
+\end{definition}
+\begin{observation}
+    The commutative square (\ref{diagram:mult_of_Poincare_struct_from_eqvt_functor}) restricts to a commutative square of $ \infty $-operads 
+    \begin{equation}\label{diagram:from_eqvt_functor_to_Cath}
+    \begin{tikzcd}
+        \mathcal{W}_{\mathrm{ex}}^\otimes \ar[r] \ar[d] & \Cath^\otimes \ar[d] \\
+        \left(\EE_\infty\mathrm{Alg}(\Catex)^{BC_2}\right)^\otimes \ar[r] & \Catex^\otimes  
+    \end{tikzcd}
+    \end{equation}
+\end{observation}
+\begin{lemma}
+    Both vertical maps in \ref{diagram:from_eqvt_functor_to_Cath} are cocartesian fibrations of $ \infty $-operads. 
+    In particular, $ \mathcal{W}_{\mathrm{ex}}^\otimes $ is a symmetric monoidal $ \infty $-category. 
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty $-category of $ \mathcal{W}_{\mathrm{ex}}^\otimes $ with pairs $ \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) $ where $ \mathcal{C} $ is a symmetric monoidal stable $ \infty $-category with involution $ \sigma_{\mathcal{C}} $, and $ (L, \lambda) \in \mathrm{Ind}(\mathcal{C})^{hC_2} $ is a fixed point with respect to the induced action on $ \mathrm{Ind}(\mathcal{C})$. 
+\begin{proposition}
+    Let $  \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) \in \mathcal{W}_{\mathrm{ex}} $ be as above. 
+    Then the hermitian structure $ \Qoppa^s_{L} $ is non-degenerate if and only if $ (L,\lambda) $ belongs to $ \mathcal{C}^{hC_2} $, and it is furthermore Poincaré if and only if the underlying object $ L $ is tensor-invertible in $ \mathcal{C} $.  
+\end{proposition}
 
 \subsection{Poincaré Picard groups of schemes} 
 Let $ X $ be a scheme with an involution. 
@@ -618,7 +662,7 @@ We write $ p \colon X \to Y $ for the quotient map.
     Because $ p $ is an affine map,\Lucy{by assumption!} the fiber product $ \Spec B := \Spec A \times_{Y} X $ is an affine open of $ X $ which is invariant under the $ C_2 $-action. 
     In particular $ \Spec B $ inherits a $ C_2 $-action from $ X $ (hence so does its ring of functions $ B$).  
     Now $ A \to B $ acquires the structure of a $C_2$-Green functor $ \underline{\mathcal{O}}(U) $. 
-    Regarding $ \underline{\mathcal{O}}(U) $ as a $ C_2 $-spectrum, by the isotropy separation sequence, we have an equivalence of $ A $-modules $ \underline{\mathcal{O}}(U)^{\varphi C_2} \mathrm{cofib} (\mathrm{tr} \colon B_{hC_2} \to A) $. 
+    Regarding $ \underline{\mathcal{O}}(U) $ as a $ C_2 $-spectrum, by the isotropy separation sequence, we have an equivalence of $ A $-modules $ \underline{\mathcal{O}}(U)^{\varphi C_2} \simeq \mathrm{cofib} (\mathrm{tr} \colon B_{hC_2} \to A) $. 
 \end{construction}
 \begin{lemma} 
 Let $ X $ be a scheme with an involution. 
