@@ -650,7 +650,8 @@ In particular, an object of the underlying $ \infty $-category of $ \mathcal{W}_
 As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty $-category of $ \mathcal{W}_{\mathrm{ex}}^\otimes $ with pairs $ \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) $ where $ \mathcal{C} $ is a symmetric monoidal stable $ \infty $-category with involution $ \sigma_{\mathcal{C}} $, and $ (L, \lambda) \in \mathrm{Ind}(\mathcal{C})^{hC_2} $ is a fixed point with respect to the induced action on $ \mathrm{Ind}(\mathcal{C})$. 
 \begin{proposition}
     Let $  \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) \in \mathcal{W}_{\mathrm{ex}} $ be as above. 
-    Then the hermitian structure $ \Qoppa^s_{L} $ is non-degenerate if and only if $ (L,\lambda) $ belongs to $ \mathcal{C}^{hC_2} $, and it is furthermore Poincaré if and only if the underlying object $ L $ is tensor-invertible in $ \mathcal{C} $.  
+    Then the hermitian structure $ \Qoppa^s_{L} $ is non-degenerate if and only if $ (L,\lambda) $ belongs to $ \mathcal{C}^{hC_2} $, and it is furthermore Poincaré if and only if the underlying object $ L $ is tensor-invertible in $ \mathcal{C} $. 
+    In addition, if $ g \colon \mathcal{C} \to \mathcal{C}' $ is a $ C_2 $-equivariant exact functor, $ L \in \mathcal{C}^{BC_2} $ and $ L' \in (\mathcal{C}')^{BC_2} $ are tensor-invertible, and $ g(L) \simeq L' $ an equivalence, then the induced hermitian functor $ \left(\mathcal{C}, \Qoppa^s_{L}\right) \left(\mathcal{C}', \Qoppa^s_{L'}\right) $ is Poincaré. 
 \end{proposition}
 
 \subsection{Poincaré Picard groups of schemes} 
@@ -668,10 +669,28 @@ We write $ p \colon X \to Y $ for the quotient map.
 Let $ X $ be a scheme with an involution. 
 Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
 \begin{enumerate}[label=(\roman*)]
-    \item \label{lem_item:structure_sheaf_of_Green_func_is_functor} The assignment of Construction \ref{cons:structure_sheaf_of_Green_functors} lifts to a contravariant functor from (the nerve of) the category of affine opens of $ Y $ to the $\infty $-category of Poincaré rings. 
-    \item The presheaf of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
+    \item \label{lem_item:structure_sheaf_of_Green_func_is_functor} The assignment of Construction \ref{cons:structure_sheaf_of_Green_functors} lifts to a contravariant functor from (the nerve of) the category of affine opens of $ Y $ to the $\infty $-category of Poincaré rings/$ C_2 $-$ \EE_\infty $-rings/Tambara functors. 
+    \item The presheaf $ \underline{\mathcal{O}} $ of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
 \end{enumerate}
 \end{lemma}
+\Lucy{The following is very speculative.}
+\begin{construction}\label{cons:C2_mod_over_sheaf_of_Green_func}
+    Let $ p \colon X \to Y $ as before. 
+    Consider the composites
+    \begin{equation}\label{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}
+    \begin{split}
+        \Mod_{\underline{\mathcal{O}}} \colon & \mathrm{Op}(Y)^\op \xrightarrow{\underline{\mathcal{O}}} C_2\EE_\infty\mathrm{Alg}\left(\Spectra^{C_2}\right) \xrightarrow{\Mod_{(-)}} \Cat   \\
+        \Mod_{\underline{\mathcal{O}}}^\otimes \colon & \mathrm{Op}(Y)^\op \xrightarrow{\underline{\mathcal{O}}} C_2\EE_\infty\mathrm{Alg}\left(\Spectra^{C_2}\right) \xrightarrow{\Mod_{(-)}^\otimes} C_2\otimes\Cat \,,  
+    \end{split}    
+    \end{equation}
+    where $ C_2\otimes\Cat $ denotes the $ \infty $-category of (small)\Lucy{bleh...cardinals} $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-categories. 
+    In the notation of Construction \ref{cons:structure_sheaf_of_Green_functors}, this functor sends the affine open $ \Spec A \subseteq Y $ to the category of modules in $ C_2 $-spectra over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $. 
+    Define\Lucy{invent better notation later} $ \Mod_{\underline{\mathcal{O}}} $, $ \Mod_{\underline{\mathcal{O}}}^\otimes $ to be the limits in $ \Cat $, $ C_2 \otimes \Cat $, resp. of the functors in (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}). 
+    In particular, if we write $ s \colon \int \Mod_{\underline{\mathcal{O}}} \to \mathrm{Op}(Y)^\op $ for the cocartesian fibration obtained by taking the Grothendieck construction on (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}), an object of $ \Mod_{\underline{\mathcal{O}}} $ is a cocartesian section of $ s $. 
+    In other words, it is a choice, for each affine open $ \Spec A $ of $ Y $ (same notation as before), of a module over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $ which glue compatibly. 
+    \Lucy{I want to use this to say that $ E \mapsto E \otimes \sigma(E) $ defines a `norm' functor from $ \Mod_{\mathcal{O}_X} \to \Mod_{\underline{\mathcal{O}}} $. 
+    Then the quadratic functor we're interested in is $ \hom_{\Mod_{\underline{\mathcal{O}}}}(N^{C_2}( -), \underline{\mathcal{O}})$.}
+\end{construction}
 
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
