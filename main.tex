@@ -579,7 +579,7 @@ In particular, an object of the underlying $ \infty $-category of $ \mathcal{W}_
          \Qoppa_f^s \colon \mathcal{C}^\op \xrightarrow{T_f} \mathcal{D}^{BC_2} \xrightarrow{(-)^{hC_2}} \mathcal{D} \,. 
     \end{equation*}
 \end{construction}
-\begin{observation}
+\begin{observation}\label{obs:cross_effect_twisted_poincare_structure}
     Let $ \mathcal{C} $, $ L $, be as before. 
     Then the cross effect $ B_{L} $ of $ \Qoppa^s_L$ is given by $ B_L(x,y) = \mathrm{hom}_{\mathcal{C}}(x \otimes \sigma (y), L) $. \Lucy{The `untwisted' version of this appears in \cite[proof of Proposition 3.1.6]{CHN2024}, but I wanted to get this down before I forgot.}
 \end{observation}
@@ -690,7 +690,27 @@ Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 
     In other words, it is a choice, for each affine open $ \Spec A $ of $ Y $ (same notation as before), of a module over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $ which glue compatibly. 
     \Lucy{I want to use this to say that $ E \mapsto E \otimes \sigma(E) $ defines a `norm' functor from $ \Mod_{\mathcal{O}_X} \to \Mod_{\underline{\mathcal{O}}} $. 
     Then the quadratic functor we're interested in is $ \hom_{\Mod_{\underline{\mathcal{O}}}}(N^{C_2}( -), \underline{\mathcal{O}})$.}
-\end{construction}
+\end{construction} 
+Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{N^{C_2}B}\left(\Spectra^{C_2}\right) $ and a quadratic relative norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{A\to B}\left(\Spectra^{C_2}\right) $. 
+\begin{lemma}\label{lemma:globalize_relative_norm}
+    The norm functors (resp. relative norm functors) $ N^{C_2}_e $ assemble under Construction \ref{cons:structure_sheaf_of_Green_functors} to a `global' norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to N^{C_2} \pi_{\#} \mathcal{O}_X\Mod $ (resp. relative norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to \underline{\mathcal{O}}\Mod $). 
+    Moreover, these functors are quadratic. 
+\end{lemma}
+\begin{proof}
+    For each affine open $ \Spec A \subseteq Y $, write $ B = \Gamma \mathcal{O}_{\Spec A \times_Y X} $. 
+    Then the functor $ N^{C_2}_Y $ is the limit over all $ \Spec A \subseteq Y $ of the functors $ \pi_{\#}\mathcal{O}_X \Mod \to B\Mod(\Spectra) \xrightarrow{N^{C_2}} \Mod_{N^{C_2}B}(\Spectra^{C_2}) \xrightarrow{ -\otimes_{N^{C_2}B} (A \to B)} \Mod_{A \to B}(\Spectra^{C_2}) $, where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which is a structure map for the $ C_2 $-$ \EE_\infty $-algebra structure on $ A \to B $. 
+    \Lucy{todo: rewrite this as a diagram in a functor category with fixed domain and target.} 
+    Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
+\end{proof}
+\begin{definition}
+    Let $ \pi \colon X \to Y $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ and a good quotient. 
+    Define $ \Qoppa_{\sigma} $ to be the functor
+    \begin{equation*}
+        \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{\mathcal{O}})} \Spectra \,.
+    \end{equation*}
+    By Lemma \ref{lemma:globalize_relative_norm} and \Lucy{composite of an exact functor and an $ m$-excisive functor is $m$-excisive?}, $ \Qoppa_\sigma $ is quadratic. 
+\end{definition}
+\Lucy{Next, want to identify the bilinear part of $ \Qoppa_{\sigma} $ with that from Observation \ref{obs:cross_effect_twisted_poincare_structure}...but I \emph{think} this raises the question, is $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ fully faithful?}
 
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
