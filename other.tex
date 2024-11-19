@@ -92,10 +92,11 @@
 \newcommand{\NN}{\ensuremath{\mathbb{N}}\xspace}
 \newcommand{\ZZ}{\ensuremath{\mathbb{Z}}\xspace}
 \newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
-\newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
+\newcommand{\RR}{\mathbb{R}}
 \newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
 \newcommand{\FF}{\ensuremath{\mathbb{F}}\xspace}
 \newcommand{\EE}{\mathbb{E}}
+\renewcommand{\AA}{\mathbb{A}}
 \newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}\xspace}
 \newcommand{\DD}{\ensuremath{\mathbbl{\Delta}}\xspace}
@@ -133,8 +134,8 @@
 
 \newcommand{\Viktor}[1]{\todo{V: #1}}
 \newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
-\newcommand{\Lucy}[1]{\todo[color=cyan!30]{L: #1}}
-\newcommand{\Lucyil}[1]{\todo[inline,color=cyan!30]{L: #1}}
+\newcommand{\Lucy}[1]{\todo[color=cyan!30]{\footnotesize L: #1}}
+\newcommand{\Lucyil}[1]{\todo[inline,color=cyan!30]{\footnotesize L: #1}}
 
 \title{Et cetera}
 \author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
@@ -301,6 +302,11 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \Lucy{Note that when $ s, t$ are identically one, the resulting order $ \preceq_j''$ agrees with the lexicographic order defined in \cite[Remark 4.1.1.4]{LurHA}.}  
     \end{itemize}
 \end{remark}
+\begin{remark}
+    The maps $ \iota, \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd} induce maps of $ \infty $-operads $ \mathrm{Assoc}^\otimes \to \Associnv^\otimes $. 
+    Note that each object $ \langle n \rangle \in \Associnv^\otimes $ has a distinguished automorphism $ \mathrm{rev}_{\langle n \rangle} $ of order two given by the identity map on $ \langle n \rangle $ and the constant map $ c_{-1} \colon \langle n \rangle^\circ \to \{\pm 1\} $ at $ -1 $. 
+    There is a canonical natural equivalence $ \iota \overset{\sim}{\implies} \iota^{\mathrm{rev}} $ whose component at $ \langle n \rangle $ is $ \mathrm{rev}_{\langle n \rangle} $. 
+\end{remark}
 \begin{definition}
     Define a category $ \Delta_\sigma $ 
     \begin{itemize}
@@ -321,7 +327,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \end{itemize}
     \end{itemize}
 \end{construction}
-\begin{lemma}
+\begin{lemma}\label{lemma:involutive_cut_is_approximation}
     The functor $ \mathrm{Cut} \colon \Delta^\op_\sigma \to \Associnv^\otimes $ exhibits $ \Delta^\op_\sigma $ as an approximation to the $ \infty $-operad $ \Associnv^\otimes $. 
     \Lucyil{I think the proof of this lemma is not too different from the proof of Proposition 4.1.2.11 of \cite{LurHA}; the point here is just to unravel the definitions of locally coCartesian and Cartesian; the morphisms in $ \Delta^\op_\sigma $ are a little more complicated than $ \Delta^\op $, but not by much. } 
 \end{lemma}
@@ -329,6 +335,37 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ exhibit $ \mathcal{C} $ as $ \EE_\sigma $-monoidal.\Lucy{weakly enriched?? maybe need to add a new defn..} 
     Let $ \mathcal{C}^\varoast $ denote the fiber product $ \mathcal{C}^\otimes \times_{\Associnv^\otimes} \Delta^\op_{\sigma} $. 
 \end{notation}
+\begin{definition}\label{defn:inert_map_in_involutive_simplicial_cat}
+    Say that a morphism $ ([n], s) \to ([m], t) $ is \emph{inert} if the induced map $ \mathrm{Cut}([m],t) \to \mathrm{Cut}([n],s) $ is an inert morphism in $ \Associnv^\otimes $. 
+\end{definition}
+\begin{definition}
+    A \emph{$ \RR^\sigma $-planar operad} is an $ \infty $-category $ \mathcal{O}^\varoast $ equipped with a functor $ q \colon \mathcal{O}^\varoast \to \Delta^\op_\sigma $ so that 
+    \begin{enumerate}
+        \item For every object $ X \in \mathcal{O}^\varoast $ and every inert morphism $ \alpha\colon ([n],s) \to q(X) $ in $ \Delta_\sigma $, there is a $ q $-cocartesian morphism $ \overline{\alpha} \colon X \to Y $ satisfying $ q (\overline{\alpha}) = \alpha $
+        \item Let $ X $ be an object satisfying $ q (X) = ([n],s) $, and choose $ q $-cocartesian morphisms $ \overline{\alpha}_i \colon X \to X_i $ corresponding to the morphism $ ([i-1< i], s_i) \to ([n], s) $ which is the inclusion on underlying sets and satisfies $ s_i(i) = s(i) $. 
+        Then the morphisms $ \overline{\alpha}_i $ exhibit $ X $ as the $ q $-product of the $ X_i $. 
+        \item For each $ n \geq 0 $, the construction $ C \mapsto \{C_i \}_{1 \leq i \leq n} $ induces an equivalence of $ \infty $-categories 
+        \begin{equation*}
+            \mathcal{O}^\varoast \times_{\Delta^\op_\sigma} \{([n], s)\} \xrightarrow{\sim} \left(\mathcal{O}^\varoast \times_{\Delta^\op_\sigma} \{([1], s|_{\{i\}})\}\right)^{\times n}
+        \end{equation*}
+    \end{enumerate}
+    We say that a morphism $ \alpha $ in $ \RR^\sigma $-planar operad is \emph{inert} if it is $ q $-cocartesian and $ q (\alpha) $ is inert in $ \Delta^\op_\sigma $ in the sense of Definition \ref{defn:inert_map_in_involutive_simplicial_cat}. 
+\end{definition}
+\begin{definition}\label{defn:inv_planar_alg}
+    Let $ q \colon \mathcal{O}^\varoast \to \Delta^\op_\sigma $ be a $ \RR^\sigma $-planar operad. 
+    An $ \AA^\sigma_\infty $-algebra object of $ \mathcal{O}^{\varoast} $ is a section of $ q $ which carries inert morphisms to inert morphisms. 
+    Write $ \Alg_{\AA^\sigma_\infty}(\mathcal{O}) $ for the full subcategory of $ \Fun_{\Delta^\op_{\sigma}}\left(\Delta^\op_\sigma, \mathcal{O}^\varoast\right) $ on $ \AA^\sigma_\infty $-algebra objects.  
+\end{definition}
+\begin{proposition}
+    Let $ \mathcal{O}^\otimes \to \Associnv^\otimes $ be a fibration of $ \infty $-operads. 
+    Then precomposition with the functor $ \mathrm{Cut} $ of Construction \ref{cons:involutive_cut} induces an equivalence of $ \infty $-categories
+    \begin{equation*}
+        \Alg_{\Associnv}(\mathcal{O}) \xrightarrow{\sim} \Alg_{\AA_\infty^\sigma}\left(\mathcal{O}\right)\,.
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Combine Lemma \ref{lemma:involutive_cut_is_approximation} with \cite[Theorem 2.3.3.23]{LurHA}. 
+\end{proof}
 
 \begin{definition}
     Define a colored operad $ \mathbf{BM}_\mathrm{inv} $
@@ -361,9 +398,10 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \begin{remark}\label{rmk:inv_bimod_opd_to_inv_alg_opd} %compare Remark 4.2.1.5 in Higher algebra
     Each morphism $ \phi \in \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ determines a linear ordering $\ell $ on the set $ I $ and a function $ s \colon I \to \{\pm 1\} $. 
     Passing from $ \phi $ to the pair $ (\ell, s) $ determines a map of colored operads $ j \colon \mathbf{BM}_\mathrm{inv} \to \mathbf{Assoc}_\mathrm{inv} $. 
-    For any monoidal\Lucy{more general?} $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \mathbf{Assoc}_\mathrm{inv} \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
+    The map $ j $ induces a morphism of $ \infty $-operads $ \Associnv^\otimes \to \mathcal{BM}_{\mathrm{inv}}^\otimes $ which we will also denote by $ j $. 
+    For any monoidal\Lucy{more general?} $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
 \end{remark}
-\begin{construction}
+\begin{construction}\label{cons:involutive_cut_module_operad}
     Define a functor $ \mathrm{MCut} \colon \Delta_\sigma^\op \to BM^\otimes_{\mathrm{inv}} $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
     \begin{itemize}
         \item For each $ ([n],s) $, we have $ \mathrm{MCut}([n],s) = \langle n + 1 \rangle \simeq \mathrm{RCut}_0([n]) $ where $ \mathrm{RCut} $ is from \cite[Construction 4.8.4.4]{LurHA}. 
@@ -390,11 +428,21 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
                             \end{cases}
     \end{split}    
     \end{equation*} 
-    This construction determines a morphism $ \gamma $ in the $ \infty $-category $ \Fun\left(\Delta^\op_\sigma, \mathcal{BM}^\otimes_{\mathrm{inv}}\right) $, or equivalently a map $ \Delta^\op_\sigma \times \Delta^1 \to \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
+    This construction determines a morphism $ \gamma $ in the $ \infty $-category $ \Fun\left(\Delta^\op_\sigma, \mathcal{BM}^\otimes_{\mathrm{inv}}\right) $, or equivalently a map $ \gamma \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
 \end{remark}
-\begin{lemma}
+\begin{lemma}\label{lemma:involutive_cut_is_approx_on_module_operad}
     The morphism $ \gamma \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ defined in Remark \ref{rmk:nat_transformation_of_cut_functors} exhibits $\Delta^\op_\sigma \times \Delta^1 $ as an approximation to the $ \infty $-operad $ \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
 \end{lemma}
+\begin{definition}\label{defn:involutive_planar_module}
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    Let $ \gamma $ be as in Remark \ref{rmk:nat_transformation_of_cut_functors}. 
+    Let $ \Modh^{\AA^\sigma_\infty}(\mathcal{M}) $ denote the full subcategory of $ \Fun_{\mathcal{BM}^\otimes_{\mathrm{inv}}}\left(\Delta^\op_\sigma \times \Delta^1,\mathcal{O}^\otimes\right) $ spanned by those maps $ f \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{O}^\otimes $ satisfying 
+    \begin{enumerate}
+        \item The restriction of $ f $ to $ \Delta^\op_\sigma \times \{1\} $ belongs to $ \Alg_{\AA^\sigma_\infty}(\mathcal{O}) $ of Definition \ref{defn:inv_planar_alg}
+        \item If $ \alpha \colon ([m], s)\to ([n], t) $ so that $ \alpha(0) = 0 $, then the induced map $ f ([m], s, 0)\to f([n], t, 0) $ is an inert map in $ \mathcal{O}^\otimes $
+        \item for each object $ ([n], s) $ in $ \Delta^\op_\sigma $, the induced map $ f ([n], s, 0) \to f([n], s, 1) $ is an inert map in $ \mathcal{O}^\otimes $
+    \end{enumerate}
+\end{definition}
 \begin{definition}
     Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ be a fibration of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
     Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. \Lucy{Lurie gives this a name (Definition 4.2.1.12 \emph{weakly enriched})--not sure what to call this. something \emph{bi-enriched}?}
@@ -423,10 +471,27 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     Unwinding definitions, we see that a vertex in $ \overline{\mathcal{M}}^\varoast $ lying over an object $ ([n], s \colon \{1, \ldots, n\} \to \{\pm 1\}) \in \Delta^\op_{\sigma} $ corresponds to a morphism $ \alpha $ in $ \mathcal{O}^\otimes $ whose image in $ \mathcal{BM}^\otimes_{\mathrm{inv}} $ is the map $ (\langle n+1\rangle, \{0\}) \to (\langle n\rangle, \varnothing) $\Lucy{this might be off--revisit later!}.   
     Now let $ \mathcal{M}^\varoast $ denote the full simplicial subset of $ \overline{\mathcal{M}}^\varoast  $ spanned by those vertices for which $ \alpha $ is inert. 
 \end{notation}
-\begin{lemma} % Compare Lemma 4.2.2.20 of Higher algebra
+\begin{remark}
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    By \cite[Example 4.3.1.4 \& Proposition 4.3.2.15]{HTT}, composition with the inclusion $ \{0\} \to \Delta^1 $ induces a trivial Kan fibration $ \mathcal{M}^\varoast \xrightarrow{\sim} \mathcal{O}^\otimes \times_{\mathcal{BM}^\otimes_{\mathrm{inv}}} \Delta^\op_\sigma $. \Lucy{Jacob explains this in a really terse way--just by citing Prop 4.3.2.15 of HTT. It does just follow from definitions/observations, but there are many (for instance, definition of inert edge).}
+    In particular, the fiber of $ \mathcal{M}^\varoast $ over an object $ ([n], s) \in \Delta^\op_\sigma $ is canonically equivalent to $ \mathcal{M} \times \mathcal{C}^{\times n} $. 
+
+    Finally, since $ q $ is a categorical fibration and categorical fibrations are closed under pullback and composition with trivial fibrations, $ q $ induces categorical fibrations $ \mathcal{M}^\varoast \to \mathcal{C}^\varoast \to \Delta^\op_\sigma $.     
+\end{remark}
+\begin{lemma} % Compare Lemma 4.2.2.20 of Higher algebra
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as tensored over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
     Then the associated functor $ \mathcal{M}^\varoast  \to \mathcal{C}^\varoast $ (Notation \ref{ntn:E_sigma_monoidal_cat_variant}) is a locally coCartesian fibration.     
 \end{lemma}
+\begin{proposition}
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as tensored over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    Then precomposition with the functor $ \mathrm{MCut} $ of Construction \ref{cons:involutive_cut_module_operad} induces an equivalence of $ \infty $-categories
+    \begin{equation*}
+        \Modh(\mathcal{M}) \simeq \Alg_{/\mathcal{BM}_{\mathrm{inv}}}(\mathcal{O}) \xrightarrow{\sim} \Modh^{\AA_\infty^\sigma}\left(\mathcal{M}\right)\,.
+    \end{equation*}
+\end{proposition}
+\begin{proof}
+    Combine Lemma \ref{lemma:involutive_cut_is_approx_on_module_operad} with \cite[Theorem 2.3.3.23]{LurHA}. 
+\end{proof}
 
 \printbibliography
 
