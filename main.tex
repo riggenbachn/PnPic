@@ -172,6 +172,9 @@ Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}
     There is a Poincar{\'e} group scheme $\mathbb{G}_m^\Qoppa$ such that \[B\mathbb{G}_m^\Qoppa\simeq \pnpic\] as fppf stacks.
 \end{theorem}
 
+\subsection{Acknowledgements} 
+The authors wish to thank the Institute for Advanced Study and the organizers of the 2024 Park City Mathematics institute on motivic homotopy theory. 
+
 \subsection{Conventions}
 \label{subsection:conventions}
     \begin{longtable}{lll}
@@ -688,8 +691,6 @@ Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 
     Define\Lucy{invent better notation later} $ \Mod_{\underline{\mathcal{O}}} $, $ \Mod_{\underline{\mathcal{O}}}^\otimes $ to be the limits in $ \Cat $, $ C_2 \otimes \Cat $, resp. of the functors in (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}). 
     In particular, if we write $ s \colon \int \Mod_{\underline{\mathcal{O}}} \to \mathrm{Op}(Y)^\op $ for the cocartesian fibration obtained by taking the Grothendieck construction on (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}), an object of $ \Mod_{\underline{\mathcal{O}}} $ is a cocartesian section of $ s $. 
     In other words, it is a choice, for each affine open $ \Spec A $ of $ Y $ (same notation as before), of a module over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $ which glue compatibly. 
-    \Lucy{I want to use this to say that $ E \mapsto E \otimes \sigma(E) $ defines a `norm' functor from $ \Mod_{\mathcal{O}_X} \to \Mod_{\underline{\mathcal{O}}} $. 
-    Then the quadratic functor we're interested in is $ \hom_{\Mod_{\underline{\mathcal{O}}}}(N^{C_2}( -), \underline{\mathcal{O}})$.}
 \end{construction} 
 Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{N^{C_2}B}\left(\Spectra^{C_2}\right) $ and a quadratic relative norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{A\to B}\left(\Spectra^{C_2}\right) $. 
 \begin{lemma}\label{lemma:globalize_relative_norm}
@@ -702,7 +703,7 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
     \Lucy{todo: rewrite this as a diagram in a functor category with fixed domain and target.} 
     Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
 \end{proof}
-\begin{definition}
+\begin{definition}\label{defn:quadratic_functor_from_good_quotient}
     Let $ \pi \colon X \to Y $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ and a good quotient. 
     Define $ \Qoppa_{\sigma} $ to be the functor
     \begin{equation*}
@@ -710,7 +711,25 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
     \end{equation*}
     By Lemma \ref{lemma:globalize_relative_norm} and \Lucy{composite of an exact functor and an $ m$-excisive functor is $m$-excisive?}, $ \Qoppa_\sigma $ is quadratic. 
 \end{definition}
-\Lucy{Next, want to identify the bilinear part of $ \Qoppa_{\sigma} $ with that from Observation \ref{obs:cross_effect_twisted_poincare_structure}...but I \emph{think} this raises the question, is $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ fully faithful?}
+
+\begin{lemma}\label{lemma:fully_faithful_pushforward}
+    Let $\pi \colon X \to Y $ be a finite étale map. 
+    Then the canonical functor $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ is fully faithful. 
+    \Lucy{asked JH Nov 22nd: James says that this should definitely be true, and moreover in greater generality (for instance, if $ \pi$ is faithfully flat.); try, for instance, Barr--Beck.}
+\end{lemma}
+\begin{proof}
+    Affine-locally on $ Y $, I think this is an \emph{equivalence}. 
+    Conclude by descent. 
+\end{proof}
+\begin{lemma}
+    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $, and let $ Y $ be a good quotient of $ X $. 
+    Let $ \Qoppa_\sigma $ be the Poincaré structure on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
+    Then the bilinear part of $ \Qoppa_\sigma $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
+\end{lemma}
+\begin{proof}
+    By definition of the bilinear part of a quadratic functor, it suffices to show that there is an equivalence $ \hom_{\pi_{\#}\mathcal{O}_X\Mod}\left(\pi_{\#}E \otimes_{\pi_{\#}\mathcal{O}_X} \pi_{\#}E, \pi_{\#}\mathcal{O}_X\right) \simeq \hom_{\mathcal{O}_X\Mod}\left(E \otimes_{\mathcal{O}_X} \sigma^*E, \mathcal{O}_X\right) $ for any perfect complex $ E $ on $ X $. 
+    This follows from Lemma \ref{lemma:fully_faithful_pushforward}.  
+\end{proof}
 
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
