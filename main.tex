@@ -599,7 +599,7 @@ In particular, an object of the underlying $ \infty $-category of $ \mathcal{W}_
          \EE_\infty \mathrm{Alg}(\Cat^{BC_2})^\times \ar[r,"{\mathcal{C}^\otimes \mapsto \mathcal{C}}"] & \Cat^\times 
     \end{tikzcd}
     \end{equation}
-    \Lucy{todo: describe the arrows}
+    in which both vertical arrows are both $ \mathrm{Fin}_* $-cartesian fibrations and cocartesian fibrations of $ \infty $-operads. 
 \end{proposition}
 
 \begin{construction}\label{cons:functor_classifying_twisted_diagonal} \Lucy{This is basically Construction 3.1.4 of \cite{CHN2024} with minor edits; we could possibly include less detail later.}
@@ -668,7 +668,7 @@ We write $ p \colon X \to Y $ for the quotient map.
     Now $ A \to B $ acquires the structure of a $C_2$-Green functor $ \underline{\mathcal{O}}(U) $. 
     Regarding $ \underline{\mathcal{O}}(U) $ as a $ C_2 $-spectrum, by the isotropy separation sequence, we have an equivalence of $ A $-modules $ \underline{\mathcal{O}}(U)^{\varphi C_2} \simeq \mathrm{cofib} (\mathrm{tr} \colon B_{hC_2} \to A) $. 
 \end{construction}
-\begin{lemma} 
+\begin{lemma} \label{lemma:identify_structure_sheaf_of_Green_func}
 Let $ X $ be a scheme with an involution. 
 Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
 \begin{enumerate}[label=(\roman*)]
@@ -676,7 +676,13 @@ Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 
     \item The presheaf $ \underline{\mathcal{O}} $ of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
 \end{enumerate}
 \end{lemma}
-\Lucy{The following is very speculative.}
+\begin{proof}
+    \Lucy{For part (ii), use Lemma \ref{lemma:limits_of_param_alg_detected_orbitwise}}
+\end{proof}
+\begin{lemma}\label{lemma:limits_of_param_alg_detected_orbitwise}
+    Let $ K $ be a simplicial set, and let $ f \colon K^{\triangleleft} \to C_2 \EE_\infty\mathrm{Alg}(\Spectra^{C_2}) $ be a diagram. 
+    Then $ f $ is a limit diagram if and only if $ f^e \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ and $ f^{C_2} \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ are both limit diagrams. 
+\end{lemma}
 \begin{construction}\label{cons:C2_mod_over_sheaf_of_Green_func}
     Let $ p \colon X \to Y $ as before. 
     Consider the composites
@@ -703,15 +709,34 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
     \Lucy{todo: rewrite this as a diagram in a functor category with fixed domain and target.} 
     Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
 \end{proof}
+\begin{lemma}\label{lemma:line_bundle_as_C2_sheaf}
+    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
+    Let $ L $ be a line bundle on $ Y $. 
+    Then the canonical map 
+    \begin{equation}\label{eq:line_bundle_as_C2_sheaf}
+        L \to \pi_{\#} \pi^* L 
+    \end{equation} 
+    promotes (\ref{eq:line_bundle_as_C2_sheaf}) to a sheaf of $ \underline{\mathcal{O}} $-modules on $ Y $. 
+    We will write $ \underline{L} $ for (\ref{lemma:line_bundle_as_C2_sheaf}). 
+\end{lemma}
 \begin{definition}\label{defn:quadratic_functor_from_good_quotient}
-    Let $ \pi \colon X \to Y $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ and a good quotient. 
-    Define $ \Qoppa_{\sigma} $ to be the functor
+    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
+    Let $ L $ be a line bundle on $ Y $. 
+    Define $ \Qoppa_{\sigma, L} $ to be the functor
+    \begin{equation*}
+        \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{L})} \Spectra \,,
+    \end{equation*}
+    where $ \underline{L} $ is a $ \underline{\mathcal{O}} $-module by Lemma \ref{lemma:line_bundle_as_C2_sheaf} and $ \underline{\mathcal{O}} $ is a $ N^{C_2} \pi_{\#}\mathcal{O}_X $-algebra by Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}. 
+    By Lemma \ref{lemma:globalize_relative_norm} and the fact that the composite of an exact (1-excisive) functor and an $ m$-excisive functor is $m$-excisive (see \cite[\S2.2]{Kpoly}), $ \Qoppa_\sigma $ is quadratic. 
+    \Lucy{want to show that the assignment $ (\sigma:X \to X, \pi: X \to Y, L) \mapsto (\perf_X, \Qoppa_{\sigma,L}) $ defines a functor from some category of schemes with involution (+line bundle) to the $ \infty $-category of Poincaré $ \infty $-categories.}
+\end{definition}
+\begin{example} 
+    Suppose $ L = \mathcal{O}_Y $. \Lucy{maybe for the purposes of this example, take $ Y $ to be affine?}
+    Then we drop $ L $ from notation and the quadratic functor $ \Qoppa_{\sigma} $ of Definition \ref{defn:quadratic_functor_from_good_quotient} takes the form
     \begin{equation*}
         \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{\mathcal{O}})} \Spectra \,.
-    \end{equation*}
-    By Lemma \ref{lemma:globalize_relative_norm} and \Lucy{composite of an exact functor and an $ m$-excisive functor is $m$-excisive?}, $ \Qoppa_\sigma $ is quadratic. 
-\end{definition}
-
+    \end{equation*}    
+\end{example}
 \begin{lemma}\label{lemma:fully_faithful_pushforward}
     Let $\pi \colon X \to Y $ be a finite étale map. 
     Then the canonical functor $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ is fully faithful. 
@@ -721,7 +746,7 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
     Affine-locally on $ Y $, I think this is an \emph{equivalence}. 
     Conclude by descent. 
 \end{proof}
-\begin{lemma}
+\begin{lemma}\label{lemma:bilinear_parts_agree}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $, and let $ Y $ be a good quotient of $ X $. 
     Let $ \Qoppa_\sigma $ be the Poincaré structure on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
     Then the bilinear part of $ \Qoppa_\sigma $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
@@ -730,6 +755,9 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
     By definition of the bilinear part of a quadratic functor, it suffices to show that there is an equivalence $ \hom_{\pi_{\#}\mathcal{O}_X\Mod}\left(\pi_{\#}E \otimes_{\pi_{\#}\mathcal{O}_X} \pi_{\#}E, \pi_{\#}\mathcal{O}_X\right) \simeq \hom_{\mathcal{O}_X\Mod}\left(E \otimes_{\mathcal{O}_X} \sigma^*E, \mathcal{O}_X\right) $ for any perfect complex $ E $ on $ X $. 
     This follows from Lemma \ref{lemma:fully_faithful_pushforward}.  
 \end{proof}
+\begin{remark}
+    Compare the description of the space of bilinear forms in Lemma \ref{lemma:bilinear_parts_agree} with the description of a $ \delta $-hermitian form $ H $ in \cite[p. 216]{MR1162189}. 
+\end{remark}
 
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
