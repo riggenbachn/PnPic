@@ -302,10 +302,34 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \Lucy{Note that when $ s, t$ are identically one, the resulting order $ \preceq_j''$ agrees with the lexicographic order defined in \cite[Remark 4.1.1.4]{LurHA}.}  
     \end{itemize}
 \end{remark}
-\begin{remark}
+\begin{remark}\label{rmk:assoc_infty_opd_to_assoc_inv_infty_opd}
     The maps $ \iota, \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd} induce maps of $ \infty $-operads $ \mathrm{Assoc}^\otimes \to \Associnv^\otimes $. 
+    There is a canonical identification $ \iota^{\mathrm{rev}} = \sigma \circ \iota $, where $ \sigma $ is the automorphism of the associative operad considered in \cite[Remark 4.1.1.7]{LurHA}. 
+
     Note that each object $ \langle n \rangle \in \Associnv^\otimes $ has a distinguished automorphism $ \mathrm{rev}_{\langle n \rangle} $ of order two given by the identity map on $ \langle n \rangle $ and the constant map $ c_{-1} \colon \langle n \rangle^\circ \to \{\pm 1\} $ at $ -1 $. 
     There is a canonical natural equivalence $ \iota \overset{\sim}{\implies} \iota^{\mathrm{rev}} $ whose component at $ \langle n \rangle $ is $ \mathrm{rev}_{\langle n \rangle} $. 
+\end{remark}
+\begin{definition}\label{defn:naive_involutive_algebras}
+    Let $ \mathcal{C}^\otimes  $ be a $ \infty $-operad equipped with the data of a fibration\Lucy{do we need weaker than cocartesian fibration?} $ p \colon \mathcal{C}^\otimes \to \Associnv^\otimes $. 
+    Let $ \Alg^\sigma (\mathcal{C}) $ denote the $ \infty $-category $ \Alg_{/\Associnv}(\mathcal{C}) $ of $ \infty $-operad sections of $ p $. 
+    We will refer to $ \Alg^\sigma(\mathcal{C}) $ as the $ \infty $-category of \emph{involutive algebra objects of $ \mathcal{C}$}. 
+
+    An \emph{involutive monoidal $ \infty $-category} is the data of a cocartesian fibration $ \mathcal{C}^\otimes \to \Associnv^\otimes $. 
+\end{definition}
+\begin{remark}\label{rmk:assoc_inv_mon_cat_as_mon_cat_with_autoequiv}
+    Suppose given a cocartesian fibration $ f \colon \mathcal{D}^\otimes \to \Associnv^\otimes $ of $ \infty $-operads. 
+    Write $ \mathcal{C}^\otimes := \mathcal{D}^\otimes \times_{\Associnv^\otimes, \iota} \mathrm{Assoc}^\otimes $; $ \mathcal{C}^\otimes $ is a monoidal $ \infty $-category in the sense of \cite[Definition 4.1.1.10]{LurHA}. 
+    Furthermore, $ \mathcal{C}^\otimes_{\mathrm{rev}}:= \mathcal{D}^\otimes \times_{\Associnv^\otimes, \iota^{\mathrm{rev}}} \mathrm{Assoc}^\otimes $ is a monoidal $ \infty $-category. 
+    By Remark \ref{rmk:assoc_infty_opd_to_assoc_inv_infty_opd}, this notation is consistent with that of \cite[Remark 4.1.1.7]{LurHA}. 
+    In particular, a $ \Associnv $-monoidal $ \infty $-category $ \mathcal{D}^\otimes $ determines a monoidal $ \infty $-category $ \mathcal{C}^\otimes $ equipped with a monoidal equivalence $ \sigma_{\mathcal{C}} \colon \mathcal{C}^\otimes \xrightarrow{\sim} \mathcal{C}^\otimes_{\mathrm{rev}} $. 
+
+    Now suppose that $ A $ is an involutive algebra object of $ \mathcal{D} $. 
+    With the same notation as before, pullback along $ \iota $ (resp. $ \iota^{\mathrm{rev}} $) determines algebra objects $ u(A) $, $ u^{\mathrm{rev}}(A) $ of $ \mathcal{C} $ and $ \mathcal{C}_{\mathrm{rev}} $, respectively. 
+    Note that $ \sigma_{\mathcal{C}}(u(A)) $ is an algebra object of $ \mathcal{C}_{\mathrm{rev}} $, which we may regard as an algebra object of $ \mathcal{C} $ by precomposing with the autoequivalence $ \sigma \colon \mathrm{Assoc}^\otimes \xrightarrow{\sim} \mathrm{Assoc}^\otimes $. 
+    It follows from Remark \ref{rmk:assoc_infty_opd_to_assoc_inv_infty_opd} that $ A $ determines an equivalence $ \sigma_A \colon u(A) \xrightarrow{\sim} \sigma_{\mathcal{C}}(u(A))^{\mathrm{rev}} $ of algebra objects in $ \mathcal{C} $. 
+
+    Now suppose furthermore that $ \mathcal{D}^\otimes $ is of the form $ \mathcal{E}^\otimes \times_{\mathrm{Fin}_*} \Associnv^\otimes $ for some symmetric monoidal $ \infty $-category $ \mathcal{E} $. 
+    Then the associated involution $ \sigma_{\mathcal{C}} $ is the identity, and for any involutive algebra object $ A $ of $ \mathcal{D} $, $ \sigma_A $ is an equivalence $ u(A) \simeq u(A)^{\mathrm{rev}} $. 
 \end{remark}
 \begin{definition}
     Define a category $ \Delta_\sigma $ 
@@ -499,7 +523,7 @@ In the course of thinking about the `involutive' generalization of the statement
 \begin{itemize}
     \item Can we sidestep an involutive version of the construction of endomorphism categories of \cite[\S4.7.1]{LurHA}? 
     \item Suppose $ \mathcal{C} $ is a monoidal $ \infty $-category and $ \mathcal{M} $ is an $ \infty $-category which is enriched over $ \mathcal{C} $ in the sense of \cite[\S4.2.1]{LurHA}. 
-    Is $ \mathcal{M}^\op $ enriched over $ \mathcal{C} $?  
+    The opposite category $ \mathcal{M}^\op $ is enriched over $ \mathcal{C} $ by \cite[\S10]{Heine_2023}.   
 \end{itemize}
 \end{question}
 
