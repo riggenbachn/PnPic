@@ -357,7 +357,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     \Lucyil{I think the proof of this lemma is not too different from the proof of Proposition 4.1.2.11 of \cite{LurHA}; the point here is just to unravel the definitions of locally coCartesian and Cartesian; the morphisms in $ \Delta^\op_\sigma $ are a little more complicated than $ \Delta^\op $, but not by much. } 
 \end{lemma}
 \begin{notation}\label{ntn:E_sigma_monoidal_cat_variant}
-    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ exhibit $ \mathcal{C} $ as $ \EE_\sigma $-monoidal.\Lucy{weakly enriched?? maybe need to add a new defn..} 
+    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ exhibit $ \mathcal{C} $ as $ \EE_\sigma $-monoidal. 
     Let $ \mathcal{C}^\varoast $ denote the fiber product $ \mathcal{C}^\otimes \times_{\Associnv^\otimes} \Delta^\op_{\sigma} $. 
 \end{notation}
 \begin{definition}\label{defn:inert_map_in_involutive_simplicial_cat}
@@ -425,6 +425,32 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     Passing from $ \phi $ to the pair $ (\ell, s) $ determines a map of colored operads $ j \colon \mathbf{BM}_\mathrm{inv} \to \mathbf{Assoc}_\mathrm{inv} $. 
     The map $ j $ induces a morphism of $ \infty $-operads $ \Associnv^\otimes \to \mathcal{BM}_{\mathrm{inv}}^\otimes $ which we will also denote by $ j $. 
     For any monoidal\Lucy{more general?} $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
+\end{remark} 
+\begin{definition}
+    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ be a fibration of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
+    Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. \Lucy{Lurie gives this a name (Definition 4.2.1.12 \emph{weakly enriched})--not sure what to call this. something \emph{bi-enriched}?}
+    Let $ \Modh\left(\mathcal{M}\right) $ denote the $ \infty $-category $ \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) $. 
+    We will refer to $ \Modh\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian module objects of $ \mathcal{M}$}. 
+    Composition with the inclusion $ \Associnv^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ induces a categorical fibration
+    \begin{equation*}
+        \Modh\left(\mathcal{M}\right) = \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) \to \Alg_{\Associnv}(\mathcal{C}) \,.
+    \end{equation*}
+    If $ A $ is an $ \Associnv $-algebra object of $ \mathcal{C} $, we let $ \Modh_A\left(\mathcal{M}\right) $ denote the fiber $ \Modh\left(\mathcal{M}\right) \times_{\Alg_{\Associnv}(\mathcal{C})} \{A\} $. 
+    We will refer to $ \Modh_A\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian $A$-module objects of $ \mathcal{M} $}. 
+\end{definition}
+\begin{definition}
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads. 
+    We say that $ q $ exhibits $ \mathcal{O}_{\mathfrak{m}} $ as $ \EE_\sigma $-tensored over $ \mathcal{O}_{\mathfrak{a}} $ if $ q $ is a cocartesian fibration. 
+\end{definition}
+\begin{remark} % Compare Remark 4.2.1.21 in higher algebra
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
+    Then $ q $ is classified by a map $ \chi \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathrm{Cat}_\infty $. 
+    Informally, we can think of $ q $ as giving an associative algebra $ \mathcal{C} $ in $ \mathrm{Cat}_\infty $ with an equivalence of algebras $ \sigma_{\mathcal{C}} \colon \mathcal{C} \simeq \mathcal{C}_{\mathrm{rev}} $, an $ \infty $-category $ \mathcal{M} $ equipped with both the structure of a left $ \mathcal{C} $-module and a left $ \mathcal{C}_{\mathrm{rev}} $-module, and an involution $ \sigma_{\mathcal{M}} \colon \mathcal{M} \simeq \mathcal{M} $ which is $ \sigma_{\mathcal{C}} $-linear. 
+\end{remark}
+\begin{remark} 
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
+    Consider a hermitian module object $ F \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathcal{O}^\otimes $. 
+    Informally, $ F $ determines an associative algebra $ A $ of $ \mathcal{C} $ with an equivalence of algebras $ \sigma_A \colon A \simeq \sigma_{\mathcal{C}} (A) $, an object $ M \in \mathcal{M} $ equipped with both the structure of a left $ A $-module and a left $ \sigma_{\mathcal{C}} (A) $-module, and an involution $ \sigma_{M} \colon M \simeq M $ which is $ \sigma_{A} $-linear. 
 \end{remark}
 \begin{construction}\label{cons:involutive_cut_module_operad}
     Define a functor $ \mathrm{MCut} \colon \Delta_\sigma^\op \to BM^\otimes_{\mathrm{inv}} $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
@@ -467,18 +493,6 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item If $ \alpha \colon ([m], s)\to ([n], t) $ so that $ \alpha(0) = 0 $, then the induced map $ f ([m], s, 0)\to f([n], t, 0) $ is an inert map in $ \mathcal{O}^\otimes $
         \item for each object $ ([n], s) $ in $ \Delta^\op_\sigma $, the induced map $ f ([n], s, 0) \to f([n], s, 1) $ is an inert map in $ \mathcal{O}^\otimes $
     \end{enumerate}
-\end{definition}
-\begin{definition}
-    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ be a fibration of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
-    Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. \Lucy{Lurie gives this a name (Definition 4.2.1.12 \emph{weakly enriched})--not sure what to call this. something \emph{bi-enriched}?}
-    Let $ \Modh\left(\mathcal{M}\right) $ denote the $ \infty $-category $ \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) $. 
-    We will refer to $ \Modh\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian module objects of $ \mathcal{M}$}. 
-    Composition with the inclusion $ \Associnv^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ induces a categorical fibration
-    \begin{equation*}
-        \Modh\left(\mathcal{M}\right) = \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) \to \Alg_{\Associnv}(\mathcal{C}) \,.
-    \end{equation*}
-    If $ A $ is an $ \Associnv $-algebra object of $ \mathcal{C} $, we let $ \Modh_A\left(\mathcal{M}\right) $ denote the fiber $ \Modh\left(\mathcal{M}\right) \times_{\Alg_{\Associnv}(\mathcal{C})} \{A\} $. 
-    We will refer to $ \Modh_A\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian $A$-module objects of $ \mathcal{M} $}. 
 \end{definition}
 \begin{example}
     \Lucy{see Example 4.2.1.17 of higher algebra} 
