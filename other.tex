@@ -259,6 +259,7 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     \end{itemize}
 \end{enumerate}
 
+\subsection{Step (a)}
 \begin{definition}\label{defn:colored_operad_monoid_with_involution}
 \Lucy{This is just an imitation of \cite[Definition 4.1.1.1]{LurHA}, modified in accordance with ideas from \S5.4.2. }
     Define a colored operad $ \Associnv $ as follows:
@@ -516,6 +517,40 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \begin{proof}
     Combine Lemma \ref{lemma:involutive_cut_is_approx_on_module_operad} with \cite[Theorem 2.3.3.23]{LurHA}. 
 \end{proof}
+\subsection{Part (b)} 
+\begin{proposition} \Lucy{This statement is \cite[Proposition 4.2.3.1]{LurHA} with some words changed; no claim of originality here.}
+    Let $ \mathcal{C} $ be an involutive monoidal $ \infty $-category and let $ \mathcal{M} $ be an $ \infty $-category which is bitensored over $ \mathcal{C} $. 
+    Let $ K $ be a simplicial set so that $ \mathcal{M} $ admits $ K $-indexed limits, and let $ \theta \colon \Modh(\mathcal{M}) \to \Alg^\sigma(\mathcal{C}) $ be the forgetful functor. 
+    Then
+    \begin{enumerate}[label=(\arabic*)]
+        \item For every commutative square 
+        \begin{equation*}
+        \begin{tikzcd}
+            K \ar[r] \ar[d] & \Modh(\mathcal{M})  \ar[d,"\theta"] \\
+            K^{\triangleleft} \ar[r] \ar[ru,dashed] & \Alg^\sigma(\mathcal{C}) \,,
+        \end{tikzcd}
+        \end{equation*}
+        there exists a dashed arrow which is a $ \theta $-limit diagram. 
+        \item An arbitrary map $ \overline{g} \colon K^{\triangleleft} \to \Modh(\mathcal{M}) $ is a $ \theta $-limit diagram if and only if the induced map $ K^{\triangleleft} \to \mathcal{M} $ is a limit diagram.   
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    \Lucy{todo}
+\end{proof}
+\begin{corollary}
+    $ \theta $ is a cartesian fibration, and a morphism $ f \colon \Delta^1 \to \Modh(\mathcal{M}) $ is $ \theta $-cartesian if and only if the image of $ f $ in $ \mathcal{M} $ is an equivalence.     
+\end{corollary}
+\begin{corollary}
+    Let $ \mathcal{C} $ be an involutive monoidal $ \infty $-category and let $ \mathcal{M} $ be an $ \infty $-category which is bitensored over $ \mathcal{C} $. 
+    Let $ K $ be a simplicial set so that $ \mathcal{M} $ admits $ K $-indexed limits, and let $ \theta \colon \Modh(\mathcal{M}) \to \Alg^\sigma(\mathcal{C}) $ be the forgetful functor. 
+    Let $ A $ be an involutive algebra object of $ \mathcal{C} $. 
+    Then
+    \begin{enumerate}[label=(\arabic*)]
+        \item $ \Modh_A(\mathcal{M}) $ admits $ K $-indexed limits. 
+        \item A diagram $ K^{\triangleleft} \to \Modh_A(\mathcal{M}) $ is a limit diagram if and only if the induced diagram $ K^{\triangleleft} \to \mathcal{M} $ is a limit diagram. 
+        \item Given a morphism $ A \to B $ of involutive algebra objects of $ \mathcal{C} $, the induced functor $ \Modh_B(\mathcal{M}) \to \Modh_A(\mathcal{M}) $ preserves $ K $-indexed limits. 
+    \end{enumerate}
+\end{corollary}
 
 \section{Categorification and structure}
 In the course of thinking about the `involutive' generalization of the statement that given an $ \EE_1 $-algebra, its category of modules is $ \EE_0 $ (and conversely, that given an object in a stable $\infty$-category, that its endomorphism spectrum is an $ \EE_1 $-algebra), I have run up against some questions. 
