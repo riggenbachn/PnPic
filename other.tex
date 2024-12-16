@@ -323,14 +323,15 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     Furthermore, $ \mathcal{C}^\otimes_{\mathrm{rev}}:= \mathcal{D}^\otimes \times_{\Associnv^\otimes, \iota^{\mathrm{rev}}} \mathrm{Assoc}^\otimes $ is a monoidal $ \infty $-category. 
     By Remark \ref{rmk:assoc_infty_opd_to_assoc_inv_infty_opd}, this notation is consistent with that of \cite[Remark 4.1.1.7]{LurHA}. 
     In particular, a $ \Associnv $-monoidal $ \infty $-category $ \mathcal{D}^\otimes $ determines a monoidal $ \infty $-category $ \mathcal{C}^\otimes $ equipped with a monoidal equivalence $ \sigma_{\mathcal{C}} \colon \mathcal{C}^\otimes \xrightarrow{\sim} \mathcal{C}^\otimes_{\mathrm{rev}} $. 
+    Pullback along the involution of $ \mathrm{Assoc}^\otimes $ determines another monoidal equivalence $ \sigma_{\mathcal{C}}^{\mathrm{rev}} \colon \mathcal{C}^\otimes_{\mathrm{rev}} \xrightarrow{\sim} \mathcal{C}^\otimes $, and our assumptions imply that $ \sigma_{\mathcal{C}}^{\mathrm{rev}} \circ \sigma_{\mathcal{C}} $ is equivalent to the identity on $ \mathcal{C}^\otimes $. 
 
     Now suppose that $ A $ is an involutive algebra object of $ \mathcal{D} $. 
-    With the same notation as before, pullback along $ \iota $ (resp. $ \iota^{\mathrm{rev}} $) determines algebra objects $ u(A) $, $ u^{\mathrm{rev}}(A) $ of $ \mathcal{C} $ and $ \mathcal{C}_{\mathrm{rev}} $, respectively. 
+    With the same notation as before, pullback along $ \iota $ (resp. $ \iota^{\mathrm{rev}} $) determines associative algebra objects $ u(A) $, $ u^{\mathrm{rev}}(A) $ of $ \mathcal{C} $ and $ \mathcal{C}_{\mathrm{rev}} $, respectively. 
     Note that $ \sigma_{\mathcal{C}}(u(A)) $ is an algebra object of $ \mathcal{C}_{\mathrm{rev}} $, which we may regard as an algebra object of $ \mathcal{C} $ by precomposing with the autoequivalence $ \sigma \colon \mathrm{Assoc}^\otimes \xrightarrow{\sim} \mathrm{Assoc}^\otimes $. 
     It follows from Remark \ref{rmk:assoc_infty_opd_to_assoc_inv_infty_opd} that $ A $ determines an equivalence $ \sigma_A \colon u(A) \xrightarrow{\sim} \sigma_{\mathcal{C}}(u(A))^{\mathrm{rev}} $ of algebra objects in $ \mathcal{C} $. 
 
     Now suppose furthermore that $ \mathcal{D}^\otimes $ is of the form $ \mathcal{E}^\otimes \times_{\mathrm{Fin}_*} \Associnv^\otimes $ for some symmetric monoidal $ \infty $-category $ \mathcal{E} $. 
-    Then the associated involution $ \sigma_{\mathcal{C}} $ is the identity, and for any involutive algebra object $ A $ of $ \mathcal{D} $, $ \sigma_A $ is an equivalence $ u(A) \simeq u(A)^{\mathrm{rev}} $. 
+    Then the associated involution $ \sigma_{\mathcal{C}} $ is the identity, and for any involutive algebra object $ A $ of $ \mathcal{D} $, $ \sigma_A $ is an equivalence $ u(A) \simeq u(A)^{\mathrm{rev}} $ satisfying $ \sigma_A^{\mathrm{rev}} \circ \sigma_A \simeq \mathrm{id}_A $. 
 \end{remark}
 \begin{definition}
     Define a category $ \Delta_\sigma $ 
@@ -398,12 +399,24 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item The set of objects of $ \mathbf{BM}_\mathrm{inv} $ has two elements, which we denote by $ \mathfrak{a}, \mathfrak{m} $. 
         \item Let $ \{X_i\}_{i \in I} $ be a finite collection of objects of $ \mathbf{BM}_{\mathrm{inv}} $ and let $ Y $ be another object of $ \mathbf{BM}_{\mathrm{inv}} $. 
         If $ Y = \mathfrak{a} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a} $ for all $ i $, and empty otherwise. 
-        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering $ \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ I \to \{\pm 1 \} $ IF $ X_{i_1} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_1 $, and $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
+        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering $ \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ I \to \{\pm 1 \} $ if there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
         \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:colored_operad_monoid_with_involution} 
     \end{enumerate}
 \end{definition} 
+\begin{remark}\label{rmk:bimod_opd_involution}
+    The colored operad $ \mathbf{BM}_{\mathrm{inv}} $ has a canonical involution $ \sigma $ which is the identity on objects and which sends a morphism $ (\ell, c) $ to $ (\ell^{\mathrm{rev}}, I \xrightarrow{c} \{\pm 1\} \xrightarrow{\cdot (-1)} \{\pm 1 \}) $. 
+\end{remark}
 \begin{remark} % compare Remark 4.2.1.2
     Restricting to the object $ \mathfrak{a} \in \mathbf{BM}_\mathrm{inv} $, we see that $ \mathbf{BM}_\mathrm{inv} $ has a sub-colored operad which is canonically identified with $ \mathbf{Assoc}_\mathrm{inv} $ of Definition \ref{defn:colored_operad_monoid_with_involution}. 
+\end{remark}
+\begin{remark}\label{rmk:bimod_opd_to_inv_bimod_opd}
+    There is a map of colored operads $ \iota \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends both $ \mathfrak{a}_{\pm} $ to $ \mathfrak{a} $. 
+    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
+    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{id}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
+
+    There is a map of colored operads $ \iota^{\mathrm{rev}} \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends both $ \mathfrak{a}_{\pm} $ to $ \mathfrak{a} $. 
+    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
+    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_{-1}\} $ where $ c_{-1} $ is the constant function on $ I \sqcup \{j\} $ with value $ -1 $. 
 \end{remark}
 \begin{definition}
     Let $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the associated $ \infty $-operad (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
@@ -415,8 +428,8 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item Morphisms $ (\langle m \rangle, T) \to (\langle n \rangle,S) $ consist of a map $ \alpha \colon \langle m \rangle \to \langle n \rangle $ in $ \Associnv^\otimes $ satisfying: 
         \begin{itemize}
             \item The map $ \alpha $ takes $ T \cup \{*\} $ to $ S \cup \{*\} $
-            \item For each $ s \in S $, then $ \alpha^{-1}(\{s\}) $ contains exactly one element of $ t $, and that element is minimal with respect to the linear ordering on $ \alpha^{-1}(\{s\}) $. 
-            \Lucyil{I've changed things a little so that $ S $ (in the notation of Higher Algebra) has been replaced by $ S^c $--this way,we can regard $ [n] $ as representing the ordered set $\{-n <-n+1 < \cdots -1<0<1< \cdots < n-1 < n\} $ where $ C_2 $ acts by $ \cdot (-1) $ (or something along these lines). This is really a generalization of Notation 4.2.1.7 but for $ RM^\otimes $.} 
+            \item For each $ s \in S $, then $ \alpha^{-1}(\{s\}) $ contains exactly one element of $ t $. %, and that element is minimal with respect to the linear ordering on $ \alpha^{-1}(\{s\}) $. 
+            % \Lucyil{I've changed things a little so that $ S $ (in the notation of Higher Algebra) has been replaced by $ S^c $--this way,we can regard $ [n] $ as representing the ordered set $\{-n <-n+1 < \cdots -1<0<1< \cdots < n-1 < n\} $ where $ C_2 $ acts by $ \cdot (-1) $ (or something along these lines). This is really a generalization of Notation 4.2.1.7 but for $ RM^\otimes $.} 
         \end{itemize}
     \end{enumerate}
 \end{remark}
@@ -426,6 +439,22 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     The map $ j $ induces a morphism of $ \infty $-operads $ \Associnv^\otimes \to \mathcal{BM}_{\mathrm{inv}}^\otimes $ which we will also denote by $ j $. 
     For any monoidal\Lucy{more general?} $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
 \end{remark} 
+\begin{remark}\label{rmk:bimod_infty_opd_to_inv_bimod_infty_opd}
+    The maps $ \iota, \iota^{\mathrm{rev}} $ of Remark \ref{rmk:bimod_opd_to_inv_bimod_opd} induce maps of $ \infty $-operads $ \iota, \iota^{\mathrm{rev}} \colon \mathcal{BM}^\otimes \to \BMinv^\otimes $. 
+    There are canonical identifications $ \iota \circ \mathrm{rev} \simeq \sigma \circ \iota^{\mathrm{rev}} $ where $ \sigma $ is the involution on $ \BMinv^\otimes $ induced by Remark \ref{rmk:bimod_opd_involution} and $ \mathrm{rev} $ is the involution on $ \mathcal{BM}^\otimes $ of \cite[Construction 4.6.3.1]{LurHA}. 
+    Similarly to Remark \ref{rmk:assoc_infty_opd_to_assoc_inv_infty_opd}, there is a canonical natural equivalence $ \iota \simeq \iota^{\mathrm{rev}} $ of maps of $ \infty $-operads $ \mathcal{BM}^\otimes \to \BMinv^\otimes $. 
+\end{remark}
+\begin{remark}\label{rmk:rmod_lmod_opd_to_inv_bimod_opd}
+    There are canonical maps of operads $ \mathcal{LM}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ and $ \mathcal{RM}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ making the diagram 
+    \begin{equation*}
+    \begin{tikzcd}[row sep=tiny]
+        \mathrm{Assoc}^\otimes \ar[dd,"\sigma"] \ar[r] & \mathcal{LM}^\otimes \ar[dd,"{\mathrm{rev}}"] \ar[rd] & \\
+        & & \mathcal{BM}^\otimes_{\mathrm{inv}}  \\ 
+        \mathrm{Assoc}^\otimes  \ar[r] & \mathcal{RM}^\otimes \ar[ru] & 
+    \end{tikzcd}   
+    \end{equation*}
+    commute, where $ \mathrm{rev} $ is the reversal involution of \cite[Remark 4.6.3.2]{LurHA}. 
+\end{remark}
 \begin{definition}
     Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ be a fibration of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
     Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. \Lucy{Lurie gives this a name (Definition 4.2.1.12 \emph{weakly enriched})--not sure what to call this. something \emph{bi-enriched}?}
@@ -445,12 +474,15 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \begin{remark} % Compare Remark 4.2.1.21 in higher algebra
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
     Then $ q $ is classified by a map $ \chi \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathrm{Cat}_\infty $. 
-    Informally, we can think of $ q $ as giving an associative algebra $ \mathcal{C} $ in $ \mathrm{Cat}_\infty $ with an equivalence of algebras $ \sigma_{\mathcal{C}} \colon \mathcal{C} \simeq \mathcal{C}_{\mathrm{rev}} $, an $ \infty $-category $ \mathcal{M} $ equipped with both the structure of a left $ \mathcal{C} $-module and a left $ \mathcal{C}_{\mathrm{rev}} $-module, and an involution $ \sigma_{\mathcal{M}} \colon \mathcal{M} \simeq \mathcal{M} $ which is $ \sigma_{\mathcal{C}} $-linear. 
+    By Remark \ref{rmk:bimod_infty_opd_to_inv_bimod_infty_opd}, we can think of $ q $ as giving an associative algebra $ \mathcal{C} $ in $ \mathrm{Cat}_\infty $ with an equivalence of algebras $ \sigma_{\mathcal{C}} \colon \mathcal{C} \simeq \mathcal{C}_{\mathrm{rev}} $, an $ \infty $-category $ \mathcal{M} $ equipped with both the structure of a $ \mathcal{C} $-bimodule (equivalently, the structure of a left $ \mathcal{C} \times \mathcal{C}_{\mathrm{rev}} $-module), and an involution $ \sigma_{\mathcal{M}} \colon \mathcal{M} \simeq \mathcal{M} $ which is linear with respect to the autoequivalence $ \mathcal{C} \times \mathcal{C}_{\mathrm{rev}} \xrightarrow{\mathrm{flip}} \mathcal{C}_{\mathrm{rev}} \times \mathcal{C} \xrightarrow{\sigma_{\mathcal{C}}^{-1} \times \sigma_{\mathcal{C}}}  \mathcal{C} \times \mathcal{C}_{\mathrm{rev}} $. 
 \end{remark}
 \begin{remark} 
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
     Consider a hermitian module object $ F \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathcal{O}^\otimes $. 
-    Informally, $ F $ determines an associative algebra $ A $ of $ \mathcal{C} $ with an equivalence of algebras $ \sigma_A \colon A \simeq \sigma_{\mathcal{C}} (A) $, an object $ M \in \mathcal{M} $ equipped with both the structure of a left $ A $-module and a left $ \sigma_{\mathcal{C}} (A) $-module, and an involution $ \sigma_{M} \colon M \simeq M $ which is $ \sigma_{A} $-linear. 
+    By Remark \ref{rmk:rmod_lmod_opd_to_inv_bimod_opd}, $ F $ determines an associative algebra $ A $ of $ \mathcal{C} $ with an equivalence of algebras $ \sigma_A \colon A \simeq \sigma_{\mathcal{C}} (A)^{\mathrm{rev}} $, an object $ M \in \mathcal{M} $ so that both $ M $ and $ \sigma_{\mathcal{M}}(M) $ are equipped with the structure of a $ A $-$ \sigma_{\mathcal{C}}(A) $-bimodule. %and the structure of a right $ \sigma_{\mathcal{C}} (A) $-module on $ \sigma_{\mathcal{M}}(M) $. \Lucy{Want this to be a bimodule structure} 
+    By \cite[\S4.6.3]{LurHA}, equivalently $ M $ and $ \sigma_{\mathcal{M}}(M) $ both have the structure of a left $ A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $-module.  
+    Furthermore, we have an equivalence $ \sigma_{M} \colon M \simeq \sigma_{\mathcal{M}} (M) $ which is linear with respect to the equivalence $ A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}}  \xrightarrow{\mathrm{flip}} \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} \otimes A \xrightarrow{\sigma_A^{-1} \otimes \sigma_A} A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $. 
+    \Lucyil{when $ \sigma_{\mathcal{M}} $ and $ \sigma_{\mathcal{C}} $ are both the identity (in particular, $ \mathcal{C}$ is equivalent to its opposite), I think this recovers the ``module with involution'' from \cite[\S3.1]{CDHHLMNNSI}.}
 \end{remark}
 \begin{construction}\label{cons:involutive_cut_module_operad}
     Define a functor $ \mathrm{MCut} \colon \Delta_\sigma^\op \to BM^\otimes_{\mathrm{inv}} $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
