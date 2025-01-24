@@ -673,16 +673,20 @@ Let $ X $ be a scheme with an involution.
 Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
 \begin{enumerate}[label=(\roman*)]
     \item \label{lem_item:structure_sheaf_of_Green_func_is_functor} The assignment of Construction \ref{cons:structure_sheaf_of_Green_functors} lifts to a contravariant functor from (the nerve of) the category of affine opens of $ Y $ to the $\infty $-category of Poincaré rings/$ C_2 $-$ \EE_\infty $-rings/Tambara functors. 
-    \item The presheaf $ \underline{\mathcal{O}} $ of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
+    \item \label{lem_item:structure_sheaf_of_Green_func_is_sheaf} The presheaf $ \underline{\mathcal{O}} $ of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
 \end{enumerate}
 \end{lemma}
 \begin{proof}
-    \Lucy{For part (ii), use Lemma \ref{lemma:limits_of_param_alg_detected_orbitwise}}
+    Part \ref{lem_item:structure_sheaf_of_Green_func_is_functor} follows from a similar argument to \cite[Theorem 5.1]{LYang_normedrings}; functoriality follows from noting that $ \tau_{\geq 0} $ is a functor.  
+    Part (ii) follows from Lemma \ref{lemma:limits_of_param_alg_detected_orbitwise}. 
 \end{proof}
 \begin{lemma}\label{lemma:limits_of_param_alg_detected_orbitwise}
     Let $ K $ be a simplicial set, and let $ f \colon K^{\triangleleft} \to C_2 \EE_\infty\mathrm{Alg}(\Spectra^{C_2}) $ be a diagram. 
     Then $ f $ is a limit diagram if and only if $ f^e \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ and $ f^{C_2} \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ are both limit diagrams. 
 \end{lemma}
+\begin{proof}
+    The result follows from the observation that limits in $ \EE_\infty \Alg \left(\Spectra^{C_2}\right) $ are computed in $ \Spectra^{C_2} $. 
+\end{proof}
 \begin{construction}\label{cons:C2_mod_over_sheaf_of_Green_func}
     Let $ p \colon X \to Y $ as before. 
     Consider the composites
@@ -717,7 +721,7 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
         L \to \pi_{\#} \pi^* L 
     \end{equation} 
     promotes (\ref{eq:line_bundle_as_C2_sheaf}) to a sheaf of $ \underline{\mathcal{O}} $-modules on $ Y $. 
-    We will write $ \underline{L} $ for (\ref{lemma:line_bundle_as_C2_sheaf}). 
+    We will write $ \underline{L} $ for (\ref{eq:line_bundle_as_C2_sheaf}). 
 \end{lemma}
 \begin{definition}\label{defn:quadratic_functor_from_good_quotient}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
@@ -748,6 +752,7 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
 \end{proof}
 \begin{lemma}\label{lemma:bilinear_parts_agree}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $, and let $ Y $ be a good quotient of $ X $. 
+    Assume that the quotient map $ q \colon X \to Y $ is étale. \Lucy{Need to figure out the weakest possible assumption here. \href{https://mathoverflow.net/questions/169052/are-quotients-of-affine-schemes-by-finite-groups-faithfully-flat}{relevant MO post}.}
     Let $ \Qoppa_\sigma $ be the Poincaré structure on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
     Then the bilinear part of $ \Qoppa_\sigma $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
 \end{lemma}
@@ -1008,9 +1013,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \begin{definition}
     \Lucy{For context, compare Examples 3.1.9 and 3.2.9 of the first 9-author paper.}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum. 
-    An \emph{Azumaya algebra with genuine involution}\Lucy{terminology: ``involution'' or ``anti-involution''?} over $ R $ is the data of 
+    An \emph{Azumaya algebra with genuine type 1 (anti-)involution} over $ R $ is the data of 
     \begin{enumerate}[label=(\alph*)]
-        \item An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
+        \item \label{defnitem:Azumaya_alg_gi_the_involution} An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
         \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ A^{\varphi C_2} $ 
         \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ A \otimes_R A^\op $-modules\Lucy{compatibility with Tate?}
         \begin{equation*}
@@ -1018,6 +1023,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
         \end{equation*}
         \item An $ A $-linear map $ A^{\varphi C_2} \to A^{tC_2} $ where $ A^{tC_2} $ is regarded as an $ A $-module via the Tate-valued Frobenius.\Lucy{Tate-valued norm?}
     \end{enumerate}
+    Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
     \Lucy{define the category!}
 \end{definition}
 \begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
