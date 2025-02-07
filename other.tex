@@ -396,37 +396,76 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \begin{proof}
     Combine Lemma \ref{lemma:involutive_cut_is_approximation} with \cite[Theorem 2.3.3.23]{LurHA}. 
 \end{proof}
+\begin{definition}\label{defn:inv_leftmod_operad}
+    Define a colored operad $ \mathbf{LM}_\mathrm{inv} $
+    \begin{enumerate}[label=(\roman*)]
+        \item The set of objects of $ \mathbf{LM}_\mathrm{inv} $ has two elements, which we denote by $ \mathfrak{a}, \mathfrak{m} $. 
+        \item Let $ \{X_i\}_{i \in I} $ be a finite collection of objects of $ \mathbf{LM}_{\mathrm{inv}} $ and let $ Y $ be another object of $ \mathbf{LM}_{\mathrm{inv}} $. 
+        If $ Y = \mathfrak{a} $, then $ \mathrm{Mul}_{\mathbf{LM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a} $ for all $ i $, and empty otherwise. 
+        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{LM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is a subset of the set of pairs $ (\lambda, c) $ consisting of a linear ordering $ \lambda = \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ c\colon I \to \{\pm 1 \} $ satisfying either 
+        \begin{itemize}
+            \item  $ X_{i_n} = \mathfrak{m} $ and $ c(i_n) = 1 $ and $ X_{j} = \mathfrak{a} $ otherwise
+            \item  $ X_{i_1} = \mathfrak{m} $ and $ c(i_n) = -1 $ and $ X_{j} = \mathfrak{a} $ otherwise
+            % \item if there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul}_{\mathbf{LM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
+        \end{itemize}
+        \item The composition law on $ \mathbf{LM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:colored_operad_monoid_with_involution} 
+    \end{enumerate}
+\end{definition} 
+\begin{remark}
+    There is a colored operad $ \mathbf{RM}_{\mathrm{inv}} $ defined exactly in the same way as $ \mathbf{LM}_{\mathrm{inv}} $ in Definition \ref{defn:inv_leftmod_operad}. 
+    In the interest of precision: $ \mathbf{RM}_{\mathrm{inv}} $ has the same objects $ \mathfrak{a}, \mathfrak{m} $. 
+    Let $ \{X_i\}_{i \in I} $ be a finite collection of objects of $ \mathbf{RM}_{\mathrm{inv}} $ and let $ Y $ be another object of $ \mathbf{RM}_{\mathrm{inv}} $. 
+    If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{RM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is a subset of the set of pairs $ (\lambda, c) $ consisting of a linear ordering $ \lambda = \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ c\colon I \to \{\pm 1 \} $ satisfying either 
+    \begin{itemize}
+        \item  $ X_{i_n} = \mathfrak{m} $ and $ c(i_n) = -1 $ and $ X_{j} = \mathfrak{a} $ otherwise
+        \item  $ X_{i_1} = \mathfrak{m} $ and $ c(i_n) = 1 $ and $ X_{j} = \mathfrak{a} $ otherwise
+        % \item if there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul}_{\mathbf{LM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
+    \end{itemize}
+\end{remark}
+\begin{remark} % compare Remark 4.2.1.2
+    Restricting to the objects which are both called $ \mathfrak{a} $, we see that both $ \mathbf{LM}_\mathrm{inv} $ and $ \mathbf{RM}_{\mathrm{inv}} $ have a sub-colored operad which is canonically identified with $ \mathbf{Assoc}_\mathrm{inv} $ of Definition \ref{defn:colored_operad_monoid_with_involution}. 
+\end{remark}
+\begin{remark}\label{rmk:lmod_opd_to_inv_lmod_opd}
+    There is a map of colored operads $ \iota \colon \mathrm{LM} \to \mathrm{LM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends $ \mathfrak{a} $ to $ \mathfrak{a} $. 
+    On $ \mathrm{Mul}_{\mathrm{LM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{LM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
+    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{id}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
 
+    There is a map of colored operads $ \iota^{\mathrm{rev}} \colon \mathrm{RM} \to \mathrm{LM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends $ \mathfrak{a} $ to $ \mathfrak{a} $. 
+    On $ \mathrm{Mul}_{\mathrm{RM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{LM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{rev}_{\mathcal{L}I} \times \{ c_{1}\} $, this map agrees with $ \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
+    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
+\end{remark}
 \begin{definition}
     Define a colored operad $ \mathbf{BM}_\mathrm{inv} $
     \begin{enumerate}[label=(\roman*)]
-        \item The set of objects of $ \mathbf{BM}_\mathrm{inv} $ has two elements, which we denote by $ \mathfrak{a}, \mathfrak{m} $. 
+        \item The set of objects of $ \mathbf{BM}_\mathrm{inv} $ has three elements, which we denote by $ \mathfrak{a}_\ell, \mathfrak{a}_r, \mathfrak{m} $. 
         \item Let $ \{X_i\}_{i \in I} $ be a finite collection of objects of $ \mathbf{BM}_{\mathrm{inv}} $ and let $ Y $ be another object of $ \mathbf{BM}_{\mathrm{inv}} $. 
-        If $ Y = \mathfrak{a} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a} $ for all $ i $, and empty otherwise. 
-        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering $ \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ I \to \{\pm 1 \} $ if there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
+        If $ Y = \mathfrak{a}_\ell $ (resp. $ Y = \mathfrak{a}_r $), then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a}_\ell $ (resp. $ X_i = \mathfrak{a}_r $) for all $ i $, and empty otherwise. 
+        If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the subset of pairs $ (\lambda, c) $ consisting of a linear ordering $ \lambda = \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ c \colon I \to \{\pm 1 \} $ satisfying: if  there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $, either
+        \begin{itemize}
+            \item $ c(i_k) = 1 $, $ X_{j} = \mathfrak{a}_\ell $ for $ j < i_k $ and $ X_j = \mathfrak{a}_{r} $ for $ j > i_k $; or
+            \item $ c(i_k) = - 1 $, $ X_{j} = \mathfrak{a}_\ell $ for $ j > i_k $ and $ X_j = \mathfrak{a}_{r} $ for $ j < i_k $ 
+        \end{itemize}
+        % if there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
         \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:colored_operad_monoid_with_involution} 
     \end{enumerate}
 \end{definition} 
 \begin{remark}\label{rmk:bimod_opd_involution}
-    The colored operad $ \mathbf{BM}_{\mathrm{inv}} $ has a canonical involution $ \sigma $ which is the identity on objects and which sends a morphism $ (\ell, c) $ to $ (\ell^{\mathrm{rev}}, I \xrightarrow{c} \{\pm 1\} \xrightarrow{\cdot (-1)} \{\pm 1 \}) $. 
-\end{remark}
-\begin{remark} % compare Remark 4.2.1.2
-    Restricting to the object $ \mathfrak{a} \in \mathbf{BM}_\mathrm{inv} $, we see that $ \mathbf{BM}_\mathrm{inv} $ has a sub-colored operad which is canonically identified with $ \mathbf{Assoc}_\mathrm{inv} $ of Definition \ref{defn:colored_operad_monoid_with_involution}. 
+    The colored operad $ \mathbf{BM}_{\mathrm{inv}} $ has a canonical involution $ \sigma $ which fixes $ \mathfrak{m} $, exchanges $ \mathfrak{a}_\ell $ and $ \mathfrak{a}_r $, and sends a morphism $ (\lambda, c) $ to $ (\lambda^{\mathrm{rev}}, I \xrightarrow{c} \{\pm 1\} \xrightarrow{\cdot (-1)} \{\pm 1 \}) $. 
 \end{remark}
 \begin{remark}\label{rmk:bimod_opd_to_inv_bimod_opd}
-    There is a map of colored operads $ \iota \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends both $ \mathfrak{a}_{\pm} $ to $ \mathfrak{a} $. 
+    There is a map of colored operads $ \iota \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends $ \mathfrak{a}_{-} $ to $ \mathfrak{a}_\ell $ and $ \mathfrak{a}_+ $ to $ \mathfrak{a}_r $. 
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{id}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
 
-    There is a map of colored operads $ \iota^{\mathrm{rev}} \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends both $ \mathfrak{a}_{\pm} $ to $ \mathfrak{a} $. 
+    There is \emph{also} a map of colored operads $ \iota^{\mathrm{rev}} \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and  and sends $ \mathfrak{a}_{-} $ to $ \mathfrak{a}_r $ and $ \mathfrak{a}_+ $ to $ \mathfrak{a}_\ell $. 
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_{-1}\} $ where $ c_{-1} $ is the constant function on $ I \sqcup \{j\} $ with value $ -1 $. 
 \end{remark}
 \begin{definition}
-    Let $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the associated $ \infty $-operad (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
+    Let $ \mathcal{LM}_\mathrm{inv}^\otimes $, $ \mathcal{RM}_\mathrm{inv}^\otimes $, and $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the associated $ \infty $-operads (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
 \end{definition}
 \begin{remark}
-    \Lucy{compare Higher Algebra Notation 4.2.1.6} We can describe the category $ \mathcal{BM}_\mathrm{inv}^\otimes $ as follows: 
+    \Lucy{compare Higher Algebra Notation 4.2.1.6--gotta fix; this is going to be messy} We can describe the category $ \mathcal{BM}_\mathrm{inv}^\otimes $ as follows: 
     \begin{enumerate}[label=(\arabic*)]
         \item An object of $ \mathcal{BM}_\mathrm{inv}^\otimes $ is a pair $ (\langle n\rangle,S) $ where $ S $ is a subset of $ \langle n \rangle^\circ $. 
         \item Morphisms $ (\langle m \rangle, T) \to (\langle n \rangle,S) $ consist of a map $ \alpha \colon \langle m \rangle \to \langle n \rangle $ in $ \Associnv^\otimes $ satisfying: 
@@ -440,56 +479,62 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \begin{remark}\label{rmk:inv_bimod_opd_to_inv_alg_opd} %compare Remark 4.2.1.5 in Higher algebra
     Each morphism $ \phi \in \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ determines a linear ordering $\ell $ on the set $ I $ and a function $ s \colon I \to \{\pm 1\} $. 
     Passing from $ \phi $ to the pair $ (\ell, s) $ determines a map of colored operads $ j \colon \mathbf{BM}_\mathrm{inv} \to \mathbf{Assoc}_\mathrm{inv} $. 
-    The map $ j $ induces a morphism of $ \infty $-operads $ \Associnv^\otimes \to \mathcal{BM}_{\mathrm{inv}}^\otimes $ which we will also denote by $ j $. 
-    For any monoidal\Lucy{more general?} $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
+    The map $ j $ induces a morphism of $ \infty $-operads $  \mathcal{BM}_{\mathrm{inv}}^\otimes \to \Associnv^\otimes $ which we will also denote by $ j $. 
+    For any $ \EE_\sigma $-monoidal $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
 \end{remark} 
+\begin{remark}\label{rmk:lmod_infty_opd_to_inv_lmod_infty_opd}
+    The maps $ \iota, \iota^{\mathrm{rev}} $ of Remark \ref{rmk:lmod_opd_to_inv_lmod_opd} induce maps of $ \infty $-operads $ \iota \colon \mathcal{LM}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $ and $ \iota^{\mathrm{rev}} \colon \mathcal{RM}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $. 
+\end{remark}
 \begin{remark}\label{rmk:bimod_infty_opd_to_inv_bimod_infty_opd}
     The maps $ \iota, \iota^{\mathrm{rev}} $ of Remark \ref{rmk:bimod_opd_to_inv_bimod_opd} induce maps of $ \infty $-operads $ \iota, \iota^{\mathrm{rev}} \colon \mathcal{BM}^\otimes \to \BMinv^\otimes $. 
     There are canonical identifications $ \iota \circ \mathrm{rev} \simeq \sigma \circ \iota^{\mathrm{rev}} $ where $ \sigma $ is the involution on $ \BMinv^\otimes $ induced by Remark \ref{rmk:bimod_opd_involution} and $ \mathrm{rev} $ is the involution on $ \mathcal{BM}^\otimes $ of \cite[Construction 4.6.3.1]{LurHA}. 
-    Similarly to Remark \ref{rmk:assoc_infty_opd_to_assoc_inv_infty_opd}, there is a canonical natural equivalence $ \iota \simeq \iota^{\mathrm{rev}} $ of maps of $ \infty $-operads $ \mathcal{BM}^\otimes \to \BMinv^\otimes $. 
 \end{remark}
 \begin{remark}\label{rmk:rmod_lmod_opd_to_inv_bimod_opd}
-    There are canonical maps of operads $ \mathcal{LM}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ and $ \mathcal{RM}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ making the diagram 
+    There are canonical maps of operads $ \mathcal{LM}^\otimes_{\mathrm{inv}} \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ and $ \mathcal{RM}^\otimes_{\mathrm{inv}} \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ sending $ \mathfrak{a} $ to $ \mathfrak{a}_\ell $, resp. $ \mathfrak{a}_r $ and making the diagram 
     \begin{equation*}
     \begin{tikzcd}[row sep=tiny]
-        \mathrm{Assoc}^\otimes \ar[dd,"\sigma"] \ar[r] & \mathcal{LM}^\otimes \ar[dd,"{\mathrm{rev}}"] \ar[rd] & \\
+        \mathrm{Assoc}^\otimes \ar[dd,"\sigma"] \ar[r] & \mathcal{LM}^\otimes_{\mathrm{inv}} \ar[dd,"{\mathrm{rev}}"] \ar[rd] & \\
         & & \mathcal{BM}^\otimes_{\mathrm{inv}}  \\ 
-        \mathrm{Assoc}^\otimes  \ar[r] & \mathcal{RM}^\otimes \ar[ru] & 
+        \mathrm{Assoc}^\otimes  \ar[r] & \mathcal{RM}^\otimes_{\mathrm{inv}} \ar[ru] & 
     \end{tikzcd}   
     \end{equation*}
-    commute, where $ \mathrm{rev} $ is the reversal involution of \cite[Remark 4.6.3.2]{LurHA}. 
+    commute, where $ \mathrm{rev} $ is (an involutive version of) the reversal involution of \cite[Remark 4.6.3.2]{LurHA}. 
 \end{remark}
 \begin{definition}
-    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ be a fibration of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
-    Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. \Lucy{Lurie gives this a name (Definition 4.2.1.12 \emph{weakly enriched})--not sure what to call this. something \emph{bi-enriched}?}
-    Let $ \Modh\left(\mathcal{M}\right) $ denote the $ \infty $-category $ \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) $. 
-    We will refer to $ \Modh\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian module objects of $ \mathcal{M}$}. 
-    Composition with the inclusion $ \Associnv^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ induces a categorical fibration
+    Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ and $ \mathcal{D}^\otimes \to \Associnv^\otimes $ be fibrations of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
+    Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. 
+    Let $ L\Modh\left(\mathcal{M}\right) $ denote the $ \infty $-category $ \Alg_{/\mathcal{LM}_{\mathrm{inv}}}\left(\mathcal{O}\right) $. 
+    We will refer to $ L\Modh\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of left hermitian module objects of $ \mathcal{M}$}. 
+
+    Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}_\ell} \simeq \mathcal{C}^\otimes $, $ \mathcal{O}^\otimes_{\mathfrak{a}_R} \simeq \mathcal{D}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. \Lucy{Lurie gives this a name (Definition 4.2.1.12 \emph{weakly enriched})--not sure what to call this. something \emph{bi-enriched}?}
+    Let $ \Modh\left(\mathcal{M}\right) $ denote the $ \infty $-category $ \Alg_{/\mathcal{BM}_{\mathrm{inv}}}\left(\mathcal{O}\right) $. 
+    We will refer to $ \Modh\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian bimodule objects of $ \mathcal{M}$}. 
+    Composition with the inclusions $ \Associnv^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ induces a categorical fibration
     \begin{equation*}
-        \Modh\left(\mathcal{M}\right) = \Alg_{/\mathcal{BM}}\left(\mathcal{O}\right) \to \Alg_{\Associnv}(\mathcal{C}) \,.
+        \Modh\left(\mathcal{M}\right) = \Alg_{/\mathcal{BM}_{\mathrm{inv}}}\left(\mathcal{O}\right) \to \Alg_{\Associnv}(\mathcal{C}) \times \Alg_{\Associnv}(\mathcal{D}) \,.
     \end{equation*}
     If $ A $ is an $ \Associnv $-algebra object of $ \mathcal{C} $, we let $ \Modh_A\left(\mathcal{M}\right) $ denote the fiber $ \Modh\left(\mathcal{M}\right) \times_{\Alg_{\Associnv}(\mathcal{C})} \{A\} $. 
-    We will refer to $ \Modh_A\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian $A$-module objects of $ \mathcal{M} $}. 
+    We will refer to $ \Modh_A\left(\mathcal{M}\right) $ as the \emph{$\infty$-category of hermitian $A$-bimodule objects of $ \mathcal{M} $}. 
 \end{definition}
 \begin{definition}
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads. 
-    We say that $ q $ exhibits $ \mathcal{O}_{\mathfrak{m}} $ as $ \EE_\sigma $-tensored over $ \mathcal{O}_{\mathfrak{a}} $ if $ q $ is a cocartesian fibration. 
+    We say that $ q $ exhibits $ \mathcal{O}_{\mathfrak{m}} $ as $ \EE_\sigma $-bitensored over $ \mathcal{O}_{\mathfrak{a}_\ell} $ and $ \mathcal{O}_{\mathfrak{a}_r} $ if $ q $ is a cocartesian fibration. 
 \end{definition}
 \begin{remark} % Compare Remark 4.2.1.21 in higher algebra
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
     Then $ q $ is classified by a map $ \chi \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathrm{Cat}_\infty $. 
-    By Remark \ref{rmk:bimod_infty_opd_to_inv_bimod_infty_opd}, we can think of $ q $ as giving an associative algebra $ \mathcal{C} $ in $ \mathrm{Cat}_\infty $ with an equivalence of algebras $ \sigma_{\mathcal{C}} \colon \mathcal{C} \simeq \mathcal{C}_{\mathrm{rev}} $, an $ \infty $-category $ \mathcal{M} $ equipped with both the structure of a $ \mathcal{C} $-bimodule (equivalently, the structure of a left $ \mathcal{C} \times \mathcal{C}_{\mathrm{rev}} $-module), and an involution $ \sigma_{\mathcal{M}} \colon \mathcal{M} \simeq \mathcal{M} $ which is linear with respect to the autoequivalence $ \mathcal{C} \times \mathcal{C}_{\mathrm{rev}} \xrightarrow{\mathrm{flip}} \mathcal{C}_{\mathrm{rev}} \times \mathcal{C} \xrightarrow{\sigma_{\mathcal{C}}^{-1} \times \sigma_{\mathcal{C}}}  \mathcal{C} \times \mathcal{C}_{\mathrm{rev}} $. 
+    By Remark \ref{rmk:bimod_infty_opd_to_inv_bimod_infty_opd}, we can think of $ q $ as giving two $ \EE_\sigma $ algebras $ \mathcal{C} $, $ \mathcal{D} $ in $ \mathrm{Cat}_\infty $ with an $ \infty $-category $ \mathcal{M} $ equipped with both the structure of a $ \mathcal{C} $-$ \mathcal{D} $-bimodule (equivalently, the structure of a left $ \mathcal{C} \times \mathcal{D}_{\mathrm{rev}} $-module) and of a $ \mathcal{D} $-$ \mathcal{C} $-bimodule, and an autoequivalence $ \sigma_{\mathcal{M}} \colon \mathcal{M} \simeq \mathcal{M} $ of order two which is linear with respect to the autoequivalence $ \mathcal{C} \times \mathcal{D}_{\mathrm{rev}} \xrightarrow{\mathrm{flip}} \mathcal{D}_{\mathrm{rev}} \times \mathcal{C} \xrightarrow{\sigma_{\mathcal{D}}^{-1} \times \sigma_{\mathcal{C}}}  \mathcal{D} \times \mathcal{C}_{\mathrm{rev}} $. 
 \end{remark}
 \begin{remark} 
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
     Consider a hermitian module object $ F \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathcal{O}^\otimes $. 
-    By Remark \ref{rmk:rmod_lmod_opd_to_inv_bimod_opd}, $ F $ determines an associative algebra $ A $ of $ \mathcal{C} $ with an equivalence of algebras $ \sigma_A \colon A \simeq \sigma_{\mathcal{C}} (A)^{\mathrm{rev}} $, an object $ M \in \mathcal{M} $ so that both $ M $ and $ \sigma_{\mathcal{M}}(M) $ are equipped with the structure of a $ A $-$ \sigma_{\mathcal{C}}(A) $-bimodule. %and the structure of a right $ \sigma_{\mathcal{C}} (A) $-module on $ \sigma_{\mathcal{M}}(M) $. \Lucy{Want this to be a bimodule structure} 
-    By \cite[\S4.6.3]{LurHA}, equivalently $ M $ and $ \sigma_{\mathcal{M}}(M) $ both have the structure of a left $ A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $-module.  
-    Furthermore, we have an equivalence $ \sigma_{M} \colon M \simeq \sigma_{\mathcal{M}} (M) $ which is linear with respect to the equivalence $ A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}}  \xrightarrow{\mathrm{flip}} \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} \otimes A \xrightarrow{\sigma_A^{-1} \otimes \sigma_A} A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $. 
-    \Lucyil{when $ \sigma_{\mathcal{M}} $ and $ \sigma_{\mathcal{C}} $ are both the identity (in particular, $ \mathcal{C}$ is equivalent to its opposite), I think this recovers the ``module with involution'' from \cite[\S3.1]{CDHHLMNNSI}.}
+    By Remark \ref{rmk:rmod_lmod_opd_to_inv_bimod_opd}, $ F $ determines an associative algebra $ A $ of $ \mathcal{C} $ with an equivalence of algebras $ \sigma_A \colon A \simeq \sigma_{\mathcal{C}} (A)^{\mathrm{rev}} $ and an associative algebra $ B $ of $ \mathcal{D} $ with an equivalence of algebras $ \sigma_B \colon B \simeq \sigma_{\mathcal{D}} (B)^{\mathrm{rev}} $, an object $ M \in \mathcal{M} $ so that $ M $ (resp. $ \sigma_{\mathcal{M}}(M) $) is equipped with the structure of a $ A $-$ B $-bimodule (resp. $ \sigma_{\mathcal{D}}(B) $-$ \sigma_{\mathcal{C}}(A) $-bimodule). %and the structure of a right $ \sigma_{\mathcal{C}} (A) $-module on $ \sigma_{\mathcal{M}}(M) $. \Lucy{Want this to be a bimodule structure} 
+    % By \cite[\S4.6.3]{LurHA}, equivalently $ M $ and $ \sigma_{\mathcal{M}}(M) $ both have the structure of a left $ A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $-module.  
+    Furthermore, we have an equivalence $ \sigma_{M} \colon M \simeq \sigma_{\mathcal{M}} (M) $ which is linear with respect to the equivalence $ A \otimes B  \xrightarrow{\mathrm{flip}} B \otimes A \xrightarrow{\sigma_B^{-1} \otimes \sigma_A} \sigma_{\mathcal{D}}(B)^{\mathrm{rev}} \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $. 
+    \Lucyil{when $ \mathcal{C} = \mathcal{D} $ and $ \sigma_{\mathcal{M}} $ and $ \sigma_{\mathcal{C}} $ are both the identity and $ A = B $, I think this recovers the ``module with involution'' from \cite[\S3.1]{CDHHLMNNSI}.}
 \end{remark}
 \begin{construction}\label{cons:involutive_cut_module_operad}
-    Define a functor $ \mathrm{MCut} \colon \Delta_\sigma^\op \to BM^\otimes_{\mathrm{inv}} $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
+    Define a functor $ \mathrm{MCut} \colon \Delta_\sigma^\op \to \mathcal{RM}^\otimes_{\mathrm{inv}} $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
     \begin{itemize}
         \item For each $ ([n],s) $, we have $ \mathrm{MCut}([n],s) = \langle n + 1 \rangle \simeq \mathrm{RCut}_0([n]) $ where $ \mathrm{RCut} $ is from \cite[Construction 4.8.4.4]{LurHA}. 
         \item Given a morphism $ \alpha\colon ([n],s) \to ([m], t) $, the associated morphism $ \mathrm{MCut}([m], t) \to \mathrm{MCut} ([n],s) $ consists of
@@ -502,8 +547,8 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     \end{itemize}
 \end{construction}
 \begin{remark}\label{rmk:nat_transformation_of_cut_functors} % compare remark 4.2.2.8
-    We can identify $ \Associnv^\otimes $ with the full subcategory of $ \mathcal{BM}^\otimes_{\mathrm{inv}} $ spanned by objects of the form $ (\langle n\rangle, \langle n\rangle^\circ) $. 
-    We can regard Construction \ref{cons:involutive_cut} as defining a functor $ \Delta^\op_\sigma \to \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
+    We can identify $ \Associnv^\otimes $ with the full subcategory of $ \mathcal{RM}^\otimes_{\mathrm{inv}} $ spanned by objects of the form $ (\langle n\rangle, \langle n\rangle^\circ) $. 
+    We can regard Construction \ref{cons:involutive_cut} as defining a functor $ \Delta^\op_\sigma \to \mathcal{RM}^\otimes_{\mathrm{inv}} $. 
     For each $ ([n], s) \in \Delta^\op_\sigma $, there is a map of sets $ \theta \colon \mathrm{MCut} ([n], s) \to \mathrm{Cut}([n], s) $ defined as in \cite[Remark 4.2.2.8]{LurHA}. 
     Concretely, on underlying pointed sets, $ \theta $ takes the form \Lucy{check that the signs $s$ work out!}
     \begin{equation*}
@@ -515,15 +560,15 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
                             \end{cases}
     \end{split}    
     \end{equation*} 
-    This construction determines a morphism $ \gamma $ in the $ \infty $-category $ \Fun\left(\Delta^\op_\sigma, \mathcal{BM}^\otimes_{\mathrm{inv}}\right) $, or equivalently a map $ \gamma \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
+    This construction determines a morphism $ \gamma $ in the $ \infty $-category $ \Fun\left(\Delta^\op_\sigma, \mathcal{RM}^\otimes_{\mathrm{inv}}\right) $, or equivalently a map $ \gamma \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{RM}^\otimes_{\mathrm{inv}} $. 
 \end{remark}
 \begin{lemma}\label{lemma:involutive_cut_is_approx_on_module_operad}
-    The morphism $ \gamma \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ defined in Remark \ref{rmk:nat_transformation_of_cut_functors} exhibits $\Delta^\op_\sigma \times \Delta^1 $ as an approximation to the $ \infty $-operad $ \mathcal{BM}^\otimes_{\mathrm{inv}} $. 
+    The morphism $ \gamma \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{RM}^\otimes_{\mathrm{inv}} $ defined in Remark \ref{rmk:nat_transformation_of_cut_functors} exhibits $\Delta^\op_\sigma \times \Delta^1 $ as an approximation to the $ \infty $-operad $ \mathcal{RM}^\otimes_{\mathrm{inv}} $. 
 \end{lemma}
 \begin{definition}\label{defn:involutive_planar_module}
-    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{RM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
     Let $ \gamma $ be as in Remark \ref{rmk:nat_transformation_of_cut_functors}. 
-    Let $ \Modh^{\AA^\sigma_\infty}(\mathcal{M}) $ denote the full subcategory of $ \Fun_{\mathcal{BM}^\otimes_{\mathrm{inv}}}\left(\Delta^\op_\sigma \times \Delta^1,\mathcal{O}^\otimes\right) $ spanned by those maps $ f \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{O}^\otimes $ satisfying 
+    Let $ R\Modh^{\AA^\sigma_\infty}(\mathcal{M}) $ denote the full subcategory of $ \Fun_{\mathcal{RM}^\otimes_{\mathrm{inv}}}\left(\Delta^\op_\sigma \times \Delta^1,\mathcal{O}^\otimes\right) $ spanned by those maps $ f \colon \Delta^\op_\sigma \times \Delta^1 \to \mathcal{O}^\otimes $ satisfying 
     \begin{enumerate}
         \item The restriction of $ f $ to $ \Delta^\op_\sigma \times \{1\} $ belongs to $ \Alg_{\AA^\sigma_\infty}(\mathcal{O}) $ of Definition \ref{defn:inv_planar_alg}
         \item If $ \alpha \colon ([m], s)\to ([n], t) $ so that $ \alpha(0) = 0 $, then the induced map $ f ([m], s, 0)\to f([n], t, 0) $ is an inert map in $ \mathcal{O}^\otimes $
@@ -532,8 +577,8 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \end{definition}
 \begin{example}
     \Lucy{see Example 4.2.1.17 of higher algebra} 
-    Let $ \mathcal{C}^\otimes \to \mathcal{BM}^\otimes $ be a fibration of $ \infty $-operads. 
-    Restriction along the map\Lucy{fibration?} of $ \infty $-operads $ \mathcal{BM}^\otimes \to \Associnv^\otimes $ induced by Remark \ref{rmk:inv_bimod_opd_to_inv_alg_opd} induces a map $ \EE_\sigma\Alg\left(\mathcal{C}\right) \to \Modh\left(\mathcal{C}\right) $ which is a section of the projection map $ \Modh\left(\mathcal{C}\right) \to \EE_\sigma\Alg\left(\mathcal{C}\right) $. 
+    Let $ \mathcal{C}^\otimes \to \mathcal{RM}^\otimes $ be a fibration of $ \infty $-operads. 
+    Restriction along the map\Lucy{fibration?} of $ \infty $-operads $ \mathcal{RM}^\otimes_{\mathrm{inv}} \to \Associnv^\otimes $ induced by Remark \ref{rmk:inv_bimod_opd_to_inv_alg_opd} induces a map $ \EE_\sigma\Alg\left(\mathcal{C}\right) \to R\Modh\left(\mathcal{C}\right) $ which is a section of the projection map $ R\Modh\left(\mathcal{C}\right) \to \EE_\sigma\Alg\left(\mathcal{C}\right) $. 
 \end{example}
 \begin{notation}\label{ntn:E_sigma_tensored_cat_variant} % basically lifted straight from Higher algebra 4.2.2.17
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
@@ -543,25 +588,25 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     \end{equation*}
     Here we regard $ K \times \Delta^1 $ as a simplicial set over $ \mathcal{BM}^\otimes_{\mathrm{inv}} $ via the composite $ K \times \Delta^1 \to \Delta^\op_{\sigma} \times \Delta^1 \xrightarrow{\gamma} \mathcal{BM}^\otimes_{\mathrm{inv}} $ where $ \gamma $ is from Remark \ref{rmk:nat_transformation_of_cut_functors}. 
 
-    Unwinding definitions, we see that a vertex in $ \overline{\mathcal{M}}^\varoast $ lying over an object $ ([n], s \colon \{1, \ldots, n\} \to \{\pm 1\}) \in \Delta^\op_{\sigma} $ corresponds to a morphism $ \alpha $ in $ \mathcal{O}^\otimes $ whose image in $ \mathcal{BM}^\otimes_{\mathrm{inv}} $ is the map $ (\langle n+1\rangle, \{0\}) \to (\langle n\rangle, \varnothing) $\Lucy{this might be off--revisit later!}.   
+    Unwinding definitions, we see that a vertex in $ \overline{\mathcal{M}}^\varoast $ lying over an object $ ([n], s \colon \{1, \ldots, n\} \to \{\pm 1\}) \in \Delta^\op_{\sigma} $ corresponds to a morphism $ \alpha $ in $ \mathcal{O}^\otimes $ whose image in $ \mathcal{RM}^\otimes_{\mathrm{inv}} $ is the map $ (\langle n+1\rangle, \{0\}) \to (\langle n\rangle, \varnothing) $\Lucy{this might be off--revisit later!}.   
     Now let $ \mathcal{M}^\varoast $ denote the full simplicial subset of $ \overline{\mathcal{M}}^\varoast  $ spanned by those vertices for which $ \alpha $ is inert. 
 \end{notation}
 \begin{remark}
-    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly bi-enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
-    By \cite[Example 4.3.1.4 \& Proposition 4.3.2.15]{HTT}, composition with the inclusion $ \{0\} \to \Delta^1 $ induces a trivial Kan fibration $ \mathcal{M}^\varoast \xrightarrow{\sim} \mathcal{O}^\otimes \times_{\mathcal{BM}^\otimes_{\mathrm{inv}}} \Delta^\op_\sigma $. \Lucy{Jacob explains this in a really terse way--just by citing Prop 4.3.2.15 of HTT. It does just follow from definitions/observations, but there are many (for instance, definition of inert edge).}
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{RM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as weakly enriched over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    By \cite[Example 4.3.1.4 \& Proposition 4.3.2.15]{HTT}, composition with the inclusion $ \{0\} \to \Delta^1 $ induces a trivial Kan fibration $ \mathcal{M}^\varoast \xrightarrow{\sim} \mathcal{O}^\otimes \times_{\mathcal{RM}^\otimes_{\mathrm{inv}}} \Delta^\op_\sigma $. \Lucy{Jacob explains this in a really terse way--just by citing Prop 4.3.2.15 of HTT. It does just follow from definitions/observations, but there are many (for instance, definition of inert edge).}
     In particular, the fiber of $ \mathcal{M}^\varoast $ over an object $ ([n], s) \in \Delta^\op_\sigma $ is canonically equivalent to $ \mathcal{M} \times \mathcal{C}^{\times n} $. 
 
     Finally, since $ q $ is a categorical fibration and categorical fibrations are closed under pullback and composition with trivial fibrations, $ q $ induces categorical fibrations $ \mathcal{M}^\varoast \to \mathcal{C}^\varoast \to \Delta^\op_\sigma $.     
 \end{remark}
 \begin{lemma} % Compare Lemma 4.2.2.20 of Higher algebra
-    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as tensored over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{RM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as tensored over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
     Then the associated functor $ \mathcal{M}^\varoast  \to \mathcal{C}^\varoast $ (Notation \ref{ntn:E_sigma_monoidal_cat_variant}) is a locally coCartesian fibration.     
 \end{lemma}
 \begin{proposition}
-    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as tensored over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
+    Let $ q \colon \mathcal{O}^\otimes \to \mathcal{RM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads, so $ q $ exhibits $ \mathcal{M}:= \mathcal{O}^\otimes_{\mathfrak{m}} $ as tensored over $ \mathcal{O}^\otimes_{\mathfrak{a}} $. 
     Then precomposition with the functor $ \mathrm{MCut} $ of Construction \ref{cons:involutive_cut_module_operad} induces an equivalence of $ \infty $-categories
     \begin{equation*}
-        \Modh(\mathcal{M}) \simeq \Alg_{/\mathcal{BM}_{\mathrm{inv}}}(\mathcal{O}) \xrightarrow{\sim} \Modh^{\AA_\infty^\sigma}\left(\mathcal{M}\right)\,.
+        R\Modh(\mathcal{M}) \simeq \Alg_{/\mathcal{RM}_{\mathrm{inv}}}(\mathcal{O}) \xrightarrow{\sim} R\Modh^{\AA_\infty^\sigma}\left(\mathcal{M}\right)\,.
     \end{equation*}
 \end{proposition}
 \begin{proof}
@@ -570,37 +615,60 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
 \subsection{Part (b)} 
 \begin{proposition} \Lucy{This statement is \cite[Proposition 4.2.3.1]{LurHA} with some words changed; no claim of originality here.}
     Let $ \mathcal{C} $ be an involutive monoidal $ \infty $-category and let $ \mathcal{M} $ be an $ \infty $-category which is bitensored over $ \mathcal{C} $. 
-    Let $ K $ be a simplicial set so that $ \mathcal{M} $ admits $ K $-indexed limits, and let $ \theta \colon \Modh(\mathcal{M}) \to \Alg^\sigma(\mathcal{C}) $ be the forgetful functor. 
+    Let $ K $ be a simplicial set so that $ \mathcal{M} $ admits $ K $-indexed limits, and let $ \theta \colon R\Modh(\mathcal{M}) \to \Alg^\sigma(\mathcal{C}) $ be the forgetful functor. 
     Then
     \begin{enumerate}[label=(\arabic*)]
         \item For every commutative square 
         \begin{equation*}
         \begin{tikzcd}
-            K \ar[r] \ar[d] & \Modh(\mathcal{M})  \ar[d,"\theta"] \\
+            K \ar[r] \ar[d] & R\Modh(\mathcal{M})  \ar[d,"\theta"] \\
             K^{\triangleleft} \ar[r] \ar[ru,dashed] & \Alg^\sigma(\mathcal{C}) \,,
         \end{tikzcd}
         \end{equation*}
         there exists a dashed arrow which is a $ \theta $-limit diagram. 
-        \item An arbitrary map $ \overline{g} \colon K^{\triangleleft} \to \Modh(\mathcal{M}) $ is a $ \theta $-limit diagram if and only if the induced map $ K^{\triangleleft} \to \mathcal{M} $ is a limit diagram.   
+        \item An arbitrary map $ \overline{g} \colon K^{\triangleleft} \to R\Modh(\mathcal{M}) $ is a $ \theta $-limit diagram if and only if the induced map $ K^{\triangleleft} \to \mathcal{M} $ is a limit diagram.   
     \end{enumerate}
 \end{proposition}
 \begin{proof}
     \Lucy{todo}
 \end{proof}
 \begin{corollary}
-    $ \theta $ is a cartesian fibration, and a morphism $ f \colon \Delta^1 \to \Modh(\mathcal{M}) $ is $ \theta $-cartesian if and only if the image of $ f $ in $ \mathcal{M} $ is an equivalence.     
+    $ \theta $ is a cartesian fibration, and a morphism $ f \colon \Delta^1 \to R\Modh(\mathcal{M}) $ is $ \theta $-cartesian if and only if the image of $ f $ in $ \mathcal{M} $ is an equivalence.     
 \end{corollary}
 \begin{corollary}
     Let $ \mathcal{C} $ be an involutive monoidal $ \infty $-category and let $ \mathcal{M} $ be an $ \infty $-category which is bitensored over $ \mathcal{C} $. 
-    Let $ K $ be a simplicial set so that $ \mathcal{M} $ admits $ K $-indexed limits, and let $ \theta \colon \Modh(\mathcal{M}) \to \Alg^\sigma(\mathcal{C}) $ be the forgetful functor. 
+    Let $ K $ be a simplicial set so that $ \mathcal{M} $ admits $ K $-indexed limits, and let $ \theta \colon R\Modh(\mathcal{M}) \to \Alg^\sigma(\mathcal{C}) $ be the forgetful functor. 
     Let $ A $ be an involutive algebra object of $ \mathcal{C} $. 
     Then
     \begin{enumerate}[label=(\arabic*)]
-        \item $ \Modh_A(\mathcal{M}) $ admits $ K $-indexed limits. 
-        \item A diagram $ K^{\triangleleft} \to \Modh_A(\mathcal{M}) $ is a limit diagram if and only if the induced diagram $ K^{\triangleleft} \to \mathcal{M} $ is a limit diagram. 
-        \item Given a morphism $ A \to B $ of involutive algebra objects of $ \mathcal{C} $, the induced functor $ \Modh_B(\mathcal{M}) \to \Modh_A(\mathcal{M}) $ preserves $ K $-indexed limits. 
+        \item $ R\Modh_A(\mathcal{M}) $ admits $ K $-indexed limits. 
+        \item A diagram $ K^{\triangleleft} \to R\Modh_A(\mathcal{M}) $ is a limit diagram if and only if the induced diagram $ K^{\triangleleft} \to \mathcal{M} $ is a limit diagram. 
+        \item Given a morphism $ A \to B $ of involutive algebra objects of $ \mathcal{C} $, the induced functor $ R\Modh_B(\mathcal{M}) \to R\Modh_A(\mathcal{M}) $ preserves $ K $-indexed limits. 
     \end{enumerate}
 \end{corollary}
+\subsection{Towards (e)}
+\begin{construction}
+    Define a functor $ \mathrm{Pr}\colon \mathbf{LM}_{\mathrm{inv}}^\otimes \times \mathbf{RM}_{\mathrm{inv}}^\otimes \to \mathbf{BM}_{\mathrm{inv}}^\otimes $. 
+\end{construction}
+\begin{theorem}
+    Let $ \mathcal{C} $ be an $ \EE_\sigma $-monoidal $ \infty $-category, and let $ A $ be an $ \EE_\sigma $-algebra in $ \mathcal{C} $. 
+    Then $ L\Modh_A(\mathcal{C}) $ is right $ \EE_\sigma $-tensored over $ \mathcal{C} $. 
+\end{theorem}
+
+\begin{definition}
+    Let $ \mathcal{M}^\varoast  \to \Delta^1\times \Delta^\op_\sigma $ exhibit $ \mathcal{M}^\varoast $ as weakly enriched over $ \mathcal{C}^\varoast $. 
+    An \emph{enriched morphism} of $ \mathcal{M} $ is a diagram 
+    \begin{equation*}
+        M \xleftarrow{\alpha} X \xrightarrow{\beta} N
+    \end{equation*}
+    satisfying 
+\end{definition}
+\begin{definition}
+    \emph{enriched $ n $-string} 
+\end{definition}
+\begin{proposition}
+    [Segal condition] 
+\end{proposition}
 
 \section{Categorification and structure}
 In the course of thinking about the `involutive' generalization of the statement that given an $ \EE_1 $-algebra, its category of modules is $ \EE_0 $ (and conversely, that given an object in a stable $\infty$-category, that its endomorphism spectrum is an $ \EE_1 $-algebra), I have run up against some questions. 
