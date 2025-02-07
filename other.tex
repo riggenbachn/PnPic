@@ -655,14 +655,40 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     Then $ L\Modh_A(\mathcal{C}) $ is right $ \EE_\sigma $-tensored over $ \mathcal{C} $. 
 \end{theorem}
 
+\subsection{Endomorphisms} 
+Let $ \mathcal{C} $ be an $ \EE_\sigma $-monoidal $ \infty $-category, and write $ \sigma_{\mathcal{C}} \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C} $ for its involution. 
+Suppose $ M \in \mathcal{C} $ is an object equipped with an equivalence $ \sigma_M \colon M \simeq \sigma_{\mathcal{C}}(M) $. 
+By \cite[\S4.7.1]{LurHA}, endomorphisms of $ M $ can be regarded as an $ \EE_1 $-algebra in $ u\left(\mathcal{C}\right)^{\otimes} $, where $ u $ is from Remark \ref{rmk:assoc_inv_mon_cat_as_mon_cat_with_autoequiv}. 
+Now $ \sigma_{M} $ induces an equivalence $ \mathrm{End}_{\mathcal{C}}(M) \simeq \mathrm{End}_{\mathcal{C}}(\sigma_{\mathcal{C}} (M)) $
+On the other hand, $ \sigma_{\mathcal{C}} $ induces an equivalence $ \mathrm{End}_{\mathcal{C}}(\sigma_{\mathcal{C}} (M)) \simeq \mathrm{End}_{\mathcal{C}}(M)^{\mathrm{rev}} $. 
+In particular, for any $ \infty $-category $ \mathcal{M} $ left $ \EE_\sigma $-tensored over $ \mathcal{C} $ and any object $ M \in \mathcal{M} $ which is fixed by the involution on $ \mathcal{M} $, we expect the endomorphisms of $ \mathcal{M} $ to admit the structure of an $ \EE_\sigma $-algebra in $ \mathcal{C} $. 
+
+To this end, we will define an $ \infty $-category of objects acting on $ M $, show that it has an $ \EE_\sigma $-monoidal structure, and locate endomorphisms of $ M $ as the final object in this $ \infty $-category. 
+Informally, we may define a category $ \mathcal{C}[M] $ whose objects consist of either
+\begin{itemize}
+    \item pairs $ (C, \eta) $ where $ C \in \mathcal{C} $ and $ \eta \colon C \otimes M \to M $ is a morphism in $ \mathcal{M} $; or
+    \item pairs $ (C', \xi) $ where $ C'\in \mathcal{C} $ and $ \xi \colon \sigma_{\mathcal{M}}(M) \otimes C' \to \sigma_{\mathcal{M}}(M) $. 
+\end{itemize} 
+The monoidal structure is as described in \cite[\S4.7.1]{LurHA}. 
+Note that given an object $ (C, \eta) $, the involution $ \sigma_\mathcal{M} $ on $ \mathcal{M} $ sends $ \eta $ to the map $ \sigma_{\mathcal{M}}\left(C \otimes M\right)\simeq \sigma_{\mathcal{M}}(M) \otimes \sigma_{\mathcal{C}}(C) \to \sigma_{\mathcal{M}}(M) $. 
+This is the involution on $ \mathcal{C}[M] $. 
 \begin{definition}
-    Let $ \mathcal{M}^\varoast  \to \Delta^1\times \Delta^\op_\sigma $ exhibit $ \mathcal{M}^\varoast $ as weakly enriched over $ \mathcal{C}^\varoast $. 
+    Let $ p \colon \mathcal{M}^\varoast  \to \Delta^1\times \Delta^\op_\sigma $ exhibit $ \mathcal{M}^\varoast $ as weakly enriched over $ \mathcal{C}^\varoast $. 
     An \emph{enriched morphism} of $ \mathcal{M} $ is a diagram 
     \begin{equation*}
         M \xleftarrow{\alpha} X \xrightarrow{\beta} N
     \end{equation*}
-    satisfying 
-\end{definition}
+    satisfying either 
+    \begin{itemize}
+        \item $ p (\alpha) $ is the morphism $ (0, [1], c_{1}) \to (0,[0]) $ in $ \Delta^\op_\sigma $ determined by the embedding $ [0] \simeq \{0\} \hookrightarrow [1] $ and $ c_1 \colon \{1\} \to \{\pm 1\} $ is the constant function at $ +1 $, and
+        \item the map $ \beta $ is inert, and $ p(\beta) $ is the morphism $ (0,[1], c_{1}) \to (0, [0]) $ in $ \Delta^1 \times \Delta^\op_\sigma $ determined by the embedding $ [0]\simeq \{1\} \hookrightarrow [1] $
+    \end{itemize}
+    or
+    \begin{itemize}
+        \item $ p (\alpha) $ is the morphism $ (0, [1], c_{-1}) \to (0,[0]) $ in $ \Delta^\op_\sigma $ determined by the embedding $ [0] \simeq \{0\} \hookrightarrow [1] $ and $ c_{-1} \colon \{1\} \to \{\pm 1\} $ is the constant function at $ -1 $. 
+        \item the map $ \beta $ is inert, and $ p(\beta) $ is the morphism $ (0,[1], c_{-1}) \to (0, [0]) $ in $ \Delta^1 \times \Delta^\op_\sigma $ determined by the embedding $ [0]\simeq \{1\} \hookrightarrow [1] $
+    \end{itemize}
+\end{definition} 
 \begin{definition}
     \emph{enriched $ n $-string} 
 \end{definition}
