@@ -465,15 +465,37 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
     Let $ \mathcal{LM}_\mathrm{inv}^\otimes $, $ \mathcal{RM}_\mathrm{inv}^\otimes $, and $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the associated $ \infty $-operads (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
 \end{definition}
 \begin{remark}
-    \Lucy{compare Higher Algebra Notation 4.2.1.6--gotta fix; this is going to be messy} We can describe the category $ \mathcal{BM}_\mathrm{inv}^\otimes $ as follows: 
+    We can describe the category $ \mathcal{LM}_\mathrm{inv}^\otimes $ as follows: 
     \begin{enumerate}[label=(\arabic*)]
-        \item An object of $ \mathcal{BM}_\mathrm{inv}^\otimes $ is a pair $ (\langle n\rangle,S) $ where $ S $ is a subset of $ \langle n \rangle^\circ $. 
-        \item Morphisms $ (\langle m \rangle, T) \to (\langle n \rangle,S) $ consist of a map $ \alpha \colon \langle m \rangle \to \langle n \rangle $ in $ \Associnv^\otimes $ satisfying: 
+        \item An object of $ \mathcal{LM}_\mathrm{inv}^\otimes $ is a pair $ (\langle n\rangle,S) $ where $ S $ is a subset of $ \langle n \rangle^\circ $. 
+        \item Morphisms $ (\langle m \rangle, T) \to (\langle n \rangle,S) $ consist of a map $ (\alpha \colon \langle m \rangle \to \langle n \rangle, \lambda \colon \langle m \rangle^\circ \to \{\pm 1\}) $ in $ \Associnv^\otimes $ satisfying: 
         \begin{itemize}
             \item The map $ \alpha $ takes $ T \cup \{*\} $ to $ S \cup \{*\} $
-            \item For each $ s \in S $, then $ \alpha^{-1}(\{s\}) $ contains exactly one element of $ t $. %, and that element is minimal with respect to the linear ordering on $ \alpha^{-1}(\{s\}) $. 
-            % \Lucyil{I've changed things a little so that $ S $ (in the notation of Higher Algebra) has been replaced by $ S^c $--this way,we can regard $ [n] $ as representing the ordered set $\{-n <-n+1 < \cdots -1<0<1< \cdots < n-1 < n\} $ where $ C_2 $ acts by $ \cdot (-1) $ (or something along these lines). This is really a generalization of Notation 4.2.1.7 but for $ RM^\otimes $.} 
+            \item For each $ s \in S $, then $ \alpha^{-1}(\{s\}) $ contains exactly one element $ t_s $ of $ T $, and it is maximal (resp. minimal) with respect to the linear ordering on $ \alpha^{-1}(\{s\}) $ if $ \lambda (t_s) = 1 $ (resp. $ \lambda(t_s) = -1 $). 
         \end{itemize}
+    \end{enumerate}
+\end{remark}
+\begin{remark}
+    We can describe the category $ \mathcal{BM}_\mathrm{inv}^\otimes $ as follows: 
+    \begin{enumerate}[label=(\arabic*)]
+        \item An object of $ \mathcal{BM}_\mathrm{inv}^\otimes $ is a triple $ (\langle n\rangle,c_+, c_{-}) $ where $ c_{\pm} $ are functions $ \langle n \rangle^\circ \to \{0,1\} $ and $ c_{-}(i) \leq c_{+}(i) $ for all $ i \in \langle n \rangle^\circ $. 
+        \item Morphisms $ (\langle m \rangle, c_+, c_{-}) \to (\langle n \rangle, c_{+}', c_{-}') $ consist of a map $ (\alpha \colon \langle m \rangle \to \langle n \rangle, \lambda \colon \langle m \rangle^\circ \to \{\pm 1\}) $ in $ \Associnv^\otimes $ satisfying: if $ j \in \langle n \rangle^\circ $ and $ \alpha^{-1}(j) = \{i_1 < i_2 < \cdots < i_\ell\} $,
+        \begin{itemize}
+             \item If $ c_{-} (j) = c_+(j) $, then 
+                \begin{equation*}
+                    c'_{-}(j) = c_{-}(i_1) \leq c_{+}(i_1) = c_{-}(i_2) \leq c_{+}(i_2) \cdots \cdots c_{-}(i_{m-1}) \leq c_{+}(i_m) = c'_{+}(j)
+                \end{equation*}
+            \item If $ c_{-} (j) < c_+(j) $, then there exists a unique $ k $ so that $ c_{-}(i_k) < c_{+}(i_k) $ and 
+                \begin{equation*}
+                \begin{split}
+                    \lambda(i_k) \cdot c'_{-}(j) = \lambda(i_k) \cdot c_{-}(i_1) \leq \lambda(i_k) \cdot c_{+}(i_1) = \lambda(i_k) \cdot c_{-}(i_2) \leq \lambda(i_k) \cdot c_{+}(i_2)  \cdots \\ \lambda(i_k) \cdot c_{-}(i_{m-1}) \leq \lambda(i_k) \cdot c_{+}(i_m) = \lambda(i_k) \cdot c'_{+}(j)           
+                \end{split}
+                \end{equation*}
+         \end{itemize} 
+        % \begin{itemize}
+        %     \item The map $ \alpha $ takes $ T \cup \{*\} $ to $ S \cup \{*\} $
+        %     \item For each $ s \in S $, then $ \alpha^{-1}(\{s\}) $ contains exactly one element of $ t $. 
+        % \end{itemize}
     \end{enumerate}
 \end{remark}
 \begin{remark}\label{rmk:inv_bimod_opd_to_inv_alg_opd} %compare Remark 4.2.1.5 in Higher algebra
@@ -688,6 +710,10 @@ This is the involution on $ \mathcal{C}[M] $.
         \item $ p (\alpha) $ is the morphism $ (0, [1], c_{-1}) \to (0,[0]) $ in $ \Delta^\op_\sigma $ determined by the embedding $ [0] \simeq \{0\} \hookrightarrow [1] $ and $ c_{-1} \colon \{1\} \to \{\pm 1\} $ is the constant function at $ -1 $. 
         \item the map $ \beta $ is inert, and $ p(\beta) $ is the morphism $ (0,[1], c_{-1}) \to (0, [0]) $ in $ \Delta^1 \times \Delta^\op_\sigma $ determined by the embedding $ [0]\simeq \{1\} \hookrightarrow [1] $
     \end{itemize}
+    Let $ \mathrm{Str}\, \mathcal{M}^{\mathrm{en}}_{[1]} $ denote the full subcategory of $ \Fun_{\Delta^1 \times \Delta^\op_\sigma }\left(\Lambda^2_0, \mathcal{M}^{\varoast} \right) $ spanned by the enriched morphisms of $ \mathcal{M} $. 
+
+    Note that there are two evaluation functors $ \mathrm{Str}\, \mathcal{M}^{\mathrm{en}}_{[1]} \to \mathcal{M} $. 
+    Given $ M \in \mathcal{M} $, write $ \mathcal{C}[M] := \{M\} \times_{\mathcal{M}} \mathrm{Str}\, \mathcal{M}^{\mathrm{en}}_{[1]} \times_{\mathcal{M}} \{M\} $ and refer to it as the endomorphism $ \infty $-category of $ M $. 
 \end{definition} 
 \begin{definition}
     \emph{enriched $ n $-string} 
