@@ -210,7 +210,8 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{definition}
     \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}.
+    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}. 
+    \todo{define morphisms/the category}
 \end{definition}
 
 \begin{remark}
@@ -227,7 +228,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
         \item An $R$-algebra $R\rightarrow C$.
         \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
     \end{itemize}
-        Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}.
+    Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
 \end{remark}
 
 \begin{remark}
@@ -237,7 +238,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_as_algebra_objects}
-    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp_\infty$ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(\Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
+    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp $ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(\Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
 \end{remark}
 
 \begin{notation}
@@ -258,7 +259,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{example}
     \label{example:universal_poincare_ring_spectrum}
-    The sphere spectrum $\mathbb{S}$ together with the Tate Poincaré structure will be called the \emph{universal Poincaré ring spectrum}. We will denote it by $(\mathbb{S},\Qoppa_u)$. \Viktor{expain why/translate universality statement to poincare ring spectra}
+    The sphere spectrum $\mathbb{S}$ together with the Tate Poincaré structure will be called the \emph{universal Poincaré ring spectrum} (see \cite[\S4.1]{CDHHLMNNSI}). We will denote it by $(\mathbb{S},\Qoppa_u)$. 
 \end{example}
 
 \begin{remark}
@@ -283,14 +284,6 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 \end{example}
 
 \Viktor{copy more examples from notes}
-
-\begin{definition}
-    \label{definition:category_of_poincare_ring_spectra}
-    Let $A$ and $R$ be Poincaré ring spectra. A \emph{map of Poincaré ring spectra} between $A$ and $R$ is a map of ring spectra $f:A\rightarrow R$ compatible with the corresponding Poincaré structures via the following additional data: 
-    \begin{itemize}
-        \item \Viktor{this should become a remark and go below the definition of calgp}
-    \end{itemize}
-\end{definition}
 
 \subsection{Algebras with genuine involution}
 \begin{recollection}\label{rec:left_module_cats}  
@@ -685,7 +678,7 @@ Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 
     Then $ f $ is a limit diagram if and only if $ f^e \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ and $ f^{C_2} \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ are both limit diagrams. 
 \end{lemma}
 \begin{proof}
-    The result follows from the observation that limits in $ \EE_\infty \Alg \left(\Spectra^{C_2}\right) $ are computed in $ \Spectra^{C_2} $. 
+    The result follows from the observation that limits in $ \EE_\infty \mathrm{Alg} \left(\Spectra^{C_2}\right) $ are computed in $ \Spectra^{C_2} $. 
 \end{proof}
 \begin{construction}\label{cons:C2_mod_over_sheaf_of_Green_func}
     Let $ p \colon X \to Y $ as before. 
@@ -703,16 +696,20 @@ Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 
     In other words, it is a choice, for each affine open $ \Spec A $ of $ Y $ (same notation as before), of a module over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $ which glue compatibly. 
 \end{construction} 
 Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{N^{C_2}B}\left(\Spectra^{C_2}\right) $ and a quadratic relative norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{A\to B}\left(\Spectra^{C_2}\right) $. 
-\begin{lemma}\label{lemma:globalize_relative_norm}
+\begin{construction}\label{cons:globalize_relative_norm}
+    Let $ X $ be a scheme with an involution, and let $ p \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
+    Assume that $ p $ is affine. 
     The norm functors (resp. relative norm functors) $ N^{C_2}_e $ assemble under Construction \ref{cons:structure_sheaf_of_Green_functors} to a `global' norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to N^{C_2} \pi_{\#} \mathcal{O}_X\Mod $ (resp. relative norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to \underline{\mathcal{O}}\Mod $). 
     Moreover, these functors are quadratic. 
-\end{lemma}
-\begin{proof}
-    For each affine open $ \Spec A \subseteq Y $, write $ B = \Gamma \mathcal{O}_{\Spec A \times_Y X} $. 
-    Then the functor $ N^{C_2}_Y $ is the limit over all $ \Spec A \subseteq Y $ of the functors $ \pi_{\#}\mathcal{O}_X \Mod \to B\Mod(\Spectra) \xrightarrow{N^{C_2}} \Mod_{N^{C_2}B}(\Spectra^{C_2}) \xrightarrow{ -\otimes_{N^{C_2}B} (A \to B)} \Mod_{A \to B}(\Spectra^{C_2}) $, where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which is a structure map for the $ C_2 $-$ \EE_\infty $-algebra structure on $ A \to B $. 
-    \Lucy{todo: rewrite this as a diagram in a functor category with fixed domain and target.} 
-    Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
-\end{proof}
+\end{construction}
+For each affine open $ j \colon \Spec A \subseteq Y $, write $ B = \Gamma \mathcal{O}_{\Spec A \times_Y X} $, consider the composite 
+% Then the functor $ N^{C_2}_Y $ is the limit over all $ \Spec A \subseteq Y $ of the functors 
+\begin{equation*}
+     \pi_{\#}\mathcal{O}_X \Mod \xrightarrow{j^*} \Mod_B(\Spectra) \xrightarrow{N^{C_2}} \Mod_{N^{C_2}B}(\Spectra^{C_2}) \xrightarrow{ -\otimes_{N^{C_2}B} (A \to B)} \Mod_{A \to B}(\Spectra^{C_2})\,,
+\end{equation*}  
+where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which is a structure map for the $ C_2 $-$ \EE_\infty $-algebra structure on $ A \to B $. 
+\Lucy{todo: use effective descent/limit definition for $ \underline{\mathcal{O}} $-modules.} 
+Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
 \begin{lemma}\label{lemma:line_bundle_as_C2_sheaf}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
     Let $ L $ be a line bundle on $ Y $. 
@@ -723,6 +720,9 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
     promotes (\ref{eq:line_bundle_as_C2_sheaf}) to a sheaf of $ \underline{\mathcal{O}} $-modules on $ Y $. 
     We will write $ \underline{L} $ for (\ref{eq:line_bundle_as_C2_sheaf}). 
 \end{lemma}
+\begin{proof}
+    Follows from naturality of the unit and the canonical identification $ \pi^* \mathcal{O}_Y $ with $ \mathcal{O}_X $. 
+\end{proof}
 \begin{definition}\label{defn:quadratic_functor_from_good_quotient}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
     Let $ L $ be a line bundle on $ Y $. 
@@ -731,11 +731,11 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
         \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{L})} \Spectra \,,
     \end{equation*}
     where $ \underline{L} $ is a $ \underline{\mathcal{O}} $-module by Lemma \ref{lemma:line_bundle_as_C2_sheaf} and $ \underline{\mathcal{O}} $ is a $ N^{C_2} \pi_{\#}\mathcal{O}_X $-algebra by Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}. 
-    By Lemma \ref{lemma:globalize_relative_norm} and the fact that the composite of an exact (1-excisive) functor and an $ m$-excisive functor is $m$-excisive (see \cite[\S2.2]{Kpoly}), $ \Qoppa_\sigma $ is quadratic. 
+    By Construction \ref{cons:globalize_relative_norm} and the fact that the composite of an exact (1-excisive) functor and an $ m$-excisive functor is $m$-excisive (see \cite[\S2.2]{Kpoly}), $ \Qoppa_\sigma $ is quadratic. 
     \Lucy{want to show that the assignment $ (\sigma:X \to X, \pi: X \to Y, L) \mapsto (\perf_X, \Qoppa_{\sigma,L}) $ defines a functor from some category of schemes with involution (+line bundle) to the $ \infty $-category of Poincaré $ \infty $-categories.}
 \end{definition}
 \begin{example} 
-    Suppose $ L = \mathcal{O}_Y $. \Lucy{maybe for the purposes of this example, take $ Y $ to be affine?}
+    Suppose $ L = \mathcal{O}_Y $. 
     Then we drop $ L $ from notation and the quadratic functor $ \Qoppa_{\sigma} $ of Definition \ref{defn:quadratic_functor_from_good_quotient} takes the form
     \begin{equation*}
         \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{\mathcal{O}})} \Spectra \,.
@@ -752,9 +752,10 @@ Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \
 \end{proof}
 \begin{lemma}\label{lemma:bilinear_parts_agree}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $, and let $ Y $ be a good quotient of $ X $. 
-    Assume that the quotient map $ q \colon X \to Y $ is étale. \Lucy{Need to figure out the weakest possible assumption here. \href{https://mathoverflow.net/questions/169052/are-quotients-of-affine-schemes-by-finite-groups-faithfully-flat}{relevant MO post}.}
-    Let $ \Qoppa_\sigma $ be the Poincaré structure on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
-    Then the bilinear part of $ \Qoppa_\sigma $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
+    Assume that the quotient map $ q \colon X \to Y $ is étale. \Lucy{Weakest possible assumption? \href{https://mathoverflow.net/questions/169052/are-quotients-of-affine-schemes-by-finite-groups-faithfully-flat}{relevant MO post}.}
+    Let $ L $ be a line bundle on $ Y $, and let $ \Qoppa_{\sigma,L} $ be the quadratic functor on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
+    Then the bilinear part of $ \Qoppa_{\sigma,L} $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
+    In particular, $ \left(\perf_X, \Qoppa_{\sigma,L} \right) $ is a Poincaré $ \infty $-category. 
 \end{lemma}
 \begin{proof}
     By definition of the bilinear part of a quadratic functor, it suffices to show that there is an equivalence $ \hom_{\pi_{\#}\mathcal{O}_X\Mod}\left(\pi_{\#}E \otimes_{\pi_{\#}\mathcal{O}_X} \pi_{\#}E, \pi_{\#}\mathcal{O}_X\right) \simeq \hom_{\mathcal{O}_X\Mod}\left(E \otimes_{\mathcal{O}_X} \sigma^*E, \mathcal{O}_X\right) $ for any perfect complex $ E $ on $ X $. 
@@ -786,7 +787,6 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     Let $A$ be a Poincaré ring spectrum. Then we have a canonical equivalence $$\Omega \Brp(A) \simeq \Picp(A).$$ \Lucy{What else do we need to do to show that we have an equivalence of \emph{functors}?}
 \end{proposition}
 \begin{proof} 
-    \Viktor{todo} 
     Since $ \Omega\Brp(R) $ is given by the space of automorphisms of any object in $ \Brp(R) $, it suffices to determine the space of autoequivalences of $ \left(\Mod_R^\omega, \Qoppa_R \right) $. 
     An autoequivalence is the data of a pair $ (f, \eta) $ where $ f \colon \Mod_R^\omega \xrightarrow{\simeq} \Mod_R^\omega $ is an exact $ R $-linear autoequivalence and $ \eta \colon \Qoppa_R \xrightarrow{\sim} \Qoppa_R \circ f^{\mathrm{op}} $ is a natural equivalence. 
     Since $ \Catp_R\to \Catex_R $ is symmetric monoidal, $ f $ is of the form $ - \otimes_R \mathcal{L} $ where $ \mathcal{L} $ is an invertible $ R $-module. 
@@ -809,7 +809,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 
 \begin{proposition}\label{prop:relative_poincare_cats_basic_properties}
     Let $ (\Mod_R^\omega, \Qoppa_R) $ be a Poincaré ring spectrum. 
-    \begin{enumerate}
+    \begin{enumerate}[label=(\arabic*)]
         \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ admits all small limits and colimits, and it inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is a symmetric monoidal left adjoint. 
         \item \label{propitem:classify_R_lin_hermitian_struct} Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra, and regard the category of compact right $ A $-modules $ \Mod_A^\omega $ as left-tensored over $ \Mod_R^\omega $ in the canonical way. 
         Then the pullback
@@ -983,7 +983,7 @@ As in the Picard group case, the forgetful functor $\theta$ induces a map of spe
 Let $(\mathrm{Mod}_A^\omega, \Qoppa_A)$ be a Poincar{\'e} ring with underlying genuine $C_2$ spectrum $A^L$ as in Proposition~\ref{propitem:classify_R_lin_hermitian_struct}. Then the fiber of the map \[\Brp(A)\to \Br(A)\] can be naturally identified with $\Pic(\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2}))$.
 \end{corollary}
 \begin{proof}
-Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_A}(\Catex)$ is (co)cartesian, symmetric monoidal, and conservative, it follows that the induced functor on the groupoid core of invertible objects is a Kan fibration by \cite[\href{https://kerodon.net/tag/01EZ}{Proposition 01EZ}]{kerodon}. Consequently we need only identify the fiber instead of the homotopy fiber, which follows from the identifiaction of the fiber in Proposition~\ref{propitem:classify_R_lin_hermitian_struct}. \Noah{Needs a lot more detail I know, but I think the skeleton is here.}
+Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_A}(\Catex)$ is (co)cartesian, symmetric monoidal, and conservative, it follows that the induced functor on the groupoid core of invertible objects is a Kan fibration by \cite[\href{https://kerodon.net/tag/01EZ}{Proposition 01EZ}]{kerodon}. Consequently we need only identify the fiber instead of the homotopy fiber, which follows from the identification of the fiber in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. \Noah{Needs a lot more detail I know, but I think the skeleton is here.}
 \end{proof}
 Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
 \begin{proposition}
@@ -1011,7 +1011,6 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \end{recollection}
 
 \begin{definition}
-    \Lucy{For context, compare Examples 3.1.9 and 3.2.9 of the first 9-author paper.}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum. 
     An \emph{Azumaya algebra with genuine type 1 (anti-)involution} over $ R $ is the data of 
     \begin{enumerate}[label=(\alph*)]
@@ -1021,7 +1020,8 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
         \begin{equation*}
             \hom_R(A, R^{\varphi C_2}) \simeq A^{\varphi C_2} \otimes_{R^{\varphi C_2}} \hom_R(A^{\varphi C_2}, R^{\varphi C_2})
         \end{equation*}
-        \item An $ A $-linear map $ A^{\varphi C_2} \to A^{tC_2} $ where $ A^{tC_2} $ is regarded as an $ A $-module via the Tate-valued Frobenius.\Lucy{Tate-valued norm?}
+        \item An $ A $-linear map $ A^{\varphi C_2} \to A^{tC_2} $. 
+        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes A)^{tC_2} $-module, as an $ A $-module via the Tate-valued diagonal $ A \to (A \otimes A)^{tC_2} $. 
     \end{enumerate}
     Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
     \Lucy{define the category!}
@@ -1051,6 +1051,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     Then there is a canonical Azumaya algebra with genuine involution over $ R^{\mathrm{gs}} $ so that $ A^{\varphi C_2} := \tau_{\geq 0} A^{tC_2} $.
 \end{proposition}
 \begin{proof}
+    By \cite[Examples 3.1.9 \& 3.2.9]{CDHHLMNNSI}, it suffices to exhibit $ N $ and an $ A $-linear map $ N \to A^{tC_2} $. 
     \Lucy{todo}
 \end{proof}
 
