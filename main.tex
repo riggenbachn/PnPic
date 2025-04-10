@@ -210,45 +210,51 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{definition}
     \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. A \emph{Poincaré structure} on $R$ is a symmetric monoidal Poincaré $\infty$-category $\qoppa: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}. 
-    \todo{define morphisms/the category}
-\end{definition}
-
-\begin{remark}
-    \label{remark:notational_difference_to_nine-authored_papers}
-    Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. 
-    In \cite[discussion immediately preceding Examples 5.4.10]{CDHHLMNNSI}, Poincaré ring spectra are referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
-\end{remark}
-
-\begin{remark}
-    \label{remark:poincare_ring_spectra_as_nr-algebras}
-    Let $R$ be a ring spectrum. By there is a natural equivalence between symmetric monoidal Poincaré structures on $\Mod_R^\omega$ and certain algebra objects over the genuine $C_2$-spectrum $NR$ \cite[Corollary 5.4.8]{CDHHLMNNSI}. In particular, a Poincaré structure on $R$ can be identified with the following data:
+    Let $R$ be a ring spectrum. 
+    A \emph{Poincaré structure} on $R$ is the following data:
     \begin{itemize}
         \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \CAlg$.
         \item An $R$-algebra $R\rightarrow C$.
         \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
     \end{itemize}
     Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
+\end{definition}
+
+\begin{remark}
+    \label{remark:notational_difference_to_nine-authored_papers}
+    % Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. 
+    In \cite[discussion immediately preceding Examples 5.4.10]{CDHHLMNNSI}, Poincaré ring spectra are referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
+\end{remark}
+
+\begin{remark}
+    \label{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}
+    Let $R$ be a ring spectrum. 
+    % There is a natural equivalence between symmetric monoidal Poincaré structures on $\Mod_R^\omega$ and certain algebra objects over the genuine $C_2$-spectrum $NR$ . 
+    By \cite[Corollary 5.4.8]{CDHHLMNNSI}, a Poincaré structure on $R$ gives rise to a symmetric monoidal lift of $ \Mod_R^\omega $ to the symmetric monoidal $ \infty $-category of Poincaré $\infty$-categories $ \qoppa_R: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. 
+    Furthermore, the structure map $ R \to C $ gives a canonical lift of $ R \in \Mod_R^\omega $ to a Poincaré object $ (R, q) \in \mathrm{Pn}\left(\Mod_R^\omega,\qoppa_R \right) $. 
+    % We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}. 
 \end{remark}
 
 \begin{remark}
     \label{remark:poincare_structures_are_factorizations}
-    By Remark \ref{remark:poincare_ring_spectra_as_nr-algebras}, a Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the Tate Frobenius $R\rightarrow R^{tC_2}$.
+    A Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the Tate Frobenius $R\rightarrow R^{tC_2}$.
 \end{remark}
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_as_algebra_objects}
-    Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp $ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \Viktor{cite 9-authors I.5.1.5 and I.5.1.6}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(\Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
+    By \cite[\S5.1]{CDHHLMNNSI}, the assignment $ (R, R\to C \to R^{tC_2}) \mapsto \left(\Mod_R^\omega, \qoppa_R \right) $ promotes to a symmetric monoidal functor $ \CAlgp \to \CAlg(\Catp) $. 
+    % Let $\mathcal{M}$ be the full subcategory of $\Catp$ spanned by Poincaré $\infty$-categories with underlying $\infty$-category $\Mod^\omega_R$ for some ring spectrum $R$. Then the symmetric monoidal structure of $\Catp $ restricts to a symmetric monoidal structure on $\mathcal{M}$ by Example \ref{example:universal_poincare_ring_spectrum} and \cite[\S5.1]{CDHHLMNNSI}. Then we have $\CAlgp\simeq \CAlg(\mathcal{M})$. In particular, the symmetric monoidal structure of $\CAlg(\Catp)$ restricts to a symmetric monoidal structure on $\CAlgp$.
 \end{remark}
 
 \begin{notation}
     \label{notation:spectrum_with_trivial_action}
-    Let $R$ be a ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial action. More precisely, $\underline{R}:BC_2\rightarrow \Spectra $ is the constant functor. \Lucy{This is commonly used for constant Mackey functors--could be ambiguous}
+    Let $R$ be an $ \mathbb{E}_\infty $-ring spectrum. We will denote by $\underline{R}$ the spectrum $R$ with trivial $ C_2 $-action. More precisely, $\underline{R}:BC_2\rightarrow \Spectra $ is the constant functor. \Lucy{This is commonly used for constant Mackey functors--could be ambiguous}
 \end{notation}
 
 \begin{example}
     \label{example:classification_of_poincare_structures_when_tate_vanishes}
-    Let $R$ be a ring spectrum. If $2\in \pi_0(R)$ is invertible, we have $\underline{R}^{tC_2}\simeq 0$\Viktor{explain/reference}. A Poincaré structure on $R$ with the trivial action is then given by an $R$-algebra $R\rightarrow C$.
+    Let $R$ be a ring spectrum with a $ C_2 $-action. If $2\in \pi_0(R)$ is invertible, we have $\underline{R}^{tC_2}\simeq 0 $. 
+    A Poincaré structure on $R$ is equivalent to the data of an $ \mathbb{E}_\infty $-$R$-algebra $R\rightarrow C$.
 \end{example}
 
 \begin{example}
@@ -377,7 +383,6 @@ Now we observe that given a hermitian object $ (x,q) $ of $ \left(\mathcal{C}, \
 
 \section{The Poincaré Picard space}
 \label{subsection:the_poincare_picard_group}
-Let $A$ be a Poincaré ring spectrum. Then $A$ is a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$\Viktor{ref}. We may thus consider modules over it. In this section we will use modules over Poincaré ring spectra to define analogues of the Picard group for Poincaré ring spectra.
 
 Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \Einfty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
 
@@ -784,6 +789,9 @@ Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{Lur
 
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
+Let $A$ be a Poincaré ring spectrum. 
+By Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}, $ \Mod_A^\omega $ promotes to a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$ , and we may thus consider modules over it. 
+In this section, we will use modules over Poincaré ring spectra to define derived analogues of the involutive Brauer group for Poincaré ring spectra.
 
 Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
 
@@ -1101,7 +1109,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     \begin{equation*}
         \hom_{R \otimes R}(A \otimes_R A, R) \simeq M_A \otimes_R M_{A^\op} \,.
     \end{equation*}
-    \Lucy{modify defn of Azumaya alg with genuine involution to include an $ A \otimes A^\op $-linear equivalence $ A \simeq A^\vee $?}
+    \Lucy{modify defn of Azumaya alg with genuine involution to include an $ A \otimes A^\op $-linear equivalence $ A \simeq A^\vee $? Or simply define $ M_A := A^\vee $?}
 \end{proof}
 
 \section{Poincar{\'e} schemes}
