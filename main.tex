@@ -674,9 +674,39 @@ As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty 
 
 \subsection{Poincaré Picard groups of schemes} 
 Let $ X $ be a scheme with an involution. 
-Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
-We write $ p \colon X \to Y $ for the quotient map. 
+\begin{definition}
+    Define a category $ \mathrm{qSch}^{C_2} $ so that
+    \begin{itemize}
+        \item an object of $ \mathrm{qSch}^{C_2} $ consists of the data of qcqs schemes $ X $ and $ Y $, an involution $ \lambda \colon X \to X $, and a morphism $ p \colon X \to Y $ which exhibits $ Y $ as a \emph{good quotient} of the involution on $ X $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
+        \item a morphism from $ (X,\lambda, Y, p) $ to $ (Z,\nu, W, q) $ consists of a $ C_2 $-equivariant morphism $ X \to Z $ and a morphism $ Y \to W $ so that the diagram
+        \begin{equation*}
+        \begin{tikzcd}
+            X \ar[d] \ar[r] & Z \ar[d] \\
+            Y \ar[r] & W
+        \end{tikzcd}
+        \end{equation*}
+        commutes. 
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ U \to Y $ is an open subscheme. 
+    Then $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
+\end{remark}
+\begin{proposition}
+    Write $ U \colon \mathrm{qSch}^{C_2} \to \mathrm{qSch} $ for the functor so that $ U(X, \lambda, Y, p) = X $.  
+    The category $ \mathrm{qSch}^{C_2} $ has a symmetric monoidal structure $ \boxtimes $ so that $ U $ is symmetric monoidal, where $ \mathrm{qSch} $ is endowed with the product symmetric monoidal structure. 
+\end{proposition}
+\begin{proof}
+    If $ X $, $ Z $ are schemes with involutions $ \lambda_X $, $ \lambda_Z $, then $ \lambda_X \times \lambda_Z $ endows $ X \times Z $ with an involution. 
+    It suffices to show that $ X \times Z $ admits a good quotient, as a good quotient is a categorical quotient and is therefore unique up to isomorphism. 
+    By \cite[Remark 4.20]{azumaya_involution}, a good quotient exists if and only if every $ C_2 $-orbit is contained in an affine open subscheme. 
+    Consider a $ C_2 $-orbit in $ X \times Z $. 
+    Its image under the projection $ \pi_1 \colon X \times Z \to X $ (resp. $ \pi_2 \colon X \times Z \to Z $) is contained in an affine open subscheme $ U \subseteq X $ (resp. $ V \subseteq Z $). 
+    Thus the orbit under consideration is contained in $ U \times Z $, which is affine. 
+\end{proof}
 \begin{construction}\label{cons:structure_sheaf_of_Green_functors}
+    Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
+    We write $ p \colon X \to Y $ for the quotient map.
     Let $ j \colon \Spec A  \simeq U \subseteq Y $ be an affine open subscheme of $ Y $. 
     Because $ p $ is an affine map,\Lucy{by assumption!} the fiber product $ \Spec B := \Spec A \times_{Y} X $ is an affine open of $ X $ which is invariant under the $ C_2 $-action. 
     In particular $ \Spec B $ inherits a $ C_2 $-action from $ X $ (hence so does its ring of functions $ B$).  
@@ -685,15 +715,19 @@ We write $ p \colon X \to Y $ for the quotient map.
 \end{construction}
 \begin{lemma} \label{lemma:identify_structure_sheaf_of_Green_func}
 Let $ X $ be a scheme with an involution. 
-Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
+Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}, and write $ p \colon X \to Y $ for the quotient map. 
 \begin{enumerate}[label=(\roman*)]
     \item \label{lem_item:structure_sheaf_of_Green_func_is_functor} The assignment of Construction \ref{cons:structure_sheaf_of_Green_functors} lifts to a contravariant functor from (the nerve of) the category of affine opens of $ Y $ to the $\infty $-category of Poincaré rings/$ C_2 $-$ \EE_\infty $-rings/Tambara functors. 
     \item \label{lem_item:structure_sheaf_of_Green_func_is_sheaf} The presheaf $ \underline{\mathcal{O}} $ of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
+    \item \label{lem_item:structured_pushforward_is_equiv} Write $ p_* \mathcal{O}_X $ for the sheaf of $ \EE_\infty $-$ \mathcal{O}_Y $-algebras (all functors are derived). 
+    Then the pushforward $ p_* $ induces an equivalence $ \mathcal{D}(X) \xrightarrow{\sim} \Mod_{p_*\mathcal{O}_X} $. 
 \end{enumerate}
 \end{lemma}
 \begin{proof}
     Part \ref{lem_item:structure_sheaf_of_Green_func_is_functor} follows from a similar argument to \cite[Theorem 5.1]{LYang_normedrings}; functoriality follows from noting that $ \tau_{\geq 0} $ is a functor.  
-    Part (ii) follows from Lemma \ref{lemma:limits_of_param_alg_detected_orbitwise}. 
+    Part \ref{lem_item:structure_sheaf_of_Green_func_is_sheaf} follows from Lemma \ref{lemma:limits_of_param_alg_detected_orbitwise}. 
+    To prove part \ref{lem_item:structured_pushforward_is_equiv}, consider a Zariski cover $ \{j_i \colon U_i \to Y \} $ of $ Y $ by affine opens. 
+    By Zariski descent, $ \displaystyle\mathcal{D}(X) \simeq \lim_{p^*(j_i) = p \times_Y j_i \colon U_i \times_Y X \to X} \Mod_{\mathcal{O}_X(U_i \times_Y X)} $ and $ \displaystyle\Mod_{p_*(\mathcal{O}_X)} \simeq \lim_{j_i \colon U_i \to Y} \Mod_{p_*\mathcal{O}_X(U_i)} $, hence the result follows. 
 \end{proof}
 \begin{lemma}\label{lemma:limits_of_param_alg_detected_orbitwise}
     Let $ K $ be a simplicial set, and let $ f \colon K^{\triangleleft} \to C_2 \EE_\infty\mathrm{Alg}(\Spectra^{C_2}) $ be a diagram. 
@@ -763,25 +797,25 @@ Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{Lur
         \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{\mathcal{O}})} \Spectra \,.
     \end{equation*}    
 \end{example}
-\begin{lemma}\label{lemma:fully_faithful_pushforward}
-    Let $\pi \colon X \to Y $ be a finite étale map. 
-    Then the canonical functor $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ is fully faithful. 
-    \Lucy{asked JH Nov 22nd: James says that this should definitely be true, and moreover in greater generality (for instance, if $ \pi$ is faithfully flat.); try, for instance, Barr--Beck.}
-\end{lemma}
-\begin{proof}
-    Affine-locally on $ Y $, I think this is an \emph{equivalence}. 
-    Conclude by descent. 
-\end{proof}
+% \begin{lemma}\label{lemma:fully_faithful_pushforward}
+%     Let $\pi \colon X \to Y $ be a finite étale map. 
+%     Then the canonical functor $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ is fully faithful. 
+%     \Lucy{asked JH Nov 22nd: James says that this should definitely be true, and moreover in greater generality (for instance, if $ \pi$ is faithfully flat.); try, for instance, Barr--Beck.}
+% \end{lemma}
+% \begin{proof}
+%     Affine-locally on $ Y $, I think this is an \emph{equivalence}. 
+%     Conclude by descent. 
+% \end{proof}
 \begin{lemma}\label{lemma:bilinear_parts_agree}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $, and let $ Y $ be a good quotient of $ X $. 
-    Assume that the quotient map $ q \colon X \to Y $ is étale. \Lucy{Weakest possible assumption? \href{https://mathoverflow.net/questions/169052/are-quotients-of-affine-schemes-by-finite-groups-faithfully-flat}{relevant MO post}.}
+    % Assume that the quotient map $ q \colon X \to Y $ is étale. \Lucy{Weakest possible assumption? \href{https://mathoverflow.net/questions/169052/are-quotients-of-affine-schemes-by-finite-groups-faithfully-flat}{relevant MO post}.}
     Let $ L $ be a line bundle on $ Y $, and let $ \Qoppa_{\sigma,L} $ be the quadratic functor on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
     Then the bilinear part of $ \Qoppa_{\sigma,L} $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
     In particular, $ \left(\perf_X, \Qoppa_{\sigma,L} \right) $ is a Poincaré $ \infty $-category. 
 \end{lemma}
 \begin{proof}
     By definition of the bilinear part of a quadratic functor, it suffices to show that there is an equivalence $ \hom_{\pi_{\#}\mathcal{O}_X\Mod}\left(\pi_{\#}E \otimes_{\pi_{\#}\mathcal{O}_X} \pi_{\#}E, \pi_{\#}\mathcal{O}_X\right) \simeq \hom_{\mathcal{O}_X\Mod}\left(E \otimes_{\mathcal{O}_X} \sigma^*E, \mathcal{O}_X\right) $ for any perfect complex $ E $ on $ X $. 
-    This follows from Lemma \ref{lemma:fully_faithful_pushforward}.  
+    This follows from Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}\ref{lem_item:structured_pushforward_is_equiv}. %\ref{lemma:fully_faithful_pushforward}.  
 \end{proof}
 \begin{remark}
     Compare the description of the space of bilinear forms in Lemma \ref{lemma:bilinear_parts_agree} with the description of a $ \delta $-hermitian form $ H $ in \cite[p. 216]{MR1162189}. 
