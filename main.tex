@@ -766,6 +766,35 @@ For each affine open $ j \colon \Spec A \subseteq Y $, write $ B = \Gamma \mathc
 where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which is a structure map for the $ C_2 $-$ \EE_\infty $-algebra structure on $ A \to B $. 
 \Lucy{todo: use effective descent/limit definition for $ \underline{\mathcal{O}} $-modules.} 
 Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
+\begin{definition}
+    Varying $ X \to Y $, Constructions \ref{cons:C2_mod_over_sheaf_of_Green_func} and \ref{cons:globalize_relative_norm} define a functor \Lucy{want: codomain consists of $ C_2 $-stable $ C_2 $-presentable $ C_2 $-$ \infty $-categories}
+    \begin{align*}
+        \left(\mathrm{qSch}^{C_2}\right)^{\op} &\to C_2 \otimes \Cat  \\
+        \left(X, \lambda, Y, p \right) &\mapsto \underline{\Mod}_{\underline{\mathcal{O}}}\left(\underline{\Spectra}^{C_2}\right)
+    \end{align*}
+\end{definition} 
+\begin{definition}
+    Suppose $ \mathrm{C} $ is a $ C_2 $-stable $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category. 
+    Define a functor
+    \begin{align*}
+       \mathrm{eInv} \colon  C_2 \otimes \Cat^{\mathrm{ex}} &\to \Spaces \\
+        \left(\mathrm{C}, \otimes\right) & \mapsto \left(\mathrm{C}^{C_2}\right)^{\simeq} \times_{(\mathrm{C}^e)^{\simeq,hC_2}} \Pic (\mathrm{C}^e)^{\simeq,hC_2} \,.
+    \end{align*}
+    In other words, $ \mathrm{eInv} $ sends a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category to the full subgroupoid of $ \mathcal{C}^{C_2} $ on those objects $ L $ so that $ L^e $ is an invertible object in $ \mathcal{C}^e $. 
+
+    Write $ \widetilde{\mathrm{eInv}} $ for the Grothendieck construction on $ \mathrm{eInv} $. 
+\end{definition}
+There is a functor
+\begin{equation}\label{eq:C2_cat_to_Poincare_cat}
+\begin{split}
+    \widetilde{\mathrm{eInv}} &\to \mathrm{Cat}^h \\
+    (\mathcal{C}, L) &\mapsto (\mathcal{C}^e, \mathcal{C}^e \xrightarrow{N_{\mathcal{C}}} \mathcal{C}^{C_2} \xrightarrow{\hom_{\mathcal{C}^{C_2}}(-,L)} \Spectra)
+\end{split}
+\end{equation}
+\begin{lemma}
+    The functor of (\ref{eq:C2_cat_to_Poincare_cat}) lifts to a functor $ \widetilde{\mathrm{eInv}}  \to \Catp $. 
+\end{lemma}
+\Lucy{Example: Special case where $ X $ has trivial $ C_2 $ action and $ X = Y $.}
 \begin{lemma}\label{lemma:line_bundle_as_C2_sheaf}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
     Let $ L $ be a line bundle on $ Y $. 
