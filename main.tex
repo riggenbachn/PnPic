@@ -58,6 +58,8 @@
 \DeclareSymbolFontAlphabet{\mathbbl}{bbold}
 
 %shortcut commands-------------------------------------------
+
+\DeclareMathOperator{\Alg}{Alg} % Algebra objects
 \DeclareMathOperator{\Br}{Br} % Brauer functor
 \DeclareMathOperator{\Brp}{Br^p} % Poincare Brauer functor
 \DeclareMathOperator{\Spec}{Spec}
@@ -193,7 +195,7 @@ The authors wish to thank the Institute for Advanced Study and the organizers of
 
 \section{Poincaré Structures on Compact Modules}
 \label{section:poincare_structures_on_compact_modules}
-We will use this section to recall notions and results about Poincaré $\infty$-categories which we require in the sections to follow. This section can safely be skipped by anyone who posses extensive knowledge of Poincaré $\infty$-categories, as found in \cite{CDHHLMNNSI}.
+We will use this section to recall notions and results about Poincaré $\infty$-categories which we require in the sections to follow. This section can safely be skipped by anyone with extensive knowledge of Poincaré $\infty$-categories, as found in \cite{CDHHLMNNSI}.
 
 \begin{notation}
     \label{notation:omission_of_e_infty}
@@ -429,11 +431,11 @@ Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ 
     The functor $\Picp:\CAlgp\rightarrow \CAlg^{\gp} (\mathcal{S})$ preserves certain structures. Let $A$ be a Poincaré ring spectrum. Since $A$ is a module over $(\mathbb{S},\Qoppa_u)$, the space $\Picp(A)$ is something over $\Picp(\mathbb{S},\Qoppa_u)$.\Viktor{there is no truth in here yet. Work in progress. Noah had an example using Witt vectors which showed that $\pi_0$ does not need to be 2-torsion}
 \end{remark}
 
-Since the forgetful functor $\Pn(A)\to \mathrm{Mod}_A^\omega$ is symmetric monoidal we get an induced map \[ U:\Picp(A)\to \Pic(A)\] of spectra. For a point $(\mathcal{L},q)\in \pi_0(\Picp(A))$ we will refer to $\mathcal{L}:=U(\mathcal{L},q)$ as the \textit{underlying invertible module}.  Note that the $A$-module $A^*$ is (nonequivariantly) isomorphic to $A$ via the involution, and so the fact that $\mathcal{L}\simeq \mathrm{hom}_A(\mathcal{L},A^*)$ forces $\mathcal{L}$ to be $2$-torsion. In particular we get a refined map \[\Picp(A)\to \Pic(A)[2]\] which factors the underlying invertible module map. 
+Since the forgetful functor $\Pn(A)\to \mathrm{Mod}_A^\omega$ is symmetric monoidal we get an induced map \[ U:\Picp(A)\to \Pic(A)\] of spectra. For a point $(\mathcal{L},q)\in \pi_0(\Picp(A))$ we will refer to $\mathcal{L}:=U(\mathcal{L},q)$ as the \textit{underlying invertible module}.  Note that the $A$-module $A^*$ is (nonequivariantly) isomorphic to $A$ via the involution, and so the fact that $\mathcal{L}\simeq \mathrm{hom}_A(\mathcal{L},A^*)$ forces $\mathcal{L}$ to be $2$-torsion. In particular we get a refined map \[U:\Picp(A)\to \Pic(A)[2]\] which factors the underlying invertible module map. 
 
 \begin{example}
     \label{example:picard_of_the_unit}
-    Let $(\mathbb{S},\Qoppa_u)$ be the universal Poincaré ring spectrum from Example \ref{example:universal_poincare_ring_spectrum}. The only $2$-torsion element of $\Pic(\mathbb{S})\simeq \mathbf{Z}$ is $\mathbb{S}$. Therefore, any element in $\Picp(\mathbb{S},\Qoppa_u)$ lies above $\mathbb{S}$. With Remark \ref{example:universal_tate_poincare_splits_at_unit}, we conclude $\pi_0(\Picp(\mathbb{S},\Qoppa_u))\simeq \pi_0(\mathbb{S}_{hC_2}\oplus \mathbb{S}^\times)^\times \simeq(\mathbf{Z}\times\mathbf{Z/2})^\times\simeq \mathbf{Z}/2\times \mathbf{Z}/2$. 
+    Let $(\mathbb{S},\Qoppa_u)$ be the universal Poincaré ring spectrum from Example \ref{example:universal_poincare_ring_spectrum}. The only $2$-torsion element of $\Pic(\mathbb{S})\simeq \mathbf{Z}$ is $\mathbb{S}$. Therefore, any element in $\Picp(\mathbb{S},\Qoppa_u)$ lies above $\mathbb{S}$ under $U$. With Remark \ref{example:universal_tate_poincare_splits_at_unit}, we conclude $\pi_0(\Picp(\mathbb{S},\Qoppa_u))\simeq \pi_0(\mathbb{S}_{hC_2}\oplus \mathbb{S}^\times)^\times \simeq(\mathbf{Z}\times\mathbf{Z/2})^\times\simeq \mathbf{Z}/2\times \mathbf{Z}/2$. \todo{V:did we mod out by isomorphisms here?}
 \end{example}
 
 \begin{remark}
@@ -476,6 +478,64 @@ In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, wh
 \end{lemma}
 \begin{proof}
 	The only if direction follows from the fact that the evaluation map $\mathrm{Hom}_{A\otimes A}(A\otimes A, A)\to A$ is an $A\otimes A$-module map. Now suppose that $a\sigma(a)=1$ in  $A$. Then before taking homotopy fixed points the induced map $a^*=id$ because $A$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
+\end{proof}
+
+\subsection{prime factorization and the picard group of hearts}\Viktor{still in development}
+We establish a Poincaré analogue of Fausk's result which describes the picard group of the derived category of a scheme $X$ in terms of connected components of $X$ and the classical picard group of $X$.
+
+Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoents of $X$, i.e. simplicial subsets which are connected and form $X$ via a coproduct. In other words, the functor $\pi_0$ records a unique and maximal decomposition of $X$ into coproducts. To establish the the result mentioned above, we study the dual analogue of connected components in the sense of a maximal decomposition of $X$ into products. %Later on, we will generalize this to arbitrary symmetric monoidal structures in a given $\infty$-category.
+
+\begin{definition}\label{definition:factor}
+    Let $X$ be a simplicial set. We call a map of simplicial sets $X\rightarrow Y$ a factor of $X$, if there is an isomorphism $X\simeq Y_\times Z$, for some simplicial set $Z$, such that $Y \times Z\simeq X\rightarrow Y$ is a structure map of the given product.
+\end{definition}
+
+\begin{definition}\label{definition:prime_indecomposable}
+    Let $X$ be a simplicial set. We say that $X$ is prime, or indecomposable, if it is nonempty and every factor of $X$ is isomorphic to  either $\Delta^0$ or $X$. We let $\operatorname{prin}(X)$ denote the set of prime factors of $X$.
+\end{definition}
+
+\begin{proposition}\label{proposition:prime_factorization}
+    Let $X_\bullet$ be a simplicial set, then $X_\bullet$ is the product of its prime factors.
+\end{proposition}
+\begin{proof}
+    \Viktor{}
+\end{proof}
+
+\begin{proposition}
+    Let $X$ be a simplicial set. Then $\operatorname{prim}(X)\simeq \operatorname{prim}(X^\simeq)$.
+\end{proposition}
+\begin{proof}
+    Let $f:X\rightarrow Y$ be a weak equivalence of simplicial sets. Then $f^\simeq: X^\simeq\rightarrow Y^\simeq$ is a weak equivalence of spaces. \Viktor{}
+\end{proof}
+
+\begin{proposition}
+    Let $X$ be a simplicial set. Then $\operatorname{prim}(X)\simeq \pi_0(\operatorname{Spec}(X)),$ where $\operatorname{Spec}(X^\simeq)$ is the Balmer spectrum of $X$ with respect to the symmetric monoidal structure given by cartesian product.
+\end{proposition}
+\begin{proof}
+    \Viktor{}
+\end{proof}
+
+\begin{remark}
+    Let $R$ be a commutative ring. Then the scheme $\operatorname{Spec}(R)$ is isomorphic to the Balmer spectrum of $\operatorname{Mod}^\heartsuit_R$. When we view $R$ as a discrete simplicial set, we thus have $$\operatorname{prim}(\operatorname{Mod}_R^\heartsuit)\simeq \pi_0(\operatorname{Spec}(R)).$$ \Viktor{does this need a proof?}
+\end{remark}
+
+\begin{definition}
+    Let $X$ be a prime simplicial set. A $c$-structure on $X$ is a map of simplicial sets $X\rightarrow \mathbf{Z}$ satisfying (todo). Let $Y$ be a simplicial set, then a $c$-structure on $Y$ is a product of $c$-structures on each of its prime components. We write $X_{\geq n}$ for the homotopy pullback of $\mathbf{Z}_{\geq n}$ along $c$, $X_{\leq n}$ for the homotopy pullback of $\mathbf{Z}_{\leq n}$ along $c$, and  $X^\heartsuit$ for the pullback of $X_{\leq n}$ along $X_{\geq n}\rightarrow X$. \Viktor{when X is a stable infinity category and prime, then a c-structure should be a t-structure on it}
+\end{definition}
+
+\begin{theorem}
+    Let $X$ be a prime simplicial set and $c: X\rightarrow \mathbf{Z}$ a c-structure.  Then we have a fiber sequence of monoids \Viktor{what kind exactly}
+>$$X^\heartsuit\rightarrow X^\simeq \rightarrow \mathbf{Z}.$$
+\end{theorem}
+\begin{proof}
+    \Viktor{}
+\end{proof}
+
+\begin{corollary}[Fausk]
+    Let $R$ be a discrete ring. Then we have a short exact sequence:
+>$$0\rightarrow \operatorname{Pic}(\operatorname{Mod}(R)^\heartsuit) \rightarrow\pi_0(\operatorname{Pic}(\operatorname{Mod}(R)))\rightarrow H^0(\operatorname{Spec}(R);\mathbf{Z})\rightarrow 0.$$
+\end{corollary}
+\begin{proof}
+    \Viktor{apply pic to the previous sequence and take $\pi_0$}
 \end{proof}
 
 \subsection{Hermitian line bundles}
