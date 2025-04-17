@@ -291,6 +291,14 @@ In this section we will define the ring theoretic building blocks of Poincaré s
     Let $R$ be a connective ring spectrum equipped with a $C_2$-action via maps of ring spectra. The connective cover $\tau_{\geq 0}(R^{tC_2})\rightarrow R^{tC_2}$ of $R^{tC_2}$ induces a Poincaré structure on $R$ given by the factorization $R\rightarrow \tau_{\geq 0}(R^{tC_2})\rightarrow R^{tC_2}$. We will call this Poincaré structure the \emph{genuine symmetric Poincaré structure on $R$}.
 \end{example}
 
+\begin{example}
+    \label{ex:fixpt_Mackey_functor}   
+    Let $ R $ be a commutative ring endowed with an involution $ \sigma \colon R \xrightarrow{\sim} R $. 
+    Write $ \underline{R}^\sigma $ for the $ C_2 $-Green functor with $ C_2 $-fixed points $ R^{C_2} $, where $ R^{C_2} $ denotes the strict fixed points of the $ C_2 $-action on $ R $, and underlying object $ R $. 
+    The Mackey functor $ \underline{R}^\sigma $ is a $ C_2 $-$ \EE_\infty $ ring, therefore in particular we may regard it as a Poincaré ring. 
+    This is a special case of Example \ref{example:genuine_symmetric_poincare_structure}. 
+\end{example}
+
 \Viktor{copy more examples from notes}
 
 \subsection{Algebras with genuine involution}
@@ -546,11 +554,12 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(M, \sigma_* R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}} 
     Also recall that there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
     Note that given two $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
-    A \emph{$ \sigma $-hermitian form on $ I $} is an $ R $-linear isomorphism $ \varphi \colon I \xrightarrow{\sim} I^\dag $. 
+    Let $ I $ be a projective $ R $-module (in particular, there is a canonical identification $ (I^\dag)^\dag \simeq I $). 
+    A \emph{$ \sigma $-hermitian form on $ I $} is an $ R $-linear isomorphism $ \varphi \colon I \xrightarrow{\sim} I^\dag $ so that $ \varphi^\dag = \varphi $. 
 \end{definition}
 \begin{observation}\label{obs:tensoring_hermitian_forms}    
     Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
-    Given two $ R $-modules $ M, N $ equipped with $ \sigma $-hermitian forms $ \varphi, \psi $, respectively, $ \varphi \otimes \psi $ defines a $ \sigma $-hermitian form on $ M \otimes_R N $. 
+    Given two discrete $ R $-modules $ M, N $ equipped with $ \sigma $-hermitian forms $ \varphi, \psi $, respectively, $ \varphi \otimes \psi $ defines a $ \sigma $-hermitian form on $ M \otimes_R N $. 
     Using the canonical isomorphism mentioned above, if $ \varphi $ is a $ \sigma $-hermitian form on $ M $, then $ \varphi^\dag $ induces a $ \sigma $-hermitian form on $ M^\dag $.  
     Finally, observe that $ R $ has a canonical $ \sigma $-hermitian form which is the adjoint of the map $ R \otimes R \to R $, $ r \otimes s \mapsto r \sigma(s) $. 
 \end{observation}  
@@ -561,17 +570,26 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     By Observation \ref{obs:tensoring_hermitian_forms}, this set inherits a group structure. 
     We write $ \mathrm{hPic}(R) $ for the group of $\sigma$-hermitian line bundles on $ \Spec R $.  
 \end{definition}     
-\begin{theorem}
-    Let $ R $ be a discrete commutative ring with a $ C_2 $-action via ring maps. 
-    Then there is a short exact sequence of abelian groups
+\begin{theorem}\label{theorem:Poincare_Pic_of_fixpt_Mackey_functor}
+    Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \xrightarrow{\sim} R $ via ring maps. 
+    Regard $ R $ as a Poincaré ring via Example \ref{ex:fixpt_Mackey_functor}. 
+    Then there is a split short exact sequence of abelian groups
     \begin{equation*}
-        0 \to \mathrm{hPic}(R) \to \pi_0\pnpic(R) \to C_{C_2}(\Spec R, \ZZ^{-}) \to 0
+        0 \to \mathrm{hPic}(R) \to \pi_0\pnpic(\underline{R}^\sigma) \to C_{C_2}(\Spec R, \ZZ^{-}) \to 0
     \end{equation*}
     where $ R $ is endowed with the genuine symmetric Poincaré structure and $ \ZZ^{-} $ is endowed with the $ C_2 $-action given by multiplication by $ -1 $ and $ C_{C_2} $ denotes continuous functions which are moreover $ C_2 $-equivariant. 
+    Moreover, forgetting the hermitian form (resp. forgetting the $ C_2 $-action) induces a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        0 \ar[r] & \mathrm{hPic}(R) \ar[r]\ar[d] & \pi_0\pnpic(R) \ar[r] \ar[d] & C_{C_2}(\Spec R, \ZZ^{-}) \ar[r] \ar[d] & 0 \\
+        0 \ar[r] & \mathrm{Pic}^{\mathrm{cl}}(R) \ar[r] & \pi_0 \mathrm{Pic}\left(\perf_R\right) \ar[r] & C(\Spec R, \ZZ) \ar[r] & 0 
+    \end{tikzcd}    
+    \end{equation*}
+    where the bottom row is that of \cite[Theorem 3.5]{MR1966659}. 
 \end{theorem}
-\begin{proof}
-    An object of $ \pnpic(R) $ is a pair $ (I, q) $ where $ I $ is an invertible $ R$-module and $ q $ is a point in $ \Omega^\infty \Qoppa_{R^{gs}}(I) $. 
-    By the proof of \cite[Theorem 3.5]{MR1966659}, $ I $ induces a continuous map $ \phi \colon \Spec R \to \ZZ $. 
+\begin{proof} 
+    An object of $ \pi_0 \pnpic(R) $ is a pair $ (I, q) $ where $ I $ is an invertible $ R$-module and $ q $ is a point in $ \pi_0 \Omega^\infty \Qoppa_{R^{gs}}(I) $. 
+    By the proof of \cite[Theorem 3.5]{MR1966659}, $ I $ induces a continuous map $ \Psi(I) \colon \Spec R \to \ZZ $. 
     Write $ \sigma $ for the involution on $ R $. 
     Now $ q $ in particular induces an equivalence $ q \colon I \xrightarrow{\sim} I^\dag \simeq (\sigma_*I)^\vee $. 
     For each point $ \mathfrak{p} \in \Spec R $, localizing $ q $ gives an equivalence
@@ -582,8 +600,38 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     \begin{equation*}
         I_{\mathfrak{p}} \simeq R_{\mathfrak{p}}[\phi(\mathfrak{p})] \xrightarrow{\sim} \left(\sigma_*(R_{\sigma(\mathfrak{p})}[\phi(\sigma(\mathfrak{p}))])\right)^\vee \simeq (\sigma_*(R_{\sigma(\mathfrak{p})}))^\vee [-\phi(\sigma(\mathfrak{p}))] \,.
     \end{equation*}
-    Since $ R $ is discrete, this implies in particular that $ \phi(\sigma(\mathfrak{p})) = -\phi(\mathfrak{p}) $, i.e. that $ \phi $ is $ C_2 $-equivariant. 
-    \Lucy{todo: show that the sequence is exact.}
+    Since $ R $ is discrete, this implies in particular that $ \Psi(I)(\sigma(\mathfrak{p})) = -\Psi(I)(\mathfrak{p}) $, i.e. that $ \Psi(I) $ is $ C_2 $-equivariant. 
+    It follows immediately from \cite[Theorem 3.5]{MR1966659} that $ \Psi $ is a homomorphism and that an element of the kernel of $ \Psi $ lifts to $ \mathrm{hPic}(R) $. 
+
+    Now consider a $ C_2 $-equivariant map $ g \colon \Spec R \to \ZZ $. 
+    As in \emph{loc. cit.}, the image of $ g $ is finite and $ C_2 $-invariant, say $ \{n_1, -n_1, \ldots, n_m, -n_m\} $ or $ \{0, n_1, -n_1, \ldots, n_m, -n_m\} $ for some $ n_i \neq 0 $. 
+    As in \emph{loc. cit.}, the disjoint subsets $ U_{n_i} := g^{-1}(n_i) $ correspond to an orthogonal basis of idempotents $ e_{U_{n_i}} $ in $ R $. 
+    Since $ g $ is $ C_2 $-equivariant with respect to the sign action on $ \ZZ $, we have $ \sigma(U_{n_i}) = U_{-n_i} $. 
+    Moreover, it follows from Lemma 3.4 \emph{ibid.} $ \sigma(e_{U_{n_i}}) = e_{U_{-n_i}} $. 
+    Consider the $ R $-module $ \Phi(g) := \bigoplus_{i=1}^m \left(e_{U_{n_i}}R[n_i] \oplus e_{U_{-n_i}}R[-n_i] \right) $. 
+    Observe that $ \left(e_{U_{-n_i}}R[-n_i]\right)^\dag = \hom_R(e_{U_{-n_i}}R[-n_i], \sigma_* R)= \hom_R\left(\sigma_*(e_{U_{-n_i}}R), R\right)[n_i] = \hom_R\left(e_{U_{n_i}}R, R\right)[n_i] $. 
+    Finally, we claim that there is a canonical $ \sigma $-hermitian form $ q_g \in \Omega^\infty \Qoppa_{R^{\mathrm{gs}}}(\Phi(g)) $ whose adjoint $ q_g^\dag \colon \Phi(g) \xrightarrow{\sim} \Phi(g)^\dag $ corresponds to the identity. 
+    That $ q_g $ defines a point of $ \hom_{R^{\otimes 2}}(\Phi(g)^{\otimes 2}, R)^{hC_2} $ is evident. 
+    Observe that to give a lift of $ q_g $ to $ \qoppa_{R^{\mathrm{gs}}}(\Phi(g)) = \hom_{N^{C_2}R}\left(N^{C_2}\Phi(g), R\right) $ is equivalent to giving a commutative diagram
+    \begin{equation}\label{diagram:lifting_sym_form_to_gen_sym_form}
+    \begin{tikzcd}
+        \Phi(g) \otimes_R R^{\varphi C_2} \ar[d] \ar[r,dashed,"{\exists ?}"] & R^{\varphi C_2} \ar[d] \\
+        \left(\Phi(g)^{\otimes 2}\right)^{tC_2} \ar[r,"{q_g^{tC_2}}"] & R^{tC_2}
+    \end{tikzcd} \,.
+    \end{equation} 
+    Let us write $ \eta \colon R \to \pi_0 R^{\varphi C_2} $ for the ring map induced by the structure map. 
+    Since $ R $ is a $ C_2 $-$ \EE_\infty $-ring, $ \eta $ is invariant with respect to the given action on $ R $ and the trivial action on $ \pi_0 R^{\varphi C_2} $. 
+    Consider $ e_{U_{n_i}} $ an idempotent corresponding to an element of the image of $ g $ so that $ n_i \neq 0 $. Then
+    \begin{equation*}
+    \begin{split}
+        \eta(e_{U_{n_i}}) &= \eta(e_{U_{n_i}})^2 \qquad \text{ ring maps preserve idempotents } \\
+        &= \eta(e_{U_{n_i}}) \cdot \eta(e_{U_{-n_i}}) \qquad \text{ $C_2$-invariance of }\eta \\
+        &= \eta(e_{U_{n_i}}e_{U_{-n_i}}) \qquad \text{ $ \eta $ is a ring map } \\
+        &= 0 \qquad \text{ orthogonality and }n_i \neq 0 \,.  
+    \end{split}
+    \end{equation*}
+    In particular, if $ 0 $ is not in the image of $ g $, $ \Phi(g) \otimes_R R^{\varphi C_2} \simeq 0 $ and (\ref{diagram:lifting_sym_form_to_gen_sym_form}) commutes vacuously. 
+    If $ 0 $ is in the image of $ g $, then $ e_{U_0}R $ is a discrete/projective $ e_{U_0}R $-module and $ q_g $ evidently defines a genuine hermitian form on $ e_{U_0}R $ (compare \cite[Remark 4.2.21]{CDHHLMNNSI}). 
 \end{proof}
 
 \subsection{Poincaré structures on schemes with involution}
