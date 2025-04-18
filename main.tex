@@ -596,7 +596,7 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     \begin{equation*}
         q_{\mathfrak{p}} \colon I_{\mathfrak{p}} \xrightarrow{\sim} (\sigma_*I)^\vee_{\mathfrak{p}} \simeq \left(\sigma_*(I_{\sigma(\mathfrak{p})})\right)^\vee \,.
     \end{equation*}
-    Since $ I_{\mathfrak{p}} $ is an invertible module over a local ring, \cite{MR1966659} implies that $ q_{\mathfrak{p}} $ induces an equivalence
+    Since $ I_{\mathfrak{p}} $ is an invertible module over a local ring, \cite[Proposition 3.2]{MR1966659} implies that $ q_{\mathfrak{p}} $ induces an equivalence
     \begin{equation*}
         I_{\mathfrak{p}} \simeq R_{\mathfrak{p}}[\phi(\mathfrak{p})] \xrightarrow{\sim} \left(\sigma_*(R_{\sigma(\mathfrak{p})}[\phi(\sigma(\mathfrak{p}))])\right)^\vee \simeq (\sigma_*(R_{\sigma(\mathfrak{p})}))^\vee [-\phi(\sigma(\mathfrak{p}))] \,.
     \end{equation*}
@@ -605,14 +605,14 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
 
     Now consider a $ C_2 $-equivariant map $ g \colon \Spec R \to \ZZ $. 
     As in \emph{loc. cit.}, the image of $ g $ is finite and $ C_2 $-invariant, say $ \{n_1, -n_1, \ldots, n_m, -n_m\} $ or $ \{0, n_1, -n_1, \ldots, n_m, -n_m\} $ for some $ n_i \neq 0 $. 
-    As in \emph{loc. cit.}, the disjoint subsets $ U_{n_i} := g^{-1}(n_i) $ correspond to an orthogonal basis of idempotents $ e_{U_{n_i}} $ in $ R $. 
+    As in \emph{loc. cit.}, the disjoint subsets $ U_{\pm n_i} := g^{-1}(\pm n_i) $ correspond to an orthogonal basis of idempotents $ e_{U_{\pm n_i}} $ in $ R $. 
     Since $ g $ is $ C_2 $-equivariant with respect to the sign action on $ \ZZ $, we have $ \sigma(U_{n_i}) = U_{-n_i} $. 
-    Moreover, it follows from Lemma 3.4 \emph{ibid.} $ \sigma(e_{U_{n_i}}) = e_{U_{-n_i}} $. 
+    Moreover, it follows from Lemma 3.4 \emph{ibid.} that $ \sigma(e_{U_{n_i}}) = e_{U_{-n_i}} $. 
     Consider the $ R $-module $ \Phi(g) := \bigoplus_{i=1}^m \left(e_{U_{n_i}}R[n_i] \oplus e_{U_{-n_i}}R[-n_i] \right) $. 
     Observe that $ \left(e_{U_{-n_i}}R[-n_i]\right)^\dag = \hom_R(e_{U_{-n_i}}R[-n_i], \sigma_* R)= \hom_R\left(\sigma_*(e_{U_{-n_i}}R), R\right)[n_i] = \hom_R\left(e_{U_{n_i}}R, R\right)[n_i] $. 
     Finally, we claim that there is a canonical $ \sigma $-hermitian form $ q_g \in \Omega^\infty \Qoppa_{R^{\mathrm{gs}}}(\Phi(g)) $ whose adjoint $ q_g^\dag \colon \Phi(g) \xrightarrow{\sim} \Phi(g)^\dag $ corresponds to the identity. 
     That $ q_g $ defines a point of $ \hom_{R^{\otimes 2}}(\Phi(g)^{\otimes 2}, R)^{hC_2} $ is evident. 
-    Observe that to give a lift of $ q_g $ to $ \qoppa_{R^{\mathrm{gs}}}(\Phi(g)) = \hom_{N^{C_2}R}\left(N^{C_2}\Phi(g), R\right) $ is equivalent to giving a commutative diagram
+    Observe that to give a lift of $ q_g $ to $ \Qoppa_{R^{\mathrm{gs}}}(\Phi(g)) = \hom_{N^{C_2}R}\left(N^{C_2}\Phi(g), R\right) $ is equivalent to giving a commutative diagram
     \begin{equation}\label{diagram:lifting_sym_form_to_gen_sym_form}
     \begin{tikzcd}
         \Phi(g) \otimes_R R^{\varphi C_2} \ar[d] \ar[r,dashed,"{\exists ?}"] & R^{\varphi C_2} \ar[d] \\
@@ -632,6 +632,8 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     \end{equation*}
     In particular, if $ 0 $ is not in the image of $ g $, $ \Phi(g) \otimes_R R^{\varphi C_2} \simeq 0 $ and (\ref{diagram:lifting_sym_form_to_gen_sym_form}) commutes vacuously. 
     If $ 0 $ is in the image of $ g $, then $ e_{U_0}R $ is a discrete/projective $ e_{U_0}R $-module and $ q_g $ evidently defines a genuine hermitian form on $ e_{U_0}R $ (compare \cite[Remark 4.2.21]{CDHHLMNNSI}). 
+
+    Thus, $ g \mapsto (\Phi(g), q_g) $ defines a splitting of $ \Psi $ which agrees with the splitting constructed in \cite[Theorem 3.5]{MR1966659} on underlying objects. 
 \end{proof}
 
 \subsection{Poincaré structures on schemes with involution}
@@ -644,7 +646,7 @@ Let $ L \in \Pic(\mathcal{C})^{hC_2} $ be a homotopy fixed point of this action.
 In other words, $ L $ is endowed with the choice of an equivalence $ \phi \colon L \simeq \sigma(L) $, a homotopy from $ \sigma(\phi) \circ \phi $ to the identity on $ L $, and higher coherences. 
 
 Consider a functor $ f \colon \mathcal{C}^\op \to \Spectra $ which is $ C_2 $-equivariant with respect to the $ \sigma $-action on $ \mathcal{C} $ and the trivial action on $ \Spectra $. 
-In particular, the ``$ C_2 $-equivariance'' of $ f $ is additional data: for each $ x \in \mathcal{C} $, an equivalence of spectra $ c_x \colon f(x) \simeq f(\sigma(x)) $ which is natural in $ x $, a homotopy from $ c_{\sigma(x)} \colon c_x $ to $ \mathrm{id}_x $, and higher coherences. 
+In particular, the ``$ C_2 $-equivariance'' of $ f $ is additional data: for each $ x \in \mathcal{C} $, an equivalence of spectra $ c_x \colon f(x) \simeq f(\sigma(x)) $ which is natural in $ x $, a homotopy from $ c_{\sigma(x)} \circ c_x $ to $ \mathrm{id}_x $, and higher coherences. 
 \begin{lemma}\label{lemma:maps_into_fixed_object_are_equivariant}
     Let $ \mathcal{C} $ be a stably symmetric monoidal $\infty $-category with an involution, and suppose given $ L \in \Pic(\mathcal{C})^{hC_2} $ a homotopy fixed point of this action. 
     Then the functor $ \hom_{\mathcal{C}}(-, L) $ promotes canonically to a $ C_2 $-equivariant functor $ \mathcal{C}^\op \to \Spectra $ in the sense of the previous paragraph. 
@@ -691,7 +693,7 @@ In particular, an object of the underlying $ \infty $-category of $ \mathcal{W}_
 \end{construction}
 \begin{observation}\label{obs:cross_effect_twisted_poincare_structure}
     Let $ \mathcal{C} $, $ L $, be as before. 
-    Then the cross effect $ B_{L} $ of $ \Qoppa^s_L$ is given by $ B_L(x,y) = \mathrm{hom}_{\mathcal{C}}(x \otimes \sigma (y), L) $. \Lucy{The `untwisted' version of this appears in \cite[proof of Proposition 3.1.6]{CHN2024}, but I wanted to get this down before I forgot.}
+    Then the cross effect $ B_{L} $ of $ \Qoppa^s_L$ is given by $ B_L(x,y) = \mathrm{hom}_{\mathcal{C}}(x \otimes \sigma (y), L) $. 
 \end{observation}
 \begin{proposition}\label{prop:multiplicativity_of_Poincare_struct_from_eqvt_functor}
     Let $ \mathcal{D} $ be a symmetric monoidal $ \infty $-category which admits $ BC_2 $-indexed limits; endow $ \mathcal{D} $ with the trivial $ C_2 $-action.   
@@ -766,6 +768,10 @@ In particular, an object of the underlying $ \infty $-category of $ \mathcal{W}_
     This holds because the left Kan extension of the multi-exact functor $ \Pi_i  f_i \colon \Pi_i \mathcal{C}_i^\op \to \Spectra $ along $ \Pi_i \mathcal{C}_i^\op \to \bigotimes_i \mathcal{C}_i^\op \xrightarrow{\alpha} \mathcal{D}^\op $ is exact. 
 \end{proof}
 As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty $-category of $ \mathcal{W}_{\mathrm{ex}}^\otimes $ with pairs $ \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) $ where $ \mathcal{C} $ is a symmetric monoidal stable $ \infty $-category with involution $ \sigma_{\mathcal{C}} $, and $ (L, \lambda) \in \mathrm{Ind}(\mathcal{C})^{hC_2} $ is a fixed point with respect to the induced action on $ \mathrm{Ind}(\mathcal{C})$. 
+\begin{recollection}
+    A symmetric monoidal $ \infty $-category $ \mathcal{C} $ is said to be \emph{rigid} if every object in $ \mathcal{C} $ is dualizable. 
+    \Lucy{\href{https://mathoverflow.net/a/337430}{reference} for when derived categories of connective objects over more general objects are compactly generated}
+\end{recollection}
 \begin{proposition}
     % Let $  \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) \in \mathcal{W}_{\mathrm{ex}} $ be as above. 
     Suppose $ \mathcal{C} $ is a rigid stably symmetric monoidal $ \infty $-category with a $ C_2 $-action $ \sigma_{\mathcal{C}} $ via symmetric monoidal functors, and let $ (L,\lambda) \in \mathrm{Ind}(\mathcal{C})^{BC_2} $. 
@@ -882,11 +888,11 @@ Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{Lur
     \end{align*}
 \end{definition} 
 \begin{definition}
-    Suppose $ \mathrm{C} $ is a $ C_2 $-stable $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category. 
+    Suppose $ \mathcal{C} $ is a $ C_2 $-stable $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category. 
     Define a functor
     \begin{align*}
        \mathrm{eInv} \colon  C_2 \otimes \Cat^{\mathrm{ex}} &\to \Spaces \\
-        \left(\mathrm{C}, \otimes\right) & \mapsto \left(\mathrm{C}^{C_2}\right)^{\simeq} \times_{(\mathrm{C}^e)^{\simeq,hC_2}} \Pic (\mathrm{C}^e)^{\simeq,hC_2} \,.
+        \left(\mathcal{C}, \otimes\right) & \mapsto \left(\mathrm{C}^{C_2}\right)^{\simeq} \times_{(\mathrm{C}^e)^{\simeq,hC_2}} \Pic (\mathrm{C}^e)^{\simeq,hC_2} \,.
     \end{align*}
     In other words, $ \mathrm{eInv} $ sends a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category to the full subgroupoid of $ \mathcal{C}^{C_2} $ on those objects $ L $ so that $ L^e $ is an invertible object in $ \mathcal{C}^e $. 
 
@@ -895,10 +901,11 @@ Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{Lur
 There is a functor
 \begin{equation}\label{eq:C2_cat_to_Poincare_cat}
 \begin{split}
-    \widetilde{\mathrm{eInv}} &\to \mathrm{Cat}^h \\
+    \widetilde{\mathrm{eInv}} &\to \EE_\infty \mathrm{Alg}\left(\mathrm{Cat}^h \right) \\
     (\mathcal{C}, L) &\mapsto (\mathcal{C}^e, \mathcal{C}^e \xrightarrow{N_{\mathcal{C}}} \mathcal{C}^{C_2} \xrightarrow{\hom_{\mathcal{C}^{C_2}}(-,L)} \Spectra)
 \end{split}
 \end{equation}
+\Lucy{Pretty sure distributive norm functors are 2-excisive (results \href{https://arxiv.org/pdf/2010.09097}{here} should generalize readily)...if not, can define the problem away.}
 \begin{lemma}
     The functor of (\ref{eq:C2_cat_to_Poincare_cat}) lifts to a functor $ \widetilde{\mathrm{eInv}}  \to \Catp $. 
 \end{lemma}
