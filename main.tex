@@ -608,7 +608,8 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     As in \emph{loc. cit.}, the disjoint subsets $ U_{\pm n_i} := g^{-1}(\pm n_i) $ correspond to an orthogonal basis of idempotents $ e_{U_{\pm n_i}} $ in $ R $. 
     Since $ g $ is $ C_2 $-equivariant with respect to the sign action on $ \ZZ $, we have $ \sigma(U_{n_i}) = U_{-n_i} $. 
     Moreover, it follows from Lemma 3.4 \emph{ibid.} that $ \sigma(e_{U_{n_i}}) = e_{U_{-n_i}} $. 
-    Consider the $ R $-module $ \Phi(g) := \bigoplus_{i=1}^m \left(e_{U_{n_i}}R[n_i] \oplus e_{U_{-n_i}}R[-n_i] \right) $. 
+    Consider the $ R $-module $ \Phi(g):= \bigoplus_{n \in \mathrm{Im}(g)} e_{g^{-1}(\{n\})} R[n] $. 
+    In other words, $ \Phi(g) := \bigoplus_{i=1}^m \left(e_{U_{n_i}}R[n_i] \oplus e_{U_{-n_i}}R[-n_i] \right) $ if $ 0 $ is not in the image of $ g $ and $ \Phi(g) := e_{U_0} \oplus \bigoplus_{i=1}^m \left(e_{U_{n_i}}R[n_i] \oplus e_{U_{-n_i}}R[-n_i] \right) $ otherwise. 
     Observe that $ \left(e_{U_{-n_i}}R[-n_i]\right)^\dag = \hom_R(e_{U_{-n_i}}R[-n_i], \sigma_* R)= \hom_R\left(\sigma_*(e_{U_{-n_i}}R), R\right)[n_i] = \hom_R\left(e_{U_{n_i}}R, R\right)[n_i] $. 
     Finally, we claim that there is a canonical $ \sigma $-hermitian form $ q_g \in \Omega^\infty \Qoppa_{R^{\mathrm{gs}}}(\Phi(g)) $ whose adjoint $ q_g^\dag \colon \Phi(g) \xrightarrow{\sim} \Phi(g)^\dag $ corresponds to the identity. 
     That $ q_g $ defines a point of $ \hom_{R^{\otimes 2}}(\Phi(g)^{\otimes 2}, R)^{hC_2} $ is evident. 
@@ -803,7 +804,7 @@ Let $ X $ be a scheme with an involution.
     \end{itemize}
 \end{definition}
 \begin{remark}
-    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ U \to Y $ is an open subscheme. 
+    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ U \to Y $ is a quasi-compact open subscheme. 
     Then $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
 \end{remark}
 \begin{proposition}
