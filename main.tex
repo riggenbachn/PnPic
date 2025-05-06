@@ -156,7 +156,29 @@
 \end{abstract}
 \tableofcontents
 
-\section{Introduction}
+\section{Introduction} 
+Let $ X $ be a scheme. 
+Gabber showed that if $ X $ is quasi-compact and separated and admits an ample line bundle, the collection of sheaves of Azumaya $ \mathcal{O}_X $-algebras up to Morita equivalence is in bijection with the torsion subgroup of $ H^2_{\mathrm{ét}}(X; \mathbb{G}_m) $ \cite{MR611868}. 
+On the other hand, to $ \mathcal{A} $ we may associate the presentable $ \mathcal{O}_X $-linear $ \infty $-category $ \mathcal{D}(\mathcal{A}) $. \Lucy{AG notation or homotopy notation?} 
+If $ \mathcal{A} $ and $ \mathcal{A}' $ are Morita equivalent, then $ \mathcal{D}(\mathcal{A}') $ and $ \mathcal{D}(\mathcal{A}) $ are equivalent in $ \mathrm{Pr}^L_{\mathcal{O}_X} $, and that $ \mathcal{A} $ is Azumaya implies that $ \mathcal{D}(\mathcal{A}) $ is invertible in $ \mathrm{Pr}^L_{\mathcal{O}_X} $ with respect to the $ \mathcal{O}_X $-linear tensor product. \Lucy{who is this observation due to?} \Lucy{cite Lieblich/de Jong? connect to twisted sheaves!} 
+
+\begin{definition}
+    The \emph{derived Brauer space} of $ X $ is $ \mathrm{dBr}(X) := \Pic\left(\mathrm{Pr}^L_{\mathcal{O}_X} \right) $. 
+\end{definition}
+Toën shows that the assignment $ X \mapsto \mathrm{dBr}(X) $ is an étale sheaf and there is an isomorphism $ \pi_0 \mathrm{dBr}(X) \simeq H^1_{\mathrm{ét}}(X; \ZZ) \times H^2_{\mathrm{ét}}(X; \mathbb{G}_m) $ \cite[Corollary 2.12]{MR2957304}. 
+Furthermore, Toën shows that for any qcqs scheme $ X $, any invertible $ \mathcal{O}_X $-linear $ \infty $-category $ \mathcal{C} $ has a compact generator $ G $; thus we may write $ \mathcal{C} \simeq \Mod_{\mathrm{End}_{\mathcal{C}}(G)} \left(\Mod_{\mathcal{O}_X}\right) $ and $ \mathrm{End}_{\mathcal{C}}(G) $ is said to be a \emph{derived/generalized (sheaf of) Azumaya algebras} over $ \mathcal{O}_X $ (see Theorem 3.7 and Corollary 3.8 of \cite{MR2957304}). 
+In particular, Toën's result gives concrete interpretations/realizations of all/not necessarily torsion classes in $ H^2_{\mathrm{ét}}(X;\mathbb{G}_m) $, at the cost of using derived methods/considering derived objects. 
+
+Antieau and Gepner extended Toën's work to connective ring spectra/affine spectral schemes with connective rings of functions in \cite{MR3190610}. \Lucy{cite \href{https://arxiv.org/abs/2210.15743}{this} too?} 
+
+On the other hand, the theory of anti-involutions on Azumaya algebras is an essential tool for studying the behavior of Brauer classes under multiplication by 2 and/or norm maps/corestriction. 
+An anti-involution on an Azumaya algebra over a ring $ R $ is an equivalence $ \sigma \colon A \xrightarrow{\sim} A^\op $ so that $ \sigma^\op \circ \sigma = \mathrm{id} $. 
+The anti-involution is said to be of type $ 1 $ if it acts by the identity on $ R = $ the center of $ A $, and of type 2 if \Lucy{separate the discussion into two parts or roll it into one?} 
+
+First and Williams considered involutions on Azumaya algebras which are neither of type 1 or 2 in \cite{azumaya_involution}. 
+\Lucy{involutive Brauer group and the exact sequence?}
+
+In this work, we study a derived enhancement of the involutive Brauer group. \Lucy{later: make this more specific} 
 
 \begin{theorem}
 Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}_\infty$-ring spectrum with involution $A$. Then the natural maps \[\pi_i(\pnpic(\underline{A}))\to \pi_i(\pic(A))\] \Noah{I think there is some interaction with the homotopy fixed points, or maybe even the genuine fixed points}are surjective on $2$-torsion.
@@ -216,10 +238,11 @@ In this section we will define the ring theoretic building blocks of Poincaré s
     A \emph{Poincaré structure} on $R$ is the following data:
     \begin{itemize}
         \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \CAlg$.
-        \item An $R$-algebra $R\rightarrow C$.
-        \item An $R$-algebra map $C\rightarrow R^{tC_2}$. 
+        \item An $ \EE_\infty $-$R$-algebra $R\rightarrow C$.
+        \item An $ \EE_\infty $-$R$-algebra map $C\rightarrow R^{tC_2}$. 
     \end{itemize}
-    Here $R^{tC_2}$ is the Tate construction with respect to the above action. Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
+    Here $R^{tC_2}$ is the Tate construction with respect to the given action. 
+    Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
 \end{definition}
 
 \begin{remark}
@@ -241,6 +264,9 @@ In this section we will define the ring theoretic building blocks of Poincaré s
     \label{remark:poincare_structures_are_factorizations}
     A Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the Tate Frobenius $R\rightarrow R^{tC_2}$.
 \end{remark}
+\begin{observation}\label{observation:normed_C2_ring_forget_to_Poincare_ring}
+    There is a forgetful functor from $ C_2 $-$ \EE_\infty $-algebras to Poincaré rings which forgets the $ C_2 $-equivariance of the map $ R \to R^{\varphi C_2 } $. 
+\end{observation}
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_as_algebra_objects}
@@ -295,7 +321,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
     \label{ex:fixpt_Mackey_functor}   
     Let $ R $ be a commutative ring endowed with an involution $ \sigma \colon R \xrightarrow{\sim} R $. 
     Write $ \underline{R}^\sigma $ for the $ C_2 $-Green functor with $ C_2 $-fixed points $ R^{C_2} $, where $ R^{C_2} $ denotes the strict fixed points of the $ C_2 $-action on $ R $, and underlying object $ R $. 
-    The Mackey functor $ \underline{R}^\sigma $ is a $ C_2 $-$ \EE_\infty $ ring, therefore in particular we may regard it as a Poincaré ring. 
+    The Mackey functor $ \underline{R}^\sigma $ is a $ C_2 $-$ \EE_\infty $ ring, therefore in particular we may regard it as a Poincaré ring by Observation \ref{observation:normed_C2_ring_forget_to_Poincare_ring}. 
     This is a special case of Example \ref{example:genuine_symmetric_poincare_structure}. 
 \end{example}
 
@@ -637,7 +663,7 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     Thus, $ g \mapsto (\Phi(g), q_g) $ defines a splitting of $ \Psi $ which agrees with the splitting constructed in \cite[Theorem 3.5]{MR1966659} on underlying objects. 
 \end{proof}
 
-\subsection{Poincaré structures on schemes with involution}
+\section{Poincaré structures on schemes with involution}
 Let $ X $ be a scheme with an involution $ \sigma \colon X \xrightarrow{\sim} X $. 
 We want to introduce a Poincaré structure $ \Qoppa $ on $ \perf(X) $ so that the duality is given by $ E \mapsto E^\vee \otimes \sigma_*(\mathcal{O}_X) $ (contrast with \S3 of \href{https://arxiv.org/abs/2402.15136}{this paper}). 
 
@@ -1007,7 +1033,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         R \otimes_R \mathcal{L}^\vee \xrightarrow{\mathrm{unit}\,\otimes \mathrm{id}} R^{\varphi C_2} \otimes \mathcal{L}^\vee \xrightarrow{ \ell(\eta)} R^{\varphi C_2} \\
         R \otimes_R \mathcal{L} \xrightarrow{\mathrm{unit}\,\otimes \mathrm{id}} R^{\varphi C_2} \otimes \mathcal{L} \xrightarrow{ \ell(\eta)^{-1} \otimes \mathrm{id}_{\mathcal{L}}} R^{\varphi C_2} \,.
     \end{align*}
-    These correspond to the $ \ell(q^\vee), \ell(q) $ of Remark \ref{rmk:poincare_picard_points_desc}, respectively. 
+    These correspond to the $ \ell(q^\vee), \ell(q) $ of Remark \ref{remark:poincare_picard_points_desc}, respectively. 
     In particular, the condition that $ \ell(q^\vee), \ell(q) $ make the diagram (\ref{diagram:pnpic_linear_part_condition}) commute is equivalent to the condition that $ \ell(\eta) $ is an equivalence by an adjunction argument. \Lucy{under construction--not sure what to say about the $(-)^{tC_2} $ part yet. }
 \end{proof}
 
@@ -1182,12 +1208,16 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     \Lucy{todo--probably need to fix the statement with \emph{duals} when the proof is written}
 \end{proof}
 
-As in the Picard group case, the forgetful functor $\theta$ induces a map of spectra $\Brp(A)\to \Br(A)$ which will again factor through the $2$-trosion on $\pi_0$. As a consequence of Proposition~\ref{propitem:classify_R_lin_hermitian_struct} we can identify the fiber of this map.
+As in the Picard group case, the symmetric monoidal forgetful functor $\theta \colon \Catp_{R} \to \Catex_R $ induces a map of spectra $ \theta \colon \Brp(A)\to \Br(A^e)$. 
+When $ A^e $ is endowed with the trivial action, $ \theta $ will factor through the $2$-torsion on $\pi_0$. 
+As a consequence of Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct} we can identify the fiber of this map.
 \begin{corollary}
 Let $(\mathrm{Mod}_A^\omega, \Qoppa_A)$ be a Poincar{\'e} ring with underlying genuine $C_2$ spectrum $A^L$ as in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. Then the fiber of the map \[\Brp(A)\to \Br(A)\] can be naturally identified with $\Pic(\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2}))$.
 \end{corollary}
 \begin{proof}
-Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_A}(\Catex)$ is (co)cartesian, symmetric monoidal, and conservative, it follows that the induced functor on the groupoid core of invertible objects is a Kan fibration by \cite[\href{https://kerodon.net/tag/01EZ}{Proposition 01EZ}]{kerodon}. Consequently we need only identify the fiber instead of the homotopy fiber, which follows from the identification of the fiber in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. \Noah{Needs a lot more detail I know, but I think the skeleton is here.}
+Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_{A^e}}(\Catex)$ is symmetric monoidal and conservative, it induces a map $ \theta^\simeq \colon \pnbr(A) \to \mathrm{br}(A^e) $ on the groupoid core of invertible objects. 
+Now observe that $ \theta $ is an isofibration; it follows that $ \theta^\simeq $ is a Kan fibration by \cite[\href{https://kerodon.net/tag/01EZ}{Proposition 01EZ}]{kerodon}. 
+Consequently we need only identify the fiber instead of the homotopy fiber, which follows from the identification of the fiber in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. \Noah{Needs a lot more detail I know, but I think the skeleton is here.}
 \end{proof}
 Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
 \begin{proposition}
