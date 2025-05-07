@@ -830,9 +830,12 @@ Let $ X $ be a scheme with an involution.
         commutes. 
     \end{itemize}
 \end{definition}
-\begin{remark}
-    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ U \to Y $ is a quasi-compact open subscheme. 
+\begin{remark}\label{remark:restriction_of_schemes_with_involution}
+    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ j \colon U \to Y $ is a quasi-compact open subscheme. \Lucy{Do I need quasi-compact assumption?}
     Then $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
+    In fact, if $ j $ is étale, $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
+    Affineness and invariance under the $ C_2 $-action are stable under pullback, so it suffices to show that $ j^*(\pi) $ satisfies $ \mathcal{O}_U \simeq \left(j^*(\pi)\right)_*(\mathcal{O}_{j^*U})^{C_2} $. 
+    This follows from the proof of \cite[Theorem 4.35(i)]{azumaya_involution}.  
 \end{remark}
 \begin{proposition}
     Write $ U \colon \mathrm{qSch}^{C_2} \to \mathrm{qSch} $ for the functor so that $ U(X, \lambda, Y, p) = X $.  
@@ -1341,7 +1344,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
 \begin{notation}\label{notation:scheme_involution_basechange}
     Let $ X $ be a scheme with an involution $ \sigma $ and let $ \pi \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
     If $ j \colon U \to Y $ is [ASSUMPTIONS], let us write $ \pi^*U $ for the tuple $ (X \times_Y U, j^*(\sigma), U, j^*(\pi)) $. 
-    \Lucy{Is $ \pi^*U $ an object of $ \mathrm{qSch}^{C_2} $ over $ (X, \sigma, Y, \pi) $? If not, does that matter? If $ j $ is flat, $ X \times_Y U $ agrees with derived fiber product and $ U $ inherits $ C_2 $-$ \EE_\infty $ ``structure sheaf'' so can still define Poincaré module category.} 
+    \Lucy{Is $ \pi^*U $ an object of $ \mathrm{qSch}^{C_2} $ over $ (X, \sigma, Y, \pi) $? If not, does that matter? If $ j $ is flat, $ X \times_Y U $ agrees with derived fiber product and $ U $ inherits $ C_2 $-$ \EE_\infty $ ``structure sheaf'' so can still define Poincaré module category. Also see Remark \ref{remark:restriction_of_schemes_with_involution}} 
     Then the assignment $ (j \colon U \to Y ) \mapsto \left(\Mod^\omega_{j^*X}, \Qoppa_{j^*\underline{\mathcal{O}}}\right) $ defines a functor valued in symmetric monoidal Poincaré $ \infty $-categories over $ \left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right) $. 
 \end{notation}
 \Lucy{I think both of the following lemmas have essentially the same proof, as soon as the definitions/preliminaries are established.}
