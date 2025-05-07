@@ -158,16 +158,16 @@
 
 \section{Introduction} 
 Let $ X $ be a scheme. 
-Gabber showed that if $ X $ is quasi-compact and separated and admits an ample line bundle, the collection of sheaves of Azumaya $ \mathcal{O}_X $-algebras up to Morita equivalence is in bijection with the torsion subgroup of $ H^2_{\mathrm{ét}}(X; \mathbb{G}_m) $ \cite{MR611868}. 
+Gabber showed that if $ X $ is quasi-compact and separated and admits an ample line bundle, the collection of sheaves of Azumaya $ \mathcal{O}_X $-algebras up to Morita equivalence is in bijection with the torsion subgroup of $ H^2_{\mathrm{\acute{e}t}}(X; \mathbb{G}_m) $ \cite{MR611868}. 
 On the other hand, to $ \mathcal{A} $ we may associate the presentable $ \mathcal{O}_X $-linear $ \infty $-category $ \mathcal{D}(\mathcal{A}) $. \Lucy{AG notation or homotopy notation?} 
 If $ \mathcal{A} $ and $ \mathcal{A}' $ are Morita equivalent, then $ \mathcal{D}(\mathcal{A}') $ and $ \mathcal{D}(\mathcal{A}) $ are equivalent in $ \mathrm{Pr}^L_{\mathcal{O}_X} $, and that $ \mathcal{A} $ is Azumaya implies that $ \mathcal{D}(\mathcal{A}) $ is invertible in $ \mathrm{Pr}^L_{\mathcal{O}_X} $ with respect to the $ \mathcal{O}_X $-linear tensor product. \Lucy{who is this observation due to?} \Lucy{cite Lieblich/de Jong? connect to twisted sheaves!} 
 
 \begin{definition}
     The \emph{derived Brauer space} of $ X $ is $ \mathrm{dBr}(X) := \Pic\left(\mathrm{Pr}^L_{\mathcal{O}_X} \right) $. 
 \end{definition}
-Toën shows that the assignment $ X \mapsto \mathrm{dBr}(X) $ is an étale sheaf and there is an isomorphism $ \pi_0 \mathrm{dBr}(X) \simeq H^1_{\mathrm{ét}}(X; \ZZ) \times H^2_{\mathrm{ét}}(X; \mathbb{G}_m) $ \cite[Corollary 2.12]{MR2957304}. 
+Toën shows that the assignment $ X \mapsto \mathrm{dBr}(X) $ is an étale sheaf and there is an isomorphism $ \pi_0 \mathrm{dBr}(X) \simeq H^1_{\mathrm{\acute{e}t}}(X; \ZZ) \times H^2_{\mathrm{\acute{e}t}}(X; \mathbb{G}_m) $ \cite[Corollary 2.12]{MR2957304}. 
 Furthermore, Toën shows that for any qcqs scheme $ X $, any invertible $ \mathcal{O}_X $-linear $ \infty $-category $ \mathcal{C} $ has a compact generator $ G $; thus we may write $ \mathcal{C} \simeq \Mod_{\mathrm{End}_{\mathcal{C}}(G)} \left(\Mod_{\mathcal{O}_X}\right) $ and $ \mathrm{End}_{\mathcal{C}}(G) $ is said to be a \emph{derived/generalized (sheaf of) Azumaya algebras} over $ \mathcal{O}_X $ (see Theorem 3.7 and Corollary 3.8 of \cite{MR2957304}). 
-In particular, Toën's result gives concrete interpretations/realizations of all/not necessarily torsion classes in $ H^2_{\mathrm{ét}}(X;\mathbb{G}_m) $, at the cost of using derived methods/considering derived objects. 
+In particular, Toën's result gives concrete interpretations/realizations of all/not necessarily torsion classes in $ H^2_{\mathrm{\acute{e}t}}(X;\mathbb{G}_m) $, at the cost of using derived methods/considering derived objects. 
 
 Antieau and Gepner extended Toën's work to connective ring spectra/affine spectral schemes with connective rings of functions in \cite{MR3190610}. \Lucy{cite \href{https://arxiv.org/abs/2210.15743}{this} too?} 
 
@@ -667,6 +667,7 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
 Let $ X $ be a scheme with an involution $ \sigma \colon X \xrightarrow{\sim} X $. 
 We want to introduce a Poincaré structure $ \Qoppa $ on $ \perf(X) $ so that the duality is given by $ E \mapsto E^\vee \otimes \sigma_*(\mathcal{O}_X) $ (contrast with \S3 of \href{https://arxiv.org/abs/2402.15136}{this paper}). 
 
+\subsection{Poincaré structures associated to rigid symmetric monoidal \texorpdfstring{$ \infty $}{∞}-categories with involution}
 Let $ \mathcal{C} $ be a stably symmetric monoidal $\infty $-category with an involution, i.e. an exact autoequivalence $ \sigma \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C} $ and a functor $ BC_2 \to \EE_\infty \mathrm{Alg} \Catex $ sending $ * \mapsto \mathcal{C} $ and a generator of $ \mathrm{End}_{BC_2}(*) \simeq C_2 $ to $ \sigma $. 
 Then $ \sigma $ induces a $ C_2 $-action on the $ \infty $-groupoid of $ \otimes $-invertible objects $ \Pic(\mathcal{C}) $. 
 Let $ L \in \Pic(\mathcal{C})^{hC_2} $ be a homotopy fixed point of this action. 
@@ -813,7 +814,7 @@ As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty 
     Finally, the natural transformation $ g \circ D_L \Rightarrow D_{L'} \circ g $ is $ g\left(L \otimes \sigma_{\mathcal{C}}(y)^\vee\right) \simeq g(L) \otimes g\left(\sigma_{\mathcal{C}}(y)^\vee\right) \to L' \otimes \sigma_{\mathcal{C}'}(g(y))^\vee $ which is an equivalence if and only if the map $ g(L) \to L' $ is an equivalence\Lucy{how much equivariance on $ g(L) \to L' $ is necessary?}. 
 \end{proof}
 
-\subsection{Poincaré Picard groups of schemes} 
+\subsection{From schemes with involution to Poincaré structures on module categories}\label{subsection:Poincare_structures_module_cats} 
 Let $ X $ be a scheme with an involution. 
 \begin{definition}
     Define a category $ \mathrm{qSch}^{C_2} $ so that
@@ -1237,7 +1238,7 @@ Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrighta
 \subsection{Azumaya algebras with genuine involution}
 Let $ R $ be an $ \EE_\infty $-ring spectrum. 
 \begin{recollection}\label{rec:Azumaya_alg_wo_involution} 
-    Recall \cites{MR2927172,MR3190610} that an $ \EE_1 $-$ R $-algebra is said to be \emph{Azumaya} if it is a compact generator of $ \Mod_R $ and if the natural $ R $-algebra map giving the bimodule structure on $ A $
+    Recall \cites{MR2927172,MR3190610} that an $ \EE_1 $-$ R $-algebra $ A $ is said to be \emph{Azumaya} if it is a compact generator of $ \Mod_R $ and if the natural $ R $-algebra map giving the bimodule structure on $ A $
     \begin{equation*}
         A \otimes_R A^{\mathrm{op}} \to \mathrm{End}_R(A)
     \end{equation*}
@@ -1319,6 +1320,47 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
         \hom_{R \otimes R}(A \otimes_R A, R) \simeq M_A \otimes_R M_{A^\op} \,.
     \end{equation*}
     \Lucy{modify defn of Azumaya alg with genuine involution to include an $ A \otimes A^\op $-linear equivalence $ A \simeq A^\vee $? Or simply define $ M_A := A^\vee $?}
+\end{proof}
+
+\subsection{Stacks associated to Poincaré-\texorpdfstring{$ \infty $}{∞}-categories}
+\begin{notation}\label{notation:poincare_ring_basechange}
+    Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
+    There is a functor 
+    \begin{equation*}
+    \begin{split}
+        \EE_\infty\Alg^{BC_2}_{R/} &\to \CAlgp_{R/-} \\
+        S & \mapsto (S, S \to R^{\varphi C_2} \otimes_{R} S \to S^{t C_2}) =: (R, R \to R^{\varphi C_2} \to R^{tC_2}) \otimes S \,,
+    \end{split}    
+    \end{equation*}
+    where the map $ R^{\varphi C_2} \otimes_R S \to R^{\varphi C_2} \otimes_{R^{tC_2}} S^{tC_2} \to R^{tC_2} \otimes_{R^{tC_2}} S^{tC_2} \simeq S^{tC_2} $ is given by base change along the Tate-valued norm composed with the structure map $ R^{\varphi C_2} \to R^{tC_2} $. 
+    Composing the aforementioned functor with the functor that sends a Poincaré ring to its category of compact modules equipped with the canonical Poincaré structure defines a functor
+    \begin{equation*}
+        \EE_\infty\Alg^{BC_2}_{R/-} \to \EE_\infty\Alg\left(\Catpidem_{R}\right) \,.
+    \end{equation*}
+\end{notation}
+\begin{notation}\label{notation:scheme_involution_basechange}
+    Let $ X $ be a scheme with an involution $ \sigma $ and let $ \pi \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
+    If $ j \colon U \to Y $ is [ASSUMPTIONS], let us write $ \pi^*U $ for the tuple $ (X \times_Y U, j^*(\sigma), U, j^*(\pi)) $. 
+    \Lucy{Is $ \pi^*U $ an object of $ \mathrm{qSch}^{C_2} $ over $ (X, \sigma, Y, \pi) $? If not, does that matter? If $ j $ is flat, $ X \times_Y U $ agrees with derived fiber product and $ U $ inherits $ C_2 $-$ \EE_\infty $ ``structure sheaf'' so can still define Poincaré module category.} 
+    Then the assignment $ (j \colon U \to Y ) \mapsto \left(\Mod^\omega_{j^*X}, \Qoppa_{j^*\underline{\mathcal{O}}}\right) $ defines a functor valued in symmetric monoidal Poincaré $ \infty $-categories over $ \left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right) $. 
+\end{notation}
+\Lucy{I think both of the following lemmas have essentially the same proof, as soon as the definitions/preliminaries are established.}
+\Lucy{recall étale hypersheaf/hypercovering}
+\begin{lemma}
+    Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
+    Then the assignment of Notation \ref{notation:poincare_ring_basechange} is a hypersheaf on the small étale site of $ R $. 
+\end{lemma}
+\begin{lemma}
+    Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
+    Then the assignment of Notation \ref{notation:scheme_involution_basechange} is a hypersheaf on the small étale site of $ Y $. 
+\end{lemma}
+\begin{proof} 
+    For now, use the notational shorthand $ R^p = (R, R\to R^{\varphi C_2} \to R^{tC_2}) $. 
+    Since limits in categories of algebras and modules are computed at the level of underlying objects, it suffices to show that the functor sends an étale hypercovering $ j_\bullet \colon S \to T^\bullet $ to a limit diagram in $ \Catpidem $.  
+    By Proposition 6.1.4 of \cite{CDHHLMNNSI}, it suffices to show that the relevant diagram is a limit diagram in $ \Cath $. \Lucy{later: idempotent completion?} 
+    The proof of Lemma 5.4 in \cite{MR3190610} implies that the diagram defines a limit diagram on underlying $ \infty $-categories. 
+    Thus by Remark 6.1.3 of \cite{CDHHLMNNSI}, it suffices to show that $ j_\bullet^* \colon \Mod^\omega_{R^e \otimes_{R^{C_2}} S} \to \Mod^\omega_{R^e \otimes_{R^{C_2}} T^\bullet} $ induces an equivalence $ \Qoppa_{R^p \otimes S} \xrightarrow{\sim} \lim_{\Delta} \Qoppa_{R^p \otimes T^\bullet} \circ \left(j_\bullet^*\right)^{\mathrm{op}} $ of quadratic functors $ \Mod^{\omega,\op}_{R^e \otimes_{R^{C_2}} S} \to \Spectra $. 
+    This follows from our assumption on $ S \to T^\bullet $ and \cite[Theorem 3.3.1]{CDHHLMNNSI}. 
 \end{proof}
 
 \section{Poincar{\'e} schemes}
