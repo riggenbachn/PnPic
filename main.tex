@@ -831,9 +831,9 @@ Let $ X $ be a scheme with an involution.
     \end{itemize}
 \end{definition}
 \begin{remark}\label{remark:restriction_of_schemes_with_involution}
-    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ j \colon U \to Y $ is a quasi-compact open subscheme. \Lucy{Do I need quasi-compact assumption?}
+    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ j \colon U \to Y $ is a flat map. %quasi-compact open subscheme %\Lucy{Do I need quasi-compact assumption?}
     Then $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
-    In fact, if $ j $ is étale, $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
+    % In fact, if $ j $ is étale, $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
     Affineness and invariance under the $ C_2 $-action are stable under pullback, so it suffices to show that $ j^*(\pi) $ satisfies $ \mathcal{O}_U \simeq \left(j^*(\pi)\right)_*(\mathcal{O}_{j^*U})^{C_2} $. 
     This follows from the proof of \cite[Theorem 4.35(i)]{azumaya_involution}.  
 \end{remark}
@@ -1253,32 +1253,54 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     An \emph{Azumaya algebra with genuine type 1 (anti-)involution} over $ R $ is the data of 
     \begin{enumerate}[label=(\alph*)]
         \item \label{defnitem:Azumaya_alg_gi_the_involution} An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
-        \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ A^{\varphi C_2} $ 
-        \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ A \otimes_R A^\op $-modules\Lucy{compatibility with Tate?}
+        \item \label{defnitem:Azumaya_alg_gi_underlying} an $ (A \otimes_R A^\op)^{\otimes_R 2} $-linear equivalence $ \hom_{R \otimes R}(A \otimes_R A, R) \simeq A \otimes_R A^\op $
+        \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ P $ and an $ A^\op \otimes_R R^{\varphi C_2} $-module $ \overline{P} $
+        \item \label{defn_item:Azumaya_gen_inv_conn_map} An $ A $-linear map $ P \to A^{tC_2} $ and an $ A^\op $-linear map $ \overline{P} \to A^{tC_2} $. 
+        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes A)^{tC_2} $-module, as an $ A $-module (resp. $ A^\op $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes A^\op)^{tC_2} $ (resp. $ A^\op \to (A \otimes A^\op)^{tC_2} $). 
+        \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ A \otimes_R A^\op $-modules 
         \begin{equation*}
-            \hom_R(A, R^{\varphi C_2}) \simeq A^{\varphi C_2} \otimes_{R^{\varphi C_2}} \hom_R(A^{\varphi C_2}, R^{\varphi C_2})
+            \hom_R(A, R^{\varphi C_2}) \simeq P \otimes_{R^{\varphi C_2}} \overline{P}
         \end{equation*}
-        \item An $ A $-linear map $ A^{\varphi C_2} \to A^{tC_2} $. 
-        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes A)^{tC_2} $-module, as an $ A $-module via the Tate-valued diagonal $ A \to (A \otimes A)^{tC_2} $. 
+        and a homotopy making the diagram 
+        \begin{equation*}
+        \begin{tikzcd}
+            \hom_R(A, R^{\varphi C_2}) \ar[r] \ar[d] & P \otimes_{R^{\varphi C_2}} \overline{P} \ar[d] \\
+            \hom_R(A, R^{tC_2}) \simeq \hom_R(A \otimes A^\op, R)^{tC_2} \ar[r] & \hom_{(A \otimes A^\op)^{\otimes 2}}\left((A \otimes A^\op)^{\otimes 2}, A \otimes A^\op\right)^{tC_2} \simeq (A \otimes A^\op)^{tC_2}
+        \end{tikzcd}    
+        \end{equation*}
+        commute, where the lower horizontal arrow is induced by \ref{defnitem:Azumaya_alg_gi_underlying} and the right vertical arrow is induced by \ref{defn_item:Azumaya_gen_inv_conn_map}. 
     \end{enumerate}
     Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
     \Lucy{define the category!}
 \end{definition}
 \begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
-    If $ A $ is an Azumaya algebra with genuine involution over $ R $, then in particular $ M_A = A $, $ N_A = A^{\varphi C_2} $ is a module with genuine involution over $ A $ in the sense of \cite[Definition 3.2.3]{CDHHLMNNSI}. 
+    If $ A $ is an Azumaya algebra with genuine involution over $ R $, then in particular $ M_A = A $, $ N_A = P $ is a module with genuine involution over $ A $ in the sense of \cite[Definition 3.2.3]{CDHHLMNNSI}. 
 \end{remark}
 With ordinary Azumaya algebras, the prototypical Azumaya algebra with anti-involution arises from endomorphism rings of perfect modules. 
 Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ endows its endomorphism algebra with additional structure. 
-\begin{example}
+\begin{example}\label{ex:endomorphisms_of_poincare_object}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. 
 
-    Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an Azumaya algebra with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
-    \Lucy{to-do: explain! Also $ A^{\varphi C_2}$ could also be $ P \otimes_R R^{\varphi C_2}$?} 
+    Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an $ \EE_1 $ with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
+    If $ P $ is a generator of $ \Mod_R^\omega $, then $ A $ is furthermore Azumaya. 
 
-    By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. \Lucy{todo: an $ R $-linear enhancement of Proposition 3.1.16?}
-    Since $ P $ is compact, it is dualizable with respect to the symmetric monoidal structure on $ \Mod_R^\omega $ \cite[Theorem III.7.9]{elmendorf2007rings}. 
-    Since $ \otimes_R R^{\varphi C_2} $ is symmetric monoidal, in particular it takes $ P $ to a dualizable object--call it $ \overline{P} $. 
-    Now there is a canonical choice of equivalence \ref{defn_item:Azumaya_gen_inv_geom_fixpt} since both sides are canonically equivalent to $ \overline{P} \otimes_{R^{\varphi C_2}} \overline{P}^\vee $. 
+    By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. \Lucy{todo: an $ R $-linear enhancement of Proposition 3.1.16?} 
+    To exhibit \ref{defnitem:Azumaya_alg_gi_underlying}, observe that $ q^\dag $ induces a canonical $ A \otimes A^\op $-linear equivalence $ A = \mathrm{End}(P) \simeq \mathrm{End}(P^\vee) \simeq A^\vee $.  
+    % Lucy: I THINK that even though $ A \simeq P \otimes_R P^\vee $ (hence there is a canonical equivalence $ A \simeq A^\vee $), that isn't $ A \otimes A^\op $-linear. 
+    If $ P $ is a generator, $ \hom_{R}(P,-) $ induces an equivalence $ \Mod_R^\omega \simeq \Mod_{A}^\omega $, thus we can regard $ \Mod_A^\omega $ as equipped with a Poincaré structure. 
+    By the classification of $ R $-linear Poincaré structures of Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}, the Poincaré structure on $ \Mod_A^\omega $ is associated to an $ A $-module with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $. 
+    We claim that $ M_A \simeq A $ with the canonical $ A $-$ A $-bimodule structure: By \cite[Proposition 3.1.6]{CDHHLMNNSI}, as an $ A^\op $-module $ M_A $ is the image of $ A $ under the composite
+    \begin{equation*}
+        \Mod_A^\omega \xrightarrow{\hom_R(P,-)^{-1}} \Mod_R^\omega \xrightarrow{D_R = \hom_R(-,R)} \Mod_R^{\omega, \op} \xrightarrow{\hom_R(P,-)} \Mod_A^{\omega,\op} \,.
+    \end{equation*}
+    Observe that the image of $ A $ in $ \Mod_R^{\omega, \op} $ is $ D_R(P) $ and $ q^\dag $ induces an equivalence $ D_R(P) \simeq P $, hence $ M_A \simeq A $ as $ A^\op $-modules. 
+
+    A similar argument with the linear part of $ \Qoppa $ shows that we have an equivalence $ N_A \simeq \hom_{R}(P, R^{\varphi C_2}) $. 
+    \Lucy{continue. discuss consequences of being Morita trivial (distinguished `point' in $ N_A $)? can we identify $ \overline{P} $?}
+    % DEPRECATED MAY 8, 2025; PLEASE DO NOT DELETE FOR NOW -- Lucy
+    % Since $ P $ is compact, it is dualizable with respect to the symmetric monoidal structure on $ \Mod_R^\omega $ \cite[Theorem III.7.9]{elmendorf2007rings}. 
+    % Since $ \otimes_R R^{\varphi C_2} $ is symmetric monoidal, in particular it takes $ P $ to a dualizable object--call it $ \overline{P} $. 
+    % Now there is a canonical choice of equivalence \ref{defn_item:Azumaya_gen_inv_geom_fixpt} since both sides are canonically equivalent to $ \overline{P} \otimes_{R^{\varphi C_2}} \overline{P}^\vee $. 
 \end{example}
 
 \begin{proposition}
@@ -1295,19 +1317,19 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
 
 \begin{proposition}\label{prop:mod_over_azumaya_geninv_is_invertible}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (A, A^{\varphi C_2} \to A^{tC_2}) $ be an Azumaya algebra with genuine involution over $ R $. 
-    Then $ \left(\Mod_A^\omega, \Qoppa_A \right) $ is an invertible object in $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R\right)}\left(\Catpidem\right) $. 
+    Then 
+    \begin{enumerate}
+        \item $ \left(\Mod_A^\omega, \Qoppa_A \right) $ defines an $ R $-linear Poincaré $ \infty $-category. 
+        \item $ \left(\Mod_A^\omega, \Qoppa_A \right) $ is an invertible object in $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R\right)}\left(\Catpidem\right) $. 
+    \end{enumerate}
 \end{proposition}
-\begin{remark}
-    Contrast Proposition \ref{prop:mod_over_azumaya_geninv_is_invertible} with \cite[Theorem 3.15]{MR3190610}, where it is shown that an $ R $-linear stable $ \infty $-category is invertible \emph{if and only if} it is equivalent to modules over an Azumaya $ R $-algebra. 
-    The difference lies in the fact that not every $ R $-linear (Morita anti-)equivalence $ \Mod_A^\omega \simeq \Mod_{A^\op}^\omega $ is induced by a map of $ \EE_1 $-rings $ A \to A^\op $. 
-    \Lucy{this is not quite the same (in a literal sense), but I think similar in spirit to the ``counterexamples'' paper by First--Williams}
-\end{remark}
-\begin{proof}
+\begin{proof}[Proof of Proposition \ref{prop:mod_over_azumaya_geninv_is_invertible}]
+    The first statement follows from unravelling definitions; we prove the second statement. 
     First, by \cite[Example 3.2.9]{CDHHLMNNSI}, we see that $ \left(\Mod_A^\omega, \Qoppa_A \right) $ is indeed an $ R$-linear Poincaré $ \infty $-category (and not merely hermitian). 
     To show that the associated Poincaré $ \infty $-category is invertible, we must identify a dual $ \left(\Mod_A^\omega, \Qoppa_A \right)^\vee $ and exhibit an equivalence $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes \left(\Mod_A^\omega, \Qoppa_A \right)^\vee \simeq \left(\Mod_R^\omega, \Qoppa_R \right) $. 
     Since $ \Catpidem_R \to \Catex_R $ is symmetric monoidal, we see that the underlying $ R $-linear $ \infty $-category associated to the dual must be $ \Mod_{A^\op}^\omega $. 
     Moreover, the canonical evaluation map $ \mathrm{ev} \colon \Mod_A^\omega \otimes \Mod_{A^\op}^\omega \xrightarrow{\simeq} \Mod_R^\omega $ sends $ A \otimes A^\op $ to $ A $. 
-    Endow $ \Mod_{A^\op}^\omega $ with a Poincaré structure corresponding to the module with genuine involution $ M_{A^\op}:= A^\op $, $ N_{A^\op} := \hom_R(A^{\varphi C_2}, R^{\varphi C_2}) $. 
+    Endow $ \Mod_{A^\op}^\omega $ with a Poincaré structure corresponding to the module with genuine involution $ M_{A^\op}:= A^\op $, $ N_{A^\op} := \overline{P} $. 
     It remains to exhibit a natural equivalence 
     \begin{equation}\label{eq:invertible_quadratic_compatibility}
         \eta \colon \left(\Qoppa_A \otimes \Qoppa_{A^\op}\right) \xrightarrow{\simeq} \mathrm{ev}^* \Qoppa_R 
@@ -1320,9 +1342,30 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     \end{equation*}
     and on bilinear parts, it suffices to exhibit an $ (A \otimes_R A^\op)^{\otimes_R 2} $-linear equivalence 
     \begin{equation*}
-        \hom_{R \otimes R}(A \otimes_R A, R) \simeq M_A \otimes_R M_{A^\op} \,.
+        \hom_{R \otimes R}(A \otimes_R A, R) \simeq M_A \otimes_R M_{A^\op} 
     \end{equation*}
-    \Lucy{modify defn of Azumaya alg with genuine involution to include an $ A \otimes A^\op $-linear equivalence $ A \simeq A^\vee $? Or simply define $ M_A := A^\vee $?}
+    which glue compatibly. 
+    This follows from the definitions, concluding the proof. 
+\end{proof}
+\begin{proposition}\label{prop:Poincare_cat_as_module_cat} \Lucy{later: add case of schemes with involution}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
+    Let $ \left(\mathcal{C}, \Qoppa\right) $ be an invertible idempotent-complete $ R $-linear Poincaré $ \infty $-category. 
+    Suppose given a Poincaré object $ (P, q) $ of $ \left(\mathcal{C}, \Qoppa\right) $ so that $ P $ is a generator for $ \mathcal{C} $.  
+    Then $ \left(\mathcal{C}, \Qoppa\right) $ is of the form $ \left(\Mod^\omega_A, \Qoppa_A \right) $ for some Azumaya algebra over $ R $ with genuine involution.  
+\end{proposition} 
+\begin{corollary}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. \Lucy{connectivity hypothesis on $ R $?} 
+    Let $ \left(\mathcal{C}, \Qoppa\right) $ be an invertible idempotent-complete $ R $-linear Poincaré $ \infty $-category. 
+    Then $ \left(\mathcal{C}, \Qoppa\right) $ is of the form $ \left(\Mod^\omega_A, \Qoppa_A \right) $ for some Azumaya algebra over $ R $ with genuine involution.      
+\end{corollary}
+\begin{proof}
+    By Proposition \ref{prop:Poincare_cat_as_module_cat}, it suffices to exhibit a Poincaré object $ (P, q) $ whose underlying object is a generator of $ \mathcal{C} $. 
+    \Lucy{Need to show $ \mathcal{C} $ (or $ \mathrm{Ind}(\mathcal{C})$) defines a $ R $-linear category with descent?}
+    By \cite[Theorem 6.1]{MR3190610}, $ \mathcal{C} $ has a generator $ G $. 
+    Now $ G \oplus D_{\Qoppa}G $ promotes canonically to a Poincaré object of $ \left(\mathcal{C}, \Qoppa\right) $ by \cite[Proposition 2.2.5]{CDHHLMNNSI}. 
+\end{proof}
+\begin{proof}[Proof of Proposition \ref{prop:Poincare_cat_as_module_cat}]
+    Similar to Example \ref{ex:endomorphisms_of_poincare_object}\Lucy{to-do}
 \end{proof}
 
 \subsection{Stacks associated to Poincaré-\texorpdfstring{$ \infty $}{∞}-categories}
@@ -1343,11 +1386,10 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
 \end{notation}
 \begin{notation}\label{notation:scheme_involution_basechange}
     Let $ X $ be a scheme with an involution $ \sigma $ and let $ \pi \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
-    If $ j \colon U \to Y $ is [ASSUMPTIONS], let us write $ \pi^*U $ for the tuple $ (X \times_Y U, j^*(\sigma), U, j^*(\pi)) $. 
-    \Lucy{Is $ \pi^*U $ an object of $ \mathrm{qSch}^{C_2} $ over $ (X, \sigma, Y, \pi) $? If not, does that matter? If $ j $ is flat, $ X \times_Y U $ agrees with derived fiber product and $ U $ inherits $ C_2 $-$ \EE_\infty $ ``structure sheaf'' so can still define Poincaré module category. Also see Remark \ref{remark:restriction_of_schemes_with_involution}} 
-    Then the assignment $ (j \colon U \to Y ) \mapsto \left(\Mod^\omega_{j^*X}, \Qoppa_{j^*\underline{\mathcal{O}}}\right) $ defines a functor valued in symmetric monoidal Poincaré $ \infty $-categories over $ \left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right) $. 
+    If $ j \colon U \to Y $ is flat, let us write $ \pi^*U $ for the tuple $ (X \times_Y U, j^*(\sigma), U, j^*(\pi)) $ of Remark \ref{remark:restriction_of_schemes_with_involution}. 
+    Then the assignment $ (j \colon U \to Y ) \mapsto \left(\Mod^\omega_{j^*X}, \Qoppa_{j^*\underline{\mathcal{O}}}\right) $ defines a functor defined on the category of schemes equipped with an étale map to $ Y $ valued in symmetric monoidal Poincaré $ \infty $-categories over $ \left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right) $. 
 \end{notation}
-\Lucy{I think both of the following lemmas have essentially the same proof, as soon as the definitions/preliminaries are established.}
+\Lucy{I think both of the following lemmas have essentially the same proof.}
 \Lucy{recall étale hypersheaf/hypercovering}
 \begin{lemma}
     Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
