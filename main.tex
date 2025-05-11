@@ -799,12 +799,12 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
 \subsection{Hermitian line bundles}
 \begin{definition}
     Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
-    Write $ \sigma_*R $ for the $ R $-module with underlying abelian group $ R $ and action $ r \cdot m = \sigma(r) \cdot m $. 
-    Let $ M $ be an $ R $-module. 
-    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(M, \sigma_* R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}} 
-    Also recall that there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
-    Note that given two $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
-    Let $ I $ be a projective $ R $-module (in particular, there is a canonical identification $ (I^\dag)^\dag \simeq I $). 
+    Let $ M $ be an $ R $-module. We denote by $ \sigma^*M $ its restriction of scalars, i.e. the $ R $-module with underlying abelian group $ M $ and action $ r \star m = \sigma(r) \cdot m $, where $\cdot$ denotes the original action of $M$.
+    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(\sigma^* M, R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}} 
+    Also recall that for a compact $R$-module $M$, there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
+    Note that given two compact $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
+    
+    Let $ I $ be a compact $ R $-module.
     A \emph{$ \sigma $-hermitian form on $ I $} is an $ R $-linear isomorphism $ \varphi \colon I \xrightarrow{\sim} I^\dag $ so that $ \varphi^\dag = \varphi $. 
 \end{definition}
 \begin{observation}\label{obs:tensoring_hermitian_forms}    
