@@ -281,7 +281,7 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \begin{example}
     \label{example:classification_of_poincare_structures_when_tate_vanishes}
-    Let $R$ be a ring spectrum with a $ C_2 $-action. If $2\in \pi_0(R)$ is invertible, we have $\underline{R}^{tC_2}\simeq 0 $. 
+    Let $R$ be a ring spectrum with a $ C_2 $-action. If $2\in \pi_0(R)$ is invertible, we have $\underline{R}^{tC_2}\simeq 0 $ by \cite[Lemma I.2.8]{NS}. 
     A Poincaré structure on $R$ is equivalent to the data of an $ \mathbb{E}_\infty $-$R$-algebra $R\rightarrow C$.
 \end{example}
 
@@ -815,7 +815,12 @@ As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty 
 \end{proof}
 
 \subsection{From schemes with involution to Poincaré structures on module categories}\label{subsection:Poincare_structures_module_cats} 
-Let $ X $ be a scheme with an involution. 
+\Lucy{explain why using good quotients/choice of quotient is useful.}
+\begin{recollection} [{\cite[Remark 4.20]{azumaya_involution}}]
+    Let $ X $ be a scheme with an involution $ \lambda \colon X \to X $. 
+    A map $ \pi \colon X \to Y $ is called a good quotient of $ X $ relative to $ \lambda $ if $ \pi $ is $ C_2 $-invariant and affine and $ \pi_{\#} \colon \mathcal{O}_Y \to \pi_{*} \mathcal{O}_X $ induces an isomorphism $ \mathcal{O}_Y \simeq \left(\pi_{*} \mathcal{O}_X\right)^{C_2} $. 
+    A good quotient of $ X $ exists if and only if every $ C_2 $-orbit is contained in an affine open subscheme, in which case it is unique up to isomorphism. 
+\end{recollection}
 \begin{definition}
     Define a category $ \mathrm{qSch}^{C_2} $ so that
     \begin{itemize}
@@ -853,7 +858,7 @@ Let $ X $ be a scheme with an involution.
     Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
     We write $ p \colon X \to Y $ for the quotient map.
     Let $ j \colon \Spec A  \simeq U \subseteq Y $ be an affine open subscheme of $ Y $. 
-    Because $ p $ is an affine map,\Lucy{by assumption!} the fiber product $ \Spec B := \Spec A \times_{Y} X $ is an affine open of $ X $ which is invariant under the $ C_2 $-action. 
+    Because $ p $ is an affine map, the fiber product $ \Spec B := \Spec A \times_{Y} X $ is an affine open of $ X $ which is invariant under the $ C_2 $-action. 
     In particular $ \Spec B $ inherits a $ C_2 $-action from $ X $ (hence so does its ring of functions $ B$).  
     Now $ A \to B $ acquires the structure of a $C_2$-Green functor $ \underline{\mathcal{O}}(U) $. 
     Regarding $ \underline{\mathcal{O}}(U) $ as a $ C_2 $-spectrum, by the isotropy separation sequence, we have an equivalence of $ A $-modules $ \underline{\mathcal{O}}(U)^{\varphi C_2} \simeq \mathrm{cofib} (\mathrm{tr} \colon B_{hC_2} \to A) $. 
@@ -1381,25 +1386,36 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     where the map $ R^{\varphi C_2} \otimes_R S \to R^{\varphi C_2} \otimes_{R^{tC_2}} S^{tC_2} \to R^{tC_2} \otimes_{R^{tC_2}} S^{tC_2} \simeq S^{tC_2} $ is given by base change along the Tate-valued norm composed with the structure map $ R^{\varphi C_2} \to R^{tC_2} $. 
     Composing the aforementioned functor with the functor that sends a Poincaré ring to its category of compact modules equipped with the canonical Poincaré structure defines a functor
     \begin{equation*}
-        \EE_\infty\Alg^{BC_2}_{R/-} \to \EE_\infty\Alg\left(\Catpidem_{R}\right) \,.
+        \Mod^p \colon \EE_\infty\Alg^{BC_2}_{R/-} \to \EE_\infty\Alg\left(\Catpidem_{R}\right) \,.
     \end{equation*}
 \end{notation}
 \begin{notation}\label{notation:scheme_involution_basechange}
     Let $ X $ be a scheme with an involution $ \sigma $ and let $ \pi \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
     If $ j \colon U \to Y $ is flat, let us write $ \pi^*U $ for the tuple $ (X \times_Y U, j^*(\sigma), U, j^*(\pi)) $ of Remark \ref{remark:restriction_of_schemes_with_involution}. 
-    Then the assignment $ (j \colon U \to Y ) \mapsto \left(\Mod^\omega_{j^*X}, \Qoppa_{j^*\underline{\mathcal{O}}}\right) $ defines a functor defined on the category of schemes equipped with an étale map to $ Y $ valued in symmetric monoidal Poincaré $ \infty $-categories over $ \left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right) $. 
+    Then the assignment $ (j \colon U \to Y ) \mapsto \left(\Mod^\omega_{j^*X}, \Qoppa_{j^*\underline{\mathcal{O}}}\right) $ defines a functor %defined on the category of schemes equipped with an étale map to $ Y $ valued in symmetric monoidal Poincaré $ \infty $-categories over $ \left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right) $. 
+    \begin{equation*}
+        \Mod^p \colon \mathrm{\acute{E}t}_Y^\op \to \EE_\infty \Alg\left(\Mod_{\left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right)}(\Catpidem)\right) \,.
+    \end{equation*}
 \end{notation}
-\Lucy{I think both of the following lemmas have essentially the same proof.}
+\Lucy{I think Propositions \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectra} and \ref{prop:Poincare_modules_as_etale_sheaf_inv_scheme} have essentially the same proof--present them together?}
 \Lucy{recall étale hypersheaf/hypercovering}
-\begin{lemma}
+\begin{proposition}\label{prop:Poincare_modules_as_etale_sheaf_affine_spectral}
     Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
     Then the assignment of Notation \ref{notation:poincare_ring_basechange} is a hypersheaf on the small étale site of $ R $. 
-\end{lemma}
-\begin{lemma}
+\end{proposition}
+\begin{corollary}\label{cor:pnbr_as_etale_sheaf_affine_spectral}
+    Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
+    Write $ \pnbr $ for the composite functor $ \mathrm{\acute{E}t}_R \xrightarrow{\Mod^p} \EE_\infty\Alg\left(\Catpidem_{R}\right) \xrightarrow{\pnbr} \Spectra_{\geq 0} $, where $ \Mod^p $ is from Notation \ref{notation:poincare_ring_basechange} and $ \pnbr $ is Definition \ref{definition:poincare_brauer_space}. 
+    Then $ \pnbr $ is an \'etale sheaf. 
+\end{corollary} 
+\begin{proof}
+    Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and the fact that $ \pnbr $ preserves all limits.  
+\end{proof}
+\begin{proposition}\label{prop:Poincare_modules_as_etale_sheaf_inv_scheme}
     Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
     Then the assignment of Notation \ref{notation:scheme_involution_basechange} is a hypersheaf on the small étale site of $ Y $. 
-\end{lemma}
-\begin{proof} 
+\end{proposition}
+\begin{proof} [Proof of Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral}]
     For now, use the notational shorthand $ R^p = (R, R\to R^{\varphi C_2} \to R^{tC_2}) $. 
     Since limits in categories of algebras and modules are computed at the level of underlying objects, it suffices to show that the functor sends an étale hypercovering $ j_\bullet \colon S \to T^\bullet $ to a limit diagram in $ \Catpidem $.  
     By Proposition 6.1.4 of \cite{CDHHLMNNSI}, it suffices to show that the relevant diagram is a limit diagram in $ \Cath $. \Lucy{later: idempotent completion?} 
