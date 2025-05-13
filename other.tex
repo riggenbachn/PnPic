@@ -795,45 +795,48 @@ In the course of thinking about the `involutive' generalization of the statement
 \end{itemize}
 \end{question}
 
-\section{Other}
-Tried showing that the geometric fixed points of the structure sheaf is supported on the ramification locus of an involution--did not succeed in doing so, but am saving the partial writeup here in case the parts of it which do work are useful later. 
+\section{Other} 
 
-\paragraph{Guess..?}    Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}, and write $ p \colon X \to Y $ for the quotient map. 
+\begin{proposition}
+    Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}, and write $ p \colon X \to Y $ for the quotient map. 
     Let $ i \colon U \subseteq Y $ be the largest open subscheme on which $ \pi|_{X_U} $ is étale \cite[Proposition 4.45]{azumaya_involution}. 
     Write $ \mathrm{RamLoc}(\pi) $ for the closed complement of $ U $ regarded as a topological space, and let $ j \colon \mathrm{RamLoc}(\pi) \to Y $ denote the inclusion. 
     Then $ \underline{\mathcal{O}}^{\varphi C_2} $ is in the essential image of $ j_* \colon \mathrm{Shv}_{\mathrm{Zar}}(\mathrm{RamLoc}(\pi)) \to \mathrm{Shv}_{\mathrm{Zar}}(Y) $. 
-    In other words, there exists a sheaf $ \mathcal{Q} $ of $ \EE_\infty $-rings on $ \mathrm{RamLoc}(\pi) $ so that $ j_* \mathcal{Q} \simeq \underline{\mathcal{O}}^{\varphi C_2} $. \Lucy{finish this}
-\begin{proof}[Proof attempt]
+    In other words, there exists a sheaf $ \mathcal{Q} $ of $ \EE_\infty $-rings on $ \mathrm{RamLoc}(\pi) $ so that $ j_* \mathcal{Q} \simeq \underline{\mathcal{O}}^{\varphi C_2} $. \Lucy{hypothesis? move to main text?}
+\end{proposition}
+\begin{proof}
     Recall that the open-closed decomposition of $ Y $ induces a symmetric monoidal récollement
     \begin{equation*}
         \mathrm{Shv}_{\mathrm{Zar}}(U) \xleftarrow{i^*} \mathrm{Shv}_{\mathrm{Zar}}(Y) \xrightarrow{j^*} \mathrm{Shv}_{\mathrm{Zar}}(\mathrm{RamLoc}(\pi)) \,.
     \end{equation*}
     Therefore, to show that $ \underline{\mathcal{O}}^{\varphi C_2} $ is in the essential image of $ j_* $, it suffices to show that $ i^*\left( \underline{\mathcal{O}}^{\varphi C_2}\right) \simeq 0 $ as a sheaf on $ U $. 
 
-    By \cite[Proposition 4.45]{azumaya_involution}, it suffices to show that if $ y $ is a point in $ U $, then $ \underline{\mathcal{O}}^{\varphi C_2}_{y} = 0 $. \Lucy{Need hypercompleteness to reduce to checking on points?}  
-    Since $ \underline{\mathcal{O}}^{\varphi C_2}_{y} = \tau_{\geq 0} \left(\mathcal{O}_{Y,y}^{tC_2}\right) $ if $ A \to B $ is a quadratic étale map so that $ B $ has an involution $ \lambda $ and $ A = B^{\lambda} $ is a local ring with maximal ideal $ \mathfrak{m}_A $ (therefore $ B $ is semilocal by \cite[Proposition 3.15]{azumaya_involution}), then $ \pi_0 B^{tC_2} = 0 $. 
-    By \cite[Lemma I.2.9]{NS}, we may without loss of generality replace $ A $ and $ B $ by their $ 2 $-completions. 
+    By \cite[Proposition 4.45]{azumaya_involution}, it suffices to show that if $ y $ is a point in $ U $, then $ \underline{\mathcal{O}}^{\varphi C_2}_{y} = 0 $. \Lucy{Need hypercompleteness to reduce to checking on points? Appeal to Clausen--Mathew and add finite Krull dim hypothesis?}  
+    Since $ \underline{\mathcal{O}}^{\varphi C_2}_{y} = \tau_{\geq 0} \left(\Gamma\mathcal{O}_{X \times_Y \{y\}}^{tC_2}\right) $ where $ A = \Gamma\mathcal{O}_{Y,y} \to B = \Gamma\mathcal{O}_{X \times_Y \{y\}} $ is a quadratic étale map so that $ B $ has an involution $ \lambda $ and $ A = B^{\lambda} $ is a local ring with maximal ideal $ \mathfrak{m}_A $ (therefore $ B $ is semilocal by \cite[Proposition 3.15]{azumaya_involution}), it suffices to show that $ \pi_0 B^{tC_2} = 0 $. 
+    By \cite[Lemma I.2.9]{NS}, we may without loss of generality replace $ A $ and $ B $ by their $ 2 $-completions. \Lucy{this is unnecessary to the proof--but shows that $ U $ is contained in the open subscheme $ Y \left[\frac{1}{2}\right] $.}
     % Since $ B^{tC_2} $ is $ 2 $-complete, it suffices to show that $ B^{tC_2} \otimes \FF_2 $ vanishes. 
-    Let $ J \subseteq B $ denote the Jacobson radical of $ B $.
-    We claim that $ B \simeq \lim_i B/J^i $ induces an equivalence $ B^{tC_2} \to \lim_i \left(B/\mathfrak{m}_B^i\right)^{tC_2} $. 
-    Thus it suffices to show that $ \left(B/\mathfrak{m}_B^i\right)^{tC_2} $ is zero for each $ i $. 
-    Since $ (-)^{tC_2} $ is exact and each $ B/\mathfrak{m}_B^i $ can be written as an extension of finitely many $ B/\mathfrak{m}_B $-modules, it suffices to show that $ \left(B/\mathfrak{m}_B\right)^{tC_2} $ is zero. 
-    Now we have an exact sequence $ B/\mathfrak{m}_B \xrightarrow{\mathrm{Tr}} A/\mathfrak{m}_A = (B/\mathfrak{m}_B)^{C_2} \to \pi_0 (B/\mathfrak{m}_B)^{tC_2} \to 0 $. 
-    Now $ B/\mathfrak{m}_B $ is an étale $ A/\mathfrak{m}_A $-algebra, hence it is either of the form $ A/\mathfrak{m}_A \times A/\mathfrak{m}_A $ or a separable field extension of $ A/\mathfrak{m}_A $ of degree 2. 
-    Since $ C_2 $ acts freely on $ B/\mathfrak{m}_B $ as an $ A/\mathfrak{m}_A $-module by the normal basis theorem.
+    By the recollement of $ A $-modules in terms of $ \mathfrak{m}_A $-complete and $ A[\mathfrak{m}_A^{-1}] $-modules, it suffices to show that $ \left(B_{\mathfrak{m}_A}^{\wedge}\right)^{tC_2} = 0 $ and $ \left(B[\mathfrak{m}_A^{-1}]\right)^{tC_2} = 0 $. 
 
-    % Some sort of Mittag--Leffler condition\Lucy{to-do} implies that $ \pi_0 B^{tC_2} \simeq \lim_i \pi_0\left(B/\mathfrak{m}_B^i\right)^{tC_2} $. 
-    Since homotopy fixed points commute with limits, it suffices to show that $ B \simeq \lim_i B/\mathfrak{m}_B^i $ induces an equivalence $ B_{hC_2} \to \lim_i \left(B/\mathfrak{m}_B^i\right)_{hC_2} $. 
-    This is true because the $ B/\mathfrak{m}_B^i $ are uniformly bounded below. \Lucy{double-check later}
+    By \cite[Propositions 3.4 \& 3.15]{azumaya_involution}, $ B \mathfrak{m}_A = J \subseteq B $, where $ J $ denotes the Jacobson radical of $ B $. 
+    We claim that $ B \simeq \lim_i B/J^i $ induces an equivalence $ B^{tC_2} \to \lim_i \left(B/J^i\right)^{tC_2} $. 
+    Granting the claim, it suffices to show that $ \left(B[\mathfrak{m}_A^{-1}]\right)^{tC_2} = 0 $ and $ \left(B/J^i\right)^{tC_2} $ is zero for each $ i $. 
+    Since $ (-)^{tC_2} $ is exact and lax symmetric monoidal and each $ B/J^i $ can be written as an extension of finitely many $ B/J $-modules, it suffices to show that $ \left(B[\mathfrak{m}_A^{-1}]\right)^{tC_2} $ and $ \left(B/J\right)^{tC_2} $ are zero. 
+    % Now we have an exact sequence $ B/\mathfrak{m}_B \xrightarrow{\mathrm{Tr}} A/\mathfrak{m}_A = (B/\mathfrak{m}_B)^{C_2} \to \pi_0 (B/\mathfrak{m}_B)^{tC_2} \to 0 $. 
 
-    Recall that there is an exact sequence $ B \xrightarrow{\mathrm{Tr}} B^{C_2} = A  \to \pi_0 B^{tC_2} \to 0 $. 
-    We have an exact sequence $ B/\mathfrak{m}_B \xrightarrow{\mathrm{Tr}} A/\mathfrak{m}_A \to \pi_0 (B/\mathfrak{m}_B)^{tC_2} \to 0 $. 
-    Is there an isomorphism $ \pi_0 B^{tC_2}/ \pi_0 \mathfrak{m}_B^{tC_2} \simeq \pi_0 (B/\mathfrak{m}_B)^{tC_2} $? 
-    There IS an exact sequence $ \mathfrak{m}_B^{tC_2} \to B^{tC_2} \to (B/\mathfrak{m}_B)^{tC_2} $ which gives a LES on $ \pi_* $.  
-    Maybe $ \pi_0 B^{tC_2} $ is a complete local ring with maximal ideal $ \pi_0 \mathfrak{m}_B^{tC_2} $? 
-    If so, then it suffices to show that $ \pi_0 (B/\mathfrak{m}_B)^{tC_2} = 0 $. 
-    This follows from the normal basis theorem.       
+    Now observe that $ A/\mathfrak{m}_A $ (resp. $ A[\mathfrak{m}_A^{-1}] $-algebra) is a field and $ B/J $ (resp. $ B[\mathfrak{m}_A^{-1}] $) is a quadratic étale $ A/\mathfrak{m}_A $-algebra (resp. $ A[\mathfrak{m}_A^{-1}] $-algebra). 
+    By \cite[Proposition 3.4(ii)]{azumaya_involution}, $ B/J $ (resp. $ B[\mathfrak{m}_A^{-1}] $) is either a separable quadratic field extension of $ A/\mathfrak{m}_A $-algebra (resp. $ A[\mathfrak{m}_A^{-1}] $-algebra), or it is isomorphic to $ \prod_{C_2} A/\mathfrak{m}_A $ (resp. $ \prod_{C_2} A[\mathfrak{m}_A^{-1}] $). 
+    In the latter case, the action of $ C_2 $ on $ B/J $ (resp. $ B[\mathfrak{m}_A^{-1}] $) is manifestly free, hence $ (B/J)^{tC_2} = 0 $ (resp. $ B[\mathfrak{m}_A^{-1}]^{tC_2} = 0 $). 
+    Suppose instead that $ B/J $ (resp. $ B[\mathfrak{m}_A^{-1}] $) is a separable quadratic field extension of $ A/\mathfrak{m}_A $-algebra (resp. $ A[\mathfrak{m}_A^{-1}] $-algebra). 
+    By \cite[Proposition 3.4(ii)]{azumaya_involution}, $ \lambda \otimes_{B} B/J $ (resp. $ \lambda \otimes_B B[\mathfrak{m}_A^{-1}] $) is nontrivial, hence by \cite[Lemma 9.21.2, Tag 09DU]{stacks} the extension $ A/\mathfrak{m}_A \to B/J $ (resp. $ A[\mathfrak{m}_A^{-1}] \to B[\mathfrak{m}_A^{-1}] $) is Galois. 
+    Since $ C_2 $ acts freely on $ B/J $ as an $ A/\mathfrak{m}_A $-module by the normal basis theorem, $ (B/J)^{tC_2} = 0 $ (resp. $ B[\mathfrak{m}_A^{-1}]^{tC_2} $).
+
+    We conclude the proof by proving the claim. 
+    Since homotopy fixed points commute with arbitrary limits, it suffices to show that $ B \simeq \lim_i B/\mathfrak{m}_B^i $ induces an equivalence $ B_{hC_2} \to \lim_i \left(B/\mathfrak{m}_B^i\right)_{hC_2} $. 
+    This is true because the $ B/\mathfrak{m}_B^i $ are uniformly bounded below. \Lucy{compare \cite[Remark 2.8]{MR4280864}.}      
 \end{proof}  
+\begin{example}
+    If $ \lambda = \mathrm{id}_X $ and $ Y = X $, then $ \pi_0 \underline{\mathcal{O}}^{\varphi C_2} = \mathcal{O}_Y /2 $. 
+\end{example}
 
 \printbibliography
 
