@@ -228,9 +228,11 @@ Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules 
 
 \Viktor{-characterization in terms of modules with genuine involution, -characterization of symmetric monoidal structures, -Pn}
 
-\section{Poincaré Ring Spectra}
+\section{Poincaré Schemes}
 \label{section:poincare_ring_spectra}
-In this section we will define the ring theoretic building blocks of Poincaré schemes and the corresponding category they live in. Affine Poincaré Schemes will then be the dual objects, similar to how affine schemes are dual to commutative rings.
+We will now specify the objects which we are able to take the Poincar{\'e} Picard and Brauer spaces of. These will be schemes which are equipped with a Poincar{\'e} structure on their derived categories which is compatible with the symmetric monoidal structure. While this definition is simple and convenient, we find it both technically useful and psychologically comforting to have a  definition of such objects closer to a scheme with an involution. We will start by looking at affine objects.
+
+\subsection{Poincar{\'e} rings}
 
 \begin{definition}
     \label{definition:poincare_ring_spectrum}
@@ -327,95 +329,285 @@ In this section we will define the ring theoretic building blocks of Poincaré s
 
 \Viktor{copy more examples from notes}
 
-\subsection{Algebras with genuine involution}
-\begin{recollection}\label{rec:left_module_cats}  
-    Assume $ \mathcal{C} $ is a presentable monoidal $ \infty $-category such that the monoidal product $ - \otimes - \colon \mathcal{C} \times \mathcal{C} \to \mathcal{C} $ preserves small colimits separately in each variable. 
-    Then there is an $ \infty $-category $ \LMod(\mathcal{C}) $ \cite[Example 4.2.1.18]{LurHA} whose objects are pairs $ (A, M) $ where $ A $ is an associative algebra object of $ \mathcal{C} $ and $ M $ is a left $ A $-module. 
-    Write $ a, m $ respectively for the canonical forgetful functors $ \LMod(\mathcal{C})\to \mathrm{Alg}(\mathcal{C}) $, $ \LMod(\mathcal{C}) \to \mathcal{C} $ which send $ (A, M) $ to $ A $ and $ M $, resp. 
-    Then $ a $ is a cocartesian fibration \cite[Corollary 4.2.3.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
+%\subsection{Algebras with genuine involution}
+%\begin{recollection}\label{rec:left_module_cats}  
+%    Assume $ \mathcal{C} $ is a presentable monoidal $ \infty $-category such that the monoidal product $ - \otimes - \colon \mathcal{C} \times \mathcal{C} \to \mathcal{C} $ preserves small colimits separately in each variable. 
+%    Then there is an $ \infty $-category $ \LMod(\mathcal{C}) $ \cite[Example 4.2.1.18]{LurHA} whose objects are pairs $ (A, M) $ where $ A $ is an associative algebra object of $ \mathcal{C} $ and $ M $ is a left $ A $-module. 
+%    Write $ a, m $ respectively for the canonical forgetful functors $ \LMod(\mathcal{C})\to \mathrm{Alg}(\mathcal{C}) $, $ \LMod(\mathcal{C}) \to \mathcal{C} $ which send $ (A, M) $ to $ A $ and $ M $, resp. 
+%    Then $ a $ is a cocartesian fibration \cite[Corollary 4.2.3.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
 
-    The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
-    \begin{equation}
-    \begin{tikzcd}
-        & \mathcal{U} \ar[d] \\
-         \mathrm{Alg}(\mathcal{C}) \ar[r,"\mathrm{mod}"] \ar[ru,"\eta"] & \Cat_\infty   
-    \end{tikzcd}    
-    \end{equation}
-    where $ \mathcal{U} $ is the universal cocartesian fibration. 
-    Now consider the functor $ o \colon \mathcal{U} \to \Cat_\infty $ which sends $ (\mathcal{D}, d \in \mathcal{D}) $ to the undercategory $ \mathcal{D}_{d/-} $. 
-    Define $ \LMod(\mathcal{C})_{*/-} $ to be the cocartesian fibration over $ \mathrm{Alg}(\mathcal{C}) $ classified by $ o \circ \eta \circ \mathrm{mod} $. 
-\end{recollection}
-\begin{variant}
-    Let $ \mathrm{C} $ be as in Recollection \ref{rec:left_module_cats}. 
-    There is a similar construction where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. 
-\end{variant}
-\begin{construction}\label{cons:alg_inv_is_bimod_canonically}
-    Regard $ \mathbb{E}_1\mathrm{Alg}(\Spectra) $ as a category with $ C_2 $-action given by taking the opposite/reverse algebra.  
-    There are functors $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \LMod(\Spectra) $ and $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \BiMod(\Spectra)_{*/-} $ so that $ (a, m) \circ b $ and $ (a, m)\circ b_* $ are (canonically) equivalent to $ (-^e) \otimes(-^ e)^\mathrm{op}, (-)^e $. 
-    Informally, an $ \mathbb{E}_1 $-algebra with involution $ B $ can be regarded as a $ B \otimes B^\op $-module in a canonical way, and there is a canonical $ B \otimes B^\op $-module map $ B \otimes B^\op \to B $. 
-\end{construction}
-\begin{definition}
-    The category of \emph{$\mathbb{E}_1$-algebras with genuine involution} is defined to be the limit of the $\Cat_\infty$-valued diagram 
-    \begin{equation}\label{diagram:E1_alg_gen_involution}
-    \begin{tikzcd}[column sep=small]
-        & \LMod(\Spectra) \ar[dd,"{a,m}"]  & \\
-        & & \LMod\left(\Spectra^{C_2}\right) \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
-        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
-        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
-    \end{tikzcd}
-    \end{equation}
-    where
-    \begin{itemize}
-        \item $ b $ is the functor/section of Construction \ref{cons:alg_inv_is_bimod_canonically} 
-        \item $ U $ is the `underlying' $C_2$-spectrum functor $ \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \to \Spectra^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \simeq \Spectra^{C_2} $ 
-        \item The upper right trapezoid commutes canonically by definition of $ \LMod $ (and the fact that the functors $ a, m $ are given by restriction to subcategories of $ LM^\otimes $). 
-    \end{itemize}
-    Write $ \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_1$-algebras with genuine involution. 
-\end{definition}
-\begin{definition}
-    The category of \emph{$\mathbb{E}_\sigma$-algebras} is defined to be the limit of the $\Cat_\infty$-valued diagram 
-    \begin{equation}\label{diagram:E_sigma_alg}
-    \begin{tikzcd}[column sep=small]
-        & \BiMod(\Spectra)_{*/-} \ar[dd,"{a,m}"]  & \\
-        & & \BiMod\left(\Spectra^{C_2}\right)_{*/-} \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
-        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
-        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b_* \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
-    \end{tikzcd}\,.
-    \end{equation}   
-    Write $ \mathbb{E}_\sigma\mathrm{Alg}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_\sigma$-algebras. 
-\end{definition}
-\begin{variant}
-    Let the base be $ R $ an $ \mathbb{E}_\infty $-algebra or Poincaré ring instead of $ \mathbb{S}^0 $. 
-\end{variant}
-\begin{remarks}
-\begin{enumerate}
-    \item Compare \cite[Corollary 3.10]{AKGH_real_THH}. 
-    \item There are canonical forgetful functors $  \mathbb{E}_\sigma\mathrm{Alg} \to \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} \to \mathbb{E}_1\mathrm{Alg}(\Spectra) $. 
-\end{enumerate}
-\end{remarks}
-\begin{construction}\label{cons:Esigma_alg_to_R_lin_hermitian_cat}
-    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
-    There is a functor $ \left(\Mod_{(-)}^\omega, \Qoppa_{(-)}\right) \colon \mathbb{E}_\sigma\mathrm{Alg}_R \to \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)/-} $. 
-\end{construction}
-\begin{lemma}
-    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
-    The functor of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} is fully faithful. 
-\end{lemma} 
-\begin{proof}
+%    The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
+%    \begin{equation}
+%    \begin{tikzcd}
+%        & \mathcal{U} \ar[d] \\
+%         \mathrm{Alg}(\mathcal{C}) \ar[r,"\mathrm{mod}"] \ar[ru,"\eta"] & \Cat_\infty   
+%    \end{tikzcd}    
+%    \end{equation}
+%    where $ \mathcal{U} $ is the universal cocartesian fibration. 
+%    Now consider the functor $ o \colon \mathcal{U} \to \Cat_\infty $ which sends $ (\mathcal{D}, d \in \mathcal{D}) $ to the undercategory $ \mathcal{D}_{d/-} $. 
+%    Define $ \LMod(\mathcal{C})_{*/-} $ to be the cocartesian fibration over $ \mathrm{Alg}(\mathcal{C}) $ classified by $ o \circ \eta \circ \mathrm{mod} $. 
+%\end{recollection}
+%\begin{variant}
+%    Let $ \mathrm{C} $ be as in Recollection \ref{rec:left_module_cats}. 
+%    There is a similar construction where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. 
+%\end{variant}
+%\begin{construction}\label{cons:alg_inv_is_bimod_canonically}
+%    Regard $ \mathbb{E}_1\mathrm{Alg}(\Spectra) $ as a category with $ C_2 $-action given by taking the opposite/reverse algebra.  
+%    There are functors $ b \colon %\mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \LMod(\Spectra) $ and $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \BiMod(\Spectra)_{*/-} $ so that $ (a, m) \circ b $ and $ (a, m)\circ b_* $ are (canonically) equivalent to $ (-^e) \otimes(-^ e)^\mathrm{op}, (-)^e $. 
+%    Informally, an $ \mathbb{E}_1 $-algebra with involution $ B $ can be regarded as a $ B \otimes B^\op $-module in a canonical way, and there is a canonical $ B \otimes B^\op $-module map $ B \otimes B^\op \to B $. 
+%\end{construction}
+%\begin{definition}
+%    The category of \emph{$\mathbb{E}_1$-algebras with genuine involution} is defined to be the limit of the $\Cat_\infty$-valued diagram 
+%    \begin{equation}\label{diagram:E1_alg_gen_involution}
+%    \begin{tikzcd}[column sep=small]
+%        & \LMod(\Spectra) \ar[dd,"{a,m}"]  & \\
+%        & & \LMod\left(\Spectra^{C_2}\right) \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
+%        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
+%        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
+%    \end{tikzcd}
+%    \end{equation}
+%    where
+%    \begin{itemize}
+%        \item $ b $ is the functor/section of Construction \ref{cons:alg_inv_is_bimod_canonically} 
+%        \item $ U $ is the `underlying' $C_2$-spectrum functor $ \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \to \Spectra^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \simeq \Spectra^{C_2} $ 
+%        \item The upper right trapezoid commutes canonically by definition of $ \LMod $ (and the fact that the functors $ a, m $ are given by restriction to subcategories of $ LM^\otimes $). 
+%    \end{itemize}
+%    Write $ \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_1$-algebras with genuine involution. 
+%\end{definition}
+%\begin{definition}
+%    The category of \emph{$\mathbb{E}_\sigma$-algebras} is defined to be the limit of the $\Cat_\infty$-valued diagram 
+%    \begin{equation}\label{diagram:E_sigma_alg}
+%    \begin{tikzcd}[column sep=small]
+%        & \BiMod(\Spectra)_{*/-} \ar[dd,"{a,m}"]  & \\
+%        & & \BiMod\left(\Spectra^{C_2}\right)_{*/-} \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
+%        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
+%        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b_* \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
+%    \end{tikzcd}\,.
+%    \end{equation}   
+%    Write $ \mathbb{E}_\sigma\mathrm{Alg}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_\sigma$-algebras. 
+%\end{definition}
+%\begin{variant}
+%    Let the base be $ R $ an $ \mathbb{E}_\infty $-algebra or Poincaré ring instead of $ \mathbb{S}^0 $. 
+%\end{variant}
+%\begin{remarks}
+%\begin{enumerate}
+%    \item Compare \cite[Corollary 3.10]{AKGH_real_THH}. 
+%    \item There are canonical forgetful functors $  \mathbb{E}_\sigma\mathrm{Alg} \to \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} \to \mathbb{E}_1\mathrm{Alg}(\Spectra) $. 
+%\end{enumerate}
+%\end{remarks}
+%\begin{construction}\label{cons:Esigma_alg_to_R_lin_hermitian_cat}
+%    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
+%    There is a functor $ \left(\Mod_{(-)}^\omega, \Qoppa_{(-)}\right) \colon \mathbb{E}_\sigma\mathrm{Alg}_R \to \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)/-} $. 
+%\end{construction}
+%\begin{lemma}
+%    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
+%    The functor of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} is fully faithful. 
+%\end{lemma} 
+%\begin{proof}
     
-\end{proof}
+%\end{proof}
 
-Now we observe that given a hermitian object $ (x,q) $ of $ \left(\mathcal{C}, \Qoppa_\mathcal{C}\right) $, its endomorphism algebra admits a canonical lift to a $ \mathbb{E}_\sigma $-algebra. 
-\begin{construction}\label{cons:endomorphism_of_hermitian_obj}
-    There is a functor $ \mathrm{End}(-)\colon \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_\sigma\mathrm{Alg} $ lifting the functor $ \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} $ of \cite[Proposition 3.1.16]{CDHHLMNNSI}. 
-\end{construction}
-\begin{theorem}
-    The functors of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} and \ref{cons:endomorphism_of_hermitian_obj} form an adjoint pair. 
-\end{theorem}
+%Now we observe that given a hermitian object $ (x,q) $ of $ \left(\mathcal{C}, \Qoppa_\mathcal{C}\right) $, its endomorphism algebra admits a canonical lift to a $ \mathbb{E}_\sigma $-algebra. 
+%\begin{construction}\label{cons:endomorphism_of_hermitian_obj}
+%    There is a functor $ \mathrm{End}(-)\colon \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_\sigma\mathrm{Alg} $ lifting the functor $ \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} $ of \cite[Proposition 3.1.16]{CDHHLMNNSI}. 
+%\end{construction}
+%\begin{theorem}
+%    The functors of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} and \ref{cons:endomorphism_of_hermitian_obj} form an adjoint pair. 
+%\end{theorem}
 
 % \section{Modules over Poincaré Ring Spectra}
 % \label{subsection:modules_over_poincare_ring_spectra}
 
+\subsection{From schemes with involution to Poincaré structures on module categories}\label{subsection:Poincare_structures_module_cats} 
+
+We will now turn our attention to the non-affine case. In this setting we will again want to work with schemes with some notion of a genuine $C_2$-structure as our model, and then show that this leads to the structure of a scheme together with a symmetric monoidal structure on its derived category. 
+
+Philosophically, a scheme with genuine $C_2$-action should, via a recollement, be given by a scheme $X$ with an involution together with a choice of genuine $C_2$ quotient $X\to Y$ satisfying certain conditions. It turns out that such a notion has already appeared in the literature on Azumaya algebras with involution.
+
+\begin{recollection} [{\cite[Remark 4.20]{azumaya_involution}}]
+    Let $ X $ be a scheme with an involution $ \lambda \colon X \to X $. 
+    A map $ \pi \colon X \to Y $ is called a good quotient of $ X $ relative to $ \lambda $ if $ \pi $ is $ C_2 $-invariant and affine and $ \pi_{\#} \colon \mathcal{O}_Y \to \pi_{*} \mathcal{O}_X $ induces an isomorphism $ \mathcal{O}_Y \simeq \left(\pi_{*} \mathcal{O}_X\right)^{C_2} $. 
+    A good quotient of $ X $ exists if and only if every $ C_2 $-orbit is contained in an affine open subscheme, in which case it is unique up to isomorphism. 
+\end{recollection}
+\begin{definition}
+    Define a category $ \mathrm{qSch}^{C_2} $ so that
+    \begin{itemize}
+        \item an object of $ \mathrm{qSch}^{C_2} $ consists of the data of qcqs schemes $ X $ and $ Y $, an involution $ \lambda \colon X \to X $, and a morphism $ p \colon X \to Y $ which exhibits $ Y $ as a \emph{good quotient} of the involution on $ X $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
+        \item a morphism from $ (X,\lambda, Y, p) $ to $ (Z,\nu, W, q) $ consists of a $ C_2 $-equivariant morphism $ X \to Z $ and a morphism $ Y \to W $ so that the diagram
+        \begin{equation*}
+        \begin{tikzcd}
+            X \ar[d] \ar[r] & Z \ar[d] \\
+            Y \ar[r] & W
+        \end{tikzcd}
+        \end{equation*}
+        commutes. 
+    \end{itemize}
+\end{definition}
+\begin{remark}\label{remark:restriction_of_schemes_with_involution}
+    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ j \colon U \to Y $ is a flat map. %quasi-compact open subscheme %\Lucy{Do I need quasi-compact assumption?}
+    Then $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
+    % In fact, if $ j $ is étale, $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
+    Affineness and invariance under the $ C_2 $-action are stable under pullback, so it suffices to show that $ j^*(\pi) $ satisfies $ \mathcal{O}_U \simeq \left(j^*(\pi)\right)_*(\mathcal{O}_{j^*U})^{C_2} $. 
+    This follows from the proof of \cite[Theorem 4.35(i)]{azumaya_involution}.  
+\end{remark}
+\begin{proposition}
+    Write $ U \colon \mathrm{qSch}^{C_2} \to \mathrm{qSch} $ for the functor so that $ U(X, \lambda, Y, p) = X $.  
+    The category $ \mathrm{qSch}^{C_2} $ has a symmetric monoidal structure $ \boxtimes $ so that $ U $ is symmetric monoidal, where $ \mathrm{qSch} $ is endowed with the product symmetric monoidal structure. 
+\end{proposition}
+\begin{proof}
+    If $ X $, $ Z $ are schemes with involutions $ \lambda_X $, $ \lambda_Z $, then $ \lambda_X \times \lambda_Z $ endows $ X \times Z $ with an involution. 
+    It suffices to show that $ X \times Z $ admits a good quotient, as a good quotient is a categorical quotient and is therefore unique up to isomorphism. 
+    By \cite[Remark 4.20]{azumaya_involution}, a good quotient exists if and only if every $ C_2 $-orbit is contained in an affine open subscheme. 
+    Consider a $ C_2 $-orbit in $ X \times Z $. 
+    Its image under the projection $ \pi_1 \colon X \times Z \to X $ (resp. $ \pi_2 \colon X \times Z \to Z $) is contained in an affine open subscheme $ U \subseteq X $ (resp. $ V \subseteq Z $). 
+    Thus the orbit under consideration is contained in $ U \times Z $, which is affine. 
+\end{proof}
+\begin{construction}\label{cons:structure_sheaf_of_Green_functors}
+    Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
+    We write $ p \colon X \to Y $ for the quotient map.
+    Let $ j \colon \Spec A  \simeq U \subseteq Y $ be an affine open subscheme of $ Y $. 
+    Because $ p $ is an affine map, the fiber product $ \Spec B := \Spec A \times_{Y} X $ is an affine open of $ X $ which is invariant under the $ C_2 $-action. 
+    In particular $ \Spec B $ inherits a $ C_2 $-action from $ X $ (hence so does its ring of functions $ B$).  
+    Now $ A \to B $ acquires the structure of a $C_2$-Green functor $ \underline{\mathcal{O}}(U) $. 
+    Regarding $ \underline{\mathcal{O}}(U) $ as a $ C_2 $-spectrum, by the isotropy separation sequence, we have an equivalence of $ A $-modules $ \underline{\mathcal{O}}(U)^{\varphi C_2} \simeq \mathrm{cofib} (\mathrm{tr} \colon B_{hC_2} \to A) $. 
+\end{construction}
+\begin{lemma} \label{lemma:identify_structure_sheaf_of_Green_func}
+Let $ X $ be a scheme with an involution. 
+Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}, and write $ p \colon X \to Y $ for the quotient map. 
+\begin{enumerate}[label=(\roman*)]
+    \item \label{lem_item:structure_sheaf_of_Green_func_is_functor} The assignment of Construction \ref{cons:structure_sheaf_of_Green_functors} lifts to a contravariant functor from (the nerve of) the category of affine opens of $ Y $ to the $\infty $-category of Poincaré rings/$ C_2 $-$ \EE_\infty $-rings/Tambara functors. 
+    \item \label{lem_item:structure_sheaf_of_Green_func_is_sheaf} The presheaf $ \underline{\mathcal{O}} $ of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
+    \item \label{lem_item:structured_pushforward_is_equiv} Write $ p_* \mathcal{O}_X $ for the sheaf of $ \EE_\infty $-$ \mathcal{O}_Y $-algebras (all functors are derived). 
+    Then the pushforward $ p_* $ induces an equivalence $ \mathcal{D}(X) \xrightarrow{\sim} \Mod_{p_*\mathcal{O}_X} $. 
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+    Part \ref{lem_item:structure_sheaf_of_Green_func_is_functor} follows from a similar argument to \cite[Theorem 5.1]{LYang_normedrings}; functoriality follows from noting that $ \tau_{\geq 0} $ is a functor.  
+    Part \ref{lem_item:structure_sheaf_of_Green_func_is_sheaf} follows from Lemma \ref{lemma:limits_of_param_alg_detected_orbitwise}. 
+    To prove part \ref{lem_item:structured_pushforward_is_equiv}, consider a Zariski cover $ \{j_i \colon U_i \to Y \} $ of $ Y $ by affine opens. 
+    By Zariski descent, $ \displaystyle\mathcal{D}(X) \simeq \lim_{p^*(j_i) = p \times_Y j_i \colon U_i \times_Y X \to X} \Mod_{\mathcal{O}_X(U_i \times_Y X)} $ and $ \displaystyle\Mod_{p_*(\mathcal{O}_X)} \simeq \lim_{j_i \colon U_i \to Y} \Mod_{p_*\mathcal{O}_X(U_i)} $, hence the result follows. 
+\end{proof}
+\begin{lemma}\label{lemma:limits_of_param_alg_detected_orbitwise}
+    Let $ K $ be a simplicial set, and let $ f \colon K^{\triangleleft} \to C_2 \EE_\infty\mathrm{Alg}(\Spectra^{C_2}) $ be a diagram. 
+    Then $ f $ is a limit diagram if and only if $ f^e \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ and $ f^{C_2} \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ are both limit diagrams. 
+\end{lemma}
+\begin{proof}
+    The result follows from the observation that limits in $ \EE_\infty \mathrm{Alg} \left(\Spectra^{C_2}\right) $ are computed in $ \Spectra^{C_2} $. 
+\end{proof}
+\begin{construction}\label{cons:C2_mod_over_sheaf_of_Green_func}
+    Let $ p \colon X \to Y $ as before. 
+    Consider the composites
+    \begin{equation}\label{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}
+    \begin{split}
+        \Mod_{\underline{\mathcal{O}}} \colon & \mathrm{Op}(Y)^\op \xrightarrow{\underline{\mathcal{O}}} C_2\EE_\infty\mathrm{Alg}\left(\Spectra^{C_2}\right) \xrightarrow{\Mod_{(-)}} \Cat   \\
+        \Mod_{\underline{\mathcal{O}}}^\otimes \colon & \mathrm{Op}(Y)^\op \xrightarrow{\underline{\mathcal{O}}} C_2\EE_\infty\mathrm{Alg}\left(\Spectra^{C_2}\right) \xrightarrow{\Mod_{(-)}^\otimes} C_2\otimes\Cat \,,  
+    \end{split}    
+    \end{equation}
+    where $ C_2\otimes\Cat $ denotes the $ \infty $-category of (small)\Lucy{bleh...cardinals} $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-categories. 
+    In the notation of Construction \ref{cons:structure_sheaf_of_Green_functors}, this functor sends the affine open $ \Spec A \subseteq Y $ to the category of modules in $ C_2 $-spectra over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $. 
+    Define\Lucy{invent better notation later} $ \Mod_{\underline{\mathcal{O}}} $, $ \Mod_{\underline{\mathcal{O}}}^\otimes $ to be the limits in $ \Cat $, $ C_2 \otimes \Cat $, resp. of the functors in (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}). 
+    In particular, if we write $ s \colon \int \Mod_{\underline{\mathcal{O}}} \to \mathrm{Op}(Y)^\op $ for the cocartesian fibration obtained by taking the Grothendieck construction on (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}), an object of $ \Mod_{\underline{\mathcal{O}}} $ is a cocartesian section of $ s $. 
+    In other words, it is a choice, for each affine open $ \Spec A $ of $ Y $ (same notation as before), of a module over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $ which glue compatibly. 
+\end{construction} 
+Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{N^{C_2}B}\left(\Spectra^{C_2}\right) $ and a quadratic relative norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{A\to B}\left(\Spectra^{C_2}\right) $. 
+\begin{construction}\label{cons:globalize_relative_norm}
+    Let $ X $ be a scheme with an involution, and let $ p \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
+    Assume that $ p $ is affine. 
+    The norm functors (resp. relative norm functors) $ N^{C_2}_e $ assemble under Construction \ref{cons:structure_sheaf_of_Green_functors} to a `global' norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to N^{C_2} \pi_{\#} \mathcal{O}_X\Mod $ (resp. relative norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to \underline{\mathcal{O}}\Mod $). 
+    Moreover, these functors are quadratic. 
+\end{construction}
+For each affine open $ j \colon \Spec A \subseteq Y $, write $ B = \Gamma (\mathcal{O}_{\Spec A \times_Y X}) $, consider the composite 
+% Then the functor $ N^{C_2}_Y $ is the limit over all $ \Spec A \subseteq Y $ of the functors 
+\begin{equation*}
+     \pi_{\#}\mathcal{O}_X \Mod \xrightarrow{j^*} \Mod_B(\Spectra) \xrightarrow{N^{C_2}} \Mod_{N^{C_2}B}(\Spectra^{C_2}) \xrightarrow{ -\otimes_{N^{C_2}B} (A \to B)} \Mod_{A \to B}(\Spectra^{C_2})\,,
+\end{equation*}  
+where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which is a structure map for the $ C_2 $-$ \EE_\infty $-algebra structure on $ A \to B $. 
+\Lucy{todo: use effective descent/limit definition for $ \underline{\mathcal{O}} $-modules.} 
+Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
+\begin{definition}
+    Varying $ X \to Y $, Constructions \ref{cons:C2_mod_over_sheaf_of_Green_func} and \ref{cons:globalize_relative_norm} define a functor \Lucy{want: codomain consists of $ C_2 $-stable $ C_2 $-presentable $ C_2 $-$ \infty $-categories}
+    \begin{align*}
+        \left(\mathrm{qSch}^{C_2}\right)^{\op} &\to C_2 \otimes \Cat  \\
+        \left(X, \lambda, Y, p \right) &\mapsto \underline{\Mod}_{\underline{\mathcal{O}}}\left(\underline{\Spectra}^{C_2}\right)
+    \end{align*}
+\end{definition} 
+\begin{definition}
+    Suppose $ \mathcal{C} $ is a $ C_2 $-stable $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category. 
+    Define a functor
+    \begin{align*}
+       \mathrm{eInv} \colon  C_2 \otimes \Cat^{\mathrm{ex}} &\to \Spaces \\
+        \left(\mathcal{C}, \otimes\right) & \mapsto \left(\mathrm{C}^{C_2}\right)^{\simeq} \times_{(\mathrm{C}^e)^{\simeq,hC_2}} \Pic (\mathrm{C}^e)^{\simeq,hC_2} \,.
+    \end{align*}
+    In other words, $ \mathrm{eInv} $ sends a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category to the full subgroupoid of $ \mathcal{C}^{C_2} $ on those objects $ L $ so that $ L^e $ is an invertible object in $ \mathcal{C}^e $. 
+
+    Write $ \widetilde{\mathrm{eInv}} $ for the Grothendieck construction on $ \mathrm{eInv} $. 
+\end{definition}
+There is a functor
+\begin{equation}\label{eq:C2_cat_to_Poincare_cat}
+\begin{split}
+    \widetilde{\mathrm{eInv}} &\to \EE_\infty \mathrm{Alg}\left(\mathrm{Cat}^h \right) \\
+    (\mathcal{C}, L) &\mapsto (\mathcal{C}^e, \mathcal{C}^e \xrightarrow{N_{\mathcal{C}}} \mathcal{C}^{C_2} \xrightarrow{\hom_{\mathcal{C}^{C_2}}(-,L)} \Spectra)
+\end{split}
+\end{equation}
+\Lucy{Pretty sure distributive norm functors are 2-excisive (results \href{https://arxiv.org/pdf/2010.09097}{here} should generalize readily)...if not, can define the problem away.}
+\begin{lemma}
+    The functor of (\ref{eq:C2_cat_to_Poincare_cat}) lifts to a functor $ \widetilde{\mathrm{eInv}}  \to \Catp $. 
+\end{lemma}
+\Lucy{Example: Special case where $ X $ has trivial $ C_2 $ action and $ X = Y $.}
+\begin{lemma}\label{lemma:line_bundle_as_C2_sheaf}
+    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
+    Let $ L $ be a line bundle on $ Y $. 
+    Then the canonical map 
+    \begin{equation}\label{eq:line_bundle_as_C2_sheaf}
+        L \to \pi_{\#} \pi^* L 
+    \end{equation} 
+    promotes (\ref{eq:line_bundle_as_C2_sheaf}) to a sheaf of $ \underline{\mathcal{O}} $-modules on $ Y $. 
+    We will write $ \underline{L} $ for (\ref{eq:line_bundle_as_C2_sheaf}). 
+\end{lemma}
+\begin{proof}
+    Follows from naturality of the unit and the canonical identification $ \pi^* \mathcal{O}_Y $ with $ \mathcal{O}_X $. 
+\end{proof}
+\begin{definition}\label{defn:quadratic_functor_from_good_quotient}
+    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
+    Let $ L $ be a line bundle on $ Y $. 
+    Define $ \Qoppa_{\sigma, L} $ to be the functor
+    \begin{equation*}
+        \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{L})} \Spectra \,,
+    \end{equation*}
+    where $ \underline{L} $ is a $ \underline{\mathcal{O}} $-module by Lemma \ref{lemma:line_bundle_as_C2_sheaf} and $ \underline{\mathcal{O}} $ is a $ N^{C_2} \pi_{\#}\mathcal{O}_X $-algebra by Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}. 
+    By Construction \ref{cons:globalize_relative_norm} and the fact that the composite of an exact (1-excisive) functor and an $ m$-excisive functor is $m$-excisive (see \cite[\S2.2]{Kpoly}), $ \Qoppa_{\sigma,L} $ is quadratic. 
+    % \Lucy{want to show that the assignment $ (\sigma:X \to X, \pi: X \to Y, L) \mapsto (\perf_X, \Qoppa_{\sigma,L}) $ defines a functor from some category of schemes with involution (+line bundle) to the $ \infty $-category of Poincaré $ \infty $-categories.}
+\end{definition}
+\begin{example} 
+    Suppose $ L = \mathcal{O}_Y $. 
+    Then we drop $ L $ from notation and the quadratic functor $ \Qoppa_{\sigma} $ of Definition \ref{defn:quadratic_functor_from_good_quotient} takes the form
+    \begin{equation*}
+        \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{\mathcal{O}})} \Spectra \,.
+    \end{equation*}    
+\end{example}
+% \begin{lemma}\label{lemma:fully_faithful_pushforward}
+%     Let $\pi \colon X \to Y $ be a finite étale map. 
+%     Then the canonical functor $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ is fully faithful. 
+%     \Lucy{asked JH Nov 22nd: James says that this should definitely be true, and moreover in greater generality (for instance, if $ \pi$ is faithfully flat.); try, for instance, Barr--Beck.}
+% \end{lemma}
+% \begin{proof}
+%     Affine-locally on $ Y $, I think this is an \emph{equivalence}. 
+%     Conclude by descent. 
+% \end{proof}
+\begin{lemma}\label{lemma:bilinear_parts_agree}
+    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $, and let $ Y $ be a good quotient of $ X $. 
+    % Assume that the quotient map $ q \colon X \to Y $ is étale. \Lucy{Weakest possible assumption? \href{https://mathoverflow.net/questions/169052/are-quotients-of-affine-schemes-by-finite-groups-faithfully-flat}{relevant MO post}.}
+    Let $ L $ be a line bundle on $ Y $, and let $ \Qoppa_{\sigma,L} $ be the quadratic functor on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
+    Then the bilinear part of $ \Qoppa_{\sigma,L} $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
+    In particular, $ \left(\perf_X, \Qoppa_{\sigma,L} \right) $ is a Poincaré $ \infty $-category. 
+\end{lemma}
+\begin{proof}
+    By definition of the bilinear part of a quadratic functor, it suffices to show that there is an equivalence $ \hom_{\pi_{\#}\mathcal{O}_X\Mod}\left(\pi_{\#}E \otimes_{\pi_{\#}\mathcal{O}_X} \pi_{\#}E, \pi_{\#}\mathcal{O}_X\right) \simeq \hom_{\mathcal{O}_X\Mod}\left(E \otimes_{\mathcal{O}_X} \sigma^*E, \mathcal{O}_X\right) $ for any perfect complex $ E $ on $ X $. 
+    This follows from Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}\ref{lem_item:structured_pushforward_is_equiv}. %\ref{lemma:fully_faithful_pushforward}.  
+\end{proof}
+\begin{remark}
+    Compare the description of the space of bilinear forms in Lemma \ref{lemma:bilinear_parts_agree} with the description of a $ \delta $-hermitian form $ H $ in \cite[p. 216]{MR1162189}. 
+\end{remark}
 
 \section{The Poincaré Picard space}
 \label{subsection:the_poincare_picard_group}
@@ -425,6 +617,7 @@ Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ 
 \begin{definition}
     \label{definition:poincare_picard_space}
     Let $A$ be a Poincaré ring spectrum. We define the \emph{Picard space of $A$} to be $$\Picp(A):=\Pic(\Pn(A)).$$
+    For $(X,\lambda, Y, p)\in \mathrm{qSch}^{C_2}$ we similarly define \[\Picp(X,\lambda,Y,p):= \Pic(\Pn(\perf_X,\Qoppa_{\sigma})).\]
 \end{definition}
 
 \begin{remark}
@@ -813,193 +1006,6 @@ As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty 
 
     Finally, the natural transformation $ g \circ D_L \Rightarrow D_{L'} \circ g $ is $ g\left(L \otimes \sigma_{\mathcal{C}}(y)^\vee\right) \simeq g(L) \otimes g\left(\sigma_{\mathcal{C}}(y)^\vee\right) \to L' \otimes \sigma_{\mathcal{C}'}(g(y))^\vee $ which is an equivalence if and only if the map $ g(L) \to L' $ is an equivalence\Lucy{how much equivariance on $ g(L) \to L' $ is necessary?}. 
 \end{proof}
-
-\subsection{From schemes with involution to Poincaré structures on module categories}\label{subsection:Poincare_structures_module_cats} 
-\Lucy{explain why using good quotients/choice of quotient is useful.}
-\begin{recollection} [{\cite[Remark 4.20]{azumaya_involution}}]
-    Let $ X $ be a scheme with an involution $ \lambda \colon X \to X $. 
-    A map $ \pi \colon X \to Y $ is called a good quotient of $ X $ relative to $ \lambda $ if $ \pi $ is $ C_2 $-invariant and affine and $ \pi_{\#} \colon \mathcal{O}_Y \to \pi_{*} \mathcal{O}_X $ induces an isomorphism $ \mathcal{O}_Y \simeq \left(\pi_{*} \mathcal{O}_X\right)^{C_2} $. 
-    A good quotient of $ X $ exists if and only if every $ C_2 $-orbit is contained in an affine open subscheme, in which case it is unique up to isomorphism. 
-\end{recollection}
-\begin{definition}
-    Define a category $ \mathrm{qSch}^{C_2} $ so that
-    \begin{itemize}
-        \item an object of $ \mathrm{qSch}^{C_2} $ consists of the data of qcqs schemes $ X $ and $ Y $, an involution $ \lambda \colon X \to X $, and a morphism $ p \colon X \to Y $ which exhibits $ Y $ as a \emph{good quotient} of the involution on $ X $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
-        \item a morphism from $ (X,\lambda, Y, p) $ to $ (Z,\nu, W, q) $ consists of a $ C_2 $-equivariant morphism $ X \to Z $ and a morphism $ Y \to W $ so that the diagram
-        \begin{equation*}
-        \begin{tikzcd}
-            X \ar[d] \ar[r] & Z \ar[d] \\
-            Y \ar[r] & W
-        \end{tikzcd}
-        \end{equation*}
-        commutes. 
-    \end{itemize}
-\end{definition}
-\begin{remark}\label{remark:restriction_of_schemes_with_involution}
-    Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ j \colon U \to Y $ is a flat map. %quasi-compact open subscheme %\Lucy{Do I need quasi-compact assumption?}
-    Then $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
-    % In fact, if $ j $ is étale, $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
-    Affineness and invariance under the $ C_2 $-action are stable under pullback, so it suffices to show that $ j^*(\pi) $ satisfies $ \mathcal{O}_U \simeq \left(j^*(\pi)\right)_*(\mathcal{O}_{j^*U})^{C_2} $. 
-    This follows from the proof of \cite[Theorem 4.35(i)]{azumaya_involution}.  
-\end{remark}
-\begin{proposition}
-    Write $ U \colon \mathrm{qSch}^{C_2} \to \mathrm{qSch} $ for the functor so that $ U(X, \lambda, Y, p) = X $.  
-    The category $ \mathrm{qSch}^{C_2} $ has a symmetric monoidal structure $ \boxtimes $ so that $ U $ is symmetric monoidal, where $ \mathrm{qSch} $ is endowed with the product symmetric monoidal structure. 
-\end{proposition}
-\begin{proof}
-    If $ X $, $ Z $ are schemes with involutions $ \lambda_X $, $ \lambda_Z $, then $ \lambda_X \times \lambda_Z $ endows $ X \times Z $ with an involution. 
-    It suffices to show that $ X \times Z $ admits a good quotient, as a good quotient is a categorical quotient and is therefore unique up to isomorphism. 
-    By \cite[Remark 4.20]{azumaya_involution}, a good quotient exists if and only if every $ C_2 $-orbit is contained in an affine open subscheme. 
-    Consider a $ C_2 $-orbit in $ X \times Z $. 
-    Its image under the projection $ \pi_1 \colon X \times Z \to X $ (resp. $ \pi_2 \colon X \times Z \to Z $) is contained in an affine open subscheme $ U \subseteq X $ (resp. $ V \subseteq Z $). 
-    Thus the orbit under consideration is contained in $ U \times Z $, which is affine. 
-\end{proof}
-\begin{construction}\label{cons:structure_sheaf_of_Green_functors}
-    Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
-    We write $ p \colon X \to Y $ for the quotient map.
-    Let $ j \colon \Spec A  \simeq U \subseteq Y $ be an affine open subscheme of $ Y $. 
-    Because $ p $ is an affine map, the fiber product $ \Spec B := \Spec A \times_{Y} X $ is an affine open of $ X $ which is invariant under the $ C_2 $-action. 
-    In particular $ \Spec B $ inherits a $ C_2 $-action from $ X $ (hence so does its ring of functions $ B$).  
-    Now $ A \to B $ acquires the structure of a $C_2$-Green functor $ \underline{\mathcal{O}}(U) $. 
-    Regarding $ \underline{\mathcal{O}}(U) $ as a $ C_2 $-spectrum, by the isotropy separation sequence, we have an equivalence of $ A $-modules $ \underline{\mathcal{O}}(U)^{\varphi C_2} \simeq \mathrm{cofib} (\mathrm{tr} \colon B_{hC_2} \to A) $. 
-\end{construction}
-\begin{lemma} \label{lemma:identify_structure_sheaf_of_Green_func}
-Let $ X $ be a scheme with an involution. 
-Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}, and write $ p \colon X \to Y $ for the quotient map. 
-\begin{enumerate}[label=(\roman*)]
-    \item \label{lem_item:structure_sheaf_of_Green_func_is_functor} The assignment of Construction \ref{cons:structure_sheaf_of_Green_functors} lifts to a contravariant functor from (the nerve of) the category of affine opens of $ Y $ to the $\infty $-category of Poincaré rings/$ C_2 $-$ \EE_\infty $-rings/Tambara functors. 
-    \item \label{lem_item:structure_sheaf_of_Green_func_is_sheaf} The presheaf $ \underline{\mathcal{O}} $ of \ref{lem_item:structure_sheaf_of_Green_func_is_functor} defines a Zariski sheaf. 
-    \item \label{lem_item:structured_pushforward_is_equiv} Write $ p_* \mathcal{O}_X $ for the sheaf of $ \EE_\infty $-$ \mathcal{O}_Y $-algebras (all functors are derived). 
-    Then the pushforward $ p_* $ induces an equivalence $ \mathcal{D}(X) \xrightarrow{\sim} \Mod_{p_*\mathcal{O}_X} $. 
-\end{enumerate}
-\end{lemma}
-\begin{proof}
-    Part \ref{lem_item:structure_sheaf_of_Green_func_is_functor} follows from a similar argument to \cite[Theorem 5.1]{LYang_normedrings}; functoriality follows from noting that $ \tau_{\geq 0} $ is a functor.  
-    Part \ref{lem_item:structure_sheaf_of_Green_func_is_sheaf} follows from Lemma \ref{lemma:limits_of_param_alg_detected_orbitwise}. 
-    To prove part \ref{lem_item:structured_pushforward_is_equiv}, consider a Zariski cover $ \{j_i \colon U_i \to Y \} $ of $ Y $ by affine opens. 
-    By Zariski descent, $ \displaystyle\mathcal{D}(X) \simeq \lim_{p^*(j_i) = p \times_Y j_i \colon U_i \times_Y X \to X} \Mod_{\mathcal{O}_X(U_i \times_Y X)} $ and $ \displaystyle\Mod_{p_*(\mathcal{O}_X)} \simeq \lim_{j_i \colon U_i \to Y} \Mod_{p_*\mathcal{O}_X(U_i)} $, hence the result follows. 
-\end{proof}
-\begin{lemma}\label{lemma:limits_of_param_alg_detected_orbitwise}
-    Let $ K $ be a simplicial set, and let $ f \colon K^{\triangleleft} \to C_2 \EE_\infty\mathrm{Alg}(\Spectra^{C_2}) $ be a diagram. 
-    Then $ f $ is a limit diagram if and only if $ f^e \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ and $ f^{C_2} \colon K^{\triangleleft} \to \EE_\infty\mathrm{Alg}(\Spectra) $ are both limit diagrams. 
-\end{lemma}
-\begin{proof}
-    The result follows from the observation that limits in $ \EE_\infty \mathrm{Alg} \left(\Spectra^{C_2}\right) $ are computed in $ \Spectra^{C_2} $. 
-\end{proof}
-\begin{construction}\label{cons:C2_mod_over_sheaf_of_Green_func}
-    Let $ p \colon X \to Y $ as before. 
-    Consider the composites
-    \begin{equation}\label{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}
-    \begin{split}
-        \Mod_{\underline{\mathcal{O}}} \colon & \mathrm{Op}(Y)^\op \xrightarrow{\underline{\mathcal{O}}} C_2\EE_\infty\mathrm{Alg}\left(\Spectra^{C_2}\right) \xrightarrow{\Mod_{(-)}} \Cat   \\
-        \Mod_{\underline{\mathcal{O}}}^\otimes \colon & \mathrm{Op}(Y)^\op \xrightarrow{\underline{\mathcal{O}}} C_2\EE_\infty\mathrm{Alg}\left(\Spectra^{C_2}\right) \xrightarrow{\Mod_{(-)}^\otimes} C_2\otimes\Cat \,,  
-    \end{split}    
-    \end{equation}
-    where $ C_2\otimes\Cat $ denotes the $ \infty $-category of (small)\Lucy{bleh...cardinals} $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-categories. 
-    In the notation of Construction \ref{cons:structure_sheaf_of_Green_functors}, this functor sends the affine open $ \Spec A \subseteq Y $ to the category of modules in $ C_2 $-spectra over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $. 
-    Define\Lucy{invent better notation later} $ \Mod_{\underline{\mathcal{O}}} $, $ \Mod_{\underline{\mathcal{O}}}^\otimes $ to be the limits in $ \Cat $, $ C_2 \otimes \Cat $, resp. of the functors in (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}). 
-    In particular, if we write $ s \colon \int \Mod_{\underline{\mathcal{O}}} \to \mathrm{Op}(Y)^\op $ for the cocartesian fibration obtained by taking the Grothendieck construction on (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}), an object of $ \Mod_{\underline{\mathcal{O}}} $ is a cocartesian section of $ s $. 
-    In other words, it is a choice, for each affine open $ \Spec A $ of $ Y $ (same notation as before), of a module over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $ which glue compatibly. 
-\end{construction} 
-Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{N^{C_2}B}\left(\Spectra^{C_2}\right) $ and a quadratic relative norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{A\to B}\left(\Spectra^{C_2}\right) $. 
-\begin{construction}\label{cons:globalize_relative_norm}
-    Let $ X $ be a scheme with an involution, and let $ p \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
-    Assume that $ p $ is affine. 
-    The norm functors (resp. relative norm functors) $ N^{C_2}_e $ assemble under Construction \ref{cons:structure_sheaf_of_Green_functors} to a `global' norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to N^{C_2} \pi_{\#} \mathcal{O}_X\Mod $ (resp. relative norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to \underline{\mathcal{O}}\Mod $). 
-    Moreover, these functors are quadratic. 
-\end{construction}
-For each affine open $ j \colon \Spec A \subseteq Y $, write $ B = \Gamma \mathcal{O}_{\Spec A \times_Y X} $, consider the composite 
-% Then the functor $ N^{C_2}_Y $ is the limit over all $ \Spec A \subseteq Y $ of the functors 
-\begin{equation*}
-     \pi_{\#}\mathcal{O}_X \Mod \xrightarrow{j^*} \Mod_B(\Spectra) \xrightarrow{N^{C_2}} \Mod_{N^{C_2}B}(\Spectra^{C_2}) \xrightarrow{ -\otimes_{N^{C_2}B} (A \to B)} \Mod_{A \to B}(\Spectra^{C_2})\,,
-\end{equation*}  
-where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which is a structure map for the $ C_2 $-$ \EE_\infty $-algebra structure on $ A \to B $. 
-\Lucy{todo: use effective descent/limit definition for $ \underline{\mathcal{O}} $-modules.} 
-Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
-\begin{definition}
-    Varying $ X \to Y $, Constructions \ref{cons:C2_mod_over_sheaf_of_Green_func} and \ref{cons:globalize_relative_norm} define a functor \Lucy{want: codomain consists of $ C_2 $-stable $ C_2 $-presentable $ C_2 $-$ \infty $-categories}
-    \begin{align*}
-        \left(\mathrm{qSch}^{C_2}\right)^{\op} &\to C_2 \otimes \Cat  \\
-        \left(X, \lambda, Y, p \right) &\mapsto \underline{\Mod}_{\underline{\mathcal{O}}}\left(\underline{\Spectra}^{C_2}\right)
-    \end{align*}
-\end{definition} 
-\begin{definition}
-    Suppose $ \mathcal{C} $ is a $ C_2 $-stable $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category. 
-    Define a functor
-    \begin{align*}
-       \mathrm{eInv} \colon  C_2 \otimes \Cat^{\mathrm{ex}} &\to \Spaces \\
-        \left(\mathcal{C}, \otimes\right) & \mapsto \left(\mathrm{C}^{C_2}\right)^{\simeq} \times_{(\mathrm{C}^e)^{\simeq,hC_2}} \Pic (\mathrm{C}^e)^{\simeq,hC_2} \,.
-    \end{align*}
-    In other words, $ \mathrm{eInv} $ sends a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category to the full subgroupoid of $ \mathcal{C}^{C_2} $ on those objects $ L $ so that $ L^e $ is an invertible object in $ \mathcal{C}^e $. 
-
-    Write $ \widetilde{\mathrm{eInv}} $ for the Grothendieck construction on $ \mathrm{eInv} $. 
-\end{definition}
-There is a functor
-\begin{equation}\label{eq:C2_cat_to_Poincare_cat}
-\begin{split}
-    \widetilde{\mathrm{eInv}} &\to \EE_\infty \mathrm{Alg}\left(\mathrm{Cat}^h \right) \\
-    (\mathcal{C}, L) &\mapsto (\mathcal{C}^e, \mathcal{C}^e \xrightarrow{N_{\mathcal{C}}} \mathcal{C}^{C_2} \xrightarrow{\hom_{\mathcal{C}^{C_2}}(-,L)} \Spectra)
-\end{split}
-\end{equation}
-\Lucy{Pretty sure distributive norm functors are 2-excisive (results \href{https://arxiv.org/pdf/2010.09097}{here} should generalize readily)...if not, can define the problem away.}
-\begin{lemma}
-    The functor of (\ref{eq:C2_cat_to_Poincare_cat}) lifts to a functor $ \widetilde{\mathrm{eInv}}  \to \Catp $. 
-\end{lemma}
-\Lucy{Example: Special case where $ X $ has trivial $ C_2 $ action and $ X = Y $.}
-\begin{lemma}\label{lemma:line_bundle_as_C2_sheaf}
-    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
-    Let $ L $ be a line bundle on $ Y $. 
-    Then the canonical map 
-    \begin{equation}\label{eq:line_bundle_as_C2_sheaf}
-        L \to \pi_{\#} \pi^* L 
-    \end{equation} 
-    promotes (\ref{eq:line_bundle_as_C2_sheaf}) to a sheaf of $ \underline{\mathcal{O}} $-modules on $ Y $. 
-    We will write $ \underline{L} $ for (\ref{eq:line_bundle_as_C2_sheaf}). 
-\end{lemma}
-\begin{proof}
-    Follows from naturality of the unit and the canonical identification $ \pi^* \mathcal{O}_Y $ with $ \mathcal{O}_X $. 
-\end{proof}
-\begin{definition}\label{defn:quadratic_functor_from_good_quotient}
-    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
-    Let $ L $ be a line bundle on $ Y $. 
-    Define $ \Qoppa_{\sigma, L} $ to be the functor
-    \begin{equation*}
-        \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{L})} \Spectra \,,
-    \end{equation*}
-    where $ \underline{L} $ is a $ \underline{\mathcal{O}} $-module by Lemma \ref{lemma:line_bundle_as_C2_sheaf} and $ \underline{\mathcal{O}} $ is a $ N^{C_2} \pi_{\#}\mathcal{O}_X $-algebra by Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}. 
-    By Construction \ref{cons:globalize_relative_norm} and the fact that the composite of an exact (1-excisive) functor and an $ m$-excisive functor is $m$-excisive (see \cite[\S2.2]{Kpoly}), $ \Qoppa_{\sigma,L} $ is quadratic. 
-    % \Lucy{want to show that the assignment $ (\sigma:X \to X, \pi: X \to Y, L) \mapsto (\perf_X, \Qoppa_{\sigma,L}) $ defines a functor from some category of schemes with involution (+line bundle) to the $ \infty $-category of Poincaré $ \infty $-categories.}
-\end{definition}
-\begin{example} 
-    Suppose $ L = \mathcal{O}_Y $. 
-    Then we drop $ L $ from notation and the quadratic functor $ \Qoppa_{\sigma} $ of Definition \ref{defn:quadratic_functor_from_good_quotient} takes the form
-    \begin{equation*}
-        \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{\mathcal{O}})} \Spectra \,.
-    \end{equation*}    
-\end{example}
-% \begin{lemma}\label{lemma:fully_faithful_pushforward}
-%     Let $\pi \colon X \to Y $ be a finite étale map. 
-%     Then the canonical functor $ \Mod_{\mathcal{O}_X} \to \Mod_{\pi_{\#}\mathcal{O}_X} $ is fully faithful. 
-%     \Lucy{asked JH Nov 22nd: James says that this should definitely be true, and moreover in greater generality (for instance, if $ \pi$ is faithfully flat.); try, for instance, Barr--Beck.}
-% \end{lemma}
-% \begin{proof}
-%     Affine-locally on $ Y $, I think this is an \emph{equivalence}. 
-%     Conclude by descent. 
-% \end{proof}
-\begin{lemma}\label{lemma:bilinear_parts_agree}
-    Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $, and let $ Y $ be a good quotient of $ X $. 
-    % Assume that the quotient map $ q \colon X \to Y $ is étale. \Lucy{Weakest possible assumption? \href{https://mathoverflow.net/questions/169052/are-quotients-of-affine-schemes-by-finite-groups-faithfully-flat}{relevant MO post}.}
-    Let $ L $ be a line bundle on $ Y $, and let $ \Qoppa_{\sigma,L} $ be the quadratic functor on $ \perf_X $ of Definition \ref{defn:quadratic_functor_from_good_quotient}. 
-    Then the bilinear part of $ \Qoppa_{\sigma,L} $ agrees with that of Observation \ref{obs:cross_effect_twisted_poincare_structure}. 
-    In particular, $ \left(\perf_X, \Qoppa_{\sigma,L} \right) $ is a Poincaré $ \infty $-category. 
-\end{lemma}
-\begin{proof}
-    By definition of the bilinear part of a quadratic functor, it suffices to show that there is an equivalence $ \hom_{\pi_{\#}\mathcal{O}_X\Mod}\left(\pi_{\#}E \otimes_{\pi_{\#}\mathcal{O}_X} \pi_{\#}E, \pi_{\#}\mathcal{O}_X\right) \simeq \hom_{\mathcal{O}_X\Mod}\left(E \otimes_{\mathcal{O}_X} \sigma^*E, \mathcal{O}_X\right) $ for any perfect complex $ E $ on $ X $. 
-    This follows from Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}\ref{lem_item:structured_pushforward_is_equiv}. %\ref{lemma:fully_faithful_pushforward}.  
-\end{proof}
-\begin{remark}
-    Compare the description of the space of bilinear forms in Lemma \ref{lemma:bilinear_parts_agree} with the description of a $ \delta $-hermitian form $ H $ in \cite[p. 216]{MR1162189}. 
-\end{remark}
 
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
@@ -1424,8 +1430,8 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     This follows from our assumption on $ S \to T^\bullet $ and \cite[Theorem 3.3.1]{CDHHLMNNSI}. 
 \end{proof}
 
-\section{Poincar{\'e} schemes}
-\input{definitions}
+%\section{Poincar{\'e} schemes}
+%\input{definitions}
 
 \printbibliography
 \end{document}
