@@ -68,6 +68,7 @@
 \DeclareMathOperator{\Cat}{\mathcal{C}at} % Categories
 \DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % stable categories with exact functors
 \DeclareMathOperator{\Cath}{Cat^h_\infty} % Hermitian Categories
+\DeclareMathOperator{\Cathidem}{Cat^h_{\infty,idem}} % Hermitian Categories
 \DeclareMathOperator{\Catp}{Cat^p_\infty} % Poincare Categories
 \DeclareMathOperator{\Catpidem}{Cat^p_{\infty, idem}} % idempotent complete Poincare Categories
 \DeclareMathOperator{\Einfty}{\mathbf{E}_\infty} % E-infinity 
@@ -157,6 +158,7 @@
 \tableofcontents
 
 \section{Introduction} 
+\subsection{Azumaya algebras and their involutions}
 Let $ X $ be a scheme. 
 Gabber showed that if $ X $ is quasi-compact and separated and admits an ample line bundle, the collection of sheaves of Azumaya $ \mathcal{O}_X $-algebras up to Morita equivalence is in bijection with the torsion subgroup of $ H^2_{\mathrm{\acute{e}t}}(X; \mathbb{G}_m) $ \cite{MR611868}. 
 On the other hand, to $ \mathcal{A} $ we may associate the presentable $ \mathcal{O}_X $-linear $ \infty $-category $ \mathcal{D}(\mathcal{A}) $. \Lucy{AG notation or homotopy notation?} 
@@ -173,13 +175,28 @@ Antieau and Gepner extended Toën's work to connective ring spectra/affine spect
 
 On the other hand, the theory of anti-involutions on Azumaya algebras is an essential tool for studying the behavior of Brauer classes under multiplication by 2 and/or norm maps/corestriction. 
 An anti-involution on an Azumaya algebra over a ring $ R $ is an equivalence $ \sigma \colon A \xrightarrow{\sim} A^\op $ so that $ \sigma^\op \circ \sigma = \mathrm{id} $. 
-The anti-involution is said to be of type $ 1 $ if it acts by the identity on $ R = $ the center of $ A $, and of type 2 if \Lucy{separate the discussion into two parts or roll it into one?} 
+The anti-involution is said to be of type $ 1 $ if it acts by the identity on $ R = $ the center of $ A $. 
+If instead $ R $ is endowed with an involution $ \lambda $ so that the inclusion of the subring of fixed elements $ R^\lambda \to R $ exhibits $ R $ as a quadratic étale $ R^\lambda $-algebra and $ \sigma $ agrees with $ \lambda $ on the center of $ A $, then the involution $ \sigma $ is said to be of \emph{type 2}. 
 
-First and Williams considered involutions on Azumaya algebras which are neither of type 1 or 2 in \cite{azumaya_involution}. 
-\Lucy{involutive Brauer group and the exact sequence?}
+If an Azumaya algebra $ A $ has an anti-involution, its Brauer class $ [A] \in H^2_{\acute{e}t}(-;\mathbb{G}_m) $ is manifestly 2-torsion. 
+More surprisingly, if an Azumaya algebra $ A $ is such that $ [A] $ lies in the 2-torsion subgroup of $ H^2_{\acute{e}t}(-;\mathbb{G}_m) $, then there exists an Azumaya algebra $ A' $ in the Brauer class of $ A $ admitting an anti-involution; the result was proved for $ R $ a field by Albert (in fact Albert proves that one can take $ A' = A $), for an arbitrary ring by Saltman, and for schemes $ X $ with $ \frac{1}{2} \in \mathcal{O}_X $ by Parimala--Srinivas \cites[\S9 Theorem 19]{MR123587}[Theorem 3.1(a)]{MR495234}[Theorem 1]{MR1162189}. 
 
-In this work, we study a derived enhancement of the involutive Brauer group. \Lucy{later: make this more specific} 
+On the other hand, consider an étale cover $ X \to Y $ of degree 2 where $ \frac{1}{2} \in \mathcal{O}_Y $, and let $ \lambda $ denote the nontrivial $ C_2 $-Galois action on $ X $. 
+There is an \emph{involutive Brauer group} $ \mathrm{Br}\left(X, \lambda \right) $ consisting of equivalence classes of sheaves of Azumaya $ \mathcal{O}_X $-algebras with involutions of the second kind \cite[p.216]{MR1162189}. 
+Parimala--Srinivas showed that the involutive Brauer group sits in an exact sequence $ \Pic X \xrightarrow{N} \Pic Y \to \mathrm{Br}\left(X, \lambda \right) \to \mathrm{Br}\left(X\right) \xrightarrow{N} \mathrm{Br}\left(Y\right) $ \cite[Theorem 2]{MR1162189}.  
 
+First and Williams observed that the aforementioned two cases comprise two extreme ends/special cases of a spectrum: multiplication by $ 2 $ on $ H^2_{\acute{e}t}(-;\mathbb{G}_m) $ may be regarded as a cohomological $ C_2 $-transfer map along the `quotient' map $ X = X $, where $ X $ is regarded as a scheme with trivial $ C_2 $-action \cite[\S1.2]{azumaya_involution}. 
+In other words, the former comprises trivial $ C_2 $-actions with `everywhere ramified' quotient map, whereas the latter comprises free $ C_2 $-actions with nowhere ramified quotient maps. 
+Moreover, First and William observe that a quotient involves a choice/is extra data; from the perspective of the stacky quotient $ X \to X//C_2 $, the $ C_2 $-action on $ X $ is free. \Lucy{connect to `many choices of different Poincaré structures' on a given $ \infty $-category eventually}  
+Thus in order to study involutions systematically, it is necessary to specify a scheme with involution and the choice of a quotient. \Lucy{this is \emph{so close} to Spec of a Poincaré ring but also not quite.}
+
+The study of involutions on Azumaya algebras goes hand-in-hand with/is inextricably linked to the study of symmetric bilinear/hermitian forms on vector bundles: étale-locally, (classical) Azumaya algebras can be described as endomorphism algebras of vector bundles $ \mathcal{A}\simeq \mathcal{E}\mathrm{nd}_X(V) $. 
+Taking transposes and conjugating by an isomorphism $ q \colon V \to V^\vee $ adjoint to a nondegenerate \Lucy{insert adjectives} pairing $ q \colon V \otimes V \to \mathcal{O}_X $ comprise a `prototypical' example of an involution on $ \mathcal{E}\mathrm{nd}_X(V) $. 
+In \cites{CDHHLMNNSI,CDHHLMNNSII,CDHHLMNNSIII}, Calmès--Dotto--Harpaz--Hebestreit--Land--Moi--Nardin--Nikolaus--Steimle introduce \Lucy{also cite Jacob} a framework for talking about objects of stable $ \infty $-categories equipped with the data of nondegenerate hermitian forms. 
+Motivated by this connection between involutions and duality (cf. \cite[\S3]{CDHHLMNNSI}), we use Poincaré $ \infty $-categories to define a derived enhancement of the involutive Brauer group.  
+% In this work, we study a derived enhancement of the involutive Brauer group. \Lucy{later: make this more specific} 
+
+\subsection{Main results}
 \begin{theorem}
 Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}_\infty$-ring spectrum with involution $A$. Then the natural maps \[\pi_i(\pnpic(\underline{A}))\to \pi_i(\pic(A))\] \Noah{I think there is some interaction with the homotopy fixed points, or maybe even the genuine fixed points}are surjective on $2$-torsion.
 \end{theorem}
@@ -195,6 +212,8 @@ Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}
 \begin{theorem}
     There is a Poincar{\'e} group scheme $\mathbb{G}_m^\Qoppa$ such that \[B\mathbb{G}_m^\Qoppa\simeq \pnpic\] as fppf stacks.
 \end{theorem}
+
+\subsection{Outline}
 
 \subsection{Acknowledgements} 
 The authors wish to thank the Institute for Advanced Study and the organizers of the 2024 Park City Mathematics institute on motivic homotopy theory. 
@@ -1253,7 +1272,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     is an equivalence of $ R $-algebras. 
 \end{recollection}
 
-\begin{definition}
+\begin{definition}\label{defn:Azumaya_genuine_anti-inv}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum. 
     An \emph{Azumaya algebra with genuine type 1 (anti-)involution} over $ R $ is the data of 
     \begin{enumerate}[label=(\alph*)]
@@ -1308,16 +1327,20 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     % Now there is a canonical choice of equivalence \ref{defn_item:Azumaya_gen_inv_geom_fixpt} since both sides are canonically equivalent to $ \overline{P} \otimes_{R^{\varphi C_2}} \overline{P}^\vee $. 
 \end{example}
 
-\begin{proposition}
-    Let $ R $ be the Eilenberg--Mac Lane spectrum associated to a discrete ring, and suppose $ R $ has a given $ C_2 $-action. 
+\begin{proposition}\label{prop:classical_inv_to_genuine_inv}
+    Let $ R $ be a discrete ring with a given $ C_2 $-action $ \lambda $, and suppose that the ramification locus in $ \Spec (R)/C_2 = \Spec(R^{C_2}) $ is empty. 
     Let $ A $ be a classical Azumaya algebra over $ R $ with an involution of type 2. 
-    Regard $ R $ as a Poincaré ring spectrum with the genuine symmetric Poincaré structure of Example \ref{example:genuine_symmetric_poincare_structure}. 
+    Regard $ R $ as a Poincaré ring spectrum $ \underline{R}^\lambda $ via Example \ref{ex:fixpt_Mackey_functor}. 
 
-    Then there is a canonical Azumaya algebra with genuine involution over $ R^{\mathrm{gs}} $ so that $ A^{\varphi C_2} := \tau_{\geq 0} A^{tC_2} $.
-\end{proposition}
-\begin{proof}
-    By \cite[Examples 3.1.9 \& 3.2.9]{CDHHLMNNSI}, it suffices to exhibit $ N $ and an $ A $-linear map $ N \to A^{tC_2} $. 
-    \Lucy{todo}
+    Then there is a canonical Azumaya algebra with genuine involution over $ \underline{R}^{\lambda} $ whose underlying Azumaya algebra is $ A $. \Lucy{In what other cases does a lift exist trivially? wrt Tate Poincaré structure, suffices to take a trivialization of $ A $?}
+\end{proposition} 
+\begin{remark}
+    If $ \frac{1}{2} \in R $, then $ \mathrm{Br}(\Spec R, \lambda) $ is defined \cite[p. 216]{MR1162189}. 
+    In view of Propositions \ref{prop:classical_inv_to_genuine_inv} and \ref{prop:mod_over_azumaya_geninv_is_invertible}, there is a homomorphism $ \mathrm{Br}(\Spec R, \lambda) \to \pi_0 \pnbr(\underline{R}^\lambda) $. \Lucy{rewrite for scheme with involution}
+\end{remark}
+\begin{proof} [Proof of Proposition \ref{prop:classical_inv_to_genuine_inv}]
+    % By \cite[Examples 3.1.9 \& 3.2.9]{CDHHLMNNSI}, it suffices to exhibit $ N $ and an $ A $-linear map $ N \to A^{tC_2} $. 
+    Since $ R^{\varphi C_2} = 0 $, conditions (c)-(e) of Definition \ref{defn:Azumaya_genuine_anti-inv} are vacuous. 
 \end{proof}
 
 \begin{proposition}\label{prop:mod_over_azumaya_geninv_is_invertible}
@@ -1418,7 +1441,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
 \begin{proof} [Proof of Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral}]
     For now, use the notational shorthand $ R^p = (R, R\to R^{\varphi C_2} \to R^{tC_2}) $. 
     Since limits in categories of algebras and modules are computed at the level of underlying objects, it suffices to show that the functor sends an étale hypercovering $ j_\bullet \colon S \to T^\bullet $ to a limit diagram in $ \Catpidem $.  
-    By Proposition 6.1.4 of \cite{CDHHLMNNSI}, it suffices to show that the relevant diagram is a limit diagram in $ \Cath $. \Lucy{later: idempotent completion?} 
+    By Proposition 6.1.4 of \cite{CDHHLMNNSI}, it suffices to show that the relevant diagram is a limit diagram in $ \Cathidem $.  
     The proof of Lemma 5.4 in \cite{MR3190610} implies that the diagram defines a limit diagram on underlying $ \infty $-categories. 
     Thus by Remark 6.1.3 of \cite{CDHHLMNNSI}, it suffices to show that $ j_\bullet^* \colon \Mod^\omega_{R^e \otimes_{R^{C_2}} S} \to \Mod^\omega_{R^e \otimes_{R^{C_2}} T^\bullet} $ induces an equivalence $ \Qoppa_{R^p \otimes S} \xrightarrow{\sim} \lim_{\Delta} \Qoppa_{R^p \otimes T^\bullet} \circ \left(j_\bullet^*\right)^{\mathrm{op}} $ of quadratic functors $ \Mod^{\omega,\op}_{R^e \otimes_{R^{C_2}} S} \to \Spectra $. 
     This follows from our assumption on $ S \to T^\bullet $ and \cite[Theorem 3.3.1]{CDHHLMNNSI}. 
