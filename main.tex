@@ -73,6 +73,7 @@
 \DeclareMathOperator{\Catpidem}{Cat^p_{\infty, idem}} % idempotent complete Poincare Categories
 \DeclareMathOperator{\Einfty}{\mathbf{E}_\infty} % E-infinity 
 \DeclareMathOperator{\ex}{ex} % exact 
+\DeclareMathOperator*{\fiberproduct}{\times}
 \DeclareMathOperator{\Fun}{Fun} % Functors
 \DeclareMathOperator{\gp}{gp} % grouplike
 \DeclareMathOperator{\id}{id} % identity
@@ -122,6 +123,8 @@
 % Adjoint functors
 \newcommand{\rlarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
                                             \textstyle\longleftarrow}}}
+\newcommand{\rrarrows}{\mathrel{\substack{\textstyle\longrightarrow\\[-0.6ex]
+                                            \textstyle\longrightarrow}}}
 
 %Theorem Environments ----------------------------------------------------------------
 \newtheorem{theorem}[equation]{Theorem}
@@ -694,7 +697,9 @@ Thus $\pi_0(\Pic(\mathbb{S}_{W(k)}))=0$. On the other hand, we have that the uni
 We then have that $\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong W(k)^\times \times W(k)^\times/H$ where $H$ is the subgroup of Poincar{\'e} structures $q$ on $\mathbb{S}_{W(k)}$ which are identified by some automorphism $f:\mathbb{S}_{W(k)}\to \mathbb{S}_{W(k)}$. By the defining property of spherical Witt vectors there is an equivalence $\mathrm{Maps}_{\mathrm{CAlg}}(\mathbb{S}_{W(k)}, \mathbb{S}_{W(k)})\simeq \mathrm{Maps}_{Perf}(k,k)=\mathrm{Gal}(k/\mathbb{F}_2)$ and the action on $W(k)^\times \times W(k)^\times$ is given by $g\in \mathrm{Gal}(k/\mathbb{F}_2)$ acts via $W(g)\times W(g)$. Consequently \[\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong (W(k)^\times \times W(k)^\times) /\mathrm{Gal}(k/\mathbb{F}_2)\] which even for $k=\mathbb{F}_2$ is not zero and in fact not even $2^\infty$-torsion. 
 \end{remark}
 
-In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, where $\mathbb{G}_m$ is the spectral algebraic group scheme sending a ring spectrum $E$ to the spectrum of $E$-linear equivalences of $E$ $\mathrm{gl}_1E:=\mathrm{Aut}_E(E)$.\footnote{Normally the automorphism space of an object is only $\mathbb{A}_\infty$, but as the unit in a symmetric monoidal category, the automorphisms of $E$inherit a canonical and in fact functorial $\mathbb{E}_\infty$ structure and this construction makes sense.} Equivalently $\mathbb{G}_m$ is the affine groupscheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homtopy groups of $\pic(A)$ with those of $A$. We will spend the rest of this section on establishing such an equivalence in the Poincare setting.
+In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, where $\mathbb{G}_m$ is the spectral algebraic group scheme sending a ring spectrum $E$ to the spectrum of $E$-linear equivalences of $E$ $\mathrm{gl}_1E:=\mathrm{Aut}_E(E)$.\footnote{Normally the automorphism space of an object is only $\mathbb{A}_\infty$, but as the unit in a symmetric monoidal category, the automorphisms of $E$inherit a canonical and in fact functorial $\mathbb{E}_\infty$ structure and this construction makes sense.} 
+Equivalently, $\mathbb{G}_m$ is the affine group scheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homtopy groups of $\pic(A)$ with those of $A$. 
+We will spend the rest of this section on establishing such an equivalence in the Poincar\'e setting.
 
 \begin{construction}
 	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincare ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$, This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structre given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
@@ -702,7 +707,7 @@ In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, wh
 	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a modules over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$.
 \end{construction}
 
-\begin{theorem}
+\begin{theorem}\label{theorem:loops_Poincare_pic_is_Gm_Qoppa}
 	There is a natural equivalence of \[\Omega \Picp(-)\simeq \gmq\] of functors on Poincar{\'e} rings.
 \end{theorem}
 \begin{proof}
@@ -1071,6 +1076,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     In particular, the condition that $ \ell(q^\vee), \ell(q) $ make the diagram (\ref{diagram:pnpic_linear_part_condition}) commute is equivalent to the condition that $ \ell(\eta) $ is an equivalence by an adjunction argument. \Lucy{under construction--not sure what to say about the $(-)^{tC_2} $ part yet. }
 \end{proof}
 
+\subsection{Generalities on $R$-linear Poincar\'e \texorpdfstring{$\infty$}{∞}-categories}
 \begin{proposition}\label{prop:relative_poincare_cats_basic_properties}
     Let $ (\Mod_R^\omega, \Qoppa_R) $ be a Poincaré ring spectrum. 
     \begin{enumerate}[label=(\arabic*)]
@@ -1085,7 +1091,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         \end{equation}
         is canonically equivalent to $ \Mod_{N_R A \otimes_{N_R R} R^L }\left(\Spectra^{C_2}\right) $ where $ R^L $ is the $ \EE_\infty $-$ N_R R $-algebra with $ (R^L)^e \simeq R $ and $ (R^L)^{\varphi C_2}  \simeq C $. 
 
-        A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ R $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
+        A $ N_R A \otimes_{N_R R} R^L $-module classifies a $ (\Mod_R^\omega, \Qoppa_R) $-module in Poincaré $ \infty $-categories if its underlying $ A $-module is invertible in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI}. 
         \item \label{propitem:Rlin_Poincare_cats_tensor_mod_gen_inv} Let $ A,B $ be $ R $-algebras with associated ($R$-linear) modules with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $ and $ (M_B, N_B, N_B \to M_B^{tC_2}) $, respectively so that (under item \ref{propitem:classify_R_lin_hermitian_struct}) $ \left(\Mod_A^\omega, \Qoppa_A \right) $ and $ \left(\Mod_B^\omega, \Qoppa_B \right) $ are objects of $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $. 
         Then the symmetric monoidal structure of item \ref{propitem:Rlin_Poincare_cats_is_symm_mon} is so that the underlying $ R$-linear $ \infty $-category with perfect duality $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes_{\left(\Mod_R^\omega, \Qoppa_R \right)} \left(\Mod_B^\omega, \Qoppa_B \right) $ is $ \Mod_A^\omega \otimes_{\Mod_R^\omega} \Mod_B^\omega \simeq \Mod_{A \otimes_R B}^\omega $, and the associated module with genuine involution is given by $ M_A \otimes_R M_B $, $ N_A \otimes_{R^{\varphi C_2}} N_B $, and the structure map is $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ where the latter map arises canonically from lax monoidality of the Tate construction. 
         % Commented out Aug 14th--just leaving this here just in case: \Lucy{What if it should be $ N_A \otimes_{R^{\varphi C_2}} N_B \to M_A^{tC_2} \otimes_{R^{tC_2}} M_B^{tC_2} \to (M_A \otimes_R M_B)^{tC_2} $ instead?} 
@@ -1245,14 +1251,34 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 As in the Picard group case, the symmetric monoidal forgetful functor $\theta \colon \Catp_{R} \to \Catex_R $ induces a map of spectra $ \theta \colon \Brp(A)\to \Br(A^e)$. 
 When $ A^e $ is endowed with the trivial action, $ \theta $ will factor through the $2$-torsion on $\pi_0$. 
 As a consequence of Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct} we can identify the fiber of this map.
-\begin{corollary}
-Let $(\mathrm{Mod}_A^\omega, \Qoppa_A)$ be a Poincar{\'e} ring with underlying genuine $C_2$ spectrum $A^L$ as in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. Then the fiber of the map \[\Brp(A)\to \Br(A)\] can be naturally identified with $\Pic(\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2}))$.
+\begin{corollary}\label{cor:Poincare_Brauer_to_Brauer_fiber}
+Let $(\mathrm{Mod}_A^\omega, \Qoppa_A)$ be a Poincar{\'e} ring with underlying genuine $C_2$ spectrum $A^L$ as in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. 
+Then the fiber of the map \[\Brp(A)\to \Br(A^e)\] can be naturally identified with the cofiber $ \mathrm{cofib}\left(\Pic\left(\Mod_{A^e}(\Spectra)^{hC_2}\right) \to \Pic \left(\mathrm{Mod}_{A^L}\left(\mathrm{Sp}^{C_2}\right) \right) \right) $, where the latter cofiber is taken in connective spectra.
 \end{corollary}
-\begin{proof}
-Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_{A^e}}(\Catex)$ is symmetric monoidal and conservative, it induces a map $ \theta^\simeq \colon \pnbr(A) \to \mathrm{br}(A^e) $ on the groupoid core of invertible objects. 
+\begin{proof}[Proof of Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}]
+Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_{A^e}^\omega}(\Catex)$ is symmetric monoidal and conservative, it induces a map $ \theta^\simeq \colon \pnbr(A) \to \mathrm{br}(A^e) $ on the groupoid core of invertible objects. 
 Now observe that $ \theta $ is an isofibration; it follows that $ \theta^\simeq $ is a Kan fibration by \cite[\href{https://kerodon.net/tag/01EZ}{Proposition 01EZ}]{kerodon}. 
-Consequently we need only identify the fiber instead of the homotopy fiber, which follows from the identification of the fiber in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. \Noah{Needs a lot more detail I know, but I think the skeleton is here.}
+Consequently we need only identify the fiber over a single point instead of the homotopy fiber. 
+Consider $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ a point in the fiber of $ \theta $ over $ \Mod_{A^e}^\omega $. 
+% The description of fiber of $ \theta $ over the point $ \Mod_{A^e}^\omega $ follows from 
+By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}, $ \Qoppa $ is associated to an $ A $-linear invertible module with involution $ \left(M, N, N \to M^{tC_2} \right) $. 
+By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:Rlin_Poincare_cats_tensor_mod_gen_inv}, invertibility of $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ implies that $ \left(M, N, N \to M^{tC_2}\right) $ is invertible as a module over $ A^L $. 
+Now suppose $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ and $ \left(\Mod_{A^e}^\omega, \Phi\right) $ are two points in the fiber of $ \theta $ over $ \Mod_{A^e}^\omega $. 
+We know that $ \Qoppa $ and $ \Phi $ are associated to invertible $ A^L $-modules $ (M, N, N \to M^{tC_2}) $ and $ (M', N', N' \to (M')^{tC_2}) $, resp. 
+An equivalence from $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ to $ \left(\Mod_{A^e}^\omega, \Phi\right) $ consists of an $ A^e $-linear equivalence $ F \colon \Mod_{A^e}^\omega \xrightarrow{\sim} \Mod_{A^e}^\omega $ and a natural equivalence $ \eta \colon \Phi \circ F^{\op} \xrightarrow{\sim} \Qoppa $. 
+Now $ F $ is classified by an invertible $ A^e $-bimodule $ \beta $ and the natural equivalence $ \eta $ is classified by an equivalence $ \beta \otimes_{A^L} (M, N, N \to M^{tC_2}) \simeq (M',N', N' \to (M')^{tC_2}) $ of $ A^L $-modules \cite[Lemma 3.4.3]{CDHHLMNNSI}. \Noah{Needs a lot more detail I know, but I think the skeleton is here.}
 \end{proof}
+\begin{example}\label{ex:pnbr_closed_point_ramified}
+    Let $ k $ be an algebraically closed field, and regard $ k $ as a Poincar\'e ring $ \underline{k} $ via Example \ref{ex:fixpt_Mackey_functor} with the trivial involution.  
+    Then 
+    \begin{equation*}
+        \pi_0\pnbr(\underline{k}) = \begin{cases}
+            0 & \mathrm{char}\, k \neq 2 \\
+            \ZZ & \mathrm{char}\, k = 2 \,.
+        \end{cases}
+    \end{equation*}
+    \Lucy{Pretty sure this follows from Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}; will return to this later. Also, maybe put this example somewhere else.}
+\end{example}
 Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
 \begin{proposition}
     Let $ (R, R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
@@ -1285,9 +1311,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
         \item \label{defnitem:Azumaya_alg_gi_the_involution} An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
         \item \label{defnitem:Azumaya_alg_gi_underlying} an $ (A \otimes_R A^\op)^{\otimes_R 2} $-linear equivalence $ \hom_{R \otimes R}(A \otimes_R A, R) \simeq A \otimes_R A^\op $
         \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ P $ and an $ A^\op \otimes_R R^{\varphi C_2} $-module $ \overline{P} $
-        \item \label{defn_item:Azumaya_gen_inv_conn_map} An $ A $-linear map $ P \to A^{tC_2} $ and an $ A^\op $-linear map $ \overline{P} \to A^{tC_2} $. 
-        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes A)^{tC_2} $-module, as an $ A $-module (resp. $ A^\op $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes A^\op)^{tC_2} $ (resp. $ A^\op \to (A \otimes A^\op)^{tC_2} $). 
-        \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ A \otimes_R A^\op $-modules 
+        \item \label{defn_item:Azumaya_gen_inv_conn_map} An $ A \otimes_R R^{\varphi C_2} $-linear map $ P \to A^{tC_2} $ and an $ A^\op \otimes_R R^{\varphi C_2} $-linear map $ \overline{P} \to A^{tC_2} $. 
+        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes A)^{tC_2} $-module, as an $ A \otimes_R R^{\varphi C_2} $-module (resp. $ A^\op \otimes_R R^{\varphi C_2} $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes A^\op)^{tC_2} $ (resp. $ A^\op \to (A \otimes A^\op)^{tC_2} $). 
+        \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ \left(A \otimes_R A^\op\right) \otimes_R R^{\varphi C_2} $-modules 
         \begin{equation*}
             \hom_R(A, R^{\varphi C_2}) \simeq P \otimes_{R^{\varphi C_2}} \overline{P}
         \end{equation*}
@@ -1358,7 +1384,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     \end{enumerate}
 \end{proposition}
 \begin{proof}[Proof of Proposition \ref{prop:mod_over_azumaya_geninv_is_invertible}]
-    The first statement follows from unravelling definitions; we prove the second statement. 
+    The first statement follows from Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}; we prove the second statement. 
     First, by \cite[Example 3.2.9]{CDHHLMNNSI}, we see that $ \left(\Mod_A^\omega, \Qoppa_A \right) $ is indeed an $ R$-linear Poincaré $ \infty $-category (and not merely hermitian). 
     To show that the associated Poincaré $ \infty $-category is invertible, we must identify a dual $ \left(\Mod_A^\omega, \Qoppa_A \right)^\vee $ and exhibit an equivalence $ \left(\Mod_A^\omega, \Qoppa_A \right) \otimes \left(\Mod_A^\omega, \Qoppa_A \right)^\vee \simeq \left(\Mod_R^\omega, \Qoppa_R \right) $. 
     Since $ \Catpidem_R \to \Catex_R $ is symmetric monoidal, we see that the underlying $ R $-linear $ \infty $-category associated to the dual must be $ \Mod_{A^\op}^\omega $. 
@@ -1431,6 +1457,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
 \begin{proposition}\label{prop:Poincare_modules_as_etale_sheaf_affine_spectral}
     Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
     Then the assignment of Notation \ref{notation:poincare_ring_basechange} is a hypersheaf on the small étale site of $ R $. 
+    \Lucy{Antieau--Gepner write \emph{stack} for `sheaf of categories' and \emph{sheaf} for `sheaf of spaces.' Do we want to use this convention?}
 \end{proposition}
 \begin{corollary}\label{cor:pnbr_as_etale_sheaf_affine_spectral}
     Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
@@ -1452,9 +1479,52 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     Thus by Remark 6.1.3 of \cite{CDHHLMNNSI}, it suffices to show that $ j_\bullet^* \colon \Mod^\omega_{R^e \otimes_{R^{C_2}} S} \to \Mod^\omega_{R^e \otimes_{R^{C_2}} T^\bullet} $ induces an equivalence $ \Qoppa_{R^p \otimes S} \xrightarrow{\sim} \lim_{\Delta} \Qoppa_{R^p \otimes T^\bullet} \circ \left(j_\bullet^*\right)^{\mathrm{op}} $ of quadratic functors $ \Mod^{\omega,\op}_{R^e \otimes_{R^{C_2}} S} \to \Spectra $. 
     This follows from our assumption on $ S \to T^\bullet $ and \cite[Theorem 3.3.1]{CDHHLMNNSI}. 
 \end{proof}
+\Lucy{next bit is sketchy; working towards a spectral sequence like the one in \cite[\S7]{MR3190610}}
+\begin{notation}
+    Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
+    Let $ \ZZ_X $ be the \'etale sheafification of the constant presheaf. 
+    Write $ \ZZ_X^\sigma $ for the equalizer
+    \begin{equation*}
+        \ZZ_X^\sigma := \mathrm{Eq}\left(\ZZ_X \overset{\lambda, \cdot (-1)}{\rrarrows} \ZZ_X\right) \,.
+    \end{equation*}
+    Write $ \mathrm{disc} $ for the cokernel
+    \begin{equation}
+        \mathrm{disc} := \mathrm{coKer} \left(\mathcal{O}_X^\times \xrightarrow{f \mapsto f \cdot \lambda(f)} \mathcal{O}_X^\times \right) \,;
+    \end{equation}
+    here the cokernel is taken in the category of sheaves of abelian groups on the small \'etale site of $ X $. 
+    Consider the assignment
+    \begin{equation*}
+    \begin{split}
+        U_1 \colon \mathrm{\acute{E}t}_Y &\to \EE_\infty \mathrm{Mon}(\Spaces) \\
+       \left( V =\Spec A \to Y \right) & \mapsto \mathrm{Ker} \, \left(R\Gamma(\mathcal{O}_{X_V}(X_V))^\times \xrightarrow{f \mapsto f \cdot \lambda(f)} R\Gamma(\mathcal{O}_{X_V}(X_V))^\times \right) \,.
+    \end{split}
+    \end{equation*}
+    Then $ U_1 $ is a sheaf of groups on the small \'etale site of $ Y $. \Lucy{check later} 
+    By Theorem \ref{theorem:loops_Poincare_pic_is_Gm_Qoppa}, there is a natural map of sheaves $ BU_1 \to \pnpic $ given by inclusion of the identity component. 
+\end{notation}
+\begin{example}
+    If $ X $ has the trivial involution $ \lambda = \id $, then $ \ZZ_X^\sigma $ is the trivial sheaf and $ \mathrm{disc}_X $ is the units in $ \mathcal{O}_X $ mod 2. 
+
+    If $ \pi $ is quadratic \'etale, then $ \pi_* \ZZ_X^\sigma $ is a $ \ZZ $-torsor.  
+\end{example}
+\begin{corollary}
+    Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
+    The homotopy sheaves of $ \pnbr $ are
+    \begin{equation*}
+        \pi_* \pnbr = \begin{cases}
+            ? & * = 0 \\
+            \pi_* \ZZ^\sigma_X \times \pi_* \mathrm{disc} & * = 1 \\
+            U_1 & * = 2 \\
+            0 & \text{else. }
+        \end{cases}
+    \end{equation*}
+    \Lucy{If we believe what's in Example \ref{ex:pnbr_closed_point_ramified}, then $ \pi_0 \pnbr $ should be the pushforward of $ \ZZ $ from the mod 2 reduction of the branch locus (terminology from \cite{azumaya_involution})}
+\end{corollary}
 
 %\section{Poincar{\'e} schemes}
 %\input{definitions}
+
+\addcontentsline{toc}{section}{\protect\numberline{\thesection}References}
 
 \printbibliography
 \end{document}
