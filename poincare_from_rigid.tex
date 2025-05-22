@@ -1,0 +1,150 @@
+\section{Poincaré structures on schemes with involution}
+Let $ X $ be a scheme with an involution $ \sigma \colon X \xrightarrow{\sim} X $. 
+We want to introduce a Poincaré structure $ \Qoppa $ on $ \perf(X) $ so that the duality is given by $ E \mapsto E^\vee \otimes \sigma_*(\mathcal{O}_X) $ (contrast with \S3 of \href{https://arxiv.org/abs/2402.15136}{this paper}). 
+\Noah{I will comment out the Poincar{\'e} structures from rigid symmetric monoidal categories for the moment since we do not yet have an application for these ideas.}
+\subsection{Poincaré structures associated to rigid symmetric monoidal \texorpdfstring{$ \infty $}{∞}-categories with involution}
+Let $ \mathcal{C} $ be a stably symmetric monoidal $\infty $-category with an involution, i.e. an exact autoequivalence $ \sigma \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C} $ and a functor $ BC_2 \to \EE_\infty \mathrm{Alg} \Catex $ sending $ * \mapsto \mathcal{C} $ and a generator of  \mathrm{End}_{BC_2}(*) \simeq C_2 $ to $ \sigma $. 
+Then $ \sigma $ induces a $ C_2 $-action on the $ \infty $-groupoid of $ \otimes $-invertible objects $ \Pic(\mathcal{C}) $. 
+Let $ L \in \Pic(\mathcal{C})^{hC_2} $ be a homotopy fixed point of this action. 
+In other words, $ L $ is endowed with the choice of an equivalence $ \phi \colon L \simeq \sigma(L) $, a homotopy from $ \sigma(\phi) \circ \phi $ to the identity on $ L $, and higher coherences. 
+
+Consider a functor $ f \colon \mathcal{C}^\op \to \Spectra $ which is $ C_2 $-equivariant with respect to the $ \sigma $-action on $ \mathcal{C} $ and the trivial action on $ \Spectra $. 
+In particular, the ``$ C_2 $-equivariance'' of $ f $ is additional data: for each $ x \in \mathcal{C} $, an equivalence of spectra $ c_x \colon f(x) \simeq f(\sigma(x)) $ which is natural in $ x $, a homotopy from $ c_{\sigma(x)} \circ c_x $ to $ \mathrm{id}_x $, and higher coherences. 
+\begin{lemma}\label{lemma:maps_into_fixed_object_are_equivariant}
+    Let $ \mathcal{C} $ be a stably symmetric monoidal $\infty $-category with an involution, and suppose given $ L \in \Pic(\mathcal{C})^{hC_2} $ a homotopy fixed point of this action. 
+    Then the functor $ \hom_{\mathcal{C}}(-, L) $ promotes canonically to a $ C_2 $-equivariant functor $ \mathcal{C}^\op \to \Spectra $ in the sense of the previous paragraph. 
+\end{lemma}
+\begin{proof}
+    Note that the Yoneda embedding $ y \colon \mathcal{C} \to \mathrm{Fun}\left(\mathcal{C}^\op, \Spectra\right) $ is equivariant with respect to the given action on $ \mathcal{C} $ and the action of $ C_2 $ on the functor category via $ F \mapsto \sigma^*F = F \circ \sigma $. \Lucy{This may be `overkill,' but this is true because $ \mathcal{C} $ can be regarded as a $ \mathcal{O}^\op_{C_2} $-parametrized $\infty$-category (with empty fiber over $ C_2/C_2 $). Then there is a parametrized Yoneda embedding. }
+    Now since $ \Pic(\mathcal{C}) \subseteq \mathcal{C} $ induces $ \Pic(\mathcal{C})^{hC_2} \to \mathcal{C}^{hC_2} $, we may take the image of $ L $ under the Yoneda embedding: $ y(L) \in \mathrm{Fun}\left(\mathcal{C}^\op, \Spectra\right)^{hC_2} \simeq \mathrm{Fun}_{C_2}\left(\mathcal{C}^\op, \Spectra\right) $. 
+\end{proof}
+Now fix a presentably symmetric monoidal $ \infty $-category $ \mathcal{D} $, and regard it as having the trivial $ C_2 $-action. 
+Recall the $ \mathrm{Fin}_* $-cartesian fibration $ \left(\Cat^{BC_2}_{\op//q^*\mathcal{D}} \right)^{\otimes} \simeq \left(\left(\Cat_{\op//\mathcal{D}}\right)^{BC_2} \right)^{\otimes}\to (\Cat^{BC_2})^\times $ from \cite[p. 13]{CHN2024}. 
+Set 
+\begin{equation*}
+    \mathcal{W}_{\mathcal{D}}^\otimes := \EE_\infty \mathrm{Alg} \left(\Cat^{BC_2}\right)^\times \times_{(\Cat^{BC_2})^\times} \left(\Cat^{BC_2}_{\op//q^*\mathcal{D}} \right)^{\otimes}
+\end{equation*}
+This is a $ \mathrm{Fin}_* $-cartesian fibration classified by the lax symmetric monoidal functor
+\begin{equation}\label{eq:functor_classifying_eqvt_functors}
+\begin{split}
+     \EE_\infty \mathrm{Alg}(\Cat)^{BC_2} \to \Cat \\
+     \mathcal{C}^\otimes \mapsto \Fun_{C_2}(\mathcal{C}^\op, q^* \mathcal{D}) \,.
+\end{split}
+\end{equation} 
+In particular, an object of the underlying $ \infty $-category of $ \mathcal{W}_{\mathcal{D}}^\otimes $ is a pair $ (\mathcal{C}, f) $ where $ \mathcal{C} $ is a symmetric monoidal $ \infty $-category with a $ C_2 $-action (via a symmetric monoidal functor) and $ f \colon \mathcal{C}^\op \to q^*\mathcal{D} $ is a $ C_2 $-equivariant functor. 
+\begin{construction}\label{cons:Poincare_structure_from_equivariant_functor}
+    Given a $ C_2 $-equivariant functor $ f \colon \mathcal{C}^\op \to \mathcal{D} $, we may regard the data of the $ C_2 $-equivariance of $ f $ as a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        \widetilde{\mathcal{C}^\op} \ar[r, "{\widetilde{f}}"] \ar[d] & \mathcal{D} \times BC_2 \ar[d] \\
+        BC_2\ar[r,equals] & BC_2
+    \end{tikzcd}
+    \end{equation*}
+    where the vertical maps are cocartesian fibrations and the restriction of $ \widetilde{f} $ to the fiber over the point $ * \in BC_2 $ recovers $ f $. 
+    The diagram induces a map on cocartesian sections
+    \begin{equation*}
+        \overline{f} \colon \Fun_{BC_2}^{\mathrm{cocart}}(BC_2, \widetilde{\mathcal{C}^\op}) \to \mathcal{D}^{BC_2} \,.
+    \end{equation*}
+    Now if $ \mathrm{C} $ is a symmetric monoidal $ \infty $-category, we can associate to $ f $ the composite
+    \begin{equation*}
+        T_f \colon \mathcal{C}^\op \xrightarrow{x \mapsto x \otimes \sigma(x)} \Fun_{BC_2}^{\mathrm{cocart}}(BC_2, \widetilde{\mathcal{C}^\op}) \xrightarrow{\overline{f}} \mathcal{D}^{BC_2} \,. 
+    \end{equation*}
+    Finally, if $ \mathcal{D} $ admits $ BC_2 $-indexed limits, we can take homotopy fixed points of $ C_2 $-objects in which case we define the functor $ \Qoppa_f^s \colon \mathcal{C}^\op \to \mathcal{D} $ as\Lucy{I'm just using the same notation as Harpaz-Nardin-Shah here, but $(-)^s$ is maybe a little weird because it should be `hermitian,' not `symmetric.'} the composite
+    \begin{equation*}
+         \Qoppa_f^s \colon \mathcal{C}^\op \xrightarrow{T_f} \mathcal{D}^{BC_2} \xrightarrow{(-)^{hC_2}} \mathcal{D} \,. 
+    \end{equation*}
+\end{construction}
+\begin{observation}\label{obs:cross_effect_twisted_poincare_structure}
+    Let $ \mathcal{C} $, $ L $, be as before. 
+    Then the cross effect $ B_{L} $ of $ \Qoppa^s_L$ is given by $ B_L(x,y) = \mathrm{hom}_{\mathcal{C}}(x \otimes \sigma (y), L) $. 
+\end{observation}
+\begin{proposition}\label{prop:multiplicativity_of_Poincare_struct_from_eqvt_functor}
+    Let $ \mathcal{D} $ be a symmetric monoidal $ \infty $-category which admits $ BC_2 $-indexed limits; endow $ \mathcal{D} $ with the trivial $ C_2 $-action.   
+    Then the assignment $ (\mathcal{C}, f) \mapsto ( \mathcal{C}, \Qoppa^s_{f}) $ of Construction \ref{cons:Poincare_structure_from_equivariant_functor} assembles to form a lax symmetric monoidal functor 
+    \begin{equation*}
+        \mathcal{W}_{\mathcal{D}}^\otimes \to \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes 
+    \end{equation*}
+    sitting in a commutative diagram
+    \begin{equation}\label{diagram:mult_of_Poincare_struct_from_eqvt_functor}
+    \begin{tikzcd}
+         \mathcal{W}_{\mathcal{D}}^\otimes \ar[r] \ar[d] & \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes \ar[d] \\
+         \EE_\infty \mathrm{Alg}(\Cat^{BC_2})^\times \ar[r,"{\mathcal{C}^\otimes \mapsto \mathcal{C}}"] & \left(\Cat^{BC_2}\right)^\times 
+    \end{tikzcd}
+    \end{equation}
+    in which both vertical arrows are both $ \mathrm{Fin}_* $-cartesian fibrations and cocartesian fibrations of $ \infty $-operads. 
+\end{proposition}
+
+\begin{construction}\label{cons:functor_classifying_twisted_diagonal} \Lucy{This is basically Construction 3.1.4 of \cite{CHN2024} with minor edits.}
+    Consider the functors $ r \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2}) \xrightarrow{\mathcal{C}^\otimes \mapsto \mathcal{C}} \Cat^{BC_2} $ and $ p \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2}) \xrightarrow{\mathrm{forget}} \Cat \xrightarrow{q^*} \Cat^{BC_2} $ where $ q \colon BC_2 \to * $. 
+    We construct a symmetric monoidal natural transformation $ \tau \colon r^\times \implies p^\times $ whose component at a given category $ \mathcal{C} $ with $ C_2 $-action $ \sigma \colon \mathcal{C} \simeq \mathcal{C}$ is the $ C_2 $-equivariant functor $ \mathcal{C} \xrightarrow{x \mapsto x \otimes \sigma(x)} p(\mathcal{C}) $. 
+
+    Let $ \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ be the span $ \infty $-category of finite sets with free $ C_2 $-action. 
+    For an $ \infty $-category with finite products $ \mathcal{E} $, there is a natural equivalence $ \Fun^\times\left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \mathcal{E}\right) \simeq \mathrm{CMon}(\mathcal{E})^{BC_2} $ between product-preserving functors $ \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) \to \mathcal{E} $ and commutative monoids in $ \mathcal{E} $ with $ C_2 $-action. 
+    Taking $ \mathcal{E} \simeq \Cat $, we may identify the functor $ r $ as restriction along the inclusion $ i \colon BC_2 \to \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ of the maximal subgroupoid in the full subcategory on a finite $ C_2 $-set with a single orbit. 
+    On the other hand, we can identify the functor $ p $ as restriction along the map $ j \colon BC_2 \to \{*\} \xrightarrow{* \mapsto C_2} \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $. 
+    Now the span $ C_2 \xleftarrow{\pi_1} C_2 \times C_2 \xrightarrow{\pi_2} C_2 $ determines a morphism in $ \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ which is equivariant with respect to the given action on the source $ C_2 $ and the \emph{trivial action} on the target $ C_2 $. 
+    This morphism determines a functor $ \Delta^{1} \times BC_2 \to \mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right) $ whose restriction to $ \{0\} \times BC_2 $ agrees with $ i $ and whose restriction to $ \{1\} \times BC_2 $ agrees with $ j $. 
+    This determines a natural transformation $ i^* \implies j^* $ of functors $ \Fun \left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \Cat\right) \to \Fun(BC_2, \Cat) $, and precomposing with the inclusion $ \Fun^\times \left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \Cat\right) \subset \Fun \left(\mathrm{Span}\left(\mathrm{Fin}_{C_2}^{\mathrm{free}}\right), \Cat\right)$ gives the desired natural transformation $ \tau \colon r \implies p $. 
+    Since $ r $ and $ p $ preserve products, we may lift them to symmetric monoidal functors $ r^\times, p^\times \colon \EE_\infty\mathrm{Alg}(\Cat^{BC_2})^\times \to (\Cat^{BC_2})^\times $, and $ \tau $ refines to a symmetric monoidal natural transformation $ \tau^\times \colon r^\times \implies p^\times $.
+\end{construction}
+\begin{proof}
+    [Proof of Proposition \ref{prop:multiplicativity_of_Poincare_struct_from_eqvt_functor}] 
+    \Lucy{Pretty similar to proof of \cite[Proposition 3.1.3]{CHN2024}, the main thing is the fact (stated after proof of Lemma 3.1.1 of \emph{op. cit.}) that $ \mathrm{Fin}_* $-cartesian fibrations are classified by lax symmetric monoidal functors.}  
+    Horizontally composing the natural transformation of Construction \ref{cons:functor_classifying_twisted_diagonal} with the functor \ref{cons:Poincare_structure_from_equivariant_functor} and unstraightening induces a commutative diagram
+    \begin{equation}
+    \begin{tikzcd}
+         \mathcal{W}_{\mathcal{D}}^\otimes \ar[d] \ar[r] & \left(\Cat^{BC_2}_{\op//\mathcal{D}}\right)^\otimes \ar[d] \\ 
+         \left(\Cat^{BC_2}\right)_{\op//\mathcal{D}}^\otimes \ar[r,"{\mathcal{C}^\otimes \mapsto \mathcal{C}}"] & \left(\Cat^{BC_2}\right)^\times      
+    \end{tikzcd}    \,,
+    \end{equation}
+    where we have used that $ (q^* \mathcal{D})^{hC_2} \simeq \mathcal{D}^{BC_2} $. 
+\end{proof}
+\begin{definition}
+    Define 
+    \begin{equation*}
+        \mathcal{W}_{\mathrm{ex}}^\otimes \subseteq \mathcal{W}_{\Spectra}^\otimes \times_{\EE_\infty\mathrm{Alg}(\Cat)} \EE_\infty\mathrm{Alg}(\Catex)
+    \end{equation*}
+    to be the full sub-operad on those colors $ (\mathcal{C}, f) $ so that $ f $ is exact. 
+\end{definition}
+\begin{observation}
+    The commutative square (\ref{diagram:mult_of_Poincare_struct_from_eqvt_functor}) restricts to a commutative square of $ \infty $-operads 
+    \begin{equation}\label{diagram:from_eqvt_functor_to_Cath}
+    \begin{tikzcd}
+        \mathcal{W}_{\mathrm{ex}}^\otimes \ar[r,"{(\mathcal{C},f) \mapsto (\mathcal{C}, \Qoppa_f^s)}"] \ar[d] & \Cath^\otimes \ar[d] \\
+        \left(\EE_\infty\mathrm{Alg}(\Catex)^{BC_2}\right)^\otimes \ar[r] & \Catex^\otimes  
+    \end{tikzcd}
+    \end{equation}
+    where $ \Qoppa^s_f $ was defined in Construction \ref{cons:Poincare_structure_from_equivariant_functor}. 
+\end{observation}
+\begin{lemma}
+    Both vertical maps in \ref{diagram:from_eqvt_functor_to_Cath} are cocartesian fibrations of $ \infty $-operads. 
+    In particular, $ \mathcal{W}_{\mathrm{ex}}^\otimes $ is a symmetric monoidal $ \infty $-category. 
+\end{lemma}
+\begin{proof}
+    That $ \Cath^\otimes $ is symmetric monoidal and the right-hand projection is a symmetric monoidal functor is \cite[Theorem 5.2.7]{CDHHLMNNSI}. 
+    Furthermore, by Proposition \ref{prop:multiplicativity_of_Poincare_struct_from_eqvt_functor} and base change, we have a cocartesian fibration of $ \infty $-operads:
+    \begin{equation*}
+       \pi \colon \left(\EE_\infty\mathrm{Alg}(\Catex)^{BC_2}\right)^\otimes \times_{\left(\Cat^{BC_2}\right)^\times} \left(\Cat^{BC_2}_{\op//\mathcal{D}}\right)^\otimes \to \left(\EE_\infty\mathrm{Alg}(\Catex)^{BC_2}\right)^\otimes 
+    \end{equation*}
+    so that $ \mathcal{W}_{\mathrm{ex}}^\otimes $ includes as a full sub-operad on the fiber product on the left on those colors $ (\mathcal{C}, f \colon \mathcal{C}^\op \to \Spectra) $ so that $ f $ is exact. 
+    It suffices to show that if $ \alpha \colon (\mathcal{C}_i, f_i \colon \mathcal{C}_i^\op \to \Spectra)_{i \in I} \to (\mathcal{D}, f \colon \mathcal{D}^\op \to \Spectra) $ is a $ \pi $-cocartesian arrow so that $(\mathcal{C}_i, f_i \colon \mathcal{C}_i^\op \to \Spectra)_{i \in I} $ is in $ \mathcal{W}_{\mathrm{ex}}^\otimes $, then $ (\mathcal{D}, f \colon \mathcal{D}^\op \to \Spectra) $ is also in $ \mathcal{W}_{\mathrm{ex}}^\otimes $. 
+    This holds because the left Kan extension of the multi-exact functor $ \Pi_i  f_i \colon \Pi_i \mathcal{C}_i^\op \to \Spectra $ along $ \Pi_i \mathcal{C}_i^\op \to \bigotimes_i \mathcal{C}_i^\op \xrightarrow{\alpha} \mathcal{D}^\op $ is exact. 
+\end{proof}
+As in \cite[p. 15]{CHN2024}, we can identify objects of the underlying $ \infty $-category of $ \mathcal{W}_{\mathrm{ex}}^\otimes $ with pairs $ \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) $ where $ \mathcal{C} $ is a symmetric monoidal stable $ \infty $-category with involution $ \sigma_{\mathcal{C}} $, and $ (L, \lambda) \in \mathrm{Ind}(\mathcal{C})^{hC_2} $ is a fixed point with respect to the induced action on $ \mathrm{Ind}(\mathcal{C})$. 
+\begin{recollection}
+    A symmetric monoidal $ \infty $-category $ \mathcal{C} $ is said to be \emph{rigid} if every object in $ \mathcal{C} $ is dualizable. 
+    \Lucy{\href{https://mathoverflow.net/a/337430}{reference} for when derived categories of connective objects over more general objects are compactly generated}
+\end{recollection}
+\begin{proposition}
+    % Let $  \left(\mathcal{C}^\otimes, \sigma_\mathcal{C}, L, \lambda\right) \in \mathcal{W}_{\mathrm{ex}} $ be as above. 
+    Suppose $ \mathcal{C} $ is a rigid stably symmetric monoidal $ \infty $-category with a $ C_2 $-action $ \sigma_{\mathcal{C}} $ via symmetric monoidal functors, and let $ (L,\lambda) \in \mathrm{Ind}(\mathcal{C})^{BC_2} $. 
+    Then the hermitian structure $ \Qoppa^s_{L} $ is non-degenerate if and only if $ L $ belongs to $ \mathcal{C} $, and it is furthermore Poincaré if and only if the underlying object $ L $ is tensor-invertible in $ \mathcal{C} $. 
+    In addition, if $ g \colon \mathcal{C} \to \mathcal{C}' $ is a symmetric monoidal $ C_2 $-equivariant exact functor, $ (L,\lambda) \in \mathcal{C}^{BC_2} $ and $ (L',\lambda') \in (\mathcal{C}')^{BC_2} $ are tensor-invertible, and $ g(L,\lambda) \simeq (L',\lambda') $ an equivalence in $ (\mathcal{C}')^{BC_2} $, then the induced hermitian functor $ \left(\mathcal{C}, \Qoppa^s_{L}\right) \to \left(\mathcal{C}', \Qoppa^s_{L'}\right) $ is Poincaré. 
+\end{proposition}
+\begin{proof}
+    If the bilinear part $ B_L $ is represented by $ D \colon \mathcal{C}^\op \to \mathcal{C} $, then $ D(1_{\mathcal{C}}) = \sigma_{\mathcal{C}}(L) $; in particular, $ \sigma_{\mathcal{C}}(L) \simeq L $ is an object of $ \mathcal{C} $.  
+    On the other hand, if $ L $ belongs to $ \mathcal{C} $, then for $ x , y \in \mathcal{C} $, the bilinear part $ B_L $ is $ B_L(x,y) = \hom_{\mathrm{Ind}(\mathcal{C})}\left(x \otimes \sigma_{\mathcal{C}}(y), L \right) \simeq \hom_{\mathcal{C}}\left(x \otimes \sigma_{\mathcal{C}}(y), L \right) \simeq \hom_{\mathcal{C}}\left(x , L \otimes \sigma_{\mathcal{C}}(y)^\vee \right) $. 
+    The natural transformation $ \mathrm{id}_{\mathcal{C}} \to D^{\op} \circ D $ is given by $ y \to L \otimes \sigma_{\mathcal{C}} \left(L \otimes \sigma_{\mathcal{C}}(y)^\vee \right)^\vee $ induced by the adjoint of the equivalence $ L \simeq \sigma_{\mathcal{C}} (L) $, which is an equivalence if and only if $ L $ is invertible. 
+
+    Finally, the natural transformation $ g \circ D_L \Rightarrow D_{L'} \circ g $ is $ g\left(L \otimes \sigma_{\mathcal{C}}(y)^\vee\right) \simeq g(L) \otimes g\left(\sigma_{\mathcal{C}}(y)^\vee\right) \to L' \otimes \sigma_{\mathcal{C}'}(g(y))^\vee $ which is an equivalence if and only if the map $ g(L) \to L' $ is an equivalence\Lucy{how much equivariance on $ g(L) \to L' $ is necessary?}. 
+\end{proof}
