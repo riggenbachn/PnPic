@@ -106,6 +106,7 @@
 \newcommand{\RP}{\ensuremath{\mathbb{RP}}\xspace}
 \newcommand{\DD}{\ensuremath{\mathbbl{\Delta}}\xspace}
 \newcommand{\op}{\mathrm{op}} % opposite functor
+\newcommand{\sphere}{\mathbb{S}^0}
 \newcommand{\tc}{\ensuremath{\mathrm{TC}}}
 \newcommand{\thh}{\ensuremath{\mathrm{THH}}}
 \newcommand{\tp}{\ensuremath{\mathrm{TP}}}
@@ -146,6 +147,7 @@
 \newcommand{\Viktor}[1]{\todo{V: #1}}
 \newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
 \newcommand{\Lucy}[1]{\todo[color=cyan]{\linespread{1}\footnotesize L: #1}}
+\newcommand{\Lucyil}[1]{\todo[color=cyan,inline]{\linespread{1}\footnotesize L: #1}}
 
 \title{Poincar{\'e} Schemes}
 \author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
@@ -1101,12 +1103,47 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     \Lucy{todo--probably need to fix the statement with \emph{duals} when the proof is written}
 \end{proof}
 
+\begin{definition}
+    Let $ R $ be a Poincar\'e ring, and let $ A $ be an $ \EE_1 $-$ R $-algebra with an anti-involution. 
+    We will refer to the data of $ (M_A, N_A, N_A \to M_A^{tC_2}) $ of Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct} as an \emph{$ R $-linear $ A $-module with genuine involution}. 
+\end{definition}
+\begin{remark}
+    When $ R = \sphere $ is the initial Poincar\'e ring, then a $ \sphere $-linear $ A $-module with genuine involution is simply an $ A $-mmodule with genuine involution in the sense of \cite[Defintiion 3.2.3]{CDHHLMNNSI}. 
+\end{remark}
+\begin{proposition}\label{prop:classify_R_linear_Poincare_functors}
+    Let $ R $ be a Poincar\'e ring, and let $ A, B $ be $ \EE_1 $-$ R $-algebras with anti-involutions and let $ (M_A, N_A, \alpha \colon N_A \to M_A^{tC_2} ) $, $ (M_B, N_B, \beta \colon N_B \to M_B^{tC_2}) $ be $ R $-linear modules with genuine involution over $ A $ and $ B $, respectively. 
+    Suppose given a map $ f \colon A \to B $ of $ \EE_1 $-$ R $-algebras with anti-involution, and write $ f_* $ for the functor $ B \otimes_A - \colon \LMod_A^\omega \to \LMod_B^\omega $. \Lucy{`geometrically' this should be $ f^* $}
+    Then 
+    \begin{enumerate}
+        \item the data of a $ R $-linear hermitian functor $ \left(\LMod_A^\omega, \Qoppa_{M_A}^\alpha \right) \to \left(\LMod_B^\omega, \Qoppa_{M_B}^\beta \right) $ covering the base change functor $ f_* $ can be encoded by a triple $ (\delta, \gamma, \sigma ) $ where $ \delta \colon M_A \to M_B $ is a morphism in $ \LMod_{A \otimes_R A}^{hC_2} $, $ \gamma \colon N_A \to N_B $ is a morphism in $ \LMod_{A \otimes_R R^{\varphi C_2}} $, and $ \sigma $ is a homotopy making the square
+        \begin{equation*}
+        \begin{tikzcd}
+            N_A \ar[d,"\alpha"] \ar[r,"\gamma"] & N_B \ar[d,"\beta"] \\
+            M_A^{tC_2} \ar[r,"{\delta^{tC_2}}"] & M_B^{tC_2}
+        \end{tikzcd}
+        \end{equation*}
+        commute. \Lucy{This is an $ R $-linear version of \cite[Corollary 3.4.2]{CDHHLMNNSI}}
+
+        \item $ (\delta, \gamma, \sigma) $ defines an $ R $-linear Poincar\'e functor if the maps
+        \begin{equation*}
+        \begin{split}
+            B \otimes_A M_A \to (B \otimes_R B) \otimes_{A \otimes_R A} M_A \to M_B \\
+            B \otimes_A N_A \to N_B    
+        \end{split}    
+        \end{equation*}
+        are equivalences. 
+    \end{enumerate}
+\end{proposition}
+
 As in the Picard group case, the symmetric monoidal forgetful functor $\theta \colon \Catp_{R} \to \Catex_R $ induces a map of spectra $ \theta \colon \Brp(A)\to \Br(A^e)$. 
 When $ A^e $ is endowed with the trivial action, $ \theta $ will factor through the $2$-torsion on $\pi_0$. 
 As a consequence of Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct} we can identify the fiber of this map.
 \begin{corollary}\label{cor:Poincare_Brauer_to_Brauer_fiber}
 Let $(\mathrm{Mod}_A^\omega, \Qoppa_A)$ be a Poincar{\'e} ring with underlying genuine $C_2$ spectrum $A^L$ as in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. 
-Then the fiber of the map \[\Brp(A)\to \Br(A^e)\] can be naturally identified with the cofiber $ \mathrm{cofib}\left(\Pic\left(\Mod_{A^e}(\Spectra)^{hC_2}\right) \to \Pic \left(\mathrm{Mod}_{A^L}\left(\mathrm{Sp}^{C_2}\right) \right) \right) $, where the latter cofiber is taken in connective spectra.
+Write $ \sigma \colon A^e \simeq A^e $ for the $ C_2 $-action on the underlying $ \EE_\infty $-ring associated to $ A $. 
+Then the fiber of the map \[u \colon \Brp(A)\to \Br(A^e)\] can be naturally identified with $ \Pic \left(\mathrm{Mod}_{A^L}\left(\mathrm{Sp}^{C_2}\right) \right)  $. 
+Moreover, the connecting map $ \Omega \Br(A^e) \simeq \Pic(A^e) \to \mathrm{fib}(u) $ is induced by the norm $ \Mod_{A^e} \to \Mod_{A^L} $, $ X \mapsto N^{C_2} X \otimes_{N^{C_2}A^e} A^L $, which on underlying spectra is given by $ X \mapsto X \otimes_A \sigma^* X $. 
+% Then the fiber of the map \[\Brp(A)\to \Br(A^e)\] can be naturally identified with the cofiber $ \mathrm{cofib}\left(\Pic\left(\Mod_{A^e}(\Spectra)^{hC_2}\right) \to \Pic \left(\mathrm{Mod}_{A^L}\left(\mathrm{Sp}^{C_2}\right) \right) \right) $, where the former denotes  the latter cofiber is taken in connective spectra.
 \end{corollary}
 \begin{proof}[Proof of Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}]
 Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_{A^e}^\omega}(\Catex)$ is symmetric monoidal and conservative, it induces a map $ \theta^\simeq \colon \pnbr(A) \to \mathrm{br}(A^e) $ on the groupoid core of invertible objects. 
@@ -1119,16 +1156,49 @@ By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:R
 Now suppose $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ and $ \left(\Mod_{A^e}^\omega, \Phi\right) $ are two points in the fiber of $ \theta $ over $ \Mod_{A^e}^\omega $. 
 We know that $ \Qoppa $ and $ \Phi $ are associated to invertible $ A^L $-modules $ (M, N, N \to M^{tC_2}) $ and $ (M', N', N' \to (M')^{tC_2}) $, resp. 
 An equivalence from $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ to $ \left(\Mod_{A^e}^\omega, \Phi\right) $ consists of an $ A^e $-linear equivalence $ F \colon \Mod_{A^e}^\omega \xrightarrow{\sim} \Mod_{A^e}^\omega $ and a natural equivalence $ \eta \colon \Phi \circ F^{\op} \xrightarrow{\sim} \Qoppa $. 
-Now $ F $ is classified by an invertible $ A^e $-bimodule $ \beta $ and the natural equivalence $ \eta $ is classified by an equivalence $ \beta \otimes_{A^L} (M, N, N \to M^{tC_2}) \simeq (M',N', N' \to (M')^{tC_2}) $ of $ A^L $-modules \cite[Lemma 3.4.3]{CDHHLMNNSI}.
+Now $ F $ is classified by an invertible $ A^e $-bimodule $ \beta $ and the natural equivalence $ \eta $ is classified by an equivalence $ \beta \otimes_{A^L} (M, N, N \to M^{tC_2}) \simeq (M',N', N' \to (M')^{tC_2}) $ of $ A^L $-modules (Proposition \ref{prop:classify_R_linear_Poincare_functors}). %\cite[Lemma 3.4.3]{CDHHLMNNSI}.
 \end{proof}
 \begin{example}\label{ex:pnbr_closed_point_ramified}
     Let $ k $ be an algebraically closed field, and regard $ k $ as a Poincar\'e ring $ \underline{k} $ via Example \ref{ex:fixpt_Mackey_functor} with the trivial involution.  
     Then 
     \begin{equation*}
-        \pi_0\pnbr(\underline{k}) = 0.
+        \pi_0\pnbr(\underline{k}) \simeq \begin{cases}
+            \ZZ/2 & \text{ if }\mathrm{char}\, k \neq 2 \\
+            \ZZ & \text{ if }\mathrm{char}\, k = 2 \,.
+        \end{cases} 
     \end{equation*}
-    To see this, note that we have a fiber sequence \[\pic(k)\to \mathrm{cofib}\left(\pic(\Mod_{k}(\mathrm{Sp})^{hC_2})\to \pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2}))\right)\to \pnbr(\underline{k})\] which on $\pi_\star$ produces the exact sequence \[\ldots\to \mathbb{Z}\to \mathrm{coker}(\mathbb{Z}\to \mathbb{Z}\times \mathbb{Z})\to \pi_0(\pnbr(\underline{k}))\to 0\] where $\pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2}))\cong \mathbb{Z}\times\mathbb{Z}$ via the map sending an invertible $\underline{k}$-module $\mathcal{L}$ to the pair $(n_1,n_2)$ where $\mathcal{L}^e\simeq k[n_1]$ and $\mathcal{L}^{\phi C_2}=k[n_2]$, see \cite[Section 8.1]{Krause_picard} for an argument. The $\mathbb{Z}$-term coming from $\pi_0(\Pic(\Mod_k^{hC_2}))$ maps to the diagonal, and therefore we get a short exact sequence \[0\to \mathbb{Z}\to \mathbb{Z}\to \pi_0(\pnbr(\underline{k}))\to 0\] where the left hand map is injective since $\pnbr(\underline{k})=0$.
-    \Lucy{Pretty sure this follows from Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}; will return to this later. Also, maybe put this example somewhere else.}
+    To see this, note that by \cite[Proposition 1.9]{MR2957304}, $ \pi_0 \mathrm{br}(k^e) \simeq 0 $. 
+    Thus by Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}, it suffices to understand the fiber sequence \[\pic(k)\to \pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2})) \to \pnbr(\underline{k})\]. 
+
+    Now if char $ k \neq 2 $, then $ \pic(\underline{k}) \simeq \pic(k)^{hC_2} \simeq (\ZZ \times B k^\times)^{hC_2} $ where the generator of $ C_2 $ acts on $ \pi_1 B k^\times $ by $ u \mapsto u^{-1} $. \Lucy{leaving the action here since I wasn't sure at first about whether that term contributes to $\pi_0 \pic $ via the HFPSS (it does not).} 
+    On the other hand we can deduce that
+    \begin{equation*}
+        \pi_0 \pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2})) \simeq \begin{cases}
+            \ZZ \times \ZZ & \text{ if }\mathrm{char}\, k = 2 \\
+            \ZZ & \text{ otherwise }
+        \end{cases}
+    \end{equation*}
+    by an argument similar \cite[Section 8.1]{Krause_picard}. 
+    If char $ k \neq 2 $ then the map $ \pi_0 \pic(k) \to \pi_0\pic(\underline{k}) $ is $ \ZZ \xrightarrow{\cdot 2} \ZZ $. 
+    On the other hand, if char $ k = 2 $, then the map $ \pi_0 \pic(k) \to \pi_0\pic(\underline{k}) $ is $ \ZZ \xrightarrow{n \mapsto (2n, n)} \ZZ \times \ZZ $. 
+    % -----------------------------------------------------------------------------------
+    % Leaving this here for ease of comparison/just in case I'm wrong. (--Lucy, May 23rd) 
+    % -----------------------------------------------------------------------------------
+    % Thus by Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}, it suffices to understand the fiber sequence \[\pic(k)\to \mathrm{cofib}\left(\pic(\Mod_{k}(\mathrm{Sp})^{hC_2})\to \pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2}))\right)\to \pnbr(\underline{k})\]. 
+    % On $\pi_\star$, we obtain the exact sequence \[\ldots\to \mathbb{Z}\to \mathrm{coker}(\mathbb{Z}\to \mathbb{Z}\times \mathbb{Z})\to \pi_0(\pnbr(\underline{k}))\to 0\] where $\pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2}))\cong \mathbb{Z}\times\mathbb{Z}$ via the map sending an invertible $\underline{k}$-module $\mathcal{L}$ to the pair $(n_1,n_2)$ where $\mathcal{L}^e\simeq k[n_1]$ and $\mathcal{L}^{\phi C_2}=k[n_2]$, see \cite[Section 8.1]{Krause_picard} for an argument. 
+    % The $\mathbb{Z}$-term coming from $\pi_0(\Pic(\Mod_k^{hC_2}))$ maps to the diagonal, and therefore we get a short exact sequence \[0\to \mathbb{Z}\to \mathbb{Z}\to \pi_0(\pnbr(\underline{k}))\to 0\] where the left hand map is injective since $\pnbr(\underline{k})=0$.
+    \Lucyil{This and Example \ref{ex:pnbr_closed_pt_unramified} are a pair; if we move one, also move the other.}
+\end{example}
+\begin{example}\label{ex:pnbr_closed_pt_unramified}
+    Let $ k $ be an algebraically closed field, and consider the Poincar\'e ring associated to $ \prod_{C_2} k $ (i.e. $ k \times k $ with the swap action) via Example \ref{ex:fixpt_Mackey_functor}. 
+    Similarly to Example \ref{ex:pnbr_closed_point_ramified}, by \cite[Proposition 1.9]{MR2957304} we have $ \pi_0 \mathrm{br}(\Spec k \sqcup \Spec k) \simeq \pi_0 \mathrm{br}(\Spec k)^{\times 2} = 0 $. 
+    Thus by Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}, it suffices to understand the cokernel of the connecting homomorphism $ \pi_1 \mathrm{br}(k \times k) \to \pi_0 \Pic(\prod_{C_2} k) $. 
+    Now since $ \prod_{C_2} k $ is Borel, 
+    \begin{equation*}
+        \pic\left(\Mod_{\prod_{C_2} k}\left(\Spectra^{C_2}\right) \right) \simeq \pic \Mod_{k \times k}(\Spectra)^{hC_2} \simeq \left(\prod_{C_2} (\ZZ \oplus  k^\times[1])\right)^{hC_2} \simeq \ZZ \oplus k^\times [1] 
+    \end{equation*}
+    thus $ \pi_0 \pic\left(\Mod_{\prod_{C_2} k}\left(\Spectra^{C_2}\right) \right) \simeq \ZZ $. 
+    On the other hand, $ \pi_1 \mathrm{br}(k \times k) \simeq \pi_0 \Pic(k \times k) \simeq \ZZ^{\times 2} $ and the connecting homomorphism is $ (n, m) \mapsto n+m $, whence $ \pi_0\pnbr\left(\prod_{C_2} k\right) = 0 $. 
 \end{example}
 Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
 \begin{proposition}
@@ -1258,6 +1328,17 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     which glue compatibly. 
     This follows from the definitions, concluding the proof. 
 \end{proof}
+\begin{observation}
+    Let $ k $ be an algebraically closed field, and regard $ \underline{k} $ as a Poincar\'e ring spectrum with the trivial involution via Example \ref{ex:fixpt_Mackey_functor}. 
+    Let $ (A, A^{\varphi C_2}, A^{\varphi C_2} \to A^{tC_2}) $ be an Azumaya algebra with genuine involution over $ \underline{k} $. 
+    By Proposition \ref{prop:mod_over_azumaya_geninv_is_invertible}, $ \left(\Mod_A^\omega, \Qoppa_A\right) \in \pnbr(\underline{k}) $. 
+    By \cite[Corollary 1.15]{MR2957304}, $ A $ is equivalent to $ \mathrm{End}_k(P) $ for some compact $ k $-module $ P $. 
+    Observe that there is a canonical identification $ A^\op \simeq \mathrm{End}_k(P^\vee) $. 
+    By the derived Skolem--Noether theorem \cite[Theorem 5.1.5]{MR2579390}, there exists a unique $ n \in \ZZ $ so that the involution $ A \simeq A^\op $ is induced by an equivalence $ P \simeq P^\vee [n] $ (which is unique up to multiplication by a unit in $ k $). 
+
+    \Lucyil{the next part is contingent on the computation in Example \ref{ex:pnbr_closed_point_ramified}; omit if the computation in the example works out to be zero. If the computation is nonzero, consider this a numerical invariant of derived Azumaya algebras w involution and put it in a definition?} 
+    By Example \ref{ex:pnbr_closed_point_ramified}, we may associate to $ \left(\Mod_A^\omega, \Qoppa_A\right) \in \pi_0 \pnbr(\underline{k}) $ an integer $ n $. 
+\end{observation}
 \begin{proposition}\label{prop:Poincare_cat_as_module_cat} \Lucy{later: add case of schemes with involution}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
     Let $ \left(\mathcal{C}, \Qoppa\right) $ be an invertible idempotent-complete $ R $-linear Poincaré $ \infty $-category. 
@@ -1369,7 +1450,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
             0 & \text{else. }
         \end{cases}
     \end{equation*}
-    \Lucy{If we believe what's in Example \ref{ex:pnbr_closed_point_ramified}, then $ \pi_0 \pnbr $ should be the pushforward of $ \ZZ $ from the mod 2 reduction of the branch locus (terminology from \cite{azumaya_involution})}
+    \Lucyil{If we believe what's in Example \ref{ex:pnbr_closed_point_ramified}, then $ \pi_0 \pnbr $ should be supported on the branch locus (terminology from \cite{azumaya_involution}); maybe to simplify presentation we could state it as: Assume $ X $ is over a field $ k $. Then the $ \pi_0 \pnbr $ is the pushforward of either (sheafification of constant sheaves) $ \ZZ $ or $ \ZZ/2 $ from the branch locus (depending on char $k$).}
 \end{corollary}
 
 %\section{Poincar{\'e} schemes}
