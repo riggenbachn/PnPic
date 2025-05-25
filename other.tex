@@ -270,7 +270,23 @@ The 'only if' direction follows from the fact that the map $S^{hC_2}\to S$ is an
         \item Involutive version of statement that, for a monoidal $ \infty $-category $ \mathcal{C} $ and an $ \EE_1 $-algebra $ A $, $ \mathrm{LMod}_A(\mathcal{C}) $ is right-tensored over $ \mathcal{C} $? 
         \item Involutive version of endomorphism categories? \cite[\S4.7.1]{LurHA}
     \end{itemize}
-\end{enumerate}
+\end{enumerate} 
+I think that the equivalence of part (b) of the definition of an Azumaya algebra with genuine involution follows from the property of being Azumaya; see Lemma 1(b) (and p.216 for the `type 2' case) of \cite{MR1162189}. 
+\begin{lemma}
+    Let $ R $ be an $ \EE_\infty $-ring with an involution $ \sigma \colon R \xrightarrow{\sim} R$ and suppose $ A $ is an $ \EE_1 $-$ R $-algebra with an anti-involution $ \lambda \colon A \xrightarrow{\sim} \sigma^* A^\op $. 
+    Suppose $ A $ is further Azumaya in the sense of \Lucy{reference}. 
+    Then the bilinear pairing 
+    \begin{equation*}
+    \begin{split}
+        A \otimes_R \sigma^* A \xrightarrow{\id \otimes \sigma^*\lambda} A \otimes_R A^\op \simeq \mathrm{End}_R(A) \xrightarrow{\mathrm{tr}} R     
+    \end{split}    
+    \end{equation*}
+    is perfect, i.e. its adjoint $ A \to (\sigma^* A)^\vee $ is an equivalence. 
+\end{lemma}
+\begin{question}
+    Does the map in part (e) of the definition of an Azumaya algebra with genuine involution follow from property of being Azumaya? 
+\end{question}
+
 \subsection{Step (a)}
 \begin{definition}\label{defn:colored_operad_monoid_with_involution}
 \Lucy{This is just an imitation of \cite[Definition 4.1.1.1]{LurHA}, modified in accordance with ideas from \S5.4.2. }

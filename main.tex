@@ -224,13 +224,14 @@ Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}
 The authors wish to thank the Institute for Advanced Study and the organizers of the 2024 Park City Mathematics institute on motivic homotopy theory. 
 
 \subsection{Conventions}
-\label{subsection:conventions}
+\label{subsection:conventions} 
+\Lucy{Will `Azumaya algebra' refer to the classical/discrete ones or the derived/generalized ones?}
     \begin{longtable}{lll}
         $\Brp$ & Poincaré Brauer space\\
-        $\CAlg$ & $\infty$-categoriy of $\Einfty$-ring spectra\\
-        $\CAlg(\Spaces)$ & $\infty$-categoriy of $\Einfty$-spaces\\
-        $\CAlg^{\gp}(\Spaces)$ & $\infty$-categoriy of grouplike $\Einfty$-spaces\\
-        $\CAlgp$ & $\infty$-categoriy of Poincaré ring spectra\\
+        $\CAlg$ & $\infty$-category of $\Einfty$-ring spectra\\
+        $\CAlg(\Spaces)$ & $\infty$-category of $\Einfty$-spaces\\
+        $\CAlg^{\gp}(\Spaces)$ & $\infty$-category of grouplike $\Einfty$-spaces\\
+        $\CAlgp$ & $\infty$-category of Poincaré ring spectra\\
         $\Catex$ & $\infty$-category of small stable $\infty$-categories and exact functors\\
         $\Catp$ & $\infty$-category of Poincaré $\infty$-categories\\
         $\Catpidem$ & $\infty$-category of idempotent complete Poincaré $\infty$-categories\\
@@ -467,6 +468,10 @@ Philosophically, a scheme with genuine $C_2$-action should, via a recollement, b
         commutes. 
     \end{itemize}
 \end{definition}
+\begin{observation}\label{obs:fixpt_Mackey_functor_as_affine_C2_scheme}
+    Suppose $ R $ is a discrete commutative ring with a $ C_2 $-action, and regard $ R $ as a $ C_2 $-Mackey functor via Example \ref{ex:fixpt_Mackey_functor}. 
+    Then $ \Spec R \to \Spec (R^{C_2}) $ may be regarded as an object of $ \mathrm{qSch}^{C_2} $. 
+\end{observation}
 \begin{remark}\label{remark:restriction_of_schemes_with_involution}
     Suppose $ (X,\lambda, Y, p) $ is an object of $ \mathrm{qSch}^{C_2} $ and $ j \colon U \to Y $ is a flat map. %quasi-compact open subscheme %\Lucy{Do I need quasi-compact assumption?}
     Then $ (X_U, \lambda|_U, U, p|_U) $ is an object of $ \mathrm{qSch}^{C_2} $. 
@@ -1215,7 +1220,13 @@ Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrighta
     where the first equivalence is \cite[Proposition 4.1.3]{CDHHLMNNSI}. 
 \end{proof}
 
-\subsection{Azumaya algebras with genuine involution}
+\subsection{Azumaya algebras with genuine involution} 
+In this section, we introduce the notion of a derived/generalized Azumaya algebra with involution. 
+Recall that a classical/discrete Azumaya algebra $ \mathcal{A} $ is étale-locally given by the endomorphism algebra of a vector bundle $ V $, and a derived/generalized Azumaya algebra over $ X $ is étale-locally given by the endomorphism algebra of a perfect complex. 
+Observe that if $ \mathcal{A} \simeq \mathrm{End}_X(V) $, then $ \sigma^* \mathcal{A}^\op \simeq \mathrm{End}_X(\sigma^*(V^\vee)) $. 
+The prototypical anti-involution on a classical/discrete Azumaya algebra $ \mathcal{A} $ is given by taking transposes and conjugating by an isomorphism $ V \simeq \sigma^*(V^\vee) \otimes \mathcal{L} $, where $ \mathcal{L} $ is a line bundle on $ X $ \cite[\S1.1(ii), p.209; \S1.2, p.216]{MR1162189}. 
+If we now consider a derived/generalized Azumaya algebra $ \mathcal{A} \simeq \mathrm{End}_X(P) $ where $ P $ is a perfect complex on $ X $, then the prototypical anti-involution on $ \mathcal{A} $ arises from transposition and conjugation by an equivalence $ P \simeq \sigma^*(P^\vee) \otimes \mathcal{L} [n] $. \Lucy{Example? $ R\Gamma $ of an oriented family of smooth proper schemes over $ X $? relate to Serre duality!} 
+
 Let $ R $ be an $ \EE_\infty $-ring spectrum. 
 \begin{recollection}\label{rec:Azumaya_alg_wo_involution} 
     Recall \cites{MR2927172,MR3190610} that an $ \EE_1 $-$ R $-algebra $ A $ is said to be \emph{Azumaya} if it is a compact generator of $ \Mod_R $ and if the natural $ R $-algebra map giving the bimodule structure on $ A $
@@ -1250,13 +1261,17 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
     \Lucy{define the category!}
 \end{definition}
+\begin{observation}\label{obs:azumaya_geninv_base_change}
+    Let $ A $ be an Azumaya algebra with genuine involution over $ R $, and suppose given a map $ R \to S $ of Poincaré rings. 
+    Then $ (A \otimes_R S, P \otimes_{R^{\varphi C_2}} S^{\varphi C_2}) $ is an Azumaya algebra with genuine involution over $ S $. 
+\end{observation}
 \begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
     If $ A $ is an Azumaya algebra with genuine involution over $ R $, then in particular $ M_A = A $, $ N_A = P $ is a module with genuine involution over $ A $ in the sense of \cite[Definition 3.2.3]{CDHHLMNNSI}. 
 \end{remark}
 With ordinary Azumaya algebras, the prototypical Azumaya algebra with anti-involution arises from endomorphism rings of perfect modules. 
 Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ endows its endomorphism algebra with additional structure. 
 \begin{example}\label{ex:endomorphisms_of_poincare_object}
-    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. 
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. \Lucy{What if I replaced $ \Qoppa_R $ by a shift $ \Qoppa_R^{[n]} $? Or $ \Qoppa_R \circ \Sigma^n $? see \cite[\S3.5]{CDHHLMNNSI}}
 
     Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an $ \EE_1 $ with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
     If $ P $ is a generator of $ \Mod_R^\omega $, then $ A $ is furthermore Azumaya. 
@@ -1384,7 +1399,12 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
         \Mod^p \colon \mathrm{\acute{E}t}_Y^\op \to \EE_\infty \Alg\left(\Mod_{\left(\Mod^\omega_X, \Qoppa_{\underline{\mathcal{O}}}\right)}(\Catpidem)\right) \,.
     \end{equation*}
 \end{notation}
-\Lucy{I think Propositions \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectra} and \ref{prop:Poincare_modules_as_etale_sheaf_inv_scheme} have essentially the same proof--present them together?}
+\begin{observation}
+    Let $ R $ be a discrete commutative ring with a $ C_2 $-action, and recall that $ X:= \Spec R \to \Spec(R^{C_2}) = Y $ may be regarded as a $ C_2 $-scheme (Observation \ref{obs:fixpt_Mackey_functor_as_affine_C2_scheme}). 
+    Then base change along $ R^{C_2} \to R $ defines a map from étale covers of $ Y $ of Notation \ref{notation:scheme_involution_basechange} to $ C_2 $-equivariant étale covers of $ X $ of Notation \ref{notation:poincare_ring_basechange}. 
+    However, not all $ C_2 $-equivariant étale covers of $ X $ arise from this construction: consider the étale cover\Lucy{verify later} associated to the map of rings $ R \xrightarrow{r \mapsto (r, \sigma(r))} R \times R $, where $ R \times R $ is endowed with the flip action $ (r, s) \mapsto (s,r) $.  
+\end{observation}
+\Lucy{I think Propositions \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and \ref{prop:Poincare_modules_as_etale_sheaf_inv_scheme} have essentially the same proof--present them together?}
 \Lucy{recall étale hypersheaf/hypercovering}
 \begin{proposition}\label{prop:Poincare_modules_as_etale_sheaf_affine_spectral}
     Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
