@@ -1160,8 +1160,8 @@ By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:c
 By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:Rlin_Poincare_cats_tensor_mod_gen_inv}, invertibility of $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ implies that $ \left(M, N, N \to M^{tC_2}\right) $ is invertible as a module over $ A^L $. 
 Now suppose $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ and $ \left(\Mod_{A^e}^\omega, \Phi\right) $ are two points in the fiber of $ \theta $ over $ \Mod_{A^e}^\omega $. 
 We know that $ \Qoppa $ and $ \Phi $ are associated to invertible $ A^L $-modules $ (M, N, N \to M^{tC_2}) $ and $ (M', N', N' \to (M')^{tC_2}) $, resp. 
-An equivalence from $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ to $ \left(\Mod_{A^e}^\omega, \Phi\right) $ consists of an $ A^e $-linear equivalence $ F \colon \Mod_{A^e}^\omega \xrightarrow{\sim} \Mod_{A^e}^\omega $ and a natural equivalence $ \eta \colon \Phi \circ F^{\op} \xrightarrow{\sim} \Qoppa $. 
-Now $ F $ is classified by an invertible $ A^e $-bimodule $ \beta $ and the natural equivalence $ \eta $ is classified by an equivalence $ \beta \otimes_{A^L} (M, N, N \to M^{tC_2}) \simeq (M',N', N' \to (M')^{tC_2}) $ of $ A^L $-modules (Proposition \ref{prop:classify_R_linear_Poincare_functors}). %\cite[Lemma 3.4.3]{CDHHLMNNSI}.
+An equivalence from $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ to $ \left(\Mod_{A^e}^\omega, \Phi\right) $ lying over $\Mod_{A^e}^\omega$ consists of an a natural equivalence $ \eta \colon \Phi \xrightarrow{\sim} \Qoppa $. 
+Now the natural equivalence $ \eta $ is classified by an equivalence $(M, N, N \to M^{tC_2}) \simeq (M',N', N' \to (M')^{tC_2}) $ of $ A^L $-modules (Proposition \ref{prop:classify_R_linear_Poincare_functors}), hence the result. %\cite[Lemma 3.4.3]{CDHHLMNNSI}.
 \end{proof}
 \begin{example}\label{ex:pnbr_closed_point_ramified}
     Let $ k $ be an algebraically closed field, and regard $ k $ as a Poincar\'e ring $ \underline{k} $ via Example \ref{ex:fixpt_Mackey_functor} with the trivial involution.  
@@ -1175,17 +1175,17 @@ Now $ F $ is classified by an invertible $ A^e $-bimodule $ \beta $ and the natu
     To see this, note that by \cite[Proposition 1.9]{MR2957304}, $ \pi_0 \mathrm{br}(k^e) \simeq 0 $. 
     Thus by Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}, it suffices to understand the fiber sequence \[\pic(k)\to \pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2})) \to \pnbr(\underline{k})\]. 
 
-    Now if char $ k \neq 2 $, then $ \pic(\underline{k}) \simeq \pic(k)^{hC_2} \simeq (\ZZ \times B k^\times)^{hC_2} $ where the generator of $ C_2 $ acts on $ \pi_1 B k^\times $ by $ u \mapsto u^{-1} $. \Lucy{leaving the action here since I wasn't sure at first about whether that term contributes to $\pi_0 \pic $ via the HFPSS (it does not).} 
-    On the other hand we can deduce that
+    Now if char $ k \neq 2 $, then $ \pic(\underline{k}) \simeq \pic(k)^{hC_2} \simeq (\ZZ \times B k^\times)^{hC_2} $ where the generator of $ C_2 $ acts on $ \pi_1 B k^\times $ by $ u \mapsto u^{-1} $. We then have that $H^1(C_2,k^\times)=\{x\in k^\times | x\cdot x^{-1}=1\}/\{y^{-1}/y|y\in k^\times\}=k^{\times}/(k^\times)^2=0$ since $k$ is algebraically closed.
+    We can then deduce that
     \begin{equation*}
         \pi_0 \pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2})) \simeq \begin{cases}
             \ZZ \times \ZZ & \text{ if }\mathrm{char}\, k = 2 \\
             \ZZ & \text{ otherwise }
         \end{cases}
     \end{equation*}
-    by an argument similar \cite[Section 8.1]{Krause_picard}. 
+    where the $\mathrm{char}(k)=2$ case is handled by an argument similar to \cite[Section 8.1]{Krause_picard}. 
     If char $ k \neq 2 $ then the map $ \pi_0 \pic(k) \to \pi_0\pic(\underline{k}) $ is $ \ZZ \xrightarrow{\cdot 2} \ZZ $. 
-    On the other hand, if char $ k = 2 $, then the map $ \pi_0 \pic(k) \to \pi_0\pic(\underline{k}) $ is $ \ZZ \xrightarrow{n \mapsto (2n, n)} \ZZ \times \ZZ $. 
+    On the other hand, if char $ k = 2 $, then the map $ \pi_0 \pic(k) \to \pi_0\pic(\underline{k}) $ is $ \ZZ \xrightarrow{n \mapsto (2n, n)} \ZZ \times \ZZ $. \Noah{Why is the characteristic away from 2 case zero? It looks to me like that map is the identity?}
     % -----------------------------------------------------------------------------------
     % Leaving this here for ease of comparison/just in case I'm wrong. (--Lucy, May 23rd) 
     % -----------------------------------------------------------------------------------
@@ -1198,7 +1198,7 @@ Now $ F $ is classified by an invertible $ A^e $-bimodule $ \beta $ and the natu
     Let $ k $ be an algebraically closed field, and consider the Poincar\'e ring associated to $ \prod_{C_2} k $ (i.e. $ k \times k $ with the swap action) via Example \ref{ex:fixpt_Mackey_functor}. 
     Similarly to Example \ref{ex:pnbr_closed_point_ramified}, by \cite[Proposition 1.9]{MR2957304} we have $ \pi_0 \mathrm{br}(\Spec k \sqcup \Spec k) \simeq \pi_0 \mathrm{br}(\Spec k)^{\times 2} = 0 $. 
     Thus by Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}, it suffices to understand the cokernel of the connecting homomorphism $ \pi_1 \mathrm{br}(k \times k) \to \pi_0 \Pic(\prod_{C_2} k) $. 
-    Now since $ \prod_{C_2} k $ is Borel, 
+    Now since $ \prod_{C_2} k $ is Borel and $(\prod_{C_2}k)^{tC_2}=0$, 
     \begin{equation*}
         \pic\left(\Mod_{\prod_{C_2} k}\left(\Spectra^{C_2}\right) \right) \simeq \pic \Mod_{k \times k}(\Spectra)^{hC_2} \simeq \left(\prod_{C_2} (\ZZ \oplus  k^\times[1])\right)^{hC_2} \simeq \ZZ \oplus k^\times [1] 
     \end{equation*}
