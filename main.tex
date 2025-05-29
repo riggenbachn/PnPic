@@ -705,7 +705,7 @@ We then have that $\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong W(k)^\times \times W(k)^
 \end{remark}
 
 In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, where $\mathbb{G}_m$ is the spectral algebraic group scheme sending a ring spectrum $E$ to the spectrum of $E$-linear equivalences of $E$ $\mathrm{gl}_1E:=\mathrm{Aut}_E(E)$.\footnote{Normally the automorphism space of an object is only $\mathbb{A}_\infty$, but as the unit in a symmetric monoidal category, the automorphisms of $E$inherit a canonical and in fact functorial $\mathbb{E}_\infty$ structure and this construction makes sense.} 
-Equivalently, $\mathbb{G}_m$ is the affine group scheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homtopy groups of $\pic(A)$ with those of $A$. 
+Equivalently, $\mathbb{G}_m$ is the affine group scheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homotopy groups of $\pic(A)$ with those of $A$. 
 We will spend the rest of this section on establishing such an equivalence in the Poincar\'e setting.
 
 \begin{construction}
@@ -801,7 +801,8 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
     Write $ \sigma_*R $ for the $ R $-module with underlying abelian group $ R $ and action $ r \cdot m = \sigma(r) \cdot m $. 
     Let $ M $ be an $ R $-module. 
-    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(M, \sigma_* R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}} 
+    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(M, \sigma_* R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}}
+    \Lucyil{From meeting May 29, 2025: Missing a $ \sigma_* $ before $ \hom $? clarify the $ R $-action!} 
     Also recall that there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
     Note that given two $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
     Let $ I $ be a projective $ R $-module (in particular, there is a canonical identification $ (I^\dag)^\dag \simeq I $). 
@@ -1146,22 +1147,26 @@ As a consequence of Proposition~\ref{prop:relative_poincare_cats_basic_propertie
 \begin{corollary}\label{cor:Poincare_Brauer_to_Brauer_fiber}
 Let $(\mathrm{Mod}_A^\omega, \Qoppa_A)$ be a Poincar{\'e} ring with underlying genuine $C_2$ spectrum $A^L$ as in Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}. 
 Write $ \sigma \colon A^e \simeq A^e $ for the $ C_2 $-action on the underlying $ \EE_\infty $-ring associated to $ A $. 
-Then the fiber of the map \[u \colon \Brp(A)\to \Br(A^e)\] can be naturally identified with $ \Pic \left(\mathrm{Mod}_{A^L}\left(\mathrm{Sp}^{C_2}\right) \right)  $. 
-Moreover, the connecting map $ \Omega \Br(A^e) \simeq \Pic(A^e) \to \mathrm{fib}(u) $ is induced by the norm $ \Mod_{A^e} \to \Mod_{A^L} $, $ X \mapsto N^{C_2} X \otimes_{N^{C_2}A^e} A^L $, which on underlying spectra is given by $ X \mapsto X \otimes_A \sigma^* X $. 
+Then the fiber of the map \[\theta \colon \Brp(A)\to \Br(A^e)\] can be naturally identified with $ \Pic \left(\mathrm{Mod}_{A^L}\left(\mathrm{Sp}^{C_2}\right) \right)  $. 
+Moreover, the connecting map $ \Omega \Br(A^e) \simeq \Pic(A^e) \to \mathrm{fib}(\theta) $ is induced by the norm $ \Mod_{A^e}^\op \to \Mod_{A^L}\left(\Spectra^{C_2}\right) $, $ X \mapsto N^{C_2} (X^\vee) \otimes_{N^{C_2}A^e} A^L $, which on underlying spectra is given by $ X \mapsto X^\vee \otimes_A \sigma^* X^\vee $. 
 % Then the fiber of the map \[\Brp(A)\to \Br(A^e)\] can be naturally identified with the cofiber $ \mathrm{cofib}\left(\Pic\left(\Mod_{A^e}(\Spectra)^{hC_2}\right) \to \Pic \left(\mathrm{Mod}_{A^L}\left(\mathrm{Sp}^{C_2}\right) \right) \right) $, where the former denotes  the latter cofiber is taken in connective spectra.
 \end{corollary}
 \begin{proof}[Proof of Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}]
 Since $\theta:\mathrm{Mod}_{(\Mod_A^\omega, \Qoppa_A)}(\Catpidem)\to \mathrm{Mod}_{\mathrm{Mod}_{A^e}^\omega}(\Catex)$ is symmetric monoidal and conservative, it induces a map $ \theta^\simeq \colon \pnbr(A) \to \mathrm{br}(A^e) $ on the groupoid core of invertible objects. 
 Now observe that $ \theta $ is an isofibration; it follows that $ \theta^\simeq $ is a Kan fibration by \cite[\href{https://kerodon.net/tag/01EZ}{Proposition 01EZ}]{kerodon}. 
-Consequently we need only identify the fiber over a single point instead of the homotopy fiber. 
+Consequently, to identify the homotopy fiber of $ \theta $, it suffices to identify the fiber of $ \theta $ over a single point. 
 Consider $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ a point in the fiber of $ \theta $ over $ \Mod_{A^e}^\omega $. 
-% The description of fiber of $ \theta $ over the point $ \Mod_{A^e}^\omega $ follows from 
 By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}, $ \Qoppa $ is associated to an $ A $-linear invertible module with involution $ \left(M, N, N \to M^{tC_2} \right) $. 
 By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:Rlin_Poincare_cats_tensor_mod_gen_inv}, invertibility of $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ implies that $ \left(M, N, N \to M^{tC_2}\right) $ is invertible as a module over $ A^L $. 
-Now suppose $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ and $ \left(\Mod_{A^e}^\omega, \Phi\right) $ are two points in the fiber of $ \theta $ over $ \Mod_{A^e}^\omega $. 
-We know that $ \Qoppa $ and $ \Phi $ are associated to invertible $ A^L $-modules $ (M, N, N \to M^{tC_2}) $ and $ (M', N', N' \to (M')^{tC_2}) $, resp. 
-An equivalence from $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ to $ \left(\Mod_{A^e}^\omega, \Phi\right) $ lying over $\Mod_{A^e}^\omega$ consists of an a natural equivalence $ \eta \colon \Phi \xrightarrow{\sim} \Qoppa $. 
-Now the natural equivalence $ \eta $ is classified by an equivalence $(M, N, N \to M^{tC_2}) \simeq (M',N', N' \to (M')^{tC_2}) $ of $ A^L $-modules (Proposition \ref{prop:classify_R_linear_Poincare_functors}), hence the result. %\cite[Lemma 3.4.3]{CDHHLMNNSI}.
+
+Now we give the description of the connecting map. 
+Write $ \left(\Mod_{A^e}^\omega, \Qoppa_A\right) $ for the identity element in the fiber of $ \theta $ over $ \Mod_{A^e}^\omega $, and let $ \gamma \colon S^1 \to \Br(A^e) $. 
+Write $ \mathcal{L}_\gamma $ for $ \gamma $ regarded as a point in $ \Pic(A^e) \simeq \Omega \Br(A^e) $. 
+Lift $ \gamma $ to a path $ \widetilde{\gamma} $ in $ \pnbr(A) $ starting at $ \left(\Mod_{A^e}^\omega, \Qoppa_A\right) $, and write $ \left(\Mod_{A^e}^\omega, \Phi\right) $ for the other endpoint of $ \widetilde{\gamma} $. 
+By Proposition~\ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}, $ \Qoppa_A $ is associated to the invertible $ A^L $-module with involution $ A^L $ and $ \Phi $ is associated to some invertible $ A^L $-module with involution $ (M, N, N \to M^{tC_2}) $. 
+We may regard $ \widetilde{\gamma} $ as an $ A $-linear hermitian equivalence from $ \left(\Mod_{A^e}^\omega, \Qoppa_A\right) $ to $ \left(\Mod_{A^e}^\omega, \Phi\right) $, which by Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{prop_item:R_linear_poincare_cats_maps} consists of an $ A $-linear hermitian functor $ (F,\eta \colon \Qoppa_A \to \Phi \circ F) $ so that $ F, \eta $ are both equivalences. 
+Since $ \widetilde{\gamma} $ projects to $ \gamma $, we must have that $ F = - \otimes \mathcal{L}_\gamma $. 
+Now the natural equivalence $ \eta $ classifies an equivalence $ A^L \simeq \hom_{A^L}(N^{C_2}_A(L), (M,N, N \to M^{tC_2})) $ of $ A^L $-modules (Proposition \ref{prop:classify_R_linear_Poincare_functors}), hence the result. 
 \end{proof}
 
 \begin{example}\label{ex: pnbr of sphere}
@@ -1305,7 +1310,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 % With ordinary Azumaya algebras, the prototypical Azumaya algebra with anti-involution arises from endomorphism rings of perfect modules. 
 % Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ endows its endomorphism algebra with additional structure. 
 \begin{example}\label{ex:endomorphisms_of_poincare_object}
-    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. \Lucyil{What if I replaced $ \Qoppa_R $ by a shift $ \Qoppa_R^{[n]} $? Or $ \Qoppa_R \circ \Sigma^n $? see \cite[\S3.5]{CDHHLMNNSI}, and furthermore see \cite[p.216]{MR1162189}.}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. \Lucyil{What if I replaced $ \Qoppa_R $ by a shift $ \Qoppa_R^{[n]} $? Or any $ R $-linear Poincaré structure $ \Qoppa' $ so that $(\Mod_R^\omega, \Qoppa') $ is in $ \pnbr(R) $? see \cite[\S3.5]{CDHHLMNNSI}, and furthermore see \cite[p.216]{MR1162189}.}
 
     Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an $ \EE_1 $ algebra with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
     If $ P $ is a generator of $ \Mod_R^\omega $, then $ A $ is furthermore Azumaya. 
@@ -1452,7 +1457,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Then $ \pnbr $ is an \'etale sheaf. 
 \end{corollary} 
 \begin{proof}
-    Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and the fact that $ \pnbr $ preserves all limits.  
+    Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and the fact that $ \pnbr $ preserves all limits.  \Noah{Does $\pnbr$ preserve limits? This isn't clear to me...} 
+
+    Here is an alternative proof. By the above we have that $\pic((-)^e):\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ is an {\'e}tale hypersheaf, and similarly $\pic(\mathrm{Mod}_{(-)^L}(\mathrm{Sp}^{C_2})):\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ is an {\'e}tale hypersheaf by the same argument as in Proposition~\ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral}. Therefore $\pnbr:\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ also is a hypersheaf by Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} since hypersheaves are closed under extensions.
 \end{proof} 
 \begin{notation} [Moduli (pre)sheaf of hermitian objects] \label{ntn:moduli_of_hermitian_objects_affine}
     Let $ (R, R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincar\'e ring and let $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ be an $ R $-linear Poincar\'e $ \infty $-category. \Lucy{Do we need Poincar\'e or does it suffice to take $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ to be hermitian here?} 
@@ -1479,11 +1486,6 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Suppose that $ R $ is connective. \Lucy{maybe want $ R^{\varphi C_2} $ to be connective too?}
     Then the assignment $ \mathbf{M}^h_{(\mathcal{C}, \Qoppa_{\mathcal{C}})} $ of Notation \ref{ntn:moduli_of_hermitian_objects_affine} satisfies \'etale hyperdescent.      
 \end{lemma}
-\begin{proof}
-    Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and the fact that $ \pnbr $ preserves all limits.  \Noah{Does $\pnbr$ preserve limits? This isn't clear to me...} 
-
-    Here is an alternative proof. By the above we have that $\pic((-)^e):\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ is an {\'e}tale hypersheaf, and similarly $\pic(\mathrm{Mod}_{(-)^L}(\mathrm{Sp}^{C_2})):\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ is an {\'e}tale hypersheaf by the same argument as in Proposition~\ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral}. Therefore $\pnbr:\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ also is a hypersheaf by Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} since hypersheaves are closed under extensions.
-\end{proof}
 \begin{proposition}\label{prop:Poincare_modules_as_etale_sheaf_inv_scheme}
     Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
     Then the assignment of Notation \ref{notation:scheme_involution_basechange} is a hypersheaf on the small étale site of $ Y $. 
@@ -1561,7 +1563,8 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \begin{equation}
         \mathrm{disc} := \mathrm{coKer} \left(\mathcal{O}_X^\times \xrightarrow{f \mapsto f \cdot \lambda(f)} \mathcal{O}_X^\times \right) \,;
     \end{equation}
-    here the cokernel is taken in the category of sheaves of abelian groups on the small \'etale site of $ X $. \Noah{Why the name disc? In any event I think as a sheaf this this vanishes because for strict henselian rings there is no contribution here.}
+    here the cokernel is taken in the category of sheaves of abelian groups on the small \'etale site of $ X $. \Noah{Why the name disc? In any event I think as a sheaf this this vanishes because for strict henselian rings there is no contribution here.} 
+    \Lucy{inspired by `discriminant.' To the second point: I think if $ X = \Spec k \times k $ with the flip action, then the cokernel of $ (u,v) \mapsto (u,v) \cdot (v,u) = (uv, uv) $ is nontrivial.}
     Consider the assignment
     \begin{equation*}
     \begin{split}
