@@ -1205,12 +1205,13 @@ Now the natural equivalence $ \eta $ is classified by an equivalence $(M, N, N \
     thus $ \pi_0 \pic\left(\Mod_{\prod_{C_2} k}\left(\Spectra^{C_2}\right) \right) \simeq \ZZ $. 
     On the other hand, $ \pi_1 \mathrm{br}(k \times k) \simeq \pi_0 \Pic(k \times k) \simeq \ZZ^{\times 2} $ and the connecting homomorphism is $ (n, m) \mapsto n+m $, whence $ \pi_0\pnbr\left(\prod_{C_2} k\right) = 0 $. 
 \end{example}
-Write $ \mathrm{Pn} $ for the composite $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
+Write $ \mathrm{Fm} $, resp. $ \mathrm{Pn} $ for the composite $ \Cath_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Fm}} \Spaces $, resp. $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
 \begin{proposition}
     Let $ (R, R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
-    Then $ \left(\Mod_R^\omega, \Qoppa_R \right) $ corepresents the functor $ \mathrm{Pn}\colon \Catp_R \to \Spaces $.
+    Then $ \left(\Mod_R^\omega, \Qoppa_R \right) $ corepresents the functors $ \mathrm{Fm} \colon \Cath_R \to \Spaces $ and $ \mathrm{Pn} \colon \Catp_R \to \Spaces $.
 \end{proposition}
 \begin{proof}
+    We prove the statement for $ \mathrm{Pn} $; the proof for $ \mathrm{Fm} $ is similar and is left to the reader. 
     Recall that Proposition \ref{prop:relative_poincare_cats_basic_properties}.\ref{propitem:Rlin_Poincare_cats_is_symm_mon} furnishes an adjoint pair $ \Catp_R \rlarrows \Catp $ of functors. 
     Write $ \overline{\mathcal{C}} = (\mathcal{C},\Qoppa_{\mathcal{C}}) \in \Catpidem_R $. 
     Then
@@ -1237,15 +1238,15 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \end{recollection}
 
 \begin{definition}\label{defn:Azumaya_genuine_anti-inv}
-    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum. 
-    An \emph{Azumaya algebra with genuine type 1 (anti-)involution} over $ R $ is the data of 
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum, and write $ \sigma \colon R \xrightarrow{\sim} R $ for the involution on $ R $. 
+    An \emph{Azumaya algebra with genuine (anti-)involution} over $ R $ is the data of 
     \begin{enumerate}[label=(\alph*)]
-        \item \label{defnitem:Azumaya_alg_gi_the_involution} An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to A^\op $ so that $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
-        \item \label{defnitem:Azumaya_alg_gi_underlying} an $ (A \otimes_R A^\op)^{\otimes_R 2} $-linear equivalence $ \hom_{R \otimes R}(A \otimes_R A, R) \simeq A \otimes_R A^\op $
+        \item \label{defnitem:Azumaya_alg_gi_the_involution} An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to \sigma^* A^\op $ so that the underlying $ \EE_1 $-$ R $-algebra $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
+        \item \label{defnitem:Azumaya_alg_gi_underlying} an $ (A \otimes_R \sigma^* A)^{\otimes_R 2} $-linear equivalence $ \hom_{R \otimes R}(A \otimes_R A, R) \simeq A \otimes_R \sigma^* A^\op $
         \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ P $ and an $ A^\op \otimes_R R^{\varphi C_2} $-module $ \overline{P} $
         \item \label{defn_item:Azumaya_gen_inv_conn_map} An $ A \otimes_R R^{\varphi C_2} $-linear map $ P \to A^{tC_2} $ and an $ A^\op \otimes_R R^{\varphi C_2} $-linear map $ \overline{P} \to A^{tC_2} $. 
-        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes A)^{tC_2} $-module, as an $ A \otimes_R R^{\varphi C_2} $-module (resp. $ A^\op \otimes_R R^{\varphi C_2} $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes A^\op)^{tC_2} $ (resp. $ A^\op \to (A \otimes A^\op)^{tC_2} $). 
-        \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ \left(A \otimes_R A^\op\right) \otimes_R R^{\varphi C_2} $-modules 
+        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes_R \sigma^* A)^{tC_2} $-module, as an $ A \otimes_R R^{\varphi C_2} $-module (resp. $ A^\op \otimes_R R^{\varphi C_2} $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes \sigma^* A)^{tC_2} $ (resp. $ A^\op \to (\sigma^* A^\op \otimes A^\op)^{tC_2} $). 
+        \item \label{defn_item:Azumaya_gen_inv_geom_fixpt} An equivalence of $ \left(A \otimes_R \sigma^* A^\op\right) \otimes_R R^{\varphi C_2} $-modules 
         \begin{equation*}
             \hom_R(A, R^{\varphi C_2}) \simeq P \otimes_{R^{\varphi C_2}} \overline{P}
         \end{equation*}
@@ -1258,8 +1259,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
         \end{equation*}
         commute, where the lower horizontal arrow is induced by \ref{defnitem:Azumaya_alg_gi_underlying} and the right vertical arrow is induced by \ref{defn_item:Azumaya_gen_inv_conn_map}. 
     \end{enumerate}
-    Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
-    \Lucy{define the category!}
+    % Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
 \end{definition}
 \begin{observation}\label{obs:azumaya_geninv_base_change}
     Let $ A $ be an Azumaya algebra with genuine involution over $ R $, and suppose given a map $ R \to S $ of Poincaré rings. 
@@ -1268,12 +1268,37 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
     If $ A $ is an Azumaya algebra with genuine involution over $ R $, then in particular $ M_A = A $, $ N_A = P $ is a module with genuine involution over $ A $ in the sense of \cite[Definition 3.2.3]{CDHHLMNNSI}. 
 \end{remark}
-With ordinary Azumaya algebras, the prototypical Azumaya algebra with anti-involution arises from endomorphism rings of perfect modules. 
-Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ endows its endomorphism algebra with additional structure. 
+\begin{definition}
+    Let $ (X, \sigma) $ be a scheme with an involution and let $ \pi \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
+    Recall that there is a sheaf of $ C_2 $-$ \EE_\infty $-algebras $ \underline{\mathcal{O}} $ (Construction \ref{cons:structure_sheaf_of_Green_functors}), and write $ \sigma $ for the involution $ \pi_* \mathcal{O}_X \xrightarrow{\sim} \pi_* \mathcal{O}_X $. 
+    An \emph{Azumaya algebra with genuine (anti-)involution} over $ X $ is the data of 
+    \begin{enumerate}[label=(\alph*)]
+        \item An $ \EE_1 $-$ \underline{\mathcal{O}}^e = \pi_* \mathcal{O}_X $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to \sigma^* A^\op $ (i.e. $ \sigma^*(\tau^\op) \circ \tau \simeq \id_A $, and higher coherences) so that the underlying $ \EE_1 $-$ \underline{\mathcal{O}}^e $-algebra $ A $ is an Azumaya $ \underline{\mathcal{O}}^e $-algebra in the sense of \Lucy{reference}. 
+        \item \label{defnitem:global_Azumaya_alg_gi_underlying} an $ (A \otimes_{\underline{\mathcal{O}}^e} \sigma^* A)^{\otimes_{\underline{\mathcal{O}}^e} 2} $-linear equivalence $ \hom_{\underline{\mathcal{O}}^e}(A \otimes_{\underline{\mathcal{O}}^e} A, R) \simeq A \otimes_{\underline{\mathcal{O}}^e} \sigma^* A^\op $
+        \item A left $ A \otimes_{\underline{\mathcal{O}}^e} \underline{\mathcal{O}}^{\varphi C_2} $-module $ P $ and an $ A^\op \otimes_{\underline{\mathcal{O}}^e} \underline{\mathcal{O}}^{\varphi C_2} $-module $ \overline{P} $
+        \item \label{defn_item:global_Azumaya_gen_inv_conn_map} An $ A \otimes_{\underline{\mathcal{O}}^e} {\underline{\mathcal{O}}}^{\varphi C_2} $-linear map $ P \to A^{tC_2} $ and an $ A^\op \otimes_{\underline{\mathcal{O}}^e} {\underline{\mathcal{O}}}^{\varphi C_2} $-linear map $ \overline{P} \to A^{tC_2} $. 
+        Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes_{\underline{\mathcal{O}}^e} \sigma^* A)^{tC_2} $-module, as an $ A \otimes_{\underline{\mathcal{O}}^e} \underline{\mathcal{O}}^{\varphi C_2} $-module (resp. $ A^\op \otimes_{\underline{\mathcal{O}}^e} \underline{\mathcal{O}}^{\varphi C_2} $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes \sigma^* A)^{tC_2} $ (resp. $ A^\op \to (\sigma^* A^\op \otimes A^\op)^{tC_2} $). 
+        \item \label{defn_item:global_Azumaya_gen_inv_geom_fixpt} An equivalence of $ \left(A \otimes \sigma^* A^\op\right) \otimes_{\underline{\mathcal{O}}^e} \underline{\mathcal{O}}^{\varphi C_2} $-modules 
+        \begin{equation*}
+            \hom_{\underline{\mathcal{O}}^e}(A, \underline{\mathcal{O}}^{\varphi C_2}) \simeq P \otimes_{\underline{\mathcal{O}}^{\varphi C_2}} \overline{P}
+        \end{equation*}
+        and a homotopy making the diagram 
+        \begin{equation*}
+        \begin{tikzcd}
+            \hom_{\underline{\mathcal{O}}^e}(A, \underline{\mathcal{O}}^{\varphi C_2}) \simeq P \otimes_{\underline{\mathcal{O}}^{\varphi C_2}} \overline{P} \ar[r] \ar[d] & P \otimes_{\underline{\mathcal{O}}^{\varphi C_2}} \overline{P} \ar[d] \\
+            \hom_{\underline{\mathcal{O}}^e}(A, {\underline{\mathcal{O}}^e}^{tC_2}) \simeq \hom_{\underline{\mathcal{O}}^e}(A \otimes A^\op, \underline{\mathcal{O}}^e)^{tC_2} \ar[r] & \hom_{(A \otimes A^\op)^{\otimes 2}}\left((A \otimes A^\op)^{\otimes 2}, A \otimes A^\op\right)^{tC_2} \simeq (A \otimes A^\op)^{tC_2}
+        \end{tikzcd}    
+        \end{equation*}
+        commute, where the lower horizontal arrow is induced by \ref{defnitem:global_Azumaya_alg_gi_underlying} and the right vertical arrow is induced by \ref{defn_item:global_Azumaya_gen_inv_conn_map}. 
+    \end{enumerate}
+\end{definition}
+% Commented out May 28th, 2025: Is the following redundant?
+% With ordinary Azumaya algebras, the prototypical Azumaya algebra with anti-involution arises from endomorphism rings of perfect modules. 
+% Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ endows its endomorphism algebra with additional structure. 
 \begin{example}\label{ex:endomorphisms_of_poincare_object}
-    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. \Lucy{What if I replaced $ \Qoppa_R $ by a shift $ \Qoppa_R^{[n]} $? Or $ \Qoppa_R \circ \Sigma^n $? see \cite[\S3.5]{CDHHLMNNSI}}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincaré ring, and let $ (P,q ) \in \mathrm{Pn}\left(\Mod_R^\omega, \Qoppa_R \right) $. \Lucyil{What if I replaced $ \Qoppa_R $ by a shift $ \Qoppa_R^{[n]} $? Or $ \Qoppa_R \circ \Sigma^n $? see \cite[\S3.5]{CDHHLMNNSI}, and furthermore see \cite[p.216]{MR1162189}.}
 
-    Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an $ \EE_1 $ with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
+    Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an $ \EE_1 $ algebra with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
     If $ P $ is a generator of $ \Mod_R^\omega $, then $ A $ is furthermore Azumaya. 
 
     By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. \Lucy{todo: an $ R $-linear enhancement of Proposition 3.1.16?} 
@@ -1418,6 +1443,34 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
 \end{corollary} 
 \begin{proof}
     Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and the fact that $ \pnbr $ preserves all limits.  
+\end{proof} 
+\begin{notation} [Moduli (pre)sheaf of hermitian objects] \label{ntn:moduli_of_hermitian_objects_affine}
+    Let $ (R, R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincar\'e ring and let $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ be an $ R $-linear Poincar\'e $ \infty $-category. \Lucy{Do we need Poincar\'e or does it suffice to take $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ to be hermitian here?} 
+    Define a presheaf $ \mathbf{M}_{\left(\mathcal{C},\Qoppa_{\mathcal{C}}\right)}^h \colon \left(\EE_\infty \Alg_R^{BC_2}\right) \to \Spaces $ whose value at $ R \to S $ is the $ \infty $-groupoid of $ R $-linear hermitian functors from $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ to $ \left(\Mod_R^\omega, \Qoppa_R \right) \otimes_R S $. 
+    \Lucyil{Antieau--Gepner consider the \emph{$ \infty $-category} of functors, then pass to the maximal sub-groupoid \cite[\S5.2]{MR3190610}. 
+    Do we need to consider an enhancement of hermitian functors to $ \infty $-categories?}
+    Now suppose $ A $ is an $ \EE_1 $-$ R $-algebra with genuine involution. 
+    Then we will write $ \mathbf{M}^h_A $ for $ \mathbf{M}^h_{\left(\Mod_A^\omega, \Qoppa_A\right)} $. 
+\end{notation}
+\begin{observation}
+    Let $ (R, R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincar\'e ring and suppose $ A $ is an $ \EE_1 $-$ R $-algebra with genuine involution. 
+    A point of $ \mathbf{M}^h_A(S) $ is classified by pair $ (F,\eta ) $ where $ F $ is an $ R $-linear functor $ F \colon \Mod_A^\omega \to S $ and $ \eta $ is a natural transformation $ \eta \colon \Qoppa_A \to \Qoppa_S \circ F^\op $ of $ R $-linear hermitian structures. 
+    Now $ F $ is classified by an $ A \otimes_R S $-module $ P $ which is compact as an $ S $-module (cf. \cite[Proposition 5.10]{MR3190610}), and $ \eta $ is classified by a map of $ N^{C_2}_S (A \otimes_R S) $-modules $ A \otimes_R S \to N^{C_2}_S(P^\vee) $ (Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}). 
+    Thus $ \mathbf{M}^h_A(S) $ may be identified with the full sub-$ \infty $-groupoid of the pullback of the diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        & \Mod_{A \otimes_R S}\left(\Spectra\right) \ar[d,"{N_S^{C_2}}"] \\
+        \Mod_{N^{C_2}_S(A \otimes_R S)}\left(\Spectra^{C_2}\right)_{A \otimes_R S/} \ar[r] &  \Mod_{N^{C_2}_S(A \otimes_R S)}\left(\Spectra^{C_2}\right)   \,.
+    \end{tikzcd}    
+    \end{equation*}
+\end{observation}
+\begin{lemma}\label{lemma:moduli_of_hermitian_objects_is_etale_sheaf}
+    Let $ (R, R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincar\'e ring and let $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ be an $ R $-linear Poincar\'e $ \infty $-category. 
+    Suppose that $ R $ is connective. \Lucy{maybe want $ R^{\varphi C_2} $ to be connective too?}
+    Then the assignment $ \mathbf{M}^h_{(\mathcal{C}, \Qoppa_{\mathcal{C}})} $ of Notation \ref{ntn:moduli_of_hermitian_objects_affine} satisfies \'etale hyperdescent.      
+\end{lemma}
+\begin{proof}
+    Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral}. 
 \end{proof}
 \begin{proposition}\label{prop:Poincare_modules_as_etale_sheaf_inv_scheme}
     Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
@@ -1431,6 +1484,59 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     Thus by Remark 6.1.3 of \cite{CDHHLMNNSI}, it suffices to show that $ j_\bullet^* \colon \Mod^\omega_{R^e \otimes_{R^{C_2}} S} \to \Mod^\omega_{R^e \otimes_{R^{C_2}} T^\bullet} $ induces an equivalence $ \Qoppa_{R^p \otimes S} \xrightarrow{\sim} \lim_{\Delta} \Qoppa_{R^p \otimes T^\bullet} \circ \left(j_\bullet^*\right)^{\mathrm{op}} $ of quadratic functors $ \Mod^{\omega,\op}_{R^e \otimes_{R^{C_2}} S} \to \Spectra $. 
     This follows from our assumption on $ S \to T^\bullet $ and \cite[Theorem 3.3.1]{CDHHLMNNSI}. 
 \end{proof}
+\begin{notation} [Moduli (pre)sheaf of hermitian objects] \label{ntn:moduli_of_hermitian_objects_global}
+    Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ be an $ \left(\Mod_X^\omega, \Qoppa_{\underline{O}}\right) $-linear Poincar\'e $ \infty $-category.  
+    Define a presheaf $ \mathbf{M}_{\left(\mathcal{C},\Qoppa_{\mathcal{C}}\right)}^h \colon \mathrm{\acute{E}t}_Y^\op \to \Spaces $ whose value at $ \Spec S \to Y $ is the $ \infty $-groupoid of $ \left(\Mod_X^\omega, \Qoppa_{\underline{O}}\right) $-linear hermitian functors from $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ to $ \left(\Mod_{X_S}^\omega, \Qoppa_{\underline{O}|_S}\right) $. 
+    \Lucyil{same comment about \emph{$ \infty $-category} of functors vs $ \infty $-groupoid.}
+    Now suppose $ A $ is an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
+    Then we will write $ \mathbf{M}^h_A $ for $ \mathbf{M}^h_{\left(\Mod_A^\omega, \Qoppa_A\right)} $. 
+\end{notation}
+\begin{lemma}
+    Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ be an $ \left(\Mod_X^\omega, \Qoppa_{\underline{O}}\right) $-linear Poincar\'e $ \infty $-category. 
+    Then the functor $ \mathbf{M}_{\left(\mathcal{C},\Qoppa_{\mathcal{C}}\right)}^h $ defines a hypersheaf on the small \'etale site of $ Y $. 
+\end{lemma}
+\begin{observation}\label{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects}
+    Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
+    Recall that there is a sheaf $ \mathbf{M}_{A^e} $ on the small \'etale site of $ X $ \cites[\S5.2]{MR3190610}. \Lucy{cite To\"en? \S2.2?} 
+    The forgetful functor $ \Cath_R \to \Catex_R $ induces a morphism of (pre)stacks $ \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ on the small \'etale site of $ Y $, where $ \mathbf{M}^h_A $ is from Notation \ref{ntn:moduli_of_hermitian_objects_global}. 
+    Given a point $ \Spec S \to Y $, the map  
+    \begin{equation*}
+    \begin{tikzcd}[row sep=small]
+        \mathbf{M}^h_A(\Spec S) \ar[d,phantom,"{\rotatebox[origin=c]{270}{$\simeq$}}"] \ar[r] & \pi_*\mathbf{M}^h_{A^e}(\Spec S) \ar[d,phantom,"{\rotatebox[origin=c]{270}{$\simeq$}}"] \\
+        \hom_{\left(\Mod_X^\omega, \Qoppa_{\underline{O}}\right)-\Mod\left( \Cath\right)}\left(\left(\Mod_A^\omega, \Qoppa_A \right), \left(\Mod_{X_S}^\omega, \Qoppa_{\underline{O}|_S}\right)\right) & \hom_{\left(\Mod_X^\omega\right)-\Mod\left( \Catex\right)}\left(\Mod_A^\omega, \Mod_{X_S}^\omega\right) 
+    \end{tikzcd}
+    \end{equation*}
+    sends a hermitian functor $ (F, \eta) $ to its underlying $ \mathcal{O}_X $-linear functor $ F $. 
+\end{observation}
+\Lucyil{I think we can combine Lemma \ref{lemma:pushforward_moduli_of_objects_remains_geometric}, Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}, and \cite[Lemma 4.25]{MR3190610} to show that $ \mathbf{M}^h_A $ is locally geometric.}
+\begin{lemma}\label{lemma:pushforward_moduli_of_objects_remains_geometric}
+    Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
+    Then the sheaf $ \pi_* \mathbf{M}_{A^e} $ is locally geometric. 
+    \Lucyil{Other desired properties: locally of finite presentation, smoothness. Possibly need to impose different assumptions on $ \pi $ for different properties to be preserved.}
+\end{lemma}
+\begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
+    Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
+    Then the morphism $ \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} is locally geometric in the sense of \cite[\S4.3]{MR3190610}. 
+\end{lemma}
+\begin{proof}
+    It suffices to show that for all $ p \colon \Spec S \to \pi_* \mathbf{M}_{A^e} $, the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $ is locally geometric over $ \Spec S $. 
+    Write $ \overline{p} $ for the composite $ \Spec S \to \pi_* \mathbf{M}_{A^e} \to Y $; there is a pullback diagram 
+    \begin{equation*}
+    \begin{tikzcd}
+        \Spec R \ar[d] \ar[r,"{\widetilde{p}}"] \ar[rd,phantom,"\lrcorner", very near start] & X \ar[d,"\pi"] \\
+        \Spec S \ar[r,"{\overline{p}}"] & Y 
+    \end{tikzcd}
+    \end{equation*}
+    where the pullback $ \Spec R $ is affine by assumption. 
+    Recall that the map $ p $ classifies an $ \widetilde{p}^*A $-module $ M $ which is compact as an $ R $-module. 
+    Note that the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $classifies lifts of the $ R $-linear functor $ \otimes M \colon \Mod_{\widetilde{p}^*A}^\omega \to \Mod^\omega_R $ to an $ R $-linear hermitian functor. 
+    A lift of $ \otimes M $ to an $ R $-linear hermitian functor is equivalent to the data of a map $ \widetilde{p}^*A \to N^{C_2}_R(M^\vee) $ of $ N_R^{C_2}(\widetilde{p}^*A) $-modules in $ \Spectra^{C_2} $, where we write $ M^\vee $ for the $ R $-linear dual of $ M $. 
+    Thus the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $ is given by the moduli sheaf $ \Spec \mathrm{Sym}_S \tau_{\geq 0} \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $. 
+    \Lucyil{I think this should be similar to \cite[Theorem 5.6, Proposition 5.7]{MR3190610}. Later: show that the map is locally of finite presentation?}
+\end{proof}
+\subsection{The Poincaré Brauer space spectral sequence} % (fold)
+\label{sub:the_poincaré_brauer_space_spectral_sequence}
+
 \Lucy{next bit is sketchy; working towards a spectral sequence like the one in \cite[\S7]{MR3190610}}
 \begin{notation}
     Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
