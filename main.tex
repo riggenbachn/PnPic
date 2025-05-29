@@ -1336,7 +1336,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \end{example}
 
 \begin{proposition}\label{prop:classical_inv_to_genuine_inv}
-    Let $ R $ be a discrete ring with a given $ C_2 $-action $ \lambda $, and suppose that the ramification locus in $ \Spec (R)/C_2 = \Spec(R^{C_2}) $ is empty. 
+    Let $ R $ be a discrete ring with a given $ C_2 $-action $ \lambda $, and suppose that the branch locus in $ \Spec (R)/C_2 = \Spec(R^{C_2}) $ is empty. 
     Let $ A $ be a classical Azumaya algebra over $ R $ with an involution of type 2. 
     Regard $ R $ as a Poincaré ring spectrum $ \underline{R}^\lambda $ via Example \ref{ex:fixpt_Mackey_functor}. 
 
@@ -1529,6 +1529,11 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Then the sheaf $ \pi_* \mathbf{M}_{A^e} $ is locally geometric. 
     \Lucyil{Other desired properties: locally of finite presentation, smoothness. Possibly need to impose different assumptions on $ \pi $ for different properties to be preserved.}
 \end{lemma}
+\begin{proof}
+    Recall \cite[Theorem 5.8]{MR3190610} that the sheaf $ \mathbf{M}_{A^e} $ is locally geometric, i.e. there exists a filtered system $ \mathbf{M}_{A^e} = \colim_i \mathbf{M}_{A^e}^i $ where each $ \mathbf{M}_{A^e}^i \to \mathbf{M}_{A^e} $ is a monomorphism and each $ \mathbf{M}_{A^e}^i $ is $ n_i $-geometric for some $ n_i $. 
+    \Lucyil{Does pushforward preserve filtered colimits? \cite[IV.5]{SGA4} shows that $ R^q f_* $ where $ f $ is a coherent morphism of coherent topoi preserves filtered colimits...of abelian sheaves! Appendix A \href{https://arxiv.org/abs/2407.19920}{here} seems to suggest that it suffices to assume that $ X $, $ Y $ are qcqs and $ f $ is quasi-compact; \cite[Corollary 7.3.5.4]{HTT}. Return to this later; maybe ask Peter Haine. Don't forget to modify assumptions as necessary!} 
+    Since pushforward is left exact (and assuming that $ \pi_* $ preserves filtered colimits), it suffices to show that the pushforward of an $ n $-geometric sheaf on $ X $ is $ m $-geometric for some $ m $. 
+\end{proof}
 \begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
     Then the morphism $ \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} is locally geometric in the sense of \cite[\S4.3]{MR3190610}. 
