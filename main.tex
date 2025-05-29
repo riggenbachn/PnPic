@@ -799,12 +799,12 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
 \subsection{Hermitian line bundles}
 \begin{definition}
     Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
-    Let $ M $ be an $ R $-module. We denote by $ \sigma^*M $ its restriction of scalars, i.e. the $ R $-module with underlying abelian group $ M $ and action $ r \star m = \sigma(r) \cdot m $, where $\cdot$ denotes the original action of $M$.
-    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(\sigma^* M, R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}} 
-    Also recall that for a compact $R$-module $M$, there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
-    Note that given two compact $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
-    
-    Let $ I $ be a compact $ R $-module.
+    Write $ \sigma_*R $ for the $ R $-module with underlying abelian group $ R $ and action $ r \cdot m = \sigma(r) \cdot m $. 
+    Let $ M $ be an $ R $-module. 
+    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(M, \sigma_* R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}} 
+    Also recall that there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
+    Note that given two $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
+    Let $ I $ be a projective $ R $-module (in particular, there is a canonical identification $ (I^\dag)^\dag \simeq I $). 
     A \emph{$ \sigma $-hermitian form on $ I $} is an $ R $-linear isomorphism $ \varphi \colon I \xrightarrow{\sim} I^\dag $ so that $ \varphi^\dag = \varphi $. 
 \end{definition}
 \begin{observation}\label{obs:tensoring_hermitian_forms}    
@@ -1370,18 +1370,18 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     Then $ \left(\mathcal{C}, \Qoppa\right) $ is of the form $ \left(\Mod^\omega_A, \Qoppa_A \right) $ for some Azumaya algebra over $ R $ with genuine involution.  
 \end{proposition} 
 \begin{corollary}
-    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. \Lucy{connectivity hypothesis on $ R $?} 
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring.  
     Let $ \left(\mathcal{C}, \Qoppa\right) $ be an invertible idempotent-complete $ R $-linear Poincaré $ \infty $-category. 
     Then $ \left(\mathcal{C}, \Qoppa\right) $ is of the form $ \left(\Mod^\omega_A, \Qoppa_A \right) $ for some Azumaya algebra over $ R $ with genuine involution.      
 \end{corollary}
 \begin{proof}
-    By Proposition \ref{prop:Poincare_cat_as_module_cat}, it suffices to exhibit a Poincaré object $ (P, q) $ whose underlying object is a generator of $ \mathcal{C} $. 
-    \Lucy{Need to show $ \mathcal{C} $ (or $ \mathrm{Ind}(\mathcal{C})$) defines a $ R $-linear category with descent?}
+    By Proposition \ref{prop:Poincare_cat_as_module_cat}, it suffices to exhibit a Poincaré object $ (P, q) $ whose underlying object is a generator of $ \mathcal{C} $. Since the underlying $R$-linear stable infinity category $\mathcal{C}$ is dualizable it follows that it is an $R$-linear category which staisfies {\'e}tale hyperdescent by \cite[Example 4.4]{Antieau_Gepner_Bruaer}.
+    %\Lucy{Need to show $ \mathcal{C} $ (or $ \mathrm{Ind}(\mathcal{C})$) defines a $ R $-linear category with descent?}
     By \cite[Theorem 6.1]{MR3190610}, $ \mathcal{C} $ has a generator $ G $. 
     Now $ G \oplus D_{\Qoppa}G $ promotes canonically to a Poincaré object of $ \left(\mathcal{C}, \Qoppa\right) $ by \cite[Proposition 2.2.5]{CDHHLMNNSI}. 
 \end{proof}
 \begin{proof}[Proof of Proposition \ref{prop:Poincare_cat_as_module_cat}]
-    Similar to Example \ref{ex:endomorphisms_of_poincare_object}\Lucy{to-do}
+    Example~\ref{ex:endomorphisms_of_poincare_object} produces from this data an Azumaya algebra with genuine involution $A$. Since $P$ generates $\mathcal{C}$ we then get an equivalence $\mathcal{C}\simeq \mathrm{Mod}_A^\omega$ which by the construction of the genuine involution on $A$ will in fact be an equivalence of $R$-linear Poincar{\'e} infinity categories.
 \end{proof}
 
 \subsection{Stacks associated to Poincaré-\texorpdfstring{$ \infty $}{∞}-categories}
@@ -1394,7 +1394,7 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
         S & \mapsto (S, S \to R^{\varphi C_2} \otimes_{R} S \to S^{t C_2}) =: (R, R \to R^{\varphi C_2} \to R^{tC_2}) \otimes S \,,
     \end{split}    
     \end{equation*}
-    where the map $ R^{\varphi C_2} \otimes_R S \to R^{\varphi C_2} \otimes_{R^{tC_2}} S^{tC_2} \to R^{tC_2} \otimes_{R^{tC_2}} S^{tC_2} \simeq S^{tC_2} $ is given by base change along the Tate-valued norm composed with the structure map $ R^{\varphi C_2} \to R^{tC_2} $. 
+    where the map $ R^{\varphi C_2} \otimes_R S \to R^{tC_2} \otimes_{R^{tC_2}} S^{tC_2} \simeq S^{tC_2} $ is given by base change along the Tate-valued norm composed with the structure map $ R^{\varphi C_2} \to R^{tC_2} $. 
     Composing the aforementioned functor with the functor that sends a Poincaré ring to its category of compact modules equipped with the canonical Poincaré structure defines a functor
     \begin{equation*}
         \Mod^p \colon \EE_\infty\Alg^{BC_2}_{R/-} \to \EE_\infty\Alg\left(\Catpidem_{R}\right) \,.
@@ -1420,13 +1420,16 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     Then the assignment of Notation \ref{notation:poincare_ring_basechange} is a hypersheaf on the small étale site of $ R $. 
     \Lucy{Antieau--Gepner write \emph{stack} for `sheaf of categories' and \emph{sheaf} for `sheaf of spaces.' Do we want to use this convention?}
 \end{proposition}
+
 \begin{corollary}\label{cor:pnbr_as_etale_sheaf_affine_spectral}
     Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring and assume that $ R^{\varphi C_2} $ and $ R $ are connective. 
     Write $ \pnbr $ for the composite functor $ \mathrm{\acute{E}t}_R \xrightarrow{\Mod^p} \EE_\infty\Alg\left(\Catpidem_{R}\right) \xrightarrow{\pnbr} \Spectra_{\geq 0} $, where $ \Mod^p $ is from Notation \ref{notation:poincare_ring_basechange} and $ \pnbr $ is Definition \ref{definition:poincare_brauer_space}. 
     Then $ \pnbr $ is an \'etale sheaf. 
 \end{corollary} 
 \begin{proof}
-    Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and the fact that $ \pnbr $ preserves all limits.  
+    Follows from Proposition \ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral} and the fact that $ \pnbr $ preserves all limits.  \Noah{Does $\pnbr$ preserve limits? This isn't clear to me...} 
+
+    Here is an alternative proof. By the above we have that $\pic((-)^e):\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ is an {\'e}tale hypersheaf, and similarly $\pic(\mathrm{Mod}_{(-)^L}(\mathrm{Sp}^{C_2})):\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ is an {\'e}tale hypersheaf by the same argument as in Proposition~\ref{prop:Poincare_modules_as_etale_sheaf_affine_spectral}. Therefore $\pnbr:\mathrm{\acute{E}t}_Y^\op\to \mathrm{Sp}_{\geq 0}$ also is a hypersheaf by Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} since hypersheaves are closed under extensions.
 \end{proof}
 \begin{proposition}\label{prop:Poincare_modules_as_etale_sheaf_inv_scheme}
     Let $ (X, \lambda, Y, \pi) $ be a scheme with involution $ X $ and a good quotient $ Y $. 
@@ -1447,12 +1450,12 @@ Choosing a (nondegenerate symmetric bilinear) form on a perfect module $ P $ end
     Write $ \ZZ_X^\sigma $ for the equalizer
     \begin{equation*}
         \ZZ_X^\sigma := \mathrm{Eq}\left(\ZZ_X \overset{\lambda, \cdot (-1)}{\rrarrows} \ZZ_X\right) \,.
-    \end{equation*}
+    \end{equation*}\Noah{How is $\lambda$ inducing a map on $\mathbb{Z}_X$?}
     Write $ \mathrm{disc} $ for the cokernel
     \begin{equation}
         \mathrm{disc} := \mathrm{coKer} \left(\mathcal{O}_X^\times \xrightarrow{f \mapsto f \cdot \lambda(f)} \mathcal{O}_X^\times \right) \,;
     \end{equation}
-    here the cokernel is taken in the category of sheaves of abelian groups on the small \'etale site of $ X $. 
+    here the cokernel is taken in the category of sheaves of abelian groups on the small \'etale site of $ X $. \Noah{Why the name disc? In any event I think as a sheaf this this vanishes because for strict henselian rings there is no contribution here.}
     Consider the assignment
     \begin{equation*}
     \begin{split}
