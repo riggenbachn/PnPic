@@ -1163,6 +1163,15 @@ We know that $ \Qoppa $ and $ \Phi $ are associated to invertible $ A^L $-module
 An equivalence from $ \left(\Mod_{A^e}^\omega, \Qoppa\right) $ to $ \left(\Mod_{A^e}^\omega, \Phi\right) $ lying over $\Mod_{A^e}^\omega$ consists of an a natural equivalence $ \eta \colon \Phi \xrightarrow{\sim} \Qoppa $. 
 Now the natural equivalence $ \eta $ is classified by an equivalence $(M, N, N \to M^{tC_2}) \simeq (M',N', N' \to (M')^{tC_2}) $ of $ A^L $-modules (Proposition \ref{prop:classify_R_linear_Poincare_functors}), hence the result. %\cite[Lemma 3.4.3]{CDHHLMNNSI}.
 \end{proof}
+
+\begin{example}\label{ex: pnbr of sphere}
+    Let $\mathbb{S}^u$ denote the universal Poincar{\'e} structure on the sphere spectrum, or equivalently $\mathbb{S}^u$ is the Poincar{\'e} ring associated to the genuine equivariant sphere spectrum. By Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} we have a fiber sequence \[\Pic(\mathrm{Sp}^{C_2})\to \pnbr(\mathbb{S}^u)\to \mathrm{br}(\mathbb{S})\] and by \cite[Corollary 7.17]{Antieau_Gepner_Bruaer} we have that $\pi_0(\mathrm{br}(\mathbb{S}))=0$. Therefore we get a long exact sequence \[
+\begin{tikzcd}
+\ldots \arrow[r] & \pi_1(\pnbr(\mathbb{S}^u)) \arrow[r] \arrow[d, "\cong"] & \pi_1(\mathrm{br}(\mathbb{S})) \arrow[r] \arrow[d, "\cong"] & \pi_0(\pic(\mathrm{Sp}^{C_2})) \arrow[r] \arrow[d, "\cong"] & \pi_0(\pnbr(\mathbb{S}^u)) \ar[r] & 0 \\
+                 & \mathbb{Z}/2\mathbb{Z}\times\mathbb{Z}/2\mathbb{Z}      & \mathbb{Z}                                                  & \mathbb{Z}\times\mathbb{Z}                                  &                            &  
+\end{tikzcd}
+    \] where the third term is identified via \cite[Section 8.1]{Krause_picard}. From this and the fact that $\mathbb{Z}\to \mathbb{Z}\times \mathbb{Z}$ is the identity on the first component since they are both suspension of the underlying spectrum we see that $\pi_0(\pnbr(\mathbb{S}^u))\simeq \mathbb{Z}$. In fact this allows us to identify the space $\pnbr(\mathbb{S}^u)\simeq \mathbb{Z}\times B\mathrm{TR}^2(\mathbb{S};2)^\times$.
+\end{example}
 \begin{example}\label{ex:pnbr_closed_point_ramified}
     Let $ k $ be an algebraically closed field, and regard $ k $ as a Poincar\'e ring $ \underline{k} $ via Example \ref{ex:fixpt_Mackey_functor} with the trivial involution.  
     Then 
