@@ -138,7 +138,7 @@
 \newcommand{\Lucyil}[1]{\todo[inline,color=cyan!30]{\footnotesize L: #1}}
 
 \title{Et cetera}
-\author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
+\author{Viktor Burghardt, Noah Riggenbach, Lucy Yang}
 \date{}
 \addbibresource{biblio.bib}
 
@@ -868,7 +868,7 @@ In the course of thinking about the `involutive' generalization of the statement
 We would want a functor from $A^e$-linear stable idempotent complete infinity categories to $A^L$-linear stable idempotent complete infinity categories in order to get an extension of our exact sequence to the right. Here is what I think might do it:
 
 \begin{construction}
-	Let $\mathcal{C}\in \mathrm{Mod}_{A^{e}}-\mathrm{Mod}$, and let $\lamdba:A^e\to A^e$ denote the involution on $A^e$. We then get an $A^t$-linear category by taking $\mathcal{C}\to \mathcal{C}\otimes \lambda^*\mathcal{C}$, where $A^t$ is the Tate Poincar{\'e} structure associated to the ring spectrum with $C_2$-action $A$. This is initial among Poincar{\'e} structures and therefore we have a map $A^t\to A^L$, from which we get an element of $\mathrn{Mod}_{A^L}(\mathrm{Sp}^{C_2})-\mathrm{Mod}$ by $\mathcal{C}\mapsto \mathrm{Mod}_{A^L}\otimes_{\mathrm{Mod}_{A^t}}(\mathcal{C}\otimes \lambda^*\mathcal{C})$. 
+	Let $\lambda: A^e\to A^e$ denote the involution. Consider the functor \[\mathrm{Mod}_{\mathrm{Mod}_{A^{e}}^\omega}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\xrightarrow{\left(-\otimes_{\mathrm{Mod}_{A^e}^\omega} \lambda^*-\right)^{hC_2}}\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\] which we will denote by $N_{A^{hC_2}/A}$. This functor is symmetric monoidal and we have that the composite with the base change functor gives \[\left(\mathcal{C}\otimes_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}\mathrm{Mod}_{A^e}^\omega \otimes_{\mathrm{Mod}_{A^e}^\omega}\lambda^*(\mathcal{C}\otimes_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}\mathrm{Mod}_{A^e}^\omega)\right)^{hC_2}\simeq \mathcal{C}^{\otimes_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}2}\]\Noah{Maybe... We would want this to be true but I don't see a proof immediately... }
 \end{construction}
 
 \printbibliography
