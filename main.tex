@@ -1530,8 +1530,16 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \Lucyil{Other desired properties: locally of finite presentation, smoothness. Possibly need to impose different assumptions on $ \pi $ for different properties to be preserved.}
 \end{lemma}
 \begin{proof}
-    Recall \cite[Theorem 5.8]{MR3190610} that the sheaf $ \mathbf{M}_{A^e} $ is locally geometric, i.e. there exists a filtered system $ \mathbf{M}_{A^e} = \colim_i \mathbf{M}_{A^e}^i $ where each $ \mathbf{M}_{A^e}^i \to \mathbf{M}_{A^e} $ is a monomorphism and each $ \mathbf{M}_{A^e}^i $ is $ n_i $-geometric for some $ n_i $. 
-    \Lucyil{Does pushforward preserve filtered colimits? \cite[IV.5]{SGA4} shows that $ R^q f_* $ where $ f $ is a coherent morphism of coherent topoi preserves filtered colimits...of abelian sheaves! Appendix A \href{https://arxiv.org/abs/2407.19920}{here} seems to suggest that it suffices to assume that $ X $, $ Y $ are qcqs and $ f $ is quasi-compact; \cite[Corollary 7.3.5.4]{HTT}. Return to this later; maybe ask Peter Haine. Don't forget to modify assumptions as necessary!} 
+    Recall \cite[Theorem 5.8]{MR3190610} that the sheaf $ \mathbf{M}_{A^e} $ is locally geometric, i.e. there exists a filtered system $ \mathbf{M}_{A^e} = \colim_{[a,b]} \mathbf{M}_{A^e}^{[a,b]} $ where each $ \mathbf{M}_{A^e}^{[a,b]} \to \mathbf{M}_{A^e} $ is a monomorphism and each $ \mathbf{M}_{A^e}^{[a,b]} $ is $ n_i $-geometric for some $ n_i $. 
+    \Lucyil{Here are some thoughts towards showing that the canonical map $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e} \to \pi_* \mathbf{M}_{A^e} $ is an equivalence.} 
+    \begin{enumerate}
+        \item Each $ \mathbf{M}_{A^e}^{[a,b]} $ and $ \mathbf{M}_{A^e} $ is a hypersheaf. 
+        For $ \mathbf{M}_{A^e} $ this follows from \cite[Lemma 5.4]{MR3190610}; need to prove for $ \mathbf{M}_{A^e}^{[a,b]} $. 
+        \item $ \pi_* $ sends hypersheaves on the small \'etale site of $ X $ to hypersheaves on the small \'etale site of $ Y $; this follows from the proof of \cite[Proposition 6.5.2.13]{HTT}. \Lucy{which I learned from Recollection 1.14 of \href{https://math.berkeley.edu/~phaine/files/Homotopy_invariance_constructible_sheaves_published.pdf}{this paper}.} 
+        \item Is $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e} $ still a hypersheaf? Hypersheaves are not in general closed under colimits, but maybe we can argue using an explicit model for this sheaf? 
+        \item The hypercompletion of the \'etale $ \infty $-topos of $ Y $ has enough points; this follows from \cite[Theorem A.4.0.5]{Lurie_SAG} and Proposition 3.7.3 of Exodromy. 
+        \item It suffices to show that the canonical map $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e} \to \pi_* \mathbf{M}_{A^e} $ is an equivalence on points; use the explicit model from \cite[Theorem 3.16]{azumaya_involution}?
+    \end{enumerate}
     Since pushforward is left exact (and assuming that $ \pi_* $ preserves filtered colimits), it suffices to show that the pushforward of an $ n $-geometric sheaf on $ X $ is $ m $-geometric for some $ m $. 
 \end{proof}
 \begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
