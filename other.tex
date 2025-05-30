@@ -138,7 +138,7 @@
 \newcommand{\Lucyil}[1]{\todo[inline,color=cyan!30]{\footnotesize L: #1}}
 
 \title{Et cetera}
-\author{Ben Antieau, Viktor Burghardt, Noah Riggenbach, Lucy Yang}
+\author{Viktor Burghardt, Noah Riggenbach, Lucy Yang}
 \date{}
 \addbibresource{biblio.bib}
 
@@ -865,12 +865,28 @@ In the course of thinking about the `involutive' generalization of the statement
 
 \section{Speculative norm for Brauer group at the level of infinity categories}
 
-We would want a functor from $A^e$-linear stable idempotent complete infinity categories to $A^L$-linear stable idempotent complete infinity categories in order to get an extension of our exact sequence to the right. Here is what I think might do it:
-
-\begin{construction}
-	Let $\mathcal{C}\in \mathrm{Mod}_{A^{e}}-\mathrm{Mod}$, and let $\lamdba:A^e\to A^e$ denote the involution on $A^e$. We then get an $A^t$-linear category by taking $\mathcal{C}\to \mathcal{C}\otimes \lambda^*\mathcal{C}$, where $A^t$ is the Tate Poincar{\'e} structure associated to the ring spectrum with $C_2$-action $A$. This is initial among Poincar{\'e} structures and therefore we have a map $A^t\to A^L$, from which we get an element of $\mathrn{Mod}_{A^L}(\mathrm{Sp}^{C_2})-\mathrm{Mod}$ by $\mathcal{C}\mapsto \mathrm{Mod}_{A^L}\otimes_{\mathrm{Mod}_{A^t}}(\mathcal{C}\otimes \lambda^*\mathcal{C})$. 
-\end{construction}
-
+	We would want a functor from $A^e$-linear stable idempotent complete infinity categories to $A^L$-linear stable idempotent complete infinity categories in order to get an extension of our exact sequence to the right. Here is what I think might do it:
+	
+	\begin{construction}
+		Let $\lambda: A^e\to A^e$ denote the involution. Consider the functor \[\mathrm{Mod}_{\mathrm{Mod}_{A^{e}}^\omega}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\xrightarrow{\left(-\otimes_{\mathrm{Mod}_{A^e}^\omega} \lambda^*-\right)^{hC_2}}\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\] which we will denote by $N_{A^{hC_2}/A}$. This functor is symmetric monoidal and we have that the composite with the base change functor gives \[\left(\mathcal{C}\otimes_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}\mathrm{Mod}_{A^e}^\omega \otimes_{\mathrm{Mod}_{A^e}^\omega}\lambda^*(\mathcal{C}\otimes_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}\mathrm{Mod}_{A^e}^\omega)\right)^{hC_2}\simeq \mathcal{C}^{\otimes_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}2}\]\Noah{Maybe... We would want this to be true but I don't see a proof immediately... }
+		For $\mathcal{C}\in \mathrm{Mod}_{A^e}$, we have that 
+		\[(\mathcal{C}\otimes_{\mathrm{Mod}_{A^e}}\lambda^*\mathcal{C})^{hC_2}\otimes_{\mathrm{Mod}_{A^e}^{hC_2}}\mathrm{Mod}_{A^e}\simeq \mathcal{C}^{\otimes_{\mathrm{Mod}_{A^e}}2}\] via the functor which forgets the $C_2$-action. 
+	\end{construction}
+	
+	\begin{lemma}
+		The composite $\pnbr(A)\to \mathrm{br}(A^e)\to \mathrm{Pic}(\mathrm{Mod}_{\mathrm{Mod}_{A^e}^{hC_2}})$ is nullhomotopic. 
+	\end{lemma}
+	\begin{proof}
+		The underlying category of a Poincar{\'e} invertible category is self-dual, and so its square will vanish. Since the functor is naturally nullhomotopic so too is the composite after applying the functor $\Pic(-)$.
+	\end{proof}
+	
+	There is thus a map $\pnbr(-)\to \mathcal{F}(-)$, where $\mathcal{F}(-)$ is the fiber. Delooping both fiber sequences we see that we get a map of fiber sequences \[
+	\begin{tikzcd}
+		\Pic(\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2})) \ar[r] \ar[d] & \pnbr(A) \ar[r] \ar[d] & \mathrm{br}(A^e)\ar[d,"="]\\
+		\Pic(\mathrm{Mod}_{A^e}^{hC_2}) \ar[r] & \mathcal{F}(A) \ar[r] & \mathrm{br}(A^e)
+	\end{tikzcd}
+	\]
+	from which we see that the middle horizontal map must be an equivalence whenever $\frac{1}{2}\in A^e$ and $A^{\varphi C_2}=0$.
 \printbibliography
 
 \end{document}
