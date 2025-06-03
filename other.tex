@@ -863,6 +863,60 @@ In the course of thinking about the `involutive' generalization of the statement
     On $ \pi_0 $, the norm map $ \underline{\mathcal{O}}^e \simeq \mathcal{O}_X \to \underline{\mathcal{O}}^{\varphi C_2} $ takes $ f \mapsto f^2 $. 
 \end{example}
 
+\paragraph{pushforwards along quotient maps} 
+An attempt to show the pushforward preserves filtered colimits. 
+\Lucyil{As of June 3, I am suspicious of this argument/think something has gone wrong--(\ref{eq:basechange}) is not supposed to hold in this level of generality. I'm not sure what the problem is yet--maybe that $ \pi_* $ does not in fact define a morphism of recollements? Will revisit later.}
+\begin{lemma}
+    Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient. 
+    Let $ \widetilde{U} \subseteq X $ be the largest open subscheme of $ X $ on which $ \pi $ is quadratic \'etale and let $ W \subseteq Y $ and $ Z = \pi^{-1}(W) \subseteq X $ be the branch and ramification loci of $ \pi $ in the sense of \cite[Proposition 4.45-4.47]{azumaya_involution} (in particular, $ W $ and $ Z $ are endowed with the reduced subscheme structure). 
+    Assume that $ 2 \in \mathcal{O}_Y^\times $. 
+    Then the pushforward $ \pi_* \colon \mathrm{Shv}_{\mathrm{\acute{e}t}}(X; \Spaces) \to \mathrm{Shv}_{\mathrm{\acute{e}t}}(Y; \Spaces) $ preserves filtered colimits. 
+\end{lemma} 
+\begin{proof}
+    Since $ W \subseteq Y $, $ Z \subseteq X $ are closed immersions,\Lucy{this is automatic, but \cite[Lemma 5.36]{azumaya_involution} asserts that $ W \to Y $ is a closed embedding without proof} there exist r\'ecollements 
+    \begin{equation*}
+    \begin{tikzcd}[row sep=small,column sep=large]
+        \mathrm{Shv}_{\mathrm{\acute{e}t}}(\widetilde{U}; \Spaces) \ar[r, bend right=10,"{j_{\widetilde{U}*}}"'] & \mathrm{Shv}_{\mathrm{\acute{e}t}}(X; \Spaces) \ar[l, bend right=10,"{j_{\widetilde{U}}^*}"'] \ar[r,bend right=10,"{i_{Z}^*}"']& \mathrm{Shv}_{\mathrm{\acute{e}t}}(Z; \Spaces)   \ar[l, bend right=10,"{i_{Z*}}"']  \\
+        \mathrm{Shv}_{\mathrm{\acute{e}t}}(U; \Spaces) \ar[r, bend right=10,"{j_{U*}}"'] & \mathrm{Shv}_{\mathrm{\acute{e}t}}(Y; \Spaces) \ar[l, bend right=10,"{j_{U}^*}"'] \ar[r,bend right=10,"{i_{W}^*}"']& \mathrm{Shv}_{\mathrm{\acute{e}t}}(W; \Spaces)   \ar[l, bend right=10,"{i_{W*}}"']  
+    \end{tikzcd}    \,.
+    \end{equation*}
+    Moreover, the pushforward functor $ \pi_* $ is a morphism of r\'ecollements in the sense of \cite[Definition 2.3]{ShahRS}. 
+    In particular, the `components' of $ \pi_* $ (see Observation 2.4 of \emph{loc. cit.}) are 
+    \begin{equation*}
+    \begin{split}
+        \left. \pi_* \right|_{\mathrm{Shv}_{\mathrm{\acute{e}t}}(\widetilde{U}; \Spaces)} = j_U^* \circ \pi_* \circ j_{\widetilde{U}*} = j_{U}^* \circ (\pi \circ j_{\widetilde{U}})_* = j_U^* \circ (j_U \circ \pi|_{\widetilde{U}})_* = j_U^* \circ j_{U*} \circ (\pi|_{\widetilde{U}})_* \\
+        \left. \pi_* \right|_{\mathrm{Shv}_{\mathrm{\acute{e}t}}(Z; \Spaces)} = i_W^* \circ \pi_* \circ i_{Z*} = i_{W}^* \circ (\pi \circ i_{Z})_* = i_W^* \circ (i_W \circ \pi|_{Z})_* = i_W^* \circ i_{W*} \circ (\pi|_{Z})_* \,.
+    \end{split}
+    \end{equation*}
+    Now $ j_U^* \circ j_{U*} \circ (\pi|_{\widetilde{U}})_* \simeq (\pi|_{\widetilde{U}})_* $ (resp. $ i_W^* \circ i_{W*} \circ (\pi|_{Z})_* \to (\pi|_{Z})_* $) induced by the counit of the adjunction $ (j_U^*, j_{U*}) $ (resp. $ (i_W^*, i_{W*}) $) is an equivalence because $ j_{U*} $ (resp. $ i_{W*}$) is fully faithful, thus
+    \begin{equation}
+         \left. \pi_* \right|_{\mathrm{Shv}_{\mathrm{\acute{e}t}}(\widetilde{U}; \Spaces)} \simeq (\pi|_{\widetilde{U}})_* \qquad \qquad  \left. \pi_* \right|_{\mathrm{Shv}_{\mathrm{\acute{e}t}}(Z; \Spaces)} \simeq (\pi|_{Z})_* \,. 
+    \end{equation}
+    We note for further reference the equivalences\Lucy{diagram instead?}
+    \begin{equation}\label{eq:basechange}
+         \left. \pi_* \right|_{\mathrm{Shv}_{\mathrm{\acute{e}t}}(\widetilde{U}; \Spaces)} \circ j_{\widetilde{U}}^* \simeq j_U^* \circ \pi_* \qquad \qquad \left. \pi_* \right|_{\mathrm{Shv}_{\mathrm{\acute{e}t}}(Z; \Spaces)}  \circ i_W^* \simeq i_Z^* \circ \pi_* \,.
+    \end{equation}
+    Suppose given a filtered diagram $ \mathcal{F}_\bullet $ in $ \mathrm{Shv}_{\mathrm{\acute{e}t}}(X; \Spaces) $ and write $ \mathcal{F} $ for its colimit. 
+    We would like to show that the canonical map $ \colim_\bullet \pi_*(\mathcal{F}_\bullet) \to \pi_*(\mathcal{F}) $ is an equivalence.  
+    Since $ j_U^*, i_W^* $ are jointly conservative (by definition of a r\'ecollement, see \cite[Definition A.8.1(e)]{LurHA}), it suffices to show that the canonical maps
+    \begin{equation}\label{eq:colim_diagram_restricted}
+    \begin{split}
+        j^*_U \left(\colim_\bullet \pi_*(\mathcal{F}_\bullet) \right) & \to j^*_U \pi_*(\mathcal{F}) \\
+        i^*_W \left(\colim_\bullet \pi_*(\mathcal{F}_\bullet) \right) & \to i_W^* \pi_*(\mathcal{F})      
+    \end{split}
+    \end{equation}
+    are equivalences. 
+    Since $ j^*_U $ and $ i^*_W $ preserve all colimits, the morphisms of (\ref{eq:colim_diagram_restricted}) can be identified with the canonical maps
+    \begin{equation*}
+    \begin{split}
+        \colim_\bullet j^*_U \pi_*(\mathcal{F}_\bullet) \simeq \colim_\bullet (\pi|_{\widetilde{U}})_*(j^*_{\widetilde{U}}\mathcal{F}_\bullet) \to (\pi|_{\widetilde{U}})_*(j^*_{\widetilde{U}}\mathcal{F}_\bullet) \\
+        \colim_\bullet i^*_W \pi_*(\mathcal{F}_\bullet) \simeq \colim_\bullet (\pi|_{W})_*(i^*_{W}\mathcal{F}_\bullet) \to (\pi|_{Z})_* i_Z^*(\mathcal{F})     \,,    
+    \end{split}
+    \end{equation*}
+    respectively, where we have used (\ref{eq:basechange}). 
+    Now $ \pi|_W $ is an equivalence and $ \pi|_{\widetilde{U}} $ is finite \'etale by \cite[Proposition 4.47]{azumaya_involution}, hence $ (\pi|_{\widetilde{U}})_* $ and $ (\pi|_{W})_* $ preserve filtered colimits. 
+\end{proof}
+
 \section{Speculative norm for Brauer group at the level of infinity categories}
 
 	We would want a functor from $A^e$-linear stable idempotent complete infinity categories to $A^L$-linear stable idempotent complete infinity categories in order to get an extension of our exact sequence to the right. Here is what I think might do it:
