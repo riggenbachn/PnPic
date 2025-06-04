@@ -99,7 +99,7 @@
 \newcommand{\ZZ}{\mathbb{Z}}
 \newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
 \newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
-\newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
+\newcommand{\CC}{\mathbb{C}}
 \newcommand{\FF}{\ensuremath{\mathbb{F}}\xspace}
 \newcommand{\EE}{\mathbb{E}}
 \newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
@@ -1567,21 +1567,71 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution; write $ \lambda \colon A \to \sigma^* A^\op $ for the involution on $ A $. 
     Write $ \mathbf{Mor}^p_{A} \to \mathbf{M}^h_{A} $ for the subsheaf of \emph{Poincaré Morita equivalences}, i.e. $ \mathbf{Mor}^h_{A}(\Spec S \to Y) $ is the full sub-groupoid of $ \mathbf{M}^h_{A}(\Spec S \to Y) $ on those $ \underline{\mathcal{O}} $-linear hermitian functors $ (F,\eta) \colon \left(\Mod^\omega_{A}, \Qoppa_A\right) \to \left(\Mod_{\underline{\mathcal{O}}|_{\Spec S}}^\omega, \Qoppa_{\underline{\mathcal{O}}}|_{\Spec S}\right) $ so that $ F $ is an equivalence and $ (F,\eta) $ is duality-preserving.    
 \end{notation}
-\begin{lemma}
+\begin{lemma}\label{lemma:poincare_morita_eq_is_open_subsheaf}
     Suppose given the setup of Notation \ref{ntn:subsheaf_Poincare_Morita_equiv}. 
-    If either $ \pi \colon X \to Y $ is an isomorphism or quadratic étale on each connected component, then the inclusion $ \mathbf{Mor}^p_{A} \to \mathbf{M}^h_{A} $ exhibits $ \mathbf{Mor}^h_{A} $ as a quasicompact open subsheaf of $ \mathbf{M}^h_{A} $. 
-    \Lucyil{To loosen the assumption, need to know that the image of a [$C_2$-invariant?] quasicompact Zariski open $ U $ of $ \Spec R $ under the quotient map $ \pi \colon \Spec R \to \Spec S $ is a quasicompact Zariski open of $ \Spec S $. 
-    Revisit later and peruse \href{https://math.stackexchange.com/questions/83631/quotient-of-an-affine-variety-by-a-finite-group}{this}. 
-    Better yet: If $ \sigma \colon R \to R $ is the action and $ U = \cup_{i=1}^n D(f_i) $ for $ f_i \in R$, then $ \pi(U) = \cup_{i=1}^n (f_i \sigma(f_i)) $?}         
+    Supppose that the quotient map $ \pi \colon X \to Y $ is \emph{quasi-perfect} in the sense of \cite[Definition A.6.3]{CHN2024}, i.e. the pushforward $ \pi_* $ of quasicoherent sheaves preserves perfect complexes. 
+    Suppose further that $ \pi $ is flat. 
+    Then the inclusion $ \mathbf{Mor}^p_{A} \to \mathbf{M}^h_{A} $ exhibits $ \mathbf{Mor}^h_{A} $ as a quasicompact open subsheaf of $ \mathbf{M}^h_{A} $. 
+    % \Lucyil{To loosen the assumption, need to know that the image of a [$C_2$-invariant?] quasicompact Zariski open $ U $ of $ \Spec R $ under the quotient map $ \pi \colon \Spec R \to \Spec S $ is a quasicompact Zariski open of $ \Spec S $. 
+    % Revisit later and peruse \href{https://math.stackexchange.com/questions/83631/quotient-of-an-affine-variety-by-a-finite-group}{this}. 
+    % Better yet: If $ \sigma \colon R \to R $ is the action and $ U = \cup_{i=1}^n D(f_i) $ for $ f_i \in R$, then $ \pi(U) = \cup_{i=1}^n (f_i \sigma(f_i)) $?}         
+\end{lemma}
+\begin{remark}
+    If either $ \pi \colon X \to Y $ is an isomorphism or quadratic étale on each connected component, then $ \pi_* $ satisfies the assumptions of Lemma \ref{lemma:poincare_morita_eq_is_open_subsheaf}. 
+
+    Here is an example which doesn't fall under either of the preceding cases: If $ X = \Spec \CC [x] $ with the action $ x \mapsto -x $, then $ Y = \Spec \CC[x^2] $ and the quotient map $ X \to Y $ is quasi-perfect because $ \CC[x] $ is a free module of finite rank over $ \CC[x^2] $. 
+    In general, one may check quasi-perfection Zariski-locally on the quotient \cite[Corollary A.6.5]{CHN2024}. 
+    However, not all schemes with involution and good quotient are quasi-perfect; for a counterexample, see \cite[Example 3.9]{azumaya_involution}.     
+\end{remark}
+\begin{proof} [Proof of Lemma \ref{lemma:poincare_morita_eq_is_open_subsheaf}]
+    Use the notation of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}. 
+    By the proof of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}, we know that $ (F,\eta) $ is given by $ (-\otimes_R M, \widetilde{p}^*A \to N^{C_2}_R(M^\vee)) $. 
+    By quasiperfection of $ \pi_* $ and flatness of $ \pi $, $ M $ is a compact $ S $-module. 
+    \Lucyil{quasiperfection is not preserved under arbitrary base change, only tor-independent base change (which is guaranteed under flatness assumption, see \href{https://arxiv.org/pdf/math/0611760}{p.5 here} or \cite[Lemma A.6.4]{CHN2024} which is a special case of the former). OTOH, if we only work with the small \'etale site of $ Y $, then all $ \Spec S \to Y $ would be flat and we can remove flatness assumption on $ \pi $ (but still need quasi-perfection).} 
+    By the proof of \cite[Proposition 5.10]{MR3190610}, the subsheaf of points of $ \Spec S $ on which the functor $ F $ is an equivalence is a quasicompact Zariski open $ U \subseteq \Spec S $. 
+    % \Lucy{Actually, I think I need to know that $ (\widetilde{p}^*A)^{C_2} $ and $ (N^{C_2}_R(M^\vee))^{C_2} $ are compact $ S $-modules.}
+    The hermitian functor $ (F,\eta) $ is duality-preserving if and only if the canonical map $ \tau_{\eta} \colon M \otimes_{\widetilde{p}^*A} \lambda^* \widetilde{p}^*A \to \hom_{R}(M, \sigma^*R) $ is an equivalence (cf. \cite[Lemma 3.4.3]{CDHHLMNNSI}). 
+    By \cite[Proposition 2.14]{MR3190610} (compare the proof of Proposition 5.10 of \emph{loc.cit.}), the subsheaf of points of $ \Spec S $ on which the map $ \tau_\eta $ is an equivalence is a quasicompact Zariski open $ V \subseteq \Spec S $. 
+
+    Finally $ (F,\eta) $ defines a Poincar\'e Morita equivalence if, in addition to $ F $ being an equivalence and $ \eta $ being duality-preserving, $ \eta $ is an equivalence of $ N^{C_2}_R(\widetilde{p}^*A) $-modules. 
+    Since categorical fixed points are jointly conservative, $ \eta $ is an equivalence if and only if $ \eta^{C_2} $ and $ \eta^e $ are equivalences. 
+    By Lemma \ref{lemma:norm_preserves_compactness}, $ (\widetilde{p}^*A)^{C_2} $ and $ (N^{C_2}_R(M^\vee))^{C_2} $ are compact $ S $-modules, hence by a similar argument to the above, there exists a quasicompact Zariski open $ W \subseteq \Spec S $ on whicn $ \eta $ is an equivalence. 
+    Taking the intersection $ U \cap V \cap W $ gives the quasicompact Zariski open subsheaf of $ \Spec S $ on which $ (F,\eta ) $ defines a Poincaré Morita equivalence. 
+\end{proof}
+\begin{lemma}\label{lemma:norm_preserves_compactness}
+    Let $ R = (R^{C_2} \to R^e) $ be a $ C_2 $-$ \EE_\infty $-ring in $ C_2 $-spectra and suppose that $ R $ is connective (i.e. $ R^e $ and $ R^{C_2} $ are both connective). 
+    Then the composite $ \Mod_{R^e}\left(\Spectra\right) \xrightarrow{N^{C_2}_R} \Mod_R\left(\Spectra^{C_2}\right) \xrightarrow{(-)^{C_2}} \Mod_{R^{C_2}}\left(\Spectra\right) $ sends compact $ R^e $-modules to compact $ R^{C_2} $-modules if and only if the restriction map $ R^{C_2} \to R^e $ exhibits $ R^e $ as a perfect $ R^{C_2} $-module. 
+    Here $ N^{C_2}_R $ denotes the relative norm. 
 \end{lemma}
 \begin{proof}
-    Use the notation of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}. 
-    By the proof of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}, we know that $ (F,\eta) $ is given by $ (-\otimes M, \widetilde{p}^*A \to N^{C_2}_R(M^\vee)) $. 
-    By the proof of \cite[Proposition 5.10]{MR3190610}, the subsheaf of points of $ \Spec S $ on which the functor $ F $ is an equivalence is the image $ U $ of a $ C_2 $-invariant quasicompact Zariski open under the quotient map $ \Spec R \to \Spec S $. 
-    \Lucy{Actually, I think I need to know that $ (\widetilde{p}^*A)^{C_2} $ and $ (N^{C_2}_R(M^\vee))^{C_2} $ are compact $ S $-modules.}
-    The hermitian functor $ (F,\eta) $ is duality-preserving if and only if the canonical map $ \tau_{\eta} \colon M \otimes_{\widetilde{p}^*A} \lambda^* \widetilde{p}^*A \to \hom_{R}(M, \sigma^*R) $ is an equivalence (cf. \cite[Lemma 3.4.3]{CDHHLMNNSI}). 
-    By \cite[Proposition 2.14]{MR3190610} (compare the proof of Proposition 5.10 of \emph{loc.cit.}), the subsheaf of points of $ \Spec S $ on which the map $ \tau_\eta $ is an equivalence is the image $ V $ of a $ C_2 $-invariant quasicompact Zariski open under the quotient map $ \Spec R \to \Spec S $. 
-    Taking the intersection $ U \cap V $ gives the quasicompact Zariski open subsheaf of $ \Spec S $ on which $ (F,\eta ) $ defines a Poincaré Morita equivalence. 
+    Observe that the relative norm satisfies $ N^{C_2}_R(P \oplus Q) \simeq N^{C_2}_R(P) \oplus N^{C_2}_R(Q) \oplus C_2 \otimes (P \oplus Q) $ for all $ P, Q \in \Mod_{R^e} $, where $ C_2 \otimes - \colon \Mod_{R^e} \to \Mod_{R} $ is the left adjoint to the restriction functor. \Lucyil{This is essentially implied by \cites[Example 3.17 \& Corollary 3.28]{Nardinthesis} but we should find an earlier reference if possible. Same for the other references in this proof. }
+
+    To prove the `only if' direction, observe that
+    \begin{equation*}
+        \left(N^{C_2}_R(R^e \oplus R^e)\right)^{C_2} = \left(N^{C_2}_R(R^e) \oplus N^{C_2}_R(R^e) \oplus C_2 \otimes (R^e \oplus R^e)\right)^{C_2} \simeq R^{C_2} \oplus R^{C_2} \oplus R^e \oplus R^e \,.
+    \end{equation*}
+    Since perfect $ R^{C_2} $-modules contain $ R^{C_2} $ and are closed under cofibers and taking summands, this implies that $ R^{e} $ must be a perfect $ R^{C_2} $-module. 
+
+    Note that the above argument also implies that if $ R^e $ is a perfect $ R^{C_2} $-module, then the exact functor $ (-)^{C_2} \colon \Mod_R\left(\Spectra^{C_2}\right) \to \Mod_{R^{C_2}}\left(\Spectra\right) $ sends perfect $ R $-modules (which are generated as a thick subcategory by $ R $ and $ C_2 \otimes R^e $) to perfect $ R^{C_2} $-modules. 
+    To prove the `only if' direction, it suffices to show that if the restriction map $ R^{C_2} \to R^e $ exhibits $ R^e $ as a perfect $ R^{C_2} $-module, then $ N^{C_2}_R $ sends perfect $ R^e $-modules to perfect $ R $-modules in $ \Spectra^{C_2} $. 
+    Recall that any perfect $ R^e $-module $ P $ can be written as a finite extension of $ \left\{\Sigma^n R^e \right\}_{n \in \ZZ} $; write $ \ell(P) $ for the minimum $ \ell $ so that $ P $ can be written as an extension of $ \Sigma^{n_i}R^e $ for some $ n_1, \ldots, n_\ell \in \ZZ $. 
+    The result follows from induction on $ \ell(P) $ and the following observations:  
+    \begin{itemize} 
+        \item $ N^{C_2}_R(\Sigma^a R^{e}) = \Sigma^{\rho a} N^{C_2}_R(R^e) = \Sigma^{\rho a} R $ is a perfect $ R $-module  
+        \item If $ Q, S $ are perfect $ R^e $-modules so that $ N^{C_2}_R(Q) $, $ N^{C_2}_R(S) $ are perfect $ R $-modules, then $ N^{C_2}_R(Q \oplus S) $ is a perfect $ R $-module. 
+        \item If $ \ell(P) > 1 $, then there exists a perfect $ R^e $-module $ Q $ and an exact sequence of $ R^e $-modules $ P \to Q \to \Sigma^a R^e $ for some $ a \in \ZZ $. 
+        \item $ N^{C_2}_R(-) $ is a quadratic functor and the following cube
+        \begin{equation*}
+        \begin{tikzcd}[row sep=tiny, column sep=tiny]
+            & Q \ar[rr] \ar[dd] & & Q \oplus \Sigma^a R^e \ar[dd] \\
+            P \ar[rr,crossing over] \ar[dd] \ar[ru] & & Q \ar[ru] & \\
+            & \Sigma^a R^e \ar[rr] & & Q \oplus \Sigma^a R^e \oplus \Sigma^a R^e \\
+            0 \ar[rr] \ar[ru] & & \Sigma^a R^e \ar[from=2-3,crossing over] \ar[ru] & 
+        \end{tikzcd}     
+        \end{equation*} 
+        is strongly cartesian \cite[Corollary 6.1.1.16]{LurHA}. 
+        Therefore $ N^{C_2}_R $ sends the cube to a cartesian cube in $ \Mod_R\left(\Spectra^{C_2}\right) $, hence $ N^{C_2}_R(P) $ can be written as a finite limit of perfect $ R $-modules. \qedhere
+    \end{itemize}  
 \end{proof}
 
 \subsection{The Poincaré Brauer space spectral sequence} % (fold)
