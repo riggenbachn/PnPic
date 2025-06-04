@@ -864,8 +864,19 @@ In the course of thinking about the `involutive' generalization of the statement
 \end{example}
 
 \paragraph{pushforwards along quotient maps} 
-An attempt to show the pushforward preserves filtered colimits. 
-\Lucyil{As of June 3, I am suspicious of this argument/think something has gone wrong--(\ref{eq:basechange}) is not supposed to hold in this level of generality. I'm not sure what the problem is yet--maybe that $ \pi_* $ does not in fact define a morphism of recollements? Will revisit later.}
+Two attempts to show the pushforward preserves filtered colimits. 
+\Lucyil{ DEPRECATED JUNE 3RD: 
+Here are some thoughts towards showing that the canonical map $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e}^{[a,b]} \to \pi_* \mathbf{M}_{A^e} $ is an equivalence. Later: see if \href{https://arxiv.org/pdf/2311.08051}{Example 3.1.2 here} could be useful?} 
+\begin{enumerate}
+    \item Each $ \mathbf{M}_{A^e}^{[a,b]} $ and $ \mathbf{M}_{A^e} $ is a hypersheaf. 
+    For $ \mathbf{M}_{A^e} $ this follows from \cite[Lemma 5.4]{MR3190610}; need to prove for $ \mathbf{M}_{A^e}^{[a,b]} $. 
+    \item $ \pi_* $ sends hypersheaves on the small \'etale site of $ X $ to hypersheaves on the small \'etale site of $ Y $; this follows from the proof of \cite[Proposition 6.5.2.13]{HTT}. \Lucy{which I learned from Recollection 1.14 of \href{https://math.berkeley.edu/~phaine/files/Homotopy_invariance_constructible_sheaves_published.pdf}{this paper}.} 
+    \item Is $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e}^{[a,b]} $ still a hypersheaf? Hypersheaves are not in general closed under colimits, but maybe we can argue using an explicit model for this sheaf? 
+    \item The hypercompletion of the \'etale $ \infty $-topos of $ Y $ has enough points; this follows from \cite[Theorem A.4.0.5]{Lurie_SAG} and Proposition 3.7.3 of Exodromy. 
+    \item It suffices to show that the canonical map $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e}^{[a,b]} \to \pi_* \mathbf{M}_{A^e} $ is an equivalence on points; use the explicit model from \cite[Theorem 3.16]{azumaya_involution}?
+\end{enumerate}
+
+\Lucyil{As of June 3, I am suspicious of the next argument/think something has gone wrong--(\ref{eq:basechange}) is not supposed to hold in this level of generality. I'm not sure what the problem is yet--maybe that $ \pi_* $ does not in fact define a morphism of recollements? Will revisit later.}
 \begin{lemma}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient. 
     Let $ \widetilde{U} \subseteq X $ be the largest open subscheme of $ X $ on which $ \pi $ is quadratic \'etale and let $ W \subseteq Y $ and $ Z = \pi^{-1}(W) \subseteq X $ be the branch and ramification loci of $ \pi $ in the sense of \cite[Proposition 4.45-4.47]{azumaya_involution} (in particular, $ W $ and $ Z $ are endowed with the reduced subscheme structure). 

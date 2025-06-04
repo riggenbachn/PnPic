@@ -1525,24 +1525,23 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \end{equation*}
     sends a hermitian functor $ (F, \eta) $ to its underlying $ \mathcal{O}_X $-linear functor $ F $. 
 \end{observation}
-\Lucyil{I think we can combine Lemma \ref{lemma:pushforward_moduli_of_objects_remains_geometric}, Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}, and \cite[Lemma 4.25]{MR3190610} to show that $ \mathbf{M}^h_A $ is locally geometric.}
+\Lucyil{I think we can combine Lemma \ref{lemma:pushforward_moduli_of_objects_remains_geometric}, Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}, and \cite[Lemma 4.25]{MR3190610} to show that $ \mathbf{M}^h_A $ is locally geometric.} 
+\begin{recollection}\label{recollection:quotient_maps_are_quasicompact}
+    An affine morphism of schemes is always quasi-compact \cite[\href{https://stacks.math.columbia.edu/tag/01S5}{Tag 01S5}]{stacks}. 
+    In particular, if $ (X, \sigma, Y, \pi) $ is a scheme with involution and good quotient, then $ \pi $ is quasi-compact.    
+\end{recollection}
 \begin{lemma}\label{lemma:pushforward_moduli_of_objects_remains_geometric}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
+    Assume that $ Y $ is quasi-compact. 
     Then the sheaf $ \pi_* \mathbf{M}_{A^e} $ is locally geometric. 
     \Lucyil{Other desired properties: locally of finite presentation, smoothness. Possibly need to impose different assumptions on $ \pi $ for different properties to be preserved.}
 \end{lemma}
 \begin{proof}
     Recall \cite[Theorem 5.8]{MR3190610} that the sheaf $ \mathbf{M}_{A^e} $ is locally geometric, i.e. there exists a filtered system $ \mathbf{M}_{A^e} = \colim_{[a,b]} \mathbf{M}_{A^e}^{[a,b]} $ where each $ \mathbf{M}_{A^e}^{[a,b]} \to \mathbf{M}_{A^e} $ is a monomorphism and each $ \mathbf{M}_{A^e}^{[a,b]} $ is $ n_i $-geometric for some $ n_i $. 
-    \Lucyil{Here are some thoughts towards showing that the canonical map $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e} \to \pi_* \mathbf{M}_{A^e} $ is an equivalence. Later: see if \href{https://arxiv.org/pdf/2311.08051}{Example 3.1.2 here} could be useful?} 
-    \begin{enumerate}
-        \item Each $ \mathbf{M}_{A^e}^{[a,b]} $ and $ \mathbf{M}_{A^e} $ is a hypersheaf. 
-        For $ \mathbf{M}_{A^e} $ this follows from \cite[Lemma 5.4]{MR3190610}; need to prove for $ \mathbf{M}_{A^e}^{[a,b]} $. 
-        \item $ \pi_* $ sends hypersheaves on the small \'etale site of $ X $ to hypersheaves on the small \'etale site of $ Y $; this follows from the proof of \cite[Proposition 6.5.2.13]{HTT}. \Lucy{which I learned from Recollection 1.14 of \href{https://math.berkeley.edu/~phaine/files/Homotopy_invariance_constructible_sheaves_published.pdf}{this paper}.} 
-        \item Is $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e} $ still a hypersheaf? Hypersheaves are not in general closed under colimits, but maybe we can argue using an explicit model for this sheaf? 
-        \item The hypercompletion of the \'etale $ \infty $-topos of $ Y $ has enough points; this follows from \cite[Theorem A.4.0.5]{Lurie_SAG} and Proposition 3.7.3 of Exodromy. 
-        \item It suffices to show that the canonical map $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e} \to \pi_* \mathbf{M}_{A^e} $ is an equivalence on points; use the explicit model from \cite[Theorem 3.16]{azumaya_involution}?
-    \end{enumerate}
-    Since pushforward is left exact (and assuming that $ \pi_* $ preserves filtered colimits), it suffices to show that the pushforward of an $ n $-geometric sheaf on $ X $ is $ m $-geometric for some $ m $. 
+
+    While $ \pi_* $ does not preserve filtered colimits in general, quasi-compactness of $ \pi $ (Recollection \ref{recollection:quotient_maps_are_quasicompact}) and of $ Y $ implies that $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e}^{[a,b]} \to \pi_*\mathbf{M}_{A^e} $ is an equivalence \cite[\S3.1.2]{Thomason_Trobaugh}. 
+
+    Since pushforward is left exact (and assuming that $ \pi_* $ preserves this particular filtered colimit), it suffices to show that the pushforward of an $ n $-geometric sheaf on $ X $ is $ m $-geometric for some $ m $. 
 \end{proof}
 \begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
@@ -1562,7 +1561,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Note that the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $classifies lifts of the $ R $-linear functor $ \otimes M \colon \Mod_{\widetilde{p}^*A}^\omega \to \Mod^\omega_R $ to an $ R $-linear hermitian functor. 
     A lift of $ \otimes M $ to an $ R $-linear hermitian functor is equivalent to the data of a map $ \widetilde{p}^*A \to N^{C_2}_R(M^\vee) $ of $ N_R^{C_2}(\widetilde{p}^*A) $-modules in $ \Spectra^{C_2} $, where we write $ M^\vee $ for the $ R $-linear dual of $ M $. 
     Thus the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $ is given by the moduli sheaf $ \Spec \mathrm{Sym}_S \tau_{\geq 0} \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $. 
-    \Lucyil{I think this should be similar to \cite[Theorem 5.6, Proposition 5.7]{MR3190610}. Later: show that the map is locally of finite presentation?}
+    \Lucyil{Similar to \cite[Theorem 5.6, Proposition 5.7]{MR3190610}. Later: show that the map is locally of finite presentation?}
 \end{proof}
 \begin{notation}\label{ntn:subsheaf_Poincare_Morita_equiv}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution; write $ \lambda \colon A \to \sigma^* A^\op $ for the involution on $ A $. 
