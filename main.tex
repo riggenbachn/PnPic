@@ -1585,8 +1585,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \end{remark}
 \begin{proof} [Proof of Lemma \ref{lemma:poincare_morita_eq_is_open_subsheaf}]
     Use the notation of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}. 
-    By the proof of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}, we know that $ (F,\eta) $ is given by $ (-\otimes_R M, \widetilde{p}^*A \to N^{C_2}_R(M^\vee)) $. 
-    By quasiperfection of $ \pi_* $ and flatness of $ \pi $, $ M $ is a compact $ S $-module. 
+    By the proof of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}, we know that $ (F,\eta) $ is given by $ (-\otimes_R M, \widetilde{p}^*A \to N^{C_2}_R(M^\vee)) $ where $ M $ is a compact $ R $-module. 
+    By quasiperfection of $ \pi_* $ and flatness of $ \pi $, $ \Spec R \to \Spec S $ is quasiperfect, i.e. $ R $ is a compact $ S $-module. 
+    It follows that $ M $ is a compact $ S $-module. 
     \Lucyil{quasiperfection is not preserved under arbitrary base change, only tor-independent base change (which is guaranteed under flatness assumption, see \href{https://arxiv.org/pdf/math/0611760}{p.5 here} or \cite[Lemma A.6.4]{CHN2024} which is a special case of the former). OTOH, if we only work with the small \'etale site of $ Y $, then all $ \Spec S \to Y $ would be flat and we can remove flatness assumption on $ \pi $ (but still need quasi-perfection).} 
     By the proof of \cite[Proposition 5.10]{MR3190610}, the subsheaf of points of $ \Spec S $ on which the functor $ F $ is an equivalence is a quasicompact Zariski open $ U \subseteq \Spec S $. 
     % \Lucy{Actually, I think I need to know that $ (\widetilde{p}^*A)^{C_2} $ and $ (N^{C_2}_R(M^\vee))^{C_2} $ are compact $ S $-modules.}
