@@ -1581,7 +1581,8 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 
     Here is an example which doesn't fall under either of the preceding cases: If $ X = \Spec \CC [x] $ with the action $ x \mapsto -x $, then $ Y = \Spec \CC[x^2] $ and the quotient map $ X \to Y $ is quasi-perfect because $ \CC[x] $ is a free module of finite rank over $ \CC[x^2] $. 
     In general, one may check quasi-perfection Zariski-locally on the quotient \cite[Corollary A.6.5]{CHN2024}. 
-    However, not all schemes with involution and good quotient are quasi-perfect; for a counterexample, see \cite[Example 3.9]{azumaya_involution}.     
+    However, not all schemes with involution and good quotient are quasi-perfect; for a counterexample, see \cite[Example 3.9]{azumaya_involution}. 
+    \Lucy{general conditions for this to hold? References: \href{https://arxiv.org/abs/1207.3648}{IV.Proposition 2.2.3} and \href{https://arxiv.org/abs/1505.00754}{\S4.3 here}.}    
 \end{remark}
 \begin{proof} [Proof of Lemma \ref{lemma:poincare_morita_eq_is_open_subsheaf}]
     Use the notation of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}. 
@@ -1620,7 +1621,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \begin{itemize} 
         \item $ N^{C_2}_R(\Sigma^a R^{e}) = \Sigma^{\rho a} N^{C_2}_R(R^e) = \Sigma^{\rho a} R $ is a perfect $ R $-module  
         \item If $ Q, S $ are perfect $ R^e $-modules so that $ N^{C_2}_R(Q) $, $ N^{C_2}_R(S) $ are perfect $ R $-modules, then $ N^{C_2}_R(Q \oplus S) $ is a perfect $ R $-module. 
-        \item If $ \ell(P) > 1 $, then there exists a perfect $ R^e $-module $ Q $ and an exact sequence of $ R^e $-modules $ P \to Q \to \Sigma^a R^e $ for some $ a \in \ZZ $. 
+        \item If $ \ell(P) > 1 $, then there exists a perfect $ R^e $-module $ Q $ with $ \ell(Q) < \ell(P) $ and an exact sequence of $ R^e $-modules $ P \to Q \to \Sigma^a R^e $ for some $ a \in \ZZ $. 
         \item $ N^{C_2}_R(-) $ is a quadratic functor and the following cube
         \begin{equation*}
         \begin{tikzcd}[row sep=tiny, column sep=tiny]
@@ -1631,7 +1632,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
         \end{tikzcd}     
         \end{equation*} 
         is strongly cartesian \cite[Corollary 6.1.1.16]{LurHA}. 
-        Therefore $ N^{C_2}_R $ sends the cube to a cartesian cube in $ \Mod_R\left(\Spectra^{C_2}\right) $, hence $ N^{C_2}_R(P) $ can be written as a finite limit of perfect $ R $-modules. \qedhere
+        Therefore, $ N^{C_2}_R $ sends the cube to a cartesian cube in $ \Mod_R\left(\Spectra^{C_2}\right) $. 
+        By the inductive hypothesis and the second point, $ N^{C_2} $ sends the vertices of the cube excluding $ P $ to perfect $ R $-modules. 
+        Thus we have shown that $ N^{C_2}_R(P) $ can be written as a finite limit of perfect $ R $-modules. \qedhere
     \end{itemize}  
 \end{proof}
 
