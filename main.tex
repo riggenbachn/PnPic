@@ -158,7 +158,7 @@
 
 \maketitle
 \begin{abstract}
-    We do stuff \Noah{Change this}
+    In this paper we define and study the Poincar{\'e} Picard group and the Poincar{\'e} Brauer group. These are Picard and Brauer groups of a variant of schemes which incorporates an involution. We use the formalism of Poincar{\'e} infinity categories, as developed by \cite{CDHHLMNNSI}, and show that in the \'etale case away from characteristic $2$ the Poincar{\'e} Brauer group recovers the involuative Brauer group of \cite{MR1162189}. We also define the Poincar{\'e} Picard and Brauer groups for Poincar{\'e} rings in spectra, and compute these invariants for the sphere spectrum and other examples.
 \end{abstract}
 \tableofcontents
 
@@ -203,19 +203,29 @@ Motivated by this connection between involutions and duality (cf. \cite[\S3]{CDH
 
 \subsection{Main results}
 \begin{theorem}
-Let $\underline{A}$ be an affine Poincar{\'e} scheme with underlying $\mathbb{E}_\infty$-ring spectrum with involution $A$. Then the natural maps \[\pi_i(\pnpic(\underline{A}))\to \pi_i(\pic(A))\] \Noah{I think there is some interaction with the homotopy fixed points, or maybe even the genuine fixed points}are surjective on $2$-torsion.
+    Let $\mathcal{C}$ denote either the category of Poincar{\'e} rings (Definition~\ref{definition:poincare_ring_spectrum}) or the opposite category of schemes with involution and good quotients (Definition~\ref{defn:Category of good quotients}). Then there are functors \[\mathbb{G}_m^\Qoppa, \pnpic, \pnbr:\mathcal{C}\to \mathrm{Sp}_{\geq 0}\] such that 
+    \begin{itemize}
+        \item $\Omega \pnbr\simeq \pnpic$ and $\Omega \pnpic\simeq \mathbb{G}_m^\Qoppa$;
+        \item $\mathbb{G}_m^\Qoppa$ is represented by the free $\mathbb{E}_\infty$ ring on one invertible generator $\mathbb{S}\{x^{\pm 1}\}$ with a certain genuine $C_2$-structure (see \ref{const: gmq});
+        \item $\pnbr$ (and hence all the other functors) satisfy hyperdescent for an analogue of the {\'e}tale topology on $\mathcal{C}$ which incorporates the involution (see Notation~\ref{notation:poincare_ring_basechange} and Notation~\ref{notation:scheme_involution_basechange} for the extact constructions.) 
+    \end{itemize}
 \end{theorem}
 
-\begin{theorem}
-    Let $A$ be an $\mathbb{E}_\infty$ ring with involution, and let $\underline{NA}$ be the associated Tate affine Poincar{\'e} scheme. Let $\br_\nu(A)$ be the Brauer group of Azumaya algebras over $A$ with involution. \Noah{I think we need to define this for ring spectra. For $A$ discrete this is done in \cite{azumaya_involution}.} Then the natural map \[\pnbr(\underline{NA})\to \br_\nu(A)\] is an equivalence\Noah{probably of $\mathbb{E}_\infty$ dodads}
-\end{theorem}
+These invariants naturally admit forgetful functors to the underlying Picard and Brauer spaces. The exact connection is the following:
 
 \begin{theorem}
-    The functors $\pnpic,\pnbr:\mathrm{APS}\to \Spectra$ are fppf sheaves.
+    Let $R$ be a Poincar{\'e} ring, and denote the underlying ring spectrum by $R^e$ and the underlying genuine $C_2$ ring spectrum by $R^L$. Then there is a fiber sequence \[\Pic(\mathrm{Mod}_{R^L}(\mathrm{Sp}^{C_2}))\to \pnbr(R)\to \mathrm{br}(R^e)\] and upon sheafification there is a similar fiber sequence for schemes with involutions and good quotients.
 \end{theorem}
 
+With this fiber sequence in hand we are able to make several computations of interest. As an example:
+
+\begin{corollary}
+    Let $\mathbb{S}^u$ denote the Poincar{\'e} ring spectrum associated to the initial Poincar{\'e} infinity category. Then \[\pnbr(\mathbb{S}^u)\simeq \ZZ\times B\mathrm{gl}_1(\mathrm{TR}^2(\mathbb{S};2))\]
+\end{corollary}
+
+In the case when $R$ is away from characteristic $2$ we are furthermore able to simplify the fiber of the comparison map $\pnbr(R)\to \mathrm{br}(R^e)$. As an application of this we obtain a comparison of the Poincar{\'e} Brauer group with the involuative Brauer group discussed earlier in the introduction:
 \begin{theorem}
-    There is a Poincar{\'e} group scheme $\mathbb{G}_m^\Qoppa$ such that \[B\mathbb{G}_m^\Qoppa\simeq \pnpic\] as fppf stacks.
+Let $(X,\lambda,Y,\pi)$ be a scheme with involution and good quotient such that $\pi:X\to Y$ is {\'e}tale and such that $\frac{1}{2}\in \mathcal{O}_Y$. Then there is an equivalence \[\pnbr(X,\lambda,Y,\pi)\cong \mathrm{Br}(X,\lambda)\] where the second term is the involuative Brauer group of Parimala-Srinivas (\cite{MR1162189}).
 \end{theorem}
 
 \subsection{Outline}
@@ -455,7 +465,7 @@ Philosophically, a scheme with genuine $C_2$-action should, via a recollement, b
     A map $ \pi \colon X \to Y $ is called a good quotient of $ X $ relative to $ \lambda $ if $ \pi $ is $ C_2 $-invariant and affine and $ \pi_{\#} \colon \mathcal{O}_Y \to \pi_{*} \mathcal{O}_X $ induces an isomorphism $ \mathcal{O}_Y \simeq \left(\pi_{*} \mathcal{O}_X\right)^{C_2} $. 
     A good quotient of $ X $ exists if and only if every $ C_2 $-orbit is contained in an affine open subscheme, in which case it is unique up to isomorphism. 
 \end{recollection}
-\begin{definition}
+\begin{definition}~\label{defn:Category of good quotients}
     Define a category $ \mathrm{qSch}^{C_2} $ so that
     \begin{itemize}
         \item an object of $ \mathrm{qSch}^{C_2} $ consists of the data of qcqs schemes $ X $ and $ Y $, an involution $ \lambda \colon X \to X $, and a morphism $ p \colon X \to Y $ which exhibits $ Y $ as a \emph{good quotient} of the involution on $ X $ in the sense of \cite[Remark 4.20]{azumaya_involution}. 
@@ -709,7 +719,7 @@ In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, wh
 Equivalently, $\mathbb{G}_m$ is the affine group scheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homotopy groups of $\pic(A)$ with those of $A$. 
 We will spend the rest of this section on establishing such an equivalence in the Poincar\'e setting.
 
-\begin{construction}
+\begin{construction}~\label{const: gmq}
 	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincare ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$, This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structre given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
 	
 	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a modules over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$.
@@ -1254,7 +1264,7 @@ It would be helpful to extend the fiber sequence of Corollary~\ref{cor:Poincare_
 Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fiber sequence \[\pic(A)\xrightarrow{N_{A/A^{C_2}}}\pic(A^{C_2})\to \pnbr(A)\] where we have that $N_{A^{C_2}/A}$ is given by the map $\mathcal{L}\mapsto (\mathcal{L}^{\vee}\otimes \sigma^*\mathcal{L}^\vee)^{C_2}$ which is (the negative of) the usual norm map. In order to extend this fiber sequence to the right we will need to categorify this map.
 	
 	\begin{construction}
-		Let $A$ be a Poincar{\'e} ring and let $\sigma: A^e\to A^e$ denote the involution. Consider the functor \[\mathrm{Mod}_{\mathrm{Mod}_{A^{e}}^\omega}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\xrightarrow{\left(-\otimes_{\mathrm{Mod}_{A^e}^\omega} \sigma^*-\right)^{hC_2}}\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\] which we will denote by $N_{A^{hC_2}/A}$. Note that this functor is symmetric monoidal, which can be checked on underlying infinity cetegories. 
+		Let $A$ be a Poincar{\'e} ring and let $\sigma: A^e\to A^e$ denote the involution. Consider the functor \[\mathrm{Mod}_{\mathrm{Mod}_{A^{e}}^\omega}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\xrightarrow{\left(-^{op}\otimes_{\mathrm{Mod}_{A^e}^\omega} \sigma^*-^{op}\right)^{hC_2}}\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\] which we will denote by $N_{A^{hC_2}/A}$. Note that this functor is symmetric monoidal, which can be checked on underlying infinity cetegories. Here if $\mathcal{C}$ is a module over $\mathrm{Mod}_{A^e}^{\omega}$, then $\mathcal{C}^{op}$ is a module via the equivalence $D_\Qoppa:\mathrm{Mod}_{A^e}^\omega\xrightarrow{\simeq}(\mathrm{Mod}_{A^e}^\omega)^{op}$ induced by the duality from the Poincar{\'e} structure. 
 	\end{construction}
 	
 	\begin{lemma}
@@ -1263,6 +1273,13 @@ Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fibe
 	\begin{proof}
 		The underlying category of a Poincar{\'e} invertible category is self-dual, and so its square will vanish. Since the functor is naturally nullhomotopic so too is the composite after applying the functor $\Pic(-)$.
 	\end{proof}
+
+    \begin{lemma}~\label{lem: surjection onto kernel PS sequence}
+        Let $\mathcal{C}\in \mathrm{Mod}_{\mathrm{Mod}_{A^e}^\omega}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})$ be an invertible category such that $N_{A^{hC_2}/A}(\mathcal{C})=0$. Suppose that $A$ is Borel and that $\frac{1}{2}\in \pi_0(A^e)$. Then $\mathcal{C}$ admits an invertible $A$-linear Poincar{\'e} infinity category structure.
+    \end{lemma}
+    \begin{proof}
+        By assumption there is an equivalence $(\mathcal{C}^{op}\otimes_{\mathrm{Mod}_{A^e}^\omega}\sigma^*\mathcal{C}^{op})^{hC_2}\simeq \mathrm{Mod}_{A}(\mathrm{Sp}^{BC_2})$, fix such an equivalence. We then may define a Poincar{\'e} functor via \[\mathcal{C}^{op}\xrightarrow{x\mapsto x\otimes \sigma^*x}\left(\mathcal{C}^{op}\otimes_{\mathrm{Mod}_{A^e}^\omega}\sigma^*\mathcal{C}^{op}\right)^{hC_2}\simeq \mathrm{Mod}_A(\mathrm{Sp}^{BC_2})\xrightarrow{(-)^{hC_2}}\mathrm{Sp}\] and under the assumptions on $A$ this defines an invertible Poincar{\'e} structure on $\mathcal{C}$ as desired.
+    \end{proof}
 	
 	There is thus a map $\pnbr(-)\to \mathcal{F}(-)$, where $\mathcal{F}(-)$ is the fiber. Delooping both fiber sequences twice we see that we get a map of fiber sequences \[
 	\begin{tikzcd}
@@ -1270,12 +1287,15 @@ Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fibe
 		\Pic(A^e)\ar[r,"N_{A^{hC_2}/A}"] &\Pic(\mathrm{Mod}_{A^e}^{hC_2}) \ar[r] & \mathcal{F}(A) 
 	\end{tikzcd}
 	\]
-	and when $A$ is Borel, connective, and $\frac{1}{2}\in \pi_0(A^e)$ we see that the horizontal maps must be equivalences.
+	and when $A$ is Borel, connective, and $\frac{1}{2}\in \pi_0(A^e)$ we see that the left and middle vertical maps must be equivalences. This together with Lemma~\ref{lem: surjection onto kernel PS sequence} gives that the right hand vertical map is in fact an equivalence of $\mathbb{E}_\infty$ spaces.
 
     Summerizing this situation, we get the following:
     \begin{theorem}
-        Let $A$ be a Poincar{\'e} ring which is Borel, connective, and $\frac{1}{2}\in \pi_0(A^e)$. Then 
+        Let $A$ be a Poincar{\'e} ring which is Borel, connective, and $\frac{1}{2}\in \pi_0(A^e)$. Then there is a fiber sequence \[\pnbr(A)\to \mathrm{br}(A^e)\to \mathrm{br}(A^{hC_2})\] where if $A$ is discrete then the map $\mathrm{Br}(A)\to \mathrm{Br}(A^{hC_2})$ is the {\'e}tale cohomological transfer map.
     \end{theorem}
+    \begin{proof}
+        All the remains to show is the identification of $\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})\simeq \mathrm{Mod}_{\mathrm{Mod}_{A^{hC_2}}^\omega}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})$, which follows from the monoidal equivalence $(\mathrm{Mod}_{A^e}^{\omega})^{hC_2}\simeq \mathrm{Mod}_{A^{hC_2}}^\omega$, and the fact that under this equivalence an Azumaya algebra over $B$ is sent to $(B\otimes_A\sigma^*B)^{C_2}$ which is exactly the cohomological transfer map (see \cite[Example 6.2.3]{azumaya_involution}).
+    \end{proof}
 
 \subsection{Azumaya algebras with genuine involution} 
 In this section, we introduce the notion of a derived/generalized Azumaya algebra with involution. 
@@ -1645,7 +1665,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Here $ N^{C_2}_R $ denotes the relative norm. 
 \end{lemma}
 \begin{proof}
-    Observe that the relative norm satisfies $ N^{C_2}_R(P \oplus Q) \simeq N^{C_2}_R(P) \oplus N^{C_2}_R(Q) \oplus C_2 \otimes (P \oplus Q) $ for all $ P, Q \in \Mod_{R^e} $, where $ C_2 \otimes - \colon \Mod_{R^e} \to \Mod_{R} $ is the left adjoint to the restriction functor. \Lucyil{This is essentially implied by \cites[Example 3.17 \& Corollary 3.28]{Nardinthesis} but we should find an earlier reference if possible (Maybe \S~A.3.3 of Hill--Hopkins--Ravenel?). Same for the other references in this proof. }
+    Observe that the relative norm satisfies $ N^{C_2}_R(P \oplus Q) \simeq N^{C_2}_R(P) \oplus N^{C_2}_R(Q) \oplus C_2 \otimes (P \oplus Q) $ for all $ P, Q \in \Mod_{R^e} $, where $ C_2 \otimes - \colon \Mod_{R^e} \to \Mod_{R} $ is the left adjoint to the restriction functor. \Lucyil{This is essentially implied by \cites[Example 3.17 \& Corollary 3.28]{Nardinthesis} but we should find an earlier reference if possible. Same for the other references in this proof. }
 
     To prove the `only if' direction, observe that
     \begin{equation*}
