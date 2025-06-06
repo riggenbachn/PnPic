@@ -1376,12 +1376,16 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     % Now there is a canonical choice of equivalence \ref{defn_item:Azumaya_gen_inv_geom_fixpt} since both sides are canonically equivalent to $ \overline{P} \otimes_{R^{\varphi C_2}} \overline{P}^\vee $. 
 \end{example}
 
-\begin{proposition}\label{prop:classical_inv_to_genuine_inv}
-    Let $ R $ be a discrete ring with a given $ C_2 $-action $ \lambda $, and suppose that the branch locus in $ \Spec (R)/C_2 = \Spec(R^{C_2}) $ is empty. 
-    Let $ A $ be a classical Azumaya algebra over $ R $ with an involution of type 2. 
-    Regard $ R $ as a Poincaré ring spectrum $ \underline{R}^\lambda $ via Example \ref{ex:fixpt_Mackey_functor}. 
-
-    Then there is a canonical Azumaya algebra with genuine involution over $ \underline{R}^{\lambda} $ whose underlying Azumaya algebra is $ A $. \Lucy{In what other cases does a lift exist trivially? wrt Tate Poincaré structure, suffices to take a trivialization of $ A $?}
+\begin{proposition}\label{prop:classical_inv_to_genuine_inv} 
+    Let $ R $ be a discrete ring with a given $ C_2 $-action $ \sigma $, regard $ R $ as a Poincaré ring spectrum $ \underline{R}^\lambda $ via Example \ref{ex:fixpt_Mackey_functor}. 
+    Let $ A $ be a classical Azumaya algebra over $ R $ with an involution of type 2, i.e. an equivalence of associative $ R $-algebras $ \lambda \colon A \to \sigma^* A^{\op} $. 
+    Suppose that either:
+    \begin{itemize}
+        \item the branch locus in $ \Spec (R)/C_2 = \Spec(R^{C_2}) $ is empty, or 
+        \item $ 2 $ is invertible in $ R $.
+    \end{itemize} 
+    Then there is a canonical Azumaya algebra with genuine involution over $ \underline{R}^{\lambda} $ whose underlying Azumaya algebra is $ A $. 
+    \Lucyil{What data is needed to give a lift, when $ R^{\varphi C_2} $ is not necessarily zero (as is have assumed here)? In what other cases does a lift exist trivially? wrt Tate Poincaré structure, suffices to take a trivialization of $ A $?}
 \end{proposition} 
 \begin{remark}
     If $ \frac{1}{2} \in R $, then $ \mathrm{Br}(\Spec R, \lambda) $ is defined \cite[p. 216]{MR1162189}. 
@@ -1581,6 +1585,42 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     While $ \pi_* $ does not preserve filtered colimits in general, quasi-compactness of $ \pi $ (Recollection \ref{recollection:quotient_maps_are_quasicompact}) and of $ Y $ implies that $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e}^{[a,b]} \to \pi_*\mathbf{M}_{A^e} $ is an equivalence \cite[\S3.1.2]{Thomason_Trobaugh}. 
 
     Since pushforward is left exact (and assuming that $ \pi_* $ preserves this particular filtered colimit), it suffices to show that the pushforward of an $ n $-geometric sheaf on $ X $ is $ m $-geometric for some $ m $. 
+    \Lucyil{Incomplete! Bootstrap Lemma \ref{lemma:pushforward_rep'able_n_geometric_sheaves} to show this?}
+\end{proof}
+\begin{lemma}\label{lemma:pushforward_rep'able_n_geometric_sheaves}
+    Let $ R \to S $ be a map of connective $ \EE_\infty $-rings and write $ \pi \colon \Spec S \to \Spec R $. 
+    Assume that 
+    \begin{itemize}
+        \item The map $ R \to S $ is an effective descent morphism 
+        \item $ S $ is dualizable as an $ R $-module; write $ S^\vee $ for the $ R $-linear dual of $ S $, and suppose it has Tor-amplitude contained in $ [d,c] $ for some $ d \leq 0 $. 
+    \end{itemize}  
+    Let $ M $ be a perfect $ S $-module and consider the sheaf $ \Spec \mathrm{Sym}_S(M) $ on the \'etale site of $ S $. 
+    Assume that $ M $ has Tor-amplitude in $ [a,b] $ (so the stack $ \Spec \mathrm{Sym}_S(M) $ is $ \mathrm{max}(-a,0) $-geometric by \cite[Theorem 5.2]{MR3190610}). 
+    Then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is a $ \mathrm{max}(-a,0) - d $-geometric sheaf on the \'etale site of $ R $. 
+
+    \Lucyil{pretty sure that if $ S $ is flat over $ R $ and $ b \leq 0 $, then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is furthermore smooth. Check later!}
+\end{lemma}
+\begin{proof}
+    Since $ R \to S $ is an effective descent morphism, we have an equivalence of $ S $-modules $ M \simeq \colim_{\Delta^\op} M \otimes_R S^{\otimes_R \bullet + 1} $. 
+    Since $ \mathrm{Sym}_S $ preserves sifted colimits and $ \Spec $ is contravariant, it follows that $ \Spec \mathrm{Sym}_S (M) \simeq \lim_{\Delta} \Spec \mathrm{Sym}_S \left(M \otimes_R S^{\otimes_R \bullet + 1} \right) $ as \'etale sheaves over $ \Spec S $. 
+    Since $ \pi_* $ preserves all small limits, it follows that $ \pi_* \Spec \mathrm{Sym}_S (M) \simeq \lim_{\Delta} \pi_* \Spec \mathrm{Sym}_S \left(M \otimes_R S^{\otimes_R \bullet + 1} \right) $ as \'etale sheaves over $ \Spec R $. 
+    Since $ S $ is a perfect $ R $-module and $ M $ is a perfect $ S $-module, each $ M \otimes_R S^{\otimes_R \bullet} $ is a perfect $ R $-module whose tor-amplitude (over $ R $) is bounded below \emph{independently of $ \bullet$}. 
+    By \cite[Lemma 4.36]{MR3190610}, it suffices to show that if $ N $ is a perfect $ R $-module, then
+    \begin{enumerate}[label=(\arabic*)]
+        \item the sheaf $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is quasiseparated 
+        \item If $ N $ has tor-amplitude contained in $ [e, f] $ with $ e \leq 0 $, then $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is $ e - d $ geometric. 
+    \end{enumerate}
+    Now if $ T $ is an $ R $-algebra, 
+    \begin{equation*}
+    \begin{split}       
+         \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right)(\Spec T) & \simeq \hom_{S\mathrm{Alg}}\left(\mathrm{Sym}_S \left(N \otimes_R S \right), T \otimes_R S \right) \\
+         &\simeq \hom_{S\Mod}(N \otimes_R S, T \otimes_R S) \\
+         &\simeq \hom_{R\Mod}(N, T \otimes_R S) \\
+         &\simeq \hom_{R \Mod }(N \otimes_R S^\vee, T)\qquad \text{ since $ S $ is dualizable over $ R $} \\
+         &\simeq \hom_{R\mathrm{Alg}}\left(\mathrm{Sym}_R (N \otimes_R S^\vee), T\right)\,.
+    \end{split}
+    \end{equation*}
+    Since $ N \otimes_R S^\vee $ has Tor-amplitude\Lucy{\cite[Proposition 2.13(4)]{MR3190610} or find ref in [TT90] later} in $ [e+d, f+c] $, it follows that $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is quasiseparated and $ (e-d) $-geometric by \cite[Theorem 5.2]{MR3190610}. 
 \end{proof}
 \begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
