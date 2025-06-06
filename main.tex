@@ -1381,7 +1381,8 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Then $ A:= \mathrm{End}_R(P) $ admits a canonical lift to an $ \EE_1 $ algebra with genuine involution over $ R $ with $ A^{\varphi C_2}:= \hom_R(P, R^{\varphi C_2}) $. 
     If $ P $ is a generator of $ \Mod_R^\omega $, then $ A $ is furthermore Azumaya. 
 
-    By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. \Lucy{todo: an $ R $-linear enhancement of Proposition 3.1.16?} 
+    By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. 
+    %\Lucy{todo: an $ R $-linear enhancement of Proposition 3.1.16?} 
     To exhibit \ref{defnitem:Azumaya_alg_gi_underlying}, observe that $ q^\dag $ induces a canonical $ A \otimes A^\op $-linear equivalence $ A = \mathrm{End}(P) \simeq \mathrm{End}(P^\vee) \simeq A^\vee $.  
     % Lucy: I THINK that even though $ A \simeq P \otimes_R P^\vee $ (hence there is a canonical equivalence $ A \simeq A^\vee $), that isn't $ A \otimes A^\op $-linear. 
     If $ P $ is a generator, $ \hom_{R}(P,-) $ induces an equivalence $ \Mod_R^\omega \simeq \Mod_{A}^\omega $, thus we can regard $ \Mod_A^\omega $ as equipped with a Poincaré structure. 
@@ -1409,11 +1410,17 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
         \item $ 2 $ is invertible in $ R $.
     \end{itemize} 
     Then there is a canonical Azumaya algebra with genuine involution over $ \underline{R}^{\lambda} $ whose underlying Azumaya algebra is $ A $. 
-    \Lucyil{What data is needed to give a lift, when $ R^{\varphi C_2} $ is not necessarily zero (as is have assumed here)? In what other cases does a lift exist trivially? wrt Tate Poincaré structure, suffices to take a trivialization of $ A $?}
+    \Lucyil{What data is needed to give a lift, when $ R^{\varphi C_2} $ is not necessarily zero (as is have assumed here)? 
+    In what other cases does a lift exist trivially? wrt Tate Poincaré structure, suffices to take a trivialization of $ A $?}
 \end{proposition} 
 \begin{remark}
     If $ \frac{1}{2} \in R $, then $ \mathrm{Br}(\Spec R, \lambda) $ is defined \cite[p. 216]{MR1162189}. 
     In view of Propositions \ref{prop:classical_inv_to_genuine_inv} and \ref{prop:mod_over_azumaya_geninv_is_invertible}, there is a homomorphism $ \mathrm{Br}(\Spec R, \lambda) \to \pi_0 \pnbr(\underline{R}^\lambda) $. \Lucy{rewrite for scheme with involution}
+\end{remark}
+\begin{remark}
+    Equip $ R $ with the trivial involution, and consider the composite $ R \to R^{\varphi C_2 } \to \pi_0 R^{\varphi C_2} \simeq R/2 $. 
+    This is equivalent to the composite $ R \to R/2 \xrightarrow{\mathrm{Frobenius}} R/2 $, and since the Frobenius is multiplication by 2 in $ \mathbb{G}_m $ and $ A $ is 2-torsion (because of the involution, there must be a trivialization of $ A \otimes_R \pi_0 R^{\varphi C_2} $, and the set of trivializations is described by some coset space in the exact sequence $ \cdots H^1 (-;\mathbb{G}_m) \to H^1(-;\mathrm{GL}_n) \to H^1(-; \mathrm{PGL}_n) \to \cdots $). 
+    Now $ R^{\varphi C_2 } \to \pi_0 R^{\varphi C_2} $ is a limit of nilpotent extensions; use deformation theory to try to lift any given trivialization of $  A \otimes_R \pi_0 R^{\varphi C_2} $ to a trivialization of $ A \otimes_{R} R^{\varphi C_2} $. \Lucy{tried to put this in a comment but TeX would not compile :/}
 \end{remark}
 \begin{proof} [Proof of Proposition \ref{prop:classical_inv_to_genuine_inv}]
     % By \cite[Examples 3.1.9 \& 3.2.9]{CDHHLMNNSI}, it suffices to exhibit $ N $ and an $ A $-linear map $ N \to A^{tC_2} $. 
