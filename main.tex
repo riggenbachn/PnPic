@@ -235,7 +235,8 @@ Let $(X,\lambda,Y,\pi)$ be a scheme with involution and good quotient such that 
 
 \subsection{Acknowledgements} 
 The authors wish to thank the Institute for Advanced Study and the organizers of the 2024 Park City Mathematics institute on motivic homotopy theory. 
-Also thank: Columbia, Ben Antieau...??
+Also thank: Columbia, Ben Antieau, James Hotchkiss.
+\Lucyil{grants? people? travel funding?}
 
 \subsection{Conventions}
 \label{subsection:conventions} 
@@ -1608,7 +1609,10 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     While $ \pi_* $ does not preserve filtered colimits in general, quasi-compactness of $ \pi $ (Recollection \ref{recollection:quotient_maps_are_quasicompact}) and of $ Y $ implies that $ \colim_{[a,b]} \pi_* \mathbf{M}_{A^e}^{[a,b]} \to \pi_*\mathbf{M}_{A^e} $ is an equivalence \cite[\S3.1.2]{Thomason_Trobaugh}. 
 
     Since pushforward is left exact (and assuming that $ \pi_* $ preserves this particular filtered colimit), it suffices to show that the pushforward of an $ n $-geometric sheaf on $ X $ is $ m $-geometric for some $ m $. 
-    \Lucyil{Incomplete! Bootstrap Lemma \ref{lemma:pushforward_rep'able_n_geometric_sheaves} to show this?}
+    \Lucyil{Incomplete! Bootstrap Lemma \ref{lemma:pushforward_rep'able_n_geometric_sheaves} and Lemma \ref{lemma:pushforward_of_n_geometric_morphisms} to show this? 
+
+    % NOTE: prove as little as necessary! Sufficient to show that at every step in the proof of local geometricity of $ \mathbf{M}_{A^e} $, $ \pi_* $ preserves the relevant properties. 
+    Note: By definition of exact quotient and \cite[Theorem 4.35(i)]{azumaya_involution} and \cite[Proposition 7.2.1.14]{LurHA}, $ \pi_* $ preserves epimorphisms. Therefore, to show that $ \pi_* $ sends submersions (=smooth and surjective) to submersions, it suffices to show that $ \pi_* $ sends smooth maps to smooth maps.}
 \end{proof}
 \begin{lemma}\label{lemma:pushforward_rep'able_n_geometric_sheaves}
     Let $ R \to S $ be a map of connective $ \EE_\infty $-rings and write $ \pi \colon \Spec S \to \Spec R $. 
@@ -1619,7 +1623,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \end{itemize}  
     Let $ M $ be a perfect $ S $-module and consider the sheaf $ \Spec \mathrm{Sym}_S(M) $ on the \'etale site of $ S $. 
     Assume that $ M $ has Tor-amplitude in $ [a,b] $ (so the stack $ \Spec \mathrm{Sym}_S(M) $ is $ \mathrm{max}(-a,0) $-geometric by \cite[Theorem 5.2]{MR3190610}). 
-    Then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is a $ \mathrm{max}(-a,0) - d $-geometric sheaf on the \'etale site of $ R $. 
+    Then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is a $ (\mathrm{max}(-a,0) - d) $-geometric sheaf on the \'etale site of $ R $. 
+
+    In particular, $ \pi_* 1_{\mathrm{Shv}_{\acute{e}t}(S;\Spaces)} $ is $ (-d) $-geometric. 
 
     \Lucyil{pretty sure that if $ S $ is flat over $ R $ and $ b \leq 0 $, then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is furthermore smooth. Check later!}
 \end{lemma}
@@ -1644,6 +1650,42 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \end{split}
     \end{equation*}
     Since $ N \otimes_R S^\vee $ has Tor-amplitude\Lucy{\cite[Proposition 2.13(4)]{MR3190610} or find ref in [TT90] later} in $ [e+d, f+c] $, it follows that $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is quasiseparated and $ (e-d) $-geometric by \cite[Theorem 5.2]{MR3190610}. 
+
+    The final statement follows from taking $ M = 0 $. 
+\end{proof}
+\begin{lemma}\label{lemma:pushforward_of_n_geometric_morphisms}
+    Let $ R $ be a discrete ring with involution and consider $ \pi \colon \Spec R \to \Spec (R^{C_2}) $ as a scheme with involution and good quotient. 
+    Suppose that $ \pi_* \colon \mathrm{Shv}_{\acute{e}t}(\Spec R; \Spaces) \to \mathrm{Shv}_{\acute{e}t}(\Spec (R^{C_2}); \Spaces) $ sends disjoint unions of affines to disjoint unions of affines and sends smooth maps to smooth maps. 
+    \Lucyil{Can we relax/get rid of the assumption that $ \pi_* $ preserves disjoint unions of affines by imposing that $ f $ quasicompact and other finiteness conditions?}
+    Then if $ f \colon X \to Y $ is an $ n $-geometric morphism in $ \mathrm{Shv}_{\acute{e}t}(\Spec R; \Spaces) $, then $ \pi_*(f) $ is $ m $-geometric for some $ m $.  
+\end{lemma}
+\begin{proof}
+    We will induct on $ n $. 
+    Let $ S $ be a connective $ R^{C_2} $-algebra and fix a map $ p \colon \Spec S \to \pi_* Y $ of \'etale sheaves over $ R^{C_2} $. 
+    The map $ p $ admits a canonical factorization $$ \Spec S \to \pi_* \pi^* \Spec S \xrightarrow{\pi_*(p^\dagger)} \pi_*Y \,, $$ where $ p^\dagger$ corresponds to $ p $ under the $ (\pi^*, \pi_*) $-adjunction. 
+    Furthermore note that $ \pi^* \Spec S \simeq \Spec (S \otimes_{R^{C_2}} R ) $. 
+
+    Base case: If $ f $ is $ 0 $-geometric, $ (\pi^* \Spec S) \fiberproduct_{Y} X \simeq \bigsqcup_{i \in I} \Spec T_i $ for some connective commutative $ R $-algebras $ T_i $. \Lucy{if $ f $ is quasi-compact, can take $ I $ to be \emph{finite}.} 
+    \Lucyil{very much a work in progress/incomplete!!! To show that $ \pi_* f$ is $ d $-geometric, it suffices to show that $ \Spec S \fiberproduct_{\pi_* \pi^* \Spec S}\left(\bigsqcup_i \Spec T_i \right) $ admits a smooth surjective $ (d-1) $-geometric morphism from a disjoint union of affines. Impose more assumptions and try to reduce to Lemma \ref{lemma:pushforward_rep'able_n_geometric_sheaves}?} 
+
+    Inductive step: Since $ f $ is $ n $-geometric, there exists a smooth $ (n-1) $-geometric surjection $ \varphi \colon U \simeq \bigsqcup_{i \in I} \Spec T_i \to (\pi^* \Spec S) \fiberproduct_{Y} X $. 
+    Now form the following diagram in which all squares are pullbacks
+    \begin{equation*}
+    \begin{tikzcd}
+        V\ar[d,"\psi"] \ar[r] & \pi_* U \ar[d,"{\pi_*(\varphi)}"] & \\
+        {\Spec S \fiberproduct_{\pi_* Y} \pi_* X} \ar[r] \ar[d] & {\pi_*\left( (\pi^* \Spec S) \fiberproduct_Y X\right)} \ar[d] \ar[r] & \pi_* X \ar[d,"{\pi_*(f)}"] \\
+        \Spec S \ar[r] & \pi_*\pi^*(\Spec S) \ar[r] & \pi_* Y    \,.
+    \end{tikzcd}    
+    \end{equation*}
+    By inductive hypothesis, $ \pi_*(\varphi) $ is a smooth $ m $-geometric surjection for some $ m = m(n-1) $ depending only on $ (n-1) $. \Lucy{tried to use function notation but it looks like multiplication.}
+    It follows from \cite[Lemma 4.23]{MR3190610} that $ \psi $ is a smooth $ m $-geometric surjection. 
+    By assumption, $ \pi_* U $ is a disjoint union of affines. 
+    Recall that $ \mathrm{Shv}_{\acute{e}t}(\Spec (R^{C_2}); \Spaces) $ is an $ \infty $-topos, hence colimits are universal. 
+    \Lucyil{Need to show that $ V $ is a disjoint union of affines or admits a smooth $ m $-geometric surjection from disjoint union of affines (then apply \cite[Lemma 4.25(1)]{MR3190610})! 
+    
+    By assumption that $ \pi_* $ preserves arbitrary disjoint union, suffices to prove the result for $ U = \Spec T $ (so $V = \Spec S \fiberproduct_{\pi_*\pi^* \Spec S} \pi_* \Spec T $). Impose more assumptions and try to reduce to Lemma \ref{lemma:pushforward_rep'able_n_geometric_sheaves}?}
+
+    We have shown that there exists a smooth surjective $ m $-geometric morphism to $ \Spec S \fiberproduct_{\pi_* Y} \pi_* X $ from a disjoint union of affines, hence $ \pi_*(f) $ is $ (m+1) $-geometric. 
 \end{proof}
 \begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
