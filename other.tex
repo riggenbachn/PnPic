@@ -839,20 +839,21 @@ In the course of thinking about the `involutive' generalization of the statement
 \begin{proposition}
     Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 4.20]{azumaya_involution}, and write $ p \colon X \to Y $ for the quotient map. 
     Let $ i \colon U \subseteq Y $ be the largest open subscheme on which $ \pi|_{X_U} $ is étale \cite[Proposition 4.45]{azumaya_involution}. 
-    Write $ \mathrm{RamLoc}(\pi) $ for the closed complement of $ U $ regarded as a topological space, and let $ j \colon \mathrm{RamLoc}(\pi) \to Y $ denote the inclusion. 
-    Then $ \underline{\mathcal{O}}^{\varphi C_2} $ is in the essential image of $ j_* \colon \mathrm{Shv}_{\mathrm{Zar}}(\mathrm{RamLoc}(\pi)) \to \mathrm{Shv}_{\mathrm{Zar}}(Y) $. 
-    In other words, there exists a sheaf $ \mathcal{Q} $ of $ \EE_\infty $-rings on $ \mathrm{RamLoc}(\pi) $ so that $ j_* \mathcal{Q} \simeq \underline{\mathcal{O}}^{\varphi C_2} $. \Lucy{hypothesis? move to main text?}
+    Write $ Z(\pi) $ for the closed complement of $ U $ regarded as a topological space, and let $ j \colon Z(\pi) \to Y $ denote the inclusion\footnote{$ Z(\pi) $ is referred to as the \emph{branch locus} in \cite{azumaya_involution}}. 
+    Then $ \underline{\mathcal{O}}^{\varphi C_2} $ is in the essential image of $ j_* \colon \mathrm{Shv}_{\mathrm{Zar}}(Z(\pi)) \to \mathrm{Shv}_{\mathrm{Zar}}(Y) $. 
+    In other words, there exists a sheaf $ \mathcal{Q} $ of $ \EE_\infty $-rings on $ Z(\pi) $ so that $ j_* \mathcal{Q} \simeq \underline{\mathcal{O}}^{\varphi C_2} $. \Lucy{hypothesis? move to main text?}
 \end{proposition}
+\Lucyil{How does $ \mathcal{Q} $ relate to the structure sheaf on the branch locus (as reduced subscheme of $ Y $) used in First--Williams?}
 \begin{proof}
     Recall that the open-closed decomposition of $ Y $ induces a symmetric monoidal récollement
     \begin{equation*}
-        \mathrm{Shv}_{\mathrm{Zar}}(U) \xleftarrow{i^*} \mathrm{Shv}_{\mathrm{Zar}}(Y) \xrightarrow{j^*} \mathrm{Shv}_{\mathrm{Zar}}(\mathrm{RamLoc}(\pi)) \,.
+        \mathrm{Shv}_{\mathrm{Zar}}(U) \xleftarrow{i^*} \mathrm{Shv}_{\mathrm{Zar}}(Y) \xrightarrow{j^*} \mathrm{Shv}_{\mathrm{Zar}}(Z(\pi)) \,.
     \end{equation*}
     Therefore, to show that $ \underline{\mathcal{O}}^{\varphi C_2} $ is in the essential image of $ j_* $, it suffices to show that $ i^*\left( \underline{\mathcal{O}}^{\varphi C_2}\right) \simeq 0 $ as a sheaf on $ U $. 
 
     By \cite[Proposition 4.45]{azumaya_involution}, it suffices to show that if $ y $ is a point in $ U $, then $ \underline{\mathcal{O}}^{\varphi C_2}_{y} = 0 $. \Lucy{Need hypercompleteness to reduce to checking on points? Appeal to Clausen--Mathew and add finite Krull dim hypothesis?}  
     Since $ \underline{\mathcal{O}}^{\varphi C_2}_{y} = \tau_{\geq 0} \left(\Gamma\mathcal{O}_{X \times_Y \{y\}}^{tC_2}\right) $ where $ A = \Gamma\mathcal{O}_{Y,y} \to B = \Gamma\mathcal{O}_{X \times_Y \{y\}} $ is a quadratic étale map so that $ B $ has an involution $ \lambda $ and $ A = B^{\lambda} $ is a local ring with maximal ideal $ \mathfrak{m}_A $ (therefore $ B $ is semilocal by \cite[Proposition 3.15]{azumaya_involution}), it suffices to show that $ \pi_0 B^{tC_2} = 0 $. 
-    By \cite[Lemma I.2.9]{NS}, we may without loss of generality replace $ A $ and $ B $ by their $ 2 $-completions. \Lucy{this is unnecessary to the proof--but shows that $ U $ is contained in the open subscheme $ Y \left[\frac{1}{2}\right] $.}
+    By \cite[Lemma I.2.9]{NS}, we may without loss of generality replace $ A $ and $ B $ by their $ 2 $-completions. \Lucyil{this is unnecessary to the proof--but shows that the support of $ \mathcal{Q} $ intersects trivially with the open subscheme $ Y \left[\frac{1}{2}\right] $.}
     % Since $ B^{tC_2} $ is $ 2 $-complete, it suffices to show that $ B^{tC_2} \otimes \FF_2 $ vanishes. 
     By the recollement of $ A $-modules in terms of $ \mathfrak{m}_A $-complete and $ A[\mathfrak{m}_A^{-1}] $-modules, it suffices to show that $ \left(B_{\mathfrak{m}_A}^{\wedge}\right)^{tC_2} = 0 $ and $ \left(B[\mathfrak{m}_A^{-1}]\right)^{tC_2} = 0 $. 
 
