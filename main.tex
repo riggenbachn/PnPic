@@ -1254,7 +1254,7 @@ Write $ \mathrm{Fm} $, resp. $ \mathrm{Pn} $ for the composite $ \Cath_R \xright
 
 \subsection{The Parimala-Srinivas fiber sequence}
 
-It would be helpful to extend the fiber sequence of Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} to the right, both in order to use Poincar{\'e} Brauer groups to compute ordinary Brauer groups and to get a comparison to the involutive Brauer group of \cite{MR1162189}. We will first show that the fiber sequence we have already constructed in Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} does in fact recover the first hale of the long exact sequence constructed in \cite[Theorem 2]{MR1162189}.
+It would be helpful to extend the fiber sequence of Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} to the right, both in order to use Poincar{\'e} Brauer groups to compute ordinary Brauer groups and to get a comparison to the involutive Brauer group of \cite{MR1162189}. We will first show that the fiber sequence we have already constructed in Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} does in fact recover the first half of the long exact sequence constructed in \cite[Theorem 2]{MR1162189}.
 
 \begin{lemma}
     Let $A$ be a Poincar{\'e} ring which is has underlying genuine $C_2$-spectrum Borel and such that $A^e$ is connective and $\frac{1}{2}\in \pi_0(A^e)$. Then the zigzag of maps \[\pic(A^{hC_2})\leftarrow \Pic(\mathrm{Mod}_{A}(\mathrm{Sp}^{BC_2}))\rightarrow \pic(\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2}))\] are equivalences and is $A^e$ is discrete this equivalence is given by sending an equivariant discrete module $M$ to $M^{C_2}$ (here the fixed points are meant in the classical sense).
@@ -1268,7 +1268,7 @@ It would be helpful to extend the fiber sequence of Corollary~\ref{cor:Poincare_
 Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fiber sequence \[\pic(A)\xrightarrow{N_{A^{C_2}/A}}\pic(A^{C_2})\to \pnbr(A)\] where we have that $N_{A^{C_2}/A}$ is given by the map $\mathcal{L}\mapsto (\mathcal{L}^{\vee}\otimes \sigma^*\mathcal{L}^\vee)^{C_2}$ which is (the negative of) the usual norm map. In order to extend this fiber sequence to the right we will need to categorify this map.
 	
 	\begin{construction}
-		Let $A$ be a Poincar{\'e} ring and let $\sigma: A^e\to A^e$ denote the involution. Consider the functor \[\mathrm{Mod}_{\mathrm{Mod}_{A^{e}}^\omega}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\xrightarrow{\left(-^{op}\otimes_{\mathrm{Mod}_{A^e}^\omega} \sigma^*-^{op}\right)^{hC_2}}\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\] which we will denote by $N_{A^{hC_2}/A}$. Note that this functor is symmetric monoidal, which can be checked on underlying infinity cetegories. Here if $\mathcal{C}$ is a module over $\mathrm{Mod}_{A^e}^{\omega}$, then $\mathcal{C}^{op}$ is a module via the equivalence $D_\Qoppa:\mathrm{Mod}_{A^e}^\omega\xrightarrow{\simeq}(\mathrm{Mod}_{A^e}^\omega)^{op}$ induced by the duality from the Poincar{\'e} structure. 
+		Let $A$ be a Poincar{\'e} ring and let $\sigma: A^e\to A^e$ denote the involution. Consider the functor \[\mathrm{Mod}_{\mathrm{Mod}_{A^{e}}^\omega}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\xrightarrow{\left(-^{op}\otimes_{\mathrm{Mod}_{A^e}^\omega} \sigma^*-^{op}\right)^{hC_2}}\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}_{\infty, \textrm{idem}}^{st})\] which we will denote by $N_{A^{hC_2}/A}$. Note that this functor is symmetric monoidal, which can be checked on underlying infinity categories. Here if $\mathcal{C}$ is a module over $\mathrm{Mod}_{A^e}^{\omega}$, then $\mathcal{C}^{op}$ is a module via the equivalence $D_\Qoppa:\mathrm{Mod}_{A^e}^\omega\xrightarrow{\simeq}(\mathrm{Mod}_{A^e}^\omega)^{op}$ induced by the duality from the Poincar{\'e} structure. 
 	\end{construction}
 	
 	\begin{lemma}
@@ -1636,26 +1636,39 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
         \item The map $ R \to S $ is an effective descent morphism 
         \item $ S $ is dualizable as an $ R $-module; write $ S^\vee $ for the $ R $-linear dual of $ S $, and suppose it has Tor-amplitude contained in $ [d,c] $ for some $ d \leq 0 $. 
     \end{itemize}  
-    Let $ M $ be a perfect $ S $-module and consider the sheaf $ \Spec \mathrm{Sym}_S(M) $ on the \'etale site of $ S $. 
-    Assume that $ M $ has Tor-amplitude in $ [a,b] $ (so the stack $ \Spec \mathrm{Sym}_S(M) $ is $ \mathrm{max}(-a,0) $-geometric by \cite[Theorem 5.2]{MR3190610}). 
-    Then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is a $ (\mathrm{max}(-a,0) - d) $-geometric sheaf on the \'etale site of $ R $. 
-
-    In particular, $ \pi_* 1_{\mathrm{Shv}_{\acute{e}t}(S;\Spaces)} $ is $ (-d) $-geometric. 
-
-    \Lucyil{pretty sure that if $ S $ is flat over $ R $ and $ b \leq 0 $, then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is furthermore smooth. Check later!}
+    Then: 
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{lemma_item:pushforward_free_alg} Let $ M $ be a perfect $ S $-module and consider the sheaf $ \Spec \mathrm{Sym}_S(M) $ on the \'etale site of $ S $. 
+        Assume that $ M $ has Tor-amplitude in $ [a,b] $ (so the stack $ \Spec \mathrm{Sym}_S(M) $ is $ \mathrm{max}(-a,0) $-geometric by \cite[Theorem 5.2]{MR3190610}). 
+        Then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is a quasiseparated $ (\mathrm{max}(-a,0) - d) $-geometric sheaf on the \'etale site of $ R $. 
+        \Lucyil{pretty sure that if $ S $ is flat over $ R $ and $ b \leq 0 $, then $ \pi_* \Spec \mathrm{Sym}_S(M) $ is furthermore smooth. Check later!}
+        
+        \item \label{lemma_item:pushforward_pres_loc_fin_pres} Let $ T $ be a connective $ S $-algebra which is locally of finite presentation. 
+        Then $ \pi_* \Spec T $ is a $ (-d) $-geometric sheaf on the \'etale site of $ R $ which is locally of finite presentation. 
+    \end{enumerate}
+    % Commented this out because it is trivial (but still true!): $ \pi_* $ is a right adjoint, hence preserves all limits and the final object is the limit of the empty diagram. 
+    % ------------------------------------------------------------------------
+    % In particular, $ \pi_* 1_{\mathrm{Shv}_{\acute{e}t}(S;\Spaces)} $ is $ (-d) $-geometric. 
 \end{lemma}
 \begin{proof}
-    Since $ R \to S $ is an effective descent morphism, we have an equivalence of $ S $-modules $ M \simeq \colim_{\Delta^\op} M \otimes_R S^{\otimes_R \bullet + 1} $. 
-    Since $ \mathrm{Sym}_S $ preserves sifted colimits and $ \Spec $ is contravariant, it follows that $ \Spec \mathrm{Sym}_S (M) \simeq \lim_{\Delta} \Spec \mathrm{Sym}_S \left(M \otimes_R S^{\otimes_R \bullet + 1} \right) $ as \'etale sheaves over $ \Spec S $. 
-    Since $ \pi_* $ preserves all small limits, it follows that $ \pi_* \Spec \mathrm{Sym}_S (M) \simeq \lim_{\Delta} \pi_* \Spec \mathrm{Sym}_S \left(M \otimes_R S^{\otimes_R \bullet + 1} \right) $ as \'etale sheaves over $ \Spec R $. 
-    Since $ S $ is a perfect $ R $-module and $ M $ is a perfect $ S $-module, each $ M \otimes_R S^{\otimes_R \bullet} $ is a perfect $ R $-module whose tor-amplitude (over $ R $) is bounded below \emph{independently of $ \bullet$}. 
-    By \cite[Lemma 4.36]{MR3190610}, it suffices to show that if $ N $ is a perfect $ R $-module, then
+    We begin with the proof of part \ref{lemma_item:pushforward_free_alg}. 
+    Using the morphisms $ M \to M \otimes_R S \to M $ \Lucy{that these are morphisms of $ S $-modules requires that $ S $ is $ \EE_\infty $.}, we know that $ \Spec \mathrm{Sym}_S (M) $ is a retract of $ \Spec \mathrm{Sym}_S(M \otimes_R S) $, hence $ \pi_* \Spec \mathrm{Sym}_S (M) $ is a retract of $ \pi_* \Spec \mathrm{Sym}_S(M \otimes_R S) $. 
+    Since $ S $ is a perfect $ R $-module and $ M $ is a perfect $ S $-module, $ M $ is also perfect when regarded as an $ R $-module. 
+    % --------------------------------------------------
+    % Here is the previous argument (which I replaced June 8th with the preceding 2 sentences): 
+    % Since $ R \to S $ is an effective descent morphism, we have an equivalence of $ S $-modules $ M \simeq \colim_{\Delta^\op} M \otimes_R S^{\otimes_R \bullet + 1} $. 
+    % Since $ \mathrm{Sym}_S $ preserves sifted colimits and $ \Spec $ is contravariant, it follows that $ \Spec \mathrm{Sym}_S (M) \simeq \lim_{\Delta} \Spec \mathrm{Sym}_S \left(M \otimes_R S^{\otimes_R \bullet + 1} \right) $ as \'etale sheaves over $ \Spec S $. 
+    % Since $ \pi_* $ preserves all small limits, it follows that $ \pi_* \Spec \mathrm{Sym}_S (M) \simeq \lim_{\Delta} \pi_* \Spec \mathrm{Sym}_S \left(M \otimes_R S^{\otimes_R \bullet + 1} \right) $ as \'etale sheaves over $ \Spec R $. 
+    % Since $ S $ is a perfect $ R $-module and $ M $ is a perfect $ S $-module, each $ M \otimes_R S^{\otimes_R \bullet} $ is a perfect $ R $-module whose tor-amplitude (over $ R $) is bounded below \emph{independently of $ \bullet$}. 
+    % The earlier argument used \cite[Lemma 4.36]{MR3190610}.
+    % -------------------------------------------------------
+    By \cite[Lemma 4.38]{MR3190610}, it suffices to show that if $ N $ is a perfect $ R $-module, then
     \begin{enumerate}[label=(\arabic*)]
         \item the sheaf $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is quasiseparated 
-        \item If $ N $ has tor-amplitude contained in $ [e, f] $ with $ e \leq 0 $, then $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is $ e - d $ geometric. 
+        \item If $ N $ has tor-amplitude contained in $ [e, f] $ with $ e \leq 0 $, then $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is $ (e - d) $-geometric. 
     \end{enumerate}
     Now if $ T $ is an $ R $-algebra, 
-    \begin{equation*}
+    \begin{equation}\label{eq:pushforward_free_alg_formula}
     \begin{split}       
          \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right)(\Spec T) & \simeq \hom_{S\mathrm{Alg}}\left(\mathrm{Sym}_S \left(N \otimes_R S \right), T \otimes_R S \right) \\
          &\simeq \hom_{S\Mod}(N \otimes_R S, T \otimes_R S) \\
@@ -1663,10 +1676,16 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
          &\simeq \hom_{R \Mod }(N \otimes_R S^\vee, T)\qquad \text{ since $ S $ is dualizable over $ R $} \\
          &\simeq \hom_{R\mathrm{Alg}}\left(\mathrm{Sym}_R (N \otimes_R S^\vee), T\right)\,.
     \end{split}
-    \end{equation*}
+    \end{equation}
     Since $ N \otimes_R S^\vee $ has Tor-amplitude\Lucy{\cite[Proposition 2.13(4)]{MR3190610} or find ref in [TT90] later} in $ [e+d, f+c] $, it follows that $ \pi_* \Spec \mathrm{Sym}_S \left(N \otimes_R S \right) $ is quasiseparated and $ (e-d) $-geometric by \cite[Theorem 5.2]{MR3190610}. 
 
-    The final statement follows from taking $ M = 0 $. 
+    % The final statement follows from taking $ M = 0 $. 
+    We now prove part \ref{lemma_item:pushforward_pres_loc_fin_pres}. 
+    By \cites[Proposition 7.2.4.27(b) \& (c)]{LurHA}[Lemma 5.4.2.4]{HTT}, $ \Spec T $ is a retract of a finite limit of sheaves of the form $ \Spec \mathrm{Sym}_S (M) $ where $ M $ is a compact connective $ S $-module. 
+    By \ref{lemma_item:pushforward_free_alg}, each $ \pi_* \Spec \mathrm{Sym}_S(M) $ is quasi-separated and $ n $-geometric for some $ n $. 
+    Since the collection of quasi-separated $ n $-geometric sheaves which are locally of finite presentation is closed under finite limits and retracts by Lemmas 4.35 and 4.38, resp. of \cite{MR3190610} and $ \pi_* $ preserves arbitrary limits (in particular finite limits and retracts), it suffices to show that $ \pi_* \Spec \mathrm{Sym}_S(M) $ where $ M $ is a compact connective $ S $-module is locally of finite presentation as an $ n $-geometric sheaf on the \'etale site of $ R $. 
+    Since $ \pi_* \Spec \mathrm{Sym}_S(M) $ is a retract of $ \pi_* \Spec \mathrm{Sym}_S(M \otimes_R S) $ by the proof of part \ref{lemma_item:pushforward_free_alg}, by \cite[Lemma 4.38]{MR3190610}, it suffices to show that the latter is locally of finite presentation. 
+    The result now follows from \cite[Theorem 5.2]{MR3190610} and \ref{eq:pushforward_free_alg_formula}. 
 \end{proof}
 \begin{lemma}\label{lemma:pushforward_of_n_geometric_morphisms}
     Let $ R $ be a discrete ring with involution and consider $ \pi \colon \Spec R \to \Spec (R^{C_2}) $ as a scheme with involution and good quotient. 
