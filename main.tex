@@ -297,8 +297,9 @@ We will now specify the objects which we are able to take the Poincar{\'e} Picar
     \label{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}
     Let $R$ be a ring spectrum. 
     % There is a natural equivalence between symmetric monoidal Poincaré structures on $\Mod_R^\omega$ and certain algebra objects over the genuine $C_2$-spectrum $NR$ . 
-    By \cite[Corollary 5.4.8]{CDHHLMNNSI}, a Poincaré structure on $R$ gives rise to a symmetric monoidal lift of $ \Mod_R^\omega $ to the symmetric monoidal $ \infty $-category of Poincaré $\infty$-categories $ \qoppa_R: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. 
-    Furthermore, the structure map $ R \to C $ gives a canonical lift of $ R \in \Mod_R^\omega $ to a Poincaré object $ (R, q) \in \mathrm{Pn}\left(\Mod_R^\omega,\qoppa_R \right) $. 
+    By \cite[Corollary 5.4.8]{CDHHLMNNSI}, a Poincaré structure on $R$ gives rise to a symmetric monoidal lift of $ \Mod_R^\omega $ to the symmetric monoidal $ \infty $-category of Poincaré $\infty$-categories $ \Qoppa_R: (\Mod_R^\omega)^{\op}\rightarrow \Spectra $. 
+    \Lucy{Better notation? Write $ R $ for the underlying $ \EE_\infty $-ring with $ C_2 $-action and $ q \colon C \to R^{tC_2} $ and $ \Qoppa_{(R,q)} $ or $ \Qoppa_q $ for the functor.}
+    Furthermore, the structure map $ R \to C $ gives a canonical lift of $ R \in \Mod_R^\omega $ to a Poincaré object $ (R, q) \in \mathrm{Pn}\left(\Mod_R^\omega,\Qoppa_R \right) $. 
     % We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}. 
 \end{remark}
 
@@ -909,21 +910,28 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
 \section{The Poincaré Brauer Group}
 \label{subsection:the_poincare_brauer_group}
 Let $A$ be a Poincaré ring spectrum. 
-By Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}, $ \Mod_A^\omega $ promotes to a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$ , and we may thus consider modules over it. 
+By Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}, $ \left(\Mod_A^\omega,\Qoppa_A\right) $ promotes to a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $\Catp$ , and we may thus consider modules over it. 
 In this section, we will use modules over Poincaré ring spectra to define derived analogues of the involutive Brauer group for Poincaré ring spectra.
 
 Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
 
 \begin{definition}
     \label{definition:poincare_brauer_space}
-    Let $A$ be a Poincaré ring spectrum. We define the \emph{Poincaré Brauer space of $A$} as $$\Brp(A):=\Pic(\Mod_A(\Catpidem)).$$
+    Let $A$ be a Poincaré ring spectrum. We define the \emph{Poincaré Brauer space of $A$} as $$\Brp(A):=\Pic\left(\Mod_{\left(\Mod_A^\omega,\Qoppa_A\right)}(\Catpidem)\right).$$
     The assignment $ A \mapsto \Brp(A) $ defines a functor
     \begin{equation*}
         \Brp \colon \CAlgp \to \CAlg^{\gp}(\Spaces)
     \end{equation*}
     valued in grouplike $ \Einfty $-spaces. 
-\end{definition}
 
+    Let $ (X, \sigma, Y, \pi) $ be a scheme with involution and a good quotient. 
+    We define the \emph{Poincaré Brauer space of $ X $ with respect to $ \pi $} as  
+    \begin{equation*}
+        \Brp(X) := \lim_{ j \colon \Spec R \to Y } \Brp(\underline{\Gamma(j^*(X))}^{j^*\sigma} )
+    \end{equation*}
+    where the limit is over all étale $ j $ and $ \Gamma(j^*(X)) $ is a ring with involution by affineness of $ \pi $, hence $ R \to \Gamma(j^*(X)) $ is a Poincaré ring via Example \ref{ex:fixpt_Mackey_functor}. 
+\end{definition}
+\Lucyil{Can replace good quotient $ Y $ by the Deligne--Mumford stack $ X//C_2 $ \cite[Construction 4.41]{azumaya_involution}. This should in some sense correspond to the symmetric Poincaré structure of Example \ref{example:symmetric_poincare_structure}. }
 \begin{remark}
     The symmetric monoidal forgetful functor $ \Mod_A(\Catpidem) \to \Mod_A(\Cat^{\mathrm{ex}}_\infty) $ induces a map $ \Brp(A) \to \Br(A) $ of grouplike $ \Einfty $-spaces, where $ \Br(A) $ is the Brauer space $ \mathrm{br}_{\mathrm{alg}}(A) $ of \cite[1154-1155]{MR3190610}. 
 \end{remark}
@@ -955,7 +963,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 
 \subsection{Generalities on $R$-linear Poincar\'e \texorpdfstring{$\infty$}{∞}-categories}
 \begin{proposition}\label{prop:relative_poincare_cats_basic_properties}
-    Let $ (\Mod_R^\omega, \Qoppa_R) $ be a Poincaré ring spectrum. 
+    Let $ (R, C \to R^{tC_2})$ be a Poincaré ring spectrum and write $ (\Mod_R^\omega, \Qoppa_R) $ for the Poincaré $ \infty $-category of Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}. 
     \begin{enumerate}[label=(\arabic*)]
         \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ admits all small limits and colimits, and it inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is a symmetric monoidal left adjoint. 
         \item \label{propitem:classify_R_lin_hermitian_struct} Let $ A $ be an $ \EE_1 $-$ R $-algebra in spectra, and regard the category of compact right $ A $-modules $ \Mod_A^\omega $ as left-tensored over $ \Mod_R^\omega $ in the canonical way. 
@@ -1257,7 +1265,8 @@ Write $ \mathrm{Fm} $, resp. $ \mathrm{Pn} $ for the composite $ \Cath_R \xright
 It would be helpful to extend the fiber sequence of Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} to the right, both in order to use Poincar{\'e} Brauer groups to compute ordinary Brauer groups and to get a comparison to the involutive Brauer group of \cite{MR1162189}. We will first show that the fiber sequence we have already constructed in Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} does in fact recover the first half of the long exact sequence constructed in \cite[Theorem 2]{MR1162189}.
 
 \begin{lemma}
-    Let $A$ be a Poincar{\'e} ring which is has underlying genuine $C_2$-spectrum Borel and such that $A^e$ is connective and $\frac{1}{2}\in \pi_0(A^e)$. Then the zigzag of maps \[\pic(A^{hC_2})\leftarrow \Pic(\mathrm{Mod}_{A}(\mathrm{Sp}^{BC_2}))\rightarrow \pic(\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2}))\] are equivalences and is $A^e$ is discrete this equivalence is given by sending an equivariant discrete module $M$ to $M^{C_2}$ (here the fixed points are meant in the classical sense).
+    Let $A$ be a Poincar{\'e} ring which is has underlying genuine $C_2$-spectrum Borel and such that $A^e$ is connective and $\frac{1}{2}\in \pi_0(A^e)$. Then the zigzag of maps \[\pic(A^{hC_2})\leftarrow \Pic(\mathrm{Mod}_{A}(\mathrm{Sp}^{BC_2}))\rightarrow \pic(\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2}))\] are equivalences. 
+    If $A^e$ is discrete, this equivalence is given by sending an equivariant discrete module $M$ to $M^{C_2}$ (since $ 2 $ is invertible, strict and homotopy fixed points agree).
 \end{lemma}
 \begin{proof}
     By the assumption that $\frac{1}{2}\in \pi_0(A^e)$ we have that $A^{tC_2}=0$. Furthermore since $A$ is Borel it also follows that $A^{\phi C_2}=0$, and consequently any module $M$ over $A^L$ has $M^{\phi C_2}=M^{tC_2}=0$. Thus $\mathrm{Mod}_A(\mathrm{Sp}^{BC_2})\to \mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2})$ is an equivalence even before taking the Picard space.
@@ -1293,12 +1302,16 @@ Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fibe
 	\]
 	and when $A$ is Borel, connective, and $\frac{1}{2}\in \pi_0(A^e)$ we see that the left and middle vertical maps must be equivalences. This together with Lemma~\ref{lem: surjection onto kernel PS sequence} gives that the right hand vertical map is in fact an equivalence of $\mathbb{E}_\infty$ spaces.
 
-    Summerizing this situation, we get the following:
+    Summarizing this situation, we get the following:
     \begin{theorem}
-        Let $A$ be a Poincar{\'e} ring which is Borel, connective, and $\frac{1}{2}\in \pi_0(A^e)$. Then there is a fiber sequence \[\pnbr(A)\to \mathrm{br}(A^e)\to \mathrm{br}(A^{hC_2})\] where if $A$ is discrete then the map $\mathrm{Br}(A)\to \mathrm{Br}(A^{hC_2})$ is the {\'e}tale cohomological transfer map.
+        Let $A$ be a Poincar{\'e} ring which is Borel, connective, and $\frac{1}{2}\in \pi_0(A^e)$. 
+        Then there is a fiber sequence \[\pnbr(A)\to \mathrm{br}(A^e)\to \mathrm{br}(A^{hC_2}) \] of connective spectra. 
+
+        If $A$ is furthermore discrete, then the map $\mathrm{Br}(A)\to \mathrm{Br}(A^{hC_2})$ is the {\'e}tale cohomological transfer map. 
+        \Lucyil{If $ \Spec A $, $ \Spec A^{C_2} $ are not assumed to be normal, we have $ \mathrm{Br}(-) \simeq H^1_{\acute{e}t}(-;\mathbb{Z}) \times H^2_{\acute{e}t}(-;\mathbb{G}_m) $ \cite[Corollary 7.14]{MR3190610}. Is it obvious what the map does on the $ H^1 $ factor?}
     \end{theorem}
     \begin{proof}
-        All the remains to show is the identification of $\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})\simeq \mathrm{Mod}_{\mathrm{Mod}_{A^{hC_2}}^\omega}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})$, which follows from the monoidal equivalence $(\mathrm{Mod}_{A^e}^{\omega})^{hC_2}\simeq \mathrm{Mod}_{A^{hC_2}}^\omega$, and the fact that under this equivalence an Azumaya algebra over $B$ is sent to $(B\otimes_A\sigma^*B)^{C_2}$ which is exactly the cohomological transfer map (see \cite[Example 6.2.3]{azumaya_involution}).
+        All the remains to show is the identification of $\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})\simeq \mathrm{Mod}_{\mathrm{Mod}_{A^{hC_2}}^\omega}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})$, which follows from the monoidal equivalence $(\mathrm{Mod}_{A^e}^{\omega})^{hC_2}\simeq \mathrm{Mod}_{A^{hC_2}}^\omega$, and the fact that under this equivalence an Azumaya algebra over $B$ is sent to $(B\otimes_A\sigma^*B)^{C_2}$ which is exactly the cohomological transfer map (see \cite[Example 6.2.3]{azumaya_involution}). \Lucy{Definition 6.2?}
     \end{proof}
 
 \subsection{Azumaya algebras with genuine involution} 
@@ -1556,7 +1569,10 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
     Let $(X,\lambda,Y,\pi)$ be a scheme with good quotient. Suppose further that $\pi:X\to Y$ is \'etale and that $\frac{1}{2}\in \Gamma(\mathcal{O}_Y)$. Then the natural map \[\mathrm{Br}(X,\lambda)\to \pnbr(X,\lambda,Y,\pi)\] is an isomorphism.
 \end{theorem}
 \begin{proof}
-    By \'etale descent we have that $\pnbr(X,\lambda,Y,\pi)$ fits into an exact sequence \[\pic(X)\to \pic(Y)\to \pnbr(X,\lambda,Y,\pi)\to \mathrm{Br}(X)\to \mathrm{Br}(Y)\] compatible with the Parimala-Srinivas exact sequence of \cite[Theorem 1.2]{MR1162189}. Hence by the 5-lemma we have an equivalence as desired.
+    By \'etale descent we have that $\pnbr(X,\lambda,Y,\pi)$ fits into an exact sequence \[\pic(X)\to \pic(Y)\to \pnbr(X,\lambda,Y,\pi)\to \mathrm{Br}(X)\to \mathrm{Br}(Y)\] compatible with the Parimala-Srinivas exact sequence of \cite[Theorem 1.2]{MR1162189}. 
+    \Lucyil{Minor modification needed? If $ \mathrm{Br}(-) $ refers to derived Brauer (`prime'), there is an additional factor of $ H^1_{\acute{e}t}(-;\mathbb{G}_m) $ (see \cite[Corollay 7.14]{MR3190610}). 
+    Now, this term goes away if we apply the hypothesis that $ X ,Y $ are normal \cite[Lemma 7.15]{MR3190610}, so we could also add that assumption and call it a day. }
+    Hence by the 5-lemma we have an equivalence as desired.
 \end{proof}
 \begin{notation} [Moduli (pre)sheaf of hermitian objects] \label{ntn:moduli_of_hermitian_objects_affine}
     Let $ (R, R^{\varphi C_2} \to R^{tC_2} ) $ be a Poincar\'e ring and let $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ be an $ R $-linear Poincar\'e $ \infty $-category. \Lucy{Do we need Poincar\'e or does it suffice to take $ (\mathcal{C}, \Qoppa_{\mathcal{C}}) $ to be hermitian here?} 
@@ -1633,7 +1649,7 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
     Let $ R \to S $ be a map of connective $ \EE_\infty $-rings and write $ \pi \colon \Spec S \to \Spec R $. 
     Assume that 
     \begin{itemize}
-        \item The map $ R \to S $ is an effective descent morphism 
+        \item The map $ R \to S $ is an effective descent morphism \Lucy{isn't this implied by the latter?}
         \item $ S $ is dualizable as an $ R $-module; write $ S^\vee $ for the $ R $-linear dual of $ S $, and suppose it has Tor-amplitude contained in $ [d,c] $ for some $ d \leq 0 $. 
     \end{itemize}  
     Then: 
@@ -1685,7 +1701,7 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
     By \ref{lemma_item:pushforward_free_alg}, each $ \pi_* \Spec \mathrm{Sym}_S(M) $ is quasi-separated and $ n $-geometric for some $ n $. 
     Since the collection of quasi-separated $ n $-geometric sheaves which are locally of finite presentation is closed under finite limits and retracts by Lemmas 4.35 and 4.38, resp. of \cite{MR3190610} and $ \pi_* $ preserves arbitrary limits (in particular finite limits and retracts), it suffices to show that $ \pi_* \Spec \mathrm{Sym}_S(M) $ where $ M $ is a compact connective $ S $-module is locally of finite presentation as an $ n $-geometric sheaf on the \'etale site of $ R $. 
     Since $ \pi_* \Spec \mathrm{Sym}_S(M) $ is a retract of $ \pi_* \Spec \mathrm{Sym}_S(M \otimes_R S) $ by the proof of part \ref{lemma_item:pushforward_free_alg}, by \cite[Lemma 4.38]{MR3190610}, it suffices to show that the latter is locally of finite presentation. 
-    The result now follows from \cite[Theorem 5.2]{MR3190610} and \ref{eq:pushforward_free_alg_formula}. 
+    The result now follows from \cite[Theorem 5.2]{MR3190610} and (\ref{eq:pushforward_free_alg_formula}). 
 \end{proof}
 \begin{lemma}\label{lemma:pushforward_of_n_geometric_morphisms}
     Let $ R $ be a discrete ring with involution and consider $ \pi \colon \Spec R \to \Spec (R^{C_2}) $ as a scheme with involution and good quotient. 
