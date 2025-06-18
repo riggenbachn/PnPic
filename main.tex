@@ -240,7 +240,7 @@ Also thank: Columbia, Ben Antieau, James Hotchkiss.
 
 \subsection{Conventions}
 \label{subsection:conventions} 
-\Lucy{Will `Azumaya algebra' refer to the classical/discrete ones or the derived/generalized ones?}
+\Lucyil{Will `Azumaya algebra' refer to the classical/discrete ones or the derived/generalized ones? Note the distinction between higher (classical) stacks and spectral stacks!}
     \begin{longtable}{lll}
         $\Brp$ & Poincaré Brauer space\\
         $\CAlg$ & $\infty$-category of $\Einfty$-ring spectra\\
@@ -931,7 +931,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     \end{equation*}
     where the limit is over all étale $ j $ and $ \Gamma(j^*(X)) $ is a ring with involution by affineness of $ \pi $, hence $ R \to \Gamma(j^*(X)) $ is a Poincaré ring via Example \ref{ex:fixpt_Mackey_functor}. 
 \end{definition}
-\Lucyil{Can replace good quotient $ Y $ by the Deligne--Mumford stack $ X//C_2 $ \cite[Construction 4.41]{azumaya_involution}. This should in some sense correspond to the symmetric Poincaré structure of Example \ref{example:symmetric_poincare_structure}. }
+\Lucyil{Can replace good quotient $ Y $ by the Deligne--Mumford stack $ X//C_2 $ \cite[Construction 4.41]{azumaya_involution}. This should correspond to the symmetric Poincaré structure of Example \ref{example:symmetric_poincare_structure}. }
 \begin{remark}
     The symmetric monoidal forgetful functor $ \Mod_A(\Catpidem) \to \Mod_A(\Cat^{\mathrm{ex}}_\infty) $ induces a map $ \Brp(A) \to \Br(A) $ of grouplike $ \Einfty $-spaces, where $ \Br(A) $ is the Brauer space $ \mathrm{br}_{\mathrm{alg}}(A) $ of \cite[1154-1155]{MR3190610}. 
 \end{remark}
@@ -940,7 +940,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 \end{proposition}
 \begin{proof} 
     Since $ \Omega\Brp(R) $ is given by the space of automorphisms of any object in $ \Brp(R) $, it suffices to determine the space of autoequivalences of $ \left(\Mod_R^\omega, \Qoppa_R \right) $. 
-    An autoequivalence is the data of a pair $ (f, \eta) $ where $ f \colon \Mod_R^\omega \xrightarrow{\simeq} \Mod_R^\omega $ is an exact $ R $-linear autoequivalence and $ \eta \colon \Qoppa_R \xrightarrow{\sim} \Qoppa_R \circ f^{\mathrm{op}} $ is a natural equivalence. 
+    By Proposition \ref{prop:relative_poincare_cats_basic_properties}, an autoequivalence is the data of a pair $ (f, \eta) $ where $ f \colon \Mod_R^\omega \xrightarrow{\simeq} \Mod_R^\omega $ is an exact $ R $-linear autoequivalence and $ \eta \colon \Qoppa_R \xrightarrow{\sim} \Qoppa_R \circ f^{\mathrm{op}} $ is a $ \Qoppa_R $-linear equivalence. 
     Since $ \Catp_R\to \Catex_R $ is symmetric monoidal (and hence $f$ will be $\Mod_R^\omega$-linear), $ f $ is of the form $ - \otimes_R \mathcal{L} $ where $ \mathcal{L} $ is an invertible $ R $-module. 
     Since taking bilinear and linear parts is functorial by \cite[Proposition 1.3.11]{CDHHLMNNSI}, $ \eta $ is equivalently the data of a pair of equivalences
     \begin{align*}
@@ -948,7 +948,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
         \ell(\eta) &\colon \hom_R( -\otimes \mathcal{L}, R^{\varphi C_2}) \simeq \hom_R( -, R^{\varphi C_2})
     \end{align*} 
     plus a path between their images in $ \hom_R(\mathcal{L}, R^{tC_2}) $. 
-    The transformation $ b(\eta) $ is equivalent to the data of an $ R $-bilinear equivalence $ R \simeq \mathcal{L}^\vee \otimes \mathcal{L}^\vee $ \Lucy{maybe one of these should be conjugate dual here?}, and the transformation $ \ell(\eta) $ is equivalent to the data of an $ R^{\varphi C_2} $-linear\Lucy{is the $R^{\varphi C_2}$-linearity of this $\simeq$ correct?} equivalence $ \ell (\eta)\colon R^{\varphi C_2}\otimes_R \mathcal{L}^\vee \xrightarrow{\sim} R^{\varphi C_2} $. 
+    The transformation $ b(\eta) $ is equivalent to the data of an $ R $-bilinear equivalence $ R \simeq \mathcal{L}^\vee \otimes \sigma^* \mathcal{L}^\vee $, and the transformation $ \ell(\eta) $ is equivalent to the data of an $ R^{\varphi C_2} $-linear\Lucy{is the $R^{\varphi C_2}$-linearity of this $\simeq$ correct?} equivalence $ \ell (\eta)\colon R^{\varphi C_2}\otimes_R \mathcal{L}^\vee \xrightarrow{\sim} R^{\varphi C_2} $. 
 
     Now consider the composites 
     \begin{align*}
@@ -958,7 +958,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     These correspond to the $ \ell(q^\vee), \ell(q) $ of Remark \ref{remark:poincare_picard_points_desc}, respectively. 
     In particular, the condition that $ \ell(q^\vee), \ell(q) $ make the diagram (\ref{diagram:pnpic_linear_part_condition}) commute is equivalent to the condition that $ \ell(\eta) $ is an equivalence by an adjunction argument. The data of the path in $\hom_R(\mathcal{L},R^{tC_2})$ is exactly the data needed to show that the maps $\ell(q)$ and $b(q)$ glue together to give a form on $\mathcal{L}$.
 
-    The above thus produces a natural transformation $\Omega \Brp(-)\to \Picp(-)$. In the other direction, to any $(\mathcal{L},q)\in \Pn(\Mod_{A}^\omega)$ invertible we may define an autoequivalence $(\Mod_A^\omega,\Qoppa)\to (\Mod_A^\omega,\Qoppa)$ via tensoring with $(\mathcal{L},q)$, which will be an autoequivalence by the assumption that $(\mathcal{L},q)$ is invertible. We have that these two natural trnasformations are inverse to each other, hence the result.
+    The above thus produces a natural transformation $\Omega \Brp(-)\to \Picp(-)$. In the other direction, to any $(\mathcal{L},q)\in \Pn(\Mod_{A}^\omega)$ invertible, we may define an autoequivalence $(\Mod_A^\omega,\Qoppa)\to (\Mod_A^\omega,\Qoppa)$ via tensoring with $(\mathcal{L},q)$, which will be an autoequivalence by the assumption that $(\mathcal{L},q)$ is invertible. We have that these two natural transformations are inverse to each other, hence the result.
 \end{proof}
 
 \subsection{Generalities on $R$-linear Poincar\'e \texorpdfstring{$\infty$}{∞}-categories}
@@ -1358,6 +1358,12 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Let $ A $ be an Azumaya algebra with genuine involution over $ R $, and suppose given a map $ R \to S $ of Poincaré rings. 
     Then $ (A \otimes_R S, P \otimes_{R^{\varphi C_2}} S^{\varphi C_2}) $ is an Azumaya algebra with genuine involution over $ S $. 
 \end{observation}
+\begin{observation}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum, and let $ A $ be an $ \EE_\sigma $-algebra over $ R $ whose underlying $ \EE_1 $-$ R $-algebra is (generalized) Azumaya. \Lucy{assume $ R^{\varphi C_2} $ connective?}
+    Then $ A \otimes_R R^{\varphi C_2} $ is a generalized Azumaya algebra over $ R^{\varphi C_2} $. 
+    Suppose given a trivialization of $ A \otimes_R R^{\varphi C_2} $ over $ R^{\varphi C_2} $, i.e. a $ A \otimes_R R^{\varphi C_2} $-module $ P $ which is compact $ R^{\varphi C_2} $-module $ P $, and an $ (A \otimes_R \sigma^* A^\op) \otimes_R R^{\varphi C_2} $-linear equivalence $ t_A \colon A \otimes_R R^{\varphi C_2} \simeq P \otimes_{R^{\varphi C_2}} P^\vee $, where $ (-)^\vee $ refers to $ R^{\varphi C_2} $-linear dual. 
+    Then 
+\end{observation}
 \begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
     If $ A $ is an Azumaya algebra with genuine involution over $ R $, then in particular $ M_A = A $, $ N_A = P $ is a module with genuine involution over $ A $ in the sense of \cite[Definition 3.2.3]{CDHHLMNNSI}. 
 \end{remark}
@@ -1396,8 +1402,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 
     By \cite[Proposition 3.1.16]{CDHHLMNNSI}, $ A $ inherits a canonical anti-involution. 
     %\Lucy{todo: an $ R $-linear enhancement of Proposition 3.1.16?} 
-    To exhibit \ref{defnitem:Azumaya_alg_gi_underlying}, observe that $ q^\dag $ induces a canonical $ A \otimes A^\op $-linear equivalence $ A = \mathrm{End}(P) \simeq \mathrm{End}(P^\vee) \simeq A^\vee $.  
-    % Lucy: I THINK that even though $ A \simeq P \otimes_R P^\vee $ (hence there is a canonical equivalence $ A \simeq A^\vee $), that isn't $ A \otimes A^\op $-linear. 
+    To exhibit \ref{defnitem:Azumaya_alg_gi_underlying}, observe that $ q^\dag $ induces a canonical $ A \otimes A^\op $-linear equivalence $ A = \mathrm{End}_R(P) \xrightarrow{D} \mathrm{End}_{\Mod_R^\mathrm{op}}\left(P^\vee\right) \simeq \mathrm{End}(P^\vee)^\op \xrightarrow{f \mapsto q^{-1} \circ f \circ q} \mathrm{End}_{R}\left(P\right)^\op A^\vee $.  
     If $ P $ is a generator, $ \hom_{R}(P,-) $ induces an equivalence $ \Mod_R^\omega \simeq \Mod_{A}^\omega $, thus we can regard $ \Mod_A^\omega $ as equipped with a Poincaré structure. 
     By the classification of $ R $-linear Poincaré structures of Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}, the Poincaré structure on $ \Mod_A^\omega $ is associated to an $ A $-module with genuine involution $ (M_A, N_A, N_A \to M_A^{tC_2}) $. 
     We claim that $ M_A \simeq A $ with the canonical $ A $-$ A $-bimodule structure: By \cite[Proposition 3.1.6]{CDHHLMNNSI}, as an $ A^\op $-module $ M_A $ is the image of $ A $ under the composite
@@ -1406,8 +1411,15 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \end{equation*}
     Observe that the image of $ A $ in $ \Mod_R^{\omega, \op} $ is $ D_R(P) $ and $ q^\dag $ induces an equivalence $ D_R(P) \simeq P $, hence $ M_A \simeq A $ as $ A^\op $-modules. 
 
-    A similar argument with the linear part of $ \Qoppa $ shows that we have an equivalence $ N_A \simeq \hom_{R}(P, R^{\varphi C_2}) $. 
-    \Lucy{continue. discuss consequences of being Morita trivial (distinguished `point' in $ N_A $)? can we identify $ \overline{P} $?}
+    A similar argument with the linear part of $ \Qoppa $ shows that we have an equivalence $ N_A \simeq \hom_{R}(P, R^{\varphi C_2}) $ of $ A $-modules and a commutative square 
+    \begin{equation*}
+    \begin{tikzcd}
+        N_A \ar[r,"\sim"] \ar[d] &  \hom_{R}(P, R^{\varphi C_2}) \ar[d] \\
+        A^{tC_2} \ar[r,"\sim"] & \hom_R(P, R^{tC_2}) \simeq \hom(P \otimes_R P, R)^{tC_2}      
+    \end{tikzcd}     
+    \end{equation*} 
+    of $ A $-modules, where $ A $ acts on $ A^{tC_2} $ via the Tate-valued norm. 
+    \Lucyil{Reference for Tate-valued norm for $ \mathbb{E}_\sigma $-algebras? continue. discuss consequences of being Morita trivial (distinguished `point' in $ N_A $)? can we identify $ \overline{P} $?}
     % DEPRECATED MAY 8, 2025; PLEASE DO NOT DELETE FOR NOW -- Lucy
     % Since $ P $ is compact, it is dualizable with respect to the symmetric monoidal structure on $ \Mod_R^\omega $ \cite[Theorem III.7.9]{elmendorf2007rings}. 
     % Since $ \otimes_R R^{\varphi C_2} $ is symmetric monoidal, in particular it takes $ P $ to a dualizable object--call it $ \overline{P} $. 
@@ -1433,7 +1445,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \begin{remark}
     Equip $ R $ with the trivial involution, and consider the composite $ R \to R^{\varphi C_2 } \to \pi_0 R^{\varphi C_2} \simeq R/2 $. 
     This is equivalent to the composite $ R \to R/2 \xrightarrow{\mathrm{Frobenius}} R/2 $, and since the Frobenius is multiplication by 2 in $ \mathbb{G}_m $ and $ A $ is 2-torsion (because of the involution, there must be a trivialization of $ A \otimes_R \pi_0 R^{\varphi C_2} $, and the set of trivializations is described by some coset space in the exact sequence $ \cdots H^1 (-;\mathbb{G}_m) \to H^1(-;\mathrm{GL}_n) \to H^1(-; \mathrm{PGL}_n) \to \cdots $). 
-    Now $ R^{\varphi C_2 } \to \pi_0 R^{\varphi C_2} $ is a limit of nilpotent extensions; use deformation theory to try to lift any given trivialization of $  A \otimes_R \pi_0 R^{\varphi C_2} $ to a trivialization of $ A \otimes_{R} R^{\varphi C_2} $. \Lucy{tried to put this in a comment but TeX would not compile :/}
+    Now $ R^{\varphi C_2 } \to \pi_0 R^{\varphi C_2} $ is a limit of nilpotent extensions; use deformation theory to try to lift any given trivialization of $  A \otimes_R \pi_0 R^{\varphi C_2} $ to a trivialization of $ A \otimes_{R} R^{\varphi C_2} $. 
+    Finally, use that the space of lifts of $ A $ is controlled by Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}? 
+    \Lucy{tried to put this in a comment but TeX would not compile :/}
 \end{remark}
 \begin{proof} [Proof of Proposition \ref{prop:classical_inv_to_genuine_inv}]
     % By \cite[Examples 3.1.9 \& 3.2.9]{CDHHLMNNSI}, it suffices to exhibit $ N $ and an $ A $-linear map $ N \to A^{tC_2} $. 
@@ -1505,6 +1519,8 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \end{proof}
 
 \section{Stacks associated to Poincaré-\texorpdfstring{$ \infty $}{∞}-categories}
+
+\subsection{Moduli of hermitian objects}
 \begin{notation}\label{notation:poincare_ring_basechange}
     Let $ (R, R\to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
     There is a functor 
@@ -1570,7 +1586,7 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
 \end{theorem}
 \begin{proof}
     By \'etale descent we have that $\pnbr(X,\lambda,Y,\pi)$ fits into an exact sequence \[\pic(X)\to \pic(Y)\to \pnbr(X,\lambda,Y,\pi)\to \mathrm{Br}(X)\to \mathrm{Br}(Y)\] compatible with the Parimala-Srinivas exact sequence of \cite[Theorem 1.2]{MR1162189}. 
-    \Lucyil{Minor modification needed? If $ \mathrm{Br}(-) $ refers to derived Brauer (`prime'), there is an additional factor of $ H^1_{\acute{e}t}(-;\mathbb{G}_m) $ (see \cite[Corollay 7.14]{MR3190610}). 
+    \Lucyil{Minor modification needed? If $ \mathrm{Br}(-) $ refers to derived Brauer (`prime'), there is an additional factor of $ H^1_{\acute{e}t}(-;\mathbb{G}_m) $ (see \cite[Corollary 7.14]{MR3190610}). 
     Now, this term goes away if we apply the hypothesis that $ X ,Y $ are normal \cite[Lemma 7.15]{MR3190610}, so we could also add that assumption and call it a day. }
     Hence by the 5-lemma we have an equivalence as desired.
 \end{proof}
@@ -1649,7 +1665,7 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
     Let $ R \to S $ be a map of connective $ \EE_\infty $-rings and write $ \pi \colon \Spec S \to \Spec R $. 
     Assume that 
     \begin{itemize}
-        \item The map $ R \to S $ is an effective descent morphism \Lucy{isn't this implied by the latter?}
+        \item The map $ R \to S $ is an effective descent morphism, and 
         \item $ S $ is dualizable as an $ R $-module; write $ S^\vee $ for the $ R $-linear dual of $ S $, and suppose it has Tor-amplitude contained in $ [d,c] $ for some $ d \leq 0 $. 
     \end{itemize}  
     Then: 
@@ -1740,6 +1756,9 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
 \begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
     Then the morphism $ \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} is locally geometric in the sense of \cite[\S4.3]{MR3190610}. 
+
+    Assume further that $ \pi $ is quasi-perfect and flat. \Lucy{in progress June 18th! might need more assumptions later}
+    Then the morphism $ \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} is locally of finite presentation in the sense of \cite[\S4.3]{MR3190610}. 
 \end{lemma}
 \begin{proof}
     It suffices to show that for all $ p \colon \Spec S \to \pi_* \mathbf{M}_{A^e} $, the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $ is locally geometric over $ \Spec S $. 
@@ -1755,7 +1774,24 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
     Note that the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $classifies lifts of the $ R $-linear functor $ \otimes M \colon \Mod_{\widetilde{p}^*A}^\omega \to \Mod^\omega_R $ to an $ R $-linear hermitian functor. 
     A lift of $ \otimes M $ to an $ R $-linear hermitian functor is equivalent to the data of a map $ \widetilde{p}^*A \to N^{C_2}_R(M^\vee) $ of $ N_R^{C_2}(\widetilde{p}^*A) $-modules in $ \Spectra^{C_2} $, where we write $ M^\vee $ for the $ R $-linear dual of $ M $. 
     Thus the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $ is given by the moduli sheaf $ \Spec \mathrm{Sym}_S \tau_{\geq 0} \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $. 
-    \Lucyil{Similar to \cite[Theorem 5.6, Proposition 5.7]{MR3190610}. Later: show that the map is locally of finite presentation?}
+    \Lucy{Similar to \cite[Theorem 5.6, Proposition 5.7]{MR3190610}.}
+
+    \Lucyil{WORK IN PROGRESS: map is locally of finite presentation. REMAINING: last two bullet points} 
+    We now turn to the proof of the latter half of the statement. 
+    By the proof of the first half and \cite[Theorem 5.2]{MR3190610}, it suffices to show that $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a perfect $ S $-module. 
+    By Lemma \ref{lemma:norm_preserves_compactness}, it suffices to show that the $ C_2 $-mapping spectrum $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a compact $ R^L $-module in $ C_2 $-spectra. 
+    Now recall that the mapping $ C_2 $-spectrum arises as
+    \begin{equation*}
+        \mathrm{ev} \colon \Mod_{N_R^{C_2}(\widetilde{p}^*A)}\left(\Spectra^{C_2}\right) \otimes_{\Mod_{R^L}(\Spectra^{C_2})} \Mod_{N_R^{C_2}(\widetilde{p}^*A)^\op}\left(\Spectra^{C_2}\right) \to \Mod_{R^L}(\Spectra^{C_2}) \,;
+    \end{equation*}
+    in particular $ \mathrm{ev}\left(N_R^{C_2}(\widetilde{p}^*A) \otimes_{R^L} N_R^{C_2}(\widetilde{p}^*A)^\op \right) \simeq N_R^{C_2}(\widetilde{p}^*A) $.  
+    To show that $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a compact $ R^L $-module, it suffices to prove that
+    \begin{itemize}
+        \item $ N_R^{C_2}(\widetilde{p}^*A) $ and $ N_R^{C_2}(\widetilde{p}^*A)[C_2] $ are compact $ R^L $-modules (compare the proof of \cite[Theorem 3.15]{MR3190610}), 
+        \item $ \widetilde{p}^*A $ is a compact $ N_R^{C_2}(\widetilde{p}^*A) $-module, and 
+        \item $ N_R^{C_2}(M^\vee) $ is a compact $ N_R^{C_2}(\widetilde{p}^*A) $-module. 
+    \end{itemize}
+    The first point follows from Lemma \ref{lemma:norm_preserves_compactness}. 
 \end{proof}
 \begin{notation}\label{ntn:subsheaf_Poincare_Morita_equiv}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution; write $ \lambda \colon A \to \sigma^* A^\op $ for the involution on $ A $. 
