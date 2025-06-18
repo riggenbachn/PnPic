@@ -1853,8 +1853,15 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
     Assume further that $ \pi $ is quasi-perfect and flat. \Lucy{in progress June 18th! might need more assumptions later}
     Then 
     \begin{itemize}
-        \item the composite $ \mathbf{M}^p_A \to \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} factors through the inclusion $ \pi_*\mathbf{Mor}_{A^e} \to \pi_* \mathbf{M}_{A^e} $ of Notation \ref{ntn:subsheaf_Poincare_Morita_equiv}.  
-        \item if $ P $ is compact as an $ A \otimes_R R^{\varphi C_2} $-module, then the morphism $ \mathbf{M}^p_A \to \pi_* \mathbf{Mor}_{A^e}$ is locally of finite presentation in the sense of \cite[\S4.3]{MR3190610}. \Lucy{modify definition of Azumaya w genuine involution to make $ P $, $ \overline{P} $ compact?}
+        \item the composite $ \mathbf{M}^p_A \to \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} factors through the inclusion $ \pi_*\mathbf{Mor}_{A^e} \to \pi_* \mathbf{M}_{A^e} $ of Notation \ref{ntn:subsheaf_Poincare_Morita_equiv}, i.e. there is a commutative square 
+        \begin{equation*}
+        \begin{tikzcd}
+            \mathbf{M}^p_A \ar[r] \ar[d,dashed,"\exists"'] & \mathbf{M}^h_A \ar[d] \\
+            \pi_* \mathbf{Mor}_{A^e} \ar[r] & \pi_* \mathbf{M}_{A^e}
+        \end{tikzcd}
+        \end{equation*}
+        \item if $ P $ is compact as an $ A \otimes_R R^{\varphi C_2} $-module, then the morphism $ \mathbf{M}^p_A \to \pi_* \mathbf{Mor}_{A^e}$ is locally of finite presentation in the sense of \cite[\S4.3]{MR3190610}. 
+        \Lucyil{modify definition of Azumaya w genuine involution to make $ P $, $ \overline{P} $ compact? }
     \end{itemize}
 \end{lemma}
 \begin{proof}
@@ -1882,6 +1889,7 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
 
     \paragraph{Claim} Let $ B $ be an $ \mathbb{E}_1 $-algebra in $ \Spectra^{C_2} $, and assume that $ B^e $, $ B^{\varphi C_2} $ are connective. 
     Then a $ B $-module $ M $ is compact if and only if $ M^e $ and $ M^{\varphi C_2} $ are compact as $ B^e $ and $ B^{\varphi C_2} $-modules, respectively. 
+    \Lucyil{Forgot that a generalized Azumaya algebra cannot be assumed to be connective. Fix later. Use that $ A $ is bounded below? or other `niceness' properties.}
 
     \emph{Proof.} By the connectivity hypotheses on $ B $, a $ B $-module in $ \Spectra^{C_2} $ is compact if and only if it is dualizable. 
     The result follows from noting that $ (-)^e $, $ (-)^{\varphi C_2} $ detect dualizability and for $ B^e $-modules and $ B^{\varphi C_2} $-modules, dualizability is equivalent to compactness. 
