@@ -1359,10 +1359,25 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     Then $ (A \otimes_R S, P \otimes_{R^{\varphi C_2}} S^{\varphi C_2}) $ is an Azumaya algebra with genuine involution over $ S $. 
 \end{observation}
 \begin{observation}
-    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum, and let $ A $ be an $ \EE_\sigma $-algebra over $ R $ whose underlying $ \EE_1 $-$ R $-algebra is (generalized) Azumaya. \Lucy{assume $ R^{\varphi C_2} $ connective?}
-    Then $ A \otimes_R R^{\varphi C_2} $ is a generalized Azumaya algebra over $ R^{\varphi C_2} $. 
-    Suppose given a trivialization of $ A \otimes_R R^{\varphi C_2} $ over $ R^{\varphi C_2} $, i.e. a $ A \otimes_R R^{\varphi C_2} $-module $ P $ which is compact $ R^{\varphi C_2} $-module $ P $, and an $ (A \otimes_R \sigma^* A^\op) \otimes_R R^{\varphi C_2} $-linear equivalence $ t_A \colon A \otimes_R R^{\varphi C_2} \simeq P \otimes_{R^{\varphi C_2}} P^\vee $, where $ (-)^\vee $ refers to $ R^{\varphi C_2} $-linear dual. 
-    Then 
+    Let $ R $ be a discrete commutative $ \mathbb{F}_2 $-algebra and assume that $ R $ is perfect (i.e. the Frobenius $ r \mapsto r^2 $ is an isomorphism), and endow $ R $ with the trivial (= identity) involution. 
+    Regard $ \underline{R} $ as a Poincaré ring spectrum via \ref{ex:fixpt_Mackey_functor}, and let $ A $ be an $ \EE_\sigma $-algebra over $ R $ whose underlying $ \EE_1 $-$ R $-algebra is (generalized) Azumaya. 
+    By the isotropy separation sequence $ R_{hC_2} \to R \to R^{\varphi C_2} $ and the Tate orbit lemma \cite[Lemma I.2.1]{NS}, the canonical map $ R^{C_2} \to R^{\varphi C_2} $ induces an equivalence $ R^{tC_2} \to (R^{\varphi C_2})^{tC_2} $.  
+    \Lucyil{this map $ R^{C_2} \to R^{\varphi C_2} $ (`mod 2' on $ \pi_0 $) is not the same map $ R^e \to R^{\varphi C_2} $ as the lift along the Tate valued Frobenius! The following commutative triangle commutes on $ \pi_0 $ but I am not sure about higher homotopy yet. Use \cite[\S IV.1.15-16]{NS} or naturality of the Tate-valued Frobenius?}
+    \begin{equation*}
+    \begin{tikzcd}[row sep=tiny]
+        R^{C_2} \ar[dd,"{\sqrt{-}}","\sim"'] \ar[rd] & \\
+        & R^{\varphi C_2} \\
+        R^e \ar[ru] &    
+    \end{tikzcd}    
+    \end{equation*} 
+    Assume for the moment that the lift $ R \to R^{\varphi C_2} $ of the Tate-valued Frobenius induced an equivalence $ R^{tC_2} \xrightarrow{\sim} (R^{\varphi C_2})^{tC_2} $. 
+    Granting this, we obtain a map of Poincaré rings $ \underline{R} \to (R^{\varphi C_2})^t $, where the latter is endowed with the Tate Poincaré structure of Example \ref{example:tate_poincare_structure}. 
+
+    Note that $ A \otimes_{\underline{R}} (R^{\varphi C_2})^t $ is an Azumaya algebra with genuine involution over $ (R^{\varphi C_2})^t $. 
+    Suppose given a trivialization of $ A \otimes_{\underline{R}} (R^{\varphi C_2})^t $ over $ (R^{\varphi C_2})^t $, i.e. an equivalence of Poincaré categories $ \left(\Mod_{(R^{\varphi C_2})^t}, \Qoppa\right) \simeq \left(\Mod^\omega_{A\otimes_{\underline{R}} (R^{\varphi C_2})^t},\Qoppa_A \right) $. 
+    By the argument of Example \ref{ex:endomorphisms_of_poincare_object}\footnote{By exactness of the Tate construction and the fact that $ A $ is a compact $ R $-module, $ \left(A \otimes_{R} R^{\varphi C_2}\right)^{tC_2} \simeq A^{tC_2} $.}, the data of this trivialization gives a lift of $ A $ to an Azumaya algebra with genuine involution over $ \underline{R} $, i.e. parts (d) and (e) of Definition \ref{defn:Azumaya_genuine_anti-inv}. 
+    \Lucyil{to-do: use deformation theory/nilcompleteness of the stack $ \mathbf{M}^p_A $ to produce a trivialization.}
+    % $ A \otimes_R R^{\varphi C_2} $-module $ P $ which is compact $ R^{\varphi C_2} $-module $ P $, and an $ (A \otimes_R \sigma^* A^\op) \otimes_R R^{\varphi C_2} $-linear equivalence $ t_A \colon A \otimes_R R^{\varphi C_2} \simeq P \otimes_{R^{\varphi C_2}} P^\vee $, where $ (-)^\vee $ refers to $ R^{\varphi C_2} $-linear dual. 
 \end{observation}
 \begin{remark}\label{rmk:azumaya_geninv_gives_module_geninv}
     If $ A $ is an Azumaya algebra with genuine involution over $ R $, then in particular $ M_A = A $, $ N_A = P $ is a module with genuine involution over $ A $ in the sense of \cite[Definition 3.2.3]{CDHHLMNNSI}. 
