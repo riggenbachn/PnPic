@@ -1756,9 +1756,6 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
 \begin{lemma}\label{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
     Then the morphism $ \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} is locally geometric in the sense of \cite[\S4.3]{MR3190610}. 
-
-    Assume further that $ \pi $ is quasi-perfect and flat. \Lucy{in progress June 18th! might need more assumptions later}
-    Then the morphism $ \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} is locally of finite presentation in the sense of \cite[\S4.3]{MR3190610}. 
 \end{lemma}
 \begin{proof}
     It suffices to show that for all $ p \colon \Spec S \to \pi_* \mathbf{M}_{A^e} $, the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $ is locally geometric over $ \Spec S $. 
@@ -1775,23 +1772,6 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
     A lift of $ \otimes M $ to an $ R $-linear hermitian functor is equivalent to the data of a map $ \widetilde{p}^*A \to N^{C_2}_R(M^\vee) $ of $ N_R^{C_2}(\widetilde{p}^*A) $-modules in $ \Spectra^{C_2} $, where we write $ M^\vee $ for the $ R $-linear dual of $ M $. 
     Thus the fiber product $ \Spec S \fiberproduct_{\pi_* \mathbf{M}_{A^e}} \mathbf{M}^h_{A} $ is given by the moduli sheaf $ \Spec \mathrm{Sym}_S \tau_{\geq 0} \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $. 
     \Lucy{Similar to \cite[Theorem 5.6, Proposition 5.7]{MR3190610}.}
-
-    \Lucyil{WORK IN PROGRESS: map is locally of finite presentation. REMAINING: last two bullet points} 
-    We now turn to the proof of the latter half of the statement. 
-    By the proof of the first half and \cite[Theorem 5.2]{MR3190610}, it suffices to show that $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a perfect $ S $-module. 
-    By Lemma \ref{lemma:norm_preserves_compactness}, it suffices to show that the $ C_2 $-mapping spectrum $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a compact $ R^L $-module in $ C_2 $-spectra. 
-    Now recall that the mapping $ C_2 $-spectrum arises as
-    \begin{equation*}
-        \mathrm{ev} \colon \Mod_{N_R^{C_2}(\widetilde{p}^*A)}\left(\Spectra^{C_2}\right) \otimes_{\Mod_{R^L}(\Spectra^{C_2})} \Mod_{N_R^{C_2}(\widetilde{p}^*A)^\op}\left(\Spectra^{C_2}\right) \to \Mod_{R^L}(\Spectra^{C_2}) \,;
-    \end{equation*}
-    in particular $ \mathrm{ev}\left(N_R^{C_2}(\widetilde{p}^*A) \otimes_{R^L} N_R^{C_2}(\widetilde{p}^*A)^\op \right) \simeq N_R^{C_2}(\widetilde{p}^*A) $.  
-    To show that $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a compact $ R^L $-module, it suffices to prove that
-    \begin{itemize}
-        \item $ N_R^{C_2}(\widetilde{p}^*A) $ and $ N_R^{C_2}(\widetilde{p}^*A)[C_2] $ are compact $ R^L $-modules (compare the proof of \cite[Theorem 3.15]{MR3190610}), 
-        \item $ \widetilde{p}^*A $ is a compact $ N_R^{C_2}(\widetilde{p}^*A) $-module, and 
-        \item $ N_R^{C_2}(M^\vee) $ is a compact $ N_R^{C_2}(\widetilde{p}^*A) $-module. 
-    \end{itemize}
-    The first point follows from Lemma \ref{lemma:norm_preserves_compactness}. 
 \end{proof}
 \begin{notation}\label{ntn:subsheaf_Poincare_Morita_equiv}
     Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution; write $ \lambda \colon A \to \sigma^* A^\op $ for the involution on $ A $. 
@@ -1866,6 +1846,47 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
         By the inductive hypothesis and the second point, $ N^{C_2} $ sends the vertices of the cube excluding $ P $ to perfect $ R $-modules. 
         Thus we have shown that $ N^{C_2}_R(P) $ can be written as a finite limit of perfect $ R $-modules. \qedhere
     \end{itemize}  
+\end{proof}
+
+\begin{lemma}
+    Let $ (X,\sigma, Y,\pi) $ be a scheme with involution and good quotient and let $ A $ be an Azumaya algebra over $ X $ with genuine $ \sigma $-linear (anti-)involution. 
+    Assume further that $ \pi $ is quasi-perfect and flat. \Lucy{in progress June 18th! might need more assumptions later}
+    Then 
+    \begin{itemize}
+        \item the composite $ \mathbf{M}^p_A \to \mathbf{M}^h_A \to \pi_* \mathbf{M}_{A^e} $ of Observation \ref{obs:from_moduli_of_hermitian_objects_to_moduli_of_objects} factors through the inclusion $ \pi_*\mathbf{Mor}_{A^e} \to \pi_* \mathbf{M}_{A^e} $ of Notation \ref{ntn:subsheaf_Poincare_Morita_equiv}.  
+        \item if $ P $ is compact as an $ A \otimes_R R^{\varphi C_2} $-module, then the morphism $ \mathbf{M}^p_A \to \pi_* \mathbf{Mor}_{A^e}$ is locally of finite presentation in the sense of \cite[\S4.3]{MR3190610}. \Lucy{modify definition of Azumaya w genuine involution to make $ P $, $ \overline{P} $ compact?}
+    \end{itemize}
+\end{lemma}
+\begin{proof}
+    % We now turn to the proof of the latter half of the statement. 
+    Keep the notation of the proof of Lemma \ref{lemma:hermitian_moduli_to_ordinary_moduli_is_geometric}. 
+    By \cite[Theorem 5.2]{MR3190610}, it suffices to show that $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a perfect $ S $-module. 
+    By Lemma \ref{lemma:norm_preserves_compactness}, it suffices to show that the $ C_2 $-mapping spectrum $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a compact $ R^L $-module in $ C_2 $-spectra. 
+    Now recall that the mapping $ C_2 $-spectrum arises as
+    \begin{equation*}
+        \mathrm{ev} \colon \Mod_{N_R^{C_2}(\widetilde{p}^*A)}\left(\Spectra^{C_2}\right) \otimes_{\Mod_{R^L}(\Spectra^{C_2})} \Mod_{N_R^{C_2}(\widetilde{p}^*A)^\op}\left(\Spectra^{C_2}\right) \to \Mod_{R^L}(\Spectra^{C_2}) \,;
+    \end{equation*}
+    in particular $ \mathrm{ev}\left(N_R^{C_2}(\widetilde{p}^*A) \otimes_{R^L} N_R^{C_2}(\widetilde{p}^*A)^\op \right) \simeq N_R^{C_2}(\widetilde{p}^*A) $.  
+    To show that $ \hom_{N_R^{C_2}(\widetilde{p}^*A)}\left(\widetilde{p}^*A, N^{C_2}_R(M^\vee)\right) $ is a compact $ R^L $-module, it suffices to prove that
+    \begin{itemize}
+        \item $ N_R^{C_2}(\widetilde{p}^*A) $ and $ N_R^{C_2}(\widetilde{p}^*A)[C_2] $ are compact $ R^L $-modules (compare the proof of \cite[Theorem 3.15]{MR3190610}), 
+        \item $ \widetilde{p}^*A $ is a compact $ N_R^{C_2}(\widetilde{p}^*A) $-module, and 
+        \item $ N_R^{C_2}(M^\vee) $ is a compact $ N_R^{C_2}(\widetilde{p}^*A) $-module. 
+    \end{itemize}
+    The first point follows from Lemma \ref{lemma:norm_preserves_compactness}. 
+    By the claim at the end of the proof, it suffices to check compactness/the latter two points separately on underlying and geometric fixed points. 
+    Since $ p $ classifies a point in $ \pi_* \mathbf{Mor}_{A^e} $, $ M^\vee $ is compact as an $ A \otimes_{R} R^{\varphi C_2} $-module. 
+    By assumption on $ A $, $ (\widetilde{p}^*A)^{\varphi C_2} $ is a compact $ (N_R^{C_2}(\widetilde{p}^*A))^{\varphi C_2} $-module. 
+    That $ (\widetilde{p}^*A)^e $ is a compact $ (N_R^{C_2}(\widetilde{p}^*A))^e $-module follows from our assumption that $ A $ is Azumaya. 
+    \Lucyil{WORK IN PROGRESS: map is locally of finite presentation. REMAINING: $ (M^\vee)^{\otimes 2} $ is a compact $ (\widetilde{p}^*A)^{\otimes 2} $-module} 
+
+    \paragraph{Claim} Let $ B $ be an $ \mathbb{E}_1 $-algebra in $ \Spectra^{C_2} $, and assume that $ B^e $, $ B^{\varphi C_2} $ are connective. 
+    Then a $ B $-module $ M $ is compact if and only if $ M^e $ and $ M^{\varphi C_2} $ are compact as $ B^e $ and $ B^{\varphi C_2} $-modules, respectively. 
+
+    \emph{Proof.} By the connectivity hypotheses on $ B $, a $ B $-module in $ \Spectra^{C_2} $ is compact if and only if it is dualizable. 
+    The result follows from noting that $ (-)^e $, $ (-)^{\varphi C_2} $ detect dualizability and for $ B^e $-modules and $ B^{\varphi C_2} $-modules, dualizability is equivalent to compactness. 
+    % To prove the `only if' part of the statement, it suffices to show that $ (-)^e $ and $ (-)^{\varphi C_2} $ preserve compact objects. 
+    % This follows from observing that they both admit right adjoints which commute with filtered colimits. \Lucy{here it is important that $ (-)^e $ takes values in $ \Mod_{B^e}(\Spectra) $ and not $ \Mod_{B^e}(\Spectra^{BC_2}).} 
 \end{proof}
 
 \subsection{The Poincaré Brauer space spectral sequence} % (fold)
