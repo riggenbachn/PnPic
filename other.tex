@@ -76,6 +76,8 @@
 \DeclareMathOperator{\id}{id} % identity
 \DeclareMathOperator{\idem}{idem} % idempotent
 \DeclareMathOperator{\Mod}{Mod} % Modules
+\DeclareMathOperator{\LMod}{LMod} % Left modules
+\DeclareMathOperator{\BiMod}{BiMod} % Bimodules
 \DeclareMathOperator{\Modh}{{}^{\sigma}Mod} % Hermitian modules
 %\DeclareMathOperator{\op}{op} % opposite functor
 \DeclareMathOperator{\Pic}{Pic} % Picard functor
@@ -128,10 +130,13 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{construction}[theorem]{Construction}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{remarks}[theorem]{Remarks}
 \newtheorem{observation}[theorem]{Observation}
 \newtheorem{notation}[theorem]{Notation}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{question}[theorem]{Question}
+\newtheorem{recollection}[equation]{Recollection}
+\newtheorem{variant}[equation]{Variant}
 
 \newcommand{\Viktor}[1]{\todo{V: #1}}
 \newcommand{\Noah}[1]{\todo[color=red]{N: #1}}
@@ -942,6 +947,131 @@ Here are some thoughts towards showing that the canonical map $ \colim_{[a,b]} \
     \end{equation*}
     respectively, where we have used (\ref{eq:basechange}). 
     Now $ \pi|_W $ is an equivalence and $ \pi|_{\widetilde{U}} $ is finite \'etale by \cite[Proposition 4.47]{azumaya_involution}, hence $ (\pi|_{\widetilde{U}})_* $ and $ (\pi|_{W})_* $ preserve filtered colimits. 
+\end{proof}
+
+\subsection{Algebras with genuine involution}
+\begin{recollection}\label{rec:left_module_cats}  
+   Assume $ \mathcal{C} $ is a presentable monoidal $ \infty $-category such that the monoidal product $ - \otimes - \colon \mathcal{C} \times \mathcal{C} \to \mathcal{C} $ preserves small colimits separately in each variable. 
+   Then there is an $ \infty $-category $ \LMod(\mathcal{C}) $ \cite[Example 4.2.1.18]{LurHA} whose objects are pairs $ (A, M) $ where $ A $ is an associative algebra object of $ \mathcal{C} $ and $ M $ is a left $ A $-module. 
+   Write $ a, m $ respectively for the canonical forgetful functors $ \LMod(\mathcal{C})\to \mathrm{Alg}(\mathcal{C}) $, $ \LMod(\mathcal{C}) \to \mathcal{C} $ which send $ (A, M) $ to $ A $ and $ M $, resp. 
+   Then $ a $ is a cocartesian fibration \cite[Corollary 4.2.3.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
+
+   The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
+   \begin{equation}
+   \begin{tikzcd}
+       & \mathcal{U} \ar[d] \\
+        \mathrm{Alg}(\mathcal{C}) \ar[r,"\mathrm{mod}"] \ar[ru,"\eta"] & \Cat_\infty   
+   \end{tikzcd}    
+   \end{equation}
+   where $ \mathcal{U} $ is the universal cocartesian fibration. 
+   Now consider the functor $ o \colon \mathcal{U} \to \Cat_\infty $ which sends $ (\mathcal{D}, d \in \mathcal{D}) $ to the undercategory $ \mathcal{D}_{d/-} $. 
+   Define $ \LMod(\mathcal{C})_{*/-} $ to be the cocartesian fibration over $ \mathrm{Alg}(\mathcal{C}) $ classified by $ o \circ \eta \circ \mathrm{mod} $. 
+\end{recollection}
+\begin{variant}
+   Let $ \mathrm{C} $ be as in Recollection \ref{rec:left_module_cats}. 
+   There is a similar construction where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. 
+\end{variant}
+\begin{construction}\label{cons:alg_inv_is_bimod_canonically}
+   Regard $ \mathbb{E}_1\mathrm{Alg}(\Spectra) $ as a category with $ C_2 $-action given by taking the opposite/reverse algebra.  
+   There are functors $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \LMod(\Spectra) $ and $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \BiMod(\Spectra)_{*/-} $ so that $ (a, m) \circ b $ and $ (a, m)\circ b_* $ are (canonically) equivalent to $ (-^e) \otimes(-^ e)^\mathrm{op}, (-)^e $. 
+   Informally, an $ \mathbb{E}_1 $-algebra with involution $ B $ can be regarded as a $ B \otimes B^\op $-module in a canonical way, and there is a canonical $ B \otimes B^\op $-module map $ B \otimes B^\op \to B $. 
+\end{construction}
+\begin{definition}
+   The category of \emph{$\mathbb{E}_1$-algebras with genuine involution} is defined to be the limit of the $\Cat_\infty$-valued diagram 
+   \begin{equation}\label{diagram:E1_alg_gen_involution}
+   \begin{tikzcd}[column sep=small]
+       & \LMod(\Spectra) \ar[dd,"{a,m}"]  & \\
+       & & \LMod\left(\Spectra^{C_2}\right) \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
+       &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
+       \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
+   \end{tikzcd}
+   \end{equation}
+   where
+   \begin{itemize}
+       \item $ b $ is the functor/section of Construction \ref{cons:alg_inv_is_bimod_canonically} 
+       \item $ U $ is the `underlying' $C_2$-spectrum functor $ \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \to \Spectra^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \simeq \Spectra^{C_2} $ 
+       \item The upper right trapezoid commutes canonically by definition of $ \LMod $ (and the fact that the functors $ a, m $ are given by restriction to subcategories of $ LM^\otimes $). 
+   \end{itemize}
+   Write $ \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_1$-algebras with genuine involution. 
+\end{definition}
+\begin{definition}
+   The category of \emph{$\mathbb{E}_\sigma$-algebras} is defined to be the limit of the $\Cat_\infty$-valued diagram 
+   \begin{equation}\label{diagram:E_sigma_alg}
+   \begin{tikzcd}[column sep=small]
+       & \BiMod(\Spectra)_{*/-} \ar[dd,"{a,m}"]  & \\
+       & & \BiMod\left(\Spectra^{C_2}\right)_{*/-} \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
+       &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
+       \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b_* \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
+   \end{tikzcd}\,.
+   \end{equation}   
+   Write $ \mathbb{E}_\sigma\mathrm{Alg}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_\sigma$-algebras. 
+\end{definition}
+\begin{variant}
+   Let the base be $ R $ an $ \mathbb{E}_\infty $-algebra or Poincaré ring instead of $ \mathbb{S}^0 $. 
+\end{variant}
+\begin{remarks}
+\begin{enumerate}
+   \item Compare \cite[Corollary 3.10]{AKGH_real_THH}. 
+   \item There are canonical forgetful functors $  \mathbb{E}_\sigma\mathrm{Alg} \to \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} \to \mathbb{E}_1\mathrm{Alg}(\Spectra) $. 
+\end{enumerate}
+\end{remarks}
+\begin{construction}\label{cons:Esigma_alg_to_R_lin_hermitian_cat}
+   Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
+   There is a functor $ \left(\Mod_{(-)}^\omega, \Qoppa_{(-)}\right) \colon \mathbb{E}_\sigma\mathrm{Alg}_R \to \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)/-} $. 
+\end{construction}
+\begin{lemma}\label{lemma:Esigma_alg_to_R_lin_hermitian_cat}
+   Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
+   \begin{enumerate}
+       \item \label{lemma_item:Esigma_alg_to_R_lin_Poincare_cat} The functor of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} factors through the subcategory $ \left(\Cat^p_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)/-} $. 
+       In other words, a map of $ \mathbb{E}_\sigma $-$ R $-algebras $ A \to B $ induces a duality-preserving map of $ R $-linear Poincaré $ \infty $-categories. 
+       \item Write $ \Mod^p \colon \EE_1^{\mathrm{gi}} \Alg_R \to \left(\Cat^p_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)/-} $ for the canonical factorization from part \ref{lemma_item:Esigma_alg_to_R_lin_Poincare_cat}. 
+       Then $ \Mod^p $ is fully faithful. 
+   \end{enumerate}
+\end{lemma} 
+\begin{proof}
+    \Lucyil{Proof of the first point should be quite similar to/a relative variant on Corollary 3.4.2, Lemma 3.4.3 of \cite{CDHHLMNNSI}. }
+    Let $ A, B $ be $ \EE_1 $-$ R $-algebras with genuine involution. 
+    Then there is a fiber sequence
+    \begin{equation*}
+    \begin{tikzcd}[row sep=small]
+        \hom_{\Mod^p_R /-}\left(\Mod^p_A, \Mod^p_B\right) \ar[r] & {\hom_{\Mod^p_R\text{-linear}}\left(\Mod^p_A, \Mod^p_B\right)} \ar[r] \ar[d,"\sim"] & {\hom_{\Mod^p_R\text{-linear}}\left(\Mod^p_R, \Mod^p_B\right)} \ar[d,"\sim"] \\
+       &  \mathrm{Pn} \left(\Mod_{A^\op \otimes_R B}, \Qoppa_{A^\op \boxtimes B} \right) \ar[r] & \mathrm{Pn} \left(\Mod_{B}, \Qoppa_{B} \right) 
+    \end{tikzcd}    
+    \end{equation*}
+    where we have used Corollary \ref{cor:poincare_fourier_mukai}. \Lucy{this refers to main text; will be fixed when we move it.} 
+    The fiber of the horizontal map over the point $ (B, q_B) \in \mathrm{Pn} \left(\Mod_{B}, \Qoppa_{B} \right) $ ($q_B$ is the canonical nondegenerate form on $ B $) is %the space of $ A \otimes_R B $-module structures on $ B $ so that the induced $ N^{C_2}_R(A^\op) \otimes_{R^L}  N^{C_2}_R(B) $-module structures on $ N^{C_2}_R (B) $ is compatible with the canonical $ N^{C_2}_R(B) $-module structure on $ B $
+    \Lucyil{IN PROGRESS: should be some sort of $ \EE_\sigma $ version of \cite[Proposition 3.1]{MR3190610}.}
+\end{proof}
+
+Now we observe that given a Poincaré object $ (x,q) $ of $ \left(\mathcal{C}, \Qoppa_\mathcal{C}\right) $, its endomorphism algebra admits a canonical lift to a $ \mathbb{E}_\sigma $-algebra. 
+\begin{construction}\label{cons:endomorphism_of_hermitian_obj}
+   There is a functor $ \mathrm{End}(-)\colon \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_\sigma\mathrm{Alg} $ lifting the functor $ \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} $ of \cite[Proposition 3.1.16]{CDHHLMNNSI}. 
+\end{construction}
+\begin{theorem}
+   The functors of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} and \ref{cons:endomorphism_of_hermitian_obj} form an adjoint pair. \Lucy{make everything Poincaré}
+\end{theorem}
+\begin{lemma}\label{lemma:poincare_endomorphisms_continuous}
+    The right adjoint of Construction \ref{cons:endomorphism_of_hermitian_obj} preserves filtered colimits. 
+    \Lucyil{similar to \cite[Lemma 3.4]{MR3190610}.}
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+\begin{proposition}
+    Let $ A $ be an $\mathbb{E}_1$-$ R $-algebra with genuine involution. 
+    Then $ A $ is compact in $ \EE_1^{\mathrm{gi}} \Alg_R $ if and only if $ \Mod^p_A $ is compact in $ \Catp_R $. 
+    \Lucyil{similar to \cite[Proposition 3.5]{MR3190610}.}
+\end{proposition}
+\begin{proof}
+    The only if part of the statement follows from observing that $ \Mod^p $ admits a right adjoint which preserves filtered colimits (Lemma \ref{lemma:poincare_endomorphisms_continuous}) and \cite[Lemma 5.5.1.4]{HTT}. \Lucy{other half of the statement} 
+\end{proof}
+\begin{proposition}
+    Let $ A $ be an $\mathbb{E}_1$-$ R $-algebra with genuine involution. 
+    If $ \Mod^p_A $ is dualizable in $ \Catp_R $, then $ A $ is compact in $ \EE_1^{\mathrm{gi}} \Alg_R $.  
+    \Lucyil{similar to \cite[Proposition 3.11]{MR3190610}.}
+\end{proposition}
+\begin{proof}
+    
 \end{proof}
 
 \section{Speculative norm for Brauer group at the level of infinity categories}

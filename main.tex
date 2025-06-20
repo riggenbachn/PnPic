@@ -370,92 +370,6 @@ We will now specify the objects which we are able to take the Poincar{\'e} Picar
 
 \Viktor{copy more examples from notes}
 
-%\subsection{Algebras with genuine involution}
-%\begin{recollection}\label{rec:left_module_cats}  
-%    Assume $ \mathcal{C} $ is a presentable monoidal $ \infty $-category such that the monoidal product $ - \otimes - \colon \mathcal{C} \times \mathcal{C} \to \mathcal{C} $ preserves small colimits separately in each variable. 
-%    Then there is an $ \infty $-category $ \LMod(\mathcal{C}) $ \cite[Example 4.2.1.18]{LurHA} whose objects are pairs $ (A, M) $ where $ A $ is an associative algebra object of $ \mathcal{C} $ and $ M $ is a left $ A $-module. 
-%    Write $ a, m $ respectively for the canonical forgetful functors $ \LMod(\mathcal{C})\to \mathrm{Alg}(\mathcal{C}) $, $ \LMod(\mathcal{C}) \to \mathcal{C} $ which send $ (A, M) $ to $ A $ and $ M $, resp. 
-%    Then $ a $ is a cocartesian fibration \cite[Corollary 4.2.3.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
-
-%    The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
-%    \begin{equation}
-%    \begin{tikzcd}
-%        & \mathcal{U} \ar[d] \\
-%         \mathrm{Alg}(\mathcal{C}) \ar[r,"\mathrm{mod}"] \ar[ru,"\eta"] & \Cat_\infty   
-%    \end{tikzcd}    
-%    \end{equation}
-%    where $ \mathcal{U} $ is the universal cocartesian fibration. 
-%    Now consider the functor $ o \colon \mathcal{U} \to \Cat_\infty $ which sends $ (\mathcal{D}, d \in \mathcal{D}) $ to the undercategory $ \mathcal{D}_{d/-} $. 
-%    Define $ \LMod(\mathcal{C})_{*/-} $ to be the cocartesian fibration over $ \mathrm{Alg}(\mathcal{C}) $ classified by $ o \circ \eta \circ \mathrm{mod} $. 
-%\end{recollection}
-%\begin{variant}
-%    Let $ \mathrm{C} $ be as in Recollection \ref{rec:left_module_cats}. 
-%    There is a similar construction where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. 
-%\end{variant}
-%\begin{construction}\label{cons:alg_inv_is_bimod_canonically}
-%    Regard $ \mathbb{E}_1\mathrm{Alg}(\Spectra) $ as a category with $ C_2 $-action given by taking the opposite/reverse algebra.  
-%    There are functors $ b \colon %\mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \LMod(\Spectra) $ and $ b \colon \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \to \BiMod(\Spectra)_{*/-} $ so that $ (a, m) \circ b $ and $ (a, m)\circ b_* $ are (canonically) equivalent to $ (-^e) \otimes(-^ e)^\mathrm{op}, (-)^e $. 
-%    Informally, an $ \mathbb{E}_1 $-algebra with involution $ B $ can be regarded as a $ B \otimes B^\op $-module in a canonical way, and there is a canonical $ B \otimes B^\op $-module map $ B \otimes B^\op \to B $. 
-%\end{construction}
-%\begin{definition}
-%    The category of \emph{$\mathbb{E}_1$-algebras with genuine involution} is defined to be the limit of the $\Cat_\infty$-valued diagram 
-%    \begin{equation}\label{diagram:E1_alg_gen_involution}
-%    \begin{tikzcd}[column sep=small]
-%        & \LMod(\Spectra) \ar[dd,"{a,m}"]  & \\
-%        & & \LMod\left(\Spectra^{C_2}\right) \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
-%        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
-%        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
-%    \end{tikzcd}
-%    \end{equation}
-%    where
-%    \begin{itemize}
-%        \item $ b $ is the functor/section of Construction \ref{cons:alg_inv_is_bimod_canonically} 
-%        \item $ U $ is the `underlying' $C_2$-spectrum functor $ \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \to \Spectra^{BC_2} \times_{\Spectra} \Spectra^{\Delta^1} \simeq \Spectra^{C_2} $ 
-%        \item The upper right trapezoid commutes canonically by definition of $ \LMod $ (and the fact that the functors $ a, m $ are given by restriction to subcategories of $ LM^\otimes $). 
-%    \end{itemize}
-%    Write $ \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_1$-algebras with genuine involution. 
-%\end{definition}
-%\begin{definition}
-%    The category of \emph{$\mathbb{E}_\sigma$-algebras} is defined to be the limit of the $\Cat_\infty$-valued diagram 
-%    \begin{equation}\label{diagram:E_sigma_alg}
-%    \begin{tikzcd}[column sep=small]
-%        & \BiMod(\Spectra)_{*/-} \ar[dd,"{a,m}"]  & \\
-%        & & \BiMod\left(\Spectra^{C_2}\right)_{*/-} \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
-%        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
-%        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b_* \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
-%    \end{tikzcd}\,.
-%    \end{equation}   
-%    Write $ \mathbb{E}_\sigma\mathrm{Alg}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_\sigma$-algebras. 
-%\end{definition}
-%\begin{variant}
-%    Let the base be $ R $ an $ \mathbb{E}_\infty $-algebra or Poincaré ring instead of $ \mathbb{S}^0 $. 
-%\end{variant}
-%\begin{remarks}
-%\begin{enumerate}
-%    \item Compare \cite[Corollary 3.10]{AKGH_real_THH}. 
-%    \item There are canonical forgetful functors $  \mathbb{E}_\sigma\mathrm{Alg} \to \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} \to \mathbb{E}_1\mathrm{Alg}(\Spectra) $. 
-%\end{enumerate}
-%\end{remarks}
-%\begin{construction}\label{cons:Esigma_alg_to_R_lin_hermitian_cat}
-%    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
-%    There is a functor $ \left(\Mod_{(-)}^\omega, \Qoppa_{(-)}\right) \colon \mathbb{E}_\sigma\mathrm{Alg}_R \to \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)/-} $. 
-%\end{construction}
-%\begin{lemma}
-%    Let $ R, R^{\varphi C_2} \to R^{tC_2} $ be a Poincaré ring. 
-%    The functor of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} is fully faithful. 
-%\end{lemma} 
-%\begin{proof}
-    
-%\end{proof}
-
-%Now we observe that given a hermitian object $ (x,q) $ of $ \left(\mathcal{C}, \Qoppa_\mathcal{C}\right) $, its endomorphism algebra admits a canonical lift to a $ \mathbb{E}_\sigma $-algebra. 
-%\begin{construction}\label{cons:endomorphism_of_hermitian_obj}
-%    There is a functor $ \mathrm{End}(-)\colon \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_\sigma\mathrm{Alg} $ lifting the functor $ \left(\Cat^h_R\right)_{\left(\Mod_R^\omega,\Qoppa_R\right)} \to \mathbb{E}_1\mathrm{Alg}^{hC_2} $ of \cite[Proposition 3.1.16]{CDHHLMNNSI}. 
-%\end{construction}
-%\begin{theorem}
-%    The functors of Construction \ref{cons:Esigma_alg_to_R_lin_hermitian_cat} and \ref{cons:endomorphism_of_hermitian_obj} form an adjoint pair. 
-%\end{theorem}
-
 % \section{Modules over Poincaré Ring Spectra}
 % \label{subsection:modules_over_poincare_ring_spectra}
 
@@ -1126,11 +1040,39 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
 \end{proof}
 \begin{corollary}\label{cor:poincare_fourier_mukai}
     % Will want to use this to show that some functor: ``algebras'' to Poincaré infinity categories is fully faithful; see proof of Proposition 3.1 in Antieau--Gepner. 
-    Let $ R $ be a Poincaré ring, and let $ A, B $ be $ \mathbb{E}_1 $-$ R $-algebras with genuine involution. 
-    Then there is an equivalence $ \hom_{\Catpidem_R}\left(\left(\Mod_A^\omega, \Qoppa_A\right), \left(\Mod_B^\omega, \Qoppa_B\right)\right) \simeq \left(\BiMod_{A \otimes_R B^\op}\right)_{A^{\varphi C_2} \otimes_R B^{\varphi C_2} /-} $.   
+    Let $ R $ be a Poincaré ring, and let $ A, B $ be $ \mathbb{E}_1 $-$ R $-algebras with genuine involution. \Lucy{reference to definition!}
+    Then there is a Poincaré structure $ \Qoppa_{A \boxtimes B^\op} $ on $ \Mod_{A \otimes_R B^\op} $ \Lucy{need something like $ A $-$ B $-bimodules whose underlying $ B $-module is compact.} with equivalences 
+    \begin{equation*}
+    \begin{split}
+        \hom_{\Cathidem_R}\left(\left(\Mod_A^\omega, \Qoppa_A\right), \left(\Mod_B^\omega, \Qoppa_B\right)\right) & \simeq \mathrm{He} \left(\Mod_{A^\op \otimes_R B}, \Qoppa_{A^\op \boxtimes B} \right) \\
+        \hom_{\Catpidem_R}\left(\left(\Mod_A^\omega, \Qoppa_A\right), \left(\Mod_B^\omega, \Qoppa_B\right)\right) &\simeq \mathrm{Pn} \left(\Mod_{A^\op \otimes_R B}, \Qoppa_{A^\op \boxtimes B} \right) 
+    \end{split}
+    \end{equation*}  
+    which are compatible with ordinary Morita theory, i.e. under the forgetful functors $ \Cathidem_R, \Catpidem_R \to \Catex_R $, the hermitian (resp. Poincaré functor) represented by the pair $ (P \in \Mod_{A^\op \otimes_R B}, q) $ is the $ R $-linear exact functor which is given by tensoring with the $ A^e $-$ B^e $-bimodule $ P $ (compare, for instance, \cite[p.738]{LurHA}). 
 \end{corollary}
 \begin{proof}
-    \Lucy{todo--probably need to fix the statement with \emph{duals} when the proof is written}
+    A hermitian functor $ \left(\Mod_A^\omega, \Qoppa_A\right) \to \left(\Mod_B^\omega, \Qoppa_B\right) $ is a pair $ (\phi ,\eta) $. 
+    Note that the underlying $ R $-linear functor $ \phi \colon \Mod_A^\omega \to \Mod_B^\omega $ is given by $ - \otimes_A P $ for some $ A^e $-$ B^e $-bimodule $ P $ which, when regarded as a $ B^e $-module, is compact. 
+    The data of the natural transformation $ \eta $ is given by a map $ N^{C_2}_R P \otimes_{N^{C_2}_R A} A \to B $ of $ N^{C_2}_R B $-modules. 
+    Define $ \Qoppa_{A \boxtimes B^\op} $ via the composite
+    \begin{equation*}
+    \begin{split}
+         \Mod_{A^\op \otimes_R B}^\op \left(\Spectra\right)  \xrightarrow{N^{C_2}_R(-)} \Mod_{N^{C_2}_R(A^\op) \otimes_R N^{C_2}_R(B)}\left(\Spectra^{C_2}\right) \xrightarrow{ - \otimes_{N^{C_2}_R A^\op} A^\op} \Mod_{A^\op \otimes_R N^{C_2}_R(B)}\left(\Spectra^{C_2}\right) \\
+         \xrightarrow{\text{ forget $A^\op$ module}} \Mod_{N^{C_2}_R(B)}\left(\Spectra^{C_2}\right) \xrightarrow{\hom_{N^{C_2}_R(B)}(-, B )} \Spaces \,. 
+    \end{split}
+    \end{equation*} 
+    Observe that the module with genuine involution over $ A^\op \otimes_R B $ associated to $ \Qoppa_{A^\op \boxtimes B} $ can be obtained by taking the $ C_2 $-mapping spectrum (which is in fact an $ R^L $-module) with $ P = A^\op \otimes_R B $. \Lucy{check that the module is invertible! or change statement in theorem to ``hermitian''}
+    Since the relative norm is symmetric monoidal \Lucy{to-do: reference}, we have
+    \begin{equation*}
+    \begin{split}
+        \hom_{N^{C_2}_R B}\left(N^{C_2}_R(A^\op \otimes_R B) \otimes_{N^{C_2}_R A^\op} A^\op, B\right) \simeq \hom_{N^{C_2}_R B}\left((N^{C_2}_R(A^\op) \otimes_R N^{C_2}_R(B)) \otimes_{N^{C_2}_R A^\op} A^\op, B\right) \\\simeq \hom_{N^{C_2}_R B}\left(A^\op \otimes_R N^{C_2}_R(B^\op) , B\right) \\
+        \simeq \hom_{R^L}\left(A^\op , B\right)\,.
+    \end{split}
+    \end{equation*}
+    Since $ N^{C_2}_R(-) $ is quadratic and the rest of the functors are exact, it is clear that $ \Qoppa_{A^\op \boxtimes B} $ is quadratic. 
+    Observe that, given such a $ \varphi $, the data of $ \eta $ is the same as the data of a point $ \eta^\dagger \in \Omega^\infty \Qoppa_{A^\op \boxtimes B}(P) $.  
+    It follows from unravelling definitions that $ (\varphi, \eta) $ is duality-preserving (i.e. the functor is Poincaré) if and only if $ \eta^\dagger $ is non-degenerate. 
+    \Lucy{Compare \cite[Corollary 3.4.2]{CDHHLMNNSI}. add reference to remark that $ \Mod^\omega $ of an $ \EE_1 $-algebra is always Poincaré!}
 \end{proof}
 
 \begin{definition}
@@ -1138,7 +1080,7 @@ Recall that a Poincaré $\infty$-category is called idempotent complete if the u
     We will refer to the data of $ (M_A, N_A, N_A \to M_A^{tC_2}) $ of Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct} as an \emph{$ R $-linear $ A $-module with genuine involution}. 
 \end{definition}
 \begin{remark}
-    When $ R = \sphere $ is the initial Poincar\'e ring, then a $ \sphere $-linear $ A $-module with genuine involution is simply an $ A $-mmodule with genuine involution in the sense of \cite[Defintiion 3.2.3]{CDHHLMNNSI}. 
+    When $ R = \sphere $ is the initial Poincar\'e ring, then a $ \sphere $-linear $ A $-module with genuine involution is simply an $ A $-module with genuine involution in the sense of \cite[Defintiion 3.2.3]{CDHHLMNNSI}. 
 \end{remark}
 \begin{proposition}\label{prop:classify_R_linear_Poincare_functors}
     Let $ R $ be a Poincar\'e ring, and let $ A, B $ be $ \EE_1 $-$ R $-algebras with anti-involutions and let $ (M_A, N_A, \alpha \colon N_A \to M_A^{tC_2} ) $, $ (M_B, N_B, \beta \colon N_B \to M_B^{tC_2}) $ be $ R $-linear modules with genuine involution over $ A $ and $ B $, respectively. 
@@ -1244,12 +1186,17 @@ Now the natural equivalence $ \eta $ classifies an equivalence $ A^L \simeq \hom
     thus $ \pi_0 \pic\left(\Mod_{\prod_{C_2} k}\left(\Spectra^{C_2}\right) \right) \simeq \ZZ $. 
     On the other hand, $ \pi_1 \mathrm{br}(k \times k) \simeq \pi_0 \Pic(k \times k) \simeq \ZZ^{\times 2} $ and the connecting homomorphism is $ (n, m) \mapsto n+m $, whence $ \pi_0\pnbr\left(\prod_{C_2} k\right) = 0 $. 
 \end{example}
-Write $ \mathrm{Fm} $, resp. $ \mathrm{Pn} $ for the composite $ \Cath_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Fm}} \Spaces $, resp. $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $. 
-\begin{proposition}
+Write $ \mathrm{Fm} $, resp. $ \mathrm{Pn} $ for the composite $ \Cath_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Fm}} \Spaces $, resp. $ \Catp_R \xrightarrow{U} \Catp \xrightarrow{\mathrm{Pn}} \Spaces $ where $ \mathrm{Fm} $ and $ \mathrm{Pn} $ are defined in \cite[Definitions 2.1.1, 2.1.3]{CDHHLMNNSI}. 
+\begin{proposition}\label{prop:forms_are_corepresented}
     Let $ (R, R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
     Then $ \left(\Mod_R^\omega, \Qoppa_R \right) $ corepresents the functors $ \mathrm{Fm} \colon \Cath_R \to \Spaces $ and $ \mathrm{Pn} \colon \Catp_R \to \Spaces $.
 \end{proposition}
-\begin{proof}
+Since the forgetful functor $ \Cath_R \to \Cath $ and its Poincaré counterpart both preserve filtered colimits, an immediate consequence is that the unit is compact (cf. \cite[Proposition 6.1.8]{CDHHLMNNSI}).
+\begin{corollary}\label{cor:unit_is_compact}
+    Let $ (R, R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
+    Then $ \left(\Mod_R^\omega, \Qoppa_R \right) $ is a compact object of both $ \Cath_R $ and $ \Catp_R $.  
+\end{corollary}
+\begin{proof}[Proof of Proposition \ref{prop:forms_are_corepresented}]
     We prove the statement for $ \mathrm{Pn} $; the proof for $ \mathrm{Fm} $ is similar and is left to the reader. 
     Recall that Proposition \ref{prop:relative_poincare_cats_basic_properties}.\ref{propitem:Rlin_Poincare_cats_is_symm_mon} furnishes an adjoint pair $ \Catp_R \rlarrows \Catp $ of functors. 
     Write $ \overline{\mathcal{C}} = (\mathcal{C},\Qoppa_{\mathcal{C}}) \in \Catpidem_R $. 
@@ -1904,6 +1851,7 @@ Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparis
 
     \paragraph{Claim} Let $ B $ be an $ \mathbb{E}_1 $-algebra in $ \Spectra^{C_2} $, and assume that $ B^e $, $ B^{\varphi C_2} $ are connective. 
     Then a $ B $-module $ M $ is compact if and only if $ M^e $ and $ M^{\varphi C_2} $ are compact as $ B^e $ and $ B^{\varphi C_2} $-modules, respectively. 
+    \Lucyil{UPDATE JUNE 20: Better--show that $ A $ is compact as an $ \EE_1 $-algebra with genuine involution. Compare proof of \cite[Proposition 5.7]{CDHHLMNNSI}.}
     \Lucyil{Forgot that a generalized Azumaya algebra cannot be assumed to be connective. Fix later. Use that $ A $ is bounded below? or other `niceness' properties.}
 
     \emph{Proof.} By the connectivity hypotheses on $ B $, a $ B $-module in $ \Spectra^{C_2} $ is compact if and only if it is dualizable. 
