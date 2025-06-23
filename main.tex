@@ -228,7 +228,7 @@ With this fiber sequence in hand we are able to make several computations of int
 
 In the case when $R$ is away from characteristic $2$ we are furthermore able to simplify the fiber of the comparison map $\pnbr(R)\to \mathrm{br}(R^e)$. As an application of this we obtain a comparison of the Poincar{\'e} Brauer group with the involuative Brauer group discussed earlier in the introduction:
 \begin{theorem}[Theorem~\ref{thm: PS comparison in text}]~\label{thm: comparison to PS}
-Let $(X,\lambda,Y,\pi)$ be a scheme with involution and good quotient such that $\pi:X\to Y$ is {\'e}tale and such that $\frac{1}{2}\in \Gamma(\mathcal{O}_Y)$. Then there is an equivalence \[\pnbr(X,\lambda,Y,\pi)\cong \mathrm{Br}(X,\lambda)\] where the second term is the involuative Brauer group of Parimala-Srinivas (\cite{MR1162189}).
+Let $(X,\lambda,Y,\pi)$ be a scheme with involution and good quotient such that $\pi:X\to Y$ is {\'e}tale and such that $\frac{1}{2}\in \Gamma(\mathcal{O}_Y)$. Then there is an equivalence \[\pnbr(X,\lambda,Y,\pi)\cong H^0_{\acute{e}t}(Y;\mathrm{coker}(\pi_*\mathbb{Z}_X\to \mathbb{Z}_Y))\times\mathrm{Br}(X,\lambda)\] where $\mathbb{Z}_X$ and $\mathbb{Z}_Y$ are the constant sheaves, and the second term is the involuative Brauer group of Parimala-Srinivas (\cite{MR1162189}).
 \end{theorem}
 
 \subsection{Outline}
@@ -1544,12 +1544,23 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 Now that we have \'etale descent we are able to prove Theorem~\ref{thm: comparison to PS}.
 
 \begin{theorem}~\label{thm: PS comparison in text}
-    Let $(X,\lambda,Y,\pi)$ be a scheme with good quotient. Suppose further that $\pi:X\to Y$ is \'etale and that $\frac{1}{2}\in \Gamma(\mathcal{O}_Y)$. Then the natural map \[\mathrm{Br}(X,\lambda)\to \pnbr(X,\lambda,Y,\pi)\] is an isomorphism.
+    Let $(X,\lambda,Y,\pi)$ be a scheme with good quotient. Suppose further that $\pi:X\to Y$ is \'etale and that $\frac{1}{2}\in \Gamma(\mathcal{O}_Y)$. Then there is a natural map \[H^{0}(Y;\mathrm{coker}(\pi_*\mathbb{Z}_X\to \mathbb{Z}))\times\mathrm{Br}(X,\lambda)\to \pnbr(X,\lambda,Y,\pi)\] which is furthermore an isomorphism.
 \end{theorem}
 \begin{proof}
-    By \'etale descent we have that $\pnbr(X,\lambda,Y,\pi)$ fits into an exact sequence \[\pic(X)\to \pic(Y)\to \pnbr(X,\lambda,Y,\pi)\to \mathrm{Br}(X)\to \mathrm{Br}(Y)\] compatible with the Parimala-Srinivas exact sequence of \cite[Theorem 1.2]{MR1162189}. 
-    \Lucyil{Minor modification needed? If $ \mathrm{Br}(-) $ refers to derived Brauer (`prime'), there is an additional factor of $ H^1_{\acute{e}t}(-;\mathbb{G}_m) $ (see \cite[Corollary 7.14]{MR3190610}). 
-    Now, this term goes away if we apply the hypothesis that $ X ,Y $ are normal \cite[Lemma 7.15]{MR3190610}, so we could also add that assumption and call it a day. }
+    By \'etale descent we have that $\pnbr(X,\lambda,Y,\pi)$ fits into an exact sequence \[\pic(X)\to \pic(Y)\to \pnbr(X,\lambda,Y,\pi)\to \mathrm{Br}(X)\to \mathrm{Br}(Y)\] compatible with the Parimala-Srinivas exact sequence of \cite[Theorem 1.2]{MR1162189}. Note that the commutative diagram 
+    \[\begin{tikzcd}
+        0\ar[d] & 0\ar[d] & \\
+        H^0(X;\mathbb{Z}_X)\ar[d] \ar[r] & H^0(Y;\mathbb{Z}_Y)\ar[d] & \\
+        \pi_0(\mathrm{pic}(X)) \ar[r] & \pi_0(\mathrm{pic}(Y)) \ar[r] & \pnbr(X,\lambda, Y ,\pi) 
+    \end{tikzcd}\]
+    induces a map $\mathrm{coker}(\pi_*\mathbb{Z}_X\to \mathbb{Z}_Y)\to \pnbr(X,\lambda, Y, \pi)$. Denote the sheaf $\mathrm{coker}(\pi_* \mathbb{Z}_X\to \mathbb{Z}_Y)$ by $C$. By construction we then get a map of exact sequences \[
+    \begin{tikzcd}
+        \Gamma(\mathbb{Z}_X)\times \pic(X) \ar[r] \ar[d,"\cong"] & \Gamma(\mathbb{Z}_Y) \ar[r] \ar[d,"\cong"] & \Gamma(C)\times \mathrm{Br}(X,\lambda) \ar[r] \ar[d] & H^1(X;\mathbb{Z}_X)\times \mathrm{Br}(X)\ar[r] \ar[d,"\cong"] & H^1(Y;\mathbb{Z}_Y)\times \mathrm{Br}(Y)\ar[d,"\cong"]\\
+        \pi_0(\pic(X)) \ar[r] & \pi_0(\pic(Y))\ar[r] & \pnbr(X,\lambda, Y,\pi) \ar[r] & \pi_0(\br(X)) \ar[r] & \pi_0(\br(Y))
+    \end{tikzcd}
+    \]
+    %\Lucyil{Minor modification needed? If $ \mathrm{Br}(-) $ refers to derived Brauer (`prime'), there is an additional factor of $ H^1_{\acute{e}t}(-;\mathbb{G}_m) $ (see \cite[Corollary 7.14]{MR3190610}). 
+    %Now, this term goes away if we apply the hypothesis that $ X ,Y $ are normal \cite[Lemma 7.15]{MR3190610}, so we could also add that assumption and call it a day. }
     Hence by the 5-lemma we have an equivalence as desired.
 \end{proof}
 \begin{notation} [Moduli (pre)sheaf of hermitian objects] \label{ntn:moduli_of_hermitian_objects_affine}
