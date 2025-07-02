@@ -1299,7 +1299,7 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     An \emph{Azumaya algebra with genuine (anti-)involution} over $ R $ is the data of 
     \begin{enumerate}[label=(\alph*)]
         \item \label{defnitem:Azumaya_alg_gi_the_involution} An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to \sigma^* A^\op $ so that the underlying $ \EE_1 $-$ R $-algebra $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
-        \item \label{defnitem:Azumaya_alg_gi_underlying} an $ (A \otimes_R \sigma^* A)^{\otimes_R 2} $-linear equivalence $ \hom_{R \otimes R}(A \otimes_R A, R) \simeq A \otimes_R \sigma^* A^\op $
+        \item \label{defnitem:Azumaya_alg_gi_underlying} a $ C_2 $-equivariant $ (A \otimes_R \sigma^* A)^{\otimes_R 2} $-linear equivalence $ \hom_{R \otimes R}(A \otimes_R A, R) \simeq A \otimes_R \sigma^* A^\op $
         \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ P $ and an $ A^\op \otimes_R R^{\varphi C_2} $-module $ \overline{P} $
         \item \label{defn_item:Azumaya_gen_inv_conn_map} An $ A \otimes_R R^{\varphi C_2} $-linear map $ P \to A^{tC_2} $ and an $ A^\op \otimes_R R^{\varphi C_2} $-linear map $ \overline{P} \to A^{tC_2} $. 
         Here we regard $ A^{tC_2} $, which is canonically a $ (A \otimes_R \sigma^* A)^{tC_2} $-module, as an $ A \otimes_R R^{\varphi C_2} $-module (resp. $ A^\op \otimes_R R^{\varphi C_2} $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes \sigma^* A)^{tC_2} $ (resp. $ A^\op \to (\sigma^* A^\op \otimes A^\op)^{tC_2} $). 
@@ -1318,10 +1318,43 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \end{enumerate}
     % Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
 \end{definition}
+\begin{definition}\label{defn:Azumaya_genuine_central_Wall_anti-structure}
+    Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring spectrum, and write $ \sigma \colon R \xrightarrow{\sim} R $ for the involution on $ R $. 
+    An \emph{Azumaya algebra with central Wall anti-structure} over $ R $ is the data of 
+    \begin{enumerate}[label=(\alph*)]
+        \item \label{defnitem:Azumaya_alg_Wall_anti_the_involution} An $ \EE_1 $-$ R $-algebra $ A $ equipped with an anti-involution $ \tau \colon A \to \sigma^* A^\op $ so that the underlying $ \EE_1 $-$ R $-algebra $ A $ is an Azumaya $ R $-algebra in the sense of Recollection \ref{rec:Azumaya_alg_wo_involution} 
+        \item \label{defnitem:Azumaya_alg_Wall_anti_underlying} An invertible $ R $ module with involution $ M_A $ over $ A $ in the sense of \cite[Definition 3.1.4]{CDHHLMNNSI} whose underlying left $ A $-module is equivalent to $ A $. 
+        Observe that pullback along the anti-involution \ref{defnitem:Azumaya_alg_Wall_anti_the_involution} implies that $ \sigma^*(M_A) $ defines an invertible $ R $-module with involution over $ \sigma^*(A) $. 
+        We also ask for a $ C_2 $-equivariant $ (A \otimes_R \sigma^* A)^{\otimes_R 2} $-linear equivalence $ \hom_{R \otimes R}(A \otimes_R \sigma^* A, R) \simeq M_A \otimes_R \sigma^* M_A $. 
+        \item A left $ A \otimes_{R} R^{\varphi C_2} $-module $ P $ and an $ A^\op \otimes_R R^{\varphi C_2} $-module $ \overline{P} $
+        \item \label{defn_item:Azumaya_Wall_anti_inv_conn_map} An $ A \otimes_R R^{\varphi C_2} $-linear map $ P \to M_A^{tC_2} $ and an $ \sigma^* A^\op \otimes_R R^{\varphi C_2} $-linear map $ \overline{P} \to (\sigma^*M_A)^{tC_2} $. 
+        Here we regard $ M_A^{tC_2} $, which is canonically a $ (A \otimes_R \sigma^* A)^{tC_2} $-module, as an $ A \otimes_R R^{\varphi C_2} $-module (resp. $ A^\op \otimes_R R^{\varphi C_2} $-module) via the twisted Tate-valued diagonal $ A \to (A \otimes \sigma^* A)^{tC_2} $ (resp. $ A^\op \to (\sigma^* A^\op \otimes A^\op)^{tC_2} $). 
+        \item \label{defn_item:Azumaya_Wall_anti_inv_geom_fixpt} An equivalence of $ \left(A \otimes_R \sigma^* A^\op\right) \otimes_R R^{\varphi C_2} $-modules 
+        \begin{equation*}
+            \hom_R(M_A, R^{\varphi C_2}) \simeq P \otimes_{R^{\varphi C_2}} \overline{P}
+        \end{equation*}
+        and a homotopy making the diagram 
+        \begin{equation*}
+        \begin{tikzcd}
+            \hom_R(A, R^{\varphi C_2}) \ar[r] \ar[d] & P \otimes_{R^{\varphi C_2}} \overline{P} \ar[d] \\
+            \hom_R(A, R^{tC_2}) \simeq \hom_R(A \otimes \sigma^*A, R)^{tC_2} \ar[r] & \hom_{(A \otimes \sigma^*A)^{\otimes 2}}\left((A \otimes \sigma^*A)^{\otimes 2}, M_A \otimes \sigma^*M_A\right)^{tC_2} \simeq (M_A \otimes \sigma^*M_A)^{tC_2}
+        \end{tikzcd}    
+        \end{equation*}
+        commute, where the lower horizontal arrow is induced by \ref{defnitem:Azumaya_alg_Wall_anti_underlying} and the right vertical arrow is induced by \ref{defn_item:Azumaya_Wall_anti_inv_conn_map}. 
+    \end{enumerate}
+    % Similarly, an \emph{Azumaya algebra with genuine type 2 (anti-)involution} over $ R $ is obtained by replacing $ \tau $ in item \ref{defnitem:Azumaya_alg_gi_the_involution} with $ \tau \colon A \to \sigma_R^* A^\op $, where $ \sigma_R \colon R \xrightarrow{\sim} R $ is the given involution on $ R $. 
+\end{definition}
+\Lucy{Compare: \cite[3.1.13]{CDHHLMNNSI}, Wall's original paper?}
 \begin{observation}\label{obs:azumaya_geninv_base_change}
     Let $ A $ be an Azumaya algebra with genuine involution over $ R $, and suppose given a map $ R \to S $ of Poincaré rings. 
     Then $ (A \otimes_R S, P \otimes_{R^{\varphi C_2}} S^{\varphi C_2}) $ is an Azumaya algebra with genuine involution over $ S $. 
-\end{observation}
+\end{observation} 
+\begin{remark}\label{rmk:Azumaya_gi_Wall_compare}
+    An Azumaya algebra with genuine involution over $ R $ in particular defines an Azumaya algebra with central Wall anti-structure over $ R $ with $ M_A \simeq A $ as $ A \otimes \sigma^*A $-modules. 
+    If an Azumaya algebra with central Wall anti-structure is of this form, we say that it \emph{comes from the anti-involution on $ A $} (compare \cite[Example 3.1.9]{CDHHLMNNSI}, which is the special case when $ R = \sphere $). 
+
+    If $ A $ is an Azumaya algebra with genuine involution over $ R $, then $ (A, P \to A^{tC_2}) $ defines a $ N^{C_2}_R (A) $-module which classifies an $ R $-linear Poincaré structure on $ \Mod_A^\omega $ by Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct}.    
+\end{remark}
 \begin{observation}
     Let $ R $ be a discrete commutative $ \mathbb{F}_2 $-algebra and assume that $ R $ is perfect (i.e. the Frobenius $ r \mapsto r^2 $ is an isomorphism), and endow $ R $ with the trivial (= identity) involution. 
     Regard $ \underline{R} $ as a Poincaré ring spectrum via \ref{ex:fixpt_Mackey_functor}, and let $ A $ be an $ \EE_\sigma $-algebra over $ R $ whose underlying $ \EE_1 $-$ R $-algebra is (generalized) Azumaya. 
@@ -1479,22 +1512,39 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \begin{proposition}\label{prop:Poincare_cat_as_module_cat} \Lucy{later: add case of schemes with involution}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring. 
     Let $ \left(\mathcal{C}, \Qoppa\right) $ be an invertible idempotent-complete $ R $-linear Poincaré $ \infty $-category. 
-    Suppose given a Poincaré object $ (P, q) $ of $ \left(\mathcal{C}, \Qoppa\right) $ so that $ P $ is a generator for $ \mathcal{C} $.  
-    Then $ \left(\mathcal{C}, \Qoppa\right) $ is of the form $ \left(\Mod^\omega_A, \Qoppa_A \right) $ for some Azumaya algebra over $ R $ with genuine involution.  
+    Suppose given a Poincaré object $ (P, q) $ of $ \left(\mathcal{C}, \Qoppa\right) $ so that $ P $ is a generator for $ \mathcal{C} $, and write $ q^\dagger \colon P \xrightarrow{\sim} D_{\Qoppa_{\mathcal{C}}}(P) $ for the adjoint to the bilinear part of $ q $. Then
+    \begin{enumerate}[label=(\arabic*)]
+         \item \label{propitem:endomorphisms_Poincare_object_involution} $ \mathrm{End}_{\mathcal{C}}(P) $ inherits the structure of an $ \EE_\sigma $-$  R $-algebra. 
+         Informally, the involution on $ A:= \mathrm{End}_{\mathcal{C}}(P) $ is of the form $ a \mapsto (q^\dagger)^{-1} \circ D_{\Qoppa_{\mathcal{C}}}(a) \circ q^{\dagger} $. 
+         \item \label{propitem:endomorphisms_Poincare_object_central_Wall_anti-struc} There exists a lift of $ A:= \mathrm{End}_{\mathcal{C}}(P) $ to a genuine Azumaya algebra with central Wall anti-structure over $ R $ in the sense of Definition \ref{defn:Azumaya_genuine_central_Wall_anti-structure}. 
+         Informally, the $ R $-linear module with genuine involution over $ A $ is given by $ M_A := \hom_{\mathcal{C}}(P, P) $, the $ A \otimes \sigma^*A $-action on $ M_A $ is given by $ (f \otimes g) \otimes a \mapsto f \circ a \circ (q^\dagger)^{-1} \circ D_{\Qoppa_{\mathcal{C}}}(g) \circ q^{\dagger} $, and the involution on $ M_A $ is given by $ a \mapsto \mathrm{ev}_P^{-1} \circ D_{\Qoppa_{\mathcal{C}}}(q^\dagger)^{-1} \circ D_{\Qoppa_{\mathcal{C}}}(a) \circ q^\dagger $. 
+         The linear part of the module with genuine involution is given by \Lucy{do we want to describe the linear part?}
+         \Lucyil{In the notation of \cite[Example 3.1.13]{CDHHLMNNSI}, $ \varepsilon = \mathrm{ev}_P^{-1} \circ D_{\Qoppa_{\mathcal{C}}}(q^\dagger)^{-1} \circ q^\dagger $.}
+         \item \label{propitem:endomorphisms_Poincare_object_Azumaya_gi} Suppose that there exists a $ C_2 $-equivariant map $ \sphere \to M_A $ sending $ 1 \mapsto \mathrm{id}_P $ (where $ \sphere $ is endowed with the trivial $ C_2 $-action). 
+         Then $ R $-linear module with genuine involution $ M_A $ of part \ref{propitem:endomorphisms_Poincare_object_central_Wall_anti-struc} comes from the involution on $ A$ in the sense of Remark \ref{rmk:Azumaya_gi_Wall_compare}. 
+        In particular, $ \left(\mathcal{C}, \Qoppa\right) $ is of the form $ \left(\Mod^\omega_A, \Qoppa_A \right) $ for some Azumaya algebra over $ R $ with genuine involution.  
+         \item \label{propitem:endomorphisms_hyperbolic_Poincare_object} Suppose $ (P,q) $ is a hyperbolic Poincaré object in the sense of \cite[Definition 2.2.1]{CDHHLMNNSI}, and write $ A:= \mathrm{End}_{\mathcal{C}}(P) $. 
+         Then there exists a $ C_2 $-equivariant map $ \sphere \to M_A $ sending $ 1 \mapsto \mathrm{id}_P $, i.e. $ M_A $ satisfies the hypotheses of \ref{propitem:endomorphisms_Poincare_object_Azumaya_gi}. 
+     \end{enumerate} 
 \end{proposition} 
+\Lucy{compare Theorem 7.3 in \href{https://arxiv.org/abs/1305.5139}{this paper} by U. First `rings which are Morita equivalent to their opposites'?}
 \begin{corollary}
     Let $ (R, R \to R^{\varphi C_2} \to R^{tC_2}) $ be a Poincaré ring.  
     Let $ \left(\mathcal{C}, \Qoppa\right) $ be an invertible idempotent-complete $ R $-linear Poincaré $ \infty $-category. 
     Then $ \left(\mathcal{C}, \Qoppa\right) $ is of the form $ \left(\Mod^\omega_A, \Qoppa_A \right) $ for some Azumaya algebra over $ R $ with genuine involution.      
 \end{corollary}
 \begin{proof}
-    By Proposition \ref{prop:Poincare_cat_as_module_cat}, it suffices to exhibit a Poincaré object $ (P, q) $ whose underlying object is a generator of $ \mathcal{C} $. Since the underlying $R$-linear stable infinity category $\mathcal{C}$ is dualizable it follows that it is an $R$-linear category which staisfies {\'e}tale hyperdescent by \cite[Example 4.4]{Antieau_Gepner_Bruaer}.
+    By Proposition \ref{prop:Poincare_cat_as_module_cat}\ref{propitem:endomorphisms_Poincare_object_Azumaya_gi} \& \ref{propitem:endomorphisms_hyperbolic_Poincare_object}, it suffices to exhibit a hyperbolic Poincaré object $ (P, q) $ whose underlying object is a generator of $ \mathcal{C} $. Since the underlying $R$-linear stable infinity category $\mathcal{C}$ is dualizable it follows that it is an $R$-linear category which staisfies {\'e}tale hyperdescent by \cite[Example 4.4]{Antieau_Gepner_Bruaer}.
     %\Lucy{Need to show $ \mathcal{C} $ (or $ \mathrm{Ind}(\mathcal{C})$) defines a $ R $-linear category with descent?}
     By \cite[Theorem 6.1]{MR3190610}, $ \mathcal{C} $ has a generator $ G $. 
-    Now $ G \oplus D_{\Qoppa}G $ promotes canonically to a Poincaré object of $ \left(\mathcal{C}, \Qoppa\right) $ by \cite[Proposition 2.2.5]{CDHHLMNNSI}. 
+    Now $ G \oplus D_{\Qoppa}G $ promotes canonically to a hyperbolic Poincaré object of $ \left(\mathcal{C}, \Qoppa\right) $ by \cite[Proposition 2.2.5]{CDHHLMNNSI}. 
 \end{proof}
 \begin{proof}[Proof of Proposition \ref{prop:Poincare_cat_as_module_cat}]
-    Example~\ref{ex:endomorphisms_of_poincare_object} produces from this data an Azumaya algebra with genuine involution $A$. Since $P$ generates $\mathcal{C}$ we then get an equivalence $\mathcal{C}\simeq \mathrm{Mod}_A^\omega$ which by the construction of the genuine involution on $A$ will in fact be an equivalence of $R$-linear Poincar{\'e} infinity categories.
+    Part \ref{propitem:endomorphisms_Poincare_object_involution} follows from a similar argument to Example~\ref{ex:endomorphisms_of_poincare_object}. %produces from this data an Azumaya algebra with genuine involution $A$. 
+    Since $P$ generates $\mathcal{C}$, we have an equivalence $\mathcal{C}\simeq \mathrm{Mod}_A^\omega $ of $ R $-linear small idempotent-complete stable $ \infty $-categories. %which by the construction of the genuine involution on $A$ will in fact be an equivalence of $R$-linear Poincar{\'e} infinity categories. 
+    Part \ref{propitem:endomorphisms_Poincare_object_central_Wall_anti-struc} follows from Proposition \ref{prop:relative_poincare_cats_basic_properties}\ref{propitem:classify_R_lin_hermitian_struct} and unraveling definitions. 
+    Part \ref{propitem:endomorphisms_Poincare_object_Azumaya_gi} follows from \Lucy{todo:a relative version of \cite[Proposition 3.1.14]{CDHHLMNNSI}?}. 
+    \Lucyil{proof of part \ref{propitem:endomorphisms_hyperbolic_Poincare_object}.}
 \end{proof}
 
 \section{Stacks associated to Poincaré-\texorpdfstring{$ \infty $}{∞}-categories}
