@@ -729,31 +729,149 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     \Viktor{apply pic to the previous sequence and take $\pi_0$}
 \end{proof}
 
-\subsection{Hermitian line bundles}
+\subsection{The discrete case: nondegenerate hermetian line bundles}
+\label{subsection:the_discrete_case:nondegenerate_hermitian_forms}
+
+Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \to R $, and let $ M $ be an $ R $-module. We denote by $ \sigma^*M $ its restriction of scalars, i.e. the $ R $-module with underlying abelian group $ M $ and action $ r \star m = \sigma(r) \cdot m $, where $\cdot$ denotes the original action of $M$. Since $\sigma^2=\text{id}_R$, restriction of scalars is isomorphic to extension of scalars, and thus restriction of scalars $\sigma^*:\text{Mod}_R\rightarrow \text{Mod}_R$ is symmetric monoidal in this case.
+
 \begin{definition}
-    Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
-    Write $ \sigma_*R $ for the $ R $-module with underlying abelian group $ R $ and action $ r \cdot m = \sigma(r) \cdot m $. 
-    Let $ M $ be an $ R $-module. 
-    Define the \emph{adjoint} of $ M $ to be the $ R $-module $ M^\dag := \hom_R \left(M, \sigma_* R\right)$. \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}}
-    \Lucyil{From meeting May 29, 2025: Missing a $ \sigma_* $ before $ \hom $? clarify the $ R $-action!} 
-    Also recall that there is a canonical $ R $-linear isomorphism $ \left(M^\dag\right)^\dag \simeq M $. 
-    Note that given two $ R $-modules $ M, N $, the adjoint satisfies $ M^\dag \otimes N^\dag \simeq (M\otimes N)^\dag $. 
-    Let $ I $ be a projective $ R $-module (in particular, there is a canonical identification $ (I^\dag)^\dag \simeq I $). 
-    A \emph{$ \sigma $-hermitian form on $ I $} is an $ R $-linear isomorphism $ \varphi \colon I \xrightarrow{\sim} I^\dag $ so that $ \varphi^\dag = \varphi $. 
+\label{definition:sigma-dual_of_module}
+    Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \to R $, and let $M$ be an $R$-module. We define the $\sigma$-\emph{dual} of $ M $ to be the $ R $-module \Lucy{see 3.8-3.11 in \href{https://arxiv.org/pdf/2009.09124}{this paper}}  $$ M^\dag := \text{Hom}_R \left(\sigma^* M, R\right)=(\sigma^*M)^\vee.$$ 
 \end{definition}
-\begin{observation}\label{obs:tensoring_hermitian_forms}    
-    Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
-    Given two discrete $ R $-modules $ M, N $ equipped with $ \sigma $-hermitian forms $ \varphi, \psi $, respectively, $ \varphi \otimes \psi $ defines a $ \sigma $-hermitian form on $ M \otimes_R N $. 
-    Using the canonical isomorphism mentioned above, if $ \varphi $ is a $ \sigma $-hermitian form on $ M $, then $ \varphi^\dag $ induces a $ \sigma $-hermitian form on $ M^\dag $.  
-    Finally, observe that $ R $ has a canonical $ \sigma $-hermitian form which is the adjoint of the map $ R \otimes R \to R $, $ r \otimes s \mapsto r \sigma(s) $. 
-\end{observation}  
-\begin{definition}
-    Let $ R $ be a commutative discrete ring with a $ C_2 $-action $ \sigma \colon R \to R $. 
-    Define the \emph{hermitian Picard group of $ R $}\Lucy{workshop the name later; up to isomorphism} to have underlying set consisting of pairs $ (I, \varphi) $ where $ I $ is an invertible $ R $-module and $ \varphi $ is a $ \sigma $-hermitian form on $ I $. 
+
+\begin{remark}
+    \label{remark:restriction_of_scalars_commutes_with_dual}
+    Let $R$ be a discrete commuative ring and let $\sigma:R\rightarrow R$ be an isomorphism of commutative rings such that $\sigma\circ\sigma=\operatorname{id}_R$.  Then we have a canonical isomorphism of $R$-modules $$\operatorname{Hom}_R(\sigma^* M, N)\simeq \sigma^*\operatorname{Hom}_R(M,\sigma_*N),$$ for any $R$-modules $N$ and $M$. In particular, we have 
+    \begin{align*}
+        M^\dag =(\sigma^* M)^\vee & \simeq \sigma^* (M^\vee),\\ 
+        f &\mapsto \sigma\circ f 
+    \end{align*}
+    as $R$-modules. If $M$ is compact, we thus have a canonical isomorphism of $R$-modules $$c:M \simeq (M^\vee)^\vee\simeq \left(M^\dag\right)^\dag$$ $$m\mapsto \sigma\circ\operatorname{eval}_m.$$
+    If both $M$ and $N$ are compact $R$-modules, then, using symmetric monoidalality of $\sigma^*:\text{Mod}_R\rightarrow \text{Mod}_R$, the $\sigma$-dual satisfies $$(M \otimes_R N)^\dag\simeq\sigma^*(M\otimes_R N)^\vee\simeq\sigma^*(M^\vee \otimes_R N^\vee)\simeq M^\dag \otimes_R N^\dag.$$
+\end{remark}
     
-    By Observation \ref{obs:tensoring_hermitian_forms}, this set inherits a group structure. 
-    We write $ \mathrm{hPic}(R) $ for the group of $\sigma$-hermitian line bundles on $ \Spec R $.  
-\end{definition}     
+\begin{definition}
+    \label{definition:sigma-hermitian_form}
+    Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \to R $, and let $ I $ be a compact $ R $-module. A \Viktor{nondegenerate? or why not poincare?} \emph{$ \sigma $-hermitian form on $ I $} is an $ R $-linear isomorphism $ \varphi \colon I \xrightarrow{\sim} I^\dag $ such that the following diagram commutes 
+    \[\begin{tikzcd}
+        I \ar[r,"\varphi"] \ar[d,"c", "\simeq"'] & I^\dag \\
+        (I^\dag)^\dag \ar[ur,"\varphi^\dag"'] & .
+    \end{tikzcd}\]
+    We will denote a $\sigma$-hermitian form on $I$ by a pair $(I,\varphi)$.
+    
+    Let $I$ and $J$ be two compact $R$-modules with $\sigma$-hermitian forms $(I,\varphi)$ and $(J,\psi)$. A \emph{map of $\sigma$-hermitian forms}, $f:(I,\varphi)\rightarrow(J,\psi)$, is a map of $R$-modules $f:I\rightarrow J$ such that the following diagram commutes 
+    \[\begin{tikzcd}
+        I \ar[r,"\varphi"] \ar[d,"f"'] & I^\dag \\
+        J \ar[r,"\psi"'] & J^\dag \ar[u, "f^\dag"']. 
+    \end{tikzcd}\] We say $f$ is an isomorphism of $\sigma$-hermitian forms if its underlying $R$-module map is an isomorphism of $R$-modules.
+\end{definition}
+
+\begin{remark}
+    \label{remark:hermitian_forms_as_fixed_points}
+    Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \to R $, and let $I$ be a compact $R$-module. We have an induced $C_2$-action on the $R$-module $\operatorname{Hom}_R(I,I^\dag)$ given by the assignment $\varphi\mapsto \varphi^\dag\circ c$. A $\sigma$-hermitian form on $I$ is a fixed point of this action which happens to be an isomorphism. Via the following isomorphisms of $R$-modules $$\text{Hom}_R(I,I^\dag)\simeq \text{Hom}_R(I,(\sigma^*I)^\vee)\simeq \text{Hom}_R(I\otimes_R \sigma^*I,R)$$ this turns into the action $f(x,y)\mapsto \sigma(f(y,x))$. Thus, an alternative definition of a $\sigma$-hermitian form on $I$ is: a function $f:I\times I\rightarrow R$ which is nondegenerate and $R$-linear in the first variable, and satisfies $f(x,y)=\sigma(f(y,x))$ for all $x,y\in R$.
+\end{remark}
+
+The pairing 
+\begin{align*}
+    <-,->_\sigma: & R\times  R\rightarrow R\\
+    & (r,s)\mapsto \sigma(s)r
+\end{align*} 
+provides a canonical $\sigma$-hermitian form $u:R\rightarrow R^\dagger$, using Remark \ref{remark:hermitian_forms_as_fixed_points}. Moreover, given two $\sigma$-hermitian forms over $R$, $(I,\varphi)$ and $(J,\psi)$, the tensor product $\otimes_R$ provides a new $\sigma$-hermitian form $(I\otimes_R J, \varphi \otimes_R \psi)$
+\begin{align*}
+    \varphi\otimes_R \psi: & I\otimes J \rightarrow (I\otimes J)^\dagger\\
+    & i\otimes j\mapsto \left[x\otimes y \mapsto \varphi(i)(x)\cdot \psi(j)(y)\right].
+\end{align*}  
+Hence, the set of invertible $\sigma$-hermitian forms over $R$ forms a group under $\otimes_R$ with unit $(R,u)$.
+
+\begin{definition}
+    \label{definition:hermetian_picard_group}
+    Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma: R \rightarrow R$. The \emph{hermitian Picard group of} $(R,\sigma)$ is the group of isomorphism classes of invertible $\sigma$-hermitian forms over $R$ under tensor product, with unit $(R,u)$. We will denote the hermitian Picard group of $(R,\sigma)$ by $\text{Pic}^\text{h}(R,\sigma)$. In case $\sigma$ is the identity, we will also write $\text{Pic}^\text{h}(R)$.
+\end{definition}
+
+\begin{example}
+    \label{example:hermetian_picard_group_is_not_2-torsion-swap_action_on_fields}
+    Let $R=\mathbf{C}\oplus \mathbf{C}$ with $\sigma:R\rightarrow R$ given by the swap action, i.e. $(x,y)\mapsto (y,x)$. Since $R$ is a semi-local ring, its Picard group is trivial. Thus any element $(I,\varphi)\in \text{Pic}^\text{h}(R,\sigma)$ is of the form $(R,\varphi)$, up to isomorphism. An $R$-module isomorphism $\varphi:R\rightarrow R^\dagger$ is of the form $(r\mapsto (s\mapsto ra\sigma(s))$, for some $a\in R^\times$, and the condition $\varphi=\varphi^\dagger \circ c$ translates to $a=\sigma(a)$. Thus $a\in (R^\times)^{C_2}$ is a unit and a fixed point of the $C_2$-action on $R$, i.e. $a=(v,v)$ with $v\in \mathbf{C}^\times$. Given two $\sigma$-hermitian forms $(I,\varphi)$ and $(J,\psi)$ which correspond to elements $a$ and $b$ in $(R^\times)^{C_2}$ respectively, the tensor product $(I\otimes_R J,\varphi\otimes_R \psi)$ corresponds to the product $ab$. An isomorphism between  $(I,\varphi)$ and $(J,\psi)$ is an $R$-module isomorphism $f:I\xrightarrow{\simeq} J$ such that $$f^\dagger\circ\psi\circ f=\varphi.$$ Since $f$ is given by multiplication of an element $x\in R^\times$, this condition translates to the equation $$x\sigma(x)b=a.$$ Let $a=(v,v)$, $b=(w,w)$ and $x=(r,s)$ with $v,w,r,s\in \mathbf{C}^\times$. Then this condition breaks down to the two equations $rsw=v$ and $rsv=w$, in particular $(rs)^2=1$, and thus $rs=\pm 1$. Therefore, $(R,\varphi)$ and $(R,\psi)$ are isomorphic if and only if $\varphi=\pm\psi$. We conclude $$\text{Pic}^\text{h}(R,\sigma)\simeq \mathbf{C}^\times/{\pm 1}\simeq \mathbf{C}^\times.$$
+\end{example}
+
+The above Example \ref{example:hermetian_picard_group_is_not_2-torsion-swap_action_on_fields} shows that the hermitian Picard group of a discrete commutative ring with a nontrivial $C_2$-action is not necessarily $2$-torsion. We will see now that the situation simplifies in case of a trivial $C_2$-action.
+
+\begin{remark}
+    \label{remark:id-hermetian_forms_are_symmetric_billinear_forms}
+    Let $R$ be a discrete commutative ring equipped with the trivial $C_2$-action, i.e. $\sigma=\text{id}_R$. In that case, for any $R$-module $M$, we have $M^\dagger=M^\vee$. Thus, by Remark \ref{remark:hermitian_forms_as_fixed_points}, hermitian forms over $(R,\text{id}_R)$ are in bijection with nondegenerate symmetric bilinear forms over $R$. Let $(I,\varphi)$ be a hermitian form over $(R,\text{id}_R)$ corresponding to a nondegenerate symmetric bilinear form $A$ on $I$. Then $(I,\varphi)$ is invertible if $I$ is invertible as a module over $R$ and $A\otimes B=id_R$, for a nondegenerate symmetric biliniear form $B$ on $I^\vee$.
+\end{remark}
+
+\begin{remark}
+    \label{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}
+    Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$, and let $I$ be an invertible $R$-module. Let $\mathfrak{p}\subset R$ be a prime ideal. Since $I$ is locally free of rank $1$, a trivialization $\tau:I\otimes_R \sigma_*I\xrightarrow{\sim} R$ is locally of the form $$\tau_\mathfrak
+    {p}:I_\mathfrak{p}\otimes_{R_\mathfrak{p}} \sigma_* I_\mathfrak{p}\xrightarrow{\sim } R_\mathfrak{p}\otimes_{R_\mathfrak{p}} \sigma_* R_\mathfrak{p}\xrightarrow{x_\mathfrak{p}} R_\mathfrak{p},$$ where the left isomorphism is given by the tensor product $t\otimes_{R_\mathfrak{p}}t$ of a trivialization $t:I_\mathfrak{p}\xrightarrow{\sim} R_\mathfrak{p}$ and the map on the right is given by the formula $r\otimes s\mapsto \sigma(s)\cdot x_\mathfrak{p} \cdot r$ for a unit $x_\mathfrak{p}\in R_\mathfrak{p}^\times$. The unit $x_\mathfrak{p}$ is unique up to an element $N(y)=y\sigma(y)\in R_\mathfrak{p}^\times$, where $y$ could be hiding behind the trivialization $t$. Since $R$ is commutative, the symmetry condition in Definition \ref{definition:sigma-hermitian_form} is then equivalent to requiring $x_\mathfrak{p}\in (R_\mathfrak{p}^\times)^{C_2}$, for each prime ideal $\mathfrak{p}\subset R$. In particular, when $\sigma=\text{id}_R$, $\tau$ is automatically symmetric. So the symmetry condition in Definition \ref{definition:sigma-hermitian_form} is vacuous for hermetian forms with underlying invertible module when the action on $R$ is trivial.
+\end{remark}
+
+\begin{proposition}
+    \label{proposition:hermetian_picard_group_with_trivial_action_is_2-torsion}
+    Let $R$ be a discrete commutative ring. Then $\text{Pic}^\text{h}(R)$ is $2$-torsion.
+\end{proposition}
+
+\begin{proof}
+    \label{proof:hermetian_picard_group_with_trivial_action_is_2-torsion}
+    Let $(I,\varphi)$ be an invertible hermetian form over $(R,\text{id}_R)$. Then the trivialization $I\otimes_R I\xrightarrow{\text{id}_R\otimes \varphi} I\otimes_R I^\vee\xrightarrow{<,>} R$ is an isomorphism of forms $(I\otimes_R I,\varphi\otimes_R \varphi)\simeq (R,u)$, which can be checked locally as in Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}. %To see this we must show that $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, i.e. $\varphi(j)(i)\cdot \varphi(y)(x)=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Locally at a prime $\mathfrak{p}$ of $R$, $I$ is isomorphic to $R_\mathfrak{p}$ and thus $\varphi$ can be expressed by a unit $t$: $\varphi(a)(b)=bta$, for all $a,b\in R_\mathfrak{p}$. Then locally we have $\varphi(j)(i)\cdot \varphi(y)(x)=itjytx=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Thus we globally have $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, implying $(I,\varphi)^{\otimes 2}\simeq (R,u)$. This proves the claim.
+\end{proof}
+
+Given a discrete commutative ring $R$, we have a forgetful map $$\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)_2,$$where the domain is given by $2$-torsion in the classical Picard group of $R$. Let us now say more about this.
+
+\begin{proposition}
+    \label{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action}
+    Let $R$ be a discrete commutative ring. We have a split exact sequence $$0\rightarrow R^\times/(R^\times)^2\rightarrow\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)_2\rightarrow 0.$$
+\end{proposition}
+
+\begin{proof}
+    \label{proof:split_exact_sequence_for_hermetian_picard_group_with_trivial_action}
+    Let $(I,\varphi)$ be an invertible hermitian form over $(R,\text{id}_R)$, then $\varphi:I\xrightarrow{\simeq} I^\vee$ is an isomorphism between $I$ and its tensor inverse $I^\vee$, thus $I$ is $2$-torsion in the classical Picard group: $I\otimes_R I\simeq I\otimes_R I^\vee\simeq R$. Moreover, the above map is surjective by Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}, since the condition $I\otimes I\simeq R$ is equivalent to $I\simeq I^\vee$. The kernel of the above map is given by hermitian forms on $R$, up to isomorphism. That is, isomorphisms $\varphi: R\simeq R^\vee$, up to isomorphisms of hermitian forms. Two forms $\varphi$, $\psi$ are isomorphic if there exists an isomorphism $f:R\xrightarrow{\simeq} R$ such that $f^\dagger\circ\psi\circ f=\varphi$. Each of these isomorphisms is given by multiplication of a unit of $R$. Let $a,b,c\in R^\times$ be the units corresponding to $f, \varphi$ and $\psi$. Then $\varphi$ is isomorphic to $\psi$ if and only if $a^2c=b$, i.e. $c$ and $b$ vary by a square of a unit. Thus, the kernel of the above map is given by $R^\times/(R^\times)^2$. Finally, by Proposition \ref{proposition:hermetian_picard_group_with_trivial_action_is_2-torsion}, this is a short exact sequence of vector spaces over $\mathbf{F}_2$ and thus splits.
+\end{proof}
+
+\begin{remark}
+    \label{remark:hermitian_picard_group_with_trivial_action_is_the_first_fppf_mu_2_cohomology group}
+    Recall that we have an exact sequence of fppf sheaves $$0\rightarrow \mu_2\rightarrow \mathbf{G}_m\xrightarrow{\times 2} \mathbf{G}_m\rightarrow 0.$$ over $\mathbf{Z}$ and a canonical isomorphism $$\text{H}_\text{fppf}^1(X,\mathbf{G}_m)\simeq \text{Pic}(X),$$ for $X$ a scheme. 
+    Let $R$ be a discrete commutative ring. Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action} shows that we have the exact sequence $$\text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\rightarrow\text{Pic}^\text{h}(R)\rightarrow \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m).$$ Hence, in the case of a trivial action on $R$, the hermetian Picard group is isomorphic to the first fppf cohomology group of $R$ with $\mu_2$-coefficients $$\text{Pic}^\text{h}(R)\simeq \text{H}_\text{fppf}^{1}(R,\mu_2).$$ If $R$ is moreover smooth over a Noetherian scheme of finite Krull dimension $S$ which is smooth over a Dedekind domain of mixed characteristic or over a field, by \cite[Proposition 10.9]{spitzweck-thesis}, this is isomorphic to motivic cohomology in degree $(1,1)$ with coefficients in $\mathbf{Z}/2$ $$\text{Pic}^\text{h}(R)\simeq \text{H}^{1,1}(R,\mathbf{Z}/2).$$
+\end{remark}
+
+Given a discrete commutative ring $R$ and an isomorphism $\sigma:R\rightarrow R$, the $\sigma$-dual defines a $C_2$-action on the Picard group of $R$: 
+\begin{align*}
+    (-)^\dag:\text{Pic}(R) &\rightarrow \text{Pic}(R)\\
+    [I] &\mapsto [I^\dagger]=[\sigma^* I^\vee]=-[\sigma^* I].
+\end{align*} 
+Given an invertible $\sigma$-hermetian form $\varphi:I\xrightarrow{\simeq} I^\dagger$, the $R$-module $I$ is a fixed point in the Picard group of $R$ with respect to this action. Let us denote the fixed points of $\text{Pic}(R)$ by this action by $\text{Pic}(R)^{-\sigma}$. We then have a forgetful map $$\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}.$$
+
+\begin{notation}
+    \label{notation:sigma-dual_fixed_points_of_picard_group}
+    Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$. The $\sigma$-dual defines a $C_2$-action on the Picard group of $R$ via $[I]\mapsto -[\sigma^*I]$. We will denote the fixed points of $\text{Pic}(R)$ of this action by $\text{Pic}(R)^{-\sigma}$.
+\end{notation}
+
+An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and only if $[I]$ is in the kernel of the corresponding norm map: $N([I])=(\sigma +1)[I]=0$. This observation leads to the following generalization of Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action}
+
+\begin{proposition}
+    \label{proposition:exact_sequence_for_hermetian_picard_group}
+    Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$. Then we have the following exact sequence $$0 \rightarrow (R^\times)^{C_2}/N(R^\times)\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}.$$ \Viktor{does this always split? surjection unclear, since the symmetry condition of hermetian forms might not allow to lift a class in $\text{Pic}(R)^{-\sigma}$ to a hermetian form.}
+\end{proposition}
+
+\begin{example}
+    \label{example:hermetian_picard_group_does_not_map_to_2-torsion}
+    Let $R=\mathbf{Z}[\frac{1+\sqrt{-23}}{2}]$ with the action $\sigma:R\rightarrow R$ given by complex conjugation. The Picard group $\text{Pic}(R)\simeq \mathbf{Z}/3$ of $R$ is generated by the ideal $I=(2,\frac{1+\sqrt{-23}}{2})$ \Viktor{check again if $I$ lifts to a hermetian form}. We have $\sigma^* I\simeq (2,\frac{1-\sqrt{-23}}{2})$. Since $(2,\frac{1+\sqrt{-23}}{2})(2,\frac{1-\sqrt{-23}}{2})=(2)$ is a principal ideal, we know $[\sigma^*I]=-[I]$ in $\text{Pic}(R)$.  Thus the $C_2$-action on the Picard group induced by the $\sigma$-adjoint is given by the identity. Therefore, $\text{Pic}(R)^{-\sigma}\simeq \text{Pic}(R)\simeq \mathbf{Z}/3$. The fixed points of $R$ are given by integers, thus $(R^\times)^{C_2}/N(R^\times)\simeq \mathbf{Z}/2$. By Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group} we have $$\text{Pic}^\text{h}(\mathbf{Z}[\frac{1+\sqrt{-23}}{2}],\sigma)\simeq \mathbf{Z}/2\oplus\mathbf{Z}/3.$$ This example shows that the forgetful map $\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)$ does generally not land in the $2$-torsion part of the Picard group of $R$.
+\end{example}
+
+\begin{remark}
+    \label{remark:hermetian_picard_group_is_C_2-motivic_cohomology_in_degree_(2,1)}
+    It follows from Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group} that we have an exact sequence $$R^\times \xrightarrow{N}( R^\times)^{C_2}\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)\xrightarrow{N} \text{Pic}(R)^{-\sigma}.$$ \Viktor{not exact at the second N as of now. is this maybe related toequivariant motivic cohomology in some degree?}
+\end{remark}
+
+\begin{remark}
+    We have a commutative diagram of exact sequences
+    \[\begin{tikzcd}
+         \mu_2(R)^{C_2} \ar[r] \ar[d] & (R^\times)^{C_2} \ar[r,"\times 2"] \ar[d] & (R^\times)^{C_2} \ar[r] \ar[d] & \text{Pic}^\text{h}(R^{C_2}) \ar[r] \ar[d] & \text{Pic}(R^{C_2}) \ar[r,"\times 2"] \ar[d] & \text{Pic}(R^{C_2}) \ar[d]\\
+         (R^\times)^{C_2} \ar[r] & R^\times \ar[r,"N"] & (R^\times)^{C_2} \ar[r] & \text{Pic}^\text{h}(R,\sigma) \ar[r] & \text{Pic}(R) \ar[r,"N"] & \text{Pic}(R) 
+    \end{tikzcd}\]
+    \Viktor{second row is not exact at the first pic as of now. all vertical maps are injective? Pic satisfies galois descent. Maybe so does $Pic^h$?}
+\end{remark}
+
 \begin{theorem}\label{theorem:Poincare_Pic_of_fixpt_Mackey_functor}
     Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \xrightarrow{\sim} R $ via ring maps. 
     Regard $ R $ as a Poincaré ring via Example \ref{ex:fixpt_Mackey_functor}. 
