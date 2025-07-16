@@ -465,19 +465,19 @@ Assume that $ X $ has a \emph{good quotient} $ Y $ in the sense of \cite[Remark 
         \Mod_{\underline{\mathcal{O}}}^\otimes \colon & \mathrm{Op}(Y)^\op \xrightarrow{\underline{\mathcal{O}}} C_2\EE_\infty\mathrm{Alg}\left(\Spectra^{C_2}\right) \xrightarrow{\Mod_{(-)}^\otimes} C_2\otimes\Cat \,,  
     \end{split}    
     \end{equation}
-    where $ C_2\otimes\Cat $ denotes the $ \infty $-category of (small)\Lucy{bleh...cardinals} $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-categories. 
+    where $ C_2\otimes\Cat $ denotes the $ \infty $-category of (small)\Lucy{bleh...cardinals} $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-categories and we regard $ \Mod_{(-)} $ as taking values in $ C_2 \otimes \Cat $ using \cite[\S A]{LYang_normedrings}. 
     In the notation of Construction \ref{cons:structure_sheaf_of_Green_functors}, this functor sends the affine open $ \Spec A \subseteq Y $ to the category of modules in $ C_2 $-spectra over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $. 
     Define\Lucy{invent better notation later} $ \Mod_{\underline{\mathcal{O}}} $, $ \Mod_{\underline{\mathcal{O}}}^\otimes $ to be the limits in $ \Cat $, $ C_2 \otimes \Cat $, resp. of the functors in (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}). 
     In particular, if we write $ s \colon \int \Mod_{\underline{\mathcal{O}}} \to \mathrm{Op}(Y)^\op $ for the cocartesian fibration obtained by taking the Grothendieck construction on (\ref{eq:functor_classifying_C2_mod_over_sheaf_of_Green_func}), an object of $ \Mod_{\underline{\mathcal{O}}} $ is a cocartesian section of $ s $. 
     In other words, it is a choice, for each affine open $ \Spec A $ of $ Y $ (same notation as before), of a module over the $ C_2 $-$ \EE_\infty $-algebra which has underlying $ C_2 $-Mackey functor $ A \to B $ which glue compatibly. 
 \end{construction} 
 Observe that for each $ A \to B $, there is a quadratic norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{N^{C_2}B}\left(\Spectra^{C_2}\right) $ and a quadratic relative norm functor $ N^{C_2} \colon \Mod_{B}(\Spectra) \to \Mod_{A\to B}\left(\Spectra^{C_2}\right) $. 
-\begin{construction}\label{cons:globalize_relative_norm}
+\begin{observation}\label{obs:globalize_relative_norm}
     Let $ X $ be a scheme with an involution, and let $ p \colon X \to Y $ exhibit $ Y $ as a good quotient of $ X $. 
     Assume that $ p $ is affine. 
     The norm functors (resp. relative norm functors) $ N^{C_2}_e $ assemble under Construction \ref{cons:structure_sheaf_of_Green_functors} to a `global' norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to N^{C_2} \pi_{\#} \mathcal{O}_X\Mod $ (resp. relative norm functor $ N^{C_2}_Y \colon \pi_{\#}\mathcal{O}_X \Mod \to \underline{\mathcal{O}}\Mod $). 
     Moreover, these functors are quadratic. 
-\end{construction}
+\end{observation}
 For each affine open $ j \colon \Spec A \subseteq Y $, write $ B = \Gamma (\mathcal{O}_{\Spec A \times_Y X}) $, consider the composite 
 % Then the functor $ N^{C_2}_Y $ is the limit over all $ \Spec A \subseteq Y $ of the functors 
 \begin{equation*}
@@ -487,7 +487,7 @@ where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which 
 \Lucy{todo: use effective descent/limit definition for $ \underline{\mathcal{O}} $-modules.} 
 Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
 \begin{definition}
-    Varying $ X \to Y $, Constructions \ref{cons:C2_mod_over_sheaf_of_Green_func} and \ref{cons:globalize_relative_norm} define a functor \Lucy{want: codomain consists of $ C_2 $-stable $ C_2 $-presentable $ C_2 $-$ \infty $-categories}
+    Varying $ X \to Y $, Construction \ref{cons:C2_mod_over_sheaf_of_Green_func} and Observation \ref{obs:globalize_relative_norm} define a functor \Lucy{want: codomain consists of $ C_2 $-stable $ C_2 $\emph{-presentable} $ C_2 $-$ \infty $-categories}
     \begin{align*}
         \left(\mathrm{qSch}^{C_2}\right)^{\op} &\to C_2 \otimes \Cat  \\
         \left(X, \lambda, Y, p \right) &\mapsto \underline{\Mod}_{\underline{\mathcal{O}}}\left(\underline{\Spectra}^{C_2}\right)
@@ -508,7 +508,7 @@ There is a functor
 \begin{equation}\label{eq:C2_cat_to_Poincare_cat}
 \begin{split}
     \widetilde{\mathrm{eInv}} &\to \EE_\infty \mathrm{Alg}\left(\mathrm{Cat}^h \right) \\
-    (\mathcal{C}, L) &\mapsto (\mathcal{C}^e, \mathcal{C}^e \xrightarrow{N_{\mathcal{C}}} \mathcal{C}^{C_2} \xrightarrow{\hom_{\mathcal{C}^{C_2}}(-,L)} \Spectra)
+    \left(\mathcal{C}, L\right) &\mapsto (\mathcal{C}^e, \mathcal{C}^e \xrightarrow{N_{\mathcal{C}}} \mathcal{C}^{C_2} \xrightarrow{\hom_{\mathcal{C}^{C_2}}(-,L)} \Spectra)
 \end{split}
 \end{equation}
 \Lucy{Pretty sure distributive norm functors are 2-excisive (results \href{https://arxiv.org/pdf/2010.09097}{here} should generalize readily)...if not, can define the problem away.}
@@ -516,6 +516,10 @@ There is a functor
     The functor of (\ref{eq:C2_cat_to_Poincare_cat}) lifts to a functor $ \widetilde{\mathrm{eInv}}  \to \Catp $. 
 \end{lemma}
 \Lucy{Example: Special case where $ X $ has trivial $ C_2 $ action and $ X = Y $.}
+\begin{proof}
+    Let $ \left(\mathcal{C}, L\right) $ and $ \left(\mathcal{D}, M\right) $ be objects of $ \widetilde{\mathrm{eInv}} $. 
+    A morphism $ \left(\mathcal{C}, L\right) \to \left(\mathcal{D}, M\right) $ consists of a pair $ (F, \phi) $ where $ F \colon \mathcal{C} \to \mathcal{D} $ is a $ C_2 $-stable $ C_2 $-symmetric monoidal $C_2 $-functor and $ \phi \colon F(L) \simeq M $. 
+\end{proof}
 \begin{lemma}\label{lemma:line_bundle_as_C2_sheaf}
     Let $ X $ be a scheme with involution $ \sigma \colon X \xrightarrow{\sim} X $ equipped with a good quotient $ \pi \colon X \to Y $. 
     Let $ L $ be a line bundle on $ Y $. 
@@ -537,7 +541,7 @@ There is a functor
         \perf_X^\op \xrightarrow{\pi_{\#}} \pi_{\#}\mathcal{O}_X\Mod^{\omega,\op} \xrightarrow{N^{C_2}} N^{C_2}\pi_{\#}\mathcal{O}_X\Mod\left(\Spectra^{C_2}\right)^\op \xrightarrow{\hom_{N^{C_2}\pi_{\#}\mathcal{O}_X}(-,\underline{L})} \Spectra \,,
     \end{equation*}
     where $ \underline{L} $ is a $ \underline{\mathcal{O}} $-module by Lemma \ref{lemma:line_bundle_as_C2_sheaf} and $ \underline{\mathcal{O}} $ is a $ N^{C_2} \pi_{\#}\mathcal{O}_X $-algebra by Lemma \ref{lemma:identify_structure_sheaf_of_Green_func}. 
-    By Construction \ref{cons:globalize_relative_norm} and the fact that the composite of an exact (1-excisive) functor and an $ m$-excisive functor is $m$-excisive (see \cite[\S2.2]{Kpoly}), $ \Qoppa_{\sigma,L} $ is quadratic. 
+    By Observation \ref{obs:globalize_relative_norm} and the fact that the composite of an exact (1-excisive) functor and an $ m$-excisive functor is $m$-excisive (see \cite[\S2.2]{Kpoly}), $ \Qoppa_{\sigma,L} $ is quadratic. 
     % \Lucy{want to show that the assignment $ (\sigma:X \to X, \pi: X \to Y, L) \mapsto (\perf_X, \Qoppa_{\sigma,L}) $ defines a functor from some category of schemes with involution (+line bundle) to the $ \infty $-category of Poincaré $ \infty $-categories.}
 \end{definition}
 \begin{example} 
@@ -993,6 +997,7 @@ In this section, we will use modules over Poincaré ring spectra to define deriv
         The locally $ \theta $-cocartesian maps are manifestly closed under composition, hence we are done.        \qedhere
     \end{enumerate}
 \end{proof}
+If $ R $ is a Poincaré ring, then the $ \infty $-categories of $ R $-linear Poincaré and hermitian $ \infty $-categories are closed symmetric monoidal, similarly to their absolute counterparts \cite[Corollary 6.2.9, 6.2.15]{CDHHLMNNSI}. 
 \begin{corollary}\label{cor:poincare_fourier_mukai}
     % Will want to use this to show that some functor: ``algebras'' to Poincaré infinity categories is fully faithful; see proof of Proposition 3.1 in Antieau--Gepner. 
     Let $ R $ be a Poincaré ring, and let $ A, B $ be $ \mathbb{E}_1 $-$ R $-algebras with genuine involution. \Lucy{reference to definition!}
