@@ -835,8 +835,30 @@ Given a discrete commutative ring $R$, we have a forgetful map $$\text{Pic}^\tex
 \begin{remark}
     \label{remark:hermitian_picard_group_with_trivial_action_is_the_first_fppf_mu_2_cohomology group}
     Recall that we have an exact sequence of fppf sheaves $$0\rightarrow \mu_2\rightarrow \mathbf{G}_m\xrightarrow{\times 2} \mathbf{G}_m\rightarrow 0.$$ over $\mathbf{Z}$ and a canonical isomorphism $$\text{H}_\text{fppf}^1(X,\mathbf{G}_m)\simeq \text{Pic}(X),$$ for $X$ a scheme. 
-    Let $R$ be a discrete commutative ring. Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action} shows that we have the exact sequence $$\text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\rightarrow\text{Pic}^\text{h}(R)\rightarrow \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m).$$ Hence, in the case of a trivial action on $R$, the hermetian Picard group is isomorphic to the first fppf cohomology group of $R$ with $\mu_2$-coefficients $$\text{Pic}^\text{h}(R)\simeq \text{H}_\text{fppf}^{1}(R,\mu_2).$$ If $R$ is moreover smooth over a Noetherian scheme of finite Krull dimension $S$ which is smooth over a Dedekind domain of mixed characteristic or over a field, by \cite[Proposition 10.9]{spitzweck-thesis}, this is isomorphic to motivic cohomology in degree $(1,1)$ with coefficients in $\mathbf{Z}/2$ $$\text{Pic}^\text{h}(R)\simeq \text{H}^{1,1}(R,\mathbf{Z}/2).$$
+    Let $R$ be a discrete commutative ring. Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action} shows that we have the exact sequence $$\text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\rightarrow\text{Pic}^\text{h}(R)\rightarrow \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m).$$ Hence, in the case of a trivial action on $R$, the hermetian Picard group is isomorphic to the first fppf cohomology group of $R$ with $\mu_2$-coefficients $$\text{Pic}^\text{h}(R)\simeq \text{H}_\text{fppf}^{1}(R,\mu_2).$$ If $R$ is moreover smooth over a Noetherian scheme of finite Krull dimension $S$ which is smooth over a Dedekind domain of mixed characteristic or over a field\Viktor{is this really the highest generality? }, by \cite[Proposition 10.9]{spitzweck-thesis}, this is isomorphic to motivic cohomology in degree $(1,1)$ with coefficients in $\mathbf{Z}/2$ $$\text{Pic}^\text{h}(R)\simeq \text{H}^{1,1}(R,\mathbf{Z}/2).$$
 \end{remark}
+
+The split exact sequence of Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action} can be generalized to the case of a nontrivial $C_2$-action on $R$. To proof that, let us first establish two basic properties of the hermetian Picard group.
+
+\begin{proposition}
+    \label{proposition:hermetian_picard_group_is_nilinvariant}
+    The hermetian Picard group $\text{Pic}^\text{h}$ is nilinvariant. More concretely, let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$ and let $R_\text{red}$ be the reduced ring of $R$ with $C_2$-action induced by the reduction map $R\rightarrow R_\text{red}$. Then the reduciton map induces an isomorphism $$\text{Pic}^\text{h}(R,\sigma)\xrightarrow{\sim} \text{Pic}^\text{h}(R_\text{red},\sigma).$$
+\end{proposition}
+
+\begin{proof}
+    \label{proof:hermetian_picard_group_is_nilinvariant}
+    This follows since the Picard functor of $\infty$-categories is nilinvariant. \Viktor{more details}
+\end{proof}
+
+\begin{proposition}
+    \label{proposition:hermetian_picard_group_commutes_with_finite_sums}
+    The hermetian Picard group $\text{Pic}^\text{h}$ commutes with finite sums. 
+\end{proposition}
+
+\begin{proof}
+    \label{proof:hermetian_picard_group_commutes_with_finite_sums}
+    \Viktor{todo}
+\end{proof}
 
 Given a discrete commutative ring $R$ and an isomorphism $\sigma:R\rightarrow R$, the $\sigma$-dual defines a $C_2$-action on the Picard group of $R$: 
 \begin{align*}
@@ -854,27 +876,42 @@ An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and o
 
 \begin{proposition}
     \label{proposition:exact_sequence_for_hermetian_picard_group}
-    Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$. Then we have the following exact sequence $$0 \rightarrow (R^\times)^{C_2}/N(R^\times)\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}.$$ \Viktor{does this always split? surjection unclear, since the symmetry condition of hermetian forms might not allow to lift a class in $\text{Pic}(R)^{-\sigma}$ to a hermetian form.}
+    Let $\text{Spec}(R)$ be a discrete irreducible affine scheme with a $C_2$-action $\sigma:R\rightarrow R$. Then we have the following split exact sequence $$0 \rightarrow (R^\times)^{C_2}/N(R^\times)\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}\rightarrow 0.$$ \Viktor{pich is likely not a zariski sheaf, but I believe there is an exact sequence for sheaves that can deal with intersections of irreducible components, which could explain the general case.}
 \end{proposition}
+
+\begin{proof}
+    \label{proof:exact_sequence_for_hermetian_picard_group}
+    It follows from Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units} that the kernel of the forgetful map $\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}$ is given by $(R^\times)^{C_2}/N(R^\times)$. It remains to show that any invertible module $I$ over $R$ has a nondegenerate $\sigma$-hermetian form. By Proposition \ref{proposition:hermetian_picard_group_is_nilinvariant} we may assume that $R$ is an integral domain. In that case the Picard group of $R$ is isomorphic to the ideal class group of $R$, $\text{Cl}(R)\xrightarrow{\sim} \text{Pic}(R)$. Thus, we may assume that $I$ is a fractional ideal of $R$, which naturally comes with the pairing $I\otimes_R \sigma^* I\rightarrow R$, $i\otimes_R j\mapsto \sigma(j)i$. This pairing is nondegenerate, by the assumption that $I\in \text{Pic}(R)^{-\sigma}$. The assignment of this pairing provides a section $\text{Pic}(R)^{-\sigma}\rightarrow \text{Pic}^\text{h}(R,\sigma)$ and thus proves the claim.
+\end{proof}
 
 \begin{example}
     \label{example:hermetian_picard_group_does_not_map_to_2-torsion}
-    Let $R=\mathbf{Z}[\frac{1+\sqrt{-23}}{2}]$ with the action $\sigma:R\rightarrow R$ given by complex conjugation. The Picard group $\text{Pic}(R)\simeq \mathbf{Z}/3$ of $R$ is generated by the ideal $I=(2,\frac{1+\sqrt{-23}}{2})$ \Viktor{check again if $I$ lifts to a hermetian form}. We have $\sigma^* I\simeq (2,\frac{1-\sqrt{-23}}{2})$. Since $(2,\frac{1+\sqrt{-23}}{2})(2,\frac{1-\sqrt{-23}}{2})=(2)$ is a principal ideal, we know $[\sigma^*I]=-[I]$ in $\text{Pic}(R)$.  Thus the $C_2$-action on the Picard group induced by the $\sigma$-adjoint is given by the identity. Therefore, $\text{Pic}(R)^{-\sigma}\simeq \text{Pic}(R)\simeq \mathbf{Z}/3$. The fixed points of $R$ are given by integers, thus $(R^\times)^{C_2}/N(R^\times)\simeq \mathbf{Z}/2$. By Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group} we have $$\text{Pic}^\text{h}(\mathbf{Z}[\frac{1+\sqrt{-23}}{2}],\sigma)\simeq \mathbf{Z}/2\oplus\mathbf{Z}/3.$$ This example shows that the forgetful map $\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)$ does generally not land in the $2$-torsion part of the Picard group of $R$.
+    Let $R=\mathbf{Z}[\frac{1+\sqrt{-23}}{2}]$ with the action $\sigma:R\rightarrow R$ given by complex conjugation. The fixed points of $R$ are given by integers, thus $(R^\times)^{C_2}/N(R^\times)\simeq \mathbf{Z}/2$. The Picard group $\text{Pic}(R)\simeq \mathbf{Z}/3$ of $R$ is generated by the ideal $I=(2,\frac{1+\sqrt{-23}}{2})$. We have an isomorphism $\sigma^* I\xrightarrow{\sim} (2,\frac{1-\sqrt{-23}}{2})$, $x\mapsto \sigma(x)$. Since $(2,\frac{1+\sqrt{-23}}{2})(2,\frac{1-\sqrt{-23}}{2})=(2)$ is a principal ideal, we know $[\sigma^*I]=-[I]$ in $\text{Pic}(R)$.  Thus the $C_2$-action on the Picard group induced by the $\sigma$-dual is given by the identity. Therefore, $\text{Pic}(R)^{-\sigma}\simeq \text{Pic}(R)\simeq \mathbf{Z}/3$. Thus, by Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group}, we have $$\text{Pic}^\text{h}(\mathbf{Z}[\frac{1+\sqrt{-23}}{2}],\sigma)\simeq \mathbf{Z}/2\oplus\mathbf{Z}/3.$$ This example shows that the forgetful map $\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)$ does generally not land in the $2$-torsion part of the Picard group of $R$.
 \end{example}
 
 \begin{remark}
     \label{remark:hermetian_picard_group_is_C_2-motivic_cohomology_in_degree_(2,1)}
-    It follows from Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group} that we have an exact sequence $$R^\times \xrightarrow{N}( R^\times)^{C_2}\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)\xrightarrow{N} \text{Pic}(R)^{-\sigma}.$$ \Viktor{not exact at the second N as of now. is this maybe related toequivariant motivic cohomology in some degree?}
+    Let $\text{Spec}(R)$ be a discrete irreducible affine scheme with a $C_2$-action $\sigma:R\rightarrow R$. It follows from Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group} that we have an exact sequence $$0\rightarrow (R^\times)^{-\sigma}\rightarrow R^\times \xrightarrow{N}( R^\times)^{C_2}\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)\xrightarrow{N} \text{Pic}(R)^{-\sigma}.$$
 \end{remark}
 
 \begin{remark}
     We have a commutative diagram of exact sequences
     \[\begin{tikzcd}
-         \mu_2(R)^{C_2} \ar[r] \ar[d] & (R^\times)^{C_2} \ar[r,"\times 2"] \ar[d] & (R^\times)^{C_2} \ar[r] \ar[d] & \text{Pic}^\text{h}(R^{C_2}) \ar[r] \ar[d] & \text{Pic}(R^{C_2}) \ar[r,"\times 2"] \ar[d] & \text{Pic}(R^{C_2}) \ar[d]\\
-         (R^\times)^{C_2} \ar[r] & R^\times \ar[r,"N"] & (R^\times)^{C_2} \ar[r] & \text{Pic}^\text{h}(R,\sigma) \ar[r] & \text{Pic}(R) \ar[r,"N"] & \text{Pic}(R) 
+         0\ar[r] & \mu_2(R)^{C_2} \ar[r] \ar[d] & (R^\times)^{C_2} \ar[r,"\times 2"] \ar[d] & (R^\times)^{C_2} \ar[r] \ar[d] & \text{Pic}^\text{h}(R^{C_2}) \ar[r] \ar[d] & \text{Pic}(R^{C_2}) \ar[r,"\times 2"] \ar[d] & 2\text{Pic}(R^{C_2}) \ar[d]\\
+         0\ar[r] & (R^\times)^{-\sigma} \ar[r] & R^\times \ar[r,"N"] & (R^\times)^{C_2} \ar[r] & \text{Pic}^\text{h}(R,\sigma) \ar[r] & \text{Pic}(R) \ar[r,"N"] & \text{Pic}(R)^{C_2}
     \end{tikzcd}\]
     \Viktor{second row is not exact at the first pic as of now. all vertical maps are injective? Pic satisfies galois descent. Maybe so does $Pic^h$?}
 \end{remark}
+
+\begin{example}
+    \label{example:hermetian_picard_group_is_not_a_zariski_sheaf}
+    Let $R=k[x,y]/(xy)$. \Viktor{find example to show pich is not a zariski sheaf}
+\end{example}
+
+\begin{proposition}
+    \label{proposition:pich_has_galois_descent}
+    \Viktor{show galois descent for hermetian picard group}
+\end{proposition}
 
 \begin{theorem}\label{theorem:Poincare_Pic_of_fixpt_Mackey_functor}
     Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \xrightarrow{\sim} R $ via ring maps. 
@@ -1399,6 +1436,20 @@ Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fibe
     \begin{proof}
         All the remains to show is the identification of $\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})\simeq \mathrm{Mod}_{\mathrm{Mod}_{A^{hC_2}}^\omega}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})$, which follows from the monoidal equivalence $(\mathrm{Mod}_{A^e}^{\omega})^{hC_2}\simeq \mathrm{Mod}_{A^{hC_2}}^\omega$, and the fact that under this equivalence an Azumaya algebra over $B$ is sent to $(B\otimes_A\sigma^*B)^{C_2}$ which is exactly the cohomological transfer map (see \cite[Example 6.2.3]{azumaya_involution}). \Lucy{Definition 6.2?}
     \end{proof}
+
+    \begin{construction}
+        Let $A$ denote a Poincar{\'e} ring with underlying genuine $C_2$ ring $A^L$. Denote by $\mathrm{Mod}_{A^L}$ the symmetric monoidal category $\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2})$. There is then a symmetric-monoidal functor \[N^{C_2}_{A^L}:\mathrm{Mod}_{A^e}(\mathrm{Sp})\to \mathrm{Mod}_{A^L}\] given by taking the relative norm. Define the \textit{categorical norm} to be the functor \[N^{C_2}_{A^L}:\mathrm{Mod}_{\mathrm{Mod}_{A^e}^\omega}(\mathrm{Cat}_{st,idem}^\infty)\to \mathrm{Mod}_{\mathrm{Mod}_{A^L}^\omega}(\mathrm{Cat}_{st,idem}^\infty)\] by $N^{C_2}_{A^L}\mathcal{C}:=\mathcal{C}^{\op}\otimes_{\mathrm{Mod}_{A^e}}\mathrm{Mod}_{A^L}$. Base-change is symmetric monoidal and therefore we get an induced map $\mathrm{br}(A^e)\to \mathrm{br}(A^L)$, which by abuse of notation we will also refer to as the norm $N^{C_2}_{A^L}$. Note also that this same construction goes through for schemes with involution and good quotients.
+    \end{construction}
+
+    \begin{theorem}
+        Let $A$ be a Poincar{\'e} ring. Then there is a fiber sequence \[\pnbr(A)\to \mathrm{br}(A^e)\xrightarrow{N^{C_2}_{A^L}} \mathrm{br}(A^L)\] natural in $A$. If $(X,\lambda, Y,\pi)$ is a scheme with good quotient then there is a fiber sequence \[\pnbr(X,\lambda, Y,\pi)\to \mathrm{br}(X)\xrightarrow{N^{C_2}_{\underline{O}_X}} \mathrm{br}(\underline{\mathcal{O}}_X)\] natural in $(X,\lambda, Y ,\pi)$. 
+    \end{theorem}
+    \begin{proof}
+        We will first construct a map. For this, it is enough to show that any Poincar{\'e} category $(\mathcal{C},\Qoppa)$ in $\mathrm{Mod}_{(\mathrm{Mod}_{A}^\omega, \Qoppa_A)}$ naturally admits a trivialization $N^{C_2}_{A^L}\mathcal{C}\simeq \mathrm{Mod}_{A^L}^\omega$ on the full subcategory of invertible objects. Note that $\Qoppa$ naturally factors through a $\mathrm{Mod}_{A^e}^\omega$-linear functor $\Qoppa^{\text{gen}}:\mathcal{C}^\op \to \mathrm{Mod}_{A^L}$ such that $\Qoppa = (\Qoppa^{\text{gen}})^{C_2}$. This base-changes to a trivialization. To see this, let $X\in \mathcal{C}$ denote a Poincar{\'e} generator. Then identifying $\mathcal{C}$ with $\mathrm{Mod}_{\mathrm{End}(X)}^\omega$ we have that $N^{C_2}_{A^L}\Qoppa^{\text{gen}}(X)=N^{C_2}_{e}\mathrm{End}(X)\otimes_{N_e^{C_2}A^e}A^L$ which, since $\mathrm{End}(X)$ is an Azumaya algebra, generates $\mathrm{Mod}_{A^L}$. 
+        
+        Looping this sequence give the fiber sequence of Theorem~\ref{cor:Poincare_Brauer_to_Brauer_fiber}, so it is enough to check that the sequence \[\pi_0(\pnbr(A))\to \pi_0(\mathrm{br}(A^e))\to \pi_0(\mathrm{br}(A^L))\] is exact. Let $[\mathcal{C}]\in \pi_0(\mathrm{br}(A^e))$ be a Brauer class such that $[N^{C_2}_{A^L}\mathcal{C}]=0$, or equivalently that there exists a trivialization $N^{C_2}_{A^L}\mathcal{C}\simeq \mathrm{Mod}_{A^L}^\omega$. This trivialization is adjoint to a $\mathrm{Mod}_{A^e}^\omega$-linear functor $\mathcal{C}^{\op}\xrightarrow{\Qoppa^{\text{gen}}}\mathrm{Mod}_{A^L}^\omega$, which induces a Hermetian structure via $\Qoppa=(\Qoppa^{\text{gen}})^{C_2}$. Since $\Qoppa^{\text{gen}}$ is adjoint to an equivalence it must send any compact generator of $\mathcal{C}$ to a compact generator, hence the induced Hermetian structure is in fact Poincar{\'e} and is by construction $(\mathrm{Mod}_{A^e}^\omega, \Qoppa_A)$-linear. Note that we may repeat the above procedure for $\mathcal{C}^\vee$ and (up to twisting by a line bundle over $A^L$) this gives an inverse of $(\mathcal{C},\Qoppa)$, therefore showing the $[(\mathcal{C},\Qoppa)]$ is a Poincar{\'e}-Brauer class as desired.
+    \end{proof}
+
 
 \subsection{Azumaya algebras with genuine involution} 
 In this section, we introduce the notion of a derived/generalized Azumaya algebra with involution. 
