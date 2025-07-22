@@ -1,61 +1,77 @@
 \begin{definition}
-Let $\aps$ be the $(\infty,1)$-category defined by the pullback \[
-\begin{tikzcd}
-\aps \arrow[rr]\arrow[d] & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\arrow[d,"d_1^*"]\\
-\CAlg(\Spectra^{BC_2})\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra))
-\end{tikzcd}
-\] where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action.
+    Let $\CAlgp$ be the $(\infty,1)$-category defined by the pullback 
+    \begin{equation}\label{diagram:poincare_ring_defn}    
+    \begin{tikzcd}
+    \CAlgp \arrow[rr]\arrow[d] & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\arrow[d,"d_1^*"]\\
+    \CAlg(\Spectra^{BC_2})\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra))
+    \end{tikzcd}
+    \end{equation}
+    where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action and the lower horizontal arrow is the Tate-valued norm. 
 \end{definition}
 \Noah{I keep trying to make this work but the technical details are actively killing me. Better, I think, to use the following definition instead.}
 
 \begin{definition}
-Define the catgeory of affine Hermetian schemes, denoted $\mathrm{AHS}$, to be the infinity category given by the Grothendieck construction applied to the functor \[\CAlg(\Spectra)^{op}\to \mathrm{Cat}_\infty\] given by sending a ring $R$ to the category $\CAlg(\mathrm{Mod}_{NR})$ of $\mathbb{E}_\infty$ algebras in modules with genuine involutions over $R$. Then define the category of affine Poincare schemes, denoted by $\aps$, to be the full subcategory of $\mathrm{AHS}$ spanned by the pairs $(R, M)$ where $M\in \CAlg(\mathrm{Mod}_{NR})$ is invertible. 
+Define the catgeory of affine Hermitian schemes, denoted $\mathrm{AHS}$, to be the infinity category given by the Grothendieck construction applied to the functor \[\CAlg(\Spectra)^{op}\to \mathrm{Cat}_\infty\] given by sending a ring $R$ to the category $\CAlg(\mathrm{Mod}_{NR})$ of $\mathbb{E}_\infty$ algebras in modules with genuine involutions over $R$. Then define the category of affine Poincare schemes, denoted by $\aps$, to be the full subcategory of $\mathrm{AHS}$ spanned by the pairs $(R, M)$ where $M\in \CAlg(\mathrm{Mod}_{NR})$ is invertible. 
 \end{definition}
 
 We record here a few structural results about this category.
 
 \begin{theorem}
-The following statements about $\aps$ hold:
+The following statements about $\CAlgp$ hold:
 \begin{enumerate}
-\item The category $\aps$ is a cocomplete and symmetric monoidal infinite category;
-\item the pullback diagram above is homotopy Cartesian;
-\item the functor $\aps\to \CAlg(\Spectra^{BC_2})$ is symmetric monoidal and (co)continuous;
-\item the functor $\aps\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
-\item and the functor $\aps\to \CAlg(\Spectra)^{\Delta^2}\xrightarrow{ev_{[1]}} \CAlg(\Spectra)$ is symmetric monoidal.
+\item \label{thmitem:defining_diagram_homotopy_pullback} the pullback diagram (\ref{diagram:poincare_ring_defn}) is homotopy Cartesian; 
+\item \label{thmitem:poincare_ring_has_colimits} The category $\CAlgp$ is a cocomplete and symmetric monoidal $ \infty $-category;
+\item \label{thmitem:poincare_ring_to_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ is symmetric monoidal and (co)continuous;
+\item the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
+\item and the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}\xrightarrow{ev_{[1]}} \CAlg(\Spectra)$ is symmetric monoidal.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-    For (2) it is enough to show that $d_1^*$ is an categorical fibration which follows from \cite[Corollary 2.3.2.5]{HTT} and \cite[Corollary 2.4.6.5]{HTT}. In fact $d_!^*$ is a left fibration by \cite[Corollary 2.1.2.9] (taking $p=id$, $i=d_1:\Delta^1\to \Delta^2$)\Lucy{Is this reference correct? The conclusion asserts that some map of simplicial sets is a \emph{categorical} fibration. The following argument is `sketchy'--depending on how precise we want to be about quasicategories, we may want to argue with left/right anodyne maps instead.} \Noah{To prove 2 we only need that $d_1^*$ is a categorical fibration, although I think it is a cartesian fibration. I think we should be careful about infinity categories, and I believe the sketch you wrote down. I also think that this must be known already thoug, and will hunt down a correct reference.}
-    There is a (pseudo-)functor
-    \begin{align*}
-        F \colon \Fun(\Delta^1, \CAlg(\Spectra)) &\to \Cat_\infty \\
-        (\varphi \colon A \to B) &\mapsto (\left(\CAlg(\Spectra)_{A/-/B}\right)_{/\varphi}) 
-    \end{align*}
-    which sends a square
-    \begin{equation}\label{diagram:morphism_of_arrows}
-    \begin{tikzcd}
-        A \ar[r,"\varphi"] \ar[d] & B \ar[d] \\
-        C \ar[r,"\psi"] & D 
-    \end{tikzcd}
-    \end{equation}
-    regarded as a morphism from $ \varphi $ to $ \psi $, to the functor
-    \begin{equation}
-    \begin{split}
-        \left(\CAlg(\Spectra)_{A/-/B}\right)_{/\varphi} &\to \left(\CAlg(\Spectra)_{C/-/D}\right)_{/\psi} \\
-        (A \to R \to B) & \mapsto C \simeq A \otimes_A C \xrightarrow{\varphi \otimes \mathrm{id}_C} B \otimes_A C \to D
-    \end{split}
-    \end{equation}
-    where $ B \otimes_A C \to D $ is the canonical map induced by the commuting square (\ref{diagram:morphism_of_arrows}). 
-    The functor $ F $ classifies the cocartesian fibration $ d_1^* $. 
+    For (\ref{thmitem:defining_diagram_homotopy_pullback}), it is enough to show that $d_1^*$ is an categorical fibration. 
+    By \cite[Corollary 2.4.6.5]{HTT}, it suffices to show that $ d_1^* $ is an inner fibration and that, for any equivalence $ p \colon X \to X' $ in $ \Fun(\Delta^1, \CAlg(\Spectra)) $ and any object $ Y \in \Fun(\Delta^2, \CAlg(\Spectra)) $ so that $ d_1^*(Y) = X $, there is an equivalence $ Y \to Y' $ lifting $ p $. 
+    That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
+    In fact, $ d_1^* $ is a cocartesian and cartesian fibration; this follows from the existence of colimits and limits, resp., in $ \CAlg(\Spectra) $.
+    % In fact $d_1^*$ is a left fibration by \cite[Corollary 2.1.2.9]{HTT} (taking $p=id$, $i=d_1:\Delta^1\to \Delta^2$)\Lucy{Is this reference correct? The conclusion asserts that some map of simplicial sets is a \emph{categorical} fibration. The following argument is `sketchy'--depending on how precise we want to be about quasicategories, we may want to argue with left/right anodyne maps instead.} \Noah{To prove 2 we only need that $d_1^*$ is a categorical fibration, although I think it is a cartesian fibration. I think we should be careful about infinity categories, and I believe the sketch you wrote down. I also think that this must be known already thoug, and will hunt down a correct reference.}
+    % There is a (pseudo-)functor
+    % \begin{align*}
+    %     F \colon \Fun(\Delta^1, \CAlg(\Spectra)) &\to \Cat_\infty \\
+    %     (\varphi \colon A \to B) &\mapsto (\left(\CAlg(\Spectra)_{A/-/B}\right)_{/\varphi}) 
+    % \end{align*}
+    % which sends a square
+    % \begin{equation}\label{diagram:morphism_of_arrows}
+    % \begin{tikzcd}
+    %     A \ar[r,"\varphi"] \ar[d] & B \ar[d] \\
+    %     C \ar[r,"\psi"] & D 
+    % \end{tikzcd}
+    % \end{equation}
+    % regarded as a morphism from $ \varphi $ to $ \psi $, to the functor
+    % \begin{equation}
+    % \begin{split}
+    %     \left(\CAlg(\Spectra)_{A/-/B}\right)_{/\varphi} &\to \left(\CAlg(\Spectra)_{C/-/D}\right)_{/\psi} \\
+    %     (A \to R \to B) & \mapsto C \simeq A \otimes_A C \xrightarrow{\varphi \otimes \mathrm{id}_C} B \otimes_A C \to D
+    % \end{split}
+    % \end{equation}
+    % where $ B \otimes_A C \to D $ is the canonical map induced by the commuting square (\ref{diagram:morphism_of_arrows}). 
+    % The functor $ F $ classifies the cocartesian fibration $ d_1^* $. 
 
-    For (3), let $p:K\to \aps$ be a map of simplicial sets, $K$ a small simplicial set. Suppose the $K^\vartriangleright\to \aps$ be an extension such that $K^\vartriangleright\to \aps\to \CAlg(\Spectra^{BC_2})$ is a colimit diagram. By \cite[Proposition 2.4.3.2]{HTT} the diagram \[\begin{tikzcd}
-        \aps_{p/}\arrow[r]\arrow[d] &\CAlg(\Spectra)^{\Delta^2}_{p/-}\arrow[d]\\
-        \CAlg(\Spectra^{BC_2})_{p/}\arrow[r] & \CAlg(\Spectra)^{\Delta^1}_{p/-}
-    \end{tikzcd}\] is again homotopy cartesian. Then 
-    \begin{align*}
-        \hom_{\aps}(p(\infty), -)&\simeq \hom_{\CAlg(\Spectra^{BC_2})}(p(\infty), -)\times_{\hom_{\CAlg(\Spectra)^{\Delta^1}}(p(\infty),-)}\hom_{\CAlg(\Spectra)^{\Delta^2}}(p(\infty))\\
-        &\simeq 
-    \end{align*}
+    To prove (\ref{thmitem:poincare_ring_has_colimits}), let $p:K\to \CAlgp$ be a map of simplicial sets, where $K$ is a small simplicial set. 
+    Write $ f' $ for the functor $\CAlgp \to \CAlg(\Spectra^{BC_2})$ and $ g'\colon \CAlgp \to  \CAlg(\Spectra)^{\Delta^2} $ and $ f \colon \CAlg(\Spectra)^{\Delta^2} \to  \CAlg(\Spectra)^{\Delta^1} $ and $ g \colon \CAlg(\Spectra^{BC_2}) \to  \CAlg(\Spectra)^{\Delta^1} $. 
+    Choose an extension $ \overline{f'p} \colon K^\vartriangleright\to \CAlg(\Spectra^{BC_2}) $ be an extension of $ f'\circ p $ which is a colimit diagram. 
+    By \cite[Proposition 4.3.1.5(2)]{HTT}, it suffices to exhibit a lift $ K^\vartriangleright \to \CAlgp $ which is an $ f' $-colimit diagram. 
+    By \cite[Prposition 4.3.1.5(4)]{HTT} and (\ref{thmitem:defining_diagram_homotopy_pullback}), it suffices to show that there exists an extension $ \overline{g'p} \colon K^\vartriangleright \to \CAlg(\Spectra)^{\Delta^2} $ of $ g \circ \overline{f'p} $ which is an $ f $-colimit. 
+    \Lucy{Show that $ f $ satisfies the hypotheses of \cite[Corollary 4.3.1.11]{HTT}, then use that corollary to conclude.} 
+
+    Part (\ref{thmitem:poincare_ring_to_ring_preserves_colims}) follows from (\ref{thmitem:poincare_ring_has_colimits}). 
+    % For (\ref{thmitem:poincare_ring_to_ring_preserves_colims}), let $p:K\to \CAlgp$ be a map of simplicial sets, $K$ a small simplicial set. 
+    % Suppose the $K^\vartriangleright\to \CAlgp$ be an extension such that $K^\vartriangleright\to \CAlgp \xrightarrow{f'} \CAlg(\Spectra^{BC_2})$ is a colimit diagram. 
+    % By \cite[Proposition 2.4.3.2]{HTT} the diagram \[\begin{tikzcd}
+    %     \CAlgp_{p/}\arrow[r]\arrow[d] &\CAlg(\Spectra)^{\Delta^2}_{p/-}\arrow[d]\\
+    %     \CAlg(\Spectra^{BC_2})_{p/}\arrow[r] & \CAlg(\Spectra)^{\Delta^1}_{p/-}
+    % \end{tikzcd}\] is again homotopy cartesian. Then 
+    % \begin{align*}
+    %     \hom_{\CAlgp}(p(\infty), -)&\simeq \hom_{\CAlg(\Spectra^{BC_2})}(p(\infty), -)\times_{\hom_{\CAlg(\Spectra)^{\Delta^1}}(p(\infty),-)}\hom_{\CAlg(\Spectra)^{\Delta^2}}(p(\infty))\\
+    %     &\simeq 
+    % \end{align*}
 \end{proof}
 
 We will denote elements of $\aps$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. Here $s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. The use of the notation $A^{\Phi C_2}$ is justified by the following.

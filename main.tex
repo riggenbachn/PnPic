@@ -372,6 +372,25 @@ We will now specify the objects which we are able to take the Poincar{\'e} Picar
 \end{example}
 
 \Viktor{copy more examples from notes}
+\begin{lemma}\label{lemma:poincare_rings_presentable_accessible}
+    $ \CAlgp $ is presentable and accessible. 
+\end{lemma}
+\begin{proof}
+    \todo{need to define the category first!}
+\end{proof}
+\begin{definition}\label{defn:Poincare_ring_pointwise_units}
+    Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_1}) \to \mathrm{gl}_1(R^e) $.  
+\end{definition}
+\begin{lemma}\label{lemma:pointwise_units_has_left_adjoint}
+    The functor $ (-)^u $ has a left adjoint. 
+    Denote the left adjoint by $ \sphere[-] $. 
+\end{lemma}
+\begin{proof}
+    By \cite[Corollary 5.5.2.9]{HTT}, in view of Lemma \ref{lemma:poincare_rings_presentable_accessible}, it suffices to show that $ (-)^u $ is accessible and preserves small limits. 
+    It is clear that $ (-)^u $ preserves small filtered colimits, since they are computed in $ \Spectra^{C_2} $. 
+    Since limits in functor categories are computed pointwise, it suffices to show that the assignments $ (R, R^{\varphi C_2} \to R^{tC_2}) \mapsto \mathrm{gl}_1(R^{C_2}), \mathrm{gl}_1(R^e) $ preserve small limits. 
+    \Lucyil{need to finish proof that $ (-)^{u} $ preserves small limits!}
+\end{proof}
 
 % \section{Modules over Poincaré Ring Spectra}
 % \label{subsection:modules_over_poincare_ring_spectra}
@@ -578,6 +597,7 @@ There is a functor
 \section{The Poincaré Picard space}
 \label{subsection:the_poincare_picard_group}
 
+\subsection{Invertible Poincaré objects and units in Poincaré rings}
 Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \Einfty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
 
 \begin{definition}
@@ -641,35 +661,68 @@ Thus $\pi_0(\Pic(\mathbb{S}_{W(k)}))=0$. On the other hand, we have that the uni
 We then have that $\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong W(k)^\times \times W(k)^\times/H$ where $H$ is the subgroup of Poincar{\'e} structures $q$ on $\mathbb{S}_{W(k)}$ which are identified by some automorphism $f:\mathbb{S}_{W(k)}\to \mathbb{S}_{W(k)}$. By the defining property of spherical Witt vectors there is an equivalence $\mathrm{Maps}_{\mathrm{CAlg}}(\mathbb{S}_{W(k)}, \mathbb{S}_{W(k)})\simeq \mathrm{Maps}_{Perf}(k,k)=\mathrm{Gal}(k/\mathbb{F}_2)$ and the action on $W(k)^\times \times W(k)^\times$ is given by $g\in \mathrm{Gal}(k/\mathbb{F}_2)$ acts via $W(g)\times W(g)$. Consequently \[\pi_0(\Picp(\mathbb{S}_{W(k)}))\cong (W(k)^\times \times W(k)^\times) /\mathrm{Gal}(k/\mathbb{F}_2)\] which even for $k=\mathbb{F}_2$ is not zero and in fact not even $2^\infty$-torsion. 
 \end{remark}
 
-In the usual Picard spectrum one has the relationship $\pic = B\mathbb{G}_m$, where $\mathbb{G}_m$ is the spectral algebraic group scheme sending a ring spectrum $E$ to the spectrum of $E$-linear equivalences of $E$ $\mathrm{gl}_1E:=\mathrm{Aut}_E(E)$.\footnote{Normally the automorphism space of an object is only $\mathbb{A}_\infty$, but as the unit in a symmetric monoidal category, the automorphisms of $E$inherit a canonical and in fact functorial $\mathbb{E}_\infty$ structure and this construction makes sense.} 
+In the usual Picard spectrum one has the relationship $\pic = \ZZ \times B\mathbb{G}_m$, where $\mathbb{G}_m$ is the spectral algebraic group scheme sending a ring spectrum $E$ to the spectrum of $E$-linear equivalences of $E$ $\mathrm{gl}_1E:=\mathrm{Aut}_E(E)$.\footnote{Normally the automorphism space of an object is only $\mathbb{A}_\infty$, but as the unit in a symmetric monoidal category, the automorphisms of $E$inherit a canonical and in fact functorial $\mathbb{E}_\infty$ structure and this construction makes sense.} 
+\Lucy{Is $ \pic $ here referring to the picard space of the derived category or classical picard? Sort out with rest of notation later?}
 Equivalently, $\mathbb{G}_m$ is the affine group scheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homotopy groups of $\pic(A)$ with those of $A$. 
-We will spend the rest of this section on establishing such an equivalence in the Poincar\'e setting.
-
-\begin{construction}~\label{const: gmq}
-	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincare ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$, This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structre given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
+We will spend the rest of this section on establishing such an equivalence in the Poincar\'e setting. 
+We begin by defining an analogue of the multiplicative group/units for Poincaré rings. 
+\begin{construction}~\label{const: gmq} [Units of Poincaré rings]
+	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincaré ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$. 
+    This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structure given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
 	
-	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a modules over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$.
+	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a module over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$.
 \end{construction}
-
+\begin{remark}\label{remark:Poincare_units_fiber_sequence}
+    The pushout description of $\gmq$ induces a pullback of mapping spaces \Lucy{define $ \gmq $ in terms of left adjoint $ \sphere[-] $ in Lemma \ref{lemma:pointwise_units_has_left_adjoint}?}
+    \[
+    \begin{tikzcd}
+        \gmq(A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp}^{C_2})}(\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}, A)\simeq \mathrm{gl}_1(A^e)\ar[d]\\
+        * \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp^{C_2}})}(\mathbb{S}\{z\},A)\simeq \Omega^\infty\Qoppa_A(A) 
+    \end{tikzcd}\,.
+    \] 
+\end{remark}
 \begin{theorem}\label{theorem:loops_Poincare_pic_is_Gm_Qoppa}
 	There is a natural equivalence of \[\Omega \Picp(-)\simeq \gmq\] of functors on Poincar{\'e} rings.
 \end{theorem}
 \begin{proof}
-	This amounts to identifying the space $\mathrm{Aut}_{\mathrm{Pn(\mathrm{Mod}_A)}}(A,u)$ functorially, where $(A,u)$ is the Poincar{\'e} object $A$ with bilinear form given by the unit map $\mathbb{S}\to \Qoppa_A(A)$. Note that any automorphism of Hermetian objects will automatically be Poincar{\'e} and so we may instead describe the automorphisms as a Hermetian object. We then have that $\mathrm{He}(\mathrm{Mod}_A)\to \mathrm{Mod}_A$ is a cocartesian fibration by definition, and classified by the functor which takes a module $M$ to the groupoid $\Omega^\infty \Qoppa_A(M)$. Thus we get that $\mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A)}((A,u))$ is exactly the fiber of the map \[\mathrm{Aut}_{\mathrm{Mod}_A}(A)\to \Qoppa_A(A)\] or in other words an automorphism $(A,u)\to (A,u)$ is the data of an automorphism $a\in \mathrm{Aut}(A)$ together with a path $q:u\mapsto a^*u$ in $\Omega^{\infty +1}\Qoppa_A(A)$.  
+	This amounts to identifying the space $\mathrm{Aut}_{\mathrm{Pn}\left(\mathrm{Mod}_A^\omega,\Qoppa\right)}(A,u)$ functorially, where $(A,u)$ is the Poincar{\'e} object $A$ with bilinear form given by the unit map $\mathbb{S}\to \Qoppa_A(A)$. 
+    Since $ \mathrm{Pn}\left(\mathrm{Mod}_A^\omega,\Qoppa\right) $ is the maximal subgroupoid of $ \mathrm{He}\left(\mathrm{Mod}_A^\omega,\Qoppa\right) $ on Poincaré objects, it suffices to describe automorphisms of $ (A,u) $ in the latter category.
+    % Note that any automorphism of Hermitian objects will automatically be Poincar{\'e} and so we may instead describe the automorphisms as a Hermitian object. 
+    Recall that $ \mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)\to \mathrm{Mod}^\omega_A $ is a right fibration classified by the functor which takes a module $M$ to the $ \infty $-groupoid $ \Omega^\infty \Qoppa_A(M)$ \cite[Definition 2.1.1]{CDHHLMNNSI}. 
+    Looping the aforementioned fibration twice, we have a fibration sequence %we may identify $ \mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)}((A,u))$ with the fiber of the map 
+    \begin{equation}\label{eq:loops_pnpic_fiber_sequence}
+        \mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)}((A,u)) \to \mathrm{Aut}_{\mathrm{Mod}_A^\omega}(A)\xrightarrow{f \mapsto f^*(u)} \Omega^\infty \Qoppa_A(A)
+    \end{equation} 
+    where the fiber is taken over the point $ u \in \Omega^\infty \Qoppa_A(A) $. 
+    In other words, a point in $ \mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)}((A,u)) $ is the data of an automorphism $a\in \mathrm{Aut}(A)$ together with a path $q $ from $ u $ to $ a^*u$ in $\Omega^{\infty}\Qoppa_A(A)$.  
+    % In other words, an automorphism $(A,u)\to (A,u)$ is the data of an automorphism $a\in \mathrm{Aut}(A)$ together with a path $q $ from $ u $ to $ a^*u$ in $\Omega^{\infty}\Qoppa_A(A)$.  
 	
-	There is a natural transformation $\gmq(-)\to \Omega\Picp(-)$ given as follows: we get a map $\gmq((\mathrm{Mod}_A, \Qoppa_A))\to \mathrm{Aut}_A(A)$ given by forgetting the Poincar{\'e} structure everywhere, and so it is enough to see that on $\pi_0$ the automorphisms of $A$ coming from $\gmq$ preserve $u$. By using the linear and quadratic decomposition of $\Qoppa_A$, for an element $a\in \pi_0(A)^\times$ send $u$ to $u$ is must be sent to $1\in \pi_0(A^{\phi C_2})$ and must act by $1$ on $A^{hC_2}$. By the following Lemma this second condition is equivalent to $a\sigma(a)\in \pi_0(A)^\times$ being equal to $1$, but then these two conditions are exactly describing a map out of $\gmq$ as desired. 
+	% There is a natural transformation $\gmq(-)\to \Omega\Picp(-)$ given as follows: we get a map $\gmq(A)\to \mathrm{Aut}_A(A)$ given by forgetting the Poincar{\'e} structure everywhere. 
+    We now define a natural transformation $\gmq(-)\to \Omega\Picp(-)$. 
+    By Lemma \ref{lemma:unit_trivial_norm}, there is a commutative diagram
+    \begin{equation}\label{diagram:units_to_loops_pnpic_map_of_fib_seq}
+    \begin{tikzcd}[row sep=tiny]
+        \mathrm{gl}_1(A^e) \ar[r] \ar[d] & \Omega^\infty \Qoppa_A(A) \ar[d,equals] \\
+        \mathrm{Aut}_A(A) \ar[r,"{f \mapsto f^*(u)}"] & \Omega^\infty \Qoppa_A(A)
+    \end{tikzcd}
+    \end{equation}
+    where the upper horizontal arrow is from Remark \ref{remark:Poincare_units_fiber_sequence}. 
+    Now observe that the left vertical arrow in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) is an equivalence. 
+    The result follows from taking fibers over $ u $ in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) and Remark \ref{remark:Poincare_units_fiber_sequence} and (\ref{eq:loops_pnpic_fiber_sequence}). 
+    % It is enough to see that on $\pi_0$ the automorphisms of $A$ coming from $\gmq$ preserve $u$. 
+    % By using the linear and quadratic decomposition of $\Qoppa_A$, for an element $a\in \pi_0(A)^\times$ send $u$ to $u$ is must be sent to $1\in \pi_0(A^{\phi C_2})$ and must act by $1$ on $A^{hC_2}$. 
+    % By Lemma \ref{lemma:unit_trivial_norm}, this second condition is equivalent to $a\sigma(a)\in \pi_0(A)^\times$ being equal to $1$, but then these two conditions are exactly describing a map out of $\gmq$ as desired. 
 	
-	Consequently we have a comparison map $\gmq(\mathrm{Mod}_A, \Qoppa_A)\to \Omega\Picp(\mathrm{Mod}_A,\Qoppa_A)$, and the above argument in fact shows that this map is an equivalence on $\pi_0$. To finish the argument, note that the pushout description of $\gmq$ induces a pullback of mapping spaces 
-	\[
-	\begin{tikzcd}
-		\gmq(\mathrm{Mod}_A, \Qoppa_A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp}^{C_2})}(\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}, A)\simeq \mathrm{gl}_1(A)\ar[d]\\
-		* \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp^{C_2}})}(\mathbb{S}\{z\},A)\simeq \Omega^\infty\Qoppa_A(A) 
-	\end{tikzcd}
-	\] which finishes the proof.
+	% Consequently, we have a comparison map $\gmq(A)\to \Omega\Picp(\mathrm{Mod}_A,\Qoppa_A)$, and the above argument in fact shows that this map is an equivalence on $\pi_0$. 
+    % To finish the argument, note that the pullback of Remark \ref{remark:Poincare_units_fiber_sequence} which finishes the proof. 
 \end{proof}
 
-\begin{lemma}
-	Let $A\in \mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ and $s\in \pi_0(A)^\times$. Then $a\sigma(a)=1$ in $\pi_0(A)$ if and only if $(a\otimes a)^*$ acts by $1$ on $\pi_0(A^{hC_2})=\pi_0(\mathrm{Hom}_{A\otimes A}(A\otimes A, A)^{hC_2})$.
+\begin{lemma}\label{lemma:unit_trivial_norm}
+    % DO NOT DELETE PLEASE--WORK IN PROGRESS. (July 21, 2025)
+    % Let $A\in \CAlgp(\mathrm{Sp})$ and $s\in \mathrm{gl}_1(A) $. 
+    % Then $a\sigma(a)=1$ in $\pi_0(A^{C_2})$ if and only if $(a\otimes a)^*$ acts by $1$ on $ A^{C_2}=\mathrm{Hom}_{N^{C_2}A}(N^{C_2}A, A^L) $.
+	Let $A\in \mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ and $s\in \pi_0(A)^\times$. 
+    Then $a\sigma(a)=1$ in $\pi_0(A)$ if and only if $(a\otimes a)^*$ acts by $1$ on $\pi_0(A^{hC_2})=\pi_0(\mathrm{Hom}_{A\otimes A}(A\otimes A, A)^{hC_2})$.
 \end{lemma}
 \begin{proof}
 	The only if direction follows from the fact that the evaluation map $\mathrm{Hom}_{A\otimes A}(A\otimes A, A)\to A$ is an $A\otimes A$-module map. Now suppose that $a\sigma(a)=1$ in  $A$. Then before taking homotopy fixed points the induced map $a^*=id$ because $A$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
@@ -812,15 +865,16 @@ The above Example \ref{example:hermetian_picard_group_is_not_2-torsion-swap_acti
 
 \begin{proposition}
     \label{proposition:hermetian_picard_group_with_trivial_action_is_2-torsion}
-    Let $R$ be a discrete commutative ring. Then $\text{Pic}^\text{h}(R)$ is $2$-torsion.
+    Let $R$ be a discrete commutative ring. 
+    Then $\text{Pic}^\text{h}(R)$ is $2$-torsion. \Lucy{$ R $ has trivial $ C_2 $-action? Perhaps we can call this $ \mathrm{Pic}^s $ for `symmetric' forms?}
 \end{proposition}
 
 \begin{proof}
     \label{proof:hermetian_picard_group_with_trivial_action_is_2-torsion}
-    Let $(I,\varphi)$ be an invertible hermetian form over $(R,\text{id}_R)$. Then the trivialization $I\otimes_R I\xrightarrow{\text{id}_R\otimes \varphi} I\otimes_R I^\vee\xrightarrow{<,>} R$ is an isomorphism of forms $(I\otimes_R I,\varphi\otimes_R \varphi)\simeq (R,u)$, which can be checked locally as in Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}. %To see this we must show that $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, i.e. $\varphi(j)(i)\cdot \varphi(y)(x)=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Locally at a prime $\mathfrak{p}$ of $R$, $I$ is isomorphic to $R_\mathfrak{p}$ and thus $\varphi$ can be expressed by a unit $t$: $\varphi(a)(b)=bta$, for all $a,b\in R_\mathfrak{p}$. Then locally we have $\varphi(j)(i)\cdot \varphi(y)(x)=itjytx=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Thus we globally have $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, implying $(I,\varphi)^{\otimes 2}\simeq (R,u)$. This proves the claim.
+    Let $(I,\varphi)$ be an invertible hermitian form over $(R,\text{id}_R)$. Then the trivialization $I\otimes_R I\xrightarrow{\text{id}_R\otimes \varphi} I\otimes_R I^\vee\xrightarrow{<,>} R$ is an isomorphism of forms $(I\otimes_R I,\varphi\otimes_R \varphi)\simeq (R,u)$, which can be checked locally as in Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}. %To see this we must show that $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, i.e. $\varphi(j)(i)\cdot \varphi(y)(x)=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Locally at a prime $\mathfrak{p}$ of $R$, $I$ is isomorphic to $R_\mathfrak{p}$ and thus $\varphi$ can be expressed by a unit $t$: $\varphi(a)(b)=bta$, for all $a,b\in R_\mathfrak{p}$. Then locally we have $\varphi(j)(i)\cdot \varphi(y)(x)=itjytx=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Thus we globally have $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, implying $(I,\varphi)^{\otimes 2}\simeq (R,u)$. This proves the claim.
 \end{proof}
 
-Given a discrete commutative ring $R$, we have a forgetful map $$\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)_2,$$where the domain is given by $2$-torsion in the classical Picard group of $R$. Let us now say more about this.
+Given a discrete commutative ring $R$, we have a forgetful map $$\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)_2,$$where the codomain is given by $2$-torsion in the classical Picard group of $R$. Let us now say more about this.
 
 \begin{proposition}
     \label{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action}
@@ -930,7 +984,11 @@ An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and o
     \end{equation*}
     where the bottom row is that of \cite[Theorem 3.5]{MR1966659}. 
 \end{theorem}
-\begin{proof} 
+\begin{remark}
+    The outer terms of the short exact sequence in Theorem \ref{theorem:Poincare_Pic_of_fixpt_Mackey_functor} do not appear to depend on the linear part of the Poincar\'e structure on $ \Mod_R^\omega $; in particular, $ \pi_0 \pnpic \left(\Mod_R^\omega,\Qoppa_R^s\right) $ (i.e. $ R $ endowed with the symmetric Poincar\'e structure of Example \ref{example:symmetric_poincare_structure}) appears to agree with $ \pi_0 \pnpic(\underline{R}^\sigma) $. 
+    However, it follows from Theorem \ref{theorem:loops_Poincare_pic_is_Gm_Qoppa} that $ \pnpic \left(\Mod_R^\omega,\Qoppa_R^s\right) $ and $ \pnpic(\underline{R}^\sigma) $ do not agree as \emph{spectra}. 
+\end{remark}
+\begin{proof} [Proof of Theorem \ref{theorem:Poincare_Pic_of_fixpt_Mackey_functor}]
     An object of $ \pi_0 \pnpic(R) $ is a pair $ (I, q) $ where $ I $ is an invertible $ R$-module and $ q $ is a point in $ \pi_0 \Omega^\infty \Qoppa_{R^{gs}}(I) $. 
     By the proof of \cite[Theorem 3.5]{MR1966659}, $ I $ induces a continuous map $ \Psi(I) \colon \Spec R \to \ZZ $. 
     Write $ \sigma $ for the involution on $ R $. 
@@ -1362,7 +1420,7 @@ Now the natural equivalence $ \eta $ classifies an equivalence $ A^L \simeq \hom
     % Thus by Corollary \ref{cor:Poincare_Brauer_to_Brauer_fiber}, it suffices to understand the fiber sequence \[\pic(k)\to \mathrm{cofib}\left(\pic(\Mod_{k}(\mathrm{Sp})^{hC_2})\to \pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2}))\right)\to \pnbr(\underline{k})\]. 
     % On $\pi_\star$, we obtain the exact sequence \[\ldots\to \mathbb{Z}\to \mathrm{coker}(\mathbb{Z}\to \mathbb{Z}\times \mathbb{Z})\to \pi_0(\pnbr(\underline{k}))\to 0\] where $\pic(\Mod_{\underline{k}}(\mathrm{Sp}^{C_2}))\cong \mathbb{Z}\times\mathbb{Z}$ via the map sending an invertible $\underline{k}$-module $\mathcal{L}$ to the pair $(n_1,n_2)$ where $\mathcal{L}^e\simeq k[n_1]$ and $\mathcal{L}^{\phi C_2}=k[n_2]$, see \cite[Section 8.1]{Krause_picard} for an argument. 
     % The $\mathbb{Z}$-term coming from $\pi_0(\Pic(\Mod_k^{hC_2}))$ maps to the diagonal, and therefore we get a short exact sequence \[0\to \mathbb{Z}\to \mathbb{Z}\to \pi_0(\pnbr(\underline{k}))\to 0\] where the left hand map is injective since $\pnbr(\underline{k})=0$.
-    \Lucyil{This and Example \ref{ex:pnbr_closed_pt_unramified} are a pair; if we move one, also move the other.}
+    \Lucyil{This and Example \ref{ex:pnbr_closed_pt_unramified} are a pair; if we move one, also move the other. Remark \ref{rmk:non_classical_PnBr_classes} is about this example.}
 
     When char $ k \neq 2 $, the Poincaré $ \infty $-category corresponding to the element $ (0, -1) \in \mathbb{Z} \times \mu_2 $ is $ \left(\Mod_k^\omega, \Qoppa_{-k}\right) $, where the notation $ -k $ is that of the discussion between Definition 3.5.12 and Example 3.5.14 of \cite{CDHHLMNNSI} (in particular, see Example 3.5.14(i) of \emph{loc. cit.}).  
     In other words, a sign is introduced into the involution. 
@@ -1372,6 +1430,12 @@ Now the natural equivalence $ \eta $ classifies an equivalence $ A^L \simeq \hom
     By a relative version of \cite[Corollary 5.4.6]{CDHHLMNNSI}, $ \left(\Mod_k^\omega, \Qoppa_{k}^{[1]}\right) \otimes \left(\Mod_k^\omega, \Qoppa_{k}^{[1]}\right) \simeq \left(\Mod_k^\omega, \Qoppa_{k}^{[2]}\right) $, and the latter is equivalent to $ \left(\Mod_k^\omega, \Qoppa_{-k}\right) $ by \cite[Proposition 3.5.3]{CDHHLMNNSI}. 
     % \Lucyil{Is it true that ? If so, that would mean $ \left(\Mod_k^\omega, \Qoppa_{k}^{[2]}\right) $ is equivalent to the unit...does this computation run afoul of \cite[Proposition 3.5.3]{CDHHLMNNSI} when $ m = n = 1$? revisit.}
 \end{example}
+\begin{remark}\label{rmk:non_classical_PnBr_classes}
+    The 4-torsion class $ \left(\Mod_k^\omega, \Qoppa^{[1]}\right)$ (char $ k \neq 2 $) in Example \ref{ex:pnbr_closed_point_ramified} does not arise as perfect modules over a classical/discrete Azumaya algebra with anti-involution. \Lucy{or central Wall anti-structure}
+    Roughly, the reason is: Any Poincaré object here cannot be concentrated in a single degree because the duality involves a shift, therefore the endomorphism algebra of any Poincaré generator will not be discrete either. 
+    However, the 2-torsion class $ \left(\Mod_k^\omega, \Qoppa^{[1]}\right) \otimes  \left(\Mod_k^\omega, \Qoppa^{[1]}\right)  =  \left(\Mod_k^\omega, \Qoppa_{-k}\right) $ does arise as perfect modules over a classical Azumaya algebra with anti-involution. 
+    Therefore, the subgroup of the $ \ZZ/4\ZZ $ which ``is classical'' is still 2-torsion! \Lucy{add reference/comparison to classical result. cite in intro?}
+\end{remark}
 \begin{example}\label{ex:pnbr_closed_pt_unramified}
     Let $ k $ be an algebraically closed field, and consider the Poincar\'e ring associated to $ \prod_{C_2} k $ (i.e. $ k \times k $ with the swap action) via Example \ref{ex:fixpt_Mackey_functor}. 
     Similarly to Example \ref{ex:pnbr_closed_point_ramified}, by \cite[Proposition 1.9]{MR2957304} we have $ \pi_0 \mathrm{br}(\Spec k \sqcup \Spec k) \simeq \pi_0 \mathrm{br}(\Spec k)^{\times 2} = 0 $. 
