@@ -1084,12 +1084,16 @@ An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and o
 %\include{poincare_from_rigid}
 \Noah{I'm commenting out section 5 since we do not yet have an application for it. Feel free to put it back in if you want.}
 \section{The Poincaré Brauer Group}
-\label{subsection:the_poincare_brauer_group}
+\label{section:the_poincare_brauer_group}
+In this section, we will define and study derived analogues of the involutive Brauer group. % for Poincaré ring spectra. 
+In \S\ref{subsection:invertible_relative_Poincare_cats}, we define the involutive Brauer group in terms of invertible Poincaré $ \infty $-categories and compute it in a handful of examples. 
+In particular, our examples (see Examples \ref{ex:pnbr_closed_pt_unramified} and \ref{ex:pnbr_closed_point_ramified}, especially the latter) show that our involutive Brauer group subsumes the classical involutive Brauer group but also captures information which is genuinely novel. \Lucy{add reference; workshop wording at end of sentence: `...captures non-discrete duality phenomena' or 'derived duality'?} 
+Our definition will use the formalism of relative Poincaré $ \infty $-categories, some preliminary discussion of which is collected in \S\ref{subsection:relative_Poincare_cats_generalities}. 
+\Lucy{revisit organization, then add exposition}
+
+\subsection{Generalities on \texorpdfstring{$R$}{R}-linear Poincar\'e \texorpdfstring{$\infty$}{∞}-categories}\label{subsection:relative_Poincare_cats_generalities}
 Let $A$ be a Poincaré ring spectrum. 
 By Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}, $ \left(\Mod_A^\omega,\Qoppa_A\right) $ promotes to a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $ \Catp $, and we may thus consider modules over it, or \emph{$A$-linear Poincaré $ \infty $-categories}. 
-In this section, we will use modules over Poincaré ring spectra to define derived analogues of the involutive Brauer group for Poincaré ring spectra. 
-
-\subsection{Generalities on $R$-linear Poincar\'e \texorpdfstring{$\infty$}{∞}-categories}
 \begin{proposition}\label{prop:relative_poincare_cats_basic_properties}
     Let $ (R, C \to R^{tC_2})$ be a Poincaré ring spectrum and write $ (\Mod_R^\omega, \Qoppa_R) $ for the Poincaré $ \infty $-category of Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}. 
     \begin{enumerate}[label=(\arabic*)]
@@ -1345,7 +1349,7 @@ Since the forgetful functor $ \Cath_R \to \Cath $ and its Poincaré counterpart 
     where the first equivalence is \cite[Proposition 4.1.3]{CDHHLMNNSI}. 
 \end{proof}
 
-\subsection{Invertible $ R $-linear Poincaré $ \infty $-categories}
+\subsection{Invertible \texorpdfstring{$ R $}{R}-linear Poincaré \texorpdfstring{$\infty$}{∞}-categories}\label{subsection:invertible_relative_Poincare_cats}
 Recall that a Poincaré $\infty$-category is called idempotent complete if the underlying stable $\infty$-category is idempotent complete. The full subcategory of $\Catp$ spanned by idempotent complete Poincaré $\infty$-categories is denoted by $\Catpidem$ \cite[Definition 1.3.2]{CDHHLMNNSII}.
 
 \begin{definition}
