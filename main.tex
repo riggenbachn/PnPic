@@ -423,7 +423,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_1}) \to \mathrm{gl}_1(R^e) $.  
 \end{definition}
 \begin{lemma}\label{lemma:pointwise_units_has_left_adjoint}
-    The functor $ (-)^u $ has a left adjoint. 
+    The functor $ (-)^u $ of Definition \ref{defn:Poincare_ring_pointwise_units} has a left adjoint. 
     Denote the left adjoint by $ \sphere[-] $. 
 \end{lemma}
 \begin{proof}
@@ -1826,7 +1826,14 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
     \Lucyil{proof of part \ref{propitem:endomorphisms_hyperbolic_Poincare_object}.}
 \end{proof}
 
-\section{Stacks associated to Poincaré-\texorpdfstring{$ \infty $}{∞}-categories}
+\section{Stacks associated to Poincaré \texorpdfstring{$ \infty $}{∞}-categories}
+Given an $ R $-linear $ \infty $-category $ \mathcal{C} $, we may consider its corresponding moduli stack of objects \cites{MR2493386}[\S5]{MR3190610}. 
+There is a close relationship between objects in $ \mathcal{C} $ and Morita trivializations of $ \mathcal{C} $: The choice of an object $ G $ which is a compact generator of $ \mathcal{C} $ gives an equivalence $ \mathcal{C} \simeq \Mod_{\mathrm{End}_{\mathcal{C}}(G)}\left(\Mod_R\right) $. 
+The space of compact generators comprises an open substack of the moduli stack of objects. \Lucy{cite \cite[Proposition 5.10]{MR3190610}?}
+Using this correspondence/philosophy, Antieau--Gepner show that the moduli stack of objects in $ \mathcal{C} $ is locally geometric, then use local geometricity of moduli stacks of objects to prove the existence of étale-local trivializations of invertible $ R $-linear $ \infty $-categories. 
+
+In this section, we study analogous moduli stacks associated to $ R $-linear Poincaré $ \infty $-categories.   
+In this setting, the appropriate replacement/analogy for an object is that of a \emph{Poincaré/hermitian object}. \Lucy{say something about conjectural adjunction between algebras and invertible modules with genuine involution and Poincaré $ \infty $-categories?}
 
 \subsection{Moduli of hermitian objects}
 \begin{notation}\label{notation:poincare_ring_basechange}
