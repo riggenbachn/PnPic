@@ -195,7 +195,7 @@ Parimala--Srinivas showed that the involutive Brauer group sits in an exact sequ
 
 First and Williams observed that the aforementioned two cases comprise two extreme ends/special cases of a spectrum: multiplication by $ 2 $ on $ H^2_{\acute{e}t}(-;\mathbb{G}_m) $ may be regarded as a cohomological $ C_2 $-transfer map along the `quotient' map $ X = X $, where $ X $ is regarded as a scheme with trivial $ C_2 $-action \cite[\S1.2]{azumaya_involution}. 
 In other words, the former comprises trivial $ C_2 $-actions with `everywhere ramified' quotient map, whereas the latter comprises free $ C_2 $-actions with nowhere ramified quotient maps. 
-Moreover, First and William observe that a quotient involves a choice/is extra data; from the perspective of the stacky quotient $ X \to X//C_2 $, the $ C_2 $-action on $ X $ is free. \Lucy{connect to `many choices of different Poincaré structures' on a given $ \infty $-category eventually}  
+Moreover, First and Williams observe that a quotient involves a choice/is extra data; from the perspective of the stacky quotient $ X \to X//C_2 $, the $ C_2 $-action on $ X $ is free. \Lucy{connect to `many choices of different Poincaré structures' on a given $ \infty $-category eventually}  
 Thus in order to study involutions systematically, it is necessary to specify a scheme with involution and the choice of a quotient. \Lucy{this is \emph{so close} to Spec of a Poincaré ring but also not quite.}
 
 The study of involutions on Azumaya algebras goes hand-in-hand with/is inextricably linked to the study of symmetric bilinear/hermitian forms on vector bundles: étale-locally, (classical) Azumaya algebras can be described as endomorphism algebras of vector bundles $ \mathcal{A}\simeq \mathcal{E}\mathrm{nd}_X(V) $. 
@@ -209,7 +209,7 @@ Motivated by this connection between involutions and duality (cf. \cite[\S3]{CDH
     Let $\mathcal{C}$ denote either the category of Poincar{\'e} rings (Definition~\ref{definition:poincare_ring_spectrum}) or the opposite category of schemes with involution and good quotients (Definition~\ref{defn:Category of good quotients}). Then there are functors \[\mathbb{G}_m^\Qoppa, \pnpic, \pnbr:\mathcal{C}\to \mathrm{Sp}_{\geq 0}\] such that 
     \begin{itemize}
         \item $\Omega \pnbr\simeq \pnpic$ and $\Omega \pnpic\simeq \mathbb{G}_m^\Qoppa$;
-        \item $\mathbb{G}_m^\Qoppa$ is represented by the free $\mathbb{E}_\infty$ ring on one invertible generator $\mathbb{S}\{x^{\pm 1}\}$ with a certain genuine $C_2$-structure (see \ref{const: gmq});
+        \item $\mathbb{G}_m^\Qoppa$ is represented by the free $\mathbb{E}_\infty$ ring on one invertible generator $\mathbb{S}\{x^{\pm 1}\}$ with a certain genuine $C_2$-structure (see Construction \ref{const: gmq});
         \item $\pnbr$ (and hence all the other functors) satisfy hyperdescent for an analogue of the {\'e}tale topology on $\mathcal{C}$ which incorporates the involution (see Notation~\ref{notation:poincare_ring_basechange} and Notation~\ref{notation:scheme_involution_basechange} for the exact constructions.) 
     \end{itemize}
 \end{theorem}
@@ -276,16 +276,27 @@ We will now specify the objects which we are able to take the Poincar{\'e} Picar
 
 \begin{definition}
     \label{definition:poincare_ring_spectrum}
-    Let $R$ be a ring spectrum. 
-    A \emph{Poincaré structure} on $R$ is the following data:
+    Let $\CAlgp$ be the $(\infty,1)$-category defined by the pullback 
+    \begin{equation}\label{diagram:poincare_ring_defn}    
+    \begin{tikzcd}
+    \CAlgp \arrow[rr]\arrow[d] & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\arrow[d,"d_1^*"]\\
+    \CAlg(\Spectra^{BC_2})\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra))
+    \end{tikzcd}
+    \end{equation}
+    where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action and the lower horizontal arrow is the Tate-valued norm (see Definition 3.8 and Lemma 3.10 of \cite{LYang_normedrings}). 
+    An object of $ \CAlgp $ will be called a \emph{Poincaré ring spectrum}.
+
+    Let $R$ be an $ \Einfty $ ring spectrum. 
+    A \emph{Poincaré structure} on $R$ is the data of a lift of $ R $ to the $ \infty $-category $ \CAlgp $. 
+    By definition, it comprises the following data:
     \begin{itemize}
         \item A $C_2$-action on $R$ via maps of ring spectra, i.e. a functor $\lambda: BC_2\rightarrow \CAlg$.
-        \item An $ \EE_\infty $-$R$-algebra $R\rightarrow C$.
+        \item An $ \EE_\infty $-$R$-algebra $ C$.
         \item An $ \EE_\infty $-$R$-algebra map $C\rightarrow R^{tC_2}$. 
     \end{itemize}
     Here $R^{tC_2}$ is the Tate construction with respect to the given action. 
-    Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
-    \Lucy{define the category}
+    Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. 
+    % A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
 \end{definition}
 
 \begin{remark}
@@ -293,6 +304,36 @@ We will now specify the objects which we are able to take the Poincar{\'e} Picar
     % Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. 
     In \cite[discussion immediately preceding Examples 5.4.10]{CDHHLMNNSI}, Poincaré ring spectra are referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
 \end{remark}
+
+We will denote objects of $\CAlgp$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. 
+Here $ s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. 
+The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare_ring_geom_fixpt}. 
+\begin{remark}\label{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}
+    Recall that there is a symmetric monoidal récollement $ \Spectra^{C_2} \simeq \Spectra^{BC_2} \times_{(-)^{tC_2},\Spectra, \mathrm{ev}_1} \Spectra^{\Delta^1} $ (cf. \cite[Theorem 6.24]{MNN}). 
+    There is a commutative diagram of $ \infty $-categories: 
+    \[
+    \begin{tikzcd}[column sep=small,row sep=small]
+     & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra)) \arrow[rd, "d_0^*"] \arrow[dd, "d_1^*"] & \\
+     & & & \operatorname{Fun}(\Delta^1,\CAlg(\Spectra)) \arrow[dd,"ev_{1}"]\\
+    \CAlg(\Spectra^{BC_2}) \arrow[rr, "U(-)\to (-)^{tC_2}"] \arrow[rd, equals] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra)) \arrow[rd, "ev_{1}"] & \\
+      & \CAlg(\Spectra^{BC_2}) \arrow[rr, "(-)^{tC_2}"] & & \CAlg(\Spectra)
+    \end{tikzcd}\,.
+    \] 
+    The diagram induces a functor from the pullback of the upper left cospan to the pullback of the lower right cospan $ U \colon \CAlgp\to \CAlg(\Spectra^{C_2}) $. 
+\end{remark}
+\begin{lemma}\label{lemma:Poincare_ring_geom_fixpt}
+    There is a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        \CAlgp \ar[r] \ar[d,"U"] & \operatorname{Fun}(\Delta^2,\CAlg(\Spectra)) \ar[d,"{\mathrm{ev}_1}"] \\
+        \CAlg(\Spectra^{C_2}) \ar[r,"{(-)^{\Phi C_2}}"] & \CAlg(\Spectra)
+    \end{tikzcd}
+    \end{equation*}
+    where $ U $ is the functor of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}. \Lucy{add reference to definition of $ \CAlgp $?}
+\end{lemma}
+\begin{proof}
+    Follows from the récollement of $ \Spectra^{C_2} $ and Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}. 
+\end{proof}
 
 \begin{remark}
     \label{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}
@@ -595,7 +636,7 @@ There is a functor
 \end{remark}
 
 \section{The Poincaré Picard space}
-\label{subsection:the_poincare_picard_group}
+\label{section:the_poincare_picard_group}
 
 \subsection{Invertible Poincaré objects and units in Poincaré rings}
 Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \Einfty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
@@ -666,14 +707,15 @@ In the usual Picard spectrum one has the relationship $\pic = \ZZ \times B\mathb
 Equivalently, $\mathbb{G}_m$ is the affine group scheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homotopy groups of $\pic(A)$ with those of $A$. 
 We will spend the rest of this section on establishing such an equivalence in the Poincar\'e setting. 
 We begin by defining an analogue of the multiplicative group/units for Poincaré rings. 
-\begin{construction}~\label{const: gmq} [Units of Poincaré rings]
+\begin{construction}~\label{const: gmq} [Units of Poincaré rings] \Lucy{workshop the name...`hermitian/Poincaré/involutive units'?}
 	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincaré ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$. 
     This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structure given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
 	
-	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a module over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$.
+	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a module over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$. 
+    \Lucy{later: different notation for the functor $ \gmq $ versus its [Poincaré] ring of functions.}
 \end{construction}
 \begin{remark}\label{remark:Poincare_units_fiber_sequence}
-    The pushout description of $\gmq$ induces a pullback of mapping spaces \Lucy{define $ \gmq $ in terms of left adjoint $ \sphere[-] $ in Lemma \ref{lemma:pointwise_units_has_left_adjoint}?}
+    The pushout description of $\gmq$ induces a pullback of mapping spaces \Lucy{mapping spaces should be taken in $ \CAlgp $? define $ \gmq $ in terms of left adjoint $ \sphere[-] $ in Lemma \ref{lemma:pointwise_units_has_left_adjoint}? Use the latter to show that $ \gmq $ takes values in connective spectra!}
     \[
     \begin{tikzcd}
         \gmq(A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp}^{C_2})}(\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}, A)\simeq \mathrm{gl}_1(A^e)\ar[d]\\
@@ -699,9 +741,9 @@ We begin by defining an analogue of the multiplicative group/units for Poincaré
 	
 	% There is a natural transformation $\gmq(-)\to \Omega\Picp(-)$ given as follows: we get a map $\gmq(A)\to \mathrm{Aut}_A(A)$ given by forgetting the Poincar{\'e} structure everywhere. 
     We now define a natural transformation $\gmq(-)\to \Omega\Picp(-)$. 
-    By Lemma \ref{lemma:unit_trivial_norm}, there is a commutative diagram
+    By Lemma \ref{lemma:unit_trivial_norm}, there is a commutative diagram \Lucy{edit Lemma accordingly}
     \begin{equation}\label{diagram:units_to_loops_pnpic_map_of_fib_seq}
-    \begin{tikzcd}[row sep=tiny]
+    \begin{tikzcd}[row sep=tiny,column sep=large]
         \mathrm{gl}_1(A^e) \ar[r] \ar[d] & \Omega^\infty \Qoppa_A(A) \ar[d,equals] \\
         \mathrm{Aut}_A(A) \ar[r,"{f \mapsto f^*(u)}"] & \Omega^\infty \Qoppa_A(A)
     \end{tikzcd}
@@ -786,7 +828,7 @@ Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoent
     \Viktor{apply pic to the previous sequence and take $\pi_0$}
 \end{proof}
 
-\subsection{The discrete case: nondegenerate hermetian line bundles}
+\subsection{The discrete case: nondegenerate hermitian line bundles}
 \label{subsection:the_discrete_case:nondegenerate_hermitian_forms}
 
 Let $ R $ be a discrete commutative ring with a $ C_2 $-action $ \sigma \colon R \to R $, and let $ M $ be an $ R $-module. We denote by $ \sigma^*M $ its restriction of scalars, i.e. the $ R $-module with underlying abelian group $ M $ and action $ r \star m = \sigma(r) \cdot m $, where $\cdot$ denotes the original action of $M$. Since $\sigma^2=\text{id}_R$, restriction of scalars is isomorphic to extension of scalars, and thus restriction of scalars $\sigma^*:\text{Mod}_R\rightarrow \text{Mod}_R$ is symmetric monoidal in this case.
@@ -1431,7 +1473,7 @@ Now the natural equivalence $ \eta $ classifies an equivalence $ A^L \simeq \hom
     % \Lucyil{Is it true that ? If so, that would mean $ \left(\Mod_k^\omega, \Qoppa_{k}^{[2]}\right) $ is equivalent to the unit...does this computation run afoul of \cite[Proposition 3.5.3]{CDHHLMNNSI} when $ m = n = 1$? revisit.}
 \end{example}
 \begin{remark}\label{rmk:non_classical_PnBr_classes}
-    The 4-torsion class $ \left(\Mod_k^\omega, \Qoppa^{[1]}\right)$ (char $ k \neq 2 $) in Example \ref{ex:pnbr_closed_point_ramified} does not arise as perfect modules over a classical/discrete Azumaya algebra with anti-involution. \Lucy{or central Wall anti-structure}
+    The 4-torsion class $ \left(\Mod_k^\omega, \Qoppa^{[1]}\right)$ (char $ k \neq 2 $) in Example \ref{ex:pnbr_closed_point_ramified} does not arise as perfect modules over a classical/discrete Azumaya algebra with anti-involution or central Wall anti-structure. 
     Roughly, the reason is: Any Poincaré object here cannot be concentrated in a single degree because the duality involves a shift, therefore the endomorphism algebra of any Poincaré generator will not be discrete either. 
     However, the 2-torsion class $ \left(\Mod_k^\omega, \Qoppa^{[1]}\right) \otimes  \left(\Mod_k^\omega, \Qoppa^{[1]}\right)  =  \left(\Mod_k^\omega, \Qoppa_{-k}\right) $ does arise as perfect modules over a classical Azumaya algebra with anti-involution. 
     Therefore, the subgroup of the $ \ZZ/4\ZZ $ which ``is classical'' is still 2-torsion! \Lucy{add reference/comparison to classical result. cite in intro?}

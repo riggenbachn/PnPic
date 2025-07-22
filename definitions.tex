@@ -6,12 +6,12 @@
     \CAlg(\Spectra^{BC_2})\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra))
     \end{tikzcd}
     \end{equation}
-    where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action and the lower horizontal arrow is the Tate-valued norm. 
+    where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action and the lower horizontal arrow is the Tate-valued norm (see Definition 3.8 and Lemma 3.10 of \cite{LYang_normedrings}). 
 \end{definition}
 \Noah{I keep trying to make this work but the technical details are actively killing me. Better, I think, to use the following definition instead.}
 
 \begin{definition}
-Define the catgeory of affine Hermitian schemes, denoted $\mathrm{AHS}$, to be the infinity category given by the Grothendieck construction applied to the functor \[\CAlg(\Spectra)^{op}\to \mathrm{Cat}_\infty\] given by sending a ring $R$ to the category $\CAlg(\mathrm{Mod}_{NR})$ of $\mathbb{E}_\infty$ algebras in modules with genuine involutions over $R$. Then define the category of affine Poincare schemes, denoted by $\aps$, to be the full subcategory of $\mathrm{AHS}$ spanned by the pairs $(R, M)$ where $M\in \CAlg(\mathrm{Mod}_{NR})$ is invertible. 
+Define the category of affine Hermitian schemes, denoted $\mathrm{AHS}$, to be the infinity category given by the Grothendieck construction applied to the functor \[\CAlg(\Spectra)^{op}\to \mathrm{Cat}_\infty\] given by sending a ring $R$ to the category $\CAlg(\mathrm{Mod}_{NR})$ of $\mathbb{E}_\infty$ algebras in modules with genuine involutions over $R$. Then define the category of affine Poincare schemes, denoted by $\aps$, to be the full subcategory of $\mathrm{AHS}$ spanned by the pairs $(R, M)$ where $M\in \CAlg(\mathrm{Mod}_{NR})$ is invertible. 
 \end{definition}
 
 We record here a few structural results about this category.
@@ -19,16 +19,19 @@ We record here a few structural results about this category.
 \begin{theorem}
 The following statements about $\CAlgp$ hold:
 \begin{enumerate}
-\item \label{thmitem:defining_diagram_homotopy_pullback} the pullback diagram (\ref{diagram:poincare_ring_defn}) is homotopy Cartesian; 
-\item \label{thmitem:poincare_ring_has_colimits} The category $\CAlgp$ is a cocomplete and symmetric monoidal $ \infty $-category;
-\item \label{thmitem:poincare_ring_to_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ is symmetric monoidal and (co)continuous;
+\item \label{thmitem:defining_diagram_homotopy_pullback} the pullback diagram (\ref{diagram:poincare_ring_defn}) is homotopy Cartesian; % i.e. the pullback in simplicial sets computes the pullback in $ \infty $-categories.
+\item \label{thmitem:poincare_ring_has_colimits} The category $\CAlgp$ has all small colimits;
+\item \label{thmitem:poincare_ring_to_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small colimits;
+\item \label{thmitem:poincare_ring_has_limits} The category $\CAlgp$ has all small limits;
+\item \label{thmitem:poincare_ring_to_ring_preserves_lims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small limits;
 \item the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
 \item and the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}\xrightarrow{ev_{[1]}} \CAlg(\Spectra)$ is symmetric monoidal.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
-    For (\ref{thmitem:defining_diagram_homotopy_pullback}), it is enough to show that $d_1^*$ is an categorical fibration. 
+    To prove (\ref{thmitem:defining_diagram_homotopy_pullback}), it is enough to show that $d_1^*$ is an categorical fibration. 
     By \cite[Corollary 2.4.6.5]{HTT}, it suffices to show that $ d_1^* $ is an inner fibration and that, for any equivalence $ p \colon X \to X' $ in $ \Fun(\Delta^1, \CAlg(\Spectra)) $ and any object $ Y \in \Fun(\Delta^2, \CAlg(\Spectra)) $ so that $ d_1^*(Y) = X $, there is an equivalence $ Y \to Y' $ lifting $ p $. 
+    It is clear that $ d_1^* $ satisfies the latter condition. 
     That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
     In fact, $ d_1^* $ is a cocartesian and cartesian fibration; this follows from the existence of colimits and limits, resp., in $ \CAlg(\Spectra) $.
     % In fact $d_1^*$ is a left fibration by \cite[Corollary 2.1.2.9]{HTT} (taking $p=id$, $i=d_1:\Delta^1\to \Delta^2$)\Lucy{Is this reference correct? The conclusion asserts that some map of simplicial sets is a \emph{categorical} fibration. The following argument is `sketchy'--depending on how precise we want to be about quasicategories, we may want to argue with left/right anodyne maps instead.} \Noah{To prove 2 we only need that $d_1^*$ is a categorical fibration, although I think it is a cartesian fibration. I think we should be careful about infinity categories, and I believe the sketch you wrote down. I also think that this must be known already thoug, and will hunt down a correct reference.}
@@ -72,23 +75,41 @@ The following statements about $\CAlgp$ hold:
     %     \hom_{\CAlgp}(p(\infty), -)&\simeq \hom_{\CAlg(\Spectra^{BC_2})}(p(\infty), -)\times_{\hom_{\CAlg(\Spectra)^{\Delta^1}}(p(\infty),-)}\hom_{\CAlg(\Spectra)^{\Delta^2}}(p(\infty))\\
     %     &\simeq 
     % \end{align*}
+
+    The proofs of parts (\ref{thmitem:poincare_ring_has_limits}) and (\ref{thmitem:poincare_ring_to_ring_preserves_lims}) are analogous to those of (\ref{thmitem:poincare_ring_has_colimits}) and (\ref{thmitem:poincare_ring_to_ring_preserves_colims}) and have been omitted.  
 \end{proof}
 
-We will denote elements of $\aps$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. Here $s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. The use of the notation $A^{\Phi C_2}$ is justified by the following.
-
-\begin{lemma}
-Let $\aps\to \CAlg(\Spectra)$ be the composition of the functors \[\aps\to \operatorname{Fun}(\Delta^2,\CAlg(\Spectra))\xrightarrow{ev_{[1]}}\CAlg(\Spectra).\] Then this functor factors as a composition $\aps\to \CAlg(\Spectra^{C_2})\xrightarrow{(-)^{\Phi C_2}}\CAlg(\Spectra)$. 
+We will denote objects of $\CAlgp$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. 
+Here $ s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. 
+The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare_ring_geom_fixpt}. 
+\begin{remark}\label{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}
+    Recall that there is a symmetric monoidal récollement $ \Spectra^{C_2} \simeq \Spectra^{BC_2} \times_{(-)^{tC_2},\Spectra, \mathrm{ev}_1} \Spectra^{\Delta^1} $ (cf. \cite[Theorem 6.24]{MNN}). 
+    There is a commutative diagram of $ \infty $-categories: 
+    \[
+    \begin{tikzcd}
+     & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra)) \arrow[rd, "d_0^*"] \arrow[dd, "d_1^*"] & \\
+     & & & \operatorname{Fun}(\Delta^1,\CAlg(\Spectra)) \arrow[dd,"ev_{[1]}"]\\
+    \CAlg(\Spectra^{BC_2}) \arrow[rr, "U(-)\to (-)^{tC_2}"] \arrow[rrd, "id"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra)) \arrow[rd, "ev_{[1]}"] & \\
+      & & \CAlg(\Spectra^{BC_2}) \arrow[r, "(-)^{tC_2}"] & \CAlg(\Spectra)
+    \end{tikzcd}\,.
+    \] 
+    The diagram induces a functor from the pullback of the upper left cospan to the pullback of the lower right cospan $ U \colon \CAlgp\to \CAlg(\Spectra^{C_2}) $. % which makes the corresponding cube commute. 
+\end{remark}
+\begin{lemma}\label{lemma:Poincare_ring_geom_fixpt}
+    % Let $\CAlgp\to \CAlg(\Spectra)$ be the composition of the functors \[\CAlgp\to \operatorname{Fun}(\Delta^2,\CAlg(\Spectra))\xrightarrow{\mathrm{ev}_{1}}\CAlg(\Spectra).\] 
+    % Then this functor factors as a composition $ \CAlgp \xrightarrow{U} \CAlg(\Spectra^{C_2})\xrightarrow{(-)^{\Phi C_2}}\CAlg(\Spectra)$ where $ U $ is the functor of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}. 
+    There is a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        \CAlgp \ar[r] \ar[d,"U"] & \operatorname{Fun}(\Delta^2,\CAlg(\Spectra)) \ar[d,"{\mathrm{ev}_1}"] \\
+        \CAlg(\Spectra^{C_2}) \ar[r,"{(-)^{\Phi C_2}}"] & \CAlg(\Spectra)
+    \end{tikzcd}
+    \end{equation*}
+    where $ U $ is the functor of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}. \Lucy{add reference to definition of $ \CAlgp $?}
 \end{lemma}
 \begin{proof}
-The commutativity of the diagram
-\[
-\begin{tikzcd}
- & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra)) \arrow[rd, "d_0^*"] \arrow[dd, "d_1^*"] & \\
- & & & \operatorname{Fun}(\Delta^1,\CAlg(\Spectra)) \arrow[dd,"ev_{[1]}"]\\
-\CAlg(\Spectra^{BC_2}) \arrow[rr, "U(-)\to (-)^{tC_2}"] \arrow[rrd, "id"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra)) \arrow[rd, "ev_{[1]}"] & \\
-  & & \CAlg(\Spectra^{BC_2}) \arrow[r, "(-)^{tc_2}"] & \CAlg(\Spectra)
-\end{tikzcd}
-\] induces a functor on the pullback infinity categories $\aps\to \CAlg(\Spectra^{C_2})$ which makes the corresponding cube commute. The functor $ev_{[1]}:\operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\to \CAlg(\Spectra)$ factors through $d_0^*$ and so $\aps\to \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\to \CAlg(\Spectra)$ is equivalent to the composition \[\aps\to \CAlg(\Spectra^{C_2})\to \operatorname{Fun}(\Delta^1,\CAlg(\Spectra))\to \CAlg(\Spectra)\] and the composition of the last two maps is the geometric fixed point functor as desired.
+    Follows from the récollement of $ \Spectra^{C_2} $ and Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}. 
+% The functor $ev_{[1]}:\operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\to \CAlg(\Spectra)$ factors through $d_0^*$ and so $\CAlgp\to \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\to \CAlg(\Spectra)$ is equivalent to the composition \[\CAlgp\to \CAlg(\Spectra^{C_2})\to \operatorname{Fun}(\Delta^1,\CAlg(\Spectra))\to \CAlg(\Spectra)\] and the composition of the last two maps is the geometric fixed point functor as desired.
 \end{proof}
 
 The following Lemma gives the justification of the name Poincar{\'e} scheme.
