@@ -268,15 +268,15 @@ We will use this section to recall notions and results about Poincaré $\infty$-
 Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules over $R$. We will study Poincaré structures on the $\infty$-category $\Mod_R^\omega$ of compact modules over $R$. 
 
 \begin{definition}[Definition 1.2.2, \cite{CDHHLMNNSI}]
-    A hermetian infinity category is a pair $(\mathcal{C},\Qoppa)$ where $\mathcal{C}$ is a small stable infinity category and $\Qoppa:\mathcal{C}^\op\to \mathrm{Sp}$ is a quadratic functor. 
+    A hermitian infinity category is a pair $(\mathcal{C},\Qoppa)$ where $\mathcal{C}$ is a small stable infinity category and $\Qoppa:\mathcal{C}^\op\to \mathrm{Sp}$ is a quadratic functor. 
 \end{definition}
 
-A map of hermetian infinity categories $(f,\eta):(\mathcal{C},\Qoppa)\to (\mathcal{D},\Psi)$ is a functor $f:\mathcal{C}\to \mathcal{D}$ and a $2$-cell $\eta:\Qoppa\implies \Psi \circ f^\op$.
+A map of hermitian infinity categories $(f,\eta):(\mathcal{C},\Qoppa)\to (\mathcal{D},\Psi)$ is a functor $f:\mathcal{C}\to \mathcal{D}$ and a $2$-cell $\eta:\Qoppa\implies \Psi \circ f^\op$.
 
 Associated to any such quadratic functor $\Qoppa:\mathcal{C}^\op\to \mathrm{Sp}$ we may form a bilinear functor $B_\Qoppa(x,y):= \Qoppa(x\oplus y)^{\text{red}}$. 
 
 \begin{definition}[Definitions 1.2.2, 1.2.8, \cite{CDHHLMNNSI}]
-    We say that the associated bilinear form $B_\Qoppa$ is (right) non-degenerate if the functor \[\mathcal{C}^\op\to \mathrm{Fun}(\mathcal{C}^\op,\mathrm{Sp})\] given by sending $y\mapsto B_\Qoppa(-,y)$ lands in the essential image of the Yoneda embedding. Such hermetian structures then define a duality functor $D_\Qoppa:\mathcal{C}^\op \to \mathcal{C}$ and we say that the hermetian infinity category $(\mathcal{C},\Qoppa)$ is a Poincar{\'e} infinity category if the evaluation map $\mathrm{id}_{\mathcal{C}}\implies D_\Qoppa D_\Qoppa^\op$ is an equivalence.  
+    We say that the associated bilinear form $B_\Qoppa$ is (right) non-degenerate if the functor \[\mathcal{C}^\op\to \mathrm{Fun}(\mathcal{C}^\op,\mathrm{Sp})\] given by sending $y\mapsto B_\Qoppa(-,y)$ lands in the essential image of the Yoneda embedding. Such hermitian structures then define a duality functor $D_\Qoppa:\mathcal{C}^\op \to \mathcal{C}$ and we say that the hermitian infinity category $(\mathcal{C},\Qoppa)$ is a Poincar{\'e} infinity category if the evaluation map $\mathrm{id}_{\mathcal{C}}\implies D_\Qoppa D_\Qoppa^\op$ is an equivalence.  
 \end{definition}
 
 A map of Poincar{\'e} infinity categories is a map of hermitian infinity categories which further preserves the duality functors. We will use \[\mathrm{Cat}^p_\infty \subseteq \mathrm{Cat}^h_\infty\] to denote the categories of Poincar{\'e} and hermitian infinity categories, respectively. These categories have several desirable properties. We collect several of the key properties below.
@@ -953,76 +953,76 @@ provides a canonical $\sigma$-hermitian form $u:R\rightarrow R^\dagger$, using R
 Hence, the set of invertible $\sigma$-hermitian forms over $R$ forms a group under $\otimes_R$ with unit $(R,u)$.
 
 \begin{definition}
-    \label{definition:hermetian_picard_group}
+    \label{definition:hermitian_picard_group}
     Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma: R \rightarrow R$. The \emph{hermitian Picard group of} $(R,\sigma)$ is the group of isomorphism classes of invertible $\sigma$-hermitian forms over $R$ under tensor product, with unit $(R,u)$. We will denote the hermitian Picard group of $(R,\sigma)$ by $\text{Pic}^\text{h}(R,\sigma)$. In case $\sigma$ is the identity, we will also write $\text{Pic}^\text{h}(R)$.
 \end{definition}
 
 \begin{example}
-    \label{example:hermetian_picard_group_is_not_2-torsion-swap_action_on_fields}
+    \label{example:hermitian_picard_group_is_not_2-torsion-swap_action_on_fields}
     Let $R=\mathbf{C}\oplus \mathbf{C}$ with $\sigma:R\rightarrow R$ given by the swap action, i.e. $(x,y)\mapsto (y,x)$. Since $R$ is a semi-local ring, its Picard group is trivial. Thus any element $(I,\varphi)\in \text{Pic}^\text{h}(R,\sigma)$ is of the form $(R,\varphi)$, up to isomorphism. An $R$-module isomorphism $\varphi:R\rightarrow R^\dagger$ is of the form $(r\mapsto (s\mapsto ra\sigma(s))$, for some $a\in R^\times$, and the condition $\varphi=\varphi^\dagger \circ c$ translates to $a=\sigma(a)$. Thus $a\in (R^\times)^{C_2}$ is a unit and a fixed point of the $C_2$-action on $R$, i.e. $a=(v,v)$ with $v\in \mathbf{C}^\times$. Given two $\sigma$-hermitian forms $(I,\varphi)$ and $(J,\psi)$ which correspond to elements $a$ and $b$ in $(R^\times)^{C_2}$ respectively, the tensor product $(I\otimes_R J,\varphi\otimes_R \psi)$ corresponds to the product $ab$. An isomorphism between  $(I,\varphi)$ and $(J,\psi)$ is an $R$-module isomorphism $f:I\xrightarrow{\simeq} J$ such that $$f^\dagger\circ\psi\circ f=\varphi.$$ Since $f$ is given by multiplication of an element $x\in R^\times$, this condition translates to the equation $$x\sigma(x)b=a.$$ Let $a=(v,v)$, $b=(w,w)$ and $x=(r,s)$ with $v,w,r,s\in \mathbf{C}^\times$. Then this condition breaks down to the two equations $rsw=v$ and $rsv=w$, in particular $(rs)^2=1$, and thus $rs=\pm 1$. Therefore, $(R,\varphi)$ and $(R,\psi)$ are isomorphic if and only if $\varphi=\pm\psi$. We conclude $$\text{Pic}^\text{h}(R,\sigma)\simeq \mathbf{C}^\times/{\pm 1}\simeq \mathbf{C}^\times.$$
 \end{example}
 
-The above Example \ref{example:hermetian_picard_group_is_not_2-torsion-swap_action_on_fields} shows that the hermitian Picard group of a discrete commutative ring with a nontrivial $C_2$-action is not necessarily $2$-torsion. We will see now that the situation simplifies in case of a trivial $C_2$-action.
+The above Example \ref{example:hermitian_picard_group_is_not_2-torsion-swap_action_on_fields} shows that the hermitian Picard group of a discrete commutative ring with a nontrivial $C_2$-action is not necessarily $2$-torsion. We will see now that the situation simplifies in case of a trivial $C_2$-action.
 
 \begin{remark}
-    \label{remark:id-hermetian_forms_are_symmetric_billinear_forms}
+    \label{remark:id-hermitian_forms_are_symmetric_billinear_forms}
     Let $R$ be a discrete commutative ring equipped with the trivial $C_2$-action, i.e. $\sigma=\text{id}_R$. In that case, for any $R$-module $M$, we have $M^\dagger=M^\vee$. Thus, by Remark \ref{remark:hermitian_forms_as_fixed_points}, hermitian forms over $(R,\text{id}_R)$ are in bijection with nondegenerate symmetric bilinear forms over $R$. Let $(I,\varphi)$ be a hermitian form over $(R,\text{id}_R)$ corresponding to a nondegenerate symmetric bilinear form $A$ on $I$. Then $(I,\varphi)$ is invertible if $I$ is invertible as a module over $R$ and $A\otimes B=id_R$, for a nondegenerate symmetric biliniear form $B$ on $I^\vee$.
 \end{remark}
 
 \begin{remark}
-    \label{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}
+    \label{remark:invertible_hermitian_forms_are_locally_fixed_points_of_units}
     Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$, and let $I$ be an invertible $R$-module. Let $\mathfrak{p}\subset R$ be a prime ideal. Since $I$ is locally free of rank $1$, a trivialization $\tau:I\otimes_R \sigma_*I\xrightarrow{\sim} R$ is locally of the form $$\tau_\mathfrak
-    {p}:I_\mathfrak{p}\otimes_{R_\mathfrak{p}} \sigma_* I_\mathfrak{p}\xrightarrow{\sim } R_\mathfrak{p}\otimes_{R_\mathfrak{p}} \sigma_* R_\mathfrak{p}\xrightarrow{x_\mathfrak{p}} R_\mathfrak{p},$$ where the left isomorphism is given by the tensor product $t\otimes_{R_\mathfrak{p}}t$ of a trivialization $t:I_\mathfrak{p}\xrightarrow{\sim} R_\mathfrak{p}$ and the map on the right is given by the formula $r\otimes s\mapsto \sigma(s)\cdot x_\mathfrak{p} \cdot r$ for a unit $x_\mathfrak{p}\in R_\mathfrak{p}^\times$. The unit $x_\mathfrak{p}$ is unique up to an element $N(y)=y\sigma(y)\in R_\mathfrak{p}^\times$, where $y$ could be hiding behind the trivialization $t$. Since $R$ is commutative, the symmetry condition in Definition \ref{definition:sigma-hermitian_form} is then equivalent to requiring $x_\mathfrak{p}\in (R_\mathfrak{p}^\times)^{C_2}$, for each prime ideal $\mathfrak{p}\subset R$. In particular, when $\sigma=\text{id}_R$, $\tau$ is automatically symmetric. So the symmetry condition in Definition \ref{definition:sigma-hermitian_form} is vacuous for hermetian forms with underlying invertible module when the action on $R$ is trivial.
+    {p}:I_\mathfrak{p}\otimes_{R_\mathfrak{p}} \sigma_* I_\mathfrak{p}\xrightarrow{\sim } R_\mathfrak{p}\otimes_{R_\mathfrak{p}} \sigma_* R_\mathfrak{p}\xrightarrow{x_\mathfrak{p}} R_\mathfrak{p},$$ where the left isomorphism is given by the tensor product $t\otimes_{R_\mathfrak{p}}t$ of a trivialization $t:I_\mathfrak{p}\xrightarrow{\sim} R_\mathfrak{p}$ and the map on the right is given by the formula $r\otimes s\mapsto \sigma(s)\cdot x_\mathfrak{p} \cdot r$ for a unit $x_\mathfrak{p}\in R_\mathfrak{p}^\times$. The unit $x_\mathfrak{p}$ is unique up to an element $N(y)=y\sigma(y)\in R_\mathfrak{p}^\times$, where $y$ could be hiding behind the trivialization $t$. Since $R$ is commutative, the symmetry condition in Definition \ref{definition:sigma-hermitian_form} is then equivalent to requiring $x_\mathfrak{p}\in (R_\mathfrak{p}^\times)^{C_2}$, for each prime ideal $\mathfrak{p}\subset R$. In particular, when $\sigma=\text{id}_R$, $\tau$ is automatically symmetric. So the symmetry condition in Definition \ref{definition:sigma-hermitian_form} is vacuous for hermitian forms with underlying invertible module when the action on $R$ is trivial.
 \end{remark}
 
 \begin{proposition}
-    \label{proposition:hermetian_picard_group_with_trivial_action_is_2-torsion}
+    \label{proposition:hermitian_picard_group_with_trivial_action_is_2-torsion}
     Let $R$ be a discrete commutative ring. 
     Then $\text{Pic}^\text{h}(R)$ is $2$-torsion. \Lucy{$ R $ has trivial $ C_2 $-action? Perhaps we can call this $ \mathrm{Pic}^s $ for `symmetric' forms?}
 \end{proposition}
 
 \begin{proof}
-    \label{proof:hermetian_picard_group_with_trivial_action_is_2-torsion}
-    Let $(I,\varphi)$ be an invertible hermitian form over $(R,\text{id}_R)$. Then the trivialization $I\otimes_R I\xrightarrow{\text{id}_R\otimes \varphi} I\otimes_R I^\vee\xrightarrow{<,>} R$ is an isomorphism of forms $(I\otimes_R I,\varphi\otimes_R \varphi)\simeq (R,u)$, which can be checked locally as in Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}. %To see this we must show that $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, i.e. $\varphi(j)(i)\cdot \varphi(y)(x)=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Locally at a prime $\mathfrak{p}$ of $R$, $I$ is isomorphic to $R_\mathfrak{p}$ and thus $\varphi$ can be expressed by a unit $t$: $\varphi(a)(b)=bta$, for all $a,b\in R_\mathfrak{p}$. Then locally we have $\varphi(j)(i)\cdot \varphi(y)(x)=itjytx=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Thus we globally have $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, implying $(I,\varphi)^{\otimes 2}\simeq (R,u)$. This proves the claim.
+    \label{proof:hermitian_picard_group_with_trivial_action_is_2-torsion}
+    Let $(I,\varphi)$ be an invertible hermitian form over $(R,\text{id}_R)$. Then the trivialization $I\otimes_R I\xrightarrow{\text{id}_R\otimes \varphi} I\otimes_R I^\vee\xrightarrow{<,>} R$ is an isomorphism of forms $(I\otimes_R I,\varphi\otimes_R \varphi)\simeq (R,u)$, which can be checked locally as in Remark \ref{remark:invertible_hermitian_forms_are_locally_fixed_points_of_units}. %To see this we must show that $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, i.e. $\varphi(j)(i)\cdot \varphi(y)(x)=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Locally at a prime $\mathfrak{p}$ of $R$, $I$ is isomorphic to $R_\mathfrak{p}$ and thus $\varphi$ can be expressed by a unit $t$: $\varphi(a)(b)=bta$, for all $a,b\in R_\mathfrak{p}$. Then locally we have $\varphi(j)(i)\cdot \varphi(y)(x)=itjytx=\varphi(i)(x)\cdot\varphi(j)(y)$, for all $i,j,x,y\in I$. Thus we globally have $f^\dagger\circ u\circ f=\varphi\otimes_R\varphi$, implying $(I,\varphi)^{\otimes 2}\simeq (R,u)$. This proves the claim.
 \end{proof}
 
 Given a discrete commutative ring $R$, we have a forgetful map $$\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)_2,$$where the codomain is given by $2$-torsion in the classical Picard group of $R$. Let us now say more about this.
 
 \begin{proposition}
-    \label{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action}
+    \label{proposition:split_exact_sequence_for_hermitian_picard_group_with_trivial_action}
     Let $R$ be a discrete commutative ring. We have a split exact sequence $$0\rightarrow R^\times/(R^\times)^2\rightarrow\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)_2\rightarrow 0.$$
 \end{proposition}
 
 \begin{proof}
-    \label{proof:split_exact_sequence_for_hermetian_picard_group_with_trivial_action}
-    Let $(I,\varphi)$ be an invertible hermitian form over $(R,\text{id}_R)$, then $\varphi:I\xrightarrow{\simeq} I^\vee$ is an isomorphism between $I$ and its tensor inverse $I^\vee$, thus $I$ is $2$-torsion in the classical Picard group: $I\otimes_R I\simeq I\otimes_R I^\vee\simeq R$. Moreover, the above map is surjective by Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units}, since the condition $I\otimes I\simeq R$ is equivalent to $I\simeq I^\vee$. The kernel of the above map is given by hermitian forms on $R$, up to isomorphism. That is, isomorphisms $\varphi: R\simeq R^\vee$, up to isomorphisms of hermitian forms. Two forms $\varphi$, $\psi$ are isomorphic if there exists an isomorphism $f:R\xrightarrow{\simeq} R$ such that $f^\dagger\circ\psi\circ f=\varphi$. Each of these isomorphisms is given by multiplication of a unit of $R$. Let $a,b,c\in R^\times$ be the units corresponding to $f, \varphi$ and $\psi$. Then $\varphi$ is isomorphic to $\psi$ if and only if $a^2c=b$, i.e. $c$ and $b$ vary by a square of a unit. Thus, the kernel of the above map is given by $R^\times/(R^\times)^2$. Finally, by Proposition \ref{proposition:hermetian_picard_group_with_trivial_action_is_2-torsion}, this is a short exact sequence of vector spaces over $\mathbf{F}_2$ and thus splits.
+    \label{proof:split_exact_sequence_for_hermitian_picard_group_with_trivial_action}
+    Let $(I,\varphi)$ be an invertible hermitian form over $(R,\text{id}_R)$, then $\varphi:I\xrightarrow{\simeq} I^\vee$ is an isomorphism between $I$ and its tensor inverse $I^\vee$, thus $I$ is $2$-torsion in the classical Picard group: $I\otimes_R I\simeq I\otimes_R I^\vee\simeq R$. Moreover, the above map is surjective by Remark \ref{remark:invertible_hermitian_forms_are_locally_fixed_points_of_units}, since the condition $I\otimes I\simeq R$ is equivalent to $I\simeq I^\vee$. The kernel of the above map is given by hermitian forms on $R$, up to isomorphism. That is, isomorphisms $\varphi: R\simeq R^\vee$, up to isomorphisms of hermitian forms. Two forms $\varphi$, $\psi$ are isomorphic if there exists an isomorphism $f:R\xrightarrow{\simeq} R$ such that $f^\dagger\circ\psi\circ f=\varphi$. Each of these isomorphisms is given by multiplication of a unit of $R$. Let $a,b,c\in R^\times$ be the units corresponding to $f, \varphi$ and $\psi$. Then $\varphi$ is isomorphic to $\psi$ if and only if $a^2c=b$, i.e. $c$ and $b$ vary by a square of a unit. Thus, the kernel of the above map is given by $R^\times/(R^\times)^2$. Finally, by Proposition \ref{proposition:hermitian_picard_group_with_trivial_action_is_2-torsion}, this is a short exact sequence of vector spaces over $\mathbf{F}_2$ and thus splits.
 \end{proof}
 
 \begin{remark}
     \label{remark:hermitian_picard_group_with_trivial_action_is_the_first_fppf_mu_2_cohomology group}
     Recall that we have an exact sequence of fppf sheaves $$0\rightarrow \mu_2\rightarrow \mathbf{G}_m\xrightarrow{\times 2} \mathbf{G}_m\rightarrow 0.$$ over $\mathbf{Z}$ and a canonical isomorphism $$\text{H}_\text{fppf}^1(X,\mathbf{G}_m)\simeq \text{Pic}(X),$$ for $X$ a scheme. 
-    Let $R$ be a discrete commutative ring. Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action} shows that we have the exact sequence $$\text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\rightarrow\text{Pic}^\text{h}(R)\rightarrow \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m).$$ Hence, in the case of a trivial action on $R$, the hermetian Picard group is isomorphic to the first fppf cohomology group of $R$ with $\mu_2$-coefficients $$\text{Pic}^\text{h}(R)\simeq \text{H}_\text{fppf}^{1}(R,\mu_2).$$ If $R$ is moreover smooth over a Noetherian scheme of finite Krull dimension $S$ which is smooth over a Dedekind domain of mixed characteristic or over a field\Viktor{is this really the highest generality? }, by \cite[Proposition 10.9]{spitzweck-thesis}, this is isomorphic to motivic cohomology in degree $(1,1)$ with coefficients in $\mathbf{Z}/2$ $$\text{Pic}^\text{h}(R)\simeq \text{H}^{1,1}(R,\mathbf{Z}/2).$$
+    Let $R$ be a discrete commutative ring. Proposition \ref{proposition:split_exact_sequence_for_hermitian_picard_group_with_trivial_action} shows that we have the exact sequence $$\text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{0}(R,\mathbf{G}_m)\rightarrow\text{Pic}^\text{h}(R)\rightarrow \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m)\xrightarrow{\times 2} \text{H}_\text{fppf}^{1}(R,\mathbf{G}_m).$$ Hence, in the case of a trivial action on $R$, the hermitian Picard group is isomorphic to the first fppf cohomology group of $R$ with $\mu_2$-coefficients $$\text{Pic}^\text{h}(R)\simeq \text{H}_\text{fppf}^{1}(R,\mu_2).$$ If $R$ is moreover smooth over a Noetherian scheme of finite Krull dimension $S$ which is smooth over a Dedekind domain of mixed characteristic or over a field\Viktor{is this really the highest generality? }, by \cite[Proposition 10.9]{spitzweck-thesis}, this is isomorphic to motivic cohomology in degree $(1,1)$ with coefficients in $\mathbf{Z}/2$ $$\text{Pic}^\text{h}(R)\simeq \text{H}^{1,1}(R,\mathbf{Z}/2).$$
 \end{remark}
 
-The split exact sequence of Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action} can be generalized to the case of a nontrivial $C_2$-action on $R$. To proof that, let us first establish two basic properties of the hermetian Picard group.
+The split exact sequence of Proposition \ref{proposition:split_exact_sequence_for_hermitian_picard_group_with_trivial_action} can be generalized to the case of a nontrivial $C_2$-action on $R$. To proof that, let us first establish two basic properties of the hermitian Picard group.
 
 \begin{proposition}
-    \label{proposition:hermetian_picard_group_is_nilinvariant}
-    The hermetian Picard group $\text{Pic}^\text{h}$ is nilinvariant. More concretely, let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$ and let $R_\text{red}$ be the reduced ring of $R$ with $C_2$-action induced by the reduction map $R\rightarrow R_\text{red}$. Then the reduciton map induces an isomorphism $$\text{Pic}^\text{h}(R,\sigma)\xrightarrow{\sim} \text{Pic}^\text{h}(R_\text{red},\sigma).$$
+    \label{proposition:hermitian_picard_group_is_nilinvariant}
+    The hermitian Picard group $\text{Pic}^\text{h}$ is nilinvariant. More concretely, let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$ and let $R_\text{red}$ be the reduced ring of $R$ with $C_2$-action induced by the reduction map $R\rightarrow R_\text{red}$. Then the reduciton map induces an isomorphism $$\text{Pic}^\text{h}(R,\sigma)\xrightarrow{\sim} \text{Pic}^\text{h}(R_\text{red},\sigma).$$
 \end{proposition}
 
 \begin{proof}
-    \label{proof:hermetian_picard_group_is_nilinvariant}
+    \label{proof:hermitian_picard_group_is_nilinvariant}
     This follows since the Picard functor of $\infty$-categories is nilinvariant. \Viktor{more details}
 \end{proof}
 
 \begin{proposition}
-    \label{proposition:hermetian_picard_group_commutes_with_finite_sums}
-    The hermetian Picard group $\text{Pic}^\text{h}$ commutes with finite sums. 
+    \label{proposition:hermitian_picard_group_commutes_with_finite_sums}
+    The hermitian Picard group $\text{Pic}^\text{h}$ commutes with finite sums. 
 \end{proposition}
 
 \begin{proof}
-    \label{proof:hermetian_picard_group_commutes_with_finite_sums}
+    \label{proof:hermitian_picard_group_commutes_with_finite_sums}
     \Viktor{todo}
 \end{proof}
 
@@ -1031,33 +1031,33 @@ Given a discrete commutative ring $R$ and an isomorphism $\sigma:R\rightarrow R$
     (-)^\dag:\text{Pic}(R) &\rightarrow \text{Pic}(R)\\
     [I] &\mapsto [I^\dagger]=[\sigma^* I^\vee]=-[\sigma^* I].
 \end{align*} 
-Given an invertible $\sigma$-hermetian form $\varphi:I\xrightarrow{\simeq} I^\dagger$, the $R$-module $I$ is a fixed point in the Picard group of $R$ with respect to this action. Let us denote the fixed points of $\text{Pic}(R)$ by this action by $\text{Pic}(R)^{-\sigma}$. We then have a forgetful map $$\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}.$$
+Given an invertible $\sigma$-hermitian form $\varphi:I\xrightarrow{\simeq} I^\dagger$, the $R$-module $I$ is a fixed point in the Picard group of $R$ with respect to this action. Let us denote the fixed points of $\text{Pic}(R)$ by this action by $\text{Pic}(R)^{-\sigma}$. We then have a forgetful map $$\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}.$$
 
 \begin{notation}
     \label{notation:sigma-dual_fixed_points_of_picard_group}
     Let $R$ be a discrete commutative ring with a $C_2$-action $\sigma:R\rightarrow R$. The $\sigma$-dual defines a $C_2$-action on the Picard group of $R$ via $[I]\mapsto -[\sigma^*I]$. We will denote the fixed points of $\text{Pic}(R)$ of this action by $\text{Pic}(R)^{-\sigma}$.
 \end{notation}
 
-An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and only if $[I]$ is in the kernel of the corresponding norm map: $N([I])=(\sigma +1)[I]=0$. This observation leads to the following generalization of Proposition \ref{proposition:split_exact_sequence_for_hermetian_picard_group_with_trivial_action}
+An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and only if $[I]$ is in the kernel of the corresponding norm map: $N([I])=(\sigma +1)[I]=0$. This observation leads to the following generalization of Proposition \ref{proposition:split_exact_sequence_for_hermitian_picard_group_with_trivial_action}
 
 \begin{proposition}
-    \label{proposition:exact_sequence_for_hermetian_picard_group}
+    \label{proposition:exact_sequence_for_hermitian_picard_group}
     Let $\text{Spec}(R)$ be a discrete irreducible affine scheme with a $C_2$-action $\sigma:R\rightarrow R$. Then we have the following split exact sequence $$0 \rightarrow (R^\times)^{C_2}/N(R^\times)\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}\rightarrow 0.$$ \Viktor{pich is likely not a zariski sheaf, but I believe there is an exact sequence for sheaves that can deal with intersections of irreducible components, which could explain the general case.}
 \end{proposition}
 
 \begin{proof}
-    \label{proof:exact_sequence_for_hermetian_picard_group}
-    It follows from Remark \ref{remark:invertible_hermetian_forms_are_locally_fixed_points_of_units} that the kernel of the forgetful map $\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}$ is given by $(R^\times)^{C_2}/N(R^\times)$. It remains to show that any invertible module $I$ over $R$ has a nondegenerate $\sigma$-hermetian form. By Proposition \ref{proposition:hermetian_picard_group_is_nilinvariant} we may assume that $R$ is an integral domain. In that case the Picard group of $R$ is isomorphic to the ideal class group of $R$, $\text{Cl}(R)\xrightarrow{\sim} \text{Pic}(R)$. Thus, we may assume that $I$ is a fractional ideal of $R$, which naturally comes with the pairing $I\otimes_R \sigma^* I\rightarrow R$, $i\otimes_R j\mapsto \sigma(j)i$. This pairing is nondegenerate, by the assumption that $I\in \text{Pic}(R)^{-\sigma}$. The assignment of this pairing provides a section $\text{Pic}(R)^{-\sigma}\rightarrow \text{Pic}^\text{h}(R,\sigma)$ and thus proves the claim.
+    \label{proof:exact_sequence_for_hermitian_picard_group}
+    It follows from Remark \ref{remark:invertible_hermitian_forms_are_locally_fixed_points_of_units} that the kernel of the forgetful map $\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)^{-\sigma}$ is given by $(R^\times)^{C_2}/N(R^\times)$. It remains to show that any invertible module $I$ over $R$ has a nondegenerate $\sigma$-hermitian form. By Proposition \ref{proposition:hermitian_picard_group_is_nilinvariant} we may assume that $R$ is an integral domain. In that case the Picard group of $R$ is isomorphic to the ideal class group of $R$, $\text{Cl}(R)\xrightarrow{\sim} \text{Pic}(R)$. Thus, we may assume that $I$ is a fractional ideal of $R$, which naturally comes with the pairing $I\otimes_R \sigma^* I\rightarrow R$, $i\otimes_R j\mapsto \sigma(j)i$. This pairing is nondegenerate, by the assumption that $I\in \text{Pic}(R)^{-\sigma}$. The assignment of this pairing provides a section $\text{Pic}(R)^{-\sigma}\rightarrow \text{Pic}^\text{h}(R,\sigma)$ and thus proves the claim.
 \end{proof}
 
 \begin{example}
-    \label{example:hermetian_picard_group_does_not_map_to_2-torsion}
-    Let $R=\mathbf{Z}[\frac{1+\sqrt{-23}}{2}]$ with the action $\sigma:R\rightarrow R$ given by complex conjugation. The fixed points of $R$ are given by integers, thus $(R^\times)^{C_2}/N(R^\times)\simeq \mathbf{Z}/2$. The Picard group $\text{Pic}(R)\simeq \mathbf{Z}/3$ of $R$ is generated by the ideal $I=(2,\frac{1+\sqrt{-23}}{2})$. We have an isomorphism $\sigma^* I\xrightarrow{\sim} (2,\frac{1-\sqrt{-23}}{2})$, $x\mapsto \sigma(x)$. Since $(2,\frac{1+\sqrt{-23}}{2})(2,\frac{1-\sqrt{-23}}{2})=(2)$ is a principal ideal, we know $[\sigma^*I]=-[I]$ in $\text{Pic}(R)$.  Thus the $C_2$-action on the Picard group induced by the $\sigma$-dual is given by the identity. Therefore, $\text{Pic}(R)^{-\sigma}\simeq \text{Pic}(R)\simeq \mathbf{Z}/3$. Thus, by Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group}, we have $$\text{Pic}^\text{h}(\mathbf{Z}[\frac{1+\sqrt{-23}}{2}],\sigma)\simeq \mathbf{Z}/2\oplus\mathbf{Z}/3.$$ This example shows that the forgetful map $\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)$ does generally not land in the $2$-torsion part of the Picard group of $R$.
+    \label{example:hermitian_picard_group_does_not_map_to_2-torsion}
+    Let $R=\mathbf{Z}[\frac{1+\sqrt{-23}}{2}]$ with the action $\sigma:R\rightarrow R$ given by complex conjugation. The fixed points of $R$ are given by integers, thus $(R^\times)^{C_2}/N(R^\times)\simeq \mathbf{Z}/2$. The Picard group $\text{Pic}(R)\simeq \mathbf{Z}/3$ of $R$ is generated by the ideal $I=(2,\frac{1+\sqrt{-23}}{2})$. We have an isomorphism $\sigma^* I\xrightarrow{\sim} (2,\frac{1-\sqrt{-23}}{2})$, $x\mapsto \sigma(x)$. Since $(2,\frac{1+\sqrt{-23}}{2})(2,\frac{1-\sqrt{-23}}{2})=(2)$ is a principal ideal, we know $[\sigma^*I]=-[I]$ in $\text{Pic}(R)$.  Thus the $C_2$-action on the Picard group induced by the $\sigma$-dual is given by the identity. Therefore, $\text{Pic}(R)^{-\sigma}\simeq \text{Pic}(R)\simeq \mathbf{Z}/3$. Thus, by Proposition \ref{proposition:exact_sequence_for_hermitian_picard_group}, we have $$\text{Pic}^\text{h}(\mathbf{Z}[\frac{1+\sqrt{-23}}{2}],\sigma)\simeq \mathbf{Z}/2\oplus\mathbf{Z}/3.$$ This example shows that the forgetful map $\text{Pic}^\text{h}(R)\rightarrow \text{Pic}(R)$ does generally not land in the $2$-torsion part of the Picard group of $R$.
 \end{example}
 
 \begin{remark}
-    \label{remark:hermetian_picard_group_is_C_2-motivic_cohomology_in_degree_(2,1)}
-    Let $\text{Spec}(R)$ be a discrete irreducible affine scheme with a $C_2$-action $\sigma:R\rightarrow R$. It follows from Proposition \ref{proposition:exact_sequence_for_hermetian_picard_group} that we have an exact sequence $$0\rightarrow (R^\times)^{-\sigma}\rightarrow R^\times \xrightarrow{N}( R^\times)^{C_2}\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)\xrightarrow{N} \text{Pic}(R)^{-\sigma}.$$
+    \label{remark:hermitian_picard_group_is_C_2-motivic_cohomology_in_degree_(2,1)}
+    Let $\text{Spec}(R)$ be a discrete irreducible affine scheme with a $C_2$-action $\sigma:R\rightarrow R$. It follows from Proposition \ref{proposition:exact_sequence_for_hermitian_picard_group} that we have an exact sequence $$0\rightarrow (R^\times)^{-\sigma}\rightarrow R^\times \xrightarrow{N}( R^\times)^{C_2}\rightarrow\text{Pic}^\text{h}(R,\sigma)\rightarrow \text{Pic}(R)\xrightarrow{N} \text{Pic}(R)^{-\sigma}.$$
 \end{remark}
 
 \begin{remark}
@@ -1070,13 +1070,13 @@ An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and o
 \end{remark}
 
 \begin{example}
-    \label{example:hermetian_picard_group_is_not_a_zariski_sheaf}
+    \label{example:hermitian_picard_group_is_not_a_zariski_sheaf}
     Let $R=k[x,y]/(xy)$. \Viktor{find example to show pich is not a zariski sheaf}
 \end{example}
 
 \begin{proposition}
     \label{proposition:pich_has_galois_descent}
-    \Viktor{show galois descent for hermetian picard group}
+    \Viktor{show galois descent for hermitian picard group}
 \end{proposition}
 
 \begin{theorem}\label{theorem:Poincare_Pic_of_fixpt_Mackey_functor}
@@ -1627,7 +1627,7 @@ Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fibe
     \begin{proof}
         We will first construct a map. For this, it is enough to show that any Poincar{\'e} category $(\mathcal{C},\Qoppa)$ in $\mathrm{Mod}_{(\mathrm{Mod}_{A}^\omega, \Qoppa_A)}$ naturally admits a trivialization $N^{C_2}_{A^L}\mathcal{C}\simeq \mathrm{Mod}_{A^L}^\omega$ on the full subcategory of invertible objects. Note that $\Qoppa$ naturally factors through a $\mathrm{Mod}_{A^e}^\omega$-linear functor $\Qoppa^{\text{gen}}:\mathcal{C}^\op \to \mathrm{Mod}_{A^L}$ such that $\Qoppa = (\Qoppa^{\text{gen}})^{C_2}$. This base-changes to a trivialization. To see this, let $X\in \mathcal{C}$ denote a Poincar{\'e} generator. Then identifying $\mathcal{C}$ with $\mathrm{Mod}_{\mathrm{End}(X)}^\omega$ we have that $N^{C_2}_{A^L}\Qoppa^{\text{gen}}(X)=N^{C_2}_{e}\mathrm{End}(X)\otimes_{N_e^{C_2}A^e}A^L$ which, since $\mathrm{End}(X)$ is an Azumaya algebra, generates $\mathrm{Mod}_{A^L}$. 
         
-        Looping this sequence give the fiber sequence of Theorem~\ref{cor:Poincare_Brauer_to_Brauer_fiber}, so it is enough to check that the sequence \[\pi_0(\pnbr(A))\to \pi_0(\mathrm{br}(A^e))\to \pi_0(\mathrm{br}(A^L))\] is exact. Let $[\mathcal{C}]\in \pi_0(\mathrm{br}(A^e))$ be a Brauer class such that $[N^{C_2}_{A^L}\mathcal{C}]=0$, or equivalently that there exists a trivialization $N^{C_2}_{A^L}\mathcal{C}\simeq \mathrm{Mod}_{A^L}^\omega$. This trivialization is adjoint to a $\mathrm{Mod}_{A^e}^\omega$-linear functor $\mathcal{C}^{\op}\xrightarrow{\Qoppa^{\text{gen}}}\mathrm{Mod}_{A^L}^\omega$, which induces a Hermetian structure via $\Qoppa=(\Qoppa^{\text{gen}})^{C_2}$. Since $\Qoppa^{\text{gen}}$ is adjoint to an equivalence it must send any compact generator of $\mathcal{C}$ to a compact generator, hence the induced Hermetian structure is in fact Poincar{\'e} and is by construction $(\mathrm{Mod}_{A^e}^\omega, \Qoppa_A)$-linear. Note that we may repeat the above procedure for $\mathcal{C}^\vee$ and (up to twisting by a line bundle over $A^L$) this gives an inverse of $(\mathcal{C},\Qoppa)$, therefore showing the $[(\mathcal{C},\Qoppa)]$ is a Poincar{\'e}-Brauer class as desired.
+        Looping this sequence give the fiber sequence of Theorem~\ref{cor:Poincare_Brauer_to_Brauer_fiber}, so it is enough to check that the sequence \[\pi_0(\pnbr(A))\to \pi_0(\mathrm{br}(A^e))\to \pi_0(\mathrm{br}(A^L))\] is exact. Let $[\mathcal{C}]\in \pi_0(\mathrm{br}(A^e))$ be a Brauer class such that $[N^{C_2}_{A^L}\mathcal{C}]=0$, or equivalently that there exists a trivialization $N^{C_2}_{A^L}\mathcal{C}\simeq \mathrm{Mod}_{A^L}^\omega$. This trivialization is adjoint to a $\mathrm{Mod}_{A^e}^\omega$-linear functor $\mathcal{C}^{\op}\xrightarrow{\Qoppa^{\text{gen}}}\mathrm{Mod}_{A^L}^\omega$, which induces a hermitian structure via $\Qoppa=(\Qoppa^{\text{gen}})^{C_2}$. Since $\Qoppa^{\text{gen}}$ is adjoint to an equivalence it must send any compact generator of $\mathcal{C}$ to a compact generator, hence the induced hermitian structure is in fact Poincar{\'e} and is by construction $(\mathrm{Mod}_{A^e}^\omega, \Qoppa_A)$-linear. Note that we may repeat the above procedure for $\mathcal{C}^\vee$ and (up to twisting by a line bundle over $A^L$) this gives an inverse of $(\mathcal{C},\Qoppa)$, therefore showing the $[(\mathcal{C},\Qoppa)]$ is a Poincar{\'e}-Brauer class as desired.
     \end{proof}
 
 
