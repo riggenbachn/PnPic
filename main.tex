@@ -266,6 +266,30 @@ We will use this section to recall notions and results about Poincaré $\infty$-
 
 Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules over $R$. We will study Poincaré structures on the $\infty$-category $\Mod_R^\omega$ of compact modules over $R$. 
 
+\begin{definition}[Definition 1.2.2, \cite{CDHHLMNNSI}]
+    A hermetian infinity category is a pair $(\mathcal{C},\Qoppa)$ where $\mathcal{C}$ is a small stable infinity category and $\Qoppa:\mathcal{C}^\op\to \mathrm{Sp}$ is a quadratic functor. 
+\end{definition}
+
+A map of hermetian infinity categories $(f,\eta):(\mathcal{C},\Qoppa)\to (\mathcal{D},\Psi)$ is a functor $f:\mathcal{C}\to \mathcal{D}$ and a $2$-cell $\eta:\Qoppa\implies \Psi \circ f^\op$.
+
+Associated to any such quadratic functor $\Qoppa:\mathcal{C}^\op\to \mathrm{Sp}$ we may form a bilinear functor $B_\Qoppa(x,y):= \Qoppa(x\oplus y)^{\text{red}}$. 
+
+\begin{definition}[Definitions 1.2.2, 1.2.8, \cite{CDHHLMNNSI}]
+    We say that the associated bilinear form $B_\Qoppa$ is (right) non-degenerate if the functor \[\mathcal{C}^\op\to \mathrm{Fun}(\mathcal{C}^\op,\mathrm{Sp})\] given by sending $y\mapsto B_\Qoppa(-,y)$ lands in the essential image of the Yoneda embedding. Such hermetian structures then define a duality functor $D_\Qoppa:\mathcal{C}^\op \to \mathcal{C}$ and we say that the hermetian infinity category $(\mathcal{C},\Qoppa)$ is a Poincar{\'e} infinity category if the evaluation map $\mathrm{id}_{\mathcal{C}}\implies D_\Qoppa D_\Qoppa^\op$ is an equivalence.  
+\end{definition}
+
+A map of Poincar{\'e} infinity categories is a map of hermitian infinity categories which further preserves the duality functors. We will use \[\mathrm{Cat}^p_\infty \subseteq \mathrm{Cat}^h_\infty\] to denote the categories of Poincar{\'e} and hermitian infinity categories, respectively. These categories have several desirable properties. We collect several of the key properties below.
+
+\begin{theorem}[Theorem 5.2.7, Proposition 6.1.2, Proposition 6.1.4, Corollary 6.2.9 \cite{CDHHLMNNSI}]
+    \begin{enumerate}
+        \item Both $\mathrm{Cat}_\infty^p$ and $\mathrm{Cat}_\infty^h$ are complete and cocomplete, and the functors $\mathrm{Cat_\infty}^p\to \mathrm{Cat}_\infty^h\to \mathrm{Cat}_\infty^{\mathrm{ex}}$ are conservative and preserve all small (co)limits.
+        \item There is a symmetric monoidal infinity operad $(\mathrm{Cat}_\infty^h)^\otimes$ lifting $\mathrm{Cat}_\infty^h$.
+        \item The forgetful functor lifts to a symmetric monoidal map $f^*:(\mathrm{Cat}_\infty^h)^\otimes \to (\mathrm{Cat}_\infty^{\mathrm{ex}})^\otimes$.
+        \item This symmetric monoidal structure restricts to a symmetric monoidal structure on $\mathrm{Cat}_\infty^p$.
+        \item The symmetric monoidal structures on $\mathrm{Cat}_\infty^p$ and $\mathrm{Cat}_\infty^h$ are closed. 
+    \end{enumerate}
+\end{theorem}
+
 \Viktor{-characterization in terms of modules with genuine involution, -characterization of symmetric monoidal structures, -Pn}
 
 \section{Poincaré Schemes}
