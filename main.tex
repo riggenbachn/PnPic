@@ -157,6 +157,7 @@
 \begin{document}
 
 \maketitle
+\Lucy{Potential alt. title: Involutions on derived Azumaya algebras and pairings of twisted derived categories}
 \begin{abstract}
 In this paper, we use the formalism of Poincar{\'e} $ \infty $-categories, as developed by \cite{CDHHLMNNSI}, to define and study derived moduli stacks of line bundles with hermitian metrics and of Azumaya algebras equipped with an involution. \Lucy{this is not strictly speaking true unless we add ``up to Morita equivalence''--revisit later? }
     Our moduli spaces give rise to cohomological invariants which we term the Poincar{\'e} Picard group and the Poincar{\'e} Brauer group; these are enhancements of the ordinary Picard and Brauer groups which incorporate the data of an involution on the base. 
@@ -353,6 +354,24 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     \end{tikzcd}\,.
     \] 
     The diagram induces a functor from the pullback of the upper left cospan to the pullback of the lower right cospan $ U \colon \CAlgp\to \CAlg(\Spectra^{C_2}) $. 
+
+    Now observe that there is a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}[column sep=large,row sep=small]
+        && \Fun\left(\Delta^1 \times \Delta^1,\CAlg(\Spectra) \right) \ar[r,"{\mathrm{ev}_{00 \to 01 \to 11}}"] \ar[d,"{\mathrm{ev}_{00 \to 10 \to 11}}"] \ar[rd,phantom,"\lrcorner",very near start] & \Fun\left(\Delta^2, \CAlg(\Spectra)\right) \ar[d,"{\mathrm{ev}_{0\to 2}}"] \\
+        \CAlg(\Spectra)^{BC_2} \ar[d,"{m_{C_2}}"] \ar[rr,"{A \mapsto (A \to (A^{\otimes 2})^{tC_2} \to A^{tC_2})}"] & &\Fun\left(\Delta^2,\CAlg(\Spectra) \right) \ar[r,"{\mathrm{ev}_{0 \to 2}}"] \ar[d,"{\mathrm{ev}_{1\to 2}}"] & \Fun\left(\Delta^1,\CAlg(\Spectra) \right) \\
+        \CAlg(\Spectra)^{BC_2 \times \Delta^1} \ar[rr,"{(-)^{tC_2}}"] && \Fun\left(\Delta^1 ,\CAlg(\Spectra) \right) &
+    \end{tikzcd}
+    \end{equation*}
+    where the upper right square is a pullback by definition of $ \Delta^1 \times \Delta^1 $ and $ m_{C_2} $ is the multiplication map functor of \cite[Construction 3.1]{LYang_normedrings} precomposed with the inclusion $ \iota $ of Recollection \ref{recollection:Tate_valued_norm}. 
+    Since the upper right is a pullback, the pullback of the outer span in the top row (which is $ \CAlgp $) agrees with the pullback of the upper left span. 
+    On the other hand, the pullback of the upper left span maps to the pullback of the `tall' span on the left. 
+    By the récollement of $ \Spectra^{C_2} $, the pullback of the `tall' span on the left may be identified with $ \Einfty \Alg\left(\Spectra^{C_2}\right) $. 
+    Furthermore, by definition of the Hill--Hopkins--Ravenel norm, we have described a functor
+    \begin{equation}\label{eq:Poincare_ring_functorial_norm}
+        \CAlgp \to \Fun\left(\Delta^1,\Einfty \Alg\left(\Spectra^{C_2}\right)\right)
+    \end{equation}
+    which sends a Poincaré ring $ A $ to a map of $ \Einfty $-algebras $ N^{C_2}(U(A)^e) \to U(A) $. 
 \end{remark}
 \begin{lemma}\label{lemma:Poincare_ring_geom_fixpt}
     There is a commutative diagram
@@ -766,7 +785,7 @@ We begin by defining an analogue of the multiplicative group/units for Poincaré
     Recall that $ \mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)\to \mathrm{Mod}^\omega_A $ is a right fibration classified by the functor which takes a module $M$ to the $ \infty $-groupoid $ \Omega^\infty \Qoppa_A(M)$ \cite[Definition 2.1.1]{CDHHLMNNSI}. 
     Looping the aforementioned fibration twice, we have a fibration sequence %we may identify $ \mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)}((A,u))$ with the fiber of the map 
     \begin{equation}\label{eq:loops_pnpic_fiber_sequence}
-        \mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)}((A,u)) \to \mathrm{Aut}_{\mathrm{Mod}_A^\omega}(A)\xrightarrow{f \mapsto f^*(u)} \Omega^\infty \Qoppa_A(A)
+        \Omega\Picp(A) \simeq \mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)}((A,u)) \to \mathrm{Aut}_{\mathrm{Mod}_A^\omega}(A)\xrightarrow{f \mapsto f^*(u)} \Omega^\infty \Qoppa_A(A)
     \end{equation} 
     where the fiber is taken over the point $ u \in \Omega^\infty \Qoppa_A(A) $. 
     In other words, a point in $ \mathrm{Aut}_{\mathrm{He}(\mathrm{Mod}_A^\omega,\Qoppa_A)}((A,u)) $ is the data of an automorphism $a\in \mathrm{Aut}(A)$ together with a path $q $ from $ u $ to $ a^*u$ in $\Omega^{\infty}\Qoppa_A(A)$.  
@@ -774,33 +793,51 @@ We begin by defining an analogue of the multiplicative group/units for Poincaré
 	
 	% There is a natural transformation $\gmq(-)\to \Omega\Picp(-)$ given as follows: we get a map $\gmq(A)\to \mathrm{Aut}_A(A)$ given by forgetting the Poincar{\'e} structure everywhere. 
     We now define a natural transformation $\gmq(-)\to \Omega\Picp(-)$. 
-    By Lemma \ref{lemma:unit_trivial_norm}, there is a commutative diagram \Lucy{edit Lemma accordingly}
+    By Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:units_have_unit_norm}, there is a commutative diagram 
     \begin{equation}\label{diagram:units_to_loops_pnpic_map_of_fib_seq}
     \begin{tikzcd}[row sep=tiny,column sep=large]
-        \mathrm{gl}_1(A^e) \ar[r] \ar[d] & \Omega^\infty \Qoppa_A(A) \ar[d,equals] \\
-        \mathrm{Aut}_A(A) \ar[r,"{f \mapsto f^*(u)}"] & \Omega^\infty \Qoppa_A(A)
+        \mathrm{gl}_1(A^e) \ar[r] \ar[d] & \mathrm{gl_1}\left((A^{L})^{C_2}\right) \ar[d,equals] \ar[r] & \Omega^\infty \Qoppa_A(A) \\ %\ar[d,equals] \\
+        \mathrm{Aut}_A(A) \ar[r,"{f \mapsto f^*(u)}"] & \mathrm{gl_1}\left((A^{L})^{C_2}\right) %\Omega^\infty \Qoppa_A(A)
     \end{tikzcd}
     \end{equation}
     where the upper horizontal arrow is from Remark \ref{remark:Poincare_units_fiber_sequence}. 
     Now observe that the left vertical arrow in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) is an equivalence. 
-    The result follows from taking fibers over $ u $ in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) and Remark \ref{remark:Poincare_units_fiber_sequence} and (\ref{eq:loops_pnpic_fiber_sequence}). 
+    The result follows from taking fibers over $ u $ in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) and comparing (\ref{eq:loops_pnpic_fiber_sequence}) with Remark \ref{remark:Poincare_units_fiber_sequence} and Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:poincare_units_fib_seq}. \Lucy{Are Remark \ref{remark:Poincare_units_fiber_sequence} and Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:poincare_units_fib_seq} slightly redundant?}
+    % --------------------------------------------------------
     % It is enough to see that on $\pi_0$ the automorphisms of $A$ coming from $\gmq$ preserve $u$. 
     % By using the linear and quadratic decomposition of $\Qoppa_A$, for an element $a\in \pi_0(A)^\times$ send $u$ to $u$ is must be sent to $1\in \pi_0(A^{\phi C_2})$ and must act by $1$ on $A^{hC_2}$. 
     % By Lemma \ref{lemma:unit_trivial_norm}, this second condition is equivalent to $a\sigma(a)\in \pi_0(A)^\times$ being equal to $1$, but then these two conditions are exactly describing a map out of $\gmq$ as desired. 
-	
+	%
 	% Consequently, we have a comparison map $\gmq(A)\to \Omega\Picp(\mathrm{Mod}_A,\Qoppa_A)$, and the above argument in fact shows that this map is an equivalence on $\pi_0$. 
     % To finish the argument, note that the pullback of Remark \ref{remark:Poincare_units_fiber_sequence} which finishes the proof. 
 \end{proof}
 
 \begin{lemma}\label{lemma:unit_trivial_norm}
     % DO NOT DELETE PLEASE--WORK IN PROGRESS. (July 21, 2025)
-    % Let $A\in \CAlgp(\mathrm{Sp})$ and $s\in \mathrm{gl}_1(A) $. 
-    % Then $a\sigma(a)=1$ in $\pi_0(A^{C_2})$ if and only if $(a\otimes a)^*$ acts by $1$ on $ A^{C_2}=\mathrm{Hom}_{N^{C_2}A}(N^{C_2}A, A^L) $.
-	Let $A\in \mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ and $s\in \pi_0(A)^\times$. 
-    Then $a\sigma(a)=1$ in $\pi_0(A)$ if and only if $(a\otimes a)^*$ acts by $1$ on $\pi_0(A^{hC_2})=\pi_0(\mathrm{Hom}_{A\otimes A}(A\otimes A, A)^{hC_2})$.
+    Let $A\in \CAlgp(\mathrm{Sp})$.  
+    In view of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg},  there is a map of $ \infty $-groupoids 
+    \begin{equation}\label{eq:Poincare_ring_congruence}     
+        A^e \simeq \mathrm{End}_{A^e}(A^e) \xrightarrow{N^{C_2}} \mathrm{End}_{N^{C_2}A}\left(N^{C_2}A\right) \xrightarrow{\mathrm{ev}_u} \hom_{N^{C_2}A}\left(N^{C_2}A, A\right) \simeq \Omega^\infty \Qoppa_A(A) \simeq (A^L)^{C_2}
+    \end{equation}   
+    where $ u \colon N^{C_2}A \to A $ is the canonical map. 
+    Write $ n_A $ for the composite of (\ref{eq:Poincare_ring_congruence}). Then
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{lemma_item:units_have_unit_norm} The composite $ \mathrm{gl}_1(A^e) \to A^e \xrightarrow{n_A} (A^{L})^{C_2} $ canonically factors through the inclusion $ {\mathrm{gl}_1\left((A^{L})^{C_2}\right) \to (A^{L})^{C_2}} $. 
+        Under the identification $ \Omega^\infty \Qoppa_A(A) \simeq (A^L)^{C_2} $, $ u \in \Omega^\infty \Qoppa_A(A) $ is sent to $ 1 \in (A^L)^{C_2} $.
+       \item \label{lemma_item:poincare_units_fib_seq} There is a fiber sequence
+            \begin{equation*}
+                \gmq(A) \simeq \mathrm{fib}_{1}(n_A) \to \mathrm{gl}_1(A^e) \xrightarrow{n_A} \mathrm{gl}_1\left((A^{L})^{C_2}\right)
+            \end{equation*}
+            where $ n_A $ denotes the map from \ref{lemma_item:units_have_unit_norm}. 
+    \end{enumerate}
+	% Let $A\in \mathrm{CAlg}(\mathrm{Sp}^{BC_2})$ and $s\in \pi_0(A)^\times$. 
+    % Then $a\sigma(a)=1$ in $\pi_0(A)$ if and only if $(a\otimes a)^*$ acts by $1$ on $\pi_0(A^{hC_2})=\pi_0(\mathrm{Hom}_{A\otimes A}(A\otimes A, A)^{hC_2})$.
 \end{lemma}
 \begin{proof}
-	The only if direction follows from the fact that the evaluation map $\mathrm{Hom}_{A\otimes A}(A\otimes A, A)\to A$ is an $A\otimes A$-module map. Now suppose that $a\sigma(a)=1$ in  $A$. Then before taking homotopy fixed points the induced map $a^*=id$ because $A$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
+    The first half of part \ref{lemma_item:units_have_unit_norm} follows from the fact that functors send equivalences to equivalences. 
+    The identification of $ u $ with $ 1 $ is by definition of $ \Qoppa_A $. \Lucy{add reference to $ \Mod^{\mathrm{p}} $ functor.} 
+    \Lucyil{Rest of proof tbd, maybe overlap with Remark \ref{remark:Poincare_units_fiber_sequence}? Previous iteration is commented out but still appears in \texttt{.tex} file.}
+	% The only if direction follows from the fact that the evaluation map $\mathrm{Hom}_{A\otimes A}(A\otimes A, A)\to A$ is an $A\otimes A$-module map. Now suppose that $a\sigma(a)=1$ in  $A$. Then before taking homotopy fixed points the induced map $a^*=id$ because $A$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
 \end{proof}
 
 \subsection{prime factorization and the picard group of hearts}\Viktor{still in development}
