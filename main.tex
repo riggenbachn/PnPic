@@ -261,7 +261,7 @@ We will use this section to recall notions and results about Poincaré $\infty$-
 
 \begin{notation}
     \label{notation:omission_of_e_infty}
-    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}. Moreover, we will denote the $\infty$-category $\CAlg(\Spectra)$ of commutative algebra objects in the $\infty$-category of spectra $\Spectra$ by $\CAlg$. 
+    Let $R$ be an $\mathbf{E}_\infty$-ring spectrum. We will drop $\mathbf{E}_\infty$ from our notation and simply call $R$ a \emph{ring spectrum}. Moreover, we will denote the $\infty$-category $\CAlg(\Spectra)$ of commutative algebra objects in the $\infty$-category of spectra $\Spectra$ by $\CAlg$. \Lucy{I'm ok with the notation $ \CAlg $, but am concerned about dropping $ \Einfty $ because $ \mathbb{E}_1 $-ring spectra will eventually come up as well. }
 \end{notation}
 
 Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules over $R$. We will study Poincaré structures on the $\infty$-category $\Mod_R^\omega$ of compact modules over $R$. 
@@ -273,17 +273,32 @@ Let $R$ be a ring spectrum and let $\Mod_R$ be the $\infty$-category of modules 
 We will now specify the objects which we are able to take the Poincar{\'e} Picard and Brauer spaces of. These will be schemes which are equipped with a Poincar{\'e} structure on their derived categories which is compatible with the symmetric monoidal structure. While this definition is simple and convenient, we find it both technically useful and psychologically comforting to have a  definition of such objects closer to a scheme with an involution. We will start by looking at affine objects.
 
 \subsection{Poincar{\'e} rings}
-
+% \begin{remark}
+    % \label{remark:notational_difference_to_nine-authored_papers}
+    % Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. 
+    Let $ R $ be an $ \Einfty $-ring spectrum. 
+    In \cite[discussion immediately preceding Examples 5.4.10]{CDHHLMNNSI}, the 9 authors describe the additional data (referred to as a `genuine involution') needed to endow $ \Mod^\omega_R $ with a symmetric monoidal Poincaré structure. 
+    In the following, we introduce an $ \infty $-category which we refer to as \emph{Poincaré ring spectra} whose objects are the $\mathbf{E}_\infty$-ring spectra with genuine involution of Calmès--Dotto--Harpaz--Hebestreit--Land--Moi--Nardin--Nikolaus--Steimle. 
+    There is a natural symmetric monoidal functor from Poincaré ring spectra to Poincaré $ \infty $-categories. \Lucy{reference or omit this sentence} 
+    We include examples throughout and discuss how ordinary commutative rings with involution can be regarded as Poincaré ring spectra (Example \ref{example:genuine_symmetric_poincare_structure}). 
+    % Poincaré ring spectra are referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
+% \end{remark}
+\begin{recollection}\label{recollection:Tate_valued_norm}
+    Write $ \mathcal{O}_{C_2} $ for the orbit category of $ C_2 $.  
+    The \emph{Tate-valued norm} is a functor $ \CAlg\left(\Spectra^{BC_2}\right) \to \operatorname{Fun}\left(\mathcal{O}_{C_2}, \CAlg(\Spectra)\right) $ Definition 3.8 and Lemma 3.10 of \cite{LYang_normedrings}. 
+    Note that there is a canonical functor $ \iota \colon \Delta^1 = [0<1] \to \mathcal{O}_{C_2} $ which sends $ 0 $ to $ C_2/e $ and $ 1 $ to $ C_2/C_2 $. 
+    Via precomposition with $ \iota $, we will regard the Tate-valued norm as a functor $ \CAlg\left(\Spectra^{BC_2}\right) \to \operatorname{Fun}\left(\Delta^1, \CAlg(\Spectra)\right) $. 
+\end{recollection}
 \begin{definition}
     \label{definition:poincare_ring_spectrum}
     Let $\CAlgp$ be the $(\infty,1)$-category defined by the pullback 
     \begin{equation}\label{diagram:poincare_ring_defn}    
     \begin{tikzcd}
     \CAlgp \arrow[rr]\arrow[d] & & \operatorname{Fun}(\Delta^2, \CAlg(\Spectra))\arrow[d,"d_1^*"]\\
-    \CAlg(\Spectra^{BC_2})\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}(\Delta^1, \CAlg(\Spectra))
+    \CAlg\left(\Spectra^{BC_2}\right)\arrow[rr,"U(-)\to (-)^{tC_2}"] & & \operatorname{Fun}\left(\Delta^1, \CAlg(\Spectra)\right)
     \end{tikzcd}
     \end{equation}
-    where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action and the lower horizontal arrow is the Tate-valued norm (see Definition 3.8 and Lemma 3.10 of \cite{LYang_normedrings}). 
+    where $U:\Spectra^{BC_2}\to \Spectra$ is the functor which forgets the $C_2$-action and the lower horizontal arrow is the Tate-valued norm of Recollection \ref{recollection:Tate_valued_norm}. 
     An object of $ \CAlgp $ will be called a \emph{Poincaré ring spectrum}.
 
     Let $R$ be an $ \Einfty $ ring spectrum. 
@@ -298,12 +313,6 @@ We will now specify the objects which we are able to take the Poincar{\'e} Picar
     Since the Tate construction is lax symmetric monoidal, $R^{tC_2}$ is naturally an $R$-algebra via the Tate-valued norm. 
     % A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
 \end{definition}
-
-\begin{remark}
-    \label{remark:notational_difference_to_nine-authored_papers}
-    % Poincaré ring spectra, as defined in Definition \ref{definition:poincare_ring_spectrum}, were studied in \Viktor{cite 9 authored paper}. Note that we chose a different notation. 
-    In \cite[discussion immediately preceding Examples 5.4.10]{CDHHLMNNSI}, Poincaré ring spectra are referred to as $\mathbf{E}_\infty$-\emph{ring spectra with genuine involution}.
-\end{remark}
 
 We will denote objects of $\CAlgp$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. 
 Here $ s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. 
@@ -329,7 +338,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
         \CAlg(\Spectra^{C_2}) \ar[r,"{(-)^{\Phi C_2}}"] & \CAlg(\Spectra)
     \end{tikzcd}
     \end{equation*}
-    where $ U $ is the functor of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}. \Lucy{add reference to definition of $ \CAlgp $?}
+    where $ U $ is the functor of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg} and the upper horizontal arrow is the canonical functor in Definition \ref{definition:poincare_ring_spectrum}. %\Lucy{add reference to definition of $ \CAlgp $?}
 \end{lemma}
 \begin{proof}
     Follows from the récollement of $ \Spectra^{C_2} $ and Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}. 
@@ -350,7 +359,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     A Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the Tate Frobenius $R\rightarrow R^{tC_2}$.
 \end{remark}
 \begin{observation}\label{observation:normed_C2_ring_forget_to_Poincare_ring}
-    There is a forgetful functor from $ C_2 $-$ \EE_\infty $-algebras to Poincaré rings which forgets the $ C_2 $-equivariance of the map $ R \to R^{\varphi C_2 } $. 
+    In view of \cite[Theorem 1.3 \& Definition 3.13]{LYang_normedrings}, there is a forgetful functor from $ C_2 $-$ \EE_\infty $-algebras to Poincaré rings which forgets the $ C_2 $-equivariance of the map $ R \to R^{\varphi C_2 } $. 
 \end{observation}
 
 \begin{remark}
@@ -417,14 +426,14 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     $ \CAlgp $ is presentable and accessible. 
 \end{lemma}
 \begin{proof}
-    \todo{need to define the category first!}
+    \Lucy{finish proof/move from \texttt{definitions.tex}}
 \end{proof}
 \begin{definition}\label{defn:Poincare_ring_pointwise_units}
     Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_1}) \to \mathrm{gl}_1(R^e) $.  
 \end{definition}
 \begin{lemma}\label{lemma:pointwise_units_has_left_adjoint}
     The functor $ (-)^u $ of Definition \ref{defn:Poincare_ring_pointwise_units} has a left adjoint. 
-    Denote the left adjoint by $ \sphere[-] $. 
+    Denote the left adjoint by $ \sphere[-] $. \Lucy{To define a functor $ \sphere[-] $ out of $ \Spectra^{C_2} $, precompose with the forgetful map $ \Spectra^{C_2}_{\geq 0} \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $?}
 \end{lemma}
 \begin{proof}
     By \cite[Corollary 5.5.2.9]{HTT}, in view of Lemma \ref{lemma:poincare_rings_presentable_accessible}, it suffices to show that $ (-)^u $ is accessible and preserves small limits. 
@@ -1831,9 +1840,9 @@ Let $ R $ be an $ \EE_\infty $-ring spectrum.
 \end{proof}
 
 \section{Stacks associated to Poincaré \texorpdfstring{$ \infty $}{∞}-categories}
-Given an $ R $-linear $ \infty $-category $ \mathcal{C} $, we may consider its corresponding moduli stack of objects \cites{MR2493386}[\S5]{MR3190610}. 
-There is a close relationship between objects in $ \mathcal{C} $ and Morita trivializations of $ \mathcal{C} $: The choice of an object $ G $ which is a compact generator of $ \mathcal{C} $ gives an equivalence $ \mathcal{C} \simeq \Mod_{\mathrm{End}_{\mathcal{C}}(G)}\left(\Mod_R\right) $. 
-The space of compact generators comprises an open substack of the moduli stack of objects. \Lucy{cite \cite[Proposition 5.10]{MR3190610}?}
+Given an $ R $-linear $ \infty $-category $ \mathcal{C} $, there is a close relationship between objects in $ \mathcal{C} $ and Morita trivializations of $ \mathcal{C} $: The choice of an object $ G $ which is a compact generator of $ \mathcal{C} $ gives an equivalence $ \mathcal{C} \simeq \Mod_{\mathrm{End}_{\mathcal{C}}(G)}\left(\Mod_R\right) $. 
+% we may consider its corresponding 
+In the moduli stack of objects \cites{MR2493386}[\S5]{MR3190610} in $ \mathcal{C} $, the space of compact generators comprises an open substack. \Lucy{cite \cite[Proposition 5.10]{MR3190610}?}
 Using this correspondence/philosophy, Antieau--Gepner show that the moduli stack of objects in $ \mathcal{C} $ is locally geometric, then use local geometricity of moduli stacks of objects to prove the existence of étale-local trivializations of invertible $ R $-linear $ \infty $-categories. 
 
 In this section, we study analogous moduli stacks associated to $ R $-linear Poincaré $ \infty $-categories.   

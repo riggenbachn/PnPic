@@ -121,20 +121,20 @@
 \newcommand{\BMinv}{\mathrm{BM}_\sigma} % for `hermitian' bimodules; made a macro so we can change this later easily. 
 
 %Theorem Environments ----------------------------------------------------------------
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{theorem}[equation]{Theorem}
+\newtheorem{proposition}[equation]{Proposition}
+\newtheorem{lemma}[equation]{Lemma}
+\newtheorem{corollary}[equation]{Corollary}
 
 \theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{construction}[theorem]{Construction}
-\newtheorem{remark}[theorem]{Remark}
-\newtheorem{remarks}[theorem]{Remarks}
-\newtheorem{observation}[theorem]{Observation}
-\newtheorem{notation}[theorem]{Notation}
-\newtheorem{example}[theorem]{Example}
-\newtheorem{question}[theorem]{Question}
+\newtheorem{definition}[equation]{Definition}
+\newtheorem{construction}[equation]{Construction}
+\newtheorem{remark}[equation]{Remark}
+\newtheorem{remarks}[equation]{Remarks}
+\newtheorem{observation}[equation]{Observation}
+\newtheorem{notation}[equation]{Notation}
+\newtheorem{example}[equation]{Example}
+\newtheorem{question}[equation]{Question}
 \newtheorem{recollection}[equation]{Recollection}
 \newtheorem{variant}[equation]{Variant}
 
@@ -381,6 +381,14 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     Now suppose furthermore that $ \mathcal{D}^\otimes $ is of the form $ \mathcal{E}^\otimes \times_{\mathrm{Fin}_*} \Associnv^\otimes $ for some symmetric monoidal $ \infty $-category $ \mathcal{E} $. 
     Then the associated involution $ \sigma_{\mathcal{C}} $ is the identity, and for any involutive algebra object $ A $ of $ \mathcal{D} $, $ \sigma_A $ is an equivalence $ u(A) \simeq u(A)^{\mathrm{rev}} $ satisfying $ \sigma_A^{\mathrm{rev}} \circ \sigma_A \simeq \mathrm{id}_A $. 
 \end{remark}
+\begin{remark}\label{rmk:naive_inv_alg_as_assoc_alg}
+    Suppose given a cocartesian fibration $ f \colon \mathcal{D}^\otimes \to \Associnv^\otimes $ of $ \infty $-operads, and write $ \mathcal{C} $ for its underlying monoidal $ \infty $-category with equivalence $ \sigma_{\mathcal{C}} $ as in Remark \ref{rmk:assoc_inv_mon_cat_as_mon_cat_with_autoequiv}. 
+    The functors of Remark \ref{rmk:assoc_infty_opd_to_assoc_inv_infty_opd} induce a functor 
+    \begin{equation*}
+        \Alg^\sigma(\mathcal{D}) \to \Alg(\mathcal{C}) \times \Alg(\mathcal{C}_{\mathrm{rev}}) \,;
+    \end{equation*}
+    moreover, the aforementioned functor factors through the fixed points of the $ C _2 $-action on the right-hand side given by $ \Alg(\mathcal{C}) \times \Alg(\mathcal{C}_{\mathrm{rev}}) \xrightarrow{\mathrm{swap}} \Alg(\mathcal{C}_{\mathrm{rev}}) \times \Alg(\mathcal{C}) \xrightarrow{\sigma_{\mathcal{C}} \times \sigma_{\mathcal{C}}} \Alg(\mathcal{C}) \times \Alg(\mathcal{C}_{\mathrm{rev}}) $. 
+\end{remark}
 \begin{definition}
     Define a category $ \Delta_\sigma $ 
     \begin{itemize}
@@ -478,7 +486,7 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     On $ \mathrm{Mul}_{\mathrm{RM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{LM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{rev}_{\mathcal{L}I} \times \{ c_{1}\} $, this map agrees with $ \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
 \end{remark}
-\begin{definition}
+\begin{definition}\label{defn:inv_bimod_operad}
     Define a colored operad $ \mathbf{BM}_\mathrm{inv} $
     \begin{enumerate}[label=(\roman*)]
         \item The set of objects of $ \mathbf{BM}_\mathrm{inv} $ has three elements, which we denote by $ \mathfrak{a}_\ell, \mathfrak{a}_r, \mathfrak{m} $. 
@@ -505,8 +513,8 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_{-1}\} $ where $ c_{-1} $ is the constant function on $ I \sqcup \{j\} $ with value $ -1 $. 
 \end{remark}
-\begin{definition}
-    Let $ \mathcal{LM}_\mathrm{inv}^\otimes $, $ \mathcal{RM}_\mathrm{inv}^\otimes $, and $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the associated $ \infty $-operads (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
+\begin{definition}\label{defn:inv_leftrightbimod_infty_operad}
+    Let $ \mathcal{LM}_\mathrm{inv}^\otimes $, $ \mathcal{RM}_\mathrm{inv}^\otimes $, and $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the $ \infty $-operads associated to the colored operads of Definitions \ref{defn:inv_leftmod_operad} and \ref{defn:inv_bimod_operad} (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
 \end{definition}
 \begin{remark}
     We can describe the category $ \mathcal{LM}_\mathrm{inv}^\otimes $ as follows: 
@@ -546,7 +554,7 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     Each morphism $ \phi \in \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ determines a linear ordering $\ell $ on the set $ I $ and a function $ s \colon I \to \{\pm 1\} $. 
     Passing from $ \phi $ to the pair $ (\ell, s) $ determines a map of colored operads $ j \colon \mathbf{BM}_\mathrm{inv} \to \mathbf{Assoc}_\mathrm{inv} $. 
     The map $ j $ induces a morphism of $ \infty $-operads $  \mathcal{BM}_{\mathrm{inv}}^\otimes \to \Associnv^\otimes $ which we will also denote by $ j $. 
-    For any $ \EE_\sigma $-monoidal $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive\Lucy{hermitian} bimodule over itself. 
+    For any $ \EE_\sigma $-monoidal $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive bimodule\Lucy{hermitian} over itself. 
 \end{remark} 
 \begin{remark}\label{rmk:lmod_infty_opd_to_inv_lmod_infty_opd}
     The maps $ \iota, \iota^{\mathrm{rev}} $ of Remark \ref{rmk:lmod_opd_to_inv_lmod_opd} induce maps of $ \infty $-operads $ \iota \colon \mathcal{LM}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $ and $ \iota^{\mathrm{rev}} \colon \mathcal{RM}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $. 
@@ -556,7 +564,7 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     There are canonical identifications $ \iota \circ \mathrm{rev} \simeq \sigma \circ \iota^{\mathrm{rev}} $ where $ \sigma $ is the involution on $ \BMinv^\otimes $ induced by Remark \ref{rmk:bimod_opd_involution} and $ \mathrm{rev} $ is the involution on $ \mathcal{BM}^\otimes $ of \cite[Construction 4.6.3.1]{LurHA}. 
 \end{remark}
 \begin{remark}\label{rmk:rmod_lmod_opd_to_inv_bimod_opd}
-    There are canonical maps of operads $ \mathcal{LM}^\otimes_{\mathrm{inv}} \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ and $ \mathcal{RM}^\otimes_{\mathrm{inv}} \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ sending $ \mathfrak{a} $ to $ \mathfrak{a}_\ell $, resp. $ \mathfrak{a}_r $ and making the diagram 
+    There are canonical maps of $ \infty $-operads $ \mathcal{LM}^\otimes_{\mathrm{inv}} \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ and $ \mathcal{RM}^\otimes_{\mathrm{inv}} \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ sending $ \mathfrak{a} $ to $ \mathfrak{a}_\ell $, resp. $ \mathfrak{a}_r $ and making the diagram 
     \begin{equation*}
     \begin{tikzcd}[row sep=tiny]
         \mathrm{Assoc}^\otimes \ar[dd,"\sigma"] \ar[r] & \mathcal{LM}^\otimes_{\mathrm{inv}} \ar[dd,"{\mathrm{rev}}"] \ar[rd] & \\
@@ -566,7 +574,7 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     \end{equation*}
     commute, where $ \mathrm{rev} $ is (an involutive version of) the reversal involution of \cite[Remark 4.6.3.2]{LurHA}. 
 \end{remark}
-\begin{definition}
+\begin{definition}\label{defn:leftrightbimodules_with_involution}
     Let $ \mathcal{C}^\otimes \to \Associnv^\otimes $ and $ \mathcal{D}^\otimes \to \Associnv^\otimes $ be fibrations of $ \infty $-operads and let $ \mathcal{M} $ be an $ \infty $-category. 
     Suppose given a fibration of $ \infty $-operads $ q \colon \mathcal{O}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $ together with equivalences $ \mathcal{O}^\otimes_{\mathfrak{a}} \simeq \mathcal{C}^\otimes $ and $ \mathcal{O}^\otimes_{\mathfrak{m}} \simeq \mathcal{M} $. 
     Let $ L\Modh\left(\mathcal{M}\right) $ denote the $ \infty $-category $ \Alg_{/\mathcal{LM}_{\mathrm{inv}}}\left(\mathcal{O}\right) $. 
@@ -584,9 +592,9 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
 \end{definition}
 \begin{definition}
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a fibration of $ \infty $-operads. 
-    We say that $ q $ exhibits $ \mathcal{O}_{\mathfrak{m}} $ as $ \EE_\sigma $-bitensored over $ \mathcal{O}_{\mathfrak{a}_\ell} $ and $ \mathcal{O}_{\mathfrak{a}_r} $ if $ q $ is a cocartesian fibration. 
+    We say that $ q $ exhibits $ \mathcal{O}_{\mathfrak{m}} $ as \emph{$ \EE_\sigma $-bitensored over $ \mathcal{O}_{\mathfrak{a}_\ell} $ and $ \mathcal{O}_{\mathfrak{a}_r} $} if $ q $ is a cocartesian fibration. 
 \end{definition}
-\begin{remark} % Compare Remark 4.2.1.21 in higher algebra
+\begin{remark}\label{rmk:bitensored_cat_informal_description} % Compare Remark 4.2.1.21 in higher algebra
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
     Then $ q $ is classified by a map $ \chi \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathrm{Cat}_\infty $. 
     By Remark \ref{rmk:bimod_infty_opd_to_inv_bimod_infty_opd}, we can think of $ q $ as giving two $ \EE_\sigma $ algebras $ \mathcal{C} $, $ \mathcal{D} $ in $ \mathrm{Cat}_\infty $ with an $ \infty $-category $ \mathcal{M} $ equipped with both the structure of a $ \mathcal{C} $-$ \mathcal{D} $-bimodule (equivalently, the structure of a left $ \mathcal{C} \times \mathcal{D}_{\mathrm{rev}} $-module) and of a $ \mathcal{D} $-$ \mathcal{C} $-bimodule, and an autoequivalence $ \sigma_{\mathcal{M}} \colon \mathcal{M} \simeq \mathcal{M} $ of order two which is linear with respect to the autoequivalence $ \mathcal{C} \times \mathcal{D}_{\mathrm{rev}} \xrightarrow{\mathrm{flip}} \mathcal{D}_{\mathrm{rev}} \times \mathcal{C} \xrightarrow{\sigma_{\mathcal{D}}^{-1} \times \sigma_{\mathcal{C}}}  \mathcal{D} \times \mathcal{C}_{\mathrm{rev}} $. 
@@ -599,13 +607,28 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     Furthermore, we have an equivalence $ \sigma_{M} \colon M \simeq \sigma_{\mathcal{M}} (M) $ which is linear with respect to the equivalence $ A \xrightarrow{\sigma_A} \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $. 
     \Lucyil{is this related to ``modules with involution'' from \cite[\S3.1]{CDHHLMNNSI}?}
 \end{remark}
-\begin{remark} 
+\begin{remark}\label{rmk:inv_bimod_informal_description}
     Let $ q \colon \mathcal{O}^\otimes \to \mathcal{BM}^\otimes_{\mathrm{inv}} $ be a cocartesian fibration of $ \infty $-operads. 
-    Consider a hermitian module object $ F \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathcal{O}^\otimes $. 
+    Consider a hermitian module object $ F \colon \mathcal{BM}^\otimes_{\mathrm{inv}} \to \mathcal{O}^\otimes $ and keep the notation of Remark \ref{rmk:bitensored_cat_informal_description}. 
     By Remark \ref{rmk:rmod_lmod_opd_to_inv_bimod_opd}, $ F $ determines an associative algebra $ A $ of $ \mathcal{C} $ with an equivalence of algebras $ \sigma_A \colon A \simeq \sigma_{\mathcal{C}} (A)^{\mathrm{rev}} $ and an associative algebra $ B $ of $ \mathcal{D} $ with an equivalence of algebras $ \sigma_B \colon B \simeq \sigma_{\mathcal{D}} (B)^{\mathrm{rev}} $, an object $ M \in \mathcal{M} $ so that $ M $ (resp. $ \sigma_{\mathcal{M}}(M) $) is equipped with the structure of a $ A $-$ B $-bimodule (resp. $ \sigma_{\mathcal{D}}(B) $-$ \sigma_{\mathcal{C}}(A) $-bimodule). %and the structure of a right $ \sigma_{\mathcal{C}} (A) $-module on $ \sigma_{\mathcal{M}}(M) $. \Lucy{Want this to be a bimodule structure} 
     % By \cite[\S4.6.3]{LurHA}, equivalently $ M $ and $ \sigma_{\mathcal{M}}(M) $ both have the structure of a left $ A \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $-module.  
     Furthermore, we have an equivalence $ \sigma_{M} \colon M \simeq \sigma_{\mathcal{M}} (M) $ which is linear with respect to the equivalence $ A \otimes B  \xrightarrow{\mathrm{flip}} B \otimes A \xrightarrow{\sigma_B^{-1} \otimes \sigma_A} \sigma_{\mathcal{D}}(B)^{\mathrm{rev}} \otimes \sigma_{\mathcal{C}}(A)^{\mathrm{rev}} $. 
     \Lucyil{when $ \mathcal{C} = \mathcal{D} $ and $ \sigma_{\mathcal{M}} $ and $ \sigma_{\mathcal{C}} $ are both the identity and $ A = B $, I think this recovers the ``module with involution'' from \cite[\S3.1]{CDHHLMNNSI}.}
+\end{remark}
+\begin{remark}\label{rmk:inv_alg_as_bimodule_over_itself}
+    Let $ q \colon \mathcal{O}^\otimes \to \Associnv $ be a cocartesian fibration of $ \infty $-operads exhibiting $ \mathcal{C} $ as a monoidal $ \infty $-category with an involution $ \sigma_{\mathcal{C}} $. 
+    Let us write $ \mathcal{C}^{\otimes}_{\pm} \to \mathcal{BM}^{\otimes} $ for the pullback of $ q $ the functors of Remark \ref{rmk:bimod_opd_to_inv_bimod_opd} and \ref{rmk:inv_bimod_opd_to_inv_alg_opd}. 
+    Restriction along the functors of Remark \ref{rmk:bimod_opd_to_inv_bimod_opd} and \ref{rmk:inv_bimod_opd_to_inv_alg_opd} defines functors $ \Alg^\sigma(\mathcal{D}) \to \Modh(\mathcal{D}) \to \mathrm{BMod}(\mathcal{C}_{\pm}^\otimes) $ which is equivariant with respect to the action of $ \sigma_{\mathcal{C}} $ on the target. \Lucy{explain the action on $ \mathcal{C}_\pm $ or delete the last half of the sentence.}
+    Moreover, there is a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}[column sep=large]
+        \Alg^\sigma(\mathcal{D}) \ar[r] \ar[d,"{\Delta_\tau}"] & \Modh(\mathcal{D}) \ar[r] \ar[ld] & \mathrm{BMod}\left(\mathcal{C}^\otimes_{\pm}\right) \ar[d] \\
+           \Alg^\sigma(\mathcal{D}) \times \Alg^\sigma(\mathcal{D}) \ar[r,"{(A,B) \mapsto A}"'] & \Alg^\sigma(\mathcal{D}) \ar[r] & \Alg(\mathcal{C}) \times \Alg(\mathcal{C}_{\mathrm{rev}})  
+    \end{tikzcd}
+    \end{equation*}
+    where the right vertical arrow is the categorical fibration of \cite[Definition 4.3.1.12]{LurHA}, the central diagonal arrow is the categorical fibration of Definition \ref{defn:leftrightbimodules_with_involution}, and the left vertical arrow $ \Delta_\tau $ is the identity on one component and precomposition with the involution of Remark \ref{rmk:bimod_opd_involution}. 
+    The total composite from the upper left to the lower right agrees with the forgetful functor of Remark \ref{rmk:naive_inv_alg_as_assoc_alg}. 
+    If $ A \colon \Associnv \to \mathcal{O}^\otimes $ is an involutive algebra object (Definition \ref{defn:naive_involutive_algebras}), informally the functor sends $ A $ to $ A $, regarded as an $ A $-$ \sigma_{\mathcal{C}}(A) $-bimodule in the notation of Remark \ref{rmk:inv_bimod_informal_description} (compare \cite[Remark 4.2.1.17]{LurHA}). 
 \end{remark}
 \begin{construction}\label{cons:involutive_cut_module_operad}
     Define a functor $ \mathrm{MCut} \colon \Delta_\sigma^\op \to \mathcal{RM}^\otimes_{\mathrm{inv}} $: \Lucy{maybe this overloaded notation is not good. I'm running out of ideas.}
@@ -962,13 +985,14 @@ Here are some thoughts towards showing that the canonical map $ \colim_{[a,b]} \
 \end{proof}
 
 \subsection{Algebras with genuine involution}
-\begin{recollection}\label{rec:left_module_cats}  
+\begin{construction}\label{cons:pointed_left_module_cats}  
    Assume $ \mathcal{C} $ is a presentable monoidal $ \infty $-category such that the monoidal product $ - \otimes - \colon \mathcal{C} \times \mathcal{C} \to \mathcal{C} $ preserves small colimits separately in each variable. 
    Then there is an $ \infty $-category $ \LMod(\mathcal{C}) $ \cite[Example 4.2.1.18]{LurHA} whose objects are pairs $ (A, M) $ where $ A $ is an associative algebra object of $ \mathcal{C} $ and $ M $ is a left $ A $-module. 
    Write $ a, m $ respectively for the canonical forgetful functors $ \LMod(\mathcal{C})\to \mathrm{Alg}(\mathcal{C}) $, $ \LMod(\mathcal{C}) \to \mathcal{C} $ which send $ (A, M) $ to $ A $ and $ M $, resp. 
    Then $ a $ is a cocartesian fibration \cite[Corollary 4.2.3.7]{LurHA}, hence it is classified by a functor $ \mathrm{mod} \colon \mathrm{Alg}(\mathcal{C}) \to \Cat_\infty $. 
 
-   The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
+   The functor $ s $ of \cite[Example 4.2.1.17]{LurHA} determines a commutative diagram 
+   %a natural transformation $ \eta \colon * \to \mathrm{mod} $, where $ * \colon \mathrm{Alg}(\mathcal{C}) \to \{*\} \hookrightarrow \Cat_\infty $ is the constant functor at the trivial category, or equivalently
    \begin{equation}
    \begin{tikzcd}
        & \mathcal{U} \ar[d] \\
@@ -977,11 +1001,14 @@ Here are some thoughts towards showing that the canonical map $ \colim_{[a,b]} \
    \end{equation}
    where $ \mathcal{U} $ is the universal cocartesian fibration. 
    Now consider the functor $ o \colon \mathcal{U} \to \Cat_\infty $ which sends $ (\mathcal{D}, d \in \mathcal{D}) $ to the undercategory $ \mathcal{D}_{d/-} $. 
-   Define $ \LMod(\mathcal{C})_{*/-} $ to be the cocartesian fibration over $ \mathrm{Alg}(\mathcal{C}) $ classified by $ o \circ \eta \circ \mathrm{mod} $. 
-\end{recollection}
+   Define $ \LMod(\mathcal{C})_{*/-} $ to be the cocartesian fibration over $ \mathrm{Alg}(\mathcal{C}) $ classified by $ o \circ \eta $. 
+   Informally, an object of $ \LMod(\mathcal{C})_{*/-} $ lying over $ A \in \mathrm{Alg}(\mathcal{C}) $ is the data of a left $ A $-module $ M $ and a map of left $ A $-modules $ A \to M $. 
+\end{construction}
 \begin{variant}
-   Let $ \mathrm{C} $ be as in Recollection \ref{rec:left_module_cats}. 
-   There is a similar construction where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. 
+    % Let $ \mathcal{C} $ be as in Recollection \ref{rec:left_module_cats}. 
+    % There is a similar construction where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. 
+    Let $ \mathcal{C} $ be an involutive monoidal $ \infty $-category in the sense of Definition \ref{defn:naive_involutive_algebras}. 
+    There is a variation on Construction \ref{cons:pointed_left_module_cats} where left modules is replaced by \emph{bimodules} \cite[Definition 4.3.1.12]{LurHA}. \Lucy{involutive bimodules?}
 \end{variant}
 \begin{construction}\label{cons:alg_inv_is_bimod_canonically}
    Regard $ \mathbb{E}_1\mathrm{Alg}(\Spectra) $ as a category with $ C_2 $-action given by taking the opposite/reverse algebra.  
