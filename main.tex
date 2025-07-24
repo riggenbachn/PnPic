@@ -397,16 +397,18 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     % We call such a symmetric monoidal Poincaré $\infty$-category a \emph{Poincaré ring spectrum}. We will denote the full subcategory of $\CAlg(\Catp)$ spanned by Poincaré ring spectra by $\CAlgp$ and call it the \emph{$\infty$-category of Poincaré ring spectra}. 
 \end{remark}
 
-\begin{remark}
-    \label{remark:poincare_structures_are_factorizations}
-    A Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the Tate Frobenius $R\rightarrow R^{tC_2}$.
-\end{remark}
+% Commented out July 24th--this remark overlaps with Definition \ref{definition:poincare_ring_spectrum}
+% \begin{remark}
+%     \label{remark:poincare_structures_are_factorizations}
+%     A Poincaré structure on a ring spectrum $R$ with a $C_2$-action via maps of ring spectra is a factorization $R\rightarrow C \rightarrow R^{tC_2}$ in $\CAlg$ of the Tate Frobenius $R\rightarrow R^{tC_2}$.
+% \end{remark}
 \begin{observation}\label{observation:normed_C2_ring_forget_to_Poincare_ring}
-    In view of \cite[Theorem 1.3 \& Definition 3.13]{LYang_normedrings}, there is a forgetful functor from $ C_2 $-$ \EE_\infty $-algebras to Poincaré rings which forgets the $ C_2 $-equivariance of the map $ R \to R^{\varphi C_2 } $. 
+    In view of \cite[Theorem 1.3 \& Definition 3.13]{LYang_normedrings}, there is a forgetful functor from $ C_2 $-$ \EE_\infty $-algebras in $ \Spectra^{C_2} $ to Poincaré rings which forgets the $ C_2 $-equivariance of the map $ R \to R^{\varphi C_2 } $. 
+    Their underlying $ \Einfty $-algebras in $ \Spectra^{C_2} $ agree. 
 \end{observation}
 
 \begin{remark}
-    \label{remark:poincare_ring_spectra_as_algebra_objects}
+    \label{remark:poincare_ring_spectra_as_algebra_objects} \Lucy{redundant/overlap with Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}}
     By \cite[Corollary 3.4.2]{CDHHLMNNSI}, the assignment $ (R, R\to C \to R^{tC_2}) \mapsto \left(\Mod_R^\omega, \qoppa_R \right) $ promotes to a functor $ \Mod^p \colon \CAlgp \to \Catp $. 
     Regard $ \Catp $ as a symmetric monoidal $ \infty $-category with the symmetric monoidal structure of \cite[Theorem 5.2.7]{CDHHLMNNSI}.  
     Then it follows from Example 5.1.6 of \emph{loc. cit.} that $ \Mod^p $ is a symmetric monoidal functor. \Lucy{we haven't introduced symmetric monoidal structure on $ \CAlgp $ yet!}
@@ -465,11 +467,72 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
 \end{example}
 
 \Viktor{copy more examples from notes}
-\begin{lemma}\label{lemma:poincare_rings_presentable_accessible}
-    $ \CAlgp $ is presentable and accessible. 
+
+\begin{theorem}\label{thm:poincare_rings_cat_formal_properties}
+    The following statements about $\CAlgp$ hold:
+    \begin{enumerate}[label=(\arabic*)]
+        \item \label{thmitem:defining_diagram_homotopy_pullback} the pullback diagram (\ref{diagram:poincare_ring_defn}) is homotopy Cartesian; % i.e. the pullback in simplicial sets computes the pullback in $ \infty $-categories.
+        \item \label{thmitem:poincare_ring_has_colimits} The category $\CAlgp$ has all small colimits;
+        \item \label{thmitem:poincare_ring_to_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small colimits;
+        \item \label{thmitem:poincare_ring_has_limits} The category $\CAlgp$ has all small limits;
+        \item \label{thmitem:poincare_ring_to_ring_preserves_lims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small limits;
+        \item \label{thmitem:poincare_rings_presentable_accessible} The $ \infty $-category $ \CAlgp $ is presentable and accessible. 
+        % Do we need the next two items? 
+        % \item the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
+        % \item and the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}\xrightarrow{ev_{[1]}} \CAlg(\Spectra)$ is symmetric monoidal. 
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    To prove \ref{thmitem:defining_diagram_homotopy_pullback}, it is enough to show that $d_1^*$ is an categorical fibration. 
+    In fact, $ d_1^* $ is a cocartesian and cartesian fibration; this follows from the existence of colimits and limits, resp., in $ \CAlg(\Spectra) $ and Lemma \ref{lemma:restriction_functor_cat_as_fibrations}. 
+
+    To prove \ref{thmitem:poincare_ring_has_colimits}, let $p:K\to \CAlgp$ be a map of simplicial sets, where $K$ is a small simplicial set. 
+    Write $ f' $ for the functor $\CAlgp \to \CAlg(\Spectra^{BC_2})$ and $ g'\colon \CAlgp \to  \CAlg(\Spectra)^{\Delta^2} $ and $ f \colon \CAlg(\Spectra)^{\Delta^2} \to  \CAlg(\Spectra)^{\Delta^1} $ and $ g \colon \CAlg(\Spectra^{BC_2}) \to  \CAlg(\Spectra)^{\Delta^1} $. 
+    Choose an extension $ \overline{f'p} \colon K^\vartriangleright\to \CAlg(\Spectra^{BC_2}) $ be an extension of $ f'\circ p $ which is a colimit diagram. 
+    By \cite[Proposition 4.3.1.5(2)]{HTT}, it suffices to exhibit a lift $ K^\vartriangleright \to \CAlgp $ which is an $ f' $-colimit diagram. 
+    By \cite[Prposition 4.3.1.5(4)]{HTT} and \ref{thmitem:defining_diagram_homotopy_pullback}, it suffices to show that there exists an extension $ \overline{g'p} \colon K^\vartriangleright \to \CAlg(\Spectra)^{\Delta^2} $ of $ g \circ \overline{f'p} $ which is an $ f=d_1^* $-colimit. 
+    Observe that $ f= d_1^* $ is a cocartesian fibration, the fibers of $ f $ admit small colimits, and $ f $-cocartesian transport preserves all small colimits by \ref{thmitem:defining_diagram_homotopy_pullback}, Lemma \ref{lemma:restriction_functor_cat_as_fibrations}, and the fact that $ \CAlg $ admits all small colimits. 
+    The existence of such an extension $ \overline{g'p} $ follows from \cite[Corollary 4.3.1.11]{HTT}. 
+    % \Lucy{Show that $ f $ satisfies the hypotheses of \cite[Corollary 4.3.1.11]{HTT}, then use that corollary to conclude.} 
+
+    Part \ref{thmitem:poincare_ring_to_ring_preserves_colims} follows from \ref{thmitem:poincare_ring_has_colimits}. 
+
+    The proofs of parts \ref{thmitem:poincare_ring_has_limits} and \ref{thmitem:poincare_ring_to_ring_preserves_lims} are analogous to those of \ref{thmitem:poincare_ring_has_colimits} and \ref{thmitem:poincare_ring_to_ring_preserves_colims} and have been omitted.  
+
+    Now let us consider part \ref{thmitem:poincare_rings_presentable_accessible}. 
+    Accessibility of $ \CAlgp $ follows from closure of accessible $ \infty $-categories under fiber products \cite[Proposition 5.4.6.6]{HTT} and accessibility of the $ \infty $-categories in the pullback diagram defining $ \CAlgp $, which itself follows from accessibility of $ \CAlg $ and \cite[Proposition 5.4.4.3]{HTT}. 
+    Now presentability of $ \CAlgp $ follows from accessibility and \ref{thmitem:poincare_ring_has_colimits}. 
+\end{proof}
+\begin{lemma}\label{lemma:restriction_functor_cat_as_fibrations}
+    Let $ \mathcal{C} $ be an $ \infty $-category, and let $ \mathcal{K} $ be a collection of simplicial sets. 
+    \begin{enumerate}[label=(\alph*)]
+        \item If $ \mathcal{C} $ has finite colimits, then the functor $ d_1^* \colon \Fun\left(\Delta^2, \mathcal{C}\right) \to \Fun\left(\Delta^1, \mathcal{C}\right) $ exhibits the source as a cocartesian fibration over the target. 
+        If $ \mathcal{C} $ admits all $ \mathcal{K} $-indexed colimits, then the fibers of $ d_1^* $ admit all $ \mathcal{K} $-indexed colimits and for each morphism $ f \colon \alpha \to \beta $ in $ \mathcal{C}^{\Delta^1} $, the associated functor $ f_* \colon \mathcal{C}^{\Delta^2}_{\alpha} \to \mathcal{C}^{\Delta^2}_{\beta} $ preserves all $ \mathcal{K} $-indexed colimits. \Lucy{wrote out the condition instead of just saying `cocartesian transport.' Is it clear that $ \alpha, \beta $ are objects of $ \mathcal{C}^{\Delta^1} $ (i.e. morphisms in $ \mathcal{C} $) and $ f $ is a commutative square?}
+        \item If $ \mathcal{C} $ has finite limits, then $ d_1^* $ exhibits the source as a cartesian fibration over the target. 
+        If $ \mathcal{C} $ admits all $ \mathcal{K} $-indexed limits, then the fibers of $ d_1^* $ admit all $ \mathcal{K} $-indexed limits and for each morphism $ f \colon \alpha \to \beta $ in $ \mathcal{C}^{\Delta^1} $, the associated functor $ f^* \colon \mathcal{C}^{\Delta^2}_{\beta} \to \mathcal{C}^{\Delta^2}_{\alpha} $ preserves all $ \mathcal{K} $-indexed limits. \Lucy{did I reverse the arrows appropriately?}
+    \end{enumerate} 
 \end{lemma}
 \begin{proof}
-    \Lucy{finish proof/move from \texttt{definitions.tex}}
+    We prove that the existence of finite colimits in $ \mathcal{C} $ implies that $ d_1^* $ is a cocartesian fibration; the latter is formally dual. 
+    That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
+    It remains to show that morphisms in $ \mathcal{C}^{\Delta^1} $ have $ d_1^*$-cocartesian lifts. 
+    Consider the maps 
+    \begin{equation*}
+        \Delta^1 \simeq \Delta^1 \times \{0\} \xrightarrow{i} \Delta^1 \times \Delta^1 \xrightarrow{j} \Delta^2
+    \end{equation*}
+    where $ i $ classifies the morphism $ 00 \to 10 $ and $ j $ sends the edge $ 10 \to 11 $ (i.e. the unique nonidentity in $ \{1\} \times \Delta^1 $) to the identity at $ 2 $ in $ \Delta^2 $; note that their composite is $ j \circ i = \delta_1 $. 
+    Precomposition induces maps 
+    \begin{equation*}
+        \mathcal{C}^{\Delta^2} \xrightarrow{j^*} \mathcal{C}^{\Delta^1 \times \Delta^1} \xrightarrow{i^*} \mathcal{C}^{\Delta^1}
+    \end{equation*}  
+    whose composite is $ d_1^* $. 
+    By our assumption on $ \mathcal{C} $, the functor category $ \mathcal{C}^{\Delta^1} $ also has finite colimits. 
+    Note that $ i^* $ is a cocartesian fibration because it corresponds to taking the `source' in the functor category $ \mathcal{C}^{\Delta^1} $, and $ \mathcal{C}^{\Delta^1} $ has finite colimits. 
+    In particular, $ i^* $-cocartesian transport along a morphism in $ \mathcal{C}^{\Delta^1} $ corresponds to taking a pushout in $ \mathcal{C}^{\Delta^1} $. 
+    \Lucyil{I have omitted details here because this is pretty standard, see e.g. \href{https://www.epfl.ch/labs/hessbellwald-lab/wp-content/uploads/2019/09/repcartfib.pdf}{Example 5.5 in these notes}. Note to self: see blackboard photo from Tuesday July 22nd.} 
+    Furthermore, $ j^* $ is fully faithful and identifies $ \mathcal{C}^{\Delta^2} $ with its essential image, the full subcategory of $ \mathcal{C}^{\Delta^1 \times \Delta^1} $ on those functors which send the edge $ 10 \to 11 $ to an equivalence in $ \mathcal{C} $. 
+    To prove the lemma, it suffices to show that the essential image of $ j^* $ is closed under $ i^* $-cocartesian transport. 
+    This is true because colimits in functor categories are computed pointwise by \cite[Corollary 5.1.2.3]{HTT}.  
 \end{proof}
 \begin{definition}\label{defn:Poincare_ring_pointwise_units}
     Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_1}) \to \mathrm{gl}_1(R^e) $.  
@@ -479,7 +542,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     Denote the left adjoint by $ \sphere[-] $. \Lucy{To define a functor $ \sphere[-] $ out of $ \Spectra^{C_2} $, precompose with the forgetful map $ \Spectra^{C_2}_{\geq 0} \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $?}
 \end{lemma}
 \begin{proof}
-    By \cite[Corollary 5.5.2.9]{HTT}, in view of Lemma \ref{lemma:poincare_rings_presentable_accessible}, it suffices to show that $ (-)^u $ is accessible and preserves small limits. 
+    By \cite[Corollary 5.5.2.9]{HTT}, in view of Theorem \ref{thm:poincare_rings_cat_formal_properties}\ref{thmitem:poincare_rings_presentable_accessible}, it suffices to show that $ (-)^u $ is accessible and preserves small limits. 
     It is clear that $ (-)^u $ preserves small filtered colimits, since they are computed in $ \Spectra^{C_2} $. 
     Since limits in functor categories are computed pointwise, it suffices to show that the assignments $ (R, R^{\varphi C_2} \to R^{tC_2}) \mapsto \mathrm{gl}_1(R^{C_2}), \mathrm{gl}_1(R^e) $ preserve small limits. 
     \Lucyil{need to finish proof that $ (-)^{u} $ preserves small limits!}

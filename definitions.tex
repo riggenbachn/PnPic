@@ -18,22 +18,25 @@ We record here a few structural results about this category.
 
 \begin{theorem}
 The following statements about $\CAlgp$ hold:
-\begin{enumerate}
+\begin{enumerate}[label=(\arabic*)]
 \item \label{thmitem:defining_diagram_homotopy_pullback} the pullback diagram (\ref{diagram:poincare_ring_defn}) is homotopy Cartesian; % i.e. the pullback in simplicial sets computes the pullback in $ \infty $-categories.
 \item \label{thmitem:poincare_ring_has_colimits} The category $\CAlgp$ has all small colimits;
 \item \label{thmitem:poincare_ring_to_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small colimits;
 \item \label{thmitem:poincare_ring_has_limits} The category $\CAlgp$ has all small limits;
 \item \label{thmitem:poincare_ring_to_ring_preserves_lims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small limits;
+\item \label{thmitem:poincare_rings_presentable_accessible} The $ \infty $-category $ \CAlgp $ is presentable and accessible. 
+% Do we need the next two items? 
 \item the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
 \item and the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}\xrightarrow{ev_{[1]}} \CAlg(\Spectra)$ is symmetric monoidal.
 \end{enumerate}
 \end{theorem}
 \begin{proof}
     To prove (\ref{thmitem:defining_diagram_homotopy_pullback}), it is enough to show that $d_1^*$ is an categorical fibration. 
-    By \cite[Corollary 2.4.6.5]{HTT}, it suffices to show that $ d_1^* $ is an inner fibration and that, for any equivalence $ p \colon X \to X' $ in $ \Fun(\Delta^1, \CAlg(\Spectra)) $ and any object $ Y \in \Fun(\Delta^2, \CAlg(\Spectra)) $ so that $ d_1^*(Y) = X $, there is an equivalence $ Y \to Y' $ lifting $ p $. 
-    It is clear that $ d_1^* $ satisfies the latter condition. 
-    That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
-    In fact, $ d_1^* $ is a cocartesian and cartesian fibration; this follows from the existence of colimits and limits, resp., in $ \CAlg(\Spectra) $.
+    % By \cite[Corollary 2.4.6.5]{HTT}, it suffices to show that $ d_1^* $ is an inner fibration and that, for any equivalence $ p \colon X \to X' $ in $ \Fun(\Delta^1, \CAlg(\Spectra)) $ and any object $ Y \in \Fun(\Delta^2, \CAlg(\Spectra)) $ so that $ d_1^*(Y) = X $, there is an equivalence $ Y \to Y' $ lifting $ p $. 
+    % It is clear that $ d_1^* $ satisfies the latter condition. 
+    % That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
+    In fact, $ d_1^* $ is a cocartesian and cartesian fibration; this follows from the existence of colimits and limits, resp., in $ \CAlg(\Spectra) $ and Lemma \ref{lemma:restriction_functor_cat_as_fibrations}.
+    % --------------- From 2023 ------------------------
     % In fact $d_1^*$ is a left fibration by \cite[Corollary 2.1.2.9]{HTT} (taking $p=id$, $i=d_1:\Delta^1\to \Delta^2$)\Lucy{Is this reference correct? The conclusion asserts that some map of simplicial sets is a \emph{categorical} fibration. The following argument is `sketchy'--depending on how precise we want to be about quasicategories, we may want to argue with left/right anodyne maps instead.} \Noah{To prove 2 we only need that $d_1^*$ is a categorical fibration, although I think it is a cartesian fibration. I think we should be careful about infinity categories, and I believe the sketch you wrote down. I also think that this must be known already thoug, and will hunt down a correct reference.}
     % There is a (pseudo-)functor
     % \begin{align*}
@@ -77,6 +80,38 @@ The following statements about $\CAlgp$ hold:
     % \end{align*}
 
     The proofs of parts (\ref{thmitem:poincare_ring_has_limits}) and (\ref{thmitem:poincare_ring_to_ring_preserves_lims}) are analogous to those of (\ref{thmitem:poincare_ring_has_colimits}) and (\ref{thmitem:poincare_ring_to_ring_preserves_colims}) and have been omitted.  
+
+    Now let us consider part \ref{thmitem:poincare_rings_presentable_accessible}. 
+    Accessibility of $ \CAlgp $ follows from closure of accessible $ \infty $-categories under fiber products \cite[Proposition 5.4.6.6]{HTT} and accessibility of the $ \infty $-categories in the pullback diagram defining $ \CAlgp $, which itself follows from accessibility of $ \CAlg $ and \cite[Proposition 5.4.4.3]{HTT}. 
+    Now presentability of $ \CAlgp $ follows from accessibility and \ref{thmitem:poincare_ring_has_colimits}. 
+\end{proof}
+\begin{lemma}\label{lemma:restriction_functor_cat_as_fibrations}
+    Let $ \mathcal{C} $ be an $ \infty $-category with finite colimits. 
+    Then the functor $ d_1^* \colon \Fun\left(\Delta^2, \mathcal{C}\right) \to \Fun\left(\Delta^1, \mathcal{C}\right) $ exhibits the source as a cocartesian fibration over the target. 
+    If $ \mathcal{C} $ has finite limits, then $ d_1^* $ exhibits the source as a cartesian fibration over the target. 
+    % In fact, $ d_1^* $ is a cocartesian and cartesian fibration; this follows from the existence of colimits and limits, resp., in $ \CAlg(\Spectra) $.
+\end{lemma}
+\begin{proof}
+    We prove that the existence of finite colimits in $ \mathcal{C} $ implies that $ d_1^* $ is a cocartesian fibration; the latter is formally dual. 
+    That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
+    It remains to show that morphisms in $ \mathcal{C}^{\Delta^1} $ have $ d_1^*$-cocartesian lifts. 
+    Consider the maps 
+    \begin{equation*}
+        \Delta^1 \simeq \Delta^1 \times \{0\} \xrightarrow{i} \Delta^1 \times \Delta^1 \xrightarrow{j} \Delta^2
+    \end{equation*}
+    where $ j $ sends the edge $ 10 \to 11 $ (i.e. the unique nonidentity in $ \{1\} \times \Delta^1 $) to the identity at $ 2 $ in $ \Delta^2 $; note that their composite is $ j \circ i = \delta_1 $. 
+    Precomposition induces maps 
+    \begin{equation*}
+        \mathcal{C}^{\Delta^2} \xrightarrow{j^*} \mathcal{C}^{\Delta^1 \times \Delta^1} \xrightarrow{i^*} \mathcal{C}^{\Delta^1}
+    \end{equation*}  
+    whose composite is $ d_1^* $. 
+    By our assumption on $ \mathcal{C} $, the functor category $ \mathcal{C}^{\Delta^1} $ also has finite colimits. 
+    Note that $ i^* $ is a cocartesian fibration because it corresponds to taking the `source' in the functor category $ \mathcal{C}^{\Delta^1} $, and $ \mathcal{C}^{\Delta^1} $ has finite colimits. 
+    In particular, $ i^* $-cocartesian transport along a morphism in $ \mathcal{C}^{\Delta^1} $ corresponds to taking pushouts. 
+    \Lucyil{I have omitted details here because this is pretty standard, see e.g. \href{https://www.epfl.ch/labs/hessbellwald-lab/wp-content/uploads/2019/09/repcartfib.pdf}{Example 5.5 these notes}. Note to self: see blackboard photo from Tuesday July 22nd.} 
+    Furthermore, $ j^* $ is fully faithful and identifies $ \mathcal{C}^{\Delta^2} $ with its essential image, the full subcategory of $ \mathcal{C}^{\Delta^1 \times \Delta^1} $ on those functors which send the edge $ 10 \to 11 $ to an equivalence in $ \mathcal{C} $. 
+    To prove the lemma, it suffices to show that the essential image of $ j^* $ is closed under $ i^* $-cocartesian transport. 
+    This is true because colimits in functor categories are computed pointwise by \cite[Corollary 5.1.2.3]{HTT}.  
 \end{proof}
 
 We will denote objects of $\CAlgp$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. 
