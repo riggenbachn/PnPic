@@ -570,6 +570,18 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     To prove part \ref{lemma_item:restriction_functor_cocartesian}, it suffices to show that the essential image of $ j^*_1 $ is closed under $ i^*_1 $-cartesian transport. 
     This is true because limits in functor categories are computed pointwise by the dual to \cite[Corollary 5.1.2.3]{HTT} and equivalences are stable under pullbacks.  
 \end{proof}
+\begin{remark}\label{rmk:limits_of_Poincare_rings}
+    Suppose given a diagram $ p \colon K \to \CAlgp $ where $ K $ is some simplicial set. 
+    Let us use the notation of \ref{thmitem:poincare_ring_has_colimits}, with the modifications discussed in the proof of \ref{thmitem:poincare_ring_to_ring_preserves_lims}. 
+    Then the limit of $ p $ is computed as follows: Take $ f' \circ p \colon K \to \CAlg^{BC_2} $ and extend it to a limit diagram $ \overline{f'p} \colon K^{\vartriangleleft} \to \CAlg^{BC_2} $. 
+    Write $ \infty $ for the cone point in $ K^{\vartriangleleft} $ and $ R_\infty:= \overline{f'p}(\infty) $. 
+    Now regard $ g \circ \overline{f'p} $ as a natural transformation $ \overline{\eta} $ of functors $ K \to \CAlg^{\Delta^1} $ from the constant functor at $ R_\infty \to R_\infty^{tC_2} $ to $ g \circ f' \circ p $. 
+    We may lift this to a pointwise (in $ K $) $ f $-cartesian natural transformation $ \eta $ of functors $ K \to \CAlg^{\Delta^2} $ with target $ g'\circ p $. 
+    Let us write $ q_\infty \colon K \to \CAlg^{\Delta^2} $ for the domain of $ \eta $; it takes values in the fiber of $ f $ over $ R_\infty \to R_\infty^{tC_2} $. 
+    Then the image of $ \lim p $ under $ g' $ can be identified with the limit of $ q_\infty $. \Lucy{Inspired by Remark 6.1.3 of \cite{CDHHLMNNSI}.} 
+
+    An analogous description holds for colimits in $ \CAlgp $; we leave the details to the reader. 
+\end{remark}
 \begin{definition}\label{defn:Poincare_ring_pointwise_units}
     Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_1}) \to \mathrm{gl}_1(R^e) $.  
 \end{definition}
