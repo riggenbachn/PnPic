@@ -171,7 +171,7 @@ In this paper, we use the formalism of Poincar{\'e} $ \infty $-categories, as de
 Let $ X $ be a scheme. 
 Gabber showed that if $ X $ is quasi-compact and separated and admits an ample line bundle, the collection of sheaves of Azumaya $ \mathcal{O}_X $-algebras up to Morita equivalence is in bijection with the torsion subgroup of $ H^2_{\mathrm{\acute{e}t}}(X; \mathbb{G}_m) $ \cite{MR611868}. 
 On the other hand, to $ \mathcal{A} $ we may associate the presentable $ \mathcal{O}_X $-linear $ \infty $-category $ \mathcal{D}(\mathcal{A}) $. \Lucy{AG notation or homotopy notation?} 
-If $ \mathcal{A} $ and $ \mathcal{A}' $ are Morita equivalent, then $ \mathcal{D}(\mathcal{A}') $ and $ \mathcal{D}(\mathcal{A}) $ are equivalent in $ \mathrm{Pr}^L_{\mathcal{O}_X} $, and that $ \mathcal{A} $ is Azumaya implies that $ \mathcal{D}(\mathcal{A}) $ is invertible in $ \mathrm{Pr}^L_{\mathcal{O}_X} $ with respect to the $ \mathcal{O}_X $-linear tensor product. \Lucy{who is this observation due to?} \Lucy{cite Lieblich/de Jong? connect to twisted sheaves!} 
+If $ \mathcal{A} $ and $ \mathcal{A}' $ are Morita equivalent, then $ \mathcal{D}(\mathcal{A}') $ and $ \mathcal{D}(\mathcal{A}) $ are equivalent in $ \mathrm{Pr}^L_{\mathcal{O}_X} $, and that $ \mathcal{A} $ is Azumaya implies that $ \mathcal{D}(\mathcal{A}) $ is invertible in $ \mathrm{Pr}^L_{\mathcal{O}_X} $ with respect to the $ \mathcal{O}_X $-linear tensor product. \Lucy{who is this observation due to?} \Lucy{cite Lieblich/de Jong/Caldararu? connect to twisted sheaves!} 
 
 \begin{definition}
     The \emph{derived Brauer space} of $ X $ is $ \mathrm{dBr}(X) := \Pic\left(\mathrm{Pr}^L_{\mathcal{O}_X} \right) $. 
@@ -506,33 +506,58 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
 \begin{lemma}\label{lemma:restriction_functor_cat_as_fibrations}
     Let $ \mathcal{C} $ be an $ \infty $-category, and let $ \mathcal{K} $ be a collection of simplicial sets. 
     \begin{enumerate}[label=(\alph*)]
-        \item If $ \mathcal{C} $ has finite colimits, then the functor $ d_1^* \colon \Fun\left(\Delta^2, \mathcal{C}\right) \to \Fun\left(\Delta^1, \mathcal{C}\right) $ exhibits the source as a cocartesian fibration over the target. 
+        \item \label{lemma_item:restriction_functor_cocartesian} If $ \mathcal{C} $ has finite colimits, then the functor $ d_1^* \colon \Fun\left(\Delta^2, \mathcal{C}\right) \to \Fun\left(\Delta^1, \mathcal{C}\right) $ exhibits the source as a cocartesian fibration over the target. 
         If $ \mathcal{C} $ admits all $ \mathcal{K} $-indexed colimits, then the fibers of $ d_1^* $ admit all $ \mathcal{K} $-indexed colimits and for each morphism $ f \colon \alpha \to \beta $ in $ \mathcal{C}^{\Delta^1} $, the associated functor $ f_* \colon \mathcal{C}^{\Delta^2}_{\alpha} \to \mathcal{C}^{\Delta^2}_{\beta} $ preserves all $ \mathcal{K} $-indexed colimits. \Lucy{wrote out the condition instead of just saying `cocartesian transport.' Is it clear that $ \alpha, \beta $ are objects of $ \mathcal{C}^{\Delta^1} $ (i.e. morphisms in $ \mathcal{C} $) and $ f $ is a commutative square?}
-        \item If $ \mathcal{C} $ has finite limits, then $ d_1^* $ exhibits the source as a cartesian fibration over the target. 
+        \item \label{lemma_item:restriction_functor_cartesian} The functor $ d_1^* $ exhibits the source as a cartesian fibration over the target. 
+        If $ \mathcal{C} $ has finite limits, then $ d_1^* $ exhibits the source as a cartesian fibration over the target. 
         If $ \mathcal{C} $ admits all $ \mathcal{K} $-indexed limits, then the fibers of $ d_1^* $ admit all $ \mathcal{K} $-indexed limits and for each morphism $ f \colon \alpha \to \beta $ in $ \mathcal{C}^{\Delta^1} $, the associated functor $ f^* \colon \mathcal{C}^{\Delta^2}_{\beta} \to \mathcal{C}^{\Delta^2}_{\alpha} $ preserves all $ \mathcal{K} $-indexed limits. \Lucy{did I reverse the arrows appropriately?}
     \end{enumerate} 
 \end{lemma}
-\begin{proof}
-    We prove that the existence of finite colimits in $ \mathcal{C} $ implies that $ d_1^* $ is a cocartesian fibration; the latter is formally dual. 
-    That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
-    It remains to show that morphisms in $ \mathcal{C}^{\Delta^1} $ have $ d_1^*$-cocartesian lifts. 
+\begin{proof} 
+    % Let us begin with some notation/constructions/an observation which will be useful for the proofs of both parts of the lemma. 
+    % We prove that the existence of finite colimits in $ \mathcal{C} $ implies that $ d_1^* $ is a cocartesian fibration. % the latter is formally dual. 
+    Let us prove \ref{lemma_item:restriction_functor_cocartesian}. 
     Consider the maps 
     \begin{equation*}
-        \Delta^1 \simeq \Delta^1 \times \{0\} \xrightarrow{i} \Delta^1 \times \Delta^1 \xrightarrow{j} \Delta^2
+        \Delta^1 \simeq \Delta^1 \times \{0\} \xrightarrow{i_0} \Delta^1 \times \Delta^1 \xrightarrow{j_0} \Delta^2
     \end{equation*}
-    where $ i $ classifies the morphism $ 00 \to 10 $ and $ j $ sends the edge $ 10 \to 11 $ (i.e. the unique nonidentity in $ \{1\} \times \Delta^1 $) to the identity at $ 2 $ in $ \Delta^2 $; note that their composite is $ j \circ i = \delta_1 $. 
+    where $ i_0 $ classifies the morphism $ 00 \to 10 $ and $ j_0 $ sends the edge $ 10 \to 11 $ (i.e. the unique nonidentity in $ \{1\} \times \Delta^1 $) to the identity at $ 2 $ in $ \Delta^2 $ and satisfies $ j_0(00) = 0 $, $ j_0(01) = 1 $. 
+    Note that their composite is $ j_0 \circ i_0 = d_1 $. 
     Precomposition induces maps 
     \begin{equation*}
         \mathcal{C}^{\Delta^2} \xrightarrow{j^*} \mathcal{C}^{\Delta^1 \times \Delta^1} \xrightarrow{i^*} \mathcal{C}^{\Delta^1}
     \end{equation*}  
     whose composite is $ d_1^* $. 
+    Note that $ i^*_0 $ corresponds to taking the `source' $ \Fun\left(\Delta^1,\mathcal{C}^{\Delta^1}\right) \to \mathcal{C}^{\Delta^1} $. 
+
+    That $ d_1^*$ is an inner fibration follows from \cite[Corollary 2.3.2.5]{HTT}. 
+    It remains to show that morphisms in $ \mathcal{C}^{\Delta^1} $ have $ d_1^*$-cocartesian lifts. 
     By our assumption on $ \mathcal{C} $, the functor category $ \mathcal{C}^{\Delta^1} $ also has finite colimits. 
-    Note that $ i^* $ is a cocartesian fibration because it corresponds to taking the `source' in the functor category $ \mathcal{C}^{\Delta^1} $, and $ \mathcal{C}^{\Delta^1} $ has finite colimits. 
-    In particular, $ i^* $-cocartesian transport along a morphism in $ \mathcal{C}^{\Delta^1} $ corresponds to taking a pushout in $ \mathcal{C}^{\Delta^1} $. 
+    Because of our previous observation that $ i^*_0 $ corresponds to the source functor on the arrow category of $ \mathcal{C}^{\Delta^1} $ and $ \mathcal{C}^{\Delta^1} $ has finite colimits, $ i^*_0 $ is a cocartesian fibration. 
+    In particular, $ i^*_0 $-cocartesian transport along a morphism in $ \mathcal{C}^{\Delta^1} $ corresponds to taking a pushout in $ \mathcal{C}^{\Delta^1} $. 
     \Lucyil{I have omitted details here because this is pretty standard, see e.g. \href{https://www.epfl.ch/labs/hessbellwald-lab/wp-content/uploads/2019/09/repcartfib.pdf}{Example 5.5 in these notes}. Note to self: see blackboard photo from Tuesday July 22nd.} 
-    Furthermore, $ j^* $ is fully faithful and identifies $ \mathcal{C}^{\Delta^2} $ with its essential image, the full subcategory of $ \mathcal{C}^{\Delta^1 \times \Delta^1} $ on those functors which send the edge $ 10 \to 11 $ to an equivalence in $ \mathcal{C} $. 
-    To prove the lemma, it suffices to show that the essential image of $ j^* $ is closed under $ i^* $-cocartesian transport. 
-    This is true because colimits in functor categories are computed pointwise by \cite[Corollary 5.1.2.3]{HTT}.  
+    Furthermore, $ j^*_0 $ is fully faithful and identifies $ \mathcal{C}^{\Delta^2} $ with its essential image, the full subcategory of $ \mathcal{C}^{\Delta^1 \times \Delta^1} $ on those functors which send the edge $ 10 \to 11 $ to an equivalence in $ \mathcal{C} $. 
+    To prove part \ref{lemma_item:restriction_functor_cocartesian}, it suffices to show that the essential image of $ j^*_0 $ is closed under $ i^*_0 $-cocartesian transport. 
+    This is true because colimits in functor categories are computed pointwise by \cite[Corollary 5.1.2.3]{HTT} and equivalences are stable under pushouts.  
+
+    To prove \ref{lemma_item:restriction_functor_cartesian}, it suffices to show that morphisms in $ \mathcal{C}^{\Delta^1} $ have $ d_1^*$-cartesian lifts. 
+    Consider the maps 
+    \begin{equation*}
+        \Delta^1 \simeq \{1\} \times \Delta^1 \xrightarrow{i_1} \Delta^1 \times \Delta^1 \xrightarrow{j_1} \Delta^2
+    \end{equation*}
+    where $ i_1 $ classifies the morphism $ 10 \to 11 $ and $ j_1 $ sends the edge $ 00 \to 10 $ (i.e. the unique nonidentity in $ \Delta^1 \times \{0\} $) to the identity at $ 0 $ in $ \Delta^2 $ and satisfies $ j_1(01) = 1 $, $ j_1(11) = 2 $. 
+    Note that their composite is $ j_1 \circ i_1 = d_1 $. 
+    Precomposition induces maps 
+    \begin{equation*}
+        \mathcal{C}^{\Delta^2} \xrightarrow{j^*} \mathcal{C}^{\Delta^1 \times \Delta^1} \xrightarrow{i^*} \mathcal{C}^{\Delta^1}
+    \end{equation*}  
+    whose composite is $ d_1^* $. 
+    Note that $ i^*_1 $ corresponds to taking the `target' $ \Fun\left(\Delta^1,\mathcal{C}^{\Delta^1}\right) \to \mathcal{C}^{\Delta^1} $. 
+    Because $ \mathcal{C}^{\Delta^1} $ has finite limits, $ i^*_1 $ is a cartesian fibration. 
+    In particular, $ i^*_1 $-cartesian transport along a morphism in $ \mathcal{C}^{\Delta^1} $ corresponds to taking a pullback in $ \mathcal{C}^{\Delta^1} $. 
+    Furthermore, $ j^*_1 $ is fully faithful and identifies $ \mathcal{C}^{\Delta^2} $ with its essential image,\footnote{Note that in this proof we have produced two different fully faithful embeddings of $ \mathcal{C}^{\Delta^2} $ into $ \mathcal{C}^{\Delta^1 \times \Delta^1} $, but their essential images are different. While $ i_0^* $ \emph{is} a cartesian fibration, the essential image of $ j_0^* $ is not closed under $ i_0^* $-cartesian transport. Thus, part \ref{lemma_item:restriction_functor_cartesian} does not follow from the same construction as \ref{lemma_item:restriction_functor_cocartesian}. } the full subcategory of $ \mathcal{C}^{\Delta^1 \times \Delta^1} $ on those functors which send the edge $ 00 \to 10 $ to an equivalence in $ \mathcal{C} $. 
+    To prove part \ref{lemma_item:restriction_functor_cocartesian}, it suffices to show that the essential image of $ j^*_1 $ is closed under $ i^*_1 $-cartesian transport. 
+    This is true because limits in functor categories are computed pointwise by the dual to \cite[Corollary 5.1.2.3]{HTT} and equivalences are stable under pullbacks.  
 \end{proof}
 \begin{definition}\label{defn:Poincare_ring_pointwise_units}
     Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_1}) \to \mathrm{gl}_1(R^e) $.  
@@ -543,7 +568,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
 \end{lemma}
 \begin{proof}
     By \cite[Corollary 5.5.2.9]{HTT}, in view of Theorem \ref{thm:poincare_rings_cat_formal_properties}\ref{thmitem:poincare_rings_presentable_accessible}, it suffices to show that $ (-)^u $ is accessible and preserves small limits. 
-    It is clear that $ (-)^u $ preserves small filtered colimits, since they are computed in $ \Spectra^{C_2} $. 
+    It is clear that $ (-)^u $ preserves small filtered colimits, since they are computed in $ \Spectra^{C_2} $. \Lucy{refer to earlier thm/lemma?}
     Since limits in functor categories are computed pointwise, it suffices to show that the assignments $ (R, R^{\varphi C_2} \to R^{tC_2}) \mapsto \mathrm{gl}_1(R^{C_2}), \mathrm{gl}_1(R^e) $ preserve small limits. 
     \Lucyil{need to finish proof that $ (-)^{u} $ preserves small limits!}
 \end{proof}
