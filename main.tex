@@ -475,7 +475,8 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
         \item \label{thmitem:poincare_ring_has_colimits} The category $\CAlgp$ has all small colimits;
         \item \label{thmitem:poincare_ring_to_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small colimits;
         \item \label{thmitem:poincare_ring_has_limits} The category $\CAlgp$ has all small limits;
-        \item \label{thmitem:poincare_ring_to_ring_preserves_lims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small limits;
+        \item \label{thmitem:poincare_ring_to_naive_ring_preserves_lims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small limits;
+        \item \label{thmitem:poincare_ring_to_ring_preserves_lims} the functor $ \CAlgp \to \CAlg\left(\Spectra^{C_2}\right) $ of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg} preserves all small limits;
         \item \label{thmitem:poincare_rings_presentable_accessible} The $ \infty $-category $ \CAlgp $ is presentable and accessible. 
         % Do we need the next two items? 
         % \item the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
@@ -488,16 +489,26 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
 
     To prove \ref{thmitem:poincare_ring_has_colimits}, let $p:K\to \CAlgp$ be a map of simplicial sets, where $K$ is a small simplicial set. 
     Write $ f' $ for the functor $\CAlgp \to \CAlg(\Spectra^{BC_2})$ and $ g'\colon \CAlgp \to  \CAlg(\Spectra)^{\Delta^2} $ and $ f \colon \CAlg(\Spectra)^{\Delta^2} \to  \CAlg(\Spectra)^{\Delta^1} $ and $ g \colon \CAlg(\Spectra^{BC_2}) \to  \CAlg(\Spectra)^{\Delta^1} $. 
-    Choose an extension $ \overline{f'p} \colon K^\vartriangleright\to \CAlg(\Spectra^{BC_2}) $ be an extension of $ f'\circ p $ which is a colimit diagram. 
-    By \cite[Proposition 4.3.1.5(2)]{HTT}, it suffices to exhibit a lift $ K^\vartriangleright \to \CAlgp $ which is an $ f' $-colimit diagram. 
-    By \cite[Prposition 4.3.1.5(4)]{HTT} and \ref{thmitem:defining_diagram_homotopy_pullback}, it suffices to show that there exists an extension $ \overline{g'p} \colon K^\vartriangleright \to \CAlg(\Spectra)^{\Delta^2} $ of $ g \circ \overline{f'p} $ which is an $ f=d_1^* $-colimit. 
+    Choose an extension $ \overline{f'p} \colon K^\vartriangleright\to \CAlg(\Spectra^{BC_2}) $ of $ f'\circ p $ which is a colimit diagram. 
+    By \cite[Proposition 4.3.1.5(2)]{HTT}, to show that $ p $ admits a colimit, it suffices to exhibit a lift $ K^\vartriangleright \to \CAlgp $ of $ \overline{f' \circ p} $ which is an $ f' $-colimit diagram. 
+    By \cite[Proposition 4.3.1.5(4)]{HTT} and \ref{thmitem:defining_diagram_homotopy_pullback}, it suffices to show that there exists an extension $ \overline{g'p} \colon K^\vartriangleright \to \CAlg(\Spectra)^{\Delta^2} $ of $ g \circ \overline{f'p} $ which is an $ f=d_1^* $-colimit. 
     Observe that $ f= d_1^* $ is a cocartesian fibration, the fibers of $ f $ admit small colimits, and $ f $-cocartesian transport preserves all small colimits by \ref{thmitem:defining_diagram_homotopy_pullback}, Lemma \ref{lemma:restriction_functor_cat_as_fibrations}, and the fact that $ \CAlg $ admits all small colimits. 
     The existence of such an extension $ \overline{g'p} $ follows from \cite[Corollary 4.3.1.11]{HTT}. 
     % \Lucy{Show that $ f $ satisfies the hypotheses of \cite[Corollary 4.3.1.11]{HTT}, then use that corollary to conclude.} 
 
     Part \ref{thmitem:poincare_ring_to_ring_preserves_colims} follows from \ref{thmitem:poincare_ring_has_colimits}. 
 
-    The proofs of parts \ref{thmitem:poincare_ring_has_limits} and \ref{thmitem:poincare_ring_to_ring_preserves_lims} are analogous to those of \ref{thmitem:poincare_ring_has_colimits} and \ref{thmitem:poincare_ring_to_ring_preserves_colims} and have been omitted.  
+    The proofs of parts \ref{thmitem:poincare_ring_has_limits} and \ref{thmitem:poincare_ring_to_naive_ring_preserves_lims} are analogous to those of \ref{thmitem:poincare_ring_has_colimits} and \ref{thmitem:poincare_ring_to_ring_preserves_colims} and have been omitted. 
+
+    To prove part \ref{thmitem:poincare_ring_to_ring_preserves_lims}, it suffices to show that $ U(-) $ preserves cofiltered limits and finite limits separately. 
+    Since limits in $ \CAlg(\Spectra^{C_2}) $ are detected on underlying spectra and geometric fixed points, it suffices to show that $ \Phi^{C_2} U(-) $ preserves cofiltered limits and finite limits. 
+    We begin by showing that $ \Phi^{C_2} U(-) $ preserves finite limits. 
+    Let us mostly keep the notation/setup of the proof of part \ref{thmitem:poincare_ring_has_colimits}, except we are now interested in exhibiting an extension defined on $ K^{\vartriangleleft} $, and $ K $ is a finite simplicial set. 
+    We have an extension $ \overline{f'p} \colon K^{\vartriangleleft} \to \CAlg^{BC_2} $ which is a limit diagram. 
+    Since $ K $ is finite and the Tate construction preserves finite limits as a functor $ \Spectra^{BC_2} \to \Spectra $, the composite $ g \circ \overline{f'p} $ is a limit diagram in $ \CAlg^{\Delta^1} $. 
+    Taking $ \mathcal{E} = * $ in \cite[Proposition 4.3.1.5(2)]{HTT}, we see that the extension $ \overline{g'p} $ (which exists by the proof of \ref{thmitem:poincare_ring_has_limits}) in fact defines a limit diagram in $ \CAlg^{\Delta^2} $. 
+    The desired result now follows from the fact that limits in functor categories are computed pointwise and Lemma \ref{lemma:Poincare_ring_geom_fixpt}. 
+    \Lucyil{Show that $ U(-) $ preserves cosifted limits!}
 
     Now let us consider part \ref{thmitem:poincare_rings_presentable_accessible}. 
     Accessibility of $ \CAlgp $ follows from closure of accessible $ \infty $-categories under fiber products \cite[Proposition 5.4.6.6]{HTT} and accessibility of the $ \infty $-categories in the pullback diagram defining $ \CAlgp $, which itself follows from accessibility of $ \CAlg $ and \cite[Proposition 5.4.4.3]{HTT}. 
