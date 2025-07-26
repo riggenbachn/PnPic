@@ -171,7 +171,8 @@ In this paper, we use the formalism of Poincar{\'e} $ \infty $-categories, as de
 Let $ X $ be a scheme. 
 Gabber showed that if $ X $ is quasi-compact and separated and admits an ample line bundle, the collection of sheaves of Azumaya $ \mathcal{O}_X $-algebras up to Morita equivalence is in bijection with the torsion subgroup of $ H^2_{\mathrm{\acute{e}t}}(X; \mathbb{G}_m) $ \cite{MR611868}. 
 On the other hand, to $ \mathcal{A} $ we may associate the presentable $ \mathcal{O}_X $-linear $ \infty $-category $ \mathcal{D}(\mathcal{A}) $. \Lucy{AG notation or homotopy notation?} 
-If $ \mathcal{A} $ and $ \mathcal{A}' $ are Morita equivalent, then $ \mathcal{D}(\mathcal{A}') $ and $ \mathcal{D}(\mathcal{A}) $ are equivalent in $ \mathrm{Pr}^L_{\mathcal{O}_X} $, and that $ \mathcal{A} $ is Azumaya implies that $ \mathcal{D}(\mathcal{A}) $ is invertible in $ \mathrm{Pr}^L_{\mathcal{O}_X} $ with respect to the $ \mathcal{O}_X $-linear tensor product. \Lucy{who is this observation due to?} \Lucy{cite Lieblich/de Jong/Caldararu? connect to twisted sheaves!} 
+If $ \mathcal{A} $ and $ \mathcal{A}' $ are Morita equivalent, then $ \mathcal{D}(\mathcal{A}') $ and $ \mathcal{D}(\mathcal{A}) $ are equivalent in $ \mathrm{Pr}^L_{\mathcal{O}_X} $; in fact, if $ \alpha \in H^2_{\mathrm{\acute{e}t}}(X; \mathbb{G}_m) $ denotes the Brauer class of $ \mathcal{A} $, then $ \mathcal{D}(\mathcal{A}) $ is a derived variant of the $ \alpha $-twisted sheaves considered by Caldararu and Lieblich \cites{MR1887894}{MR2579390}. \Lucy{cite de Jong? de Jong also refers to Giraud} 
+That $ \mathcal{A} $ is Azumaya implies that $ \mathcal{D}(\mathcal{A}) $ is invertible in $ \mathrm{Pr}^L_{\mathcal{O}_X} $ with respect to the $ \mathcal{O}_X $-linear tensor product. \Lucy{who is this observation due to?} 
 
 \begin{definition}
     The \emph{derived Brauer space} of $ X $ is $ \mathrm{dBr}(X) := \Pic\left(\mathrm{Pr}^L_{\mathcal{O}_X} \right) $. 
@@ -508,7 +509,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     Since $ K $ is finite and the Tate construction preserves finite limits as a functor $ \Spectra^{BC_2} \to \Spectra $, the composite $ g \circ \overline{f'p} $ is a limit diagram in $ \CAlg^{\Delta^1} $. 
     Taking $ \mathcal{E} = * $ in \cite[Proposition 4.3.1.5(2)]{HTT}, we see that the extension $ \overline{g'p} $ (which exists by the proof of \ref{thmitem:poincare_ring_has_limits}) in fact defines a limit diagram in $ \CAlg^{\Delta^2} $. 
     The desired result now follows from the fact that limits in functor categories are computed pointwise and Lemma \ref{lemma:Poincare_ring_geom_fixpt}. 
-    \Lucyil{Show that $ U(-) $ preserves cosifted limits!}
+    \Lucyil{Show that $ U(-) $ preserves cofiltered limits? Honestly at this point I'm kind of ok with it being a detail left to the reader, considering the inclusion of Remark \ref{rmk:limits_of_Poincare_rings}.}
 
     Now let us consider part \ref{thmitem:poincare_rings_presentable_accessible}. 
     Accessibility of $ \CAlgp $ follows from closure of accessible $ \infty $-categories under fiber products \cite[Proposition 5.4.6.6]{HTT} and accessibility of the $ \infty $-categories in the pullback diagram defining $ \CAlgp $, which itself follows from accessibility of $ \CAlg $ and \cite[Proposition 5.4.4.3]{HTT}. 
