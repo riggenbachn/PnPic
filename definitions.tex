@@ -16,7 +16,7 @@ Define the category of affine Hermitian schemes, denoted $\mathrm{AHS}$, to be t
 
 We record here a few structural results about this category.
 
-\begin{theorem}
+\begin{theorem}\label{thm:poincare_rings_cat_formal_properties}
 The following statements about $\CAlgp$ hold:
 \begin{enumerate}[label=(\arabic*)]
 \item \label{thmitem:defining_diagram_homotopy_pullback} the pullback diagram (\ref{diagram:poincare_ring_defn}) is homotopy Cartesian; % i.e. the pullback in simplicial sets computes the pullback in $ \infty $-categories.
@@ -149,26 +149,48 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
 
 The following Lemma gives the justification of the name Poincar{\'e} scheme.
 \begin{construction}\label{con:functor_APS_to_Pn_cat}
-    We shall construct a functor \[\perfpn:\aps\to \mathrm{Cat}_{\infty}^{\mathrm{Pn}}\] to the category of Poincar{\'e} infinity categories. 
+    We shall construct a functor \[\perfpn:\CAlgp\to \mathrm{Cat}_{\infty}^{\mathrm{Pn}}\] to the category of Poincar{\'e} $ \infty $-categories. 
 
     \Lucy{For symmetric monoidal structure--maybe want to swap out $ \Mod_{NA}$ for $ \CAlg_{NA} $? }
-    Recall that $ \Cath_\infty \to \left( \Catex_\infty \right)^{op} $ is a cocartesian fibration \cite[\S1.4.]{CDHHLMNNSI} 
+    Recall that $ \Cath_\infty \to \left( \Catex_\infty \right)^{op} $ is a cocartesian fibration \cite[\S1.4.]{CDHHLMNNSI} and the forgetful functor $ \CAlgp \to \CAlg\left(\Spectra^{BC_2}\right) $ is a cocartesian fibration by the proof of Theorem \ref{thm:poincare_rings_cat_formal_properties}\ref{thmitem:defining_diagram_homotopy_pullback}. 
     We will first construct a map of cocartesian fibrations
-    \begin{equation}
+    \begin{equation}\label{diagram:calgp_to_catp_map_of_cocart_fib}
     \begin{tikzcd}
-        \aps \ar[r,dotted] \ar[d] & \Cath_\infty \ar[d] \\
+        \CAlgp \ar[r,dotted] \ar[d] & \Cath_\infty \ar[d] \\
         \CAlg\left(\Spectra^{BC_2}\right)\ar[r] & \left( \Catex_\infty \right)^{op}
     \end{tikzcd}\,,
     \end{equation}
     then show that the dotted arrow factors through the subcategory $ \Cat^p_\infty \subseteq \Cat^h_\infty $. 
-    To construct a map of cartesian fibrations, it suffices to exhibit a natural transformation of classifying functors. 
-    Unraveling the definitions, by Theorem 3.2.13 of \cite{CDHHLMNNSI} we must exhibit for each $ A \in \CAlg(\Spectra)^{BC_2} $, a functor
-    \begin{equation}
-        \left(\CAlg(\Spectra)_{A/-/A^{tC_2}}\right)_{/\varphi} \to \Mod_{N^{C_2}(A^e)}\left(\Spectra^{C_2}\right)
-    \end{equation}
-    (where $ \varphi \colon A \to A^{tC_2} $ is the Tate-valued Frobenius and $ N^{C_2} $ is the Hill--Hopkins--Ravenel norm) which is natural in $ A $. 
 
-    That the resulting functor factors through the subcategory $ \Cat^p_\infty $ follows from Proposition 3.1.3 and Lemma 3.3.3 of \emph{loc. cit.}
+    To construct a map of cocartesian fibrations, by \cite[Theorem E]{MR4676218} it suffices to exhibit a \emph{lax} natural transformation $ \beta $ of classifying functors.\footnote{It is not enough to produce a natural transformation of classifying functors, which would correspond to a map of cocartesian fibrations which \emph{preserves cocartesian edges}. However, by \cite[Corollary 3.4.1]{CDHHLMNNSI}, we cannot expect said map of cocartesian fibrations to preserve cocartesian edges.} 
+    Unraveling the definitions, by Theorem 3.3.1 of \cite{CDHHLMNNSI} we must exhibit for each $ A \in \CAlg(\Spectra)^{BC_2} $, a functor
+    \begin{equation*}
+        \beta_A \colon \left(\CAlg(\Spectra)_{A/-/A^{tC_2}}\right)_{/\varphi} \to \Mod_{N^{C_2}(A^e)}\left(\Spectra^{C_2}\right)
+    \end{equation*}
+    (where $ \varphi \colon A \to A^{tC_2} = A^{tC_2} $ is the Tate-valued norm and $ N^{C_2} $ is the Hill--Hopkins--Ravenel norm) and for each morphism $ f \colon A \to B $ in $ \CAlg\left(\Spectra\right)^{BC_2} $, a natural transformation 
+    \begin{equation*}
+    \begin{tikzcd}
+        \left(\CAlg(\Spectra)_{A/-/A^{tC_2}}\right)_{/\varphi} \ar[r,"{\beta_A}"] \ar[d,"{- \otimes_{A,f} B}"] & \Mod_{N^{C_2}(A^e)}\left(\Spectra^{C_2}\right) \ar[d,"{ - \otimes_{N^{C_2}A, N^{C_2}f} N^{C_2}B}"] \ar[ld,Rightarrow,"{\beta_f}"] \\  \left(\CAlg(\Spectra)_{B/-/B^{tC_2}}\right)_{/\varphi} \ar[r,"{\beta_B}"] & \Mod_{N^{C_2}(A^e)}\left(\Spectra^{C_2}\right)   
+    \end{tikzcd}   
+    \end{equation*}
+    satisfying higher coherences. \Lucy{I think using \href{https://arxiv.org/abs/1501.02161}{something from here}, we can describe a lax natural transformation (a priori some $ (\infty, 2) $-categorical data) in terms of an $ (\infty, 1) $-functor defined out of the twisted arrow category of $ \CAlg^{BC_2} $. However, I'd like to only get into the details here on an `as needed' basis. }
+    Given $ A \to C \to A^{tC_2} $, we define the natural transformation $ \beta_F(A \to C \to A^{tC_2}) $ using the récollement on $ \Spectra^{C_2} $; on underlying, it is induced by the multiplication map on $ B $: \Lucy{maybe twisted?}
+    \begin{equation*}
+        \beta_{f}(A \to C \to A^{tC_2})^e \colon (B \otimes B) \otimes_{A \otimes A} A \to B
+    \end{equation*}
+    and on geometric fixed points, it is an equivalence $ \beta_{f}(A \to C \to A^{tC_2})^{\Phi C_2} \colon B \otimes_A C \simeq B \otimes_A C $. 
+
+    That the resulting functor (\ref{diagram:calgp_to_catp_map_of_cocart_fib}) factors through the subcategory $ \Cat^p_\infty $ follows from Lemma 3.4.3 of \cite{CDHHLMNNSI}. 
+    % ----------------------- From prior to 2025 -----------------------
+    % To construct a map of cocartesian fibrations \emph{which preserve cocartesian edges}, it suffices to exhibit a natural transformation of classifying functors. 
+    % Unraveling the definitions, by Theorem 3.3.1 of \cite{CDHHLMNNSI} we must exhibit for each $ A \in \CAlg(\Spectra)^{BC_2} $, a functor
+    % \begin{equation}
+    %     \left(\CAlg(\Spectra)_{A/-/A^{tC_2}}\right)_{/\varphi} \to \Mod_{N^{C_2}(A^e)}\left(\Spectra^{C_2}\right)
+    % \end{equation}
+    % (where $ \varphi \colon A \to A^{tC_2} = A^{tC_2} $ is the Tate-valued norm and $ N^{C_2} $ is the Hill--Hopkins--Ravenel norm) which is natural in $ A $. 
+    % %\Lucy{as written this is \emph{not} natural in $ A $. }
+    %
+    % That the resulting functor factors through the subcategory $ \Cat^p_\infty $ follows from Proposition 3.1.3 and Lemma 3.3.3 of \emph{loc. cit.}
 \end{construction}
 \begin{lemma}
     The functor of Construction \ref{con:functor_APS_to_Pn_cat} is symmetric monoidal and has essential image the subcategory spanned by objects $(\perf(R),\Qoppa)$ which are $\mathbb{E}_\infty$-algebras.

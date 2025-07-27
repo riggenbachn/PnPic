@@ -822,10 +822,14 @@ To this end, we will define an $ \infty $-category of objects acting on $ M $, s
 Informally, we may define a category $ \mathcal{C}[M] $ whose objects consist of either
 \begin{itemize}
     \item pairs $ (C, \eta) $ where $ C \in \mathcal{C} $ and $ \eta \colon C \otimes M \to M $ is a morphism in $ \mathcal{M} $; or
-    \item pairs $ (C', \xi) $ where $ C'\in \mathcal{C} $ and $ \xi \colon \sigma_{\mathcal{M}}(M) \otimes C' \to \sigma_{\mathcal{M}}(M) $. 
+    \item pairs $ (C', \eta') $ where $ C'\in \mathcal{C} $ and $ \eta' \colon \sigma_{\mathcal{M}}(M) \otimes C' \to \sigma_{\mathcal{M}}(M) $. 
+    \item pairs $ (D, \xi) $ where $ D \in \mathcal{C} $ and $ \xi \colon M \otimes D \to \sigma_{\mathcal{M}}(M) $ \Lucy{added July 26th}
+    \item pairs $ (D, \xi') $ where $ D \in \mathcal{C} $ and $ \xi' \colon D \otimes \sigma_{\mathcal{M}}(M) \to M $ 
 \end{itemize} 
 The monoidal structure is as described in \cite[\S4.7.1]{LurHA}. 
 Note that given an object $ (C, \eta) $, the involution $ \sigma_\mathcal{M} $ on $ \mathcal{M} $ sends $ \eta $ to the map $ \sigma_{\mathcal{M}}\left(C \otimes M\right)\simeq \sigma_{\mathcal{M}}(M) \otimes \sigma_{\mathcal{C}}(C) \to \sigma_{\mathcal{M}}(M) $. 
+Given an object $ (D, \xi) $, the involution $ \sigma_\mathcal{M} $ on $ \mathcal{M} $ we may consider the map $ \xi' \colon \sigma_{\mathcal{C}}(D) \otimes M \xrightarrow{\mathrm{id} \otimes_{\sigma_M}} \sigma_{\mathcal{C}}(D) \otimes \sigma_{\mathcal{M}}^2(M) \simeq \sigma_{\mathcal{M}}\left(M \otimes D\right)\xrightarrow{\sigma_{\mathcal{M}}(\xi)} \sigma_{\mathcal{M}}(M) $. 
+The assignment $ (D,\xi) \mapsto (\sigma_{\mathcal{C}}(D), \xi') $... \Lucy{is an involution?} 
 This is the involution on $ \mathcal{C}[M] $. 
 \begin{definition}
     Let $ p \colon \mathcal{M}^\varoast  \to \Delta^1\times \Delta^\op_\sigma $ exhibit $ \mathcal{M}^\varoast $ as weakly enriched over $ \mathcal{C}^\varoast $. 
