@@ -202,9 +202,9 @@ Thus in order to study involutions systematically, it is necessary to specify a 
 
 The study of involutions on Azumaya algebras goes hand-in-hand with/is inextricably linked to the study of symmetric bilinear/hermitian forms on vector bundles: étale-locally, (classical) Azumaya algebras can be described as endomorphism algebras of vector bundles $ \mathcal{A}\simeq \mathcal{E}\mathrm{nd}_X(V) $. 
 Taking transposes and conjugating by an isomorphism $ q \colon V \to V^\vee $ adjoint to a nondegenerate \Lucy{insert adjectives} pairing $ q \colon V \otimes V \to \mathcal{O}_X $ comprise a `prototypical' example of an involution on $ \mathcal{E}\mathrm{nd}_X(V) $. 
-At the level of derived categories, an equivalence $ \mathcal{A} \simeq \mathcal{A}^\op $ induces an equivalence $ \Mod_{\mathcal{A}}^\omega \simeq \Mod_{\mathcal{A}}^{\op}^\omega $, or equivalently a perfect pairing $ \Mod_{\mathcal{A}}^\omega \times \Mod_{\mathcal{A}}^\omega \to \Mod_{\mathcal{O}_X}^\omega $. \Lucy{pulled this from \cite[Remark 3.1.8]{CDHHLMNNSI}. }
+At the level of derived categories, an equivalence $ \mathcal{A} \simeq \mathcal{A}^\op $ induces an equivalence $ \Mod_{\mathcal{A}}^\omega \simeq \Mod_{\mathcal{A}}^{\op, \omega} $, or equivalently a perfect pairing $ \Mod_{\mathcal{A}}^\omega \times \Mod_{\mathcal{A}}^\omega \to \Mod_{\mathcal{O}_X}^\omega $. \Lucy{pulled this from \cite[Remark 3.1.8]{CDHHLMNNSI}. }
 In \cites{CDHHLMNNSI,CDHHLMNNSII,CDHHLMNNSIII}, Calmès--Dotto--Harpaz--Hebestreit--Land--Moi--Nardin--Nikolaus--Steimle introduce a category of stable $ \infty $-categories with perfect pairings/duality, expanding upon an idea introduced in \cite{Lurie_Ltheory_notes}. 
-A object of a \emph{Poincaré $ \infty $-category} $ \mathcal{C} $ with duality functor $ D \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C}^\op $ is an object $ X$ of $ \mathcal{C} $ equipped with an equivalence $ q \colon X \xrightarrow{\sim} DX $ which exhibits $ X $ as a fix point of the duality functor. %admit an enhanced notion of an object which are equipped with the data of nondegenerate hermitian forms. 
+A object of a \emph{Poincaré $ \infty $-category} $ \mathcal{C} $ with duality functor $ D \colon \mathcal{C} \xrightarrow{\sim} \mathcal{C}^\op $ is an object $ X$ of $ \mathcal{C} $ equipped with an equivalence $ q \colon X \xrightarrow{\sim} DX $ which exhibits $ X $ as a fix point of the duality functor. \Lucy{forward reference to something more precise/correct.} %admit an enhanced notion of an object which are equipped with the data of nondegenerate hermitian forms. 
 When $ \mathcal{C} = \Mod_k^\omega $ and $ D = (-)^\vee [n] $ (where $ (-)^\vee $ denotes $ k $-linear duality), an object is represented by a perfect complex $ M $ of $ k $-vector spaces and a `Poincaré duality' isomorphism $ M \simeq M^\vee[n] $. 
 Motivated by this connection between involutions and duality (cf. \cite[\S3]{CDHHLMNNSI}), we use Poincaré $ \infty $-categories to define a derived enhancement of the involutive Brauer group.  
 % In this work, we study a derived enhancement of the involutive Brauer group. \Lucy{later: make this more specific} 
@@ -477,10 +477,11 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     \begin{enumerate}[label=(\arabic*)]
         \item \label{thmitem:defining_diagram_homotopy_pullback} the pullback diagram (\ref{diagram:poincare_ring_defn}) is homotopy Cartesian; % i.e. the pullback in simplicial sets computes the pullback in $ \infty $-categories.
         \item \label{thmitem:poincare_ring_has_colimits} The category $\CAlgp$ has all small colimits;
-        \item \label{thmitem:poincare_ring_to_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small colimits;
+        \item \label{thmitem:poincare_ring_to_naive_ring_preserves_colims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small colimits;
         \item \label{thmitem:poincare_ring_has_limits} The category $\CAlgp$ has all small limits;
         \item \label{thmitem:poincare_ring_to_naive_ring_preserves_lims} the functor $ \CAlgp \to \CAlg(\Spectra^{BC_2})$ preserves all small limits;
         \item \label{thmitem:poincare_ring_to_ring_preserves_lims} the functor $ \CAlgp \to \CAlg\left(\Spectra^{C_2}\right) $ of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg} preserves all small limits;
+        \item \label{thmitem:poincare_ring_to_ring_preserves_filt_colims} the functor $ \CAlgp \to \CAlg\left(\Spectra^{C_2}\right) $ of Remark \ref{rmk:Poincare_ring_has_underlying_C2_spectrum_alg} preserves filtered colimits;
         \item \label{thmitem:poincare_rings_presentable_accessible} The $ \infty $-category $ \CAlgp $ is presentable and accessible. 
         % Do we need the next two items? 
         % \item the functor $ \CAlgp\to \CAlg(\Spectra)^{\Delta^2}$ is lax symmetric monoidal;
@@ -500,9 +501,9 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     The existence of such an extension $ \overline{g'p} $ follows from \cite[Corollary 4.3.1.11]{HTT}. 
     % \Lucy{Show that $ f $ satisfies the hypotheses of \cite[Corollary 4.3.1.11]{HTT}, then use that corollary to conclude.} 
 
-    Part \ref{thmitem:poincare_ring_to_ring_preserves_colims} follows from \ref{thmitem:poincare_ring_has_colimits}. 
+    Part \ref{thmitem:poincare_ring_to_naive_ring_preserves_colims} follows from \ref{thmitem:poincare_ring_has_colimits}. 
 
-    The proofs of parts \ref{thmitem:poincare_ring_has_limits} and \ref{thmitem:poincare_ring_to_naive_ring_preserves_lims} are analogous to those of \ref{thmitem:poincare_ring_has_colimits} and \ref{thmitem:poincare_ring_to_ring_preserves_colims} and have been omitted. 
+    The proofs of parts \ref{thmitem:poincare_ring_has_limits} and \ref{thmitem:poincare_ring_to_naive_ring_preserves_lims} are analogous to those of \ref{thmitem:poincare_ring_has_colimits} and \ref{thmitem:poincare_ring_to_naive_ring_preserves_colims} and have been omitted. 
 
     To prove part \ref{thmitem:poincare_ring_to_ring_preserves_lims}, it suffices to show that $ U(-) $ preserves cofiltered limits and finite limits separately. 
     Since limits in $ \CAlg(\Spectra^{C_2}) $ are detected on underlying spectra and geometric fixed points, it suffices to show that $ \Phi^{C_2} U(-) $ preserves cofiltered limits and finite limits. 
@@ -512,7 +513,20 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     Since $ K $ is finite and the Tate construction preserves finite limits as a functor $ \Spectra^{BC_2} \to \Spectra $, the composite $ g \circ \overline{f'p} $ is a limit diagram in $ \CAlg^{\Delta^1} $. 
     Taking $ \mathcal{E} = * $ in \cite[Proposition 4.3.1.5(2)]{HTT}, we see that the extension $ \overline{g'p} $ (which exists by the proof of \ref{thmitem:poincare_ring_has_limits}) in fact defines a limit diagram in $ \CAlg^{\Delta^2} $. 
     The desired result now follows from the fact that limits in functor categories are computed pointwise and Lemma \ref{lemma:Poincare_ring_geom_fixpt}. 
-    \Lucyil{Show that $ U(-) $ preserves cofiltered limits? Honestly at this point I'm kind of ok with it being a detail left to the reader, considering the inclusion of Remark \ref{rmk:limits_of_Poincare_rings}.}
+    \Lucyil{Show that $ U(-) $ preserves cofiltered limits? Honestly at this point I'm kind of ok with it being a detail left to the reader, considering the inclusion of Remark \ref{rmk:limits_of_Poincare_rings}. Ok what follows is a sketchier proof of \ref{thmitem:poincare_ring_to_ring_preserves_lims} which should work in all cases.}
+
+    Observe that there is a commutative square
+    \begin{equation*}
+    \begin{tikzcd}
+        \CAlg^{\Delta^2} \ar[d,"{d_0}"] \ar[r,"{d_1}"] & \CAlg^{\Delta^1} \ar[d,"{\delta_0}"] \\
+        \CAlg^{\Delta^1} \ar[r,"{\partial_0}"] & \CAlg \,.
+    \end{tikzcd}
+    \end{equation*}
+    In particular, $ d_0 $ takes $ d_1 $-cartesian morphisms to $ \partial_0 $-cartesian morphisms and for any $ \alpha \in \CAlg^{\Delta^1} $, $ d_0 $ takes limits in $ \CAlg^{\Delta^2}_{\alpha} $ to limits in $ \CAlg^{\Delta^1}_{\delta_0(\alpha)} $. 
+    It follows from the dual of \cite[Proposition 4.3.1.9]{HTT} that if $ \overline{g'p} $ is an $ f $-limit, then $ d_0 \circ \overline{g'p} $ is a $ \partial_0 $-limit. 
+    Therefore, the functor $ \CAlgp \to \Einfty \Alg \left(\Spectra^{C_2}\right) $ preserves all small limits. 
+
+    Part \ref{thmitem:poincare_ring_to_ring_preserves_filt_colims} follows from Remark \ref{rmk:limits_of_Poincare_rings} and the fact that filtered colimits of algebras are computed in modules. 
 
     Now let us consider part \ref{thmitem:poincare_rings_presentable_accessible}. 
     Accessibility of $ \CAlgp $ follows from closure of accessible $ \infty $-categories under fiber products \cite[Proposition 5.4.6.6]{HTT} and accessibility of the $ \infty $-categories in the pullback diagram defining $ \CAlgp $, which itself follows from accessibility of $ \CAlg $ and \cite[Proposition 5.4.4.3]{HTT}. 
@@ -525,7 +539,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
         If $ \mathcal{C} $ admits all $ \mathcal{K} $-indexed colimits, then the fibers of $ d_1^* $ admit all $ \mathcal{K} $-indexed colimits and for each morphism $ f \colon \alpha \to \beta $ in $ \mathcal{C}^{\Delta^1} $, the associated functor $ f_* \colon \mathcal{C}^{\Delta^2}_{\alpha} \to \mathcal{C}^{\Delta^2}_{\beta} $ preserves all $ \mathcal{K} $-indexed colimits. \Lucy{wrote out the condition instead of just saying `cocartesian transport.' Is it clear that $ \alpha, \beta $ are objects of $ \mathcal{C}^{\Delta^1} $ (i.e. morphisms in $ \mathcal{C} $) and $ f $ is a commutative square?}
         \item \label{lemma_item:restriction_functor_cartesian} The functor $ d_1^* $ exhibits the source as a cartesian fibration over the target. 
         If $ \mathcal{C} $ has finite limits, then $ d_1^* $ exhibits the source as a cartesian fibration over the target. 
-        If $ \mathcal{C} $ admits all $ \mathcal{K} $-indexed limits, then the fibers of $ d_1^* $ admit all $ \mathcal{K} $-indexed limits and for each morphism $ f \colon \alpha \to \beta $ in $ \mathcal{C}^{\Delta^1} $, the associated functor $ f^* \colon \mathcal{C}^{\Delta^2}_{\beta} \to \mathcal{C}^{\Delta^2}_{\alpha} $ preserves all $ \mathcal{K} $-indexed limits. \Lucy{did I reverse the arrows appropriately?}
+        If $ \mathcal{C} $ admits all $ \mathcal{K} $-indexed limits, then the fibers of $ d_1^* $ admit all $ \mathcal{K} $-indexed limits and for each morphism $ f \colon \alpha \to \beta $ in $ \mathcal{C}^{\Delta^1} $, the associated functor $ f^* \colon \mathcal{C}^{\Delta^2}_{\beta} \to \mathcal{C}^{\Delta^2}_{\alpha} $ preserves all $ \mathcal{K} $-indexed limits. 
     \end{enumerate} 
 \end{lemma}
 \begin{proof} 
@@ -587,7 +601,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     An analogous description holds for colimits in $ \CAlgp $; we leave the details to the reader. 
 \end{remark}
 \begin{definition}\label{defn:Poincare_ring_pointwise_units}
-    Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_1}) \to \mathrm{gl}_1(R^e) $.  
+    Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_2}) \to \mathrm{gl}_1(R^e) $. \Lucyil{Is this the `right' codomain for $ \mathrm{gl}_1 $/units of Poincaré rings? There \emph{is} a `transfer' $ \mathrm{gl}_1(R^{e}) \to \mathrm{gl}_1(R^{C_2}) $, it's just not guaranteed to be $ C_2 $-equivariant (where the target has the trivial $ C_2 $-action)} 
 \end{definition}
 \begin{lemma}\label{lemma:pointwise_units_has_left_adjoint}
     The functor $ (-)^u $ of Definition \ref{defn:Poincare_ring_pointwise_units} has a left adjoint. 
@@ -595,9 +609,10 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
 \end{lemma}
 \begin{proof}
     By \cite[Corollary 5.5.2.9]{HTT}, in view of Theorem \ref{thm:poincare_rings_cat_formal_properties}\ref{thmitem:poincare_rings_presentable_accessible}, it suffices to show that $ (-)^u $ is accessible and preserves small limits. 
-    It is clear that $ (-)^u $ preserves small filtered colimits, since they are computed in $ \Spectra^{C_2} $. \Lucy{refer to earlier thm/lemma?}
+    It is clear that $ (-)^u $ preserves small filtered colimits, since they are computed in $ \Spectra^{C_2} $ by Theorem \ref{thm:poincare_rings_cat_formal_properties}\ref{thmitem:poincare_ring_to_ring_preserves_filt_colims}. 
     Since limits in functor categories are computed pointwise, it suffices to show that the assignments $ (R, R^{\varphi C_2} \to R^{tC_2}) \mapsto \mathrm{gl}_1(R^{C_2}), \mathrm{gl}_1(R^e) $ preserve small limits. 
-    \Lucyil{need to finish proof that $ (-)^{u} $ preserves small limits!}
+    The result follows from Theorem \ref{thm:poincare_rings_cat_formal_properties}\ref{thmitem:poincare_ring_to_ring_preserves_lims}, the fact that $ (-)^e \colon \Einfty\Alg\left(\Spectra^{C_2}\right) \to \Einfty\Alg(\Spectra)^{BC_2} $ and $ (-)^{C_2} \colon \Einfty\Alg\left(\Spectra^{C_2}\right) \to \Einfty\Alg(\Spectra) $ preserve limits, and $ \mathrm{gl}_1(-) = \hom_{\Einfty\Alg}\left(\sphere\{t^{\pm 1}\},-\right) $ preserves limits. 
+    % \Lucyil{need to finish proof that $ (-)^{u} $ preserves small limits!}
 \end{proof}
 
 % \section{Modules over Poincaré Ring Spectra}
@@ -714,7 +729,7 @@ where the last map is base change along the map $ N^{C_2}B \to (A\to B) $ which 
 \Lucy{todo: use effective descent/limit definition for $ \underline{\mathcal{O}} $-modules.} 
 Now since quadratic functors are closed under limits \cite[Theorem 6.1.1.10]{LurHA} and $ N^{C_2}_Y $ can be written as a limit of a diagram of quadratic functors, $ N^{C_2}_Y $ is also quadratic. 
 \begin{definition}
-    Varying $ X \to Y $, Construction \ref{cons:C2_mod_over_sheaf_of_Green_func} and Observation \ref{obs:globalize_relative_norm} define a functor \Lucy{want: codomain consists of $ C_2 $-stable $ C_2 $\emph{-presentable} $ C_2 $-$ \infty $-categories}
+    Varying $ X \to Y $, Construction \ref{cons:C2_mod_over_sheaf_of_Green_func} and Observation \ref{obs:globalize_relative_norm} define a functor \Lucy{Use a functor from Poincaré rings/$ C_2 $-$ \Einfty $-algebras to (symmetric monoidal) Poincaré $ \infty $-categories to bypass $ C_2 $-$ \infty $-category stuff!} %\Lucy{want: codomain consists of $ C_2 $-stable $ C_2 $\emph{-presentable} $ C_2 $-$ \infty $-categories}
     \begin{align*}
         \left(\mathrm{qSch}^{C_2}\right)^{\op} &\to C_2 \otimes \Cat  \\
         \left(X, \lambda, Y, p \right) &\mapsto \underline{\Mod}_{\underline{\mathcal{O}}}\left(\underline{\Spectra}^{C_2}\right)
@@ -882,11 +897,11 @@ We begin by defining an analogue of the multiplicative group/units for Poincaré
     \Lucy{later: different notation for the functor $ \gmq $ versus its [Poincaré] ring of functions.}
 \end{construction}
 \begin{remark}\label{remark:Poincare_units_fiber_sequence}
-    The pushout description of $\gmq$ induces a pullback of mapping spaces \Lucy{mapping spaces should be taken in $ \CAlgp $? define $ \gmq $ in terms of left adjoint $ \sphere[-] $ in Lemma \ref{lemma:pointwise_units_has_left_adjoint}? Use the latter to show that $ \gmq $ takes values in connective spectra!}
+    The pushout description of $\gmq$ induces a pullback of mapping spaces \Lucy{define $ \gmq $ in terms of left adjoint $ \sphere[-] $ in Lemma \ref{lemma:pointwise_units_has_left_adjoint}? Use the latter to show that $ \gmq $ takes values in connective spectra!}
     \[
     \begin{tikzcd}
-        \gmq(A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp}^{C_2})}(\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}, A)\simeq \mathrm{gl}_1(A^e)\ar[d]\\
-        * \ar[r] & \mathrm{Maps}_{\CAlg(\mathrm{Sp^{C_2}})}(\mathbb{S}\{z\},A)\simeq \Omega^\infty\Qoppa_A(A) 
+        \gmq(A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlgp}(\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}, A)\simeq \mathrm{gl}_1(A^e)\ar[d]\\
+        * \ar[r] & \mathrm{Maps}_{\CAlgp}(\mathbb{S}\{z\},A)\simeq \Omega^\infty\Qoppa_A(A) 
     \end{tikzcd}\,.
     \] 
 \end{remark}

@@ -487,9 +487,10 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
 \end{remark}
 \begin{definition}\label{defn:inv_bimod_operad}
-    Define a colored operad $ \mathbf{BM}_\mathrm{inv} $
+    Define colored operads $ \mathbf{BM}_\mathrm{inv} $ and $ \mathbf{BM}_\sigma $
     \begin{enumerate}[label=(\roman*)]
         \item The set of objects of $ \mathbf{BM}_\mathrm{inv} $ has three elements, which we denote by $ \mathfrak{a}_\ell, \mathfrak{a}_r, \mathfrak{m} $. 
+        $ \mathbf{BM}_\sigma $ has the same objects
         \item Let $ \{X_i\}_{i \in I} $ be a finite collection of objects of $ \mathbf{BM}_{\mathrm{inv}} $ and let $ Y $ be another object of $ \mathbf{BM}_{\mathrm{inv}} $. 
         If $ Y = \mathfrak{a}_\ell $ (resp. $ Y = \mathfrak{a}_r $), then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the set of pairs consisting of a linear ordering on $ I $ and a function $ I \to \{\pm 1\} $ if $ X_i = \mathfrak{a}_\ell $ (resp. $ X_i = \mathfrak{a}_r $) for all $ i $, and empty otherwise. 
         If $ Y = \mathfrak{m} $, then $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is the subset of pairs $ (\lambda, c) $ consisting of a linear ordering $ \lambda = \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ c \colon I \to \{\pm 1 \} $ satisfying: if  there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $, either
@@ -498,23 +499,25 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
             \item $ c(i_k) = - 1 $, $ X_{j} = \mathfrak{a}_\ell $ for $ j > i_k $ and $ X_j = \mathfrak{a}_{r} $ for $ j < i_k $ 
         \end{itemize}
         % if there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $ and $ X_j = \mathfrak{a} $ for all $ j \neq i_k $, and $ \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ is empty otherwise. 
-        \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:colored_operad_monoid_with_involution} 
+        $ \mathrm{Mul}_{\mathbf{BM}_\sigma} \left(\{X_i\}_{i \in I}, Y\right) $ is the subset of pairs $ (\lambda, c) $ consisting of a linear ordering $ \lambda = \{i_1 < i_2 < \cdots < i_n\} $ on $ I $ and a function $ c \colon I \to \{\pm 1 \} $ satisfying: if  there is exactly one index $ i_k $ so that $ X_{i_k} = \mathfrak{m} $, $ c(i_k) = 1 $, $ X_{j} = \mathfrak{a}_\ell $ for $ j < i_k $ and $ X_j = \mathfrak{a}_{r} $ for $ j > i_k $. 
+        \item The composition law on $ \mathbf{BM}_{\mathrm{inv}} $ is determined by the composition of linear orderings, with reversal of linear orderings according to Definition \ref{defn:colored_operad_monoid_with_involution}. 
+        The composition law on $ \mathbf{BM}_{\sigma} $ is determined by the composition of linear orderings 
     \end{enumerate}
 \end{definition} 
 \begin{remark}\label{rmk:bimod_opd_involution}
     The colored operad $ \mathbf{BM}_{\mathrm{inv}} $ has a canonical involution $ \sigma $ which fixes $ \mathfrak{m} $, exchanges $ \mathfrak{a}_\ell $ and $ \mathfrak{a}_r $, and sends a morphism $ (\lambda, c) $ to $ (\lambda^{\mathrm{rev}}, I \xrightarrow{c} \{\pm 1\} \xrightarrow{\cdot (-1)} \{\pm 1 \}) $. 
 \end{remark}
 \begin{remark}\label{rmk:bimod_opd_to_inv_bimod_opd}
-    There is a map of colored operads $ \iota \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends $ \mathfrak{a}_{-} $ to $ \mathfrak{a}_\ell $ and $ \mathfrak{a}_+ $ to $ \mathfrak{a}_r $. 
-    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
-    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{id}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
+    There is a map of colored operads $ \iota \colon \mathbf{BM} \to \mathbf{BM}_{\mathrm{inv}} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and sends $ \mathfrak{a}_{-} $ to $ \mathfrak{a}_\ell $ and $ \mathfrak{a}_+ $ to $ \mathfrak{a}_r $. 
+    On $ \mathrm{Mul}_{\mathbf{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
+    On $ \mathrm{Mul}_{\mathbf{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathbf{BM}_{\mathrm{inv}}}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{id}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_1\} $ where $ c_1 $ is the constant function on $ I \sqcup \{j\} $ with value $ 1 $. 
 
-    There is \emph{also} a map of colored operads $ \iota^{\mathrm{rev}} \colon \mathrm{BM} \to \mathrm{BM}_{\sigma} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and  and sends $ \mathfrak{a}_{-} $ to $ \mathfrak{a}_r $ and $ \mathfrak{a}_+ $ to $ \mathfrak{a}_\ell $. 
-    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
-    On $ \mathrm{Mul}_{\mathrm{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathrm{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_{-1}\} $ where $ c_{-1} $ is the constant function on $ I \sqcup \{j\} $ with value $ -1 $. 
+    There is \emph{also} a map of colored operads $ \iota^{\mathrm{rev}} \colon \mathbf{BM} \to \mathbf{BM}_{\mathrm{inv}} $ which sends $ \mathfrak{m} $ to $ \mathfrak{m} $ and  and sends $ \mathfrak{a}_{-} $ to $ \mathfrak{a}_r $ and $ \mathfrak{a}_+ $ to $ \mathfrak{a}_\ell $. 
+    On $ \mathrm{Mul}_{\mathbf{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I}, \mathfrak{a}_{\pm}\right) \simeq  \mathcal{L}I \to \mathrm{Mul}_{\mathbf{BM}_{\mathrm{inv}}}\left(\left\{\mathfrak{a}_i\right\}_{i \in I}, \mathfrak{a}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $  is $ \mathrm{id}_{\mathcal{L}I} \times \{ c_1\} $, this map agrees with $ \iota^{\mathrm{rev}} $ of Remark \ref{rmk:assoc_opd_to_assoc_inv_opd}. 
+    On $ \mathrm{Mul}_{\mathbf{BM}}\left(\left\{(\mathfrak{a}_{\pm})_i\right\}_{i \in I} \sqcup\{\mathfrak{m}\}, \mathfrak{m}\right) \subseteq  \mathcal{L}(I\sqcup \{j\}) \to \mathrm{Mul}_{\mathbf{BM}_\sigma}\left(\left\{\mathfrak{a}_i\right\}_{i \in I} \sqcup \{\mathfrak{m}\}, \mathfrak{m}\right) \simeq  \mathcal{L}I \times \{\pm 1\}^I $ is the restriction of the map $ \mathrm{rev}_{\mathcal{L}(I\sqcup \{j\})} \times \{ c_{-1}\} $ where $ c_{-1} $ is the constant function on $ I \sqcup \{j\} $ with value $ -1 $. 
 \end{remark}
 \begin{definition}\label{defn:inv_leftrightbimod_infty_operad}
-    Let $ \mathcal{LM}_\mathrm{inv}^\otimes $, $ \mathcal{RM}_\mathrm{inv}^\otimes $, and $ \mathcal{BM}_\mathrm{inv}^\otimes $ denote the $ \infty $-operads associated to the colored operads of Definitions \ref{defn:inv_leftmod_operad} and \ref{defn:inv_bimod_operad} (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
+    Let $ \mathcal{LM}_\mathrm{inv}^\otimes $, $ \mathcal{RM}_\mathrm{inv}^\otimes $, $ \mathcal{BM}_\mathrm{inv}^\otimes $, and $ \mathcal{BM}_\sigma^\otimes $ denote the $ \infty $-operads associated to the colored operads of Definitions \ref{defn:inv_leftmod_operad} and \ref{defn:inv_bimod_operad} (via Construction 2.1.1.7 and Example 2.1.1.21 of \cite{LurHA}).
 \end{definition}
 \begin{remark}
     We can describe the category $ \mathcal{LM}_\mathrm{inv}^\otimes $ as follows: 
@@ -554,7 +557,6 @@ I think that the equivalence of part (b) of the definition of an Azumaya algebra
     Each morphism $ \phi \in \mathrm{Mul}_{\mathbf{BM}_\mathrm{inv}} \left(\{X_i\}_{i \in I}, Y\right) $ determines a linear ordering $\ell $ on the set $ I $ and a function $ s \colon I \to \{\pm 1\} $. 
     Passing from $ \phi $ to the pair $ (\ell, s) $ determines a map of colored operads $ j \colon \mathbf{BM}_\mathrm{inv} \to \mathbf{Assoc}_\mathrm{inv} $. 
     The map $ j $ induces a morphism of $ \infty $-operads $  \mathcal{BM}_{\mathrm{inv}}^\otimes \to \Associnv^\otimes $ which we will also denote by $ j $. 
-    For any $ \EE_\sigma $-monoidal $ \infty $-category $ \mathcal{C} $, restriction along $ j $ sends an $ \EE_\sigma $-algebra $ A \colon \Associnv \to \mathcal{C}^{\otimes} $ to the pair $ (A, A) $ where $ A $ is regarded as an involutive bimodule\Lucy{hermitian} over itself. 
 \end{remark} 
 \begin{remark}\label{rmk:lmod_infty_opd_to_inv_lmod_infty_opd}
     The maps $ \iota, \iota^{\mathrm{rev}} $ of Remark \ref{rmk:lmod_opd_to_inv_lmod_opd} induce maps of $ \infty $-operads $ \iota \colon \mathcal{LM}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $ and $ \iota^{\mathrm{rev}} \colon \mathcal{RM}^\otimes \to \mathcal{LM}^\otimes_{\mathrm{inv}} $. 
@@ -828,7 +830,7 @@ Informally, we may define a category $ \mathcal{C}[M] $ whose objects consist of
 \end{itemize} 
 The monoidal structure is as described in \cite[\S4.7.1]{LurHA}. 
 Note that given an object $ (C, \eta) $, the involution $ \sigma_\mathcal{M} $ on $ \mathcal{M} $ sends $ \eta $ to the map $ \sigma_{\mathcal{M}}\left(C \otimes M\right)\simeq \sigma_{\mathcal{M}}(M) \otimes \sigma_{\mathcal{C}}(C) \to \sigma_{\mathcal{M}}(M) $. 
-Given an object $ (D, \xi) $, the involution $ \sigma_\mathcal{M} $ on $ \mathcal{M} $ we may consider the map $ \xi' \colon \sigma_{\mathcal{C}}(D) \otimes M \xrightarrow{\mathrm{id} \otimes_{\sigma_M}} \sigma_{\mathcal{C}}(D) \otimes \sigma_{\mathcal{M}}^2(M) \simeq \sigma_{\mathcal{M}}\left(M \otimes D\right)\xrightarrow{\sigma_{\mathcal{M}}(\xi)} \sigma_{\mathcal{M}}(M) $. 
+Given an object $ (D, \xi) $, the involution $ \sigma_\mathcal{M} $ on $ \mathcal{M} $ we may consider the map $ \xi' \colon \sigma_{\mathcal{C}}(D) \otimes M \xrightarrow{\mathrm{id} \otimes {\sigma_M}} \sigma_{\mathcal{C}}(D) \otimes \sigma_{\mathcal{M}}^2(M) \simeq \sigma_{\mathcal{M}}\left(M \otimes D\right)\xrightarrow{\sigma_{\mathcal{M}}(\xi)} \sigma_{\mathcal{M}}(M) $. 
 The assignment $ (D,\xi) \mapsto (\sigma_{\mathcal{C}}(D), \xi') $... \Lucy{is an involution?} 
 This is the involution on $ \mathcal{C}[M] $. 
 \begin{definition}
@@ -858,8 +860,6 @@ This is the involution on $ \mathcal{C}[M] $.
 \begin{proposition}
     [Segal condition] 
 \end{proposition}
-
-\section{Categorification and structure}
 In the course of thinking about the `involutive' generalization of the statement that given an $ \EE_1 $-algebra, its category of modules is $ \EE_0 $ (and conversely, that given an object in a stable $\infty$-category, that its endomorphism spectrum is an $ \EE_1 $-algebra), I have run up against some questions. 
 \begin{question}
 \begin{itemize}
@@ -868,6 +868,66 @@ In the course of thinking about the `involutive' generalization of the statement
     The opposite category $ \mathcal{M}^\op $ is enriched over $ \mathcal{C} $ by \cite[\S10]{Heine_2023}.   
 \end{itemize}
 \end{question}
+
+\section{Categorification and structure--new leaf}
+Use \href{https://arxiv.org/pdf/1904.01465}{genuine operadic nerve here} to go from simplicial genuine operads to parametrized operads. 
+\begin{notation}\label{ntn:t_order_equivariant_map}
+    Let $ S, T $ be finite $ C_2 $-sets, and let $ f \colon S\to T $ be a $ C_2 $-equivariant map. 
+    A \emph{t-ordering} on $ f $ is the data of, for all free orbits $ V \subset S $, $ V \simeq C_2 $ so that $ f(V) = \{*\} $, a choice of an ordering $ \le $ on $ V $. 
+    A \emph{t-ordered map $ S \to T $} is the data of $ f $ and a t-ordering on $ f $.  
+
+    Note that if $ f_i \colon S_i \to T_i $ are all t-ordered, there is a canonical t-ordering on $ \displaystyle \bigsqcup_i f_i $. 
+    If $ f \colon S \to T $ is t-ordered and $ g \colon T \to U $ is t-ordered, there is a canonical t-ordering on $ g \circ f $. 
+    Let us spell this out: Suppose given an orbit $ V \subset S $ on which $ C_2 $ acts freely so that $ g\circ f(V) $ is trivial. 
+    There are two cases
+    \begin{itemize}
+        \item Suppose $ f $ restricts to an isomorphism $ f|_V \colon V \xrightarrow{\sim} f(V) $ and $ g $ sends $ f(V) $ to $ * $. 
+        Then the t-ordering on $ g $ means we have an ordering on $ f(V) $, which we transport to an ordering on $ V $ via $ f|_V $. 
+        \item Suppose $ f(V) = * $. 
+        Then the t-ordering on $ f $ endows $ V $ with a canonical ordering.  
+    \end{itemize}
+\end{notation}
+In what follows, we will refer to the following diagram
+\begin{equation}\label{diagram:C2_operad_generic_span}
+\begin{tikzcd}
+    U \ar[d] & \ar[l,"g"] Z \ar[r,"f"]  \ar[d] & X \ar[d] \\
+    V &  \ar[l] Y \ar[r,equals] & Y
+\end{tikzcd}
+\end{equation} 
+repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assumed to be a summand inclusion. 
+\begin{definition}
+    Define a $ C_2 $-$ \infty $-operad $ \mathbb{E}_{\mathrm{p}}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having\Lucy{I think this is the $ C_2 $-$ \infty $-operad whose algebras give Poincaré rings.} 
+    \begin{itemize}
+        \item objects consist of those arrows $ U \to V $ so that $ C_2 $ acts freely on $ U $ and transitively on $ V $ 
+        \item morphisms consist of spans (\ref{diagram:C2_operad_generic_span}) in $ \underline{\mathrm{Fin}}_{C_2, *} $, plus the data of a t-ordering on $ f $ in the sense of Notation \ref{ntn:t_order_equivariant_map}.  
+        \item composition is defined to agree with that in $ \underline{\mathrm{Fin}}_{C_2, *} $. 
+    \end{itemize}
+    there is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the t-ordering. 
+\end{definition} 
+\begin{definition}
+    Define a $ C_2 $-$ \infty $-operad $ \mathrm{Assoc}_{\mathrm{naive}}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having 
+    \begin{itemize}
+        \item objects consist of those arrows $ U \to V $ so that $ C_2 $ acts freely on $ U $ and transitively on $ V $ 
+        \item morphisms consist of spans (\ref{diagram:C2_operad_generic_span}) in $ \underline{\mathrm{Fin}}_{C_2, *} $, plus the data of a pair $ (f, \leq) $ and for all orbits $ T \subset X $ an ordering on the orbits in the preimage $ f^{-1}(T) \subseteq Z $. 
+        \item composition is defined to agree with that in $ \underline{\mathrm{Assoc}}^\otimes $. \Lucy{Can we regard this as a slice category, maybe over $ C_2/e = C_2/e $ in $ \underline{\mathrm{Assoc}}^\otimes $? }
+    \end{itemize}
+    there is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the ordering. 
+\end{definition}
+\begin{remark}
+    Note that in the definition of $ \mathrm{Assoc}_{\mathrm{naive}} $ (\ref{diagram:C2_operad_generic_span}), $ f $ is equivalent to a fold map because $ X $ is acted upon freely by $ C_2 $. 
+\end{remark}
+\begin{definition}
+    Define a $ C_2 $-$ \infty $-operad $ \mathcal{HM}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having 
+    \begin{itemize}
+        \item objects consist of pairs $ (h : U \to V, \ell \colon U \to \{a, m\}) $ where $ h: U \to V $ is an object of $ \underline{\mathrm{Fin}}_{C_2, *} $ and $ \ell $ is a function which is constant on orbits (think `label') satisfying the condition that $ C_2 $ acts freely on $ \ell^{-1}(\{a\}) $. 
+        \item morphisms from $ (h : U \to V, \ell \colon U \to \{a, m\}) $ to $ (h : X \to Y, \lambda \colon X \to \{a, m\}) $ consist of spans (\ref{diagram:C2_operad_generic_span}) in $ \underline{\mathrm{Fin}}_{C_2, *} $, plus the data of a pair $ (f, \leq) $ and for all orbits $ T \subset X $, an ordering on the orbits in the preimage $ f^{-1}(T) \subseteq Z $. 
+        These are required to satisfy the condition 
+        \begin{itemize}
+            \item if $ x \in X $ is so that $ \lambda(x) = m $, there exists at exactly one orbit in $ f^{-1}(x) $ which $ \ell $ sends to $ m $, which is maximal with respect to the ordering.  
+        \end{itemize}
+    \end{itemize}
+    there is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the ordering. 
+\end{definition}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}
