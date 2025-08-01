@@ -117,8 +117,10 @@
 \newcommand{\perf}{\mathrm{Perf}}
 \newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\Assoc}{\mathrm{Assoc}}
 \newcommand{\Associnv}{\mathrm{Assoc}_\sigma}
 \newcommand{\BMinv}{\mathrm{BM}_\sigma} % for `hermitian' bimodules; made a macro so we can change this later easily. 
+\newcommand{\Fin}{\mathrm{Fin}} % finite sets 
 
 %Theorem Environments ----------------------------------------------------------------
 \newtheorem{theorem}[equation]{Theorem}
@@ -976,10 +978,103 @@ repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assu
     \end{itemize}
     there is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the ordering. 
 \end{definition}
-\begin{remark}
+\begin{remark}\label{rmk:param_operad_maps}
     There is a map of $ C_2 $-$ \infty $-operads $ s \colon \mathcal{HM}^\otimes \to \mathbb{E}_p^\otimes $ which forgets the data of the labelings and the orderings on the preimages of the orbits (but remembers the t-orderings!).  
     Furthermore, there is a map of $ C_2 $-$ \infty $-operads $ \iota_a \colon \mathrm{Assoc}_{\mathrm{naive}}^\otimes \to \mathcal{HM}^\otimes $ which sends $ U \to V $ to the pair $ (U \to V, U \to\{a\} \hookrightarrow \{a,m\}) $. 
 \end{remark}
+\begin{definition}\label{defn:genuine_hermitian_modules}
+    Let $ \mathcal{C}^\otimes $ be a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category. 
+    Write $ \Mod^h(\mathcal{C}) $ denote the $ C_2 $-$ \infty $-category $ \underline{\Alg}_{\mathcal{HM}}(\mathcal{C}) $. 
+    Note that precomposition with the map $ \iota_a $ of Remark \ref{rmk:param_operad_maps} defines a map of $ C_2 $-$ \infty $-categories $ \theta \colon \Mod^h(\mathcal{C}) \to \underline{\mathrm{Assoc}_{\mathrm{naive}}}(\mathcal{C}) $. 
+\end{definition}
+\begin{remark}
+    Let $ \mathcal{C}^\otimes $ be the $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category of $ C_2 $-spectra equipped with the Hill--Hopkins--Ravenel norm.  
+    In view of Remark \ref{rmk:naive_assoc_alg_description}, we may regard an $ \mathcal{O}^\op_{C_2} $-object of $ \Mod^h\left(\underline{\Spectra}^{C_2}\right) $ as consisting of a pair $ (A,M) $ where $ A $ is an $ \EE_1 $-algebra in $ \Spectra^{BC_2} $ and $ M $ is an $ N^{C_2}A $-module in $ \Spectra^{BC_2} $. 
+    Precomposition with the maps of Remark \ref{rmk:param_operad_maps} induces a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        & \Mod^h \ar[d] \\
+        \underline{\Alg}_{\EE_p}\left(\underline{\Spectra}^{C_2}\right) \ar[r] \ar[ru] & \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\mathcal{C}\right)          
+    \end{tikzcd}     
+    \end{equation*} 
+\end{remark}
+\begin{construction}\label{cons:norm_in_families}
+    Recall that by \cite[Proposition 2.8.7(1)]{NS22}, there is an equivalence $ \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \simeq \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) $. 
+    Now recall that $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \simeq \underline{\mathrm{Assoc}}_{\mathrm{naive}} \times_{\underline{\Fin}_{C_2,*}} Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $ \cite[Definition 2.8.4]{NS22}. 
+    In the following, we will be interested in objects of $ Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $ in the fiber over $ C_2/C_2 $, so we omit it from notation. 
+    Define objects
+    \begin{equation*}
+    \begin{split}
+        X = \left(C_2 \to C_2/C_2, C_2 \to C_2/C_2, C_2 = C_2\right) \\
+        Y = \left(C_2 \to C_2/C_2, C_2 \to C_2/C_2, C_2 \to C_2/C_2 \right)    
+    \end{split}
+    \end{equation*}
+    in $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) $. 
+    The collapse map gives a canonical morphism $ c \colon X \to Y $; observe that $ c $ is cocartesian over $ \underline{\Fin}_{C_2,*} $. 
+    Using semiaddivity/universal properties\Lucy{todo; see e.g. \cite[Notation 4.1]{LYang_normedrings}}, define a functor which is uniquely characterized by 
+    \begin{equation*}
+    \begin{split}
+        \Delta^1 \times \Fin_{*} &\to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \\
+        (0,\langle 1 \rangle) &\mapsto X \\
+        (0, \langle 1 \rangle) &\mapsto Y \\
+        (0 <1, \mathrm{id}_{\langle 1 \rangle}) &\mapsto (c \colon X \to Y)\,.
+    \end{split}
+    \end{equation*}
+    Precomposition with $ \Assoc \to \Fin_* $ defines a functor\footnote{with values in the fiber over $ C_2/C_2 $ of the target}
+    \begin{equation}\label{eq:assoc_opd_to_envelope_param_assoc}
+        \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \,.
+    \end{equation}
+    Write $ p $ for the composite $ \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \to \underline{\Fin}_{C_2,*} $. 
+    Restriction along the functor of \ref{eq:assoc_opd_to_envelope_param_assoc} defines 
+    \begin{equation}
+        \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun_{\Delta^1 \times \Assoc}\left(\Delta^1 \times \Assoc, p^*\left(\underline{\Spectra}^{C_2}\right)\right) \,.
+    \end{equation}
+    Observe that $ p^*\left(\underline{\Spectra}^{C_2}\right) \to \Delta^1 \times \Assoc $ is a $ \Delta^1 $-cocartesian family of monoidal $ \infty $-categories in the sense of \cite[Definition 4.8.3.1]{LurHA}, and the image of the aforementioned restriction functor consists of $ \Delta^1 $-cocartesian families of associative algebra objects in $ p^*\left(\underline{\Spectra}^{C_2}\right) $. 
+    In particular, by \cite[Remark 4.8.3.7]{LurHA}, the aforementioned restriction functor refines to 
+    \begin{equation*}
+         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \,. 
+     \end{equation*} 
+     Its image in $ \Fun\left(\Delta^1,\Alg\left(\Cat_\infty\right) \right) $ consists of the single arrow $ N^{C_2} \colon \Spectra \to \Spectra^{C_2} $. 
+\end{construction}
+\begin{definition}
+    \Lucy{compare Higher Algebra Definition 4.8.3.7} 
+    Let $ \Cat^{\Alg\Mod}_\infty $ denote the full subcategory of the fiber product 
+    \begin{equation*}
+        \Mon_{\Assoc}\left(\Cat_\infty\right) \times_{\Fun_{\Assoc}\left(\Assoc, \Assoc \times \Mon_{\Assoc}\left(\Cat_\infty\right) \right)} \Fun_{\Assoc}\left(\mathcal{LM}^\otimes, \widetilde{\Mon}_{\Assoc}\left(\Cat_\infty\right) \right)
+    \end{equation*}
+    on those triples $ (\mathcal{C}^\otimes, A, M) $ where $ \mathcal{C}^\otimes $ is a monoidal $ \infty $-category, $ A $ is an algebra object of $ \{\mathcal{C}^\otimes\} \times_{\Mon_{\Assoc}\left(\Cat_\infty\right) } \widetilde{\Mon}_{\Assoc}\left(\Cat_\infty\right) \simeq \mathcal{C}^\otimes $, and $ M $ is a left $ A $-module in $ \mathcal{C} $. 
+\end{definition}
+\begin{remark}
+    \Lucyil{The \textbf{KEY} is getting an analogue of Remark 4.8.3.8 of Higher Algebra for $ \Cat^{\Alg\Mod}_\infty $ instead of $ \Cat^{\Alg} $. Here is an attempt.}
+    For any simplicial set $ S $, there is a bijection between equivalence classes of maps $ S \to \Cat^{\Alg\Mod}_\infty $ and equivalence classes of diagrams
+    \begin{equation*}
+    \begin{tikzcd}
+        \mathcal{LM}^\otimes \times S  \ar[r,"{M_A}"]& \mathcal{C}^\otimes \ar[d,"q"] \\
+        \Assoc^\otimes \times S \ar[u] \ar[r,"{\mathrm{id}}"] \ar[r] & \Assoc^\otimes \times S
+        % && \mathcal{C}^\otimes \ar[d,"q"] \\
+        % \Assoc^\otimes \times S \ar[r] \ar[rr, bend right=30,"{\mathrm{id}}"] &\mathcal{LM} \times S \ar[r] \ar[ru,"{M_A}"] & \Assoc^\otimes \times S
+    \end{tikzcd}
+    \end{equation*}
+    where $ q $ exhibits $ \mathcal{C}^\otimes $ as an $ S $-cocartesian family of monoidal $ \infty $-categories and $ M_A $ is an $ S $-family of $ \mathcal{LM} $-algebra objects (i.e. associative algebra objects and modules over them).\Lucy{to-do: cardinalities}
+\end{remark}
+\textbf{Next}: Define a forgetful functor $ \Cat^{\Alg\Mod}_\infty \to \Cat^{\Mod}_\infty $ which sends $ (\mathcal{C}^\otimes,A, M) $ to $ (\mathcal{C}^\otimes, \Mod_A) $. \Lucy{do I want a pointed version of $ \Cat^{\Mod}_\infty $? could probably even work with that directly?}
+
+Define a functor $ \Modh \to \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty $ living in a commutative square
+\begin{equation*}
+\begin{tikzcd}
+    \Modh \ar[rr,dashed,"{\exists ?}"] \ar[d] & & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \ar[d] \\
+    \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \ar[r,"{\Theta}"] & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right)
+\end{tikzcd}
+\end{equation*}
+where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. 
+In particular, need a functor from $ \mathcal{LM}^\otimes $ into the fiber of $ \mathcal{HM}^\otimes $ over $ C_2/C_2 $. 
+
+There is a canonical forgetful functor $ \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} $. 
+
+Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} \to \left(\Cat_{\infty} \right)_{(-)^\op/\Spaces} $. 
+\Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
+
+Finally, show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings. 
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}
