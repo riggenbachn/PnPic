@@ -1130,7 +1130,84 @@ Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $.
 Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
 \Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
 
+\subsection{An operadic description of Poincaré rings}
 Finally, show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings. 
+
+Let $ K $ denote the $ \infty $-categorical nerve of the $ 1 $-category
+\begin{equation*}%\label{diagram:indexing_normedrings}
+\begin{tikzcd}[cramped, row sep=tiny]
+    & 3 \ar[dd] & \\
+    & & 2 \ar[dd] \ar[lu] \\
+    & 5 & \\
+    1  \ar[rr] \ar[ru] \ar[ruuu, bend left=15] & & 4 \ar[lu]
+\end{tikzcd}
+\end{equation*}
+in which all triangles and squares commute. 
+
+\begin{definition}\label{defn:normedrings}
+    Consider the diagram $ \mathcal{P} \colon K \to \Cat_\infty $ 
+    \begin{equation}%\label{diagram:normedrings}
+    \begin{tikzcd}[column sep=small]
+        & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra\right)^{BC_p}\right) \ar[dd,"{\ev_{0},\ev_{1}}"]  & \\
+        & & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra^{C_p}\right)\right) \ar[dd,"{\ev_{0}, \ev_{1}}"] \ar[lu,"{(-)^e}"'] \\
+        &\EE_\infty\Alg(\Spectra)^{BC_p} \times \EE_\infty\Alg(\Spectra)^{BC_p} & \\
+        \EE_\infty\Alg\left(\Spectra^{C_p}\right)  \ar[rr,"{N^{C_p}(-^e) \times \id}"'] \ar[ru] \ar[ruuu,"{m \circ (-^e)}", bend left=30] & &\EE_\infty\Alg\left(\Spectra^{C_p}\right) \times \EE_\infty\Alg\left(\Spectra^{C_p}\right) \ar[lu,"{(-)^e \times (-)^e}"]
+    \end{tikzcd}
+    \end{equation}
+    where $ m $ is the functor of \cite[Construction 3.1]{LYang_normedrings} precomposed with the canonical map $ \Delta^1 \to \mathcal{O}_{C_2} $. 
+    Observe that the right-hand trapezoid commutes essentially by definition, and the leftmost triangle commutes because $ \left(N^{C_p} A \right)^e \simeq (A^e)^{\otimes p} $. 
+    Consider the limit of the diagram 
+    \begin{equation}
+        \CAlgp'\left(\Spectra^{C_p}\right) := \lim_K \mathcal{P} .
+    \end{equation} 
+
+    There is a canonical forgetful functor $ G' \colon \CAlgp\left(\Spectra^{C_p}\right) \to \EE_\infty\Alg\left(\Spectra^{C_p}\right)  $ given by the canonical projection to the lower left corner of the diagram. 
+\end{definition}
+\begin{observation}\label{obs:limits_of_limits}
+    Let $ F \colon K \to \mathcal{C} $ be any diagram and let $ \mathcal{C} $ be any $ \infty $-category with finite limits. 
+    Then there is a canonical equivalence $ \displaystyle \lim_K F \simeq F(1) \times_{\left(F(3) \times_{F(5)} F(4)\right)} F(2) $. 
+\end{observation}
+\begin{observation}
+    By the recollement decomposition of $ \Spectra^{C_2} $, $ \lim_K \mathcal{P} $ is equivalent to the limit of the diagram 
+    \begin{equation}%\label{diagram:normedrings}
+    \begin{tikzcd}[column sep=small]
+        & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra\right)\right) \ar[dd,"{\mathrm{ev}_{0},\mathrm{ev}_{1}}"]  & \\
+        & & \Fun\left(\Delta^1 \times \Delta^1,\EE_\infty\Alg\left(\Spectra\right)\right) \ar[dd] \ar[lu,"{(-)^e}"'] \\
+        &\EE_\infty\Alg(\Spectra) \times \EE_\infty\Alg(\Spectra) & \\
+        \EE_\infty\Alg\left(\Spectra^{C_2}\right)  \ar[rr,"{N^{C_2}(-^e) \times \id}"'] \ar[ru] \ar[ruuu,"{m^{tC_2} \circ (-^e)}", bend left=30] & &\EE_\infty\Alg\left(\Spectra^{C_2}\right)^{\Delta^1} \times \EE_\infty\Alg\left(\Spectra^{C_2}\right)^{\Delta^1} \ar[lu,"{(-)^e \times (-)^e}"]
+    \end{tikzcd}
+    \end{equation} 
+    Now $ \lim_K \mathcal{P} $ is equivalent to $ \CAlgp $ as defined in main.tex (see the limit of diagram \texttt{diagram:Poincare\_ring\_alternate\_diagram} in Remark 3.4) by Observation \ref{obs:limits_of_limits} and the fact that all commutative trapezoids below \emph{except} the upper left are pullbacks: 
+    \begin{equation}
+    \begin{tikzcd}[column sep=tiny]
+        \EE\Alg(\Spectra)^{\Delta^1 \times \Delta^1} \ar[rr] \ar[d] & & \EE\Alg(\Spectra)^{\Delta^2} \ar[d] \ar[rr] & & \EE\Alg(\Spectra)^{\Delta^1} \ar[d] & \\
+        \left(\EE\Alg(\Spectra)^{\Delta^1}\right)^{\times 2} \ar[rr] \ar[d,"{\pi_2}"] & &\left(\EE\Alg(\Spectra)^{\Delta^1}\right) \times \EE\Alg(\Spectra) \ar[rd,"{\pi_1}"] \ar[d,"{\pi_2}"] \ar[rr] & & \EE\Alg(\Spectra)^{\times 2} \ar[rd,"{\pi_1}"] & \\
+        \EE\Alg(\Spectra)^{\Delta^1} \ar[rr] & & \EE\Alg(\Spectra) & \EE\Alg(\Spectra)^{\Delta^1} \ar[rr] & & \EE\Alg(\Spectra)\,.
+    \end{tikzcd}
+    \end{equation}
+    Here $ \pi_1, \pi_2 $ denote projections onto the first and second factors, resp.
+\end{observation}
+\begin{remark}
+    There is a map of $ C_2 $-$ \infty $-operads $ \Com_{\mathcal{O}_{C_2}^\simeq} \to \EE_p $. 
+\end{remark}
+\begin{construction}
+    Define a functor $ \gamma \colon \EE_p \Alg(\Spectra^{C_2}) \to \CAlgp $ (similar to \cite[\S4.1]{LYang_normedrings}). 
+\end{construction}
+\begin{theorem}
+    Let $ A \in \EE_\infty\Alg\left(\Spectra^{C_2}\right) $ % and consider the adjunction $ F \dashv G $ of Recollection \ref{recollection:freealg_colimit}. 
+    \begin{enumerate}[label=(\arabic*)]
+    \item The underlying $ C_2 $-spectrum of the free $ \EE_p $ algebra $ F(A) $ on $ A $ is given by 
+    \begin{equation}%\label{eq:freenormedalg_formula}
+    F(A) \simeq
+    \begin{tikzcd}
+        &  A^{\varphi C_2} \otimes A^e \ar[d,"{s_A \otimes \nu_A}"] \\
+        A^e \ar[r,mapsto] & A^{tC_2}
+    \end{tikzcd}
+    \end{equation}
+    where $ u $ is the unit, $ s_A : A^{\varphi C_2} \to A^{tC_2} $ is the structure map, and $ \nu_A $ is the twisted Tate-valued Frobenius. 
+    % \item There is a canonical $ \E_\infty $ ring map $ \eta_A \colon A \to GF(A) $ given by $ \id_{A^{\varphi C_p}} \otimes (\eta_{A^e}:\sphere^0 \to A^e) $ on geometric fixed points and the identity on underlying.
+    \end{enumerate}
+\end{theorem}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}

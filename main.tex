@@ -360,13 +360,13 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
     The diagram induces a functor from the pullback of the upper left cospan to the pullback of the lower right cospan $ U \colon \CAlgp\to \CAlg(\Spectra^{C_2}) $. 
 
     Now observe that there is a commutative diagram
-    \begin{equation*}
+    \begin{equation}\label{diagram:Poincare_ring_alternate_diagram}
     \begin{tikzcd}[column sep=large,row sep=small]
         && \Fun\left(\Delta^1 \times \Delta^1,\CAlg(\Spectra) \right) \ar[r,"{\mathrm{ev}_{00 \to 01 \to 11}}"] \ar[d,"{\mathrm{ev}_{00 \to 10 \to 11}}"] \ar[rd,phantom,"\lrcorner",very near start] & \Fun\left(\Delta^2, \CAlg(\Spectra)\right) \ar[d,"{\mathrm{ev}_{0\to 2}}"] \\
         \CAlg(\Spectra)^{BC_2} \ar[d,"{m_{C_2}}"] \ar[rr,"{A \mapsto (A \to (A^{\otimes 2})^{tC_2} \to A^{tC_2})}"] & &\Fun\left(\Delta^2,\CAlg(\Spectra) \right) \ar[r,"{\mathrm{ev}_{0 \to 2}}"] \ar[d,"{\mathrm{ev}_{1\to 2}}"] & \Fun\left(\Delta^1,\CAlg(\Spectra) \right) \\
         \CAlg(\Spectra)^{BC_2 \times \Delta^1} \ar[rr,"{(-)^{tC_2}}"] && \Fun\left(\Delta^1 ,\CAlg(\Spectra) \right) &
     \end{tikzcd}
-    \end{equation*}
+    \end{equation}
     where the upper right square is a pullback by definition of $ \Delta^1 \times \Delta^1 $ and $ m_{C_2} $ is the multiplication map functor of \cite[Construction 3.1]{LYang_normedrings} precomposed with the inclusion $ \iota $ of Recollection \ref{recollection:Tate_valued_norm}. 
     Since the upper right is a pullback, the pullback of the outer span in the top row (which is $ \CAlgp $) agrees with the pullback of the upper left span. 
     On the other hand, the pullback of the upper left span maps to the pullback of the `tall' span on the left. 
