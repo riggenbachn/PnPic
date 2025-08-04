@@ -948,7 +948,7 @@ repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assu
     \Lucy{Now pass to spans of finite free $ C_2 $-sets (not spans of arrows!), and write $ \mathcal{C}^\otimes_{\mathrm{naive}} \to \mathrm{Free}_{C_2,*} $ and $ \mathrm{Assoc}_{\mathrm{naive}}^\otimes $. Use Higher algebra Remark 2.3.3.4 and (Thm 2.3.3.23 or Cor 2.3.2.13).} 
     The functor $ \mathrm{Free}_{C_2,*} \to \mathrm{Fin}_{*} $ which sends a (pointed, finite) free $ C_2 $-set to its set of orbits exhibits $ \mathrm{Free}_{C_2,*} $ as a generalized $ \infty $-operad in the sense of \cite[Definition 2.3.2.1]{LurHA}. \Lucy{(1) and (2) are clear, think about (3).} 
     Now choose a free $ C_2 $-set with transitive action; this determines a functor $ BC_2 \to \mathrm{Free}_{C_2,*} $. 
-    This induces a functor $ p\colon BC_2 \times \underline{\mathrm{Fin}}_{*} \to \mathrm{Free}_{C_2,*} $. 
+    This induces a functor $ p\colon BC_2 \times \mathrm{Fin}_{*} \to \mathrm{Free}_{C_2,*} $. 
     By \cite[Corollary 2.3.2.13]{LurHA}, there is an equivalence
     \begin{equation*}
         \hom_{\mathrm{Free}_{C_2, *}}\left(\mathrm{Assoc}_{\mathrm{naive}}^\otimes, \mathcal{C}^\otimes_{\mathrm{naive}} \right) \simeq \hom_{BC_2 \times \underline{\mathrm{Fin}}_{*}}\left(p^*(\mathrm{Assoc}_{\mathrm{naive}}^\otimes), p^*(\mathcal{C}^\otimes_{\mathrm{naive}} )\right)
@@ -1022,7 +1022,7 @@ repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assu
     \end{equation*}
     Precomposition with $ \Assoc \to \Fin_* $ defines a functor\footnote{with values in the fiber over $ C_2/C_2 $ of the target}
     \begin{equation}\label{eq:assoc_opd_to_envelope_param_assoc}
-        \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \,.
+        q\colon \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \,.
     \end{equation}
     Write $ p $ for the composite $ \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \to \underline{\Fin}_{C_2,*} $. 
     Restriction along the functor of \ref{eq:assoc_opd_to_envelope_param_assoc} defines 
@@ -1067,11 +1067,67 @@ Define a functor $ \Modh \to \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \tim
 \end{tikzcd}
 \end{equation*}
 where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. 
-In particular, need a functor from $ \mathcal{LM}^\otimes $ into the fiber of $ \mathcal{HM}^\otimes $ over $ C_2/C_2 $. 
+\begin{construction}    
+    Recall that by \cite[Proposition 2.8.7(1)]{NS22}, there is an equivalence $ \Modh\left(\underline{\Spectra}^{C_2}\right) \simeq \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) $. 
 
+    Choose a $ C_2 $-set $ U $ on which $ C_2 $ acts freely and transitively, and fix an ordering $ \leq $ on $ U $. 
+    Define a functor from $ \mathcal{LM}^\otimes $ into the fiber of $ \mathcal{HM}^\otimes $ over $ C_2/C_2 $
+    \begin{equation*}
+         \left(\langle n \rangle, S \right) \mapsto \left((\langle n \rangle^\circ \setminus S) \times U \sqcup S_+ \to C_2/C_2, \ell(i) = \begin{cases}
+             a & i \in (\langle n \rangle^\circ \setminus S) \times U \\
+             m & i \in S 
+         \end{cases} \right)
+     \end{equation*} 
+    \Lucy{explain how the ordering on $ U $ is used to define the map!}
+    Now recall that $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes) \simeq \mathcal{HM}^\otimes \times_{\underline{\Fin}_{C_2,*}} Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $ \cite[Definition 2.8.4]{NS22}. 
+    Notice that the fiber of $ \underline{\Fin}_{C_2,*} $ over $ C_2/C_2 $ has a final object given by the identity arrow at $ [C_2/C_2 = C_2/C_2] $ and for every object $ [U \to C_2/C_2] $ in $ \underline{\Fin}_{C_2,*} $, the unique arrow from $ [U \to C_2/C_2] $ to $ [C_2/C_2 \to C_2/C_2] $, hence the composite $ \mathcal{LM}^\otimes \to \mathcal{HM}^\otimes_{C_2/C_2} \to \left(\underline{\Fin}_{C_2,*}\right)_{C_2/C_2} $ lifts to $ \mathcal{LM}^\otimes \to \mathcal{HM}^\otimes_{C_2/C_2} \to \left(\underline{\Fin}_{C_2,*}\right)_{C_2/C_2/[\mathrm{id}_{C_2/C_2}]} \to Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $. 
+    This defines a functor \Lucy{observe that $ r $ sends inert maps to inert maps? What does it mean for a morphism to be inert in $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(-) $?}
+    \begin{equation}\label{lm_operad_to_genuine_fiber_hm_param_operad}
+        r \colon \mathcal{LM}^\otimes \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes) \simeq \mathcal{HM}^\otimes \times_{\underline{\Fin}_{C_2,*}} Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) \,.
+    \end{equation}
+    Writing $ \iota_a $ for the canonical inclusion $ \mathrm{Assoc}^\otimes \to \mathcal{LM}^\otimes $, there is an equivalence\footnote{Actually, need to postcompose right hand side with the canonical map $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\mathcal{HM}^\otimes\right) $ induced by Remark \ref{rmk:param_operad_maps}.} 
+    \begin{equation}
+        r \circ \iota_a = p \circ \left(\iota_{1} \times \mathrm{id}_{\mathrm{Assoc}^\otimes}\right) =:p_1 \,.
+    \end{equation}
+    Restriction along the functor (\ref{lm_operad_to_genuine_fiber_hm_param_operad}) sends maps of $ C_2 $-$ \infty $-operads to maps of ordinary $ \infty $-operads, hence it defines 
+    \begin{equation}
+        \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Alg_{\mathcal{LM}/\mathrm{Assoc}}\left(p_1^*\left(\underline{\Spectra}^{C_2,\otimes}\right)\right) \to \Alg_{/\mathrm{Assoc}}\left(p_1^*\left(\underline{\Spectra}^{C_2,\otimes}\right)\right)
+    \end{equation}
+    in the notation of \cite[Definition 2.1.3.1]{LurHA}. 
+    Now observe that $ p_1^*\left(\underline{\Spectra}^{C_2,\otimes}\right) $ is the ordinary $ \infty $-category of $ C_2 $-spectra, regarded as a monoidal $ \infty $-category via smash product, and there is a commutative diagram
+    \begin{equation}
+    \begin{tikzcd}
+         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] & \LMod\left(\Spectra^{C_2,\otimes}\right) \ar[r] \ar[d] & \widetilde{\Catex} \ar[d] \\
+         &  \Alg_{\mathbb{E}_1}\left(\Spectra^{C_2}\right) \ar[r] & \Catex 
+    \end{tikzcd}
+    \end{equation}
+    where $ \widetilde{\Catex} \to \Catex $ is the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $ and the right hand square is a pullback by \cite[Corollary 4.2.3.7(3)]{LurHA} and the straightening-unstraightening equivalence.  
+\end{construction}
 There is a canonical forgetful functor $ \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} $. 
 
-Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} \to \left(\Cat_{\infty} \right)_{(-)^\op/\Spaces} $. 
+Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $. 
+\begin{lemma}
+    Write $ \widetilde{\Catex} \to \Catex $ for the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $. 
+    Then there is a functor $ \widetilde{\Catex} \to \Catex_{,(-)^\op/\Spectra} $. 
+\end{lemma}
+\begin{proof}
+    \Lucyil{inspired by Yonatan's answer \href{https://mathoverflow.net/questions/385382/what-is-the-functoriality-of-the-infty-categorical-slice-construction}{here}}
+    Write $ \mathrm{RFib} \subset \mathrm{Ar}\left(\Cat\right) \times_{\Cat} \Catex $ be the full subcategory of the arrow category spanned by the right fibrations. 
+    Write $ \mathrm{RFib}_* \subseteq \mathrm{RFib} $ for the full subcategory on those arrows $ \mathcal{C} \to \mathcal{D} $ so that $ \mathcal{C} $ has a final object. 
+    The maps $ \mathrm{RFib}_* \to \Catex $, $ \mathrm{RFib} \to \Catex $ which send an arrow to its target are cocartesian fibrations. \Lucy{Use Corollary A.32 \href{https://arxiv.org/pdf/1501.02161}{here}.}
+    Given a right fibration $ c \colon \widetilde{\mathcal{C}} \to \mathcal{C} $, consider\Lucy{Technically I should consider the space of all diagrams and consider the projection which forgets $ t^*(c) $. This is a trivial Kan fibration, so we can choose an inverse.}
+    \begin{equation*}
+    \begin{tikzcd}
+        &  t^*(c) \ar[d] \ar[r]\ar[rd,phantom,"\lrcorner", very near start] & \widetilde{\mathcal{C}} \ar[d,"c"] \\
+        \mathcal{C}^\op & \mathrm{TwAr}(\mathcal{C}) \ar[r,"t"] \ar[l] & \mathcal{C} \,. 
+    \end{tikzcd}
+    \end{equation*}
+    If $ \widetilde{\mathcal{C}} $ has a final object $ * $ and we write $ c = c(*) $, then the composite $ t^{-1}(c) \to \mathcal{C}^\op $ is a right fibration. 
+    Furthermore, the right fibration $ t^*(c) $ straightens to the functor $ \hom_{\mathcal{C}}(-, c) \in \Fun'(\mathcal{C}^\op,\Spaces) \subseteq \Fun(\mathcal{C}^\op,\Spaces) $ where $ \Fun' $ denotes the full sub $ \infty $-groupoid on those functors which preserve finite limits. 
+    Since $ \mathcal{C} $ is stable, $ \Omega^\infty $ induces an equivalence $ \Fun'(\mathcal{C}^\op,\Spectra) \simeq \Fun'(\mathcal{C}^\op,\Spaces) $ by \cite[Corollary 1.4.2.23]{LurHA}. 
+    \Lucyil{In progress: Now use $ \Fun'(\mathcal{C}^\op,\Spectra) \to \Fun(\mathcal{C}^\op,\Spectra) $ to construct a map of cocartesian fibrations. } 
+\end{proof}
+Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
 \Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
 
 Finally, show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings. 
