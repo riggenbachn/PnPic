@@ -122,6 +122,7 @@
 \newcommand{\BMinv}{\mathrm{BM}_\sigma} % for `hermitian' bimodules; made a macro so we can change this later easily. 
 \newcommand{\Fin}{\mathrm{Fin}} % finite sets 
 \newcommand{\epoly}{\mathrm{epoly}}
+\newcommand{\ev}{\mathrm{ev}}
 
 %Theorem Environments ----------------------------------------------------------------
 \newtheorem{theorem}[equation]{Theorem}
@@ -1027,7 +1028,7 @@ repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assu
     \end{equation}
     Write $ p $ for the composite $ \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \to \underline{\Fin}_{C_2,*} $. 
     Restriction along the functor of \ref{eq:assoc_opd_to_envelope_param_assoc} defines 
-    \begin{equation}
+    \begin{equation}\label{eq:assoc_alg_norm_in_families}
         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun_{\Delta^1 \times \Assoc}\left(\Delta^1 \times \Assoc, p^*\left(\underline{\Spectra}^{C_2}\right)\right) \,.
     \end{equation}
     Observe that $ p^*\left(\underline{\Spectra}^{C_2}\right) \to \Delta^1 \times \Assoc $ is a $ \Delta^1 $-cocartesian family of monoidal $ \infty $-categories in the sense of \cite[Definition 4.8.3.1]{LurHA}, and the image of the aforementioned restriction functor consists of $ \Delta^1 $-cocartesian families of associative algebra objects in $ p^*\left(\underline{\Spectra}^{C_2}\right) $. 
@@ -1037,38 +1038,29 @@ repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assu
      \end{equation*} 
      Its image in $ \Fun\left(\Delta^1,\Alg\left(\Cat_\infty\right) \right) $ consists of the single arrow $ N^{C_2} \colon \Spectra \to \Spectra^{C_2} $. 
 \end{construction}
-\begin{definition}
-    \Lucy{compare Higher Algebra Definition 4.8.3.7} 
-    Let $ \Cat^{\Alg\Mod}_\infty $ denote the full subcategory of the fiber product 
-    \begin{equation*}
-        \Mon_{\Assoc}\left(\Cat_\infty\right) \times_{\Fun_{\Assoc}\left(\Assoc, \Assoc \times \Mon_{\Assoc}\left(\Cat_\infty\right) \right)} \Fun_{\Assoc}\left(\mathcal{LM}^\otimes, \widetilde{\Mon}_{\Assoc}\left(\Cat_\infty\right) \right)
-    \end{equation*}
-    on those triples $ (\mathcal{C}^\otimes, A, M) $ where $ \mathcal{C}^\otimes $ is a monoidal $ \infty $-category, $ A $ is an algebra object of $ \{\mathcal{C}^\otimes\} \times_{\Mon_{\Assoc}\left(\Cat_\infty\right) } \widetilde{\Mon}_{\Assoc}\left(\Cat_\infty\right) \simeq \mathcal{C}^\otimes $, and $ M $ is a left $ A $-module in $ \mathcal{C} $. 
-\end{definition}
-\begin{remark}
-    \Lucyil{The \textbf{KEY} is getting an analogue of Remark 4.8.3.8 of Higher Algebra for $ \Cat^{\Alg\Mod}_\infty $ instead of $ \Cat^{\Alg} $. Here is an attempt.}
-    For any simplicial set $ S $, there is a bijection between equivalence classes of maps $ S \to \Cat^{\Alg\Mod}_\infty $ and equivalence classes of diagrams
-    \begin{equation*}
-    \begin{tikzcd}
-        \mathcal{LM}^\otimes \times S  \ar[r,"{M_A}"]& \mathcal{C}^\otimes \ar[d,"q"] \\
-        \Assoc^\otimes \times S \ar[u] \ar[r,"{\mathrm{id}}"] \ar[r] & \Assoc^\otimes \times S
-        % && \mathcal{C}^\otimes \ar[d,"q"] \\
-        % \Assoc^\otimes \times S \ar[r] \ar[rr, bend right=30,"{\mathrm{id}}"] &\mathcal{LM} \times S \ar[r] \ar[ru,"{M_A}"] & \Assoc^\otimes \times S
-    \end{tikzcd}
-    \end{equation*}
-    where $ q $ exhibits $ \mathcal{C}^\otimes $ as an $ S $-cocartesian family of monoidal $ \infty $-categories and $ M_A $ is an $ S $-family of $ \mathcal{LM} $-algebra objects (i.e. associative algebra objects and modules over them).\Lucy{to-do: cardinalities}
-\end{remark}
-\textbf{Next}: Define a forgetful functor $ \Cat^{\Alg\Mod}_\infty \to \Cat^{\Mod}_\infty $ which sends $ (\mathcal{C}^\otimes,A, M) $ to $ (\mathcal{C}^\otimes, \Mod_A) $. \Lucy{do I want a pointed version of $ \Cat^{\Mod}_\infty $? could probably even work with that directly?}
+% \begin{definition}
+%     \Lucy{compare Higher Algebra Definition 4.8.3.7} 
+%     Let $ \Cat^{\Alg\Mod}_\infty $ denote the full subcategory of the fiber product 
+%     \begin{equation*}
+%         \Mon_{\Assoc}\left(\Cat_\infty\right) \times_{\Fun_{\Assoc}\left(\Assoc, \Assoc \times \Mon_{\Assoc}\left(\Cat_\infty\right) \right)} \Fun_{\Assoc}\left(\mathcal{LM}^\otimes, \widetilde{\Mon}_{\Assoc}\left(\Cat_\infty\right) \right)
+%     \end{equation*}
+%     on those triples $ (\mathcal{C}^\otimes, A, M) $ where $ \mathcal{C}^\otimes $ is a monoidal $ \infty $-category, $ A $ is an algebra object of $ \{\mathcal{C}^\otimes\} \times_{\Mon_{\Assoc}\left(\Cat_\infty\right) } \widetilde{\Mon}_{\Assoc}\left(\Cat_\infty\right) \simeq \mathcal{C}^\otimes $, and $ M $ is a left $ A $-module in $ \mathcal{C} $. 
+% \end{definition}
+% \begin{remark}
+%     \Lucyil{The \textbf{KEY} is getting an analogue of Remark 4.8.3.8 of Higher Algebra for $ \Cat^{\Alg\Mod}_\infty $ instead of $ \Cat^{\Alg} $. Here is an attempt.}
+%     For any simplicial set $ S $, there is a bijection between equivalence classes of maps $ S \to \Cat^{\Alg\Mod}_\infty $ and equivalence classes of diagrams
+%     \begin{equation*}
+%     \begin{tikzcd}
+%         \mathcal{LM}^\otimes \times S  \ar[r,"{M_A}"]& \mathcal{C}^\otimes \ar[d,"q"] \\
+%         \Assoc^\otimes \times S \ar[u] \ar[r,"{\mathrm{id}}"] \ar[r] & \Assoc^\otimes \times S
+%         % && \mathcal{C}^\otimes \ar[d,"q"] \\
+%         % \Assoc^\otimes \times S \ar[r] \ar[rr, bend right=30,"{\mathrm{id}}"] &\mathcal{LM} \times S \ar[r] \ar[ru,"{M_A}"] & \Assoc^\otimes \times S
+%     \end{tikzcd}
+%     \end{equation*}
+%     where $ q $ exhibits $ \mathcal{C}^\otimes $ as an $ S $-cocartesian family of monoidal $ \infty $-categories and $ M_A $ is an $ S $-family of $ \mathcal{LM} $-algebra objects (i.e. associative algebra objects and modules over them).\Lucy{to-do: cardinalities}
+% \end{remark}
 
-Define a functor $ \Modh \to \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty $ living in a commutative square
-\begin{equation*}
-\begin{tikzcd}
-    \Modh \ar[rr,dashed,"{\exists ?}"] \ar[d] & & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \ar[d] \\
-    \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \ar[r,"{\Theta}"] & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right)
-\end{tikzcd}
-\end{equation*}
-where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. 
-\begin{construction}    
+\begin{construction}\label{cons:module_with_gen_involution_in_families}    
     Recall that by \cite[Proposition 2.8.7(1)]{NS22}, there is an equivalence $ \Modh\left(\underline{\Spectra}^{C_2}\right) \simeq \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) $. 
 
     Choose a $ C_2 $-set $ U $ on which $ C_2 $ acts freely and transitively, and fix an ordering $ \leq $ on $ U $. 
@@ -1098,16 +1090,28 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
     Now observe that $ p_1^*\left(\underline{\Spectra}^{C_2,\otimes}\right) $ is the ordinary $ \infty $-category of $ C_2 $-spectra, regarded as a monoidal $ \infty $-category via smash product, and there is a commutative diagram
     \begin{equation}
     \begin{tikzcd}
-         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] & \LMod\left(\Spectra^{C_2,\otimes}\right) \ar[r] \ar[d] & \widetilde{\Catex} \ar[d] \\
-         &  \Alg_{\mathbb{E}_1}\left(\Spectra^{C_2}\right) \ar[r] & \Catex 
+         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] \ar[d] & \LMod\left(\Spectra^{C_2,\otimes}\right) \ar[r] \ar[d] & \widetilde{\Catex} \ar[d] \\
+         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] &  \Alg_{\mathbb{E}_1}\left(\Spectra^{C_2}\right) \ar[r] & \Catex 
     \end{tikzcd}
     \end{equation}
-    where $ \widetilde{\Catex} \to \Catex $ is the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $ and the right hand square is a pullback by \cite[Corollary 4.2.3.7(3)]{LurHA} and the straightening-unstraightening equivalence.  
-\end{construction}
-There is a canonical forgetful functor $ \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} $. 
+    where $ \widetilde{\Catex} \to \Catex $ is the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $, the left vertical arrow is restriction along the map $ \underline{\mathrm{Assoc}}_{\mathrm{naive}} \to \mathcal{HM}^\otimes $ of Remark \ref{rmk:param_operad_maps}, and the left horizontal arrow is (\ref{eq:assoc_alg_norm_in_families}) composed with restriction along $ \Assoc \times \{1\} \hookrightarrow \Assoc \times \Delta^1 $. 
+    The right hand square is a pullback by \cite[Corollary 4.2.3.7(3)]{LurHA} and the straightening-unstraightening equivalence.  
+\end{construction} 
+There is a canonical forgetful functor $ U \colon \Cat^{\Mod}_\infty \to \Cat_\infty $. % $ \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} $. 
+Combining Constructions \ref{cons:norm_in_families} and \ref{cons:module_with_gen_involution_in_families} and composing with the forgetful functor $ U $, we obtain a commutative diagram
+% Define a functor $ \Modh \to \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty $ living in a commutative square
+\begin{equation}\label{diagram:calgp_to_functor_cat_with_pointed_target}
+\begin{tikzcd}
+    \Modh \ar[rrr] \ar[d] & & & \widetilde{\Catex} \ar[d] \\ 
+    % \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \ar[d] \\
+    \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat_\infty \right) \ar[r,"{\ev_1}"] & \Cat_\infty & \Catex \ar[l] 
+    % \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \ar[r,"{\Theta}"] & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \ar[r,"{\ev_1}"] & \Cat_\infty & \Catex \ar[l]
+\end{tikzcd}
+\end{equation}
+where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. 
 
-Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $. 
-\begin{lemma}
+% Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $. 
+\begin{lemma}\label{lemma:stable_cat_functorial_Yoneda}
     Write $ \widetilde{\Catex} \to \Catex $ for the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $. 
     Consider the cocartesian fibration $ \Catex_{,(-)^\op/\Spectra} \to \Cat_\infty $ classified by the functor $ \Fun^{\mathrm{ex}}\left((-)^\op, \Spectra\right) $, with cocartesian transport given by left Kan extension. 
     Then there is a functor $ \widetilde{\Catex} \to \Catex_{,(-)^\op/\Spectra} $ over $ \Catex $ which preserves cocartesian edges. \Lucy{replace $ \Catex $ by `large' stable $ \infty $-categories}
@@ -1137,8 +1141,9 @@ Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $.
 % Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
 % \Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
 \begin{construction}
-    Suppose we have constructed a diagram\Lucy{replace $ \Catex $ by \emph{`large'} stable $ \infty $-categories}
-    \begin{equation}\label{diagram:calgp_to_functor_cat_with_pointed_target}
+    % Suppose we have constructed a diagram
+    Combining (\ref{diagram:calgp_to_functor_cat_with_pointed_target}) with Lemma \ref{lemma:stable_cat_functorial_Yoneda}, we obtain a commutative diagram\Lucyil{replace $ \Catex $ by \emph{`large'} stable $ \infty $-categories, add remark about $ \Cat^\epoly $ earlier}
+    \begin{equation}\label{diagram:calgp_to_functor_cat_with_presheaf_on_target}
     \begin{tikzcd}
         & & \int \Fun^{\mathrm{ex}}( (-)^\op, \Spectra) \ar[d] \\
         \CAlgp \ar[r] \ar[rru,dashed,bend left=15] & \left(\Cat^\epoly\right)^{\Delta^1} \times_{\Cat^\epoly} \Catex \ar[r] & \Catex
@@ -1154,17 +1159,17 @@ Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $.
         \Catex \ar[r] & \Cat^\epoly\,.
     \end{tikzcd}
     \end{equation}
-    Composing (\ref{diagram:calgp_to_functor_cat_with_pointed_target}) with (\ref{diagram:extended_fibration_Cat_epoly}) and noting that the map $ \left(\Cat^\epoly\right)^{\Delta^1} \to \Cat^\epoly $ defining the middle term in (\ref{diagram:calgp_to_functor_cat_with_pointed_target}) is given by evaluation at the target, we obtain a diagram 
-    \begin{equation}\label{diagram:calgp_to_functor_cat_with_pointed_target_extended}
+    Composing (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target}) with (\ref{diagram:extended_fibration_Cat_epoly}) and noting that the map $ \left(\Cat^\epoly\right)^{\Delta^1} \to \Cat^\epoly $ defining the middle term in (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target}) is given by evaluation at the target, we obtain a diagram 
+    \begin{equation}\label{diagram:calgp_to_functor_cat_with_presheaf_on_target_extended}
     \begin{tikzcd}[row sep=small]
         & & \int \Fun^{\epoly}( (-)^\op, \Spectra) \ar[dd] \\
         \CAlgp \times \{1\} \ar[r,"M"] \ar[rru,bend left=15,"{M_*}"] \ar[d] & \left(\Cat^\epoly\right)^{\Delta^1} \times \{1\} \ar[d] &  \\
         \CAlgp \times \Delta^1 \ar[r,"{M \times \mathrm{id}_{\Delta^1}}"] & \left(\Cat^\epoly\right)^{\Delta^1} \times \Delta^1 \ar[r,"{\mathrm{ev}}"] & \Cat^\epoly  \,.
     \end{tikzcd}
     \end{equation}
-    Observe that in the bottom row of (\ref{diagram:calgp_to_functor_cat_with_pointed_target_extended}), given a Poincaré ring $ A $, the morphism $ (\mathrm{id}_A, 0\to 1) $ from $ (A,0) $ to $ (A, 1) $ on the lower left is sent to the morphism $ N^{C_2} \colon \Mod_{A^e}(\Spectra) \to \Mod_{N^{C_2}A}\left(\Spectra^{C_2} \right) $ in the lower right. 
+    Observe that in the bottom row of (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target_extended}), given a Poincaré ring $ A $, the morphism $ (\mathrm{id}_A, 0\to 1) $ from $ (A,0) $ to $ (A, 1) $ on the lower left is sent to the morphism $ N^{C_2} \colon \Mod_{A^e}(\Spectra) \to \Mod_{N^{C_2}A}\left(\Spectra^{C_2} \right) $ in the lower right. 
     Now observe that $ \{1\} \to \Delta^1 $ and $ \CAlgp \times \{1\} \to \CAlgp \times \Delta^1 $ are right anodyne by \cite[Corollary 2.1.2.7]{HTT}. 
-    It follows from \cites[Corollary 2.4.2.5]{HTT}[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(1)]{kerodon} that there exists a functor $ \overline{M}_* \colon \CAlgp \times \Delta^1 \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ in (\ref{diagram:calgp_to_functor_cat_with_pointed_target_extended}) extending $ M_* $. 
+    It follows from \cites[Corollary 2.4.2.5]{HTT}[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(1)]{kerodon} that there exists a functor $ \overline{M}_* \colon \CAlgp \times \Delta^1 \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ in (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target_extended}) extending $ M_* $. 
     Moreover, by \cite[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(2)]{kerodon}, we see that $ \overline{M}(A,0) $ is the cartesian transport of $ M (A, 1) = \hom_{N^{C_2}A}(-,A) $ along the functor $$ \Fun^\epoly\left(\Mod_{N^{C_2} A}\left(\Spectra^{C_2}\right) ^\op, \Spectra\right) \to \Fun^\epoly\left(\Mod_{A^e}\left(\Spectra\right),\Spectra\right) $$ classified by $ \mathrm{ev} \circ \left(M \times \mathrm{id}_{\Delta^1}\right) $. 
     Consider the restriction of $ \overline{M}_* $ to $ \CAlgp \times \{0\} $. 
     Since the restriction of $ M \times \mathrm{id}_{\Delta^1} $ to $ \CAlgp \times \{0\} $ agrees with $ \Mod_{(-)^e} $ by Construction \ref{cons:norm_in_families}, we have that the image of $ \left.\left( M \times \mathrm{id}_{\Delta^1} \right)\right|_{\CAlgp \times \{0\}} $ factors through the inclusion $ \Catex \subseteq \Cat^\epoly $. \Lucy{todo: size issue} 
@@ -1176,7 +1181,7 @@ Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $.
     This is true because $ \overline{M}_*|_{\CAlgp \times \{0\}}(A,0) = \left(\Mod_{A^e}, \hom_{N^{C_2}A}\left(N^{C_2}(-), A\right)\right) $, $ N^{C_2} \colon \Mod-{A^e} \to \Mod_{N^{C_2}A} $ is quadratic, and a composite of a reduced quadratic functor and an exact functor is reduced and quadratic. \Lucy{reference for last fact?} 
 
     In sum, we have produced a commutative diagram like so: 
-    \begin{equation}%\label{diagram:calgp_to_functor_cat_with_pointed_target_extended}
+    \begin{equation}
     \begin{tikzcd}[row sep=small]
         & & \int \Fun^{q}(-) \ar[d] \ar[rd] & \\
         \CAlgp \times \{0\} \ar[rr,"{\mathrm{ev}_0 \circ M \simeq \Mod_{(-)^e}}"] \ar[rru,bend left=15,"{\left.\overline{M}_*\right|_{\CAlgp \times \{0\}}}"] \ar[d] & & \Catex \ar[rd] & \int \Fun^\epoly\left((-)^\op,\Spectra\right) \ar[d] \\
@@ -1224,24 +1229,29 @@ in which all triangles and squares commute.
     Then there is a canonical equivalence $ \displaystyle \lim_K F \simeq F(1) \times_{\left(F(3) \times_{F(5)} F(4)\right)} F(2) $. 
 \end{observation}
 \begin{observation}
-    By the recollement decomposition of $ \Spectra^{C_2} $, $ \lim_K \mathcal{P} $ is equivalent to the limit of the diagram 
+    By the recollement decomposition of $ \Spectra^{C_2} $, $ \lim_K \mathcal{P} $ is equivalent to the limit of the diagram\footnote{`res' means restriction.} 
     \begin{equation}%\label{diagram:normedrings}
     \begin{tikzcd}[column sep=small]
         & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra\right)\right) \ar[dd,"{\mathrm{ev}_{0},\mathrm{ev}_{1}}"]  & \\
-        & & \Fun\left(\Delta^1 \times \Delta^1,\EE_\infty\Alg\left(\Spectra\right)\right) \ar[dd] \ar[lu,"{(-)^e}"'] \\
+        & & \Fun\left(\Delta^1 \times \Delta^1,\EE_\infty\Alg\left(\Spectra\right)\right) \ar[dd,"{(\mathrm{res}_{\Delta^1 \times \{0\}},\mathrm{res}_{\Delta^1 \times \{1\}})}"] \ar[lu,"{\mathrm{res}_{\{1\} \times \Delta^1}}"'] \\
         &\EE_\infty\Alg(\Spectra) \times \EE_\infty\Alg(\Spectra) & \\
-        \EE_\infty\Alg\left(\Spectra^{C_2}\right)  \ar[rr,"{N^{C_2}(-^e) \times \id}"'] \ar[ru] \ar[ruuu,"{m^{tC_2} \circ (-^e)}", bend left=30] & &\EE_\infty\Alg\left(\Spectra^{C_2}\right)^{\Delta^1} \times \EE_\infty\Alg\left(\Spectra^{C_2}\right)^{\Delta^1} \ar[lu,"{(-)^e \times (-)^e}"]
+        \EE_\infty\Alg\left(\Spectra^{C_2}\right)  \ar[rr,"{N^{C_2}(-^e) \times \id}"'] \ar[ru] \ar[ruuu,"{m^{tC_2} \circ (-^e)}", bend left=30] & &\EE_\infty\Alg\left(\Spectra^{C_2}\right)^{\Delta^1} \times \EE_\infty\Alg\left(\Spectra^{C_2}\right)^{\Delta^1} \ar[lu,"{\ev_1 \times \ev_1}"]
     \end{tikzcd}
     \end{equation} 
-    Now $ \lim_K \mathcal{P} $ is equivalent to $ \CAlgp $ as defined in main.tex (see the limit of diagram \texttt{diagram:Poincare\_ring\_alternate\_diagram} in Remark 3.4) by Observation \ref{obs:limits_of_limits} and the fact that all commutative trapezoids below \emph{except} the upper left are pullbacks: 
+    By Observation \ref{obs:limits_of_limits} and the fact that all commutative trapezoids below \emph{except} the upper left are pullbacks: 
     \begin{equation}
-    \begin{tikzcd}[column sep=tiny]
-        \EE\Alg(\Spectra)^{\Delta^1 \times \Delta^1} \ar[rr] \ar[d] & & \EE\Alg(\Spectra)^{\Delta^2} \ar[d] \ar[rr] & & \EE\Alg(\Spectra)^{\Delta^1} \ar[d] & \\
-        \left(\EE\Alg(\Spectra)^{\Delta^1}\right)^{\times 2} \ar[rr] \ar[d,"{\pi_2}"] & &\left(\EE\Alg(\Spectra)^{\Delta^1}\right) \times \EE\Alg(\Spectra) \ar[rd,"{\pi_1}"] \ar[d,"{\pi_2}"] \ar[rr] & & \EE\Alg(\Spectra)^{\times 2} \ar[rd,"{\pi_1}"] & \\
-        \EE\Alg(\Spectra)^{\Delta^1} \ar[rr] & & \EE\Alg(\Spectra) & \EE\Alg(\Spectra)^{\Delta^1} \ar[rr] & & \EE\Alg(\Spectra)\,.
+    \begin{tikzcd}[column sep=small]
+        \EE\Alg(\Spectra)^{\Delta^1 \times \Delta^1} \ar[rr,"{\ev_{00\to10\to11}}"] \ar[d,"{(\mathrm{res}_{\Delta^1 \times \{0\}},\mathrm{res}_{\Delta^1 \times \{1\}})}"'] & & \EE\Alg(\Spectra)^{\Delta^2} \ar[d,"{(d_2,\ev_2)}"] \ar[rr,"{d_0}"] & & \EE\Alg(\Spectra)^{\Delta^1} \ar[d,"{(\ev_0,\ev_1)}"] & \\
+        \left(\EE\Alg(\Spectra)^{\Delta^1}\right)^{\times 2} \ar[rr,"{(\id,\ev_1)}"] \ar[d,"{\pi_2}"] & &\EE\Alg(\Spectra)^{\Delta^1} \times \EE\Alg(\Spectra) \ar[rd,"{\pi_1}"] \ar[d,"{\pi_2}"] \ar[rr,"{(\ev_1, \id)}"] & & \EE\Alg(\Spectra)^{\times 2} \ar[rd,"{\pi_1}"] & \\
+        \EE\Alg(\Spectra)^{\Delta^1} \ar[rr,"{\ev_1}"] & & \EE\Alg(\Spectra) & \EE\Alg(\Spectra)^{\Delta^1} \ar[rr,"{\ev_1}"] & & \EE\Alg(\Spectra)\,,
     \end{tikzcd}
-    \end{equation}
-    Here $ \pi_1, \pi_2 $ denote projections onto the first and second factors, resp.
+    \end{equation} 
+    (Here $ \pi_1, \pi_2 $ denote projections onto the first and second factors, resp.) 
+    it follows that 
+    \begin{equation*}
+        \lim_K \mathcal{P} \simeq \left(\EE_\infty \Alg\left(\Spectra^{C_2}\right)\right) \times_{\left(\EE_\infty\Alg(\Spectra)^{\Delta^2} \times_{\EE_\infty \Alg(\Spectra)} \EE_\infty\Alg(\Spectra)^{\Delta^1}\right)} \EE\Alg(\Spectra)^{\Delta^1 \times \Delta^1} \,.
+    \end{equation*}
+    Thus $ \lim_K \mathcal{P} $ is equivalent to $ \CAlgp $ as defined in main.tex (see the limit of diagram \texttt{diagram:Poincare\_ring\_alternate\_diagram} in Remark 3.4). 
 \end{observation}
 \begin{remark}
     There is a map of $ C_2 $-$ \infty $-operads $ \mathrm{Com}_{\mathcal{O}_{C_2}^\simeq} \to \EE_p $. 
