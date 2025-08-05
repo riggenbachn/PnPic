@@ -1109,23 +1109,29 @@ There is a canonical forgetful functor $ \Fun\left(\Delta^1, \Cat^{\Mod}_\infty 
 Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $. 
 \begin{lemma}
     Write $ \widetilde{\Catex} \to \Catex $ for the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $. 
-    Then there is a functor $ \widetilde{\Catex} \to \Catex_{,(-)^\op/\Spectra} $. 
+    Consider the cocartesian fibration $ \Catex_{,(-)^\op/\Spectra} \to \Cat_\infty $ classified by the functor $ \Fun^{\mathrm{ex}}\left((-)^\op, \Spectra\right) $, with cocartesian transport given by left Kan extension. 
+    Then there is a functor $ \widetilde{\Catex} \to \Catex_{,(-)^\op/\Spectra} $ over $ \Catex $ which preserves cocartesian edges. \Lucy{replace $ \Catex $ by `large' stable $ \infty $-categories}
 \end{lemma}
 \begin{proof}
     \Lucyil{inspired by Yonatan's answer \href{https://mathoverflow.net/questions/385382/what-is-the-functoriality-of-the-infty-categorical-slice-construction}{here}}
     Write $ \mathrm{RFib} \subset \mathrm{Ar}\left(\Cat\right) \times_{\Cat} \Catex $ be the full subcategory of the arrow category spanned by the right fibrations. 
     Write $ \mathrm{RFib}_* \subseteq \mathrm{RFib} $ for the full subcategory on those arrows $ \mathcal{C} \to \mathcal{D} $ so that $ \mathcal{C} $ has a final object. 
-    The maps $ \mathrm{RFib}_* \to \Catex $, $ \mathrm{RFib} \to \Catex $ which send an arrow to its target are cocartesian fibrations. \Lucy{Use Corollary A.32 \href{https://arxiv.org/pdf/1501.02161}{here}.}
-    Given a right fibration $ c \colon \widetilde{\mathcal{C}} \to \mathcal{C} $, consider\Lucy{Technically I should consider the space of all diagrams and consider the projection which forgets $ t^*(c) $. This is a trivial Kan fibration, so we can choose an inverse.}
-    \begin{equation*}
-    \begin{tikzcd}
-        &  t^*(c) \ar[d] \ar[r]\ar[rd,phantom,"\lrcorner", very near start] & \widetilde{\mathcal{C}} \ar[d,"c"] \\
-        \mathcal{C}^\op & \mathrm{TwAr}(\mathcal{C}) \ar[r,"t"] \ar[l] & \mathcal{C} \,. 
-    \end{tikzcd}
-    \end{equation*}
-    If $ \widetilde{\mathcal{C}} $ has a final object $ * $ and we write $ c = c(*) $, then the composite $ t^{-1}(c) \to \mathcal{C}^\op $ is a right fibration. 
-    Furthermore, the right fibration $ t^*(c) $ straightens to the functor $ \hom_{\mathcal{C}}(-, c) \in \Fun'(\mathcal{C}^\op,\Spaces) \subseteq \Fun(\mathcal{C}^\op,\Spaces) $ where $ \Fun' $ denotes the full sub $ \infty $-groupoid on those functors which preserve finite limits. 
-    Since $ \mathcal{C} $ is stable, $ \Omega^\infty $ induces an equivalence $ \Fun'(\mathcal{C}^\op,\Spectra) \simeq \Fun'(\mathcal{C}^\op,\Spaces) $ by \cite[Corollary 1.4.2.23]{LurHA}. 
+    The maps $ \mathrm{RFib}_* \to \Catex $, $ \mathrm{RFib} \to \Catex $ which send an arrow to its target are cocartesian fibrations; in particular by \cite[Corollary 6.5]{MR4545922}, the former is equivalent to the \emph{universal} cocartesian fibration $ \mathrm{RFib}_* \simeq \widetilde{\Catex} $. \Lucy{further discussion \href{https://mathoverflow.net/questions/383275/a-construction-of-the-universal-cocartesian-fibration}{here}} 
+    For $ \mathcal{C} \in \Catex $, write $ \mathrm{RFib}_*(\mathcal{C}) $ for the $ \infty $-category of right fibrations over $ \mathcal{C} $ with a terminal object. 
+    Corollary A.32 of \cite{MR3690268} implies that there is a functor $ \Cat \to \Fun\left(\Delta^1, \widehat{\Cat}\right) $ which sends an $ \infty $-category $ \mathcal{C} $ to the equivalence $ \Fun'\left(\mathcal{C}^\op,\mathrm{Gpd}_\infty\right) \simeq \mathrm{RFib}_*(\mathcal{C}) $, where $ \Fun' $ denotes functors which preserve all limits. 
+    % Use Corollary A.32 \href{https://arxiv.org/pdf/1501.02161}{here}.
+    % IN PROGRESS AUGUST 5, 2025 PLEASE DO NOT DELETE THANKS--LUCY
+    % -----------------------------------------------------------------------
+    % Given a right fibration $ c \colon \widetilde{\mathcal{C}} \to \mathcal{C} $, consider\Lucy{Technically I should consider the space of all diagrams and consider the projection which forgets $ t^*(c) $. This is a trivial Kan fibration, so we can choose an inverse.}
+    % \begin{equation*}
+    % \begin{tikzcd}
+    %     &  t^*(c) \ar[d] \ar[r]\ar[rd,phantom,"\lrcorner", very near start] & \widetilde{\mathcal{C}} \ar[d,"c"] \\
+    %     \mathcal{C}^\op & \mathrm{TwAr}(\mathcal{C}) \ar[r,"t"] \ar[l] & \mathcal{C} \,. 
+    % \end{tikzcd}
+    % \end{equation*}
+    % If $ \widetilde{\mathcal{C}} $ has a final object $ * $ and we write $ c = c(*) $, then the composite $ t^{-1}(c) \to \mathcal{C}^\op $ is a right fibration \cite[Proposition 1.1]{BG_16}. 
+    % Furthermore, the right fibration $ t^{-1}(c) \to \mathcal{C}^\op $ straightens to the functor $ \hom_{\mathcal{C}}(-, c) \in \Fun'(\mathcal{C}^\op,\Spaces) \subseteq \Fun(\mathcal{C}^\op,\Spaces) $ where $ \Fun' $ denotes the full sub $ \infty $-groupoid on those functors which preserve finite limits. 
+    % Since $ \mathcal{C} $ is stable, $ \Omega^\infty $ induces an equivalence $ \Fun'(\mathcal{C}^\op,\Spectra) \simeq \Fun'(\mathcal{C}^\op,\Spaces) $ by \cite[Corollary 1.4.2.23]{LurHA}. 
     \Lucyil{In progress: Now use $ \Fun'(\mathcal{C}^\op,\Spectra) \to \Fun(\mathcal{C}^\op,\Spectra) $ to construct a map of cocartesian fibrations. } 
 \end{proof}
 % Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
