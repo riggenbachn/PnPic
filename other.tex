@@ -121,6 +121,7 @@
 \newcommand{\Associnv}{\mathrm{Assoc}_\sigma}
 \newcommand{\BMinv}{\mathrm{BM}_\sigma} % for `hermitian' bimodules; made a macro so we can change this later easily. 
 \newcommand{\Fin}{\mathrm{Fin}} % finite sets 
+\newcommand{\epoly}{\mathrm{epoly}}
 
 %Theorem Environments ----------------------------------------------------------------
 \newtheorem{theorem}[equation]{Theorem}
@@ -1127,8 +1128,57 @@ Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $.
     Since $ \mathcal{C} $ is stable, $ \Omega^\infty $ induces an equivalence $ \Fun'(\mathcal{C}^\op,\Spectra) \simeq \Fun'(\mathcal{C}^\op,\Spaces) $ by \cite[Corollary 1.4.2.23]{LurHA}. 
     \Lucyil{In progress: Now use $ \Fun'(\mathcal{C}^\op,\Spectra) \to \Fun(\mathcal{C}^\op,\Spectra) $ to construct a map of cocartesian fibrations. } 
 \end{proof}
-Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
-\Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
+% Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
+% \Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
+\begin{construction}
+    Suppose we have constructed a diagram\Lucy{replace $ \Catex $ by \emph{`large'} stable $ \infty $-categories}
+    \begin{equation}\label{diagram:calgp_to_functor_cat_with_pointed_target}
+    \begin{tikzcd}
+        & & \int \Fun^{\mathrm{ex}}( (-)^\op, \Spectra) \ar[d] \\
+        \CAlgp \ar[r] \ar[rru,dashed,bend left=15] & \left(\Cat^\epoly\right)^{\Delta^1} \times_{\Cat^\epoly} \Catex \ar[r] & \Catex
+    \end{tikzcd}
+    \end{equation}
+    Define $ \Cat^\epoly $ to be a large $ \infty $-category of large stable $ \infty $-categories and reduced excisively polynomial functors between them. 
+    There is a functor $ \Fun^\epoly((-)^\op, \Spectra ) \colon \Cat^\epoly \to \Cat $. 
+    Under the non-full subcategory inclusion $ \Catex \to \Cat^\epoly $, for any $ \mathcal{C} \in \Catex $, there is an inclusion $ \Fun^{\mathrm{ex}}(\mathcal{C}^\op,\Spectra) \subseteq \Fun^\epoly(\mathcal{C}^\op, \Spectra) $, where $ \Fun^{\mathrm{ex}}(\mathcal{C}^\op,\Spectra) $ denotes the full subcategory on exact functors. % the full subcategory on reduced quadratic functors $ \mathcal{C}^\op \to \Spectra $ as in \cite[\S1]{CDHHLMNNSI}. 
+    In particular, there is a map of cartesian fibrations 
+    \begin{equation}\label{diagram:extended_fibration_Cat_epoly}
+    \begin{tikzcd}
+        \int \Fun^{\mathrm{ex}}( (-)^\op, \Spectra) \ar[r] \ar[d] & \int \Fun^{\epoly}( (-)^\op, \Spectra) \ar[d] \\
+        \Catex \ar[r] & \Cat^\epoly\,.
+    \end{tikzcd}
+    \end{equation}
+    Composing (\ref{diagram:calgp_to_functor_cat_with_pointed_target}) with (\ref{diagram:extended_fibration_Cat_epoly}) and noting that the map $ \left(\Cat^\epoly\right)^{\Delta^1} \to \Cat^\epoly $ defining the middle term in (\ref{diagram:calgp_to_functor_cat_with_pointed_target}) is given by evaluation at the target, we obtain a diagram 
+    \begin{equation}\label{diagram:calgp_to_functor_cat_with_pointed_target_extended}
+    \begin{tikzcd}[row sep=small]
+        & & \int \Fun^{\epoly}( (-)^\op, \Spectra) \ar[dd] \\
+        \CAlgp \times \{1\} \ar[r,"M"] \ar[rru,bend left=15,"{M_*}"] \ar[d] & \left(\Cat^\epoly\right)^{\Delta^1} \times \{1\} \ar[d] &  \\
+        \CAlgp \times \Delta^1 \ar[r,"{M \times \mathrm{id}_{\Delta^1}}"] & \left(\Cat^\epoly\right)^{\Delta^1} \times \Delta^1 \ar[r,"{\mathrm{ev}}"] & \Cat^\epoly  \,.
+    \end{tikzcd}
+    \end{equation}
+    Observe that in the bottom row of (\ref{diagram:calgp_to_functor_cat_with_pointed_target_extended}), given a Poincaré ring $ A $, the morphism $ (\mathrm{id}_A, 0\to 1) $ from $ (A,0) $ to $ (A, 1) $ on the lower left is sent to the morphism $ N^{C_2} \colon \Mod_{A^e}(\Spectra) \to \Mod_{N^{C_2}A}\left(\Spectra^{C_2} \right) $ in the lower right. 
+    Now observe that $ \{1\} \to \Delta^1 $ and $ \CAlgp \times \{1\} \to \CAlgp \times \Delta^1 $ are right anodyne by \cite[Corollary 2.1.2.7]{HTT}. 
+    It follows from \cites[Corollary 2.4.2.5]{HTT}[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(1)]{kerodon} that there exists a functor $ \overline{M}_* \colon \CAlgp \times \Delta^1 \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ in (\ref{diagram:calgp_to_functor_cat_with_pointed_target_extended}) extending $ M_* $. 
+    Moreover, by \cite[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(2)]{kerodon}, we see that $ \overline{M}(A,0) $ is the cartesian transport of $ M (A, 1) = \hom_{N^{C_2}A}(-,A) $ along the functor $$ \Fun^\epoly\left(\Mod_{N^{C_2} A}\left(\Spectra^{C_2}\right) ^\op, \Spectra\right) \to \Fun^\epoly\left(\Mod_{A^e}\left(\Spectra\right),\Spectra\right) $$ classified by $ \mathrm{ev} \circ \left(M \times \mathrm{id}_{\Delta^1}\right) $. 
+    Consider the restriction of $ \overline{M}_* $ to $ \CAlgp \times \{0\} $. 
+    Since the restriction of $ M \times \mathrm{id}_{\Delta^1} $ to $ \CAlgp \times \{0\} $ agrees with $ \Mod_{(-)^e} $ by Construction \ref{cons:norm_in_families}, we have that the image of $ \left.\left( M \times \mathrm{id}_{\Delta^1} \right)\right|_{\CAlgp \times \{0\}} $ factors through the inclusion $ \Catex \subseteq \Cat^\epoly $. \Lucy{todo: size issue} 
+    It follows that we may regard $ \overline{M}_*|_{\CAlgp \times \{0\}} $ as having codomain the total space of the cartesian fibration $ \int \Fun^\epoly\left((-)^\op,\Spectra\right) \to \Catex $. 
+
+    We claim that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ admits an essentially unique factorization through the cartesian fibration $ \int \Fun^q(-) \to \Catex $. 
+    Since the natural transformation $ \Fun^q(-) \subseteq \Fun^\epoly\left((-)^\op,\Spectra\right) $ of functors $ \Catex \to \Cat $ is given pointwise by full inclusions, the induced map $ \int \Fun^q(-) \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ of cartesian fibrations over $ \Catex $ is a full inclusion by \cite[Proposition 2.4.4.2]{HTT}. 
+    Therefore, to show that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ factors through $ \int \Fun^q(-) $, it suffices to check that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ sends objects of $ \CAlgp $ to objects of $ \int \Fun^q(-) $. 
+    This is true because $ \overline{M}_*|_{\CAlgp \times \{0\}}(A,0) = \left(\Mod_{A^e}, \hom_{N^{C_2}A}\left(N^{C_2}(-), A\right)\right) $, $ N^{C_2} \colon \Mod-{A^e} \to \Mod_{N^{C_2}A} $ is quadratic, and a composite of a reduced quadratic functor and an exact functor is reduced and quadratic. \Lucy{reference for last fact?} 
+
+    In sum, we have produced a commutative diagram like so: 
+    \begin{equation}%\label{diagram:calgp_to_functor_cat_with_pointed_target_extended}
+    \begin{tikzcd}[row sep=small]
+        & & \int \Fun^{q}(-) \ar[d] \ar[rd] & \\
+        \CAlgp \times \{0\} \ar[rr,"{\mathrm{ev}_0 \circ M \simeq \Mod_{(-)^e}}"] \ar[rru,bend left=15,"{\left.\overline{M}_*\right|_{\CAlgp \times \{0\}}}"] \ar[d] & & \Catex \ar[rd] & \int \Fun^\epoly\left((-)^\op,\Spectra\right) \ar[d] \\
+        \CAlgp \times \Delta^1 \ar[r,"{M \times \mathrm{id}_{\Delta^1}}"] & \left(\Cat^\epoly\right)^{\Delta^1} \times \Delta^1 \ar[rr,"{\mathrm{ev}}"] & &\Cat^\epoly  \,.
+    \end{tikzcd}
+    \end{equation}
+    \Lucyil{Todo: pass to compact/dualizable modules.}
+\end{construction}
 
 \subsection{An operadic description of Poincaré rings}
 Finally, show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings. 
@@ -1148,20 +1198,20 @@ in which all triangles and squares commute.
     Consider the diagram $ \mathcal{P} \colon K \to \Cat_\infty $ 
     \begin{equation}%\label{diagram:normedrings}
     \begin{tikzcd}[column sep=small]
-        & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra\right)^{BC_p}\right) \ar[dd,"{\ev_{0},\ev_{1}}"]  & \\
-        & & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra^{C_p}\right)\right) \ar[dd,"{\ev_{0}, \ev_{1}}"] \ar[lu,"{(-)^e}"'] \\
-        &\EE_\infty\Alg(\Spectra)^{BC_p} \times \EE_\infty\Alg(\Spectra)^{BC_p} & \\
-        \EE_\infty\Alg\left(\Spectra^{C_p}\right)  \ar[rr,"{N^{C_p}(-^e) \times \id}"'] \ar[ru] \ar[ruuu,"{m \circ (-^e)}", bend left=30] & &\EE_\infty\Alg\left(\Spectra^{C_p}\right) \times \EE_\infty\Alg\left(\Spectra^{C_p}\right) \ar[lu,"{(-)^e \times (-)^e}"]
+        & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra\right)^{BC_2}\right) \ar[dd,"{\mathrm{ev}_{0},\mathrm{ev}_{1}}"]  & \\
+        & & \Fun\left(\Delta^1,\EE_\infty\Alg\left(\Spectra^{C_2}\right)\right) \ar[dd,"{\mathrm{ev}_{0}, \mathrm{ev}_{1}}"] \ar[lu,"{(-)^e}"'] \\
+        &\EE_\infty\Alg(\Spectra)^{BC_2} \times \EE_\infty\Alg(\Spectra)^{BC_2} & \\
+        \EE_\infty\Alg\left(\Spectra^{C_2}\right)  \ar[rr,"{N^{C_2}(-^e) \times \id}"'] \ar[ru] \ar[ruuu,"{m \circ (-^e)}", bend left=30] & &\EE_\infty\Alg\left(\Spectra^{C_2}\right) \times \EE_\infty\Alg\left(\Spectra^{C_2}\right) \ar[lu,"{(-)^e \times (-)^e}"]
     \end{tikzcd}
     \end{equation}
     where $ m $ is the functor of \cite[Construction 3.1]{LYang_normedrings} precomposed with the canonical map $ \Delta^1 \to \mathcal{O}_{C_2} $. 
-    Observe that the right-hand trapezoid commutes essentially by definition, and the leftmost triangle commutes because $ \left(N^{C_p} A \right)^e \simeq (A^e)^{\otimes p} $. 
+    Observe that the right-hand trapezoid commutes essentially by definition, and the leftmost triangle commutes because $ \left(N^{C_2} A \right)^e \simeq (A^e)^{\otimes 2} $. 
     Consider the limit of the diagram 
     \begin{equation}
         \CAlgp'\left(\Spectra^{C_p}\right) := \lim_K \mathcal{P} .
     \end{equation} 
 
-    There is a canonical forgetful functor $ G' \colon \CAlgp\left(\Spectra^{C_p}\right) \to \EE_\infty\Alg\left(\Spectra^{C_p}\right)  $ given by the canonical projection to the lower left corner of the diagram. 
+    There is a canonical forgetful functor $ G' \colon \CAlgp\left(\Spectra^{C_2}\right) \to \EE_\infty\Alg\left(\Spectra^{C_2}\right)  $ given by the canonical projection to the lower left corner of the diagram. 
 \end{definition}
 \begin{observation}\label{obs:limits_of_limits}
     Let $ F \colon K \to \mathcal{C} $ be any diagram and let $ \mathcal{C} $ be any $ \infty $-category with finite limits. 
@@ -1188,16 +1238,22 @@ in which all triangles and squares commute.
     Here $ \pi_1, \pi_2 $ denote projections onto the first and second factors, resp.
 \end{observation}
 \begin{remark}
-    There is a map of $ C_2 $-$ \infty $-operads $ \Com_{\mathcal{O}_{C_2}^\simeq} \to \EE_p $. 
+    There is a map of $ C_2 $-$ \infty $-operads $ \mathrm{Com}_{\mathcal{O}_{C_2}^\simeq} \to \EE_p $. 
 \end{remark}
-\begin{construction}
+\begin{construction}\label{cons:calgp_operadic_to_diagrammatic}
     Define a functor $ \gamma \colon \EE_p \Alg(\Spectra^{C_2}) \to \CAlgp $ (similar to \cite[\S4.1]{LYang_normedrings}). 
 \end{construction}
 \begin{theorem}
-    Let $ A \in \EE_\infty\Alg\left(\Spectra^{C_2}\right) $ % and consider the adjunction $ F \dashv G $ of Recollection \ref{recollection:freealg_colimit}. 
+    The functor of Construction \ref{cons:calgp_operadic_to_diagrammatic} is an equivalence. 
+\end{theorem}
+\begin{proof}
+    \Lucyil{Similar to proof of \cite[Theorem 4.21]{LYang_normedrings}, using Theorem \ref{thm:free_operadic_calgp_formula} and Proposition \ref{prop:unit_in_diagrammatic_calgp}. Include a remark/citation to Nardin--Shah that $ \EE_p\Alg $ is monadic over $ \EE_\infty\Alg $.}
+\end{proof}
+\begin{theorem}\label{thm:free_operadic_calgp_formula}
+    Let $ A \in \EE_\infty\Alg\left(\Spectra^{C_2}\right) $ and consider the adjunction $ F \dashv G $ between $ \EE_p $ and $ \EE_\infty $-algebras in $ \Spectra^{C_2} $. % of Recollection \ref{recollection:freealg_colimit}. 
     \begin{enumerate}[label=(\arabic*)]
     \item The underlying $ C_2 $-spectrum of the free $ \EE_p $ algebra $ F(A) $ on $ A $ is given by 
-    \begin{equation}%\label{eq:freenormedalg_formula}
+    \begin{equation}\label{eq:free_operadic_calgp_formula}
     F(A) \simeq
     \begin{tikzcd}
         &  A^{\varphi C_2} \otimes A^e \ar[d,"{s_A \otimes \nu_A}"] \\
@@ -1205,9 +1261,45 @@ in which all triangles and squares commute.
     \end{tikzcd}
     \end{equation}
     where $ u $ is the unit, $ s_A : A^{\varphi C_2} \to A^{tC_2} $ is the structure map, and $ \nu_A $ is the twisted Tate-valued Frobenius. 
-    % \item There is a canonical $ \E_\infty $ ring map $ \eta_A \colon A \to GF(A) $ given by $ \id_{A^{\varphi C_p}} \otimes (\eta_{A^e}:\sphere^0 \to A^e) $ on geometric fixed points and the identity on underlying.
+    \item There is a canonical $ \EE_\infty $ ring map $ \eta_A \colon A \to GF(A) $ given by $ \id_{A^{\varphi C_p}} \otimes (\eta_{A^e}:\mathbb{S}^0 \to A^e) $ on geometric fixed points and the identity on underlying.
     \end{enumerate}
 \end{theorem}
+\begin{proof}
+    Similar to proof of \cite[Theorem 4.15]{LYang_normedrings}, substituting $ \mathrm{Env}_{\EE_p, \underline{\Fin}_{C_2,*}}\left(\mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}}\right) $ for $ \mathrm{Com}_{\mathcal{T}^\simeq,act}^\otimes = \mathrm{Env}_{\underline{\Fin}_{C_2,*}, \underline{\Fin}_{C_2,*}}\left(\mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}}\right) $. 
+    Since the indexing diagram is different, one uses Lemma \ref{lemma:freeoperadic_calgp_colimdiagram} instead of Lemma 4.19 \emph{loc. cit}. 
+\end{proof}
+
+\begin{lemma}\label{lemma:freeoperadic_calgp_colimdiagram}
+    Consider the (non-parametrized) fiber $ I $ of $ \mathrm{Env}_{\EE_p, \underline{\Fin}_{C_2,*}}\left(\mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}}\right) $ over $ \mathrm{id}_{C_2/C_2} $. 
+    An object of $ I $ can be thought of as a pair $ \left([U \to V], \alpha \colon i([U \to V]) \to [\mathrm{id}_{C_2/C_2}]\right)$ where $ [U \to V ] $ is an object in the fiber of $ \mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}} $ over $ C_2/C_2 $, $ i $ denotes the inclusion $ \mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}} \to \EE_p $, and $ \alpha $ is an active arrow in $ \EE_p $. 
+
+    Choose a $ C_2 $-set $ U $ with free and transitive $ C_2 $-action, and fix an ordering $ \leq $ on $ U $. 
+    This determines a t-ordering on the collapse map $ C_2/C_2 \sqcup U \to C_2/C_2 $, hence an active arrow $ \beta $ in $ \EE_p^\otimes $. 
+    The inclusion
+    \begin{equation*}
+        \{*\} \xrightarrow{* \mapsto \beta} I
+    \end{equation*}
+    is cofinal. 
+\end{lemma}
+\begin{proof}
+    
+\end{proof}
+\begin{proposition}\label{prop:unit_in_diagrammatic_calgp}
+    Let $ A $ be an $ \EE_\infty $-ring in $ \Spectra^{C_p} $ and let $ (B, n_B \colon N^{C_p}B \to B) $ be a Poincaré ring in $ \Spectra^{C_p} $. 
+    Then precomposition with the $ \EE_\infty $-map $ \eta_A : A \to GF(A) $ of Theorem \ref{thm:free_operadic_calgp_formula} induces an equivalence of morphism spaces
+    \begin{equation}\label{eq:unit_in_normedalg}
+    \begin{tikzcd}
+        {\hom_{\CAlgp}\left(\left(\gamma F(A), n_{F(A)} \colon N^{C_p}\gamma F(A) \to \gamma F(A)\right),\left(B, n_B \colon N^{C_p} B \to B \right)\right)} \ar[d,"{G'}"] \ar[dd, bend left=75,looseness=2,"{\rotatebox{90}{$\sim$}}"] \\
+        \hom_{\EE_\infty}(G'\gamma F(A), G'(B)) \ar[d,"{\eta^*}"] \\
+         \hom_{\EE_\infty}(A, G'(B)).
+    \end{tikzcd}
+    \end{equation}
+    where $ G' $ is the forgetful functor and $ \gamma $ is the functor of Construction \ref{cons:calgp_operadic_to_diagrammatic}. 
+    That is, $ \eta_{(-)} $ is a unit for the functors $ (\gamma \circ F, G') $ in the sense of \cite[Definition 5.2.2.7]{HTT}. 
+\end{proposition}
+% \begin{cor}\label{cor:free_algebras_agree}
+%     The natural transformation $ \eta_{(-)} $ exhibits $ \gamma \circ F $ as a left adjoint to $ G' $. 
+% \end{cor}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}
