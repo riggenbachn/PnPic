@@ -1002,41 +1002,61 @@ repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assu
 \end{remark}
 \begin{construction}\label{cons:norm_in_families}
     Recall that by \cite[Proposition 2.8.7(1)]{NS22}, there is an equivalence $ \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \simeq \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) $. 
+    % In the following, we will be interested in objects of $ Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $ in the fiber over $ C_2/C_2 $, so we omit it from notation. 
+    % Define objects
+    % \begin{equation*}
+    % \begin{split}
+    %     X = \left(C_2 \to C_2/C_2, C_2 \to C_2/C_2, C_2 = C_2\right) \\
+    %     Y = \left(C_2 \to C_2/C_2, C_2 \to C_2/C_2, C_2 \to C_2/C_2 \right)    
+    % \end{split}
+    % \end{equation*}
+    % in $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) $. 
+    % The collapse map gives a canonical morphism $ c \colon X \to Y $; observe that $ c $ is cocartesian over $ \underline{\Fin}_{C_2,*} $. 
+    % Using semiaddivity/universal properties\Lucy{todo; see e.g. \cite[Notation 4.1]{LYang_normedrings}}, define a functor which is uniquely characterized by 
+    % \begin{equation*}
+    % \begin{split}
+    %     \Delta^1 \times \Assoc &\to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \\
+    %     (0,\langle 1 \rangle) &\mapsto X \\
+    %     (0, \langle 1 \rangle) &\mapsto Y \\
+    %     (0 <1, \mathrm{id}_{\langle 1 \rangle}) &\mapsto (c \colon X \to Y)\,.
+    % \end{split}
+    % \end{equation*}
+    % Precomposition with $ \Assoc \to \Fin_* $ defines a functor\footnote{with values in the fiber over $ C_2/C_2 $ of the target} 
+    The assignment $ S_+ \mapsto [S \times C_2 \sqcup \{*\} \to C_2/C_2] $ sends a finite pointed set to a finite pointed set with free $ C_2 $-action (away from the basepoint), and for any tuple $ \left(f \colon S_+ \to T_+, \left(\leq_t \text{ ordering on }f^{-1}(\{t\})\right)_{t \in T}\right) $ (which defines a morphism in $ \Assoc^\otimes $, see \cite[Remark 4.1.1.4]{LurHA}), we have a span
+    \begin{equation*}
+    \begin{tikzcd}[column sep=large]
+        S \times C_2 \sqcup \{*\} \ar[d] & f^{-1}(T) \times C_2 \sqcup \{*\} \ar[l] \ar[d] \ar[r,"{f|_{f^{-1}(T)} \times \id_{C_2}}"] & T \times C_2 \sqcup \{*\} \ar[d] \\
+        C_2/C_2 & C_2/C_2 \ar[l,equals] \ar[r,equals] & C_2/C_2
+    \end{tikzcd}
+    \end{equation*}
+    and for each $ C_2 $-orbit $ Z \simeq \{t\} \times C_2 \subset T \times C_2 $, an ordering on the orbits in $ \left(f|_{f^{-1}(T)} \times \id_{C_2}\right)^{-1}(Z) $. 
+    In other words, we have a functor 
+    \begin{equation}\label{eq:assoc_opd_to_param_assoc}
+        q_{-1} \colon \Assoc^\otimes \to \left(\underline{\Assoc}_{\mathrm{naive}}\right)_{C_2/C_2}
+    \end{equation}
+    where $ (-)_{C_2/C_2} $ denotes the non-parametrized fiber. 
     Now recall that $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \simeq \underline{\mathrm{Assoc}}_{\mathrm{naive}} \times_{\underline{\Fin}_{C_2,*}} Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $ \cite[Definition 2.8.4]{NS22}. 
-    In the following, we will be interested in objects of $ Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $ in the fiber over $ C_2/C_2 $, so we omit it from notation. 
-    Define objects
-    \begin{equation*}
-    \begin{split}
-        X = \left(C_2 \to C_2/C_2, C_2 \to C_2/C_2, C_2 = C_2\right) \\
-        Y = \left(C_2 \to C_2/C_2, C_2 \to C_2/C_2, C_2 \to C_2/C_2 \right)    
-    \end{split}
-    \end{equation*}
-    in $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) $. 
-    The collapse map gives a canonical morphism $ c \colon X \to Y $; observe that $ c $ is cocartesian over $ \underline{\Fin}_{C_2,*} $. 
-    Using semiaddivity/universal properties\Lucy{todo; see e.g. \cite[Notation 4.1]{LYang_normedrings}}, define a functor which is uniquely characterized by 
-    \begin{equation*}
-    \begin{split}
-        \Delta^1 \times \Fin_{*} &\to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \\
-        (0,\langle 1 \rangle) &\mapsto X \\
-        (0, \langle 1 \rangle) &\mapsto Y \\
-        (0 <1, \mathrm{id}_{\langle 1 \rangle}) &\mapsto (c \colon X \to Y)\,.
-    \end{split}
-    \end{equation*}
-    Precomposition with $ \Assoc \to \Fin_* $ defines a functor\footnote{with values in the fiber over $ C_2/C_2 $ of the target}
+    Since the identity map on any object in $ \underline{\Fin}_{C_2,*} $ is an active arrow, (\ref{eq:assoc_opd_to_param_assoc}) induces a map
     \begin{equation}\label{eq:assoc_opd_to_envelope_param_assoc}
-        q\colon \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \,.
+        q_{0} \colon \Assoc^\otimes \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right) 
     \end{equation}
-    Write $ p $ for the composite $ \Delta^1 \times \Assoc \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \to \underline{\Fin}_{C_2,*} $. 
-    Restriction along the functor of \ref{eq:assoc_opd_to_envelope_param_assoc} defines 
+    Observe that $ \Assoc^\otimes \times \{0\} \to \Assoc^\otimes \times \Delta^1 $ is left anodyne by (the dual to) \cite[Corollary 2.1.2.7]{HTT}. 
+    It follows from (the dual to) \cites[Corollary 2.4.2.5]{HTT}[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(1')]{kerodon} that there exists an essentially unique extension 
+    \begin{equation}\label{eq:assoc_opd_interval_to_envelope_param_assoc}
+        q\colon \Delta^1 \times \Assoc^\otimes \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right) 
+    \end{equation}
+    of (\ref{eq:assoc_opd_to_envelope_param_assoc}) which sends $ (0<1, \id_A) $ to a morphism which is cocartesian with respect to the structure map $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \to \underline{\Fin}_{C_2,*} $. 
+    Write $ p $ for the composite $ \Delta^1 \times \Assoc^\otimes \to \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\underline{\mathrm{Assoc}}_{\mathrm{naive}}) \to \underline{\Fin}_{C_2,*} $. 
+    Restriction along the functor of (\ref{eq:assoc_opd_interval_to_envelope_param_assoc}) defines 
     \begin{equation}\label{eq:assoc_alg_norm_in_families}
-        \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun_{\Delta^1 \times \Assoc}\left(\Delta^1 \times \Assoc, p^*\left(\underline{\Spectra}^{C_2}\right)\right) \,.
+        \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun_{\Delta^1 \times \Assoc^\otimes}\left(\Delta^1 \times \Assoc^\otimes, p^*\left(\underline{\Spectra}^{C_2}\right)\right) \,.
     \end{equation}
-    Observe that $ p^*\left(\underline{\Spectra}^{C_2}\right) \to \Delta^1 \times \Assoc $ is a $ \Delta^1 $-cocartesian family of monoidal $ \infty $-categories in the sense of \cite[Definition 4.8.3.1]{LurHA}, and the image of the aforementioned restriction functor consists of $ \Delta^1 $-cocartesian families of associative algebra objects in $ p^*\left(\underline{\Spectra}^{C_2}\right) $. 
+    Observe that $ p^*\left(\underline{\Spectra}^{C_2}\right) \to \Delta^1 \times \Assoc^\otimes $ is a $ \Delta^1 $-cocartesian family of monoidal $ \infty $-categories in the sense of \cite[Definition 4.8.3.1]{LurHA}, and the image of the aforementioned restriction functor consists of $ \Delta^1 $-cocartesian families of associative algebra objects in $ p^*\left(\underline{\Spectra}^{C_2}\right) $. 
     In particular, by \cite[Remark 4.8.3.7]{LurHA}, the aforementioned restriction functor refines to 
     \begin{equation*}
          \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \,. 
      \end{equation*} 
-     Its image in $ \Fun\left(\Delta^1,\Alg\left(\Cat_\infty\right) \right) $ consists of the single arrow $ N^{C_2} \colon \Spectra \to \Spectra^{C_2} $. 
+     By construction, its image in $ \Fun\left(\Delta^1,\Alg\left(\Cat_\infty\right) \right) $ consists of the single arrow $ N^{C_2} \colon \Spectra \to \Spectra^{C_2} $. 
 \end{construction}
 % \begin{definition}
 %     \Lucy{compare Higher Algebra Definition 4.8.3.7} 
@@ -1190,6 +1210,20 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
     \end{equation}
     \Lucyil{Todo: pass to compact/dualizable modules.}
 \end{construction}
+\begin{observation}\label{obs:cpct_modules_to_all_modules}
+    Consider the cocartesian fibration $ p \colon \LMod\left(\Spectra\right) \to \EE_1\Alg\left(\Spectra\right) $ \cite[Corollary 4.2.3.7(3)]{LurHA}. 
+
+    Write $ \LMod^\omega\left(\Spectra\right) $ for the full subcategory of $ \LMod\left(\Spectra\right) $ on those pairs $ (A, M) $ so that $ M $ is $ \omega $-compact as an $ A $-module. 
+    Observe that given any $ (A, M) \in \LMod^\omega $ and any map $ f \colon A \to B $ in $ \EE_1 \Alg\left(\Spectra\right) $, then $ p $-cocartesian pushforward of $ (A,M) $ along $ f $ is equivalent to $ (B,B \otimes_A M) \in \LMod^\omega $. 
+    In other words, $ p $-cocartesian pushforward preserves the subcategory $ \LMod^\omega\left(\Spectra\right) $ because the functor $ B \otimes_A (-) $ admits a right adjoint which preserves $ \omega $-filtered colimits. 
+    It follows that the restriction $ \overline{p} $ of $ p $ to $ \LMod^\omega\left(\Spectra\right) $ exhibits $ \LMod^\omega\left(\Spectra\right) \to \EE_1\Alg\left(\Spectra\right) $ as a cocartesian fibration, and the inclusion $ \LMod^\omega\left(\Spectra\right) \to \LMod\left(\Spectra\right) $ takes $ \overline{p} $-cocartesian edges to $ p $-cocartesian edges. 
+    Unstraightening the inclusion $ \LMod^\omega\left(\Spectra\right) \to \LMod\left(\Spectra\right) $, we obtain a functor 
+    \begin{equation*}
+        \EE_1\Alg\left(\Spectra\right) \to \Fun\left(\Delta^1,\Cat_\infty^{\mathrm{st}}\right)
+    \end{equation*}
+    which sends an $ \EE_1 $-algebra $ A $ to the inclusion $ \LMod^\omega_A \to \LMod_A $. 
+    Here $ \Cat_\infty^{\mathrm{st}} $ is the large $ \infty $-category of stable $ \infty $-categories and exact functors between them. 
+\end{observation}
 
 \subsection{An operadic description of Poincaré rings}
 Finally, show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings. 
