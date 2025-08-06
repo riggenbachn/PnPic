@@ -1239,7 +1239,7 @@ Let $ K $ denote the $ \infty $-categorical nerve of the $ 1 $-category
 \end{equation*}
 in which all triangles and squares commute. 
 
-\begin{definition}\label{defn:normedrings}
+\begin{definition}\label{defn:calgp_alt_diagram}
     Consider the diagram $ \mathcal{P} \colon K \to \Cat_\infty $ 
     \begin{equation}%\label{diagram:normedrings}
     \begin{tikzcd}[column sep=small]
@@ -1297,7 +1297,13 @@ in which all triangles and squares commute.
     The functor of Construction \ref{cons:calgp_operadic_to_diagrammatic} is an equivalence. 
 \end{theorem}
 \begin{proof}
-    \Lucyil{Similar to proof of \cite[Theorem 4.21]{LYang_normedrings}, using Theorem \ref{thm:free_operadic_calgp_formula} and Proposition \ref{prop:unit_in_diagrammatic_calgp}. Include a remark/citation to Nardin--Shah that $ \EE_p\Alg $ is monadic over $ \EE_\infty\Alg $.}
+    \Lucyil{Similar to proof of \cite[Theorem 4.21]{LYang_normedrings}, using Proposition \ref{prop:calgp_monadic}, Theorem \ref{thm:free_operadic_calgp_formula}, Proposition \ref{prop:unit_in_diagrammatic_calgp}. Include discussion that $ \EE_p\Alg $ is monadic over $ \EE_\infty\Alg $.}
+\end{proof}
+\begin{proposition}\label{prop:calgp_monadic}
+    The forgetful functor $ G' \colon \CAlgp\left(\Spectra^{C_p}\right) \to \EE_\infty\Alg\left(\Spectra^{C_p}\right) $ of Definition \ref{defn:calgp_alt_diagram} is monadic. 
+\end{proposition}
+\begin{proof}
+    \Lucyil{Similar to \cite[Proposition 3.23]{LYang_normedrings}, except there I forgot to show that $ G' $ \emph{has} a left adjoint (oops!). That's ok; it does, and we showed that the relevant functor for $ \CAlgp $ does in \texttt{main.tex}.}
 \end{proof}
 \begin{theorem}\label{thm:free_operadic_calgp_formula}
     Let $ A \in \EE_\infty\Alg\left(\Spectra^{C_2}\right) $ and consider the adjunction $ F \dashv G $ between $ \EE_p $ and $ \EE_\infty $-algebras in $ \Spectra^{C_2} $. % of Recollection \ref{recollection:freealg_colimit}. 
@@ -1332,7 +1338,21 @@ in which all triangles and squares commute.
     is cofinal. 
 \end{lemma}
 \begin{proof}
-    
+    By \cite[Theorem 4.1.3.1]{HTT}, it suffices to show that for all $ X \in I $, the category $ \{*\} \times_{I} I_{X/} $ has an initial object. 
+    Informally, an object $ X $ of $ I $ is given by a tuple $ (S, \alpha \colon S \to C_2/C_2) $ where $ S $ is a finite $ C_2 $-set and $ \alpha $ is an active arrow in $ \left(\EE_p^\otimes\right)_{C_2/C_2} $. 
+    We observe that $ \alpha $ is given by a $ C_2 $-equivariant map $ f $ (in fact, $ f $ is unique) and a t-ordering on $ f $ in the sense of Notation \ref{ntn:t_order_equivariant_map}. 
+    Morphisms are given by tuples; note that a morphism $ \psi \colon (S,\alpha) \to (T,\gamma) $ determines a map $ S \to T $ in $ \left(\mathrm{Com}_{\mathcal{O}_{C_2}^\simeq}\right)_{C_2/C_2} $; in particular, the map $ S \to T $ must be equivalent to a disjoint union of fold maps. 
+    Now the t-ordering on $ f $ is equivalent to giving, for each free orbit $ Z \subseteq S $, $ Z \simeq C_2 $, an ordering $ \leq_Z $ on $ Z $. 
+    For each such $ Z $, there is a unique order-preserving, $ C_2 $-equivariant isomorphism $ j_Z \colon Z \simeq U $. 
+    Write $ S \simeq S^f \sqcup S^t $ for the canonical decomposition where $ C_p $ acts freely on $ S^f $ and trivially on $ S^t $. 
+    Then $ \displaystyle S \simeq S^t \sqcup \left(\bigsqcup_{Z \in \mathrm{Orbit}(S^f)} Z\right) \xrightarrow{\nabla \sqcup \left(\bigsqcup j_Z\right)} \to C_2/C_2 \sqcup U $ defines a morphism in $ \left(\mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}}\right)_{C_2/C_2} $ so that the diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        S \ar[rr,"{\nabla \sqcup \left(\bigsqcup j_Z\right)}"] \ar[rd,"\alpha"] & & C_2/C_2 \sqcup U\ar[ld,"{\beta}"] \\
+        & C_2/C_2 &         
+    \end{tikzcd}     
+    \end{equation*} 
+    commutes in $ \EE_p $; this is the desired map.  
 \end{proof}
 \begin{proposition}\label{prop:unit_in_diagrammatic_calgp}
     Let $ A $ be an $ \EE_\infty $-ring in $ \Spectra^{C_p} $ and let $ (B, n_B \colon N^{C_p}B \to B) $ be a Poincaré ring in $ \Spectra^{C_p} $. 
@@ -1350,6 +1370,9 @@ in which all triangles and squares commute.
 % \begin{cor}\label{cor:free_algebras_agree}
 %     The natural transformation $ \eta_{(-)} $ exhibits $ \gamma \circ F $ as a left adjoint to $ G' $. 
 % \end{cor}
+\begin{proof}
+    
+\end{proof}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}
