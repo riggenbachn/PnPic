@@ -87,6 +87,7 @@
 \DeclareMathOperator{\Spaces}{\mathcal{S}} % Spaces
 \DeclareMathOperator{\sSet}{sSet}
 \DeclareMathOperator{\Mon}{Mon} % monoids
+\DeclareMathOperator*{\fiberproduct}{\times}
 
 \newcommand{\pf}{{\bf Proof. \ }}
 \renewcommand{\epsilon}{\varepsilon}
@@ -123,6 +124,8 @@
 \newcommand{\Fin}{\mathrm{Fin}} % finite sets 
 \newcommand{\epoly}{\mathrm{epoly}}
 \newcommand{\ev}{\mathrm{ev}}
+\newcommand{\morphism}[3]{\mathop{\rotatebox{270}{$\xrightarrow{\rotatebox{90}{$\scriptstyle#2$}}$}}\limits^{#1}_{#3}}
+
 
 %Theorem Environments ----------------------------------------------------------------
 \newtheorem{theorem}[equation]{Theorem}
@@ -903,8 +906,8 @@ Use \href{https://arxiv.org/pdf/1904.01465}{genuine operadic nerve here} to go f
     By $ C_2 $-equivariance of $ g $, $ g(g^*(f)(U)) = f(\pi_1(U)) $ is a singleton. 
     The given t-ordering on $ f $ means $ \pi_1(U) $ has a given ordering, which we use to endow $ U $ with an ordering using the isomorphism $ \pi_1|_U $. 
 \end{notation}
-\begin{remark}
-    In the following diagram, both t-orderings on $ f $ induce the same t-ordering on $ g^*(f) $ 
+\begin{remark}\label{rmk:t_order_underlying}
+    In the following pullback diagram in $ \Fin_{C_2} $, both t-orderings on $ f $ induce the same t-ordering on $ g^*(f) $ 
     \begin{equation*}
     \begin{tikzcd}
         C_2 \times C_2 \ar[r] \ar[d] & C_2 \ar[d,"{g}"] \\
@@ -916,19 +919,20 @@ Use \href{https://arxiv.org/pdf/1904.01465}{genuine operadic nerve here} to go f
 In what follows, we will refer to the following diagram
 \begin{equation}\label{diagram:C2_operad_generic_span}
 \begin{tikzcd}
-    U \ar[d] & \ar[l,"g"] Z \ar[r,"f"]  \ar[d] & X \ar[d] \\
+    U \ar[d] & \ar[l,"g"'] Z \ar[r,"f"]  \ar[d] & X \ar[d] \\
     V &  \ar[l] Y \ar[r,equals] & Y
 \end{tikzcd}
 \end{equation} 
 repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assumed to be a summand inclusion. 
 \begin{definition}\label{defn:Poincare_ring_param_operad}
-    Define a $ C_2 $-$ \infty $-operad $ \mathbb{E}_{\mathrm{p}}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having\Lucy{I think this is the $ C_2 $-$ \infty $-operad whose algebras give Poincaré rings.} 
+    Define a $ C_2 $-$ \infty $-operad $ \mathbb{E}_{\mathrm{p}}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having  
     \begin{itemize}
         \item objects consist of those arrows $ U \to V $ so that $ C_2 $ acts freely on $ U $ and transitively on $ V $ 
         \item morphisms consist of spans (\ref{diagram:C2_operad_generic_span}) in $ \underline{\mathrm{Fin}}_{C_2, *} $, plus the data of a t-ordering on $ f $ in the sense of Notation \ref{ntn:t_order_equivariant_map}.  
         \item composition is defined to agree with that in $ \underline{\mathrm{Fin}}_{C_2, *} $. 
     \end{itemize}
-    there is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the t-ordering. 
+    There is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the t-ordering. 
+    \Lucyil{Say something about how (1) these are all $ C_2 $-$ \infty $-operads and (2) the underlying $ \infty $-categories are actually the nerve of $ (2,1) $-categories (see \cite[Remark 4.8]{LYang_normedrings}).}
 \end{definition} 
 \begin{definition}\label{defn:naive_assoc_param_operad}
     Define a $ C_2 $-$ \infty $-operad $ \underline{\mathrm{Assoc}}_{\mathrm{naive}}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having 
@@ -1198,7 +1202,7 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
     We claim that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ admits an essentially unique factorization through the cartesian fibration $ \int \Fun^q(-) \to \Catex $. 
     Since the natural transformation $ \Fun^q(-) \subseteq \Fun^\epoly\left((-)^\op,\Spectra\right) $ of functors $ \Catex \to \Cat $ is given pointwise by full inclusions, the induced map $ \int \Fun^q(-) \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ of cartesian fibrations over $ \Catex $ is a full inclusion by \cite[Proposition 2.4.4.2]{HTT}. 
     Therefore, to show that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ factors through $ \int \Fun^q(-) $, it suffices to check that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ sends objects of $ \CAlgp $ to objects of $ \int \Fun^q(-) $. 
-    This is true because $ \overline{M}_*|_{\CAlgp \times \{0\}}(A,0) = \left(\Mod_{A^e}, \hom_{N^{C_2}A}\left(N^{C_2}(-), A\right)\right) $, $ N^{C_2} \colon \Mod-{A^e} \to \Mod_{N^{C_2}A} $ is quadratic, and a composite of a reduced quadratic functor and an exact functor is reduced and quadratic. \Lucy{reference for last fact?} 
+    This is true because $ \overline{M}_*|_{\CAlgp \times \{0\}}(A,0) = \left(\Mod_{A^e}, \hom_{N^{C_2}A}\left(N^{C_2}(-), A\right)\right) $, $ N^{C_2} \colon \Mod_{A^e} \to \Mod_{N^{C_2}A} $ is quadratic, and a composite of a reduced quadratic functor and an exact functor is reduced and quadratic. \Lucy{reference for last fact?} 
 
     In sum, we have produced a commutative diagram like so: 
     \begin{equation}
@@ -1226,7 +1230,7 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
 \end{observation}
 
 \subsection{An operadic description of Poincaré rings}
-Finally, show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings. 
+We show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings defined diagrammatically. 
 
 Let $ K $ denote the $ \infty $-categorical nerve of the $ 1 $-category
 \begin{equation*}%\label{diagram:indexing_normedrings}
@@ -1253,7 +1257,7 @@ in which all triangles and squares commute.
     Observe that the right-hand trapezoid commutes essentially by definition, and the leftmost triangle commutes because $ \left(N^{C_2} A \right)^e \simeq (A^e)^{\otimes 2} $. 
     Consider the limit of the diagram 
     \begin{equation}
-        \CAlgp'\left(\Spectra^{C_p}\right) := \lim_K \mathcal{P} .
+        \CAlgp'\left(\Spectra^{C_2}\right) := \lim_K \mathcal{P} .
     \end{equation} 
 
     There is a canonical forgetful functor $ G' \colon \CAlgp\left(\Spectra^{C_2}\right) \to \EE_\infty\Alg\left(\Spectra^{C_2}\right)  $ given by the canonical projection to the lower left corner of the diagram. 
@@ -1283,24 +1287,39 @@ in which all triangles and squares commute.
     (Here $ \pi_1, \pi_2 $ denote projections onto the first and second factors, resp.) 
     it follows that 
     \begin{equation*}
-        \lim_K \mathcal{P} \simeq \left(\EE_\infty \Alg\left(\Spectra^{C_2}\right)\right) \times_{\left(\EE_\infty\Alg(\Spectra)^{\Delta^2} \times_{\EE_\infty \Alg(\Spectra)} \EE_\infty\Alg(\Spectra)^{\Delta^1}\right)} \EE\Alg(\Spectra)^{\Delta^1 \times \Delta^1} \,.
+        \lim_K \mathcal{P} \simeq \left(\EE_\infty \Alg\left(\Spectra^{C_2}\right)\right) \times_{\left(\EE_\infty\Alg(\Spectra)^{\Delta^2} \times_{\EE_\infty \Alg(\Spectra)} \EE_\infty\Alg(\Spectra)^{\Delta^1}\right)} \EE_\infty\Alg(\Spectra)^{\Delta^1 \times \Delta^1} \,.
     \end{equation*}
     Thus $ \lim_K \mathcal{P} $ is equivalent to $ \CAlgp $ as defined in main.tex (see the limit of diagram \texttt{diagram:Poincare\_ring\_alternate\_diagram} in Remark 3.4). 
 \end{observation}
-\begin{remark}
+\begin{remark}\label{rmk:operadic_Poincare_rings_to_E_infty_alg_in_genuine_spectra}
     There is a map of $ C_2 $-$ \infty $-operads $ \mathrm{Com}_{\mathcal{O}_{C_2}^\simeq} \to \EE_p $. 
+    By \cite[Lemma 4.24]{LYang_normedrings}, this induces a functor $ G'\colon \EE_p\Alg\left(\Spectra^{C_2}\right) \to \EE_\infty\Alg\left(\Spectra^{C_2}\right) $, which by an argument similar to Proposition 4.23 \emph{loc.cit.} is monadic. 
 \end{remark}
 \begin{construction}\label{cons:calgp_operadic_to_diagrammatic}
     Define a functor $ \gamma \colon \EE_p \Alg(\Spectra^{C_2}) \to \CAlgp $ (similar to \cite[\S4.1]{LYang_normedrings}). 
 \end{construction}
-\begin{theorem}
+\begin{theorem}\label{thm:operadic_diagrammatic_calgp_agree}
     The functor of Construction \ref{cons:calgp_operadic_to_diagrammatic} is an equivalence. 
 \end{theorem}
 \begin{proof}
-    \Lucyil{Similar to proof of \cite[Theorem 4.21]{LYang_normedrings}, using Proposition \ref{prop:calgp_monadic}, Theorem \ref{thm:free_operadic_calgp_formula}, Proposition \ref{prop:unit_in_diagrammatic_calgp}. Include discussion that $ \EE_p\Alg $ is monadic over $ \EE_\infty\Alg $.}
+    The proof is nearly identical to that of \cite[Theorem 4.21]{LYang_normedrings}, but we include it here for the reader's convenience. 
+    Consider the commutative diagram of forgetful functors 
+    \begin{equation}\label{diagram:forgetforget_is_forget}
+    \begin{tikzcd}[column sep=tiny]
+        \EE_p\Alg\left(\Spectra^{C_2}\right) \ar[rr,"\gamma"] \ar[rd,"G"'] & & \CAlgp\left(\Spectra^{C_2}\right) \ar[ld,"G'"] \\
+        & \EE_\infty\Alg\left(\Spectra^{C_2}\right) & 
+    \end{tikzcd}
+    \end{equation} 
+    where $ G $ is from Remark \ref{rmk:operadic_Poincare_rings_to_E_infty_alg_in_genuine_spectra} and $ G' $ is from Definition \ref{defn:calgp_alt_diagram}. 
+
+    The functor $ G $ is monadic by Remark \ref{rmk:operadic_Poincare_rings_to_E_infty_alg_in_genuine_spectra}. 
+    The functor $ G' $ is monadic by Proposition \ref{prop:calgp_monadic}.
+    Now for any $ A \in \EE_\infty\Alg\left(\Spectra^{C_2}\right) $, the unit $ A \to \gamma F(A) $ of Theorem \ref{thm:free_operadic_calgp_formula} induces an equivalence $ F'(A) \simeq \gamma F(A) $ by Corollary \ref{cor:free_algebras_agree}.  
+    The result follows from \cite[Proposition 4.7.3.16]{LurHA}. 
+    % \Lucyil{Similar to proof of \cite[Theorem 4.21]{LYang_normedrings}, using Proposition \ref{prop:calgp_monadic}, Theorem \ref{thm:free_operadic_calgp_formula}, Proposition \ref{prop:unit_in_diagrammatic_calgp}. Include discussion that $ \EE_p\Alg $ is monadic over $ \EE_\infty\Alg $.}
 \end{proof}
 \begin{proposition}\label{prop:calgp_monadic}
-    The forgetful functor $ G' \colon \CAlgp\left(\Spectra^{C_p}\right) \to \EE_\infty\Alg\left(\Spectra^{C_p}\right) $ of Definition \ref{defn:calgp_alt_diagram} is monadic. 
+    The forgetful functor $ G' \colon \CAlgp\left(\Spectra^{C_2}\right) \to \EE_\infty\Alg\left(\Spectra^{C_2}\right) $ of Definition \ref{defn:calgp_alt_diagram} is monadic. 
 \end{proposition}
 \begin{proof}
     \Lucyil{Similar to \cite[Proposition 3.23]{LYang_normedrings}, except there I forgot to show that $ G' $ \emph{has} a left adjoint (oops!). That's ok; it does, and we showed that the relevant functor for $ \CAlgp $ does in \texttt{main.tex}.}
@@ -1317,7 +1336,7 @@ in which all triangles and squares commute.
     \end{tikzcd}
     \end{equation}
     where $ u $ is the unit, $ s_A : A^{\varphi C_2} \to A^{tC_2} $ is the structure map, and $ \nu_A $ is the twisted Tate-valued Frobenius. 
-    \item There is a canonical $ \EE_\infty $ ring map $ \eta_A \colon A \to GF(A) $ given by $ \id_{A^{\varphi C_p}} \otimes (\eta_{A^e}:\mathbb{S}^0 \to A^e) $ on geometric fixed points and the identity on underlying.
+    \item There is a canonical $ \EE_\infty $ ring map $ \eta_A \colon A \to GF(A) $ given by $ \id_{A^{\varphi C_2}} \otimes (\eta_{A^e}:\mathbb{S}^0 \to A^e) $ on geometric fixed points and the identity on underlying.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -1344,22 +1363,22 @@ in which all triangles and squares commute.
     Morphisms are given by tuples; note that a morphism $ \psi \colon (S,\alpha) \to (T,\gamma) $ determines a map $ S \to T $ in $ \left(\mathrm{Com}_{\mathcal{O}_{C_2}^\simeq}\right)_{C_2/C_2} $; in particular, the map $ S \to T $ must be equivalent to a disjoint union of fold maps. 
     Now the t-ordering on $ f $ is equivalent to giving, for each free orbit $ Z \subseteq S $, $ Z \simeq C_2 $, an ordering $ \leq_Z $ on $ Z $. 
     For each such $ Z $, there is a unique order-preserving, $ C_2 $-equivariant isomorphism $ j_Z \colon Z \simeq U $. 
-    Write $ S \simeq S^f \sqcup S^t $ for the canonical decomposition where $ C_p $ acts freely on $ S^f $ and trivially on $ S^t $. 
-    Then $ \displaystyle S \simeq S^t \sqcup \left(\bigsqcup_{Z \in \mathrm{Orbit}(S^f)} Z\right) \xrightarrow{\nabla \sqcup \left(\bigsqcup j_Z\right)} \to C_2/C_2 \sqcup U $ defines a morphism in $ \left(\mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}}\right)_{C_2/C_2} $ so that the diagram
+    Write $ S \simeq S^f \sqcup S^t $ for the canonical decomposition where $ C_2 $ acts freely on $ S^f $ and trivially on $ S^t $. 
+    Then $ \displaystyle S \simeq S^t \sqcup \left(\bigsqcup_{Z \in \mathrm{Orbit}(S^f)} Z\right) \xrightarrow{\nabla \sqcup \left(\bigsqcup j_Z\right)} C_2/C_2 \sqcup U $ defines a morphism in $ \left(\mathrm{Com}_{\mathcal{O}_{C_2}^{\simeq,\op}}\right)_{C_2/C_2} $ so that the diagram
     \begin{equation*}
     \begin{tikzcd}
         S \ar[rr,"{\nabla \sqcup \left(\bigsqcup j_Z\right)}"] \ar[rd,"\alpha"] & & C_2/C_2 \sqcup U\ar[ld,"{\beta}"] \\
         & C_2/C_2 &         
     \end{tikzcd}     
     \end{equation*} 
-    commutes in $ \EE_p $; this is the desired map.  
+    commutes in $ \EE_p $; this is the desired initial object of $ \{*\} \times_{I} I_{X/} $.  
 \end{proof}
 \begin{proposition}\label{prop:unit_in_diagrammatic_calgp}
-    Let $ A $ be an $ \EE_\infty $-ring in $ \Spectra^{C_p} $ and let $ (B, n_B \colon N^{C_p}B \to B) $ be a Poincaré ring in $ \Spectra^{C_p} $. 
+    Let $ A $ be an $ \EE_\infty $-ring in $ \Spectra^{C_2} $ and let $ (B, n_B \colon N^{C_2}B \to B) $ be a Poincaré ring in $ \Spectra^{C_2} $. 
     Then precomposition with the $ \EE_\infty $-map $ \eta_A : A \to GF(A) $ of Theorem \ref{thm:free_operadic_calgp_formula} induces an equivalence of morphism spaces
     \begin{equation}\label{eq:unit_in_normedalg}
     \begin{tikzcd}
-        {\hom_{\CAlgp}\left(\left(\gamma F(A), n_{F(A)} \colon N^{C_p}\gamma F(A) \to \gamma F(A)\right),\left(B, n_B \colon N^{C_p} B \to B \right)\right)} \ar[d,"{G'}"] \ar[dd, bend left=75,looseness=2,"{\rotatebox{90}{$\sim$}}"] \\
+        {\hom_{\CAlgp}\left(\left(\gamma F(A), n_{F(A)} \colon N^{C_2}\gamma F(A) \to \gamma F(A)\right),\left(B, n_B \colon N^{C_2} B \to B \right)\right)} \ar[d,"{G'}"] \ar[dd, bend left=75,looseness=2,"{\rotatebox{90}{$\sim$}}"] \\
         \hom_{\EE_\infty}(G'\gamma F(A), G'(B)) \ar[d,"{\eta^*}"] \\
          \hom_{\EE_\infty}(A, G'(B)).
     \end{tikzcd}
@@ -1367,11 +1386,30 @@ in which all triangles and squares commute.
     where $ G' $ is the forgetful functor and $ \gamma $ is the functor of Construction \ref{cons:calgp_operadic_to_diagrammatic}. 
     That is, $ \eta_{(-)} $ is a unit for the functors $ (\gamma \circ F, G') $ in the sense of \cite[Definition 5.2.2.7]{HTT}. 
 \end{proposition}
-% \begin{cor}\label{cor:free_algebras_agree}
-%     The natural transformation $ \eta_{(-)} $ exhibits $ \gamma \circ F $ as a left adjoint to $ G' $. 
-% \end{cor}
-\begin{proof}
-    
+\begin{corollary}\label{cor:free_algebras_agree}
+    The natural transformation $ \eta_{(-)} $ exhibits $ \gamma \circ F $ as a left adjoint to $ G' $. 
+\end{corollary}
+\begin{proof}[Proof of Proposition \ref{prop:unit_in_diagrammatic_calgp}]
+    Notice that 
+    \begin{equation*}
+        \hom_{\EE_\infty\Alg\left(\Spectra^{C_2}\right)}(F(A),B) \simeq \hom_{\EE_\infty\Alg\left(\Spectra^{C_2}\right)}(A,B) \fiberproduct_{\hom\left(A^{tC_2},B^{tC_2}\right) } \hom \left( \morphism{A}{\nu_A}{A^{tC_2}}, \morphism{B^{\varphi C_2}}{\Delta}{B^{tC_2}} \right)
+    \end{equation*}
+    and moreover the composite
+    \begin{equation*}
+        \hom_{\CAlgp}(F(A), B) \xrightarrow{G'} \hom_{\EE_\infty\Alg\left(\Spectra^{C_2}\right)}(F(A),B) \xrightarrow{\pi_1} \hom_{\EE_\infty\Alg\left(\Spectra^{C_2}\right)}(A,B)
+    \end{equation*}
+     is equivalent to $ \eta^* \circ G' $. 
+    Unravelling definitions, we see that given a point $ f \in \hom_{\EE_\infty\Alg\left(\Spectra^{C_2}\right)}(A,B) $, the fiber of $ \eta^* \circ G' $ over $ f $ is given by the space of fillings of the below diagram to a commutative diagram $ (\Delta^1)^{\times 3} \to \EE_\infty\Alg(\Spectra) $:  
+    \begin{equation*}
+    \begin{tikzcd}[row sep=small] %column sep=small, 
+        A^e \ar[rr,"{f^e}"] \ar[dd] \ar[rd,equals] & & B^e \ar[dd] \ar[rd,"{n_B}"] & \\
+            & A^e  \ar[rr, dotted,crossing over] & & B^{\varphi C_2} \ar[dd] \\
+        {(A^{\otimes p})^{tC_2}} \ar[rr,"{(f^{\otimes p})^{tC_2}}",very near end] \ar[rd] & & {( B^{\otimes p})^{tC_2}} \ar[rd] & \\
+        & A^{tC_2} \ar[rr,"{f^{tC_2}}"] & & B^{tC_2} \ar[from=2-2,to=4-2,crossing over,"{\nu_{A^e}}", near end]
+    \end{tikzcd}
+    \end{equation*} 
+    wherein all but the top and front face are given. 
+    This space is contractible. 
 \end{proof}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
