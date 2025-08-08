@@ -190,7 +190,7 @@
      in terms of something bimodule-like? 
 \end{question}
 \begin{question}
-    On page 2 of the \emph{Counterexamples} paper, First and Williams write that `` existence of an extraordinary involution means classificaiton of Azumaya algebras with involution...\emph{cannot} be reduced to questions about projective modules and hermitian forms on them.'' 
+    On page 2 of the \emph{Counterexamples} paper, First and Williams write that `` existence of an extraordinary involution means classification of Azumaya algebras with involution...\emph{cannot} be reduced to questions about projective modules and hermitian forms on them.'' 
 
     What if we replaced projective modules by perfect complexes? 
 \end{question}
@@ -212,6 +212,10 @@
 
     There's some stuff in section 4 \href{https://www.math.nagoya-u.ac.jp/~hasimoto/paper/knop2.pdf}{here}, idk. 
     Also see M. Hochster and J. L. Roberts, Rings of invariants of reductive groups acting on regular rings are Cohen–Macaulay. 
+\end{question}
+\begin{question}
+    \href{https://arxiv.org/pdf/1607.06392}{Derived category of non-generic cubic 4-fold} has an application/use of pushforwards of Azumaya algebras along double covers. 
+    Kuznetsov has also written about this, see `Derived categories of quadric fibrations and intersections of quadrics' \href{https://homepage.mi-ras.ru/~akuznet/publications/DerivedCategoriesOfQuadricFibrationsAndIntersectionsOfQuadrics.pdf}{here}.
 \end{question}
 
 \paragraph{Applications to Hodge theory?} 
@@ -876,7 +880,7 @@ In the course of thinking about the `involutive' generalization of the statement
 \end{itemize}
 \end{question}
 
-\section{Categorification and structure--new leaf}
+\section{From Poincaré rings to Poincaré \texorpdfstring{$ \infty $}{∞}-categories}
 Use \href{https://arxiv.org/pdf/1904.01465}{genuine operadic nerve here} to go from simplicial genuine operads to parametrized operads. 
 \begin{notation}\label{ntn:t_order_equivariant_map}
     Let $ S, T $ be finite $ C_2 $-sets, and let $ f \colon S\to T $ be a $ C_2 $-equivariant map. 
@@ -923,7 +927,8 @@ In what follows, we will refer to the following diagram
     V &  \ar[l] Y \ar[r,equals] & Y
 \end{tikzcd}
 \end{equation} 
-repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assumed to be a summand inclusion. 
+in $ \underline{\Fin}_{C_2} $ or $ \underline{\Fin}_{C_2,*} $ repeatedly (see \cite[\S2.1]{NS22}). 
+In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z \to U \times_V Y $ is always assumed to be a summand inclusion. 
 \begin{definition}\label{defn:Poincare_ring_param_operad}
     Define a $ C_2 $-$ \infty $-operad $ \mathbb{E}_{\mathrm{p}}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having  
     \begin{itemize}
@@ -969,7 +974,7 @@ repeatedly; in particular, the induced map $ Z \to U \times_V Y $ is always assu
     Define a $ C_2 $-$ \infty $-operad $ \mathcal{HM}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having 
     \begin{itemize}
         \item objects consist of pairs $ (h : U \to V, \ell \colon U \to \{a, m\}) $ where $ h: U \to V $ is an object of $ \underline{\mathrm{Fin}}_{C_2, *} $ and $ \ell $ is a function which is constant on orbits (think `label') satisfying the condition that $ C_2 $ acts freely on $ \ell^{-1}(\{a\}) $. 
-        \item morphisms from $ (h : U \to V, \ell_U \colon U \to \{a, m\}) $ to $ (h : X \to Y, \ell_X \colon X \to \{a, m\}) $ consists of 
+        \item a morphism from $ (h : U \to V, \ell_U \colon U \to \{a, m\}) $ to $ (h' : X \to Y, \ell_X \colon X \to \{a, m\}) $ consists of 
         \begin{itemize}
             \item a span (\ref{diagram:C2_operad_generic_span}) in $ \underline{\mathrm{Fin}}_{C_2, *} $
             \item $ Z $ is equipped with a labeling $ \ell_Z $ satisfying $ \ell_U = g \circ \ell_Z $ 
@@ -1404,13 +1409,71 @@ in which all triangles and squares commute.
     \begin{tikzcd}[row sep=small] %column sep=small, 
         A^e \ar[rr,"{f^e}"] \ar[dd] \ar[rd,equals] & & B^e \ar[dd] \ar[rd,"{n_B}"] & \\
             & A^e  \ar[rr, dotted,crossing over] & & B^{\varphi C_2} \ar[dd] \\
-        {(A^{\otimes p})^{tC_2}} \ar[rr,"{(f^{\otimes p})^{tC_2}}",very near end] \ar[rd] & & {( B^{\otimes p})^{tC_2}} \ar[rd] & \\
+        {(A^{\otimes 2})^{tC_2}} \ar[rr,"{(f^{\otimes 2})^{tC_2}}",very near end] \ar[rd] & & {( B^{\otimes 2})^{tC_2}} \ar[rd] & \\
         & A^{tC_2} \ar[rr,"{f^{tC_2}}"] & & B^{tC_2} \ar[from=2-2,to=4-2,crossing over,"{\nu_{A^e}}", near end]
     \end{tikzcd}
     \end{equation*} 
     wherein all but the top and front face are given. 
     This space is contractible. 
 \end{proof}
+\section{Categorification and structure--new leaf}
+\begin{definition}\label{defn:gen_alg_inv_param_operad}
+    Define a $ C_2 $-$ \infty $-operad $ \underline{\Assoc}_{\sigma}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having 
+    \begin{itemize}
+        \item objects consist of pairs $ (h : U \to V) $ where $ h: U \to V $ is an object of $ \underline{\mathrm{Fin}}_{C_2, *} $.  
+        \item a morphism from $ (h : U \to V) $ to $ (h' : X \to Y) $ consists of 
+        \begin{itemize}
+            \item a span (\ref{diagram:C2_operad_generic_span}) in $ \underline{\mathrm{Fin}}_{C_2, *} $
+            \item for each $ x \in X $, an ordering $ \leq_x $ on $ f^{-1}(\{x\}) $.  
+        \end{itemize} 
+        These are required to satisfy the conditions (write $ \sigma \in C_2 $ for the generator)
+        \begin{itemize}
+            \item under the isomorphism $ f^{-1}(\{x\}) \simeq f^{-1}(\{\sigma(x)\}) $ induced by the $ C_2 $-action, the ordering $ \leq_x $ is sent to the reverse of the ordering $ \leq_{\sigma(x)} $.  
+        \end{itemize}
+    \end{itemize}
+    there is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the data of the orderings. 
+\end{definition}
+\begin{remark}
+    Definition \ref{defn:gen_alg_inv_param_operad} is equivalent to the $ C_2 $-genuine nerve of the little disks operad $ \EE_\sigma $ associated to the sign $ C_2 $-representation on $ \RR $ \cite[Example 3.9.4]{Horev19}. 
+\end{remark}
+\begin{observation}
+    Suppose given a finite $ C_2 $-set $ Z $ and an ordering $ \leq_Z $ so that the $ C_2 $-action on $ Z $ sends $ \leq_Z $ to its reverse. 
+    We may associate to this a canonical t-ordering on the map $ f \colon Z \to C_2/C_2 $: For each free orbit $ U \subseteq Z $, take the restriction of $ \leq_Z $ to $ U $. 
+    This assignment induces a canonical forgetful map of $ C_2 $-$ \infty $-operads $ \underline{\Assoc}_\sigma^\otimes \to \EE_p^\otimes $.  
+\end{observation}
+\begin{construction}
+    We will construct a map $ \Assoc^\otimes \to \underline{\Assoc}^\otimes_{\sigma, C_2/e} $. 
+    Here the subscript $ C_2/e $ means we consider the (non-parametrized) fiber over $ C_2/e $. 
+
+    Observe that if $ \nabla \colon (C_2/e)^{\sqcup n} \simeq C_2/e \times \langle n \rangle \to C_2/e $ is the fold map, then a lift of $ \nabla $ to a morphism in $ \underline{\Assoc}^\otimes_{\sigma, C_2/e} $ is equivalent to the choice of an ordering on $ \{1,2, \ldots, n\} \simeq \nabla^{-1}(\{e\}) $; the ordering on $ \nabla^{-1}(\{\sigma\}) $ is uniquely determined by the ordering on $ \nabla^{-1}(\{e\}) $. 
+    There are functors
+    \begin{equation*}
+    \begin{split}
+        \iota_e, \iota_\sigma \colon \Assoc^\otimes &\to \underline{\Assoc}^\otimes_{\sigma, C_2/e} \\
+        \langle n \rangle &\mapsto C_2/e \times \langle n \rangle \\
+        \iota_e \colon \left(f \colon \langle n \rangle \to \langle m \rangle, (\leq_i)_{i \in \langle m \rangle^\circ}\right) & \mapsto \left(\id_{C_2} \times f \colon \langle n \rangle \to \langle m \rangle, (\leq_i \text{ ordering on }f^{-1}(i) \times \{e\})_{i \in \langle m \rangle^\circ}\right) \\
+        \iota_\sigma \colon \left(f \colon \langle n \rangle \to \langle m \rangle, (\leq_i)_{i \in \langle m \rangle^\circ}\right) & \mapsto \left(\id_{C_2} \times f \colon \langle n \rangle \to \langle m \rangle, (\leq_i \text{ ordering on }f^{-1}(i) \times \{\sigma\})_{i \in \langle m \rangle^\circ}\right) \,.
+    \end{split}
+    \end{equation*} 
+    Furthermore, there is a commutative diagram
+    \begin{equation}
+    \begin{tikzcd}
+        \Assoc^\otimes \ar[d,"{\mathrm{rev}}"] \ar[r,"{\iota_e}"] & \underline{\Assoc}^\otimes_{\sigma, C_2/e} \ar[d,"{\sigma^*}"] \\
+        \Assoc^\otimes \ar[r,"{\iota_\sigma}"] & \underline{\Assoc}^\otimes_{\sigma, C_2/e}
+    \end{tikzcd}
+    \end{equation} 
+    where $ \mathrm{rev} $ is the automorphism considered in \cite[Remark 4.1.1.7]{LurHA} and $ \sigma^* $ is the cocartesian pushforward along the nontrivial automorphism of $ C_2/e $ in $ \mathcal{O}_{C_2}^\op $. 
+    Now if $ \mathcal{C}^\otimes $ is any $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category, let us write $ \mathcal{C}^{e, \otimes} $ for its underlying symmetric monoidal $ \infty $-category with naive $ C_2 $-action. 
+    Then the aforementioned diagram induces a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}[row sep=tiny]
+        & \EE_1 \Alg\left(\mathcal{C}^{e,\otimes}\right) \ar[dd,"{\mathrm{rev}}","\sim"'] \\
+        \Alg_{\underline{\Assoc}^\otimes_{\sigma}}\left(\mathcal{C}^\otimes\right) \ar[ru] \ar[rd] & \\
+        & \EE_1 \Alg\left(\mathcal{C}^{e,\otimes}\right) \,. 
+    \end{tikzcd}
+    \end{equation*}
+\end{construction}
+\Lucyil{Define Azumaya algebras with involution in terms of algebras over $ \underline{\Assoc}_\sigma^\otimes $ instead? I think it is `better' to use $ \underline{\Assoc}_\sigma^\otimes $ instead of $ \mathcal{HM}^\otimes $. To define a functor from algebras over $ \underline{\Assoc}_\sigma^\otimes $ to Hermitian $ \infty $-categories, we can define a functor from $ \mathcal{LM}^\otimes $ to $ \underline{\Assoc}^\otimes_{\sigma,C_2/C_2} $, then use the same argument as in Construction \ref{cons:module_with_gen_involution_in_families}.}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}
