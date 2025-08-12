@@ -65,8 +65,9 @@
 \DeclareMathOperator{\CAlg}{CAlg} % Commutative Algebra objects
 \DeclareMathOperator{\Alg}{Alg}
 \DeclareMathOperator{\CAlgp}{CAlg^p} % Poincare ring spectra
-\DeclareMathOperator{\Cat}{Cat} % Categories
-\DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % stable categories with exact functors
+\DeclareMathOperator{\Cat}{Cat} % small categories
+\DeclareMathOperator{\CAT}{C\normalfont\textsc{at}_\infty} % (not necessarily small) Categories
+\DeclareMathOperator{\Catex}{\Cat_\infty^{ex}} % small stable categories with exact functors
 \DeclareMathOperator{\Cath}{Cat^h_\infty} % Hermitian Categories
 \DeclareMathOperator{\Catp}{Cat^p_\infty} % Poincare Categories
 \DeclareMathOperator{\Catpidem}{Cat^p_{\infty, idem}} % idempotent complete Poincare Categories
@@ -1062,12 +1063,17 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun_{\Delta^1 \times \Assoc^\otimes}\left(\Delta^1 \times \Assoc^\otimes, p^*\left(\underline{\Spectra}^{C_2}\right)\right) \,.
     \end{equation}
     Observe that $ p^*\left(\underline{\Spectra}^{C_2}\right) \to \Delta^1 \times \Assoc^\otimes $ is a $ \Delta^1 $-cocartesian family of monoidal $ \infty $-categories in the sense of \cite[Definition 4.8.3.1]{LurHA}, and the image of the aforementioned restriction functor consists of $ \Delta^1 $-cocartesian families of associative algebra objects in $ p^*\left(\underline{\Spectra}^{C_2}\right) $. 
-    In particular, by \cite[Remark 4.8.3.7]{LurHA}, the aforementioned restriction functor refines to 
-    \begin{equation*}
-         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \,. 
-     \end{equation*} 
-     By construction, its image in $ \Fun\left(\Delta^1,\Alg\left(\Cat_\infty\right) \right) $ consists of the single arrow $ N^{C_2} \colon \Spectra \to \Spectra^{C_2} $. 
+    In particular, by \cite[Remark 4.8.3.8]{LurHA}, the aforementioned restriction functor refines to 
+    \begin{equation}\label{eq:assoc_alg_norm_in_families_straightened}
+        G \colon \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \to \Fun\left(\Delta^1, \CAT^{\Alg} \right) \,, 
+     \end{equation} 
+     where $ \CAT^{\Alg} $ is \cite[Definition 4.8.3.7]{LurHA}. 
+     By construction, its image in $ \Fun\left(\Delta^1,\Alg\left(\CAT\right) \right) $ consists of the single arrow $ N^{C_2} \colon \Spectra \to \Spectra^{C_2} $. 
 \end{construction}
+\begin{remark}
+    In fact, we can take $ \CAT^{\Alg}\left(\mathcal{K}^{\mathrm{sift}}\right) $ where $ \mathcal{K}^{\mathrm{sift}} $ denotes the collection of sifted simplicial sets. 
+    However, we cannot take $ \mathcal{K} $ to be a collection containing not necessarily sifted diagrams, since the norm $ N^{C_2} $ does not take coproducts in $ \Spectra $ to coproducts in $ \Spectra^{C_2} $.  
+\end{remark}
 % \begin{definition}
 %     \Lucy{compare Higher Algebra Definition 4.8.3.7} 
 %     Let $ \Cat^{\Alg\Mod}_\infty $ denote the full subcategory of the fiber product 
@@ -1129,39 +1135,54 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
     Now observe that $ p_1^*\left(\underline{\Spectra}^{C_2,\otimes}\right) $ is the ordinary $ \infty $-category of $ C_2 $-spectra, regarded as a monoidal $ \infty $-category via smash product, and there is a commutative diagram
     \begin{equation}
     \begin{tikzcd}
-         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] \ar[d] & \LMod\left(\Spectra^{C_2,\otimes}\right) \ar[r] \ar[d] & \widetilde{\Catex} \ar[d] \\
-         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] &  \Alg_{\mathbb{E}_1}\left(\Spectra^{C_2}\right) \ar[r] & \Catex 
+         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] \ar[d] & \LMod\left(\Spectra^{C_2,\otimes}\right) \ar[r] \ar[d] & \widetilde{\CAT^{\mathrm{ex}}} \ar[d] \\
+         \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}\left(\underline{\mathrm{Assoc}}_{\mathrm{naive}}\right), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) \ar[r] &  \Alg_{\mathbb{E}_1}\left(\Spectra^{C_2}\right) \ar[r] & \CAT^{\mathrm{ex}} 
     \end{tikzcd}
     \end{equation}
-    where $ \widetilde{\Catex} \to \Catex $ is the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $, the left vertical arrow is restriction along the map $ \underline{\mathrm{Assoc}}_{\mathrm{naive}} \to \mathcal{HM}^\otimes $ of Remark \ref{rmk:param_operad_maps}, and the left horizontal arrow is (\ref{eq:assoc_alg_norm_in_families}) composed with restriction along $ \Assoc \times \{1\} \hookrightarrow \Assoc \times \Delta^1 $. 
+    where $ \widetilde{\CAT^{\mathrm{ex}}} \to \CAT^{\mathrm{ex}} $ is the restriction of the universal cocartesian fibration to $ \CAT^{\mathrm{ex}} \subseteq \CAT $, the left vertical arrow is restriction along the map $ \underline{\mathrm{Assoc}}_{\mathrm{naive}}^\otimes \to \mathcal{HM}^\otimes $ of Remark \ref{rmk:param_operad_maps}, and the left horizontal arrow is (\ref{eq:assoc_alg_norm_in_families}) composed with restriction along $ \Assoc^\otimes \times \{1\} \hookrightarrow \Assoc^\otimes \times \Delta^1 $. 
     The right hand square is a pullback by \cite[Corollary 4.2.3.7(3)]{LurHA} and the straightening-unstraightening equivalence.  
-\end{construction} 
-There is a canonical forgetful functor $ U \colon \Cat^{\Mod}_\infty \to \Cat_\infty $. % $ \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} $. 
-Combining Constructions \ref{cons:norm_in_families} and \ref{cons:module_with_gen_involution_in_families} and composing with the forgetful functor $ U $, we obtain a commutative diagram
-% Define a functor $ \Modh \to \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty $ living in a commutative square
-\begin{equation}\label{diagram:calgp_to_functor_cat_with_pointed_target}
-\begin{tikzcd}
-    \Modh \ar[rrr] \ar[d] & & & \widetilde{\Catex} \ar[d] \\ 
-    % \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \ar[d] \\
-    \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat_\infty \right) \ar[r,"{\ev_1}"] & \Cat_\infty & \Catex \ar[l] 
-    % \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \ar[r,"{\Theta}"] & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \ar[r,"{\ev_1}"] & \Cat_\infty & \Catex \ar[l]
-\end{tikzcd}
-\end{equation}
-where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. 
+\end{construction}
+
+\begin{observation}   
+    There is a canonical forgetful functor $ U \colon \CAT^{\Mod} \to \CAT $, where $ \CAT^{\Mod} = \mathrm{Mon}_{\mathcal{LM}}\left(\CAT\right) $ is defined in \cite[immediately preceding Remark 4.8.3.20]{LurHA}. % $ \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Cat_{\infty,*} $. 
+    Combining Constructions \ref{cons:norm_in_families} and \ref{cons:module_with_gen_involution_in_families} and composing with the forgetful functor $ U $, we obtain a commutative diagram
+    % Define a functor $ \Modh \to \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty $ living in a commutative square
+    \begin{equation}\label{diagram:calgp_to_functor_cat_with_pointed_target}
+    \begin{tikzcd}[cramped]
+        \Modh \ar[rrr] \ar[d] & & & \widetilde{\CAT^{\mathrm{ex}}} \ar[d] \\ 
+        % \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \times_{\Cat^{\Mod}_\infty} \Cat^{\Alg\Mod}_\infty \ar[d] \\
+        \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r,"{U \circ \Theta \circ G}"] & \Fun\left(\Delta^1, \CAT \right) \ar[r,"{\ev_1}"] & \CAT & \CAT^{\mathrm{ex}} \ar[l] 
+        % \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \ar[r,"{\Theta}"] & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \ar[r,"{\ev_1}"] & \Cat_\infty & \Catex \ar[l]
+    \end{tikzcd}
+    \end{equation}
+    where $ G $ is (\ref{eq:assoc_alg_norm_in_families_straightened}) from Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. 
+
+    Define $ \CAT^\epoly $ to be a large $ \infty $-category of not necessarily small stable $ \infty $-categories and reduced excisively polynomial functors between them; it defines a full subcategory of $ \CAT $ which moreover contains $ \CAT^{\mathrm{ex}} $ as a non-full subcategory. 
+    Now let us observe that for any $ \EE_1 $-algebra $ A $ in $ \Spectra $, $ N^{C_2} \colon \Mod_A(\Spectra) \to \Mod_{N^{C_2}A}\left(\Spectra^{C_2}\right) $ is reduced and quadratic. 
+    Therefore, $ U \circ \Theta \circ G $ takes values in stable $ \infty $-categories and reduced excisively polynomial functors between them. 
+    Thus there is an essentially unique refinement of (\ref{diagram:calgp_to_functor_cat_with_pointed_target}) to a commutative diagram
+    \begin{equation}\label{diagram:calgp_to_epoly_functor_cat_with_pointed_target}
+    \begin{tikzcd}[cramped]
+        \Modh \ar[rrr] \ar[d] & & & \widetilde{\CAT^{\mathrm{ex}}} \ar[d] \\ 
+        \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r,"{U \circ \Theta \circ G}"] & \Fun\left(\Delta^1, \CAT^\epoly \right) \ar[r,"{\ev_1}"] & \CAT^\epoly & \CAT^{\mathrm{ex}} \ar[l] 
+    \end{tikzcd}
+    \end{equation} 
+\end{observation}
 
 % Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $. 
 \begin{lemma}\label{lemma:stable_cat_functorial_Yoneda}
-    Write $ \widetilde{\Catex} \to \Catex $ for the restriction of the universal cocartesian fibration to $ \Catex \subseteq \Cat_\infty $. 
-    Consider the cocartesian fibration $ \Catex_{,(-)^\op/\Spectra} \to \Cat_\infty $ classified by the functor $ \Fun^{\mathrm{ex}}\left((-)^\op, \Spectra\right) $, with cocartesian transport given by left Kan extension. 
-    Then there is a functor $ \widetilde{\Catex} \to \Catex_{,(-)^\op/\Spectra} $ over $ \Catex $ which preserves cocartesian edges. \Lucy{replace $ \Catex $ by `large' stable $ \infty $-categories}
+    Write $ \widetilde{\CAT^{\mathrm{ex}}} \to \CAT^{\mathrm{ex}} $ for the restriction of the universal cocartesian fibration to $ \CAT^{\mathrm{ex}} \subseteq \CAT $. 
+    Consider the cocartesian fibration $ \CAT^{\mathrm{ex}}_{,(-)^\op/\Spectra} \to \CAT $ classified by the functor $ \Fun^{\mathrm{ex}}\left((-)^\op, \Spectra\right) $, with cocartesian transport given by left Kan extension. 
+    Then there is a functor $ \widetilde{\CAT^{\mathrm{ex}}} \to \CAT^{\mathrm{ex}}_{,(-)^\op/\Spectra} $ over $ \CAT^{\mathrm{ex}} $ which preserves cocartesian edges. 
+    %\Lucy{replace $ \Catex $ by `large' stable $ \infty $-categories}
 \end{lemma}
 \begin{proof}
     \Lucyil{inspired by Yonatan's answer \href{https://mathoverflow.net/questions/385382/what-is-the-functoriality-of-the-infty-categorical-slice-construction}{here}}
-    Write $ \mathrm{RFib} \subset \mathrm{Ar}\left(\Cat\right) \times_{\Cat} \Catex $ be the full subcategory of the arrow category spanned by the right fibrations. 
+    Write $ \mathrm{RFib} \subset \mathrm{Ar}\left(\CAT\right) \times_{\CAT} \CAT^{\mathrm{ex}} $ be the full subcategory of the arrow category spanned by the right fibrations. 
     Write $ \mathrm{RFib}_* \subseteq \mathrm{RFib} $ for the full subcategory on those arrows $ \mathcal{C} \to \mathcal{D} $ so that $ \mathcal{C} $ has a final object. 
-    The maps $ \mathrm{RFib}_* \to \Catex $, $ \mathrm{RFib} \to \Catex $ which send an arrow to its target are cocartesian fibrations; in particular by \cite[Corollary 6.5]{MR4545922}, the former is equivalent to the \emph{universal} cocartesian fibration $ \mathrm{RFib}_* \simeq \widetilde{\Catex} $. \Lucy{further discussion \href{https://mathoverflow.net/questions/383275/a-construction-of-the-universal-cocartesian-fibration}{here}} 
-    For $ \mathcal{C} \in \Catex $, write $ \mathrm{RFib}_*(\mathcal{C}) $ for the $ \infty $-category of right fibrations over $ \mathcal{C} $ with a terminal object. 
-    Corollary A.32 of \cite{MR3690268} implies that there is a functor $ \Cat \to \Fun\left(\Delta^1, \widehat{\Cat}\right) $ which sends an $ \infty $-category $ \mathcal{C} $ to the equivalence $ \Fun'\left(\mathcal{C}^\op,\mathrm{Gpd}_\infty\right) \simeq \mathrm{RFib}_*(\mathcal{C}) $, where $ \Fun' $ denotes functors which preserve all limits. 
+    The maps $ \mathrm{RFib}_* \to \CAT^{\mathrm{ex}} $, $ \mathrm{RFib} \to \CAT^{\mathrm{ex}} $ which send an arrow to its target are cocartesian fibrations; in particular by \cite[Corollary 6.5]{MR4545922}, the former is equivalent to the \emph{universal} cocartesian fibration $ \mathrm{RFib}_* \simeq \widetilde{\CAT^{\mathrm{ex}}} $. \Lucy{further discussion \href{https://mathoverflow.net/questions/383275/a-construction-of-the-universal-cocartesian-fibration}{here}} 
+    For $ \mathcal{C} \in \CAT^{\mathrm{ex}} $, write $ \mathrm{RFib}_*(\mathcal{C}) $ for the $ \infty $-category of right fibrations over $ \mathcal{C} $ with a terminal object. 
+    Corollary A.32 of \cite{MR3690268} implies that there is a functor $ \CAT \to \Fun\left(\Delta^1, \widehat{\CAT}\right) $ which sends an $ \infty $-category $ \mathcal{C} $ to the equivalence $ \Fun'\left(\mathcal{C}^\op,\mathrm{Gpd}_\infty\right) \simeq \mathrm{RFib}_*(\mathcal{C}) $, where $ \Fun' $ denotes functors which preserve all limits. 
     % Use Corollary A.32 \href{https://arxiv.org/pdf/1501.02161}{here}.
     % IN PROGRESS AUGUST 5, 2025 PLEASE DO NOT DELETE THANKS--LUCY
     % -----------------------------------------------------------------------
@@ -1180,30 +1201,28 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
 % Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
 % \Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
 \begin{construction}
-    % Suppose we have constructed a diagram
-    Combining (\ref{diagram:calgp_to_functor_cat_with_pointed_target}) with Lemma \ref{lemma:stable_cat_functorial_Yoneda} and Remark \ref{rmk:from_param_operad_maps_to_alg_mod_maps}, we obtain a commutative diagram\Lucyil{replace $ \Catex $ by \emph{`large'} stable $ \infty $-categories, add remark about $ \Cat^\epoly $ earlier}
+    Combining (\ref{diagram:calgp_to_epoly_functor_cat_with_pointed_target}) with Lemma \ref{lemma:stable_cat_functorial_Yoneda} and Remark \ref{rmk:from_param_operad_maps_to_alg_mod_maps}, we obtain a commutative diagram\Lucy{Replace $ \CAlgp $ by something more general like $ \EE_\sigma\Alg $?}
     \begin{equation}\label{diagram:calgp_to_functor_cat_with_presheaf_on_target}
     \begin{tikzcd}
         & & \int \Fun^{\mathrm{ex}}( (-)^\op, \Spectra) \ar[d] \\
-        \CAlgp \ar[r] \ar[rru,dashed,bend left=15] & \left(\Cat^\epoly\right)^{\Delta^1} \times_{\Cat^\epoly} \Catex \ar[r] & \Catex
+        \CAlgp \ar[r] \ar[rru,dashed,bend left=15] & \left(\CAT^\epoly\right)^{\Delta^1} \times_{\CAT^\epoly} \CAT^{\mathrm{ex}} \ar[r] & \CAT^{\mathrm{ex}} \,.
     \end{tikzcd}
     \end{equation}
-    Define $ \Cat^\epoly $ to be a large $ \infty $-category of large stable $ \infty $-categories and reduced excisively polynomial functors between them. 
-    There is a functor $ \Fun^\epoly((-)^\op, \Spectra ) \colon \Cat^\epoly \to \Cat $. 
-    Under the non-full subcategory inclusion $ \Catex \to \Cat^\epoly $, for any $ \mathcal{C} \in \Catex $, there is an inclusion $ \Fun^{\mathrm{ex}}(\mathcal{C}^\op,\Spectra) \subseteq \Fun^\epoly(\mathcal{C}^\op, \Spectra) $, where $ \Fun^{\mathrm{ex}}(\mathcal{C}^\op,\Spectra) $ denotes the full subcategory on exact functors. % the full subcategory on reduced quadratic functors $ \mathcal{C}^\op \to \Spectra $ as in \cite[\S1]{CDHHLMNNSI}. 
+    There is a functor $ \Fun^\epoly((-)^\op, \Spectra ) \colon \CAT^\epoly \to \CAT $. 
+    Under the non-full subcategory inclusion $ \CAT^\mathrm{ex} \to \CAT^\epoly $, for any $ \mathcal{C} \in \CAT^\mathrm{ex} $, there is an inclusion $ \Fun^{\mathrm{ex}}(\mathcal{C}^\op,\Spectra) \subseteq \Fun^\epoly(\mathcal{C}^\op, \Spectra) $, where $ \Fun^{\mathrm{ex}}(\mathcal{C}^\op,\Spectra) $ denotes the full subcategory on exact functors. % the full subcategory on reduced quadratic functors $ \mathcal{C}^\op \to \Spectra $ as in \cite[\S1]{CDHHLMNNSI}. 
     In particular, there is a map of cartesian fibrations 
     \begin{equation}\label{diagram:extended_fibration_Cat_epoly}
     \begin{tikzcd}
         \int \Fun^{\mathrm{ex}}( (-)^\op, \Spectra) \ar[r] \ar[d] & \int \Fun^{\epoly}( (-)^\op, \Spectra) \ar[d] \\
-        \Catex \ar[r] & \Cat^\epoly\,.
+        \CAT^\mathrm{ex} \ar[r] & \CAT^\epoly\,.
     \end{tikzcd}
     \end{equation}
-    Composing (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target}) with (\ref{diagram:extended_fibration_Cat_epoly}) and noting that the map $ \left(\Cat^\epoly\right)^{\Delta^1} \to \Cat^\epoly $ defining the middle term in (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target}) is given by evaluation at the target, we obtain a diagram 
+    Composing (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target}) with (\ref{diagram:extended_fibration_Cat_epoly}) and noting that the map $ \left(\CAT^\epoly\right)^{\Delta^1} \to \CAT^\epoly $ defining the middle term in (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target}) is given by evaluation at the target, we obtain a diagram\Lucy{delete the middle of this diagram?} 
     \begin{equation}\label{diagram:calgp_to_functor_cat_with_presheaf_on_target_extended}
     \begin{tikzcd}[row sep=small]
         & & \int \Fun^{\epoly}( (-)^\op, \Spectra) \ar[dd] \\
-        \CAlgp \times \{1\} \ar[r,"M"] \ar[rru,bend left=15,"{M_*}"] \ar[d] & \left(\Cat^\epoly\right)^{\Delta^1} \times \{1\} \ar[d] &  \\
-        \CAlgp \times \Delta^1 \ar[r,"{M \times \mathrm{id}_{\Delta^1}}"] & \left(\Cat^\epoly\right)^{\Delta^1} \times \Delta^1 \ar[r,"{\mathrm{ev}}"] & \Cat^\epoly  \,.
+        \CAlgp \times \{1\} \ar[r,"M"] \ar[rru,bend left=15,"{M_*}"] \ar[d] & \left(\CAT^\epoly\right)^{\Delta^1} \times \{1\} \ar[d] &  \\
+        \CAlgp \times \Delta^1 \ar[r,"{M \times \mathrm{id}_{\Delta^1}}"] & \left(\CAT^\epoly\right)^{\Delta^1} \times \Delta^1 \ar[r,"{\mathrm{ev}}"] & \CAT^\epoly  \,.
     \end{tikzcd}
     \end{equation}
     Observe that in the bottom row of (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target_extended}), given a Poincaré ring $ A $, the morphism $ (\mathrm{id}_A, 0\to 1) $ from $ (A,0) $ to $ (A, 1) $ on the lower left is sent to the morphism $ N^{C_2} \colon \Mod_{A^e}(\Spectra) \to \Mod_{N^{C_2}A}\left(\Spectra^{C_2} \right) $ in the lower right. 
@@ -1211,11 +1230,11 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
     It follows from \cites[Corollary 2.4.2.5]{HTT}[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(1)]{kerodon} that there exists a functor $ \overline{M}_* \colon \CAlgp \times \Delta^1 \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ in (\ref{diagram:calgp_to_functor_cat_with_presheaf_on_target_extended}) extending $ M_* $. 
     Moreover, by \cite[\href{https://kerodon.net/tag/01VF}{Tag 01VF} Theorem 5.2.1.1(2)]{kerodon}, we see that $ \overline{M}(A,0) $ is the cartesian transport of $ M (A, 1) = \hom_{N^{C_2}A}(-,A) $ along the functor $$ \Fun^\epoly\left(\Mod_{N^{C_2} A}\left(\Spectra^{C_2}\right) ^\op, \Spectra\right) \to \Fun^\epoly\left(\Mod_{A^e}\left(\Spectra\right),\Spectra\right) $$ classified by $ \mathrm{ev} \circ \left(M \times \mathrm{id}_{\Delta^1}\right) $. 
     Consider the restriction of $ \overline{M}_* $ to $ \CAlgp \times \{0\} $. 
-    Since the restriction of $ M \times \mathrm{id}_{\Delta^1} $ to $ \CAlgp \times \{0\} $ agrees with $ \Mod_{(-)^e} $ by Construction \ref{cons:norm_in_families}, we have that the image of $ \left.\left( M \times \mathrm{id}_{\Delta^1} \right)\right|_{\CAlgp \times \{0\}} $ factors through the inclusion $ \Catex \subseteq \Cat^\epoly $. \Lucy{todo: size issue} 
-    It follows that we may regard $ \overline{M}_*|_{\CAlgp \times \{0\}} $ as having codomain the total space of the cartesian fibration $ \int \Fun^\epoly\left((-)^\op,\Spectra\right) \to \Catex $. 
+    Since the restriction of $ M \times \mathrm{id}_{\Delta^1} $ to $ \CAlgp \times \{0\} $ agrees with $ \Mod_{(-)^e} $ by Construction \ref{cons:norm_in_families}, we have that the image of $ \left.\left( M \times \mathrm{id}_{\Delta^1} \right)\right|_{\CAlgp \times \{0\}} $ factors through the inclusion $ \CAT^{\mathrm{ex}} \subseteq \CAT^\epoly $.  
+    It follows that we may regard $ \overline{M}_*|_{\CAlgp \times \{0\}} $ as having codomain the total space of the cartesian fibration $ \int \Fun^\epoly\left((-)^\op,\Spectra\right) \to \CAT^{\mathrm{ex}} $. 
 
     We claim that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ admits an essentially unique factorization through the cartesian fibration $ \int \Fun^q(-) \to \Catex $. 
-    Since the natural transformation $ \Fun^q(-) \subseteq \Fun^\epoly\left((-)^\op,\Spectra\right) $ of functors $ \Catex \to \Cat $ is given pointwise by full inclusions, the induced map $ \int \Fun^q(-) \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ of cartesian fibrations over $ \Catex $ is a full inclusion by \cite[Proposition 2.4.4.2]{HTT}. 
+    Since the natural transformation $ \Fun^q(-) \subseteq \Fun^\epoly\left((-)^\op,\Spectra\right) $ of functors $ \CAT^{\mathrm{ex}} \subseteq \CAT $ is given pointwise by full inclusions, the induced map $ \int \Fun^q(-) \to \int \Fun^\epoly\left((-)^\op,\Spectra\right) $ of cartesian fibrations over $ \CAT^{\mathrm{ex}} $ is a full inclusion by \cite[Proposition 2.4.4.2]{HTT}. 
     Therefore, to show that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ factors through $ \int \Fun^q(-) $, it suffices to check that $ \overline{M}_*|_{\CAlgp \times \{0\}} $ sends objects of $ \CAlgp $ to objects of $ \int \Fun^q(-) $. 
     This is true because $ \overline{M}_*|_{\CAlgp \times \{0\}}(A,0) = \left(\Mod_{A^e}, \hom_{N^{C_2}A}\left(N^{C_2}(-), A\right)\right) $, $ N^{C_2} \colon \Mod_{A^e} \to \Mod_{N^{C_2}A} $ is quadratic, and a composite of a reduced quadratic functor and an exact functor is reduced and quadratic. \Lucy{reference for last fact?} 
 
@@ -1223,11 +1242,28 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
     \begin{equation}
     \begin{tikzcd}[row sep=small]
         & & \int \Fun^{q}(-) \ar[d] \ar[rd] & \\
-        \CAlgp \times \{0\} \ar[rr,"{\mathrm{ev}_0 \circ M \simeq \Mod_{(-)^e}}"] \ar[rru,bend left=15,"{\left.\overline{M}_*\right|_{\CAlgp \times \{0\}}}"] \ar[d] & & \Catex \ar[rd] & \int \Fun^\epoly\left((-)^\op,\Spectra\right) \ar[d] \\
-        \CAlgp \times \Delta^1 \ar[r,"{M \times \mathrm{id}_{\Delta^1}}"] & \left(\Cat^\epoly\right)^{\Delta^1} \times \Delta^1 \ar[rr,"{\mathrm{ev}}"] & &\Cat^\epoly  \,.
+        \CAlgp \times \{0\} \ar[rr,"{\mathrm{ev}_0 \circ M \simeq \Mod_{(-)^e}}"] \ar[rru,bend left=15,"{\left.\overline{M}_*\right|_{\CAlgp \times \{0\}}}"] \ar[d] & & \CAT^{\mathrm{ex}} \ar[rd] & \int \Fun^\epoly\left((-)^\op,\Spectra\right) \ar[d] \\
+        \CAlgp \times \Delta^1 \ar[r,"{M \times \mathrm{id}_{\Delta^1}}"] & \left(\CAT^\epoly\right)^{\Delta^1} \times \Delta^1 \ar[rr,"{\mathrm{ev}}"] & &\CAT^\epoly  \,.
     \end{tikzcd}
     \end{equation}
-    \Lucyil{Todo: pass to compact/dualizable modules.}
+    Let us write $ \mathrm{ev}_0 \circ M =: M_0 $ and $ \left.\overline{M}_*\right|_{\CAlgp \times \{0\}} =: \overline{M}_{*,0} $. 
+    Now let us observe that there is an equivalence of functors $ M_0 \simeq \Mod_{(-)^e} \simeq \ev_1 \circ \iota^\omega $, where $ \iota^\omega $ is defined in Observation \ref{obs:cpct_modules_to_all_modules}. \Lucy{technically, need to precompose $ \iota^\omega $ forgetful functor from $ \EE_p $-algebras to $ \EE_1 $ algebras.}
+    Now there is a commutative diagram
+    \begin{equation*}
+    \begin{tikzcd}
+        \CAlgp \times \{1\} \simeq \CAlgp \ar[rr,"{\overline{M}_{*,0}}"] \ar[d] & & \int \Fun^{q}(-) \ar[d,"c"] \\
+        \CAlgp \times \Delta^1 \ar[r] & \EE_1\Alg(\Spectra) \times \Delta^1 \ar[r,"{\iota^\omega}"] & \CAT^{\mathrm{ex}} \,.
+    \end{tikzcd}
+    \end{equation*}
+    By the same argument as before, there is a canonical diagonal map $ \widetilde{M}_{*} $ extending $ \overline{M}_{*,0} $ so that $ \widetilde{M}_* $ sends $ (\id_A, 0<1) $ to a $ c $-cartesian arrow. 
+    Observe that the restriction $ \widetilde{M}_*^\omega $ of $ \widetilde{M}_* $ to $ \CAlgp \times \{0\} $ sits in a commutative diagram
+    \begin{equation}\label{diagram:calgp_to_hermitian_cat}
+    \begin{tikzcd}
+        \CAlgp \simeq \CAlgp \times \{0\} \ar[d] \ar[r,"{\widetilde{M}^\omega_*}"] & \int \Fun^{q}(-) \simeq \Cath \ar[d] \\
+        \EE_1\Alg(\Spectra) \ar[r,"{\ev_0 \circ \iota^\omega}"] & \Catex \,.         
+    \end{tikzcd}     
+    \end{equation} 
+    By definition of $ \widetilde{M}_* $ and $ \iota^\omega $, the functor $ \widetilde{M}_{*}^\omega $ sends a Poincaré ring $ A $ to the composite $ \Mod_{A^e}^\omega \subseteq \Mod_{A^e} \xrightarrow{N^{C_2}} \Mod_{N^{C_2}A} \xrightarrow{\hom_{N^{C_2}A}(-,A)} \Spectra $. 
 \end{construction}
 \begin{observation}\label{obs:cpct_modules_to_all_modules}
     Consider the cocartesian fibration $ p \colon \LMod\left(\Spectra\right) \to \EE_1\Alg\left(\Spectra\right) $ \cite[Corollary 4.2.3.7(3)]{LurHA}. 
@@ -1238,11 +1274,21 @@ where the lower arrow is Construction \ref{cons:norm_in_families} and $ \Theta $
     It follows that the restriction $ \overline{p} $ of $ p $ to $ \LMod^\omega\left(\Spectra\right) $ exhibits $ \LMod^\omega\left(\Spectra\right) \to \EE_1\Alg\left(\Spectra\right) $ as a cocartesian fibration, and the inclusion $ \LMod^\omega\left(\Spectra\right) \to \LMod\left(\Spectra\right) $ takes $ \overline{p} $-cocartesian edges to $ p $-cocartesian edges. 
     Unstraightening the inclusion $ \LMod^\omega\left(\Spectra\right) \to \LMod\left(\Spectra\right) $, we obtain a functor 
     \begin{equation*}
-        \EE_1\Alg\left(\Spectra\right) \to \Fun\left(\Delta^1,\Cat_\infty^{\mathrm{st}}\right)
+        \iota^\omega \colon \EE_1\Alg\left(\Spectra\right) \to \Fun\left(\Delta^1,\CAT^{\mathrm{ex}}\right) \qquad \text{ or equivalently } \qquad \EE_1\Alg\left(\Spectra\right) \times \Delta^1 \to \CAT^{\mathrm{ex}}
     \end{equation*}
-    which sends an $ \EE_1 $-algebra $ A $ to the inclusion $ \LMod^\omega_A \to \LMod_A $. 
-    Here $ \Cat_\infty^{\mathrm{st}} $ is the large $ \infty $-category of stable $ \infty $-categories and exact functors between them. 
+    so that the composite $ \ev_0 \circ \iota^\omega $ factors through $ \Catex \subseteq \CAT^{\mathrm{ex}} $. 
+    Informally, $ \iota^\omega $ sends an $ \EE_1 $-algebra $ A $ to the inclusion $ \LMod^\omega_A \to \LMod_A $. 
+    Here $ \CAT^{\mathrm{ex}} $ is the large $ \infty $-category of stable $ \infty $-categories and exact functors between them. 
 \end{observation}
+\begin{definition}
+    (\ref{diagram:calgp_to_hermitian_cat})
+\end{definition}
+\begin{theorem}
+    The functor of (\ref{diagram:calgp_to_hermitian_cat}) factors through the subcategory $ \Catp \subseteq \Cath $. \Lucy{Use that $ \CAlgp $ (or $ \EE_\sigma \Alg $) has an initial object which is sent to $ \left(\Spectra^\omega,\Qoppa^u\right) $, so the image of any $ A \in \CAlgp $ under this functor has a canonical Poincaré object.}
+\end{theorem}
+\begin{proof}
+    \cite[Lemma 3.4.3]{CDHHLMNNSI}
+\end{proof}
 
 \subsection{An operadic description of Poincaré rings}
 We show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings defined diagrammatically. 
