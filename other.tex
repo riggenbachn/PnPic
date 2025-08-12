@@ -29,6 +29,7 @@
 \usepackage{enumerate}
 \usepackage{enumitem}
 %\usepackage{mathrsfs}
+\usepackage{bbm}
 \usepackage{graphicx}
 \usepackage{soul,color}
 \usepackage{tikz-cd}
@@ -1005,7 +1006,7 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
     \begin{equation*}
     \begin{tikzcd}
         & \Mod^h \ar[d] \\
-        \underline{\Alg}_{\EE_p}\left(\underline{\Spectra}^{C_2}\right) \ar[r] \ar[ru] & \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\mathcal{C}\right)          
+        \underline{\Alg}_{\EE_p}\left(\underline{\Spectra}^{C_2}\right) \ar[r] \ar[ru] & \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\Spectra^{C_2}\right)          
     \end{tikzcd}     
     \end{equation*} 
 \end{remark}
@@ -1445,6 +1446,11 @@ in which all triangles and squares commute.
 \begin{remark}
     Definition \ref{defn:gen_alg_inv_param_operad} is equivalent to the $ C_2 $-genuine nerve of the little disks operad $ \EE_\sigma $ associated to the sign $ C_2 $-representation on $ \RR $ \cite[Example 3.9.4]{Horev19}. 
 \end{remark}
+\begin{remark}\label{rmk:E_sigma_operad_unital}
+    The operad $ \underline{\Assoc}_\sigma^\otimes $ is unital in the sense of \cite[Definition 5.2.1]{NS22}. 
+    Let $ \mathcal{C}^\otimes $ be a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category, and write $ \mathbbm{1} $ for the unit. 
+    It follows from Proposition 5.2.8 \emph{ibid.} that there is an equivalence $ \EE_\sigma\Alg\left(\mathcal{C}^\otimes\right) \simeq \EE_\sigma\Alg\left(\mathcal{C}^\otimes\right)_{\mathbbm{1}/-} $. 
+\end{remark}
 \begin{observation}
     Suppose given a finite $ C_2 $-set $ Z $ and an ordering $ \leq_Z $ so that the $ C_2 $-action on $ Z $ sends $ \leq_Z $ to its reverse. 
     We may associate to this a canonical t-ordering on the map $ f \colon Z \to C_2/C_2 $: For each free orbit $ U \subseteq Z $, take the restriction of $ \leq_Z $ to $ U $. 
@@ -1483,17 +1489,18 @@ in which all triangles and squares commute.
     \end{equation*}
 \end{construction}
 \Lucyil{Define Azumaya algebras with involution in terms of algebras over $ \underline{\Assoc}_\sigma^\otimes $ instead? I think it is `better' to use $ \underline{\Assoc}_\sigma^\otimes $ instead of $ \mathcal{HM}^\otimes $. To define a functor from algebras over $ \underline{\Assoc}_\sigma^\otimes $ to Hermitian $ \infty $-categories, we can define a functor from $ \mathcal{LM}^\otimes $ to $ \underline{\Assoc}^\otimes_{\sigma,C_2/C_2} $, then use the same argument as in Construction \ref{cons:module_with_gen_involution_in_families}.} 
-    
-    Choose a $ C_2 $-set $ U = \{u, v \} $ on which $ C_2 $ acts freely and transitively, and fix an ordering $ u \leq v $ on $ U $. 
+\begin{construction}
+    \Lucyil{add argument from Construction \ref{cons:module_with_gen_involution_in_families} when moving to \texttt{main.tex}.}
+    Choose a $ C_2 $-set $ U = \{u, v \} $ on which $ C_2 $ acts freely and transitively, and fix an ordering $ u \leq v $ on $ U $; we will write $ p \colon U \to C_2/C_2 $. 
     Define a functor 
     \begin{equation*}
     \begin{split}
-        \iota_m \colon \mathcal{LM}^\otimes & \to \left(\underline{\Assoc}_\sigma^\otimes\right)_{C_2/C_2} \\
-         \left(\langle n \rangle, S \right) & \mapsto \left((\langle n \rangle^\circ \setminus S) \times U \sqcup S_+ \to C_2/C_2, \ell(i) = \begin{cases}
-             a & i \in (\langle n \rangle^\circ \setminus S) \times U \\
-             m & i \in S 
-         \end{cases} \right) \\
-         \left(\alpha \colon \left(\langle n \rangle, S\right) \to \left(\langle m \rangle, T\right) \right) & \mapsto \left(\left.\alpha\right|_{(\langle n \rangle^\circ \setminus S)} \times \id_U\right) \sqcup \alpha_{S} \,.
+        \iota_m \colon \Delta^1 \times \mathcal{LM}^\otimes & \to \left(\underline{\Assoc}_\sigma^\otimes\right)_{C_2/C_2} \\
+         \left(0, \left(\langle n \rangle, S\right) \right) & \mapsto \left(\langle n \rangle^\circ \times U \to C_2/C_2\right) \\
+         \left(1, \left(\langle n \rangle, S\right) \right) & \mapsto \left((\langle n \rangle^\circ \setminus S) \times U \sqcup S \to C_2/C_2\right) \\
+         \left(\id_0,\alpha \colon \left(\langle n \rangle, S\right) \to \left(\langle m \rangle, T\right) \right) & \mapsto \left(\left.\alpha\right|_{\langle n \rangle} \times \id_U\right)  \\
+         \left(\id_1,\alpha \colon \left(\langle n \rangle, S\right) \to \left(\langle m \rangle, T\right) \right) & \mapsto \left(\left.\alpha\right|_{(\langle n \rangle^\circ \setminus S)} \times \id_U\right) \sqcup \alpha_{S} \\
+         \left(0<1,\id_{\left(\langle n \rangle, S\right)}\right) & \mapsto \left(\left.\id\right|_{(\langle n \rangle^\circ \setminus S)} \right) \sqcup \id_S \times p \,.
     \end{split}
     \end{equation*} 
     To define $ \iota_m $, we must give, for each $ t \in (\langle m \rangle^\circ \setminus T) \times U \sqcup T $, an ordering $ \leq_t $ on $ \iota_m(\alpha)^{-1}(t) $ so that the $ C_2 $-action sends $ \leq_t $ to the reverse of $ \leq_{\sigma(t)} $.  
@@ -1506,6 +1513,28 @@ in which all triangles and squares commute.
             (i,u) \leq s \leq (i, v) \qquad (i,u) \leq (i',u) \qquad (i',v) \leq (i,v) \,.
         \end{equation*}
     \end{itemize}
+    Informally, restriction along $ \iota_m $ induces a functor $ \EE_\sigma\Alg\left(\Spectra^{C_2}\right) \to \Fun\left(\Delta^1, \LMod\left(\Spectra^{C_2}\right)\right) $ which sends an $ \EE_\sigma $-algebra $ A $ to a map $ N^{C_2} A \to A $ of left $ N^{C_2} A $-modules. 
+\end{construction}
+\begin{construction}
+    Define a functor
+    \begin{equation*}
+    \begin{split}
+        f \colon \mathcal{LM}^\otimes & \to \left(\underline{\Assoc}_\sigma^\otimes\right)_{C_2/e} \\
+         \left(\langle n \rangle, S \right) & \mapsto \left(\langle n + k \rangle \times C_2 \to C_2/e \right) \quad \text{ where } n-|S|=k \\
+         \left(\alpha \colon \left(\langle n \rangle, S\right) \to \left(\langle m \rangle, T\right) \right) & \mapsto \begin{pmatrix} f(\alpha) \colon \langle n+k \rangle \times C_2 \to \langle m + \ell \rangle \times C_2 \\
+         (p,\gamma) \mapsto \begin{cases}
+             (\alpha(p),\gamma) & \text{ if } p \leq n \\
+             (\alpha (i),\gamma) & \text{ if } p = n+i, \alpha(i) \in T \\
+             (m+i',\sigma\gamma) & \text{ if } p = n+i, \alpha(i) = i'_{j'}
+         \end{cases}\end{pmatrix} 
+    \end{split}
+    \end{equation*} 
+    where we write $ \gamma $ for a generic element of $ C_2 $ and $ \sigma \in C_2 $ for the generator. 
+    To define $ f(\alpha) $, we must give, for each $ (j,e) \in \langle m + \ell \rangle \times C_2 $, an ordering $ \leq_{j,e} $ on $ f(\alpha)^{-1}(j,e) $ so that the $ C_2 $-action sends $ \leq_{j,e} $ to the reverse of $ \leq_{j,\sigma} $. 
+    We endow $ f(\alpha)^{-1}(j,e) $ with an ordering via the equivalence $ f(\alpha)^{-1}(j,e) \subseteq \alpha^{-1}(j) \times C_2 \xrightarrow{\pi_1} \alpha^{-1}(j) $. 
+
+    Restriction along $ f $ defines a functor $ \EE_\sigma\Alg\left(\Spectra^{C_2}\right) \to \LMod\left(\Spectra\right) $; informally, this sends an $ \EE_\sigma $-algebra $ A $ to its underlying spectrum $ A^e $, regarded as an $ A^e \otimes A^{e,\op} $-bimodule (compare \cite[Construction 4.6.3.7]{LurHA}). 
+\end{construction}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}
