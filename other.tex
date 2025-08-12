@@ -1093,14 +1093,23 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
     Recall that by \cite[Proposition 2.8.7(1)]{NS22}, there is an equivalence $ \Modh\left(\underline{\Spectra}^{C_2}\right) \simeq \Fun^\otimes_{C_2}\left(\mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes), \left(\underline{\Spectra}^{C_2}\right)^\otimes\right) $. 
 
     Choose a $ C_2 $-set $ U $ on which $ C_2 $ acts freely and transitively, and fix an ordering $ \leq $ on $ U $. 
-    Define a functor from $ \mathcal{LM}^\otimes $ into the fiber of $ \mathcal{HM}^\otimes $ over $ C_2/C_2 $
+    Define a functor 
     \begin{equation*}
-         \left(\langle n \rangle, S \right) \mapsto \left((\langle n \rangle^\circ \setminus S) \times U \sqcup S_+ \to C_2/C_2, \ell(i) = \begin{cases}
+    \begin{split}
+        \iota_m \colon \mathcal{LM}^\otimes & \to \left(\mathcal{HM}^\otimes\right)_{C_2/C_2} \\
+         \left(\langle n \rangle, S \right) & \mapsto \left((\langle n \rangle^\circ \setminus S) \times U \sqcup S_+ \to C_2/C_2, \ell(i) = \begin{cases}
              a & i \in (\langle n \rangle^\circ \setminus S) \times U \\
              m & i \in S 
-         \end{cases} \right)
-     \end{equation*} 
-    \Lucy{explain how the ordering on $ U $ is used to define the map!}
+         \end{cases} \right) \\
+         \left(\alpha \colon \left(\langle n \rangle, S\right) \to \left(\langle m \rangle, T\right) \right) & \mapsto \left(\left.\alpha\right|_{(\langle n \rangle^\circ \setminus S)} \times \id_U\right) \sqcup \alpha_{S} 
+    \end{split}
+    \end{equation*} 
+    where $ \left(\mathcal{HM}^\otimes\right)_{C_2/C_2} $ denotes the fiber of $ \mathcal{HM}^\otimes $ over $ C_2/C_2 $. 
+    To define $ \iota_m $, we must give a t-ordering on $ \iota_m(\alpha) $ and, for all orbits $ Z \subseteq (\langle m \rangle^\circ \setminus T) \times U \sqcup T $, an ordering on the orbits in the preimage $ \iota_m(\alpha)^{-1}(Z) $. 
+    If $ Z \simeq \{j\} \times U \subseteq (\langle m \rangle^\circ \setminus T) \times U $ or $ Z = \{j\} \subseteq T $, then there is a canonical bijection from the orbits in $ \iota_m(\alpha)^{-1}(Z) $ and $ \alpha^{-1}(j) $; the given ordering on $ \alpha^{-1}(j) $ induces an ordering on the orbits of $ \iota_m(\alpha)^{-1}(Z) $. 
+    If $ Z = \{t\} \subseteq T $, then we use the given ordering on $ U $ to endow $ \iota_m(\alpha) $ with a t-ordering. 
+    % \Lucy{explain how the ordering on $ U $ is used to define the map!}
+
     Now recall that $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(\mathcal{HM}^\otimes) \simeq \mathcal{HM}^\otimes \times_{\underline{\Fin}_{C_2,*}} Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $ \cite[Definition 2.8.4]{NS22}. 
     Notice that the fiber of $ \underline{\Fin}_{C_2,*} $ over $ C_2/C_2 $ has a final object given by the identity arrow at $ [C_2/C_2 = C_2/C_2] $ and for every object $ [U \to C_2/C_2] $ in $ \underline{\Fin}_{C_2,*} $, the unique arrow from $ [U \to C_2/C_2] $ to $ [C_2/C_2 \to C_2/C_2] $, hence the composite $ \mathcal{LM}^\otimes \to \mathcal{HM}^\otimes_{C_2/C_2} \to \left(\underline{\Fin}_{C_2,*}\right)_{C_2/C_2} $ lifts to $ \mathcal{LM}^\otimes \to \mathcal{HM}^\otimes_{C_2/C_2} \to \left(\underline{\Fin}_{C_2,*}\right)_{C_2/C_2/[\mathrm{id}_{C_2/C_2}]} \to Ar^{\mathrm{act}}(\underline{\Fin}_{C_2,*}) $. 
     This defines a functor \Lucy{observe that $ r $ sends inert maps to inert maps? What does it mean for a morphism to be inert in $ \mathrm{Env}_{\underline{\Fin}_{C_2,*}}(-) $?}
@@ -1459,7 +1468,7 @@ in which all triangles and squares commute.
     \begin{equation}
     \begin{tikzcd}
         \Assoc^\otimes \ar[d,"{\mathrm{rev}}"] \ar[r,"{\iota_e}"] & \underline{\Assoc}^\otimes_{\sigma, C_2/e} \ar[d,"{\sigma^*}"] \\
-        \Assoc^\otimes \ar[r,"{\iota_\sigma}"] & \underline{\Assoc}^\otimes_{\sigma, C_2/e}
+        \Assoc^\otimes \ar[r,"{\iota_e}"] \ar[ru,"{\iota_\sigma}"] & \underline{\Assoc}^\otimes_{\sigma, C_2/e}
     \end{tikzcd}
     \end{equation} 
     where $ \mathrm{rev} $ is the automorphism considered in \cite[Remark 4.1.1.7]{LurHA} and $ \sigma^* $ is the cocartesian pushforward along the nontrivial automorphism of $ C_2/e $ in $ \mathcal{O}_{C_2}^\op $. 
@@ -1473,7 +1482,30 @@ in which all triangles and squares commute.
     \end{tikzcd}
     \end{equation*}
 \end{construction}
-\Lucyil{Define Azumaya algebras with involution in terms of algebras over $ \underline{\Assoc}_\sigma^\otimes $ instead? I think it is `better' to use $ \underline{\Assoc}_\sigma^\otimes $ instead of $ \mathcal{HM}^\otimes $. To define a functor from algebras over $ \underline{\Assoc}_\sigma^\otimes $ to Hermitian $ \infty $-categories, we can define a functor from $ \mathcal{LM}^\otimes $ to $ \underline{\Assoc}^\otimes_{\sigma,C_2/C_2} $, then use the same argument as in Construction \ref{cons:module_with_gen_involution_in_families}.}
+\Lucyil{Define Azumaya algebras with involution in terms of algebras over $ \underline{\Assoc}_\sigma^\otimes $ instead? I think it is `better' to use $ \underline{\Assoc}_\sigma^\otimes $ instead of $ \mathcal{HM}^\otimes $. To define a functor from algebras over $ \underline{\Assoc}_\sigma^\otimes $ to Hermitian $ \infty $-categories, we can define a functor from $ \mathcal{LM}^\otimes $ to $ \underline{\Assoc}^\otimes_{\sigma,C_2/C_2} $, then use the same argument as in Construction \ref{cons:module_with_gen_involution_in_families}.} 
+    
+    Choose a $ C_2 $-set $ U = \{u, v \} $ on which $ C_2 $ acts freely and transitively, and fix an ordering $ u \leq v $ on $ U $. 
+    Define a functor 
+    \begin{equation*}
+    \begin{split}
+        \iota_m \colon \mathcal{LM}^\otimes & \to \left(\underline{\Assoc}_\sigma^\otimes\right)_{C_2/C_2} \\
+         \left(\langle n \rangle, S \right) & \mapsto \left((\langle n \rangle^\circ \setminus S) \times U \sqcup S_+ \to C_2/C_2, \ell(i) = \begin{cases}
+             a & i \in (\langle n \rangle^\circ \setminus S) \times U \\
+             m & i \in S 
+         \end{cases} \right) \\
+         \left(\alpha \colon \left(\langle n \rangle, S\right) \to \left(\langle m \rangle, T\right) \right) & \mapsto \left(\left.\alpha\right|_{(\langle n \rangle^\circ \setminus S)} \times \id_U\right) \sqcup \alpha_{S} \,.
+    \end{split}
+    \end{equation*} 
+    To define $ \iota_m $, we must give, for each $ t \in (\langle m \rangle^\circ \setminus T) \times U \sqcup T $, an ordering $ \leq_t $ on $ \iota_m(\alpha)^{-1}(t) $ so that the $ C_2 $-action sends $ \leq_t $ to the reverse of $ \leq_{\sigma(t)} $.  
+    There are three cases
+    \begin{itemize}
+        \item If $ t = (j, u) $, endow $ \iota_m(\alpha)^{-1}(t) $ with the ordering induced by the canonical isomorphism $ \iota_m(\alpha)^{-1}(t) \simeq \alpha^{-1}(t) $ 
+        \item If $ t = (j,v) $, endow $ \iota_m(\alpha)^{-1}(t) $ with the reverse of the ordering induced by the canonical isomorphism $ \iota_m(\alpha)^{-1}(t) \simeq \alpha^{-1}(t) $. 
+        \item If $ t \in T $, endow $ \iota_m(\alpha)^{-1}(t) $ with the ordering so that if $ i, i' \notin S, s \in S $ and $ \alpha(i)=\alpha(i') = \alpha(s) = t $ and $ i \leq i' $, then
+        \begin{equation*}
+            (i,u) \leq s \leq (i, v) \qquad (i,u) \leq (i',u) \qquad (i',v) \leq (i,v) \,.
+        \end{equation*}
+    \end{itemize}
 
 \section{Comparing involutive classical Brauer and involutive higher Brauer}
 \begin{question}
@@ -1643,18 +1675,18 @@ Here are some thoughts towards showing that the canonical map $ \colim_{[a,b]} \
    \end{itemize}
    Write $ \mathbb{E}_1\mathrm{Alg}^{\mathrm{gi}}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_1$-algebras with genuine involution. 
 \end{definition}
-\begin{definition}
-   The category of \emph{$\mathbb{E}_\sigma$-algebras} is defined to be the limit of the $\Cat_\infty$-valued diagram 
-   \begin{equation}\label{diagram:E_sigma_alg}
-   \begin{tikzcd}[column sep=small]
-       & \BiMod(\Spectra)_{*/-} \ar[dd,"{a,m}"]  & \\
-       & & \BiMod\left(\Spectra^{C_2}\right)_{*/-} \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
-       &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
-       \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b_* \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
-   \end{tikzcd}\,.
-   \end{equation}   
-   Write $ \mathbb{E}_\sigma\mathrm{Alg}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_\sigma$-algebras. 
-\end{definition}
+% \begin{definition}
+%    The category of \emph{$\mathbb{E}_\sigma$-algebras} is defined to be the limit of the $\Cat_\infty$-valued diagram 
+%    \begin{equation}\label{diagram:E_sigma_alg}
+%    \begin{tikzcd}[column sep=small]
+%        & \BiMod(\Spectra)_{*/-} \ar[dd,"{a,m}"]  & \\
+%        & & \BiMod\left(\Spectra^{C_2}\right)_{*/-} \ar[dd,"{a, m}"] \ar[lu,"{(-)^e}"'] \\
+%        &\mathbb{E}_1\mathrm{Alg}(\Spectra) \times \Spectra & \\
+%        \mathbb{E}_1\mathrm{Alg}\left(\Spectra\right)^{hC_2} \times_{\Spectra} \Spectra^{\Delta^1}  \ar[rr,"{N^{C_2}(-^e) \times U}"'] \ar[ru,"{(-^e) \otimes(-^ e)^\mathrm{op}, (-)^e}"] \ar[ruuu,"{b_* \circ (-^e)}", bend left=30] & &\mathbb{E}_1\mathrm{Alg}\left(\Spectra^{C_2}\right) \times \Spectra^{C_2} \ar[lu,"{(-)^e \times (-)^e}"]
+%    \end{tikzcd}\,.
+%    \end{equation}   
+%    Write $ \mathbb{E}_\sigma\mathrm{Alg}\left(\Spectra^{C_2}\right) $ for the $\infty $-category of $\mathbb{E}_\sigma$-algebras. 
+% \end{definition}
 \begin{variant}
    Let the base be $ R $ an $ \mathbb{E}_\infty $-algebra or Poincaré ring instead of $ \mathbb{S}^0 $. 
 \end{variant}
