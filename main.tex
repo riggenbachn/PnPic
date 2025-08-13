@@ -890,25 +890,25 @@ In the usual Picard spectrum one has the relationship $\pic = \ZZ \times B\mathb
 Equivalently, $\mathbb{G}_m$ is the affine group scheme given by $\mathbb{G}_m=\mathrm{Sp}\textrm{\'et}(\mathbb{S}\{x^{\pm 1}\})$, where $\mathbb{S}\{x^{\pm 1}\}$ is the free $\mathbb{E}_\infty$ ring on the $\mathbb{E}_\infty$ space $\mathbb{Z}$. This relationship between $\pic$ and $\mathbb{G}_m$ has many important applications, for example relating the higher homotopy groups of $\pic(A)$ with those of $A$. 
 We will spend the rest of this section on establishing such an equivalence in the Poincar\'e setting. 
 We begin by defining an analogue of the multiplicative group/units for Poincaré rings. 
-\begin{construction}~\label{const: gmq} [Units of Poincaré rings] \Lucy{workshop the name...`hermitian/Poincaré/involutive units'?}
-	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincaré ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$. 
-    This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structure given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
-	
-	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a module over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$. 
-    \Lucy{later: different notation for the functor $ \gmq $ versus its [Poincaré] ring of functions.}
-\end{construction}
-
 \begin{definition}
     Let $X$ be a Borel $C_2$ spectrum. We let $\mathbb{S}\{X\}$ denote the free $\mathbb{E}_\infty$ ring on the spectrum $X$. In the case of $X=\mathbb{S}[C_2]$, we will also denote $\mathbb{S}\{\mathbb{S}[C_2]\}=\mathbb{S}\{x,y\}$ for brevity. 
 \end{definition}
+\begin{construction}~\label{const: gmq} [Units of Poincaré rings] \Lucy{workshop the name...`hermitian/Poincaré/involutive units'?}
+%	The underlying $\mathbb{E}_\infty$ ring of $\gmq$ will again be $\mathbb{S}\{x^{\pm 1}\}$, but in order to promote this ring to a Poincaré ring it will be helpful to write it as \[\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}\otimes_{\mathbb{S}\{z^{\pm 1}\}}\mathbb{S}\] where the map $\mathbb{S}\{z^{\pm 1}\}\to \mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}$ is induced by $z\mapsto xy$. 
+%    This ring naturally lifts to a Borel $C_2$-ring given by $C_2$ swaps $x$ and $y$ and does nothing to $z$. Now take $\gmq$ to be the Poincar{\'e} ring with underlying Borel $C_2$ structure as described above and geometric fixed points $(\gmq)^{\phi C_2}=\mathbb{S}$ and the map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ given by the unit map. Endowing $(\gmq)^{\phi C_2}$ with the $\gmq$-module structure given by $x,y\mapsto 1$, it remains to show that the unit map $(\gmq)^{\phi C_2}\to (\gmq)^{tC_2}$ factors the Tate valued Frobenius $\gmq\to (\gmq)^{tC_2}$ in order to promote $\gmq$ to a Poincar{\'e} ring.
+	
+%	By construction of $\gmq$ this amounts to showing that on $\pi_0$ the Tate valued Frobenius sends $x,y\mapsto 1$ in $\pi_0((\gmq)^{tC_2})$. This map sends both $x$ and $y$ to $xy\in \pi_0((\gmq)^{tC_2})$. These are equal to $1$ in $\pi_0((\gmq)^{tC_2})$ since the functor $(-)^{tC_2}$ is lax-monoidal so $(\gmq)^{tC_2}$ is a module over $\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}^{tC_2}\otimes_{\mathbb{S}\{z\}^{tC_2}}\mathbb{S}^{tC_2}$ which has the image of $xy$ equal to $1$. 
+    Consider the Tate Poincar{\'e} ring $\mathbb{S}\{x,y\}^t$. Let $R_\Qoppa$ denote the Poincar{\'e} ring which corepresents the functor sending a Poincar{\'e} ring $(S,S^{\phi C_2}\to S^{tC_2})$ to the space $\Omega^\infty S^{C_2}$. Note that both maps $\mathbb{S}\{x,y\}\to \mathbb{S}\{x,y\}^{tC_2}$ send both $x$ and $y$ to $0$ since both maps factor through the colimit comparison map \[\mathbb{S}\simeq \bigoplus_{n\geq 0}(\mathbb{S}[C_2]^{\otimes n}_{h\Sigma_n})^{tC_2}\to \left(\bigoplus_{n\geq 0}\mathbb{S}[C_2]^{\otimes n}_{h\Sigma_n}\right)^{tC_2}\simeq \mathbb{S}\{x,y\}^{tC_2}\] and therefore the element $xy$ lifts to an element of $\pi_0(\mathbb{S}\{x,y\}^{C_2})$. Thus we get a map of Poincar{\'e} rings $R_\Qoppa\to \mathbb{S}\{x,y\}$. Similarly there is a map of Poincar{\'e} rings $R_\Qoppa\to \mathbb{S}^u$ given by $1\in \pi_0(\mathbb{S}^{C_2})$. We then define \[\mathbb{G}_m^\Qoppa := \mathbb{S}\{x,y\}^t \otimes_{R_\Qoppa}\mathbb{S}^u\] where the tensor product is taken in Poincar{\'e} rings.
+    \Lucy{later: different notation for the functor $ \gmq $ versus its [Poincaré] ring of functions.}
+\end{construction}
 \begin{remark}\label{remark:Poincare_units_fiber_sequence}
-    The pushout description of $\gmq$ induces a pullback of mapping spaces \Lucy{define $ \gmq $ in terms of left adjoint $ \sphere[-] $ in Lemma \ref{lemma:pointwise_units_has_left_adjoint}? Use the latter to show that $ \gmq $ takes values in connective spectra!}
+    The pushout description of $\gmq$ induces a pullback of mapping spaces
     \[
     \begin{tikzcd}
-        \gmq(A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlgp}(\mathbb{S}\{x^{\pm 1}, y^{\pm 1}\}, A)\simeq \mathrm{gl}_1(A^e)\ar[d]\\
-        * \ar[r] & \mathrm{Maps}_{\CAlgp}(\mathbb{S}\{z\},A)\simeq \Omega^\infty\Qoppa_A(A) 
-    \end{tikzcd}\,.
-    \] 
+        \gmq(A) \ar[d] \ar[r] & \mathrm{Maps}_{\CAlgp}(\mathbb{S}\{x, y\}^t, A)\simeq \Omega^\infty A^e\ar[d]\\
+        1 \ar[r] & \mathrm{Maps}_{\CAlgp}(R_\Qoppa,A)\simeq \Omega^\infty\Qoppa_A(A) 
+    \end{tikzcd}
+    \] where the right vertical map is given by taking the norm.
 \end{remark}
 \begin{theorem}\label{theorem:loops_Poincare_pic_is_Gm_Qoppa}
 	There is a natural equivalence of \[\Omega \Picp(-)\simeq \gmq\] of functors on Poincar{\'e} rings.
@@ -927,17 +927,24 @@ We begin by defining an analogue of the multiplicative group/units for Poincaré
     % In other words, an automorphism $(A,u)\to (A,u)$ is the data of an automorphism $a\in \mathrm{Aut}(A)$ together with a path $q $ from $ u $ to $ a^*u$ in $\Omega^{\infty}\Qoppa_A(A)$.  
 	
 	% There is a natural transformation $\gmq(-)\to \Omega\Picp(-)$ given as follows: we get a map $\gmq(A)\to \mathrm{Aut}_A(A)$ given by forgetting the Poincar{\'e} structure everywhere. 
-    We now define a natural transformation $\gmq(-)\to \Omega\Picp(-)$. 
-    By Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:units_have_unit_norm}, there is a commutative diagram 
-    \begin{equation}\label{diagram:units_to_loops_pnpic_map_of_fib_seq}
-    \begin{tikzcd}[row sep=tiny,column sep=large]
-        \mathrm{gl}_1(A^e) \ar[r] \ar[d] & \mathrm{gl_1}\left((A^{L})^{C_2}\right) \ar[d,equals] \ar[r] & \Omega^\infty \Qoppa_A(A) \\ %\ar[d,equals] \\
-        \mathrm{Aut}_A(A) \ar[r,"{f \mapsto f^*(u)}"] & \mathrm{gl_1}\left((A^{L})^{C_2}\right) %\Omega^\infty \Qoppa_A(A)
+    We now define a natural transformation $\Omega \Picp(-)\to \gmq(-)$. Let $i:\mathrm{gl}_1(-^e)\to \Omega^\infty (-)^e$ denote the natural inclusion map. There is then an commutative diagram
+    \[
+    \begin{tikzcd}
+        \Omega \Picp(-) \ar[rr] \ar[dd] \ar[rd] & & \mathrm{gl}_1(-^e) \ar[dd] \ar[rd, "i"] & &  \\
+         & \gmq(-) \ar[rr] \ar[dd] & & \Omega^{\infty}(-)^e  \ar[dd] & \\
+         1 \ar[rd,"="] \ar[rr]  & & \Omega^\infty (-)^{C_2} \ar[rd, "="] &  \\
+         & 1 \ar[rr] & & \Omega^\infty (-)^{C_2} 
     \end{tikzcd}
-    \end{equation}
-    where the upper horizontal arrow is from Remark \ref{remark:Poincare_units_fiber_sequence}. 
-    Now observe that the left vertical arrow in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) is an equivalence. 
-    The result follows from taking fibers over $ u $ in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) and comparing (\ref{eq:loops_pnpic_fiber_sequence}) with Remark \ref{remark:Poincare_units_fiber_sequence} and Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:poincare_units_fib_seq}. \Lucy{Are Remark \ref{remark:Poincare_units_fiber_sequence} and Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:poincare_units_fib_seq} slightly redundant?}
+    \] and hence a natural transformation $\Omega \Picp(-)\to \gmq(-)$. To show that this map is an equivalence it is then enough to show that any $x\in \pi_0(A^e)$ such that $N^{C_2}x=x\sigma(x)=1$ in $\pi_0(A^{C_2})$ is a unit. Note that we then have that $x\sigma(x)=1$ in $\pi_0(A^e)$ after applying the inclusion map $A^{C_2}\to A^e$, hence $x$ is invertible as desired. 
+    %By Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:units_have_unit_norm}, there is a commutative diagram  \begin{equation}\label{diagram:units_to_loops_pnpic_map_of_fib_seq}
+    %\begin{tikzcd}[row sep=tiny,column sep=large]
+    %    \mathrm{gl}_1(A^e) \ar[r] \ar[d] & \mathrm{gl_1}\left((A^{L})^{C_2}\right) \ar[d,equals] \ar[r] & \Omega^\infty \Qoppa_A(A) \\ %\ar[d,equals] \\
+    %    \mathrm{Aut}_A(A) \ar[r,"{f \mapsto f^*(u)}"] & \mathrm{gl_1}\left((A^{L})^{C_2}\right) %\Omega^\infty \Qoppa_A(A)
+    %\end{tikzcd}
+    %\end{equation}
+    %where the upper horizontal arrow is from Remark \ref{remark:Poincare_units_fiber_sequence}. 
+    %Now observe that the left vertical arrow in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) is an equivalence. 
+    %The result follows from taking fibers over $ u $ in (\ref{diagram:units_to_loops_pnpic_map_of_fib_seq}) and comparing (\ref{eq:loops_pnpic_fiber_sequence}) with Remark \ref{remark:Poincare_units_fiber_sequence} and Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:poincare_units_fib_seq}. \Lucy{Are Remark \ref{remark:Poincare_units_fiber_sequence} and Lemma \ref{lemma:unit_trivial_norm}\ref{lemma_item:poincare_units_fib_seq} slightly redundant?}
     % --------------------------------------------------------
     % It is enough to see that on $\pi_0$ the automorphisms of $A$ coming from $\gmq$ preserve $u$. 
     % By using the linear and quadratic decomposition of $\Qoppa_A$, for an element $a\in \pi_0(A)^\times$ send $u$ to $u$ is must be sent to $1\in \pi_0(A^{\phi C_2})$ and must act by $1$ on $A^{hC_2}$. 
