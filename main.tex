@@ -344,7 +344,7 @@ We will now specify the objects which we are able to take the Poincar{\'e} Picar
     % A ring spectrum equipped with a Poincaré structure will be called a \emph{Poincaré ring spectrum}. 
 \end{definition}
 
-We will denote objects of $\CAlgp$ by $\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. 
+We will denote objects of $\CAlgp$ by \Noah{Change the notation $A^{\Phi C_2}$ to something else to make it more understandlable to people who don't know genuine homotopy theory? Change underline of A notation?}$\underline{A}=(A,s:A^{\Phi C_2}\to A^{tC_2})$. 
 Here $ s:A^{\Phi C_2}\to A^{tC_2}$ is the image of $\underline{A}$ under the top horizontal map above. 
 The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare_ring_geom_fixpt}. 
 \begin{remark}\label{rmk:Poincare_ring_has_underlying_C2_spectrum_alg}
@@ -601,6 +601,7 @@ The use of the notation $A^{\Phi C_2}$ is justified by Lemma \ref{lemma:Poincare
 
     An analogous description holds for colimits in $ \CAlgp $; we leave the details to the reader. 
 \end{remark}
+\Noah{Keep everything up to and including the above remark. Add in the identification of the adjoints of $\CAlgp\to \CAlg^{BC_2}$. Delete the last two things in this subsection.}
 \begin{definition}\label{defn:Poincare_ring_pointwise_units}
     Define a functor $ (-)^u \colon \CAlgp \to \Fun\left(\mathcal{O}_{C_2}^\op,\Spectra_{\geq 0}\right) $ by taking units `pointwise,' i.e. $ (-)^u $ sends a Poincaré ring $ (R,R^{\varphi C_2} \to R^{tC_2}) $ to the diagram $ \mathrm{gl}_1(R^{C_2}) \to \mathrm{gl}_1(R^e) $. \Lucyil{Is this the `right' codomain for $ \mathrm{gl}_1 $/units of Poincaré rings? There \emph{is} a `transfer' $ \mathrm{gl}_1(R^{e}) \to \mathrm{gl}_1(R^{C_2}) $, it's just not guaranteed to be $ C_2 $-equivariant (where the target has the trivial $ C_2 $-action)} 
 \end{definition}
@@ -818,8 +819,15 @@ There is a functor
     Compare the description of the space of bilinear forms in Lemma \ref{lemma:bilinear_parts_agree} with the description of a $ \delta $-hermitian form $ H $ in \cite[p. 216]{MR1162189}. 
 \end{remark}
 
+\Noah{Missing: Examples. Geometric fixed points supported on the ramification locus?}
+
 \section{The Poincaré Picard space}
 \label{section:the_poincare_picard_group}
+\Noah{Decide on the notation for pnpin/picp/pnbr/brp, and also fix the difference between the group and the space(Looking at you Noah.).}
+
+\Noah{Include and introduction to section 4.}
+
+\Noah{Restructure 4, do the discrete case first, then do the poincar{\'e} ring case? Do some restructuring?}
 
 \subsection{Invertible Poincaré objects and units in Poincaré rings}
 Recall that the Poincaré space functor $ \Pn \colon \Catp \to \CAlg(\Spaces) $ is lax symmetric monoidal with respect to tensor product of Poincaré $ \infty $-categories and smash product of $ \Einfty $-spaces \cite[Corollary 5.2.8]{CDHHLMNNSI}. In particular, we can consider invertible objects in $\Pn(A)$ for a Poincaré ring spectrum $A$.
@@ -982,7 +990,7 @@ We begin by defining an analogue of the multiplicative group/units for Poincaré
 	% The only if direction follows from the fact that the evaluation map $\mathrm{Hom}_{A\otimes A}(A\otimes A, A)\to A$ is an $A\otimes A$-module map. Now suppose that $a\sigma(a)=1$ in  $A$. Then before taking homotopy fixed points the induced map $a^*=id$ because $A$ is $\mathbb{E}_\infty$.\footnote{Or just $\mathbb{E}_2$.} 
 \end{proof}
 
-\subsection{prime factorization and the picard group of hearts}\Viktor{still in development}
+\subsection{prime factorization and the picard group of hearts}\Viktor{still in development}\Noah{Need to remove the parts of this that need removal.}
 We establish a Poincaré analogue of Fausk's result which describes the picard group of the derived category of a scheme $X$ in terms of connected components of $X$ and the classical picard group of $X$.
 
 Let $X$ be a simplicial set. The set $\pi_0(X)$ is the set of connected compoents of $X$, i.e. simplicial subsets which are connected and form $X$ via a coproduct. In other words, the functor $\pi_0$ records a unique and maximal decomposition of $X$ into coproducts. To establish the the result mentioned above, we study the dual analogue of connected components in the sense of a maximal decomposition of $X$ into products. %Later on, we will generalize this to arbitrary symmetric monoidal structures in a given $\infty$-category.
@@ -1292,10 +1300,11 @@ An invertible $R$-module $I$ is an element of $\text{Pic}(R)^{-\sigma}$ if and o
 
     Thus, $ g \mapsto (\Phi(g), q_g) $ defines a splitting of $ \Psi $ which agrees with the splitting constructed in \cite[Theorem 3.5]{MR1966659} on underlying objects. 
 \end{proof}
+\Noah{To do: add in the case of schemes with good quotient.}
 
 %\include{poincare_from_rigid}
-\Noah{I'm commenting out section 5 since we do not yet have an application for it. Feel free to put it back in if you want.}
 \section{The Poincaré Brauer Group}
+\Noah{Add a brief section reviewing the involuative brauer group of Paramla-Srinivas.}
 \label{section:the_poincare_brauer_group}
 In this section, we will define and study derived analogues of the involutive Brauer group. % for Poincaré ring spectra. 
 In \S\ref{subsection:invertible_relative_Poincare_cats}, we define the involutive Brauer group in terms of invertible Poincaré $ \infty $-categories and compute it in a handful of examples. 
@@ -1304,9 +1313,10 @@ Our definition will use the formalism of relative Poincaré $ \infty $-categorie
 \Lucy{revisit organization, then add exposition}
 
 \subsection{Generalities on \texorpdfstring{$R$}{R}-linear Poincar\'e \texorpdfstring{$\infty$}{∞}-categories}\label{subsection:relative_Poincare_cats_generalities}
+\Noah{Move this subsection to section 3.}
 Let $A$ be a Poincaré ring spectrum. 
 By Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}, $ \left(\Mod_A^\omega,\Qoppa_A\right) $ promotes to a commutative algebra object in the $\infty$-category of Poincaré $\infty$-categories $ \Catp $, and we may thus consider modules over it, or \emph{$A$-linear Poincaré $ \infty $-categories}. 
-\begin{proposition}\label{prop:relative_poincare_cats_basic_properties}
+\begin{proposition}\label{prop:relative_poincare_cats_basic_properties}\Noah{Reorgonize this to be more readible.}
     Let $ (R, C \to R^{tC_2})$ be a Poincaré ring spectrum and write $ (\Mod_R^\omega, \Qoppa_R) $ for the Poincaré $ \infty $-category of Remark \ref{remark:poincare_ring_spectra_to_modules_with_Poincare_structure}. 
     \begin{enumerate}[label=(\arabic*)]
         \item \label{propitem:Rlin_Poincare_cats_is_symm_mon} The $ \infty $-category $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) $ admits all small limits and colimits, and it inherits a canonical symmetric monoidal structure, and for every morphism $ \left(R, R^{\varphi C_2} \to R^{tC_2}\right) \to (S, S^{\varphi C_2} \to S^{tC_2}) $, the functor $ \Mod_{\left(\Mod_R^\omega, \Qoppa_R \right)}(\Catpidem) \to \Mod_{\left(\Mod_S^\omega, \Qoppa_S \right)}(\Catpidem) $ is a symmetric monoidal left adjoint. 
@@ -1706,8 +1716,10 @@ Now the natural equivalence $ \eta $ classifies an equivalence $ A^L \simeq \hom
     On the other hand, $ \pi_1 \mathrm{br}(k \times k) \simeq \pi_0 \Pic(k \times k) \simeq \ZZ^{\times 2} $ and the connecting homomorphism is $ (n, m) \mapsto n+m $, whence $ \pi_0\pnbr\left(\prod_{C_2} k\right) = 0 $. 
 \end{example}
 
-\subsection{The Parimala-Srinivas fiber sequence}
+\Noah{Add KR example if doable (Noah)}
 
+\subsection{The Parimala-Srinivas fiber sequence}
+\Noah{Change the notation for the norm map on pic.}
 It would be helpful to extend the fiber sequence of Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} to the right, both in order to use Poincar{\'e} Brauer groups to compute ordinary Brauer groups and to get a comparison to the involutive Brauer group of \cite{MR1162189}. We will first show that the fiber sequence we have already constructed in Corollary~\ref{cor:Poincare_Brauer_to_Brauer_fiber} does in fact recover the first half of the long exact sequence constructed in \cite[Theorem 2]{MR1162189}.
 
 \begin{lemma}
@@ -1758,11 +1770,11 @@ Writing this out for $A$ a discrete ring with $\frac{1}{2}\in A$, we have a fibe
     \begin{proof}
         All the remains to show is the identification of $\mathrm{Mod}_{(\mathrm{Mod}_{A^e}^\omega)^{hC_2}}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})\simeq \mathrm{Mod}_{\mathrm{Mod}_{A^{hC_2}}^\omega}(\mathrm{Cat}^{st}_{\infty,\textrm{idem}})$, which follows from the monoidal equivalence $(\mathrm{Mod}_{A^e}^{\omega})^{hC_2}\simeq \mathrm{Mod}_{A^{hC_2}}^\omega$, and the fact that under this equivalence an Azumaya algebra over $B$ is sent to $(B\otimes_A\sigma^*B)^{C_2}$ which is exactly the cohomological transfer map (see \cite[Example 6.2.3]{azumaya_involution}). \Lucy{Definition 6.2?}
     \end{proof}
-
+\Noah{Write up the correct version of this construction and the necessary things to prove in the other document.}
     \begin{construction}
         Let $A$ denote a Poincar{\'e} ring with underlying genuine $C_2$ ring $A^L$. Denote by $\mathrm{Mod}_{A^L}$ the symmetric monoidal category $\mathrm{Mod}_{A^L}(\mathrm{Sp}^{C_2})$. There is then a symmetric-monoidal functor \[N^{C_2}_{A^L}:\mathrm{Mod}_{A^e}(\mathrm{Sp})\to \mathrm{Mod}_{A^L}\] given by taking the relative norm. Define the \textit{categorical norm} to be the functor \[N^{C_2}_{A^L}:\mathrm{Mod}_{\mathrm{Mod}_{A^e}^\omega}(\mathrm{Cat}_{st,idem}^\infty)\to \mathrm{Mod}_{\mathrm{Mod}_{A^L}^\omega}(\mathrm{Cat}_{st,idem}^\infty)\] by $N^{C_2}_{A^L}\mathcal{C}:=\mathcal{C}^{\op}\otimes_{\mathrm{Mod}_{A^e}}\mathrm{Mod}_{A^L}$. Base-change is symmetric monoidal and therefore we get an induced map $\mathrm{br}(A^e)\to \mathrm{br}(A^L)$, which by abuse of notation we will also refer to as the norm $N^{C_2}_{A^L}$. Note also that this same construction goes through for schemes with involution and good quotients.
     \end{construction}
-
+\Noah{I am confident about everything in this section except the following theorem.}
     \begin{theorem}
         Let $A$ be a Poincar{\'e} ring. Then there is a fiber sequence \[\pnbr(A)\to \mathrm{br}(A^e)\xrightarrow{N^{C_2}_{A^L}} \mathrm{br}(A^L)\] natural in $A$. If $(X,\lambda, Y,\pi)$ is a scheme with good quotient then there is a fiber sequence \[\pnbr(X,\lambda, Y,\pi)\to \mathrm{br}(X)\xrightarrow{N^{C_2}_{\underline{O}_X}} \mathrm{br}(\underline{\mathcal{O}}_X)\] natural in $(X,\lambda, Y ,\pi)$. 
     \end{theorem}
