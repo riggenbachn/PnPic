@@ -28,7 +28,7 @@
 %\usepackage{fancyhdr}
 \usepackage{enumerate}
 \usepackage{enumitem}
-%\usepackage{mathrsfs}
+\usepackage{mathrsfs}
 \usepackage{bbm}
 \usepackage{graphicx}
 \usepackage{soul,color}
@@ -120,6 +120,7 @@
 \newcommand{\perf}{\mathrm{Perf}}
 \newcommand{\perfpn}{\mathrm{Perf}^{\mathrm{Pn}}}
 \newcommand{\op}{\mathrm{op}}
+\newcommand{\sphere}{\mathbb{S}^0}
 \newcommand{\Assoc}{\mathrm{Assoc}}
 \newcommand{\Associnv}{\mathrm{Assoc}_\sigma}
 \newcommand{\BMinv}{\mathrm{BM}_\sigma} % for `hermitian' bimodules; made a macro so we can change this later easily. 
@@ -127,6 +128,7 @@
 \newcommand{\epoly}{\mathrm{epoly}}
 \newcommand{\ev}{\mathrm{ev}}
 \newcommand{\morphism}[3]{\mathop{\rotatebox{270}{$\xrightarrow{\rotatebox{90}{$\scriptstyle#2$}}$}}\limits^{#1}_{#3}}
+\newcommand{\Ar}{\mathrm{Ar}}
 
 
 %Theorem Environments ----------------------------------------------------------------
@@ -1171,18 +1173,32 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
 
 % Define a functor $ \Catex_{,*} \to \Catex_{,(-)^\op/\Spectra} $. 
 \begin{lemma}\label{lemma:stable_cat_functorial_Yoneda}
-    Write $ \widetilde{\CAT^{\mathrm{ex}}} \to \CAT^{\mathrm{ex}} $ for the restriction of the universal cocartesian fibration to $ \CAT^{\mathrm{ex}} \subseteq \CAT $. 
+    Write $ \widetilde{\CAT^{\mathrm{ex}}} \to \CAT^{\mathrm{ex}} $ for the restriction of the universal cocartesian fibration to $ \CAT^{\mathrm{ex}} \subseteq \CAT $, where $ \CAT^{\mathrm{ex}} $ denotes stable $ \infty $-categories and exact functors between them. 
     Consider the cocartesian fibration $ \CAT^{\mathrm{ex}}_{,(-)^\op/\Spectra} \to \CAT $ classified by the functor $ \Fun^{\mathrm{ex}}\left((-)^\op, \Spectra\right) $, with cocartesian transport given by left Kan extension. 
     Then there is a functor $ \widetilde{\CAT^{\mathrm{ex}}} \to \CAT^{\mathrm{ex}}_{,(-)^\op/\Spectra} $ over $ \CAT^{\mathrm{ex}} $ which preserves cocartesian edges. 
     %\Lucy{replace $ \Catex $ by `large' stable $ \infty $-categories}
 \end{lemma}
 \begin{proof}
-    \Lucyil{inspired by Yonatan's answer \href{https://mathoverflow.net/questions/385382/what-is-the-functoriality-of-the-infty-categorical-slice-construction}{here}}
-    Write $ \mathrm{RFib} \subset \mathrm{Ar}\left(\CAT\right) \times_{\CAT} \CAT^{\mathrm{ex}} $ be the full subcategory of the arrow category spanned by the right fibrations. 
-    Write $ \mathrm{RFib}_* \subseteq \mathrm{RFib} $ for the full subcategory on those arrows $ \mathcal{C} \to \mathcal{D} $ so that $ \mathcal{C} $ has a final object. 
-    The maps $ \mathrm{RFib}_* \to \CAT^{\mathrm{ex}} $, $ \mathrm{RFib} \to \CAT^{\mathrm{ex}} $ which send an arrow to its target are cocartesian fibrations; in particular by \cite[Corollary 6.5]{MR4545922}, the former is equivalent to the \emph{universal} cocartesian fibration $ \mathrm{RFib}_* \simeq \widetilde{\CAT^{\mathrm{ex}}} $. \Lucy{further discussion \href{https://mathoverflow.net/questions/383275/a-construction-of-the-universal-cocartesian-fibration}{here}} 
-    For $ \mathcal{C} \in \CAT^{\mathrm{ex}} $, write $ \mathrm{RFib}_*(\mathcal{C}) $ for the $ \infty $-category of right fibrations over $ \mathcal{C} $ with a terminal object. 
-    Corollary A.32 of \cite{MR3690268} implies that there is a functor $ \CAT \to \Fun\left(\Delta^1, \widehat{\CAT}\right) $ which sends an $ \infty $-category $ \mathcal{C} $ to the equivalence $ \Fun'\left(\mathcal{C}^\op,\mathrm{Gpd}_\infty\right) \simeq \mathrm{RFib}_*(\mathcal{C}) $, where $ \Fun' $ denotes functors which preserve all limits. 
+    \Lucyil{inspired by Yonatan's answer \href{https://mathoverflow.net/questions/385382/what-is-the-functoriality-of-the-infty-categorical-slice-construction}{here}; further useful discussion \href{https://mathoverflow.net/questions/383275/a-construction-of-the-universal-cocartesian-fibration}{here}. }
+    Write $ \mathrm{RFib} \subset \mathrm{Ar}\left(\CAT\right) \times_{\CAT} \CAT^{\mathrm{ex}} $ be the full subcategory of the arrow category spanned by the right fibrations with target a stable $ \infty $-category. 
+    Write $ \mathrm{RFib}_* \subseteq \mathrm{RFib} $, resp. $ \mathrm{RFib}^{\omega\text{-fil}} $ for the full subcategory on those arrows $ \mathcal{C} \to \mathcal{D} $ so that $ \mathcal{C} $ has a final object, resp. is $ \omega $-filtered (i.e., for every diagram $ K \to \mathcal{C} $ where $ K $ is finite, there exists an extension $ K^{\vartriangleright} \to \mathcal{C} $). 
+    Observe that there is a commutative diagram 
+    \begin{equation}\label{diagram:stable_functorial_Yoneda_unstraightened}
+    \begin{tikzcd}[column sep=small]
+        \mathrm{RFib}_* \ar[rr,"i"] \ar[rd,"{t_0}"'] & & \mathrm{RFib}^{\omega\text{-fil}} \ar[ld,"{t_1}"] \\
+        & \CAT^{\mathrm{ex}} & 
+    \end{tikzcd} 
+    \end{equation} 
+    of inner fibrations.  
+    % where the diagonal arrows are cocartesian fibrations and $ i $ sends $ t_0 $-cocartesian arrows to $ t_1 $-cocartesian arrows.  
+    % The maps $ \mathrm{RFib}_* \to \CAT^{\mathrm{ex}} $, $ \mathrm{RFib}^{\omega\text{-fil}} \to \CAT^{\mathrm{ex}} $ which send an arrow to its target are cocartesian fibrations. 
+    By \cite[Corollary 6.5]{MR4545922} (cf. Corollary A.32 of \cite{MR3690268}), the left hand arrow in (\ref{diagram:stable_functorial_Yoneda_unstraightened}) is equivalent to the \emph{universal} cocartesian fibration $ \mathrm{RFib}_* \simeq \widetilde{\CAT^{\mathrm{ex}}} $.  
+    By \cite[Corollary 5.3.5.4]{HTT}, the fiber of $ \mathrm{RFib}^{\omega\text{-fil}} \to \CAT^{\mathrm{ex}} $ over $ \mathcal{D} $ may be identified with the $ \infty $-category $ \Fun^{\mathrm{lex}}\left(\mathcal{D}^\op,\Spaces\right) $ of functors which preserve finite limits. \Lucy{Assume that there exists a strongly inaccessible regular cardinal $ \delta $, so that $ \mathcal{D} $ is $ \delta $-\emph{small} as required in \cite[Corollary 5.3.5.4]{HTT}. Then replace $ \Spectra $ by $ \delta $-small spectra, etc.} 
+    By \cite[Corollary 1.4.2.23]{LurHA}, the functor $ \Omega^\infty $ induces an equivalence $ \Fun^{\mathrm{lex}}\left(\mathcal{D}^\op,\Spaces\right) \simeq \Fun^{\mathrm{lex}}\left(\mathcal{D}^\op,\Spectra\right) $.  
+    It follows from \cite[Lemma 1.4.1(i)]{CDHHLMNNSI} that $ \mathrm{RFib}^{\omega\text{-fil}} \to \CAT^{\mathrm{ex}} $ is a cocartesian fibration classified by the functor $ \Fun^{\mathrm{lex}}\left((-)^\op,\Spectra\right) $, and $ i $ takes $ t_0 $-cocartesian morphisms to $ t_1 $-cocartesian morphisms.     
+    Thus, we have identified $ p $ of (\ref{diagram:stable_functorial_Yoneda_unstraightened}) with the desired functor.  
+    % For $ \mathcal{C} \in \CAT^{\mathrm{ex}} $, write $ \mathrm{RFib}_*(\mathcal{C}) $ for the $ \infty $-category of right fibrations over $ \mathcal{C} $ with a terminal object. 
+    % Corollary A.32 of \cite{MR3690268} implies that there is a functor $ \CAT \to \Fun\left(\Delta^1, \widehat{\CAT}\right) $ which sends an $ \infty $-category $ \mathcal{C} $ to the equivalence $ \Fun'\left(\mathcal{C}^\op,\mathrm{Gpd}_\infty\right) \simeq \mathrm{RFib}_*(\mathcal{C}) $, where $ \Fun' $ denotes functors which preserve all limits. 
     % Use Corollary A.32 \href{https://arxiv.org/pdf/1501.02161}{here}.
     % IN PROGRESS AUGUST 5, 2025 PLEASE DO NOT DELETE THANKS--LUCY
     % -----------------------------------------------------------------------
@@ -1196,7 +1212,6 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
     % If $ \widetilde{\mathcal{C}} $ has a final object $ * $ and we write $ c = c(*) $, then the composite $ t^{-1}(c) \to \mathcal{C}^\op $ is a right fibration \cite[Proposition 1.1]{BG_16}. 
     % Furthermore, the right fibration $ t^{-1}(c) \to \mathcal{C}^\op $ straightens to the functor $ \hom_{\mathcal{C}}(-, c) \in \Fun'(\mathcal{C}^\op,\Spaces) \subseteq \Fun(\mathcal{C}^\op,\Spaces) $ where $ \Fun' $ denotes the full sub $ \infty $-groupoid on those functors which preserve finite limits. 
     % Since $ \mathcal{C} $ is stable, $ \Omega^\infty $ induces an equivalence $ \Fun'(\mathcal{C}^\op,\Spectra) \simeq \Fun'(\mathcal{C}^\op,\Spaces) $ by \cite[Corollary 1.4.2.23]{LurHA}. 
-    \Lucyil{In progress: Now use $ \Fun'(\mathcal{C}^\op,\Spectra) \to \Fun(\mathcal{C}^\op,\Spectra) $ to construct a map of cocartesian fibrations. } 
 \end{proof}
 % Then define a functor $ \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty} \Catex_{,*} \to \Fun\left(\Delta^1, \Cat_\infty \right) \times_{\Cat_\infty}\Catex_{,(-)^\op/\Spectra} \xrightarrow{\mathrm{compose}} \Cat_{(-)^\op/\Spectra} $. 
 % \Lucyil{use a model for the former in terms of bifibrations and representable left fibrations! Finally use naturality of unstraightening in the base \href{https://arxiv.org/abs/1501.02161}{Proposition A.31 here}, esp. see how it is used in Paper I p.149}
@@ -1280,14 +1295,28 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
     Informally, $ \iota^\omega $ sends an $ \EE_1 $-algebra $ A $ to the inclusion $ \LMod^\omega_A \to \LMod_A $. 
     Here $ \CAT^{\mathrm{ex}} $ is the large $ \infty $-category of stable $ \infty $-categories and exact functors between them. 
 \end{observation}
-\begin{definition}
-    (\ref{diagram:calgp_to_hermitian_cat})
+\begin{definition}\label{defn:calgp_to_hermitian_cat}
+    Let us write $ \Mod^p $ for the functor of (\ref{diagram:calgp_to_hermitian_cat}). 
 \end{definition}
-\begin{theorem}
-    The functor of (\ref{diagram:calgp_to_hermitian_cat}) factors through the subcategory $ \Catp \subseteq \Cath $. \Lucy{Use that $ \CAlgp $ (or $ \EE_\sigma \Alg $) has an initial object which is sent to $ \left(\Spectra^\omega,\Qoppa^u\right) $, so the image of any $ A \in \CAlgp $ under this functor has a canonical Poincaré object.}
+\begin{theorem}\label{thm:calgp_to_poincare_cat}
+\begin{enumerate}[label=(\arabic*)]
+    \item \label{thmitem:calgp_to_hermitian_factors} The functor of Definition \ref{defn:calgp_to_hermitian_cat} factors through the subcategory $ \Catp \subseteq \Cath $. 
+    \item \label{thmitem:unit_to_unit} Recall that $ \CAlgp $ has an initial object given by the sphere spectrum (Remark \ref{rmk:E_sigma_operad_unital}). 
+    Then there is an equivalence $ \Mod^p_{\sphere} \simeq \left(\Spectra^\omega,\Qoppa^u\right) $ where the latter is the universal Poincaré $ \infty $-category of \cite[\S4.1]{CDHHLMNNSI}. 
+\end{enumerate}
 \end{theorem}
 \begin{proof}
-    \cite[Lemma 3.4.3]{CDHHLMNNSI}
+    Part \ref{thmitem:calgp_to_hermitian_factors} follows from observing that given a map $ A \to B $ in $ \CAlgp $, the induced functor $ \Mod^p_A \to \Mod^p_B $ satisfies the assumptions of \cite[Lemma 3.4.3]{CDHHLMNNSI}. 
+    Part \ref{thmitem:unit_to_unit} follows from unraveling definitions. 
+\end{proof}
+\begin{corollary}
+    Suppose $ A \in \CAlgp $. 
+    Then $ A^e $ canonically promotes to a Poincaré object $ (A^e, q_A) $ of $ \Mod^p_A $. 
+\end{corollary}
+\begin{proof}
+    By Remark \ref{rmk:E_sigma_operad_unital}, there is an equivalence $ \CAlgp \simeq \CAlgp_{\sphere/-} $. 
+    By Theorem \ref{thm:calgp_to_poincare_cat}, we have a canonical map $ \Mod^p_{\sphere} \simeq \left(\Spectra^\omega,\Qoppa^u\right) \to \Mod^p_A $. 
+    The result follows from noting that $ \left(\Spectra^\omega,\Qoppa^u\right) $ corepresents $ \mathrm{Pn} $ by \cite[Proposition 4.1.3]{CDHHLMNNSI}. 
 \end{proof}
 
 \subsection{An operadic description of Poincaré rings}
@@ -1473,29 +1502,66 @@ in which all triangles and squares commute.
     This space is contractible. 
 \end{proof}
 \section{Categorification and structure--new leaf}
+Let $ \Ar^{\mathrm{cart}}\left(\Fin_{C_2}\right) $ denote the wide subcategory of the arrow category whose morphisms are cartesian squares. 
+\begin{definition}%\label{defn:gen_alg_inv_param_operad}
+    Define a colored $ \mathcal{O}_{C_2} $-operad $ \mathbf{\Assoc}_{\sigma} \to \underline{\mathrm{Fin}}_{C_2, *} $ as having 
+    \begin{enumerate}[label=(\arabic*)]
+        \item $ \mathrm{ob}\mathbf{\Assoc}_{\sigma} \to \mathrm{Fin}_{C_2} $ is classified by a functor $ \mathrm{Fin}_{C_2}^\op \to \mathrm{Set} $ which sends $ C_2 $ and $ C_2/C_2 $ to a singleton  
+        \item Multimorphisms are given by 
+        \begin{equation}
+        \begin{split}
+            \mathrm{Mul}_{\mathbf{\Assoc}_{\sigma}} \colon \Ar^{\mathrm{cart}}\left(\Fin_{C_2}\right) & \to \mathrm{Set} \\
+            (f : U \to V) & \mapsto \left\{ \left( \leq_v \text{ ordering on }f^{-1}(\{v\})\right)_{v \in V}\right\}^{C_2}
+        \end{split}
+        \end{equation}
+        where $ C_2 $ acts on $ \left\{ \left( \leq_v \text{ ordering on }f^{-1}(\{v\})\right)_{v \in V}\right\} $ by $ \left(\leq_v\right)_{v \in V} \mapsto \left(\geq_{\sigma(v)} \right) $ (here $ \geq_v $ is meant to denote the reverse of the ordering $ \leq_v $), and $ (-)^{C_2} $ denotes fixed points.  
+        \item The identity $ \ast\to \mathrm{Mul}_{\mathbf{\Assoc}_{\sigma}} $ is determined by observing that $ \left\{ \left( \leq_v \text{ ordering on }\id^{-1}(\{v\})\right)_{v \in V}\right\}^{C_2} \simeq * $ 
+        \item The composition law $ \circ : \mathrm{Mul}_{\mathbf{\Assoc}_{\sigma}} \times \mathrm{Mul}_{\mathbf{\Assoc}_{\sigma}} \to \mathrm{Mul}_{\mathbf{\Assoc}_{\sigma}} $ is defined by composing maps in $ \Fin_{C_2} $ and taking the lexicographic order on compositions (see \cite[Remark 4.1.1.4]{LurHA}).
+    \end{enumerate}
+    Postcomposing $ \mathrm{Mul}_{\mathbf{\Assoc}_{\sigma}} $ with the constant simplicial set functor gives a fibrant simplicial $ C_2 $-operad in the sense of \cite[Definition 2.5.4]{NS22}, which we also denote by $ \mathbf{\Assoc}_{\sigma} $. 
+    % constant simplicial sets are Kan complexes! 
+\end{definition}
 \begin{definition}\label{defn:gen_alg_inv_param_operad}
-    Define a $ C_2 $-$ \infty $-operad $ \underline{\Assoc}_{\sigma}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ as having 
+    Define $ \underline{\Assoc}_{\sigma}^\otimes \to \underline{\mathrm{Fin}}_{C_2, *} $ to be the $ C_2 $-$ \infty $-operad associated to $ \mathbf{\Assoc}_{\sigma} $ under \cite[Construction 2.5.5 \& Proposition 2.5.6]{NS22}. 
+    In particular, it has 
     \begin{itemize}
         \item objects consist of pairs $ (h : U \to V) $ where $ h: U \to V $ is an object of $ \underline{\mathrm{Fin}}_{C_2, *} $.  
         \item a morphism from $ (h : U \to V) $ to $ (h' : X \to Y) $ consists of 
         \begin{itemize}
             \item a span (\ref{diagram:C2_operad_generic_span}) in $ \underline{\mathrm{Fin}}_{C_2, *} $
-            \item for each $ x \in X $, an ordering $ \leq_x $ on $ f^{-1}(\{x\}) $.  
+            \item for each $ x \in X $, an ordering $ \leq_x $ on $ f^{-1}(\{x\}) $ satisfying the condition (write $ \sigma \in C_2 $ for the generator): under the isomorphism $ f^{-1}(\{x\}) \simeq f^{-1}(\{\sigma(x)\}) $ induced by the $ C_2 $-action, the ordering $ \leq_x $ is sent to the reverse of the ordering $ \leq_{\sigma(x)} $.  
         \end{itemize} 
-        These are required to satisfy the conditions (write $ \sigma \in C_2 $ for the generator)
-        \begin{itemize}
-            \item under the isomorphism $ f^{-1}(\{x\}) \simeq f^{-1}(\{\sigma(x)\}) $ induced by the $ C_2 $-action, the ordering $ \leq_x $ is sent to the reverse of the ordering $ \leq_{\sigma(x)} $.  
-        \end{itemize}
     \end{itemize}
     there is a canonical map to $ \underline{\mathrm{Fin}}_{C_2, *} $ which is an inclusion on objects and on morphisms forgets the data of the orderings. 
 \end{definition}
+% Fix a free orbit $ \{x\} \subseteq X $. The ordering $ \leq_x $ is equivalent to the data of (a) an ordering $ \leq_{O(x)}$ on the orbits in $ f^{-1}(\{x\}) $ so that at most one orbit is trivial, and any such trivial orbit in $ f^{-1}(\{x\}) $ is maximal with respect to the ordering and (b) a t-ordering on $ f|_{f^{-1}(\{x\})} $. Suppose given $ \leq_x $. The subset $ \bigsqcup_{W \in \mathrm{Orbit}(f^{-1}(\{x\}))} \{\min(W)\} \subseteq f^{-1}(\{x\}) $ (where we take the minimum with respect to $ \leq_x $) inherits an ordering from $ \leq_x $. Then the canonical isomorphism $ \bigsqcup_{W \in \mathrm{Orbit}(f^{-1}(\{x\}))} \{\min(W)\} \simeq \mathrm{Orbit}(f^{-1}(\{x\})) $ endows the latter with an ordering, and each free orbit $ W $ inherits an ordering from $ \leq_x $. On the other hand, given (a) and (b), we may define an ordering on $ f^{-1}(\{x\}) $ which satisfies: if $ W \leq Z $, then $ \min(W) \leq \min(Z) \leq \max(Z) \leq \max(W) $.
 \begin{remark}
-    Definition \ref{defn:gen_alg_inv_param_operad} is equivalent to the $ C_2 $-genuine nerve of the little disks operad $ \EE_\sigma $ associated to the sign $ C_2 $-representation on $ \RR $ \cite[Example 3.9.4]{Horev19}. 
+    By \cite[Construction 2.5.5 \& Proposition 2.5.6]{NS22}, $ \underline{\Assoc}_{\sigma}^\otimes $ is equivalent to the nerve of a 1-category.     
 \end{remark}
+\begin{recollection}
+    Let $ V=\RR^\sigma $ denote the sign $ C_2 $-representation on $ \RR $. 
+    Let $ D_V^\otimes $ denote the simplicial $ C_2 $-operad obtained by taking $ \mathrm{Sing}_\bullet $ of the little disks operad associated to $ V $ \cite[Definition 1.1]{GuillouMay}, and write $ \EE_\sigma^\otimes := N\left(D_V^\otimes\right) $ where $ N $ is the genuine operadic nerve \cites[\S4.1]{MR4011810}[Example 3.9.4]{Horev19}.
+\end{recollection}
+The following lemma shows that Definition \ref{defn:gen_alg_inv_param_operad} is a combinatorial model for the little disks operad associated to the sign representation of $ C_2 $. 
+\begin{lemma}
+    There is an equivalence $ \EE_\sigma^\otimes \simeq \underline{\Assoc}_\sigma^\otimes $ of $ C_2 $-$ \infty $-operads. 
+\end{lemma}
+\begin{proof} 
+    % The following is a special case, which may be included for instructive purposes. 
+    % --------------------------------------------------------------
+    % If $ U $ is a finite $ C_2 $-set, then a $ C_2 $-equivariant affine embedding $ U \times D(\RR^\sigma) \to D(\RR^\sigma) $ determines an ordering on $ U $ which is sent under the $ C_2 $-action on $ U $ to its reverse; in fact $ \mathrm{Emb}^{\mathrm{Aff},C_2}(U \times D(\RR^\sigma), D(\RR^\sigma)) \to \pi_0 \mathrm{Emb}^{\mathrm{Aff},C_2}(U \times D(\RR^\sigma), D(\RR^\sigma)) $ is a homotopy equivalence. 
+    Fix a $ C_2 $-equivariant map $ f \colon U \to V $ and consider $ \varphi_f \in \mathrm{Emb}^{C_2,\mathscr{S}}_f(U \times D(\RR^\sigma), V \times D(\RR^\sigma)) $ in the notation of \href{https://nataliesstewart.github.io/files/dunn.pdf}{here} where $ \mathscr{S} $ denotes the `equidiameter' embeddings of Remark 2.3 \emph{loc. cit.} 
+    For any $ v \in V $, such $ \varphi_f $ determines a linear ordering $ \leq_v $ on $ \pi_0 \varphi_f^{-1}( \{v\} \times D(\RR^\sigma)) \simeq f^{-1}(v) $. 
+    Moreover, since $ \varphi_f $ is $ C_2 $-equivariant, under the isomorphism $ \pi_0 \varphi_f^{-1}( \{v\} \times D(\RR^\sigma)) \simeq \pi_0 \varphi_f^{-1}( \{\sigma(v)\} \times D(\RR^\sigma)) $, the linear ordering $ \leq_v $ is sent to the linear ordering $ \geq_{\sigma(v)} $. 
+    It follows that each connected component of $ \mathrm{Emb}^{C_2,\mathscr{S}}_f(U \times D(\RR^\sigma), V \times D(\RR^\sigma)) $ is homeomorphic to a nonempty convex subset of Euclidean space and is therefore contractible. 
+    It follows that taking connected components on multimorphism spaces induces a weak equivalence $ D_V^\otimes \to \mathbf{Assoc}^\otimes_\sigma $ of simplicial $ C_2 $-operads. 
+    It follows that there is an equivalence $ \EE_\sigma^\otimes \simeq \underline{\Assoc}_\sigma^\otimes $ of $ C_2 $-$ \infty $-operads. 
+    % Definition \ref{defn:gen_alg_inv_param_operad} is equivalent to the $ C_2 $-genuine nerve of the little disks operad $ \EE_\sigma $. 
+\end{proof}
 \begin{remark}\label{rmk:E_sigma_operad_unital}
-    The operad $ \underline{\Assoc}_\sigma^\otimes $ is unital in the sense of \cite[Definition 5.2.1]{NS22}. 
-    Let $ \mathcal{C}^\otimes $ be a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category, and write $ \mathbbm{1} $ for the unit. 
-    It follows from Proposition 5.2.8 \emph{ibid.} that there is an equivalence $ \EE_\sigma\Alg\left(\mathcal{C}^\otimes\right) \simeq \EE_\sigma\Alg\left(\mathcal{C}^\otimes\right)_{\mathbbm{1}/-} $. 
+    The $ C_2 $-$ \infty $-operads $ \underline{\Assoc}_\sigma^\otimes $ and $ \EE_p^\otimes $ are unital in the sense of \cite[Definition 5.2.1]{NS22}. 
+    Let $ \mathcal{C}^\otimes $ be a $ C_2 $-symmetric monoidal $ C_2 $-$ \infty $-category. %, and write $ \mathbbm{1} $ for the unit. 
+    It follows from Proposition 5.2.8 and Theorem 5.2.11 \emph{ibid.} that the unit object $ \mathbbm{1} $ of $ \mathcal{C} $ has a canonical structure of an $ \EE_\sigma $ (resp. $ \EE_p $-)algebra, and moreover with this structure $ \mathbbm{1} $ is the initial object in $ \EE_\sigma\Alg\left(\mathcal{C}\right) $, (resp. $ \EE_p\Alg\left(\mathcal{C}\right) $). 
 \end{remark}
 \begin{observation}
     Suppose given a finite $ C_2 $-set $ Z $ and an ordering $ \leq_Z $ so that the $ C_2 $-action on $ Z $ sends $ \leq_Z $ to its reverse. 
