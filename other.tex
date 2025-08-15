@@ -1196,7 +1196,7 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
     By \cite[Corollary 5.3.5.4]{HTT}, the fiber of $ \mathrm{RFib}^{\omega\text{-fil}} \to \CAT^{\mathrm{ex}} $ over $ \mathcal{D} $ may be identified with the $ \infty $-category $ \Fun^{\mathrm{lex}}\left(\mathcal{D}^\op,\Spaces\right) $ of functors which preserve finite limits. \Lucy{Assume that there exists a strongly inaccessible regular cardinal $ \delta $, so that $ \mathcal{D} $ is $ \delta $-\emph{small} as required in \cite[Corollary 5.3.5.4]{HTT}. Then replace $ \Spectra $ by $ \delta $-small spectra, etc.} 
     By \cite[Corollary 1.4.2.23]{LurHA}, the functor $ \Omega^\infty $ induces an equivalence $ \Fun^{\mathrm{lex}}\left(\mathcal{D}^\op,\Spaces\right) \simeq \Fun^{\mathrm{lex}}\left(\mathcal{D}^\op,\Spectra\right) $.  
     It follows from \cite[Lemma 1.4.1(i)]{CDHHLMNNSI} that $ \mathrm{RFib}^{\omega\text{-fil}} \to \CAT^{\mathrm{ex}} $ is a cocartesian fibration classified by the functor $ \Fun^{\mathrm{lex}}\left((-)^\op,\Spectra\right) $, and $ i $ takes $ t_0 $-cocartesian morphisms to $ t_1 $-cocartesian morphisms.     
-    Thus, we have identified $ p $ of (\ref{diagram:stable_functorial_Yoneda_unstraightened}) with the desired functor.  
+    Thus, we have identified $ i $ of (\ref{diagram:stable_functorial_Yoneda_unstraightened}) with the desired functor.  
     % For $ \mathcal{C} \in \CAT^{\mathrm{ex}} $, write $ \mathrm{RFib}_*(\mathcal{C}) $ for the $ \infty $-category of right fibrations over $ \mathcal{C} $ with a terminal object. 
     % Corollary A.32 of \cite{MR3690268} implies that there is a functor $ \CAT \to \Fun\left(\Delta^1, \widehat{\CAT}\right) $ which sends an $ \infty $-category $ \mathcal{C} $ to the equivalence $ \Fun'\left(\mathcal{C}^\op,\mathrm{Gpd}_\infty\right) \simeq \mathrm{RFib}_*(\mathcal{C}) $, where $ \Fun' $ denotes functors which preserve all limits. 
     % Use Corollary A.32 \href{https://arxiv.org/pdf/1501.02161}{here}.
@@ -1569,6 +1569,20 @@ The following lemma shows that Definition \ref{defn:gen_alg_inv_param_operad} is
     Suppose given a finite $ C_2 $-set $ Z $ and an ordering $ \leq_Z $ so that the $ C_2 $-action on $ Z $ sends $ \leq_Z $ to its reverse. 
     We may associate to this a canonical t-ordering on the map $ f \colon Z \to C_2/C_2 $: For each free orbit $ U \subseteq Z $, take the restriction of $ \leq_Z $ to $ U $. 
     This assignment induces a canonical forgetful map of $ C_2 $-$ \infty $-operads $ \underline{\Assoc}_\sigma^\otimes \to \EE_p^\otimes $.  
+\end{observation}
+The following observation will allow us to write down functors between the $ \infty $-operads we care about without worrying about higher coherences. 
+\begin{observation}
+    Let $ \mathcal{T} $ be an atomic orbital category with a final object, and let $ T $ be a 1-categorical model for $ \mathcal{T} $ (\cite[Proposition 2.5.1]{NS22}). 
+    Fix an object $ U \in \mathcal{T} $, and suppose given a simplicial colored $ T $-operad $ O $ in the sense of Definition 2.5.4 \emph{loc. cit.} 
+    Consider
+    \begin{enumerate}[label=(\arabic*)]
+        \item set of colors is the value of $ \mathbf{F}^\op_T \to \mathrm{Set} $ on $ U $
+        \item for each finite set $ I $ and $ I $-indexed collection of objects $ \{X_i\} $ and $ Y \in \mathrm{ob}O $, $ \mathrm{Mul}_O $ evaluated on $ (\nabla \colon U^I \to U, (X_i)_{i \in I}, Y) $ is the collection of multimorphisms 
+        \item composition and unit...
+    \end{enumerate}
+    Observe that this defines a simplicial colored operad; call it $ O_U $. 
+    Now suppose given a simplicial colored operad $ P $ and a map of simplicial colored operads $ P \to O_U $. 
+    Then there is a map of $ \infty $-categories $ N^\otimes(P) \to N^\otimes (O) $ where the former denotes the operadic nerve of \cite[Definition 2.1.1.23]{LurHA} and the latter denotes the genuine operadic nerve. \Lucy{todo: sends inert to inert? image is contained in non-parametrized fiber over $ U $.} 
 \end{observation}
 \begin{construction}
     We will construct a map $ \Assoc^\otimes \to \underline{\Assoc}^\otimes_{\sigma, C_2/e} $. 
