@@ -884,8 +884,25 @@ In the course of thinking about the `involutive' generalization of the statement
 \end{itemize}
 \end{question}
 
-\section{From Poincaré rings to Poincaré \texorpdfstring{$ \infty $}{∞}-categories}
-Use \href{https://arxiv.org/pdf/1904.01465}{genuine operadic nerve here} to go from simplicial genuine operads to parametrized operads. 
+\section{Poincaré structures on module categories} 
+The assignment $ A \mapsto \Mod_A $ sending an associative algebra to its category of left modules is functorial in $ A $: Given a map of algebras $ A \to B $, $ B \otimes_A (-) $ defines a functor $ \Mod_A \to \Mod_B $. 
+This observation/fact is simultaneously simple/basic and fundamental: It allows one to define quasi-coherent sheaves on a scheme $ X $ as a limit over affine open covers, and to formulate effective descent for modules. 
+In this section, we consider what it means to extend this functoriality to module categories with Poincaré structure. 
+
+Note that a lift of $ \Mod_A^\omega $ to $ \Catp $ or $ \Cath $ is additional data: by \cite[Theorem 3.3.1]{CDHHLMNNSI}, this equivalent to the data of a module with genuine involution over $ A $. 
+We begin by defining an $ \infty $-category whose objects are associative algebras with the required additional structure; in order to handle the coherences involved, we use the language of ($ C_2 $-)$ \infty $-operads. 
+Next, we construct a functor from said category to $ \Cath $ and show that it factors through $ \Catp $. 
+Finally, in \S\ref{subsection:calgp_operadic} we show that the category $ \CAlgp $ admits a forgetful functor to these structured associative algebras by showing that $ \CAlgp $ is equivalent to algebras over a suitably defined $ C_2 $-$ \infty $-operad. 
+
+We remark on the relationship between our construction and existing constructions in the literature. 
+We note that \cite[\S3.3 \& \S3.4]{CHN2024} specifies the data needed to define a functor from schemes to Poincaré $ \infty $-categories. %; restricting to affine schemes, we consider this as a functor from commutative rings to $ \Catp $. 
+In the language of this paper, the aforementioned functor endows a commutative ring $ R $ with trivial $ C_2 $-action/involution, then constructs Poincaré structures on $ \Mod^\omega_R $ whose duality functor is $ R $-linear. 
+By considering rings with possibly nontrivial involution, we allow our duality functors to be conjugate linear. 
+In the language of Poincaré objects, our construction allows us to speak of perfect complexes with nondegenerate \emph{hermitian} forms (or variants such as skew-hermitian) in addition to symmetric forms and their variants, while the former only gives rise to (anti)-symmetric forms.  
+On the other hand, we do not consider forms valued in line bundles which are not trivial or explore how hermitian/Poincaré structures on $ \Mod_R^\omega $ might vary according to a given t-structure on $ \Mod_R $, so in these respects our construction is less general that that of Calmès--Harpaz--Nardin. 
+Finally, the third author asserted (rather cavalierly) in \cite[\S5.2]{LYang_normedrings} that there is a functorial assignment from $ C_2 $-$ \EE_\infty $-algebras to Poincaré $ \infty $-categories; Theorem \ref{thm:calgp_to_poincare_cat} should be regarded as a more correct/precise demonstration of that assertion. 
+
+\subsection{From Poincaré rings to Poincaré \texorpdfstring{$ \infty $}{∞}-categories}
 \begin{notation}\label{ntn:t_order_equivariant_map}
     Let $ S, T $ be finite $ C_2 $-sets, and let $ f \colon S\to T $ be a $ C_2 $-equivariant map. 
     A \emph{t-ordering} on $ f $ is the data of, for all free orbits $ V \subset S $, $ V \simeq C_2 $ so that $ f(V) = \{*\} $, a choice of an ordering $ \le $ on $ V $. 
@@ -1157,7 +1174,7 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
         % \underline{\Alg}_{\underline{\mathrm{Assoc}}_{\mathrm{naive}}}\left(\underline{\Spectra}^{C_2}\right) \ar[r] & \Fun\left(\Delta^1, \Cat^{\Alg}_\infty \right) \ar[r,"{\Theta}"] & \Fun\left(\Delta^1, \Cat^{\Mod}_\infty \right) \ar[r,"{\ev_1}"] & \Cat_\infty & \Catex \ar[l]
     \end{tikzcd}
     \end{equation}
-    where $ G $ is (\ref{eq:assoc_alg_norm_in_families_straightened}) from Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. 
+    where $ G $ is (\ref{eq:assoc_alg_norm_in_families_straightened}) from Construction \ref{cons:norm_in_families} and $ \Theta $ is from \cite[Construction 4.8.3.24]{LurHA}. \Lucy{left or right modules? see \cite[Variant 4.8.3.19]{LurHA}.}
 
     Define $ \CAT^\epoly $ to be a large $ \infty $-category of not necessarily small stable $ \infty $-categories and reduced excisively polynomial functors between them; it defines a full subcategory of $ \CAT $ which moreover contains $ \CAT^{\mathrm{ex}} $ as a non-full subcategory. 
     Now let us observe that for any $ \EE_1 $-algebra $ A $ in $ \Spectra $, $ N^{C_2} \colon \Mod_A(\Spectra) \to \Mod_{N^{C_2}A}\left(\Spectra^{C_2}\right) $ is reduced and quadratic. 
@@ -1321,8 +1338,10 @@ In particular, recall that in $ \underline{\Fin}_{C_2,*} $, the induced map $ Z 
     The result follows from noting that $ \left(\Spectra^\omega,\Qoppa^u\right) $ corepresents $ \mathrm{Pn} $ by \cite[Proposition 4.1.3]{CDHHLMNNSI}. 
 \end{proof}
 
-\subsection{An operadic description of Poincaré rings}
-We show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings defined diagrammatically. 
+\subsection{An operadic description of Poincaré rings}\label{subsection:calgp_operadic}
+In this subsection, we show that algebras over $ \mathbb{E}_p $ are equivalent to Poincaré rings defined diagrammatically. 
+The constructions and proofs are very similar to those of \cite{LYang_normedrings}, with the $ C_2 $-$ \infty $-operad $ \EE_p^\otimes $ in place of the commutative/terminal $ C_2 $-$ \infty $-operad. 
+We give a terse outline of the argument, including proofs of modified versions of key auxiliary results of \emph{loc. cit.}, but otherwise refer to \emph{loc. cit.} for details.   
 
 Let $ K $ denote the $ \infty $-categorical nerve of the $ 1 $-category
 \begin{equation*}%\label{diagram:indexing_normedrings}
@@ -1540,9 +1559,10 @@ Let $ \Ar^{\mathrm{cart}}\left(\Fin_{C_2}\right) $ denote the wide subcategory o
 \begin{remark}
     By \cite[Construction 2.5.5 \& Proposition 2.5.6]{NS22}, $ \underline{\Assoc}_{\sigma}^\otimes $ is equivalent to the nerve of a 1-category.     
 \end{remark}
-\begin{recollection}
+\begin{recollection} [Little disks operad]
     Let $ V=\RR^\sigma $ denote the sign $ C_2 $-representation on $ \RR $. 
-    Let $ D_V^\otimes $ denote the simplicial $ C_2 $-operad obtained by taking $ \mathrm{Sing}_\bullet $ of the little disks operad associated to $ V $ \cite[Definition 1.1]{GuillouMay}, and write $ \EE_\sigma^\otimes := N\left(D_V^\otimes\right) $ where $ N $ is the genuine operadic nerve \cites[\S4.1]{MR4011810}[Example 3.9.4]{Horev19}.
+    Let $ D_V^\otimes $ denote the simplicial $ C_2 $-operad obtained by taking $ \mathrm{Sing}_\bullet $ of the little disks operad associated to $ V $ \cite[Definition 1.1]{GuillouMay}. 
+    Write $ \EE_\sigma^\otimes := N\left(D_V^\otimes\right) $ where $ N $ is the genuine operadic nerve \cites[\S4.1]{MR4011810}[Example 3.9.4]{Horev19}; $ \EE_\sigma^\otimes $ is a $ C_2 $-$ \infty $-operad. 
 \end{recollection}
 The following lemma shows that Definition \ref{defn:gen_alg_inv_param_operad} is a combinatorial model for the little disks operad associated to the sign representation of $ C_2 $. 
 \begin{lemma}
@@ -1571,18 +1591,23 @@ The following lemma shows that Definition \ref{defn:gen_alg_inv_param_operad} is
     This assignment induces a canonical forgetful map of $ C_2 $-$ \infty $-operads $ \underline{\Assoc}_\sigma^\otimes \to \EE_p^\otimes $.  
 \end{observation}
 The following observation will allow us to write down functors between the $ \infty $-operads we care about without worrying about higher coherences. 
-\begin{observation}
+\begin{observation}\label{obs:operad_maps_to_infty_operad_maps}
     Let $ \mathcal{T} $ be an atomic orbital category with a final object, and let $ T $ be a 1-categorical model for $ \mathcal{T} $ (\cite[Proposition 2.5.1]{NS22}). 
     Fix an object $ U \in \mathcal{T} $, and suppose given a simplicial colored $ T $-operad $ O $ in the sense of Definition 2.5.4 \emph{loc. cit.} 
     Consider
     \begin{enumerate}[label=(\arabic*)]
         \item set of colors is the value of $ \mathbf{F}^\op_T \to \mathrm{Set} $ on $ U $
-        \item for each finite set $ I $ and $ I $-indexed collection of objects $ \{X_i\} $ and $ Y \in \mathrm{ob}O $, $ \mathrm{Mul}_O $ evaluated on $ (\nabla \colon U^I \to U, (X_i)_{i \in I}, Y) $ is the collection of multimorphisms 
+        \item for each finite set $ I $ and $ I $-indexed collection of objects $ \{X_i\} $ and $ Y \in \mathrm{ob}O $, $ \mathrm{Mul}_O $ evaluated on $ (\nabla \colon U^I \to U, (X_i)_{i \in I}, Y) $ is the collection of multimorphisms, where $ \nabla $ denotes a fold map.  
         \item composition and unit...
     \end{enumerate}
     Observe that this defines a simplicial colored operad; call it $ O_U $. 
     Now suppose given a simplicial colored operad $ P $ and a map of simplicial colored operads $ P \to O_U $. 
-    Then there is a map of $ \infty $-categories $ N^\otimes(P) \to N^\otimes (O) $ where the former denotes the operadic nerve of \cite[Definition 2.1.1.23]{LurHA} and the latter denotes the genuine operadic nerve. \Lucy{todo: sends inert to inert? image is contained in non-parametrized fiber over $ U $.} 
+    Then there are maps of $ \infty $-categories 
+    \begin{equation*}
+        N^\otimes(P) \to N^\otimes\left(O_U\right) \to N^\otimes (O) 
+    \end{equation*} 
+    where the left two instances of $ N^\otimes $ denote the operadic nerve of \cite[Definition 2.1.1.23]{LurHA} and the latter denotes the genuine operadic nerve \cites[\S4.1]{MR4011810}. 
+    Moreover, the composite $ N^\otimes(P) \to N^\otimes(O) $ sends inert maps in the $ \infty $-operad $ N^\otimes(P) $ to inert maps in the $ \mathcal{T} $-$ \infty $-operad $ N^\otimes(O) $ (cf. proof of Theorem I \emph{ibid.}). 
 \end{observation}
 \begin{construction}
     We will construct a map $ \Assoc^\otimes \to \underline{\Assoc}^\otimes_{\sigma, C_2/e} $. 
